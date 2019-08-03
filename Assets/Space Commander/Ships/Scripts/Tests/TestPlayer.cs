@@ -11,13 +11,16 @@ namespace SpaceCommander.Ships.Tests
         public uint teamId;
         public string playerName = "TestPlayer";
 
+        public bool isEnemy;
+        
         void Awake()
         {
             RegisterPlayer();
+            FindObjectOfType<TestPlayerOwnedEntity>().SetPlayer(this);
             Turret[] turrets = FindObjectsOfType<Turret>();
             foreach (Turret t in turrets)
             {
-                t.SetPlayer(this);
+                t.GetWeaponSystemController().GetOwner().CmdSetPlayer(netId);
             }
 
         }
@@ -45,8 +48,7 @@ namespace SpaceCommander.Ships.Tests
         
         public bool IsEnemy(IPlayer player)
         {
-            if (teamId != player.GetTeam().teamID) return true;
-            return false;
+            return isEnemy;
         }
     }
 }

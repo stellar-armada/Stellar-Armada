@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b360759dbc4eae42bb10d343f9500d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncInterval: 0.1
   infos:
   - color: {r: 1, g: 0, b: 0, a: 1}
     name: RED
@@ -494,13 +495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeef4a32fc1ad6a418b59d6b274d0819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicLeapControllerPrefab: {fileID: 1241376631685988, guid: 78fbe933967f05749a558b7e1546e79c,
-    type: 3}
-  oculusRiftControllerPrefab: {fileID: 1241376631685988, guid: 897546b7f935fc047be0b1d39617a908,
-    type: 3}
-  hololensControllerPrefab: {fileID: 0}
-  uiPointerPrefab: {fileID: 1346645749057006, guid: edf6b81b8c26f3848b032046aa47a890,
-    type: 3}
 --- !u!4 &1214834786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7763131172492543897, guid: 85c2936b24e5c9441aa081d513897baf,
@@ -550,8 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237b8c1fd3976d44fa291df16e84f417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneCenterIndicatorPrefab: {fileID: 9127370519365514730, guid: 9fe38dc9533f322449f4929b2db608d4,
-    type: 3}
 --- !u!1 &1770888859
 GameObject:
   m_ObjectHideFlags: 0

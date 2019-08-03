@@ -5,8 +5,10 @@ namespace SpaceCommander
 {
     public interface IWeaponSystem
     {
-        IPlayer GetPlayer();
-        void SetPlayer(IPlayer player);
+        IWeaponSystemController GetWeaponSystemController();
+        void SetWeaponSystemController(IWeaponSystemController weaponSystemController);
+        Transform GetTarget();
+        void SetTarget(Transform target);
         float GetDamage();
         void StartFiring();
         void StopFiring();

@@ -4,17 +4,15 @@ using UnityEngine;
 namespace SpaceCommander
 {
 
-public abstract class  WeaponSystem : MonoBehaviour
+public abstract class  WeaponSystem : MonoBehaviour, IWeaponSystem
 {
 
-    public IPlayer owningPlayer;
+    public IWeaponSystemController weaponSystemController;
 
     public Transform target;
 
     [SerializeField] private float damagePerHit;
     
-    public Animator[] Animators;
-
     // Timer reference                
     [HideInInspector] public int timerID = -1;
     
@@ -26,15 +24,25 @@ public abstract class  WeaponSystem : MonoBehaviour
 
     RaycastHit hitInfo; // Raycast structure
     public bool isFiring; // Is turret currently in firing state
-    
-    public IPlayer GetPlayer()
+
+    public IWeaponSystemController GetWeaponSystemController()
     {
-        return owningPlayer;
+        return weaponSystemController;
     }
 
-    public void SetPlayer(IPlayer player)
+    public void SetWeaponSystemController(IWeaponSystemController _weaponSystemController)
     {
-        owningPlayer = player;
+        weaponSystemController = _weaponSystemController;
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
+    }
+
+    public void SetTarget(Transform t)
+    {
+        target = t;
     }
 
     public float GetDamage()
@@ -51,7 +59,8 @@ public abstract class  WeaponSystem : MonoBehaviour
     public abstract void StopFiring();
 
     public abstract void Fire();
-    
+    public abstract void Impact(Vector3 point);
+
     public void CheckForFire()
     {
 
@@ -77,25 +86,5 @@ public abstract class  WeaponSystem : MonoBehaviour
             StopFiring();
         }
     }
-
-    public void PlayAnimation()
-    {
-        for (int i = 0; i < Animators.Length; i++)
-            Animators[i].SetTrigger("FireTrigger");
-    }
-
-    public void PlayAnimationLoop()
-    {
-        for (int i = 0; i < Animators.Length; i++)
-            Animators[i].SetBool("FireLoopBool", true);
-    }
-
-    public void StopAnimation()
-    {
-        for (int i = 0; i < Animators.Length; i++)
-            Animators[i].SetBool("FireLoopBool", false);
-    }
-
-
 }
 }

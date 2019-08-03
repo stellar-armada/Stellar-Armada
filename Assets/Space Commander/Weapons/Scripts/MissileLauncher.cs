@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace SpaceCommander.Weapons
 {
-    public class MissileLauncher :  WeaponSystem, IWeaponSystem
+    public class MissileLauncher :  WeaponSystem
     {
         public Transform missilePrefab;
         public Transform target;
@@ -97,7 +97,7 @@ namespace SpaceCommander.Weapons
             throw new NotImplementedException();
         }
 
-        public void Impact(Vector3 point)
+        public override void Impact(Vector3 point)
         {
             throw new NotImplementedException();
         }

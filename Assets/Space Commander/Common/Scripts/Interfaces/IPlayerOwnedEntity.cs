@@ -1,6 +1,6 @@
 ﻿namespace SpaceCommander
 {
-    public interface IOwnable
+    public interface IPlayerOwnedEntity
     {
         void CmdSetPlayer(uint playerID);
         uint GetId();

@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using SpaceCommander;
+using SpaceCommander.Ships;
 using UnityEngine;
 
-public class CollisionHandler : MonoBehaviour, ICollidable
+public class ShipCollisiderHandler : MonoBehaviour, ICollidable
 {
-    public IDamageable owningDamageable;
+    [SerializeField] ShipHealth health;
 
     public IDamageable GetDamageable()
     {
-        return owningDamageable;
+        return health;
     }
 }

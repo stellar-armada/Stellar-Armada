@@ -8,16 +8,11 @@ namespace SpaceCommander
         
         public LayerMask layerMask;
 
-        public IPlayer GetPlayer()
+        public IWeaponSystem GetWeaponSystem()
         {
-            return owningWeaponSystem.GetPlayer();
+            return owningWeaponSystem;
         }
-        
-        public Team GetTeam()
-        {
-            return owningWeaponSystem.GetPlayer().GetTeam();
-        }
-        
+
         public void Damage(IDamageable target)
         {
             target.TakeDamage(owningWeaponSystem.GetDamage());

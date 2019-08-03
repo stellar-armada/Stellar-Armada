@@ -33,13 +33,13 @@ namespace SpaceCommander.Weapons.Tests
             {
                 foreach (Turret turret in turrets)
             {
-                if (turret.owningPlayer == null)
+                if (turret.GetWeaponSystemController().GetOwner().GetPlayer() == null)
                 {
                     Debug.Log("Owning player is null");
                     TestPlayer player = FindObjectOfType<TestPlayer>();
                     if (player != null)
                     {
-                        turret.owningPlayer = player;
+                        turret.GetWeaponSystemController().GetOwner().CmdSetPlayer(player.netId);
                     }
                 }
                 else

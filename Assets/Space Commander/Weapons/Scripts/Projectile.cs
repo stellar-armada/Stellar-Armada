@@ -76,13 +76,10 @@ namespace SpaceCommander.Weapons
                 IDamageable damageable = hitPoint.transform.GetComponent<IDamageable>();
                 if (damageable == null)
                 {
-                    Debug.Log("Couldn't find damagable on " + hitPoint.transform.name);
+                    Debug.LogError("Couldn't find damagable on " + hitPoint.transform.name);
+                    return;
                 }
-                else
-                {
-                    Debug.Log(owningWeaponSystem.GetDamage());
-                    damageable.TakeDamage(owningWeaponSystem.GetDamage());
-                }
+                damageable.TakeDamage(owningWeaponSystem.GetDamage());
 
                 //TO-DO: Make this function call way less disgusting
 

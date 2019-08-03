@@ -9,7 +9,6 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            Debug.Log("Impact called");
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.sniperImpact, point, Quaternion.identity, null);
             WeaponAudioController.instance.SniperHit(point);
         }
@@ -21,7 +20,6 @@ namespace SpaceCommander.Weapons
 
         public override void Fire()
         {
-            Debug.Log("Firing " + Time.time);
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
 
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.sniperMuzzle, TurretSocket[curSocket].position,

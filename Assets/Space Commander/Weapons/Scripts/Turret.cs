@@ -4,8 +4,10 @@ using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
 {
-    public class Turret : WeaponSystem, IWeaponSystem
+    public class Turret : WeaponSystem
     {
+
+        public IWeaponSystemController owningWeaponSystemController;
         
         [Header("Turret setup")] public Transform[] TurretSocket; // Sockets reference
 
@@ -35,16 +37,21 @@ namespace SpaceCommander.Weapons
         // Current firing socket
         [HideInInspector] public int curSocket = 0;
 
-       
+
         public float fireRate = .3f;
 
-        
-        public virtual void Impact(Vector3 point)
+        void Awake()
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.laserImpulseImpact, point, Quaternion.identity, null);
-            WeaponAudioController.instance.LaserImpulseHit(point);
+            owningWeaponSystemController.RegisterWeaponSystem(this);
         }
         
+        public override void Impact(Vector3 point)
+        {
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.laserImpulseImpact, point,
+                Quaternion.identity, null);
+            WeaponAudioController.instance.LaserImpulseHit(point);
+        }
+
 
         // Advance to next turret socket
         public void AdvanceSocket()
@@ -62,7 +69,6 @@ namespace SpaceCommander.Weapons
             defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
             if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
                 fullAccess = true;
-            StopAnimation();
         }
 
         // Autotrack
@@ -83,13 +89,10 @@ namespace SpaceCommander.Weapons
             if (target == null) return false;
 
             return CanHitPosition(target.position);
-
-
         }
 
         public bool CanHitPosition(Vector3 pos)
         {
-
             Vector3 targetDirection = (pos - Mount.transform.position).normalized;
 
             Quaternion rotationToTarget = Quaternion.LookRotation(targetDirection);
@@ -100,17 +103,17 @@ namespace SpaceCommander.Weapons
             {
                 return true;
             }
+
             return false;
         }
 
         void CheckTarget()
         {
             // if current target cant be hit or object isn't within distance
-
-            Debug.Log("Checking target");
-            if(target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
+            if (target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
             {
-                Debug.Log("tARGET SHIP: " + target + " | CanHitPosition: " + CanHitPosition() + " | Distance: " + Vector3.Distance(transform.position, target.position));
+                Debug.Log("Target Ship: " + target + " | CanHitPosition: " + CanHitPosition() + " | Distance: " +
+                          Vector3.Distance(transform.position, target.position));
                 target = null;
                 Debug.Log("Lost target! ");
                 isFiring = false;
@@ -120,7 +123,6 @@ namespace SpaceCommander.Weapons
 
         public override void AcquireTarget()
         {
-            Debug.Log("Attempting to acquire target");
             // overlap sphere to get list of hitting objects
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange, damageableLayerMask);
 
@@ -129,14 +131,14 @@ namespace SpaceCommander.Weapons
             // if object is an enemy
             List<IDamageable> damageables = new List<IDamageable>();
 
-            foreach(Collider col in hitColliders)
+            foreach (Collider col in hitColliders)
             {
-                if (col.transform.parent == null) continue;
-                IDamageable d = col.transform.GetComponent<IDamageable>();
-                if (d == null) continue;
-                if(col.transform.parent.GetComponent<IDamageable>().GetPlayer() != owningPlayer)
+
+                IDamageable d = col.GetComponent<ICollidable>().GetDamageable();
+                if (d == null) Debug.LogError("Damageable was not found on collidable reference on " + col.name);
+                if (d.GetOwnable().GetPlayer().IsEnemy(owningWeaponSystemController.GetOwner().GetPlayer()))
                 {
-                    damageables.Add(col.transform.parent.GetComponent<IDamageable>());
+                    damageables.Add(d);
                 }
             }
 
@@ -144,23 +146,22 @@ namespace SpaceCommander.Weapons
 
             foreach (IDamageable damageable in damageables)
             {
-                Debug.Log("Checking against ship " + damageable);
                 // if enemy object can be hit
 
-                // Reference to 
-                IPlayer sPlayerController = damageable.GetPlayer();
-                IPlayer owningShipPlayerController = owningPlayer.GetPlayer();
-                
-                if (damageable.GetGameObject().tag == "Debug" || (sPlayerController.GetTeam().teamID != owningShipPlayerController.GetTeam().teamID && CanHitPosition(damageable.GetGameObject().transform.position)))
+                IPlayer sPlayerController = damageable.GetOwnable().GetPlayer();
+                IPlayer owningShipPlayerController = owningWeaponSystemController.GetOwner().GetPlayer();
+
+                if (damageable.GetGameObject().tag == "Debug" ||
+                    (owningShipPlayerController.IsEnemy(sPlayerController) &&
+                     CanHitPosition(damageable.GetGameObject().transform.position)))
                 {
                     // set target
                     target = damageable.GetGameObject().transform;
-                    Debug.Log("Set target to: " + damageable.GetGameObject().name + " owned by " + damageable.GetPlayer().GetName());
+                    Debug.Log("Set target to: " + damageable.GetGameObject().name + " owned by " +
+                              damageable.GetOwnable().GetPlayer().GetName());
                     return;
                 }
             }
-
-
         }
 
         public override void StartFiring()
@@ -172,10 +173,12 @@ namespace SpaceCommander.Weapons
         public override void Fire()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            PoolManager.Pools["GeneratedPool"].Spawn( WeaponEffectController.instance.laserImpulseMuzzle, TurretSocket[curSocket].position,
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.laserImpulseMuzzle,
+                TurretSocket[curSocket].position,
                 TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
             var newGO =
-                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponEffectController.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
+                PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
+                    WeaponEffectController.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
                     offset * TurretSocket[curSocket].rotation, null).gameObject;
             WeaponAudioController.instance.LaserImpulseShot(TurretSocket[curSocket].position);
 
@@ -194,35 +197,27 @@ namespace SpaceCommander.Weapons
 
         private void Update()
         {
-
             timer += Time.deltaTime;
-            if(timer >= tickRate)
+            if (timer >= tickRate)
             {
                 timer -= tickRate;
-                
-                if (target != null)
-                {
-                    CheckTarget();
-                } if (target == null)
-                {
-                    AcquireTarget();
 
+                if (owningWeaponSystemController.WeaponSystemsEnabled())
+                {
+                    SetTarget(null);
                 }
+                
+                if (target == null)
+                    AcquireTarget();
+                else
+                    CheckTarget();
             }
-            
+
             CheckForFire();
-
-
-            if (Input.GetMouseButtonDown(0))
-                PlayAnimation();
-            else if (Input.GetMouseButtonDown(1))
-                PlayAnimationLoop();
-            else if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-                StopAnimation();
 
             if (target != null)
                 targetPos = target.transform.position;
-            
+
             if (!smoothControlling)
             {
                 if (Mount != null)

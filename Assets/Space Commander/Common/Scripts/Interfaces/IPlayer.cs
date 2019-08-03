@@ -10,7 +10,6 @@ namespace SpaceCommander
         bool IsClient();
         void RegisterPlayer();
         void UnregisterPlayer();
-        IPlayer GetPlayer();
         PlayerType GetPlayerType();
         GameObject GetGameObject();
         Team GetTeam();

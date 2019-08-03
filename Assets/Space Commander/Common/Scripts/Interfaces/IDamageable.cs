@@ -4,8 +4,8 @@ namespace SpaceCommander
 {
     public interface IDamageable
     {
-        IPlayer GetPlayer();
-        void SetPlayer(IPlayer player);
+        IPlayerOwnedEntity GetOwnable();
+        void SetOwnable(IPlayerOwnedEntity playerOwnedEntity);
         GameObject GetGameObject();
         void TakeDamage(float damage);
     }
