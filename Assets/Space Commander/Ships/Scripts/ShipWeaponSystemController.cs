@@ -7,24 +7,24 @@ namespace SpaceCommander.Ships
 {
     public class ShipWeaponSystemController : MonoBehaviour, IWeaponSystemController
     {
-        public IPlayerOwnedEntity owner;
+        public IPlayerEntity entity;
 
         List<IWeaponSystem> weaponSystems = new List<IWeaponSystem>();
 
-        private bool weaponSystemsEnabled = false;
+        public bool weaponSystemsEnabled = false;
 
         void Awake()
         {
-            owner = GetComponent<IPlayerOwnedEntity>();
+            entity = GetComponent<IPlayerEntity>();
         }
-        public IPlayerOwnedEntity GetOwner()
+        public IPlayerEntity GetEntity()
         {
-            return owner;
+            return entity;
         }
 
-        public void SetOwner(IPlayerOwnedEntity newOwner)
+        public void SetOwner(IPlayerEntity newOwner)
         {
-            owner = newOwner;
+            entity = newOwner;
         }
 
         public List<IWeaponSystem> GetWeaponSystems()
@@ -53,7 +53,7 @@ namespace SpaceCommander.Ships
 
         public bool WeaponSystemsEnabled()
         {
-            throw new System.NotImplementedException();
+            return weaponSystemsEnabled;
         }
     }
 }

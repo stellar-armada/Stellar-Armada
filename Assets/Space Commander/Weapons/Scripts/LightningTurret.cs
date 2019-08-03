@@ -9,14 +9,14 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.sniperImpact, point, Quaternion.identity, null);
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperImpact, point, Quaternion.identity, null);
             WeaponAudioController.instance.SniperHit(point);
         }
         public override void StartFiring()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
-                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponEffectController.instance.lightningGunBeam, TurretSocket[i].position,
+                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.lightningGunBeam, TurretSocket[i].position,
                     TurretSocket[i].rotation,
                     TurretSocket[i]);
             }

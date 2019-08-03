@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 12000000}
   - component: {fileID: 972883479668350734}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_beam_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 12000002}
   - component: {fileID: 6632426623187770799}
   - component: {fileID: 6275892089608898613}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GuardianBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2048
   BeamFrames: []
   FrameStep: 0
   RandomizeFrames: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DespawnDelay: 0
-  DespawnOnMouseUp: 1
+  DespawnFixedAmountOfTimeAfterSpawn: 0
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 400004}
   - component: {fileID: 19800000}
   - component: {fileID: 19900000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5061,7 +5061,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 19800002}
   - component: {fileID: 19900002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_spark_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,7 +9755,7 @@ GameObject:
   - component: {fileID: 400008}
   - component: {fileID: 19800004}
   - component: {fileID: 19900004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_spark_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14467,7 +14467,7 @@ GameObject:
   - component: {fileID: 400010}
   - component: {fileID: 19800006}
   - component: {fileID: 19900006}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19164,7 +19164,7 @@ GameObject:
   - component: {fileID: 400012}
   - component: {fileID: 19800008}
   - component: {fileID: 19900008}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23861,7 +23861,7 @@ GameObject:
   - component: {fileID: 400014}
   - component: {fileID: 19800010}
   - component: {fileID: 19900010}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_spark_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28564,7 +28564,7 @@ GameObject:
   - component: {fileID: 400016}
   - component: {fileID: 19800012}
   - component: {fileID: 19900012}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_spark_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33258,7 +33258,7 @@ GameObject:
   - component: {fileID: 400018}
   - component: {fileID: 19800014}
   - component: {fileID: 19900014}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lightning_gun_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}

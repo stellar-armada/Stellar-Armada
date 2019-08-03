@@ -1,5 +1,5 @@
 ﻿using Mirror;
-using SpaceCommander.Ships.Tests;
+using SpaceCommander.Common.Tests;
 using UnityEngine;
 
 namespace SpaceCommander.Weapons.Tests
@@ -33,13 +33,13 @@ namespace SpaceCommander.Weapons.Tests
             {
                 foreach (Turret turret in turrets)
             {
-                if (turret.GetWeaponSystemController().GetOwner().GetPlayer() == null)
+                if (turret.GetWeaponSystemController().GetEntity().GetPlayer() == null)
                 {
                     Debug.Log("Owning player is null");
                     TestPlayer player = FindObjectOfType<TestPlayer>();
                     if (player != null)
                     {
-                        turret.GetWeaponSystemController().GetOwner().CmdSetPlayer(player.netId);
+                        turret.GetWeaponSystemController().GetEntity().CmdSetPlayer(player.netId);
                     }
                 }
                 else

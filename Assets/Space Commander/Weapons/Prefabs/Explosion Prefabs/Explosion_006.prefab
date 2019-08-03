@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 434474}
   - component: {fileID: 19834474}
   - component: {fileID: 19934474}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FireTail_Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4612,7 +4612,7 @@ ParticleSystem:
 --- !u!199 &19934474
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4636,6 +4636,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4682,7 +4683,7 @@ GameObject:
   - component: {fileID: 434476}
   - component: {fileID: 19834476}
   - component: {fileID: 19934476}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion_006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9531,7 +9532,7 @@ ParticleSystem:
 --- !u!199 &19934476
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9555,6 +9556,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -9601,7 +9603,7 @@ GameObject:
   - component: {fileID: 434478}
   - component: {fileID: 19834478}
   - component: {fileID: 19934478}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Halo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14260,7 +14262,7 @@ ParticleSystem:
 --- !u!199 &19934478
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14284,6 +14286,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14330,7 +14333,7 @@ GameObject:
   - component: {fileID: 434480}
   - component: {fileID: 19834480}
   - component: {fileID: 19934480}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Halo_Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19007,7 +19010,7 @@ ParticleSystem:
 --- !u!199 &19934480
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19031,6 +19034,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -19077,7 +19081,7 @@ GameObject:
   - component: {fileID: 434482}
   - component: {fileID: 19834482}
   - component: {fileID: 19934482}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Blast_Wave_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23861,7 +23865,7 @@ ParticleSystem:
 --- !u!199 &19934482
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -23876,7 +23880,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b7f635281554b240a6cdac4659405d6, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -23885,6 +23889,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -23931,7 +23936,7 @@ GameObject:
   - component: {fileID: 434484}
   - component: {fileID: 19834484}
   - component: {fileID: 19934484}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FireTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28523,7 +28528,7 @@ ParticleSystem:
 --- !u!199 &19934484
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -28547,6 +28552,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -28593,7 +28599,7 @@ GameObject:
   - component: {fileID: 434486}
   - component: {fileID: 19834486}
   - component: {fileID: 19934486}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33435,7 +33441,7 @@ ParticleSystem:
 --- !u!199 &19934486
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -33459,6 +33465,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -33505,7 +33512,7 @@ GameObject:
   - component: {fileID: 434488}
   - component: {fileID: 19834488}
   - component: {fileID: 19934488}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38280,7 +38287,7 @@ ParticleSystem:
 --- !u!199 &19934488
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -38304,6 +38311,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -38350,7 +38358,7 @@ GameObject:
   - component: {fileID: 434490}
   - component: {fileID: 19834490}
   - component: {fileID: 19934490}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shock_Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43210,7 +43218,7 @@ ParticleSystem:
 --- !u!199 &19934490
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -43234,6 +43242,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -43280,7 +43289,7 @@ GameObject:
   - component: {fileID: 434492}
   - component: {fileID: 19834492}
   - component: {fileID: 19934492}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dust_Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47930,7 +47939,7 @@ ParticleSystem:
 --- !u!199 &19934492
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -47954,6 +47963,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -48000,7 +48010,7 @@ GameObject:
   - component: {fileID: 434494}
   - component: {fileID: 19834494}
   - component: {fileID: 19934494}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52610,7 +52620,7 @@ ParticleSystem:
 --- !u!199 &19934494
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -52634,6 +52644,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -52680,7 +52691,7 @@ GameObject:
   - component: {fileID: 434496}
   - component: {fileID: 19834496}
   - component: {fileID: 19934496}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57522,7 +57533,7 @@ ParticleSystem:
 --- !u!199 &19934496
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -57546,6 +57557,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

@@ -8,7 +8,7 @@ using UnitySteer.Behaviors;
 namespace SpaceCommander.Ships
 {
 
-    public class Ship : NetworkBehaviour, IPlayerOwnedEntity
+    public class Ship : NetworkBehaviour, IPlayerEntity
     {
         public readonly ShipType shipType;
         public IPlayer player;

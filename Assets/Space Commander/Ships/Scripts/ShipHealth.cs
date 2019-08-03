@@ -9,7 +9,7 @@ namespace SpaceCommander.Ships
 {
     public class ShipHealth : NetworkBehaviour, IDamageable
     {
-        private IPlayerOwnedEntity owner;
+        private IPlayerEntity owningEntity;
 
         public float maxHull;
         public float maxShield;
@@ -68,14 +68,14 @@ namespace SpaceCommander.Ships
         }
 
 
-        public IPlayerOwnedEntity GetOwnable()
+        public IPlayerEntity GetOwningEntity()
         {
-            return owner;
+            return owningEntity;
         }
 
-        public void SetOwnable(IPlayerOwnedEntity playerOwnedEntity)
+        public void SetOwningEntity(IPlayerEntity playerEntity)
         {
-            owner = playerOwnedEntity;
+            owningEntity = playerEntity;
         }
 
         public GameObject GetGameObject()

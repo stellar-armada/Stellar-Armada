@@ -1,87 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using SpaceCommander;
+﻿using SpaceCommander;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
 
-public class DamageableTest : MonoBehaviour, IPlayer
+namespace SpaceCommander.Common.Tests
 {
-    [SerializeField] ShipHealth health;
+    public class DamageableTest : MonoBehaviour, IDamageable
+    {
+        public IPlayerEntity owningEntity;
+        
+        [SerializeField] HealthTest health;
 
-    [SerializeField] private bool isEnemy;
+        [SerializeField] private bool isEnemy;
 
-    void Awake()
-    {
-        health.SetOwnable(GetComponent<IPlayerOwnedEntity>());
-    }
-    
-    public void ShipDestroyed()
-    {
-        Debug.Log("Dummy destroyed!");
-    }
-    public void HullChanged()
-    {
-        Debug.Log("Hull changed to " + health.hull);
-    }
-    public void ShieldChanged()
-    {
-        Debug.Log("Hull changed to " +  health.shield);
-    }
+        void Awake()
+        {
+            health.SetOwningEntity(GetComponent<IPlayerEntity>());
+        }
 
-    public bool IsLocalPlayer()
-    {
-        throw new System.NotImplementedException();
-    }
+        public void ShipDestroyed()
+        {
+            Debug.Log("Dummy destroyed!");
+        }
 
-    public bool IsServer()
-    {
-        throw new System.NotImplementedException();
-    }
+        public void HullChanged()
+        {
+            Debug.Log("Hull changed to " + health.hull);
+        }
 
-    public bool IsClient()
-    {
-        throw new System.NotImplementedException();
-    }
+        public void ShieldChanged()
+        {
+            Debug.Log("Hull changed to " + health.shield);
+        }
 
-    public void RegisterPlayer()
-    {
-        throw new System.NotImplementedException();
-    }
+        public IPlayerEntity GetOwningEntity()
+        {
+            return owningEntity;
+        }
 
-    public void UnregisterPlayer()
-    {
-        throw new System.NotImplementedException();
-    }
+        public void SetOwningEntity(IPlayerEntity playerEntity)
+        {
+            owningEntity = playerEntity;
+        }
 
-    public PlayerType GetPlayerType()
-    {
-        throw new System.NotImplementedException();
-    }
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
 
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
-    public Team GetTeam()
-    {
-        Team t = new Team {color = Color.black, teamID = 100, name = "TestTeam"};
-        return t;
-    }
-
-    public uint GetId()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public string GetName()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool IsEnemy(IPlayer player)
-    {
-        return isEnemy;
+        public void TakeDamage(float damage)
+        {
+            health.TakeDamage(damage);
+        }
     }
 }

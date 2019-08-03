@@ -6,9 +6,9 @@ namespace SpaceCommander
 
 public abstract class  WeaponSystem : MonoBehaviour, IWeaponSystem
 {
-
-    public IWeaponSystemController weaponSystemController;
-
+    public Transform owningWeaponSystemTransform; // hack until we can update to 2019.3
+    public IWeaponSystemController owningWeaponSystemController;
+    
     public Transform target;
 
     [SerializeField] private float damagePerHit;
@@ -25,14 +25,20 @@ public abstract class  WeaponSystem : MonoBehaviour, IWeaponSystem
     RaycastHit hitInfo; // Raycast structure
     public bool isFiring; // Is turret currently in firing state
 
+    void Awake()
+    {
+        owningWeaponSystemController = owningWeaponSystemTransform.GetComponent<IWeaponSystemController>();
+        owningWeaponSystemController.RegisterWeaponSystem(this);
+    }
+    
     public IWeaponSystemController GetWeaponSystemController()
     {
-        return weaponSystemController;
+        return owningWeaponSystemController;
     }
 
-    public void SetWeaponSystemController(IWeaponSystemController _weaponSystemController)
+    public void SetWeaponSystemController(IWeaponSystemController weaponSystemController)
     {
-        weaponSystemController = _weaponSystemController;
+        owningWeaponSystemController = weaponSystemController;
     }
 
     public Transform GetTarget()

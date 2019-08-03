@@ -7,8 +7,6 @@ namespace SpaceCommander.Weapons
     public class Turret : WeaponSystem
     {
 
-        public IWeaponSystemController owningWeaponSystemController;
-        
         [Header("Turret setup")] public Transform[] TurretSocket; // Sockets reference
 
         public Transform Mount;
@@ -40,14 +38,9 @@ namespace SpaceCommander.Weapons
 
         public float fireRate = .3f;
 
-        void Awake()
-        {
-            owningWeaponSystemController.RegisterWeaponSystem(this);
-        }
-        
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.laserImpulseImpact, point,
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseImpact, point,
                 Quaternion.identity, null);
             WeaponAudioController.instance.LaserImpulseHit(point);
         }
@@ -109,8 +102,9 @@ namespace SpaceCommander.Weapons
 
         void CheckTarget()
         {
+
             // if current target cant be hit or object isn't within distance
-            if (target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
+            if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
             {
                 Debug.Log("Target Ship: " + target + " | CanHitPosition: " + CanHitPosition() + " | Distance: " +
                           Vector3.Distance(transform.position, target.position));
@@ -123,6 +117,7 @@ namespace SpaceCommander.Weapons
 
         public override void AcquireTarget()
         {
+            if (!owningWeaponSystemController.WeaponSystemsEnabled()) return;
             // overlap sphere to get list of hitting objects
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange, damageableLayerMask);
 
@@ -136,7 +131,7 @@ namespace SpaceCommander.Weapons
 
                 IDamageable d = col.GetComponent<ICollidable>().GetDamageable();
                 if (d == null) Debug.LogError("Damageable was not found on collidable reference on " + col.name);
-                if (d.GetOwnable().GetPlayer().IsEnemy(owningWeaponSystemController.GetOwner().GetPlayer()))
+                if (d.GetOwningEntity().GetPlayer().IsEnemy(owningWeaponSystemController.GetEntity().GetPlayer()))
                 {
                     damageables.Add(d);
                 }
@@ -148,8 +143,8 @@ namespace SpaceCommander.Weapons
             {
                 // if enemy object can be hit
 
-                IPlayer sPlayerController = damageable.GetOwnable().GetPlayer();
-                IPlayer owningShipPlayerController = owningWeaponSystemController.GetOwner().GetPlayer();
+                IPlayer sPlayerController = damageable.GetOwningEntity().GetPlayer();
+                IPlayer owningShipPlayerController = owningWeaponSystemController.GetEntity().GetPlayer();
 
                 if (damageable.GetGameObject().tag == "Debug" ||
                     (owningShipPlayerController.IsEnemy(sPlayerController) &&
@@ -158,7 +153,7 @@ namespace SpaceCommander.Weapons
                     // set target
                     target = damageable.GetGameObject().transform;
                     Debug.Log("Set target to: " + damageable.GetGameObject().name + " owned by " +
-                              damageable.GetOwnable().GetPlayer().GetName());
+                              damageable.GetOwningEntity().GetPlayer().GetName());
                     return;
                 }
             }
@@ -166,19 +161,19 @@ namespace SpaceCommander.Weapons
 
         public override void StartFiring()
         {
-            timerID = TimeManager.instance.AddTimer(WeaponEffectController.instance.VulcanFireRate, Fire);
+            timerID = TimeManager.instance.AddTimer(fireRate, Fire);
             Fire();
         }
 
         public override void Fire()
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.laserImpulseMuzzle,
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseMuzzle,
                 TurretSocket[curSocket].position,
                 TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
             var newGO =
                 PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
-                    WeaponEffectController.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
+                    WeaponPrefabManager.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
                     offset * TurretSocket[curSocket].rotation, null).gameObject;
             WeaponAudioController.instance.LaserImpulseShot(TurretSocket[curSocket].position);
 

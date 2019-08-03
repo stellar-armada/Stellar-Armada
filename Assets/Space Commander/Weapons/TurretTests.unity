@@ -198,7 +198,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036525}
-  m_Mesh: {fileID: 4300040, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
+  m_Mesh: {fileID: 4300048, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
 --- !u!1 &2050438
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85493971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0.147, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1036526}
@@ -631,9 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8addc6085fe197d43ad7b9152a35737e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 5
-  Animators: []
   timerID: -1
   timer: 0.1
   tickRate: 0.2
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 1529126802
+  m_SceneId: 376582733
 --- !u!4 &121519936
 Transform:
   m_ObjectHideFlags: 0
@@ -910,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cd9e21d25160742a1f15b32bfd2e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSystemsEnabled: 0
 --- !u!114 &121519944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1090,9 +1091,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8addc6085fe197d43ad7b9152a35737e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 5
-  Animators: []
   timerID: -1
   timer: 0.1
   tickRate: 0.2
@@ -1483,6 +1484,7 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 8801777087567244934, guid: 97c9ecdb36ab09e409f7da9f6151d19e, type: 3}
   - {fileID: 2615222144381845693, guid: 8ca1e3091c739dc4f87785858cb15b75, type: 3}
+  - {fileID: 0}
 --- !u!4 &342647812
 Transform:
   m_ObjectHideFlags: 0
@@ -2543,9 +2545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0469fba481febc545bdfa7d738810e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 5
-  Animators: []
   timerID: -1
   timer: 0.1
   tickRate: 0.2
@@ -2879,7 +2881,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691991233}
-  m_Mesh: {fileID: 4300042, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
+  m_Mesh: {fileID: 4300048, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
 --- !u!1 &697821124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,7 +2893,7 @@ GameObject:
   - component: {fileID: 697821126}
   - component: {fileID: 697821125}
   m_Layer: 0
-  m_Name: WeaponEffectController
+  m_Name: WeaponPrefabManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2912,7 +2914,6 @@ MonoBehaviour:
   vulcanProjectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
   vulcanMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   vulcanImpact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
-  VulcanFireRate: 0.05
   sniperBeam: {fileID: 400000, guid: 12e7c1b739173c946b6fa3d40e9f62d1, type: 3}
   sniperMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   sniperImpact: {fileID: 400004, guid: a980d2b7788c0ef489f3c79f44da79e1, type: 3}
@@ -2920,7 +2921,6 @@ MonoBehaviour:
   shotGunMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   shotGunImpact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
   lightningGunBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
-  lightingGunBeamOffset: 0
   laserImpulseProjectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce,
     type: 3}
   laserImpulseMuzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
@@ -3285,7 +3285,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791480414}
-  m_Mesh: {fileID: 4300030, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
+  m_Mesh: {fileID: 4300024, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
 --- !u!1 &827626722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,7 +3634,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961502848}
-  m_Mesh: {fileID: 4300042, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
+  m_Mesh: {fileID: 4300048, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
 --- !u!1 &964697540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,9 +3680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c1ffb515afe241981219c8c9a8c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 0
-  Animators: []
   timerID: -1
   timer: 0
   tickRate: 0.2
@@ -4128,9 +4128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e65da01919a6f644bf35bb8a5e5bc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 5
-  Animators: []
   timerID: -1
   timer: 0.1
   tickRate: 0.2
@@ -4725,9 +4725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c1ffb515afe241981219c8c9a8c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 0
-  Animators: []
   timerID: -1
   timer: 0
   tickRate: 0.2
@@ -5176,36 +5176,6 @@ Transform:
   m_Father: {fileID: 271429435}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1468209087
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1468209088}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1468209088
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468209087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.468245, y: -1.9926777, z: 11.330638}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1471893895
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,9 +5598,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e65da01919a6f644bf35bb8a5e5bc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystemTransform: {fileID: 121519936}
   target: {fileID: 0}
   damagePerHit: 5
-  Animators: []
   timerID: -1
   timer: 0.1
   tickRate: 0.2
@@ -7012,7 +6982,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069428109}
-  m_Mesh: {fileID: 4300042, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
+  m_Mesh: {fileID: 4300048, guid: 991ce2be8d84b5c4ab7cf566f62c94f6, type: 3}
 --- !u!1 &2070837579
 GameObject:
   m_ObjectHideFlags: 0

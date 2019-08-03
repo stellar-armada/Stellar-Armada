@@ -9,7 +9,7 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.sniperImpact, point, Quaternion.identity, null);
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperImpact, point, Quaternion.identity, null);
             WeaponAudioController.instance.SniperHit(point);
         }
         public override void StartFiring()
@@ -22,9 +22,9 @@ namespace SpaceCommander.Weapons
         {
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
 
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponEffectController.instance.sniperMuzzle, TurretSocket[curSocket].position,
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperMuzzle, TurretSocket[curSocket].position,
                 TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponEffectController.instance.sniperBeam, TurretSocket[curSocket].position,
+            PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.sniperBeam, TurretSocket[curSocket].position,
                     offset * TurretSocket[curSocket].rotation, null);
             WeaponAudioController.instance.SniperShot(TurretSocket[curSocket].position);
             AdvanceSocket();

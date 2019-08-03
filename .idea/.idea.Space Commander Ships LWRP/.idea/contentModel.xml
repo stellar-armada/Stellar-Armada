@@ -8,7 +8,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="DamageableTest.cs" t="Include" />
-        <e p="ICollidable.cs" t="Include" />
+        <e p="ISelector.cs" t="Include" />
         <e p="Paid Third Party" t="Include">
           <e p="AmplifyShaderEditor" t="Include">
             <e p="Plugins" t="Include">
@@ -895,7 +895,9 @@
             </e>
           </e>
         </e>
-        <e p="ShipCollisiderHandler.cs" t="Include" />
+        <e p="SelectionType.cs" t="Include" />
+        <e p="SelectorTest.cs" t="Include" />
+        <e p="ShipCollisionHandler.cs" t="Include" />
         <e p="Space Commander" t="Include">
           <e p="Audio" t="Include">
             <e p="Scripts" t="Include">
@@ -914,13 +916,20 @@
                 <e p="PlayerType.cs" t="Include" />
               </e>
               <e p="Interfaces" t="Include">
+                <e p="ICollidable.cs" t="Include" />
                 <e p="IDamageable.cs" t="Include" />
                 <e p="IDamager.cs" t="Include" />
                 <e p="IPlayer.cs" t="Include" />
-                <e p="IPlayerOwnedEntity.cs" t="Include" />
+                <e p="IPlayerEntity.cs" t="Include" />
+                <e p="ISelectable.cs" t="Include" />
                 <e p="ISpawnable.cs" t="Include" />
                 <e p="IWeaponSystem.cs" t="Include" />
                 <e p="IWeaponSystemController.cs" t="Include" />
+              </e>
+              <e p="Tests" t="Include">
+                <e p="TestCollisionHandler.cs" t="Include" />
+                <e p="TestPlayer.cs" t="Include" />
+                <e p="TestPlayerEntity.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -968,14 +977,21 @@
             <e p="PoolManager.cs" t="Include" />
             <e p="PoolManagerDB.cs" t="Include" />
           </e>
+          <e p="Selection" t="Include">
+            <e p="SelectionManager.cs" t="Include" />
+            <e p="ShipSelectionHandler.cs" t="Include" />
+            <e p="Tests" t="Include">
+              <e p="TestSelectionHandler.cs" t="Include" />
+            </e>
+          </e>
           <e p="Settings" t="Include">
             <e p="SettingsManager.cs" t="Include" />
           </e>
           <e p="Ships" t="Include">
             <e p="Scripts" t="Include">
+              <e p="HealthTest.cs" t="Include" />
               <e p="Interfaces" t="Include">
                 <e p="IPursuable.cs" t="Include" />
-                <e p="ISelectable.cs" t="Include" />
               </e>
               <e p="Ship.cs" t="Include" />
               <e p="ShipEngines.cs" t="Include" />
@@ -994,7 +1010,6 @@
                 <e p="MovementTest.cs" t="Include" />
                 <e p="ShipFactoryTest.cs" t="Include" />
                 <e p="ShipTest.cs" t="Include" />
-                <e p="TestPlayer.cs" t="Include" />
                 <e p="ThrusterTest.cs" t="Include" />
                 <e p="WarpTest.cs" t="Include" />
                 <e p="WeaponSystemsTest.cs" t="Include" />
@@ -1016,7 +1031,6 @@
             <e p="Scripts" t="Include">
               <e p="Editor" t="Include">
                 <e p="CustomEditorFunctions.cs" t="Include" />
-                <e p="TextUtils.cs" t="Include" />
                 <e p="UnityEventDrawer.cs" t="Include" />
               </e>
               <e p="EnumActionAttribute.cs" t="Include" />
@@ -1064,7 +1078,7 @@
               <e p="Turret.cs" t="Include" />
               <e p="VulcanTurret.cs" t="Include" />
               <e p="WeaponAudioController.cs" t="Include" />
-              <e p="WeaponEffectController.cs" t="Include" />
+              <e p="WeaponPrefabManager.cs" t="Include" />
               <e p="WeaponSystem.cs" t="Include" />
               <e p="WeaponType.cs" t="Include" />
             </e>
@@ -1073,7 +1087,6 @@
             </e>
           </e>
         </e>
-        <e p="TestPlayerOwnedEntity.cs" t="Include" />
         <e p="ThirdParty" t="Include">
           <e p="Mirror" t="Include">
             <e p="Components" t="Include">
