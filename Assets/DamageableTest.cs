@@ -9,7 +9,7 @@ namespace SpaceCommander.Common.Tests
     {
         public IPlayerEntity owningEntity;
         
-        [SerializeField] HealthTest health;
+        [SerializeField] TestDamageable health;
 
         [SerializeField] private bool isEnemy;
 

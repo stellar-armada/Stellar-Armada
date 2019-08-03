@@ -15061,11 +15061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  movement: {fileID: 713665586201178330}
-  health: {fileID: 6223345834163360448}
-  explosion: {fileID: 5292198978933662320}
-  warp: {fileID: 8019088010132304523}
-  ui: {fileID: 2706943869654606190}
+  shipMovement: {fileID: 713665586201178330}
+  shipHealth: {fileID: 6223345834163360448}
+  shipExplosion: {fileID: 5292198978933662320}
+  shipWarp: {fileID: 8019088010132304523}
+  shipUi: {fileID: 2706943869654606190}
   radar: {fileID: 7251706484669647788}
   autonomousVehicle: {fileID: 748346738348093578}
   steerForPursuit: {fileID: 1977461455125822363}
@@ -15104,8 +15104,21 @@ MonoBehaviour:
   maxHull: 500
   maxShield: 500
   isDead: 0
-  hullSlider: {fileID: 3694643349733343259}
-  shieldSlider: {fileID: 8850075560795143260}
+  ShipDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  HullChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ShieldChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   shieldRechargeDelayTime: 2
   shieldRechargeRate: 8
   hull: 500
@@ -15162,6 +15175,8 @@ MonoBehaviour:
   frame: {fileID: 7909326804673701120}
   uiRoot: {fileID: 930045575504224482}
   uiCanvasGroup: {fileID: 5124203121874698635}
+  hullSlider: {fileID: 3694643349733343259}
+  shieldSlider: {fileID: 8850075560795143260}
 --- !u!114 &1900686764695909791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15174,6 +15189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cd9e21d25160742a1f15b32bfd2e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSystemsEnabled: 0
 --- !u!114 &5292198978933662320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15400,12 +15416,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 7467375359157637430, guid: 77b65269ae7801549b67f64a600cfc18,
+    - target: {fileID: 5691200173306568227, guid: 77b65269ae7801549b67f64a600cfc18,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5691200173306568227, guid: 77b65269ae7801549b67f64a600cfc18,
+    - target: {fileID: 7467375359157637430, guid: 77b65269ae7801549b67f64a600cfc18,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

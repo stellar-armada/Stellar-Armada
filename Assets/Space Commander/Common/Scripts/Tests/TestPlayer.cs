@@ -16,7 +16,15 @@ namespace SpaceCommander.Common.Tests
         void Awake()
         {
             RegisterPlayer();
-            FindObjectOfType<TestPlayerEntity>().SetPlayer(this);
+            GameObject[] gos = GameObject.FindObjectsOfType<GameObject>();
+
+            foreach (GameObject go in gos)
+            {
+                if (GetComponent<TestPlayerEntity>() != null)
+                {
+                    GetComponent<TestPlayerEntity>().SetPlayer(this);
+                }
+            }
         }
 
         public bool IsLocalPlayer() => isLocalPlayer;

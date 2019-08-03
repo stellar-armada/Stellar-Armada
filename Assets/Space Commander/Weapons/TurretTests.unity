@@ -701,12 +701,12 @@ GameObject:
   - component: {fileID: 121519935}
   - component: {fileID: 121519938}
   - component: {fileID: 121519939}
-  - component: {fileID: 121519934}
   - component: {fileID: 121519937}
   - component: {fileID: 121519944}
   - component: {fileID: 121519940}
-  - component: {fileID: 121519941}
   - component: {fileID: 121519942}
+  - component: {fileID: 121519943}
+  - component: {fileID: 121519934}
   m_Layer: 11
   m_Name: Dummy
   m_TagString: Untagged
@@ -723,65 +723,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 121519933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be38265a506195746a2cd52e8cf633ed, type: 3}
+  m_Script: {fileID: 11500000, guid: bdfc9bb920cadbf428f272fe1690019c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  maxHull: 500
-  maxShield: 500
-  isDead: 0
-  ShipDestroyed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 121519937}
-        m_MethodName: ShipDestroyed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  HullChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 121519937}
-        m_MethodName: HullChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  ShieldChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 121519937}
-        m_MethodName: ShieldChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  shieldRechargeDelayTime: 2
-  shieldRechargeRate: 100
-  hull: 500
-  shield: 500
+  health: {fileID: 121519943}
+  selectionHandler: {fileID: 0}
 --- !u!114 &121519935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef70c8cfc2d4df4ab3d084ac1532269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 121519934}
+  health: {fileID: 121519943}
   isEnemy: 0
 --- !u!33 &121519938
 MeshFilter:
@@ -885,19 +831,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &121519941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121519933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fce9fd526bbf814390549c0280f865d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 121519934}
 --- !u!114 &121519942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,6 +844,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSystemsEnabled: 0
+--- !u!114 &121519943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121519933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ceeade5782aa8b48a642de120d4c325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHull: 500
+  maxShield: 500
+  isDead: 0
+  ShipDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121519937}
+        m_MethodName: ShipDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  HullChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121519937}
+        m_MethodName: HullChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ShieldChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121519937}
+        m_MethodName: ShieldChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  shieldRechargeDelayTime: 2
+  shieldRechargeRate: 50
+  hull: 500
+  shield: 500
 --- !u!114 &121519944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,7 +7322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1875071314675582
 GameObject:
   m_ObjectHideFlags: 0

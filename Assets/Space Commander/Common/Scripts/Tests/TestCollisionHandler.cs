@@ -6,7 +6,7 @@ namespace SpaceCommander.Common.Tests
 {
     public class TestCollisionHandler : MonoBehaviour, ICollidable
 {
-    [SerializeField] HealthTest health;
+    [SerializeField] TestDamageable health;
     [SerializeField] TestSelectionHandler selectionHandler;
 
     public IDamageable GetDamageable()

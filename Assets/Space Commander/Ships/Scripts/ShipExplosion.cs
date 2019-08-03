@@ -6,7 +6,7 @@ using UnityEngine.Rendering.LWRP;
 
 namespace SpaceCommander.Ships
 {
-    public class ShipExplosion : NetworkBehaviour
+    public class ShipExplosion : NetworkBehaviour, IExplodable
     {
         [SerializeField] GameObject explosion;
         
@@ -15,25 +15,15 @@ namespace SpaceCommander.Ships
         void Awake()
         {
             ship = GetComponent<Ship>();
-            if (isServer)
-                ship.shipHealth.ShipDestroyed.AddListener(CmdExplode);
+            ship.shipHealth.ShipDestroyed.AddListener(Explode);
         }
         
-        [Command]
-        public void CmdExplode()
+        public void Explode()
         {
-            ship.shipMovement.controlEnabled = false;
-            ship.shipMovement.CmdStopMovement();
-            RpcExplode();
-        }
-
-        [ClientRpc]
-        public void RpcExplode()
-        {
+            Debug.Log("Exploding");
             explosion.SetActive(true);
             Invoke(nameof(HideShip), 1.5f);
             Invoke(nameof(DeactivateShip), 6.5f);
-
         }
         
         void HideShip()

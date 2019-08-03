@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace SpaceCommander.Ships
 {
-    public class HealthTest : MonoBehaviour, IDamageable
+    public class TestDamageable : MonoBehaviour, IDamageable
     {
         private IPlayerEntity owningEntity;
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpaceCommander.Selection
 {
@@ -8,12 +9,53 @@ namespace SpaceCommander.Selection
         public static SelectionManager instance;
         
         private List<ISelectable> currentSelection = new List<ISelectable>();
+        
+        Dictionary<int, List<ISelectable>> selectionLists = new Dictionary<int, List<ISelectable>>();
+        
+        List<ISelectable> tempSelection;
 
+        public UnityEvent SelectionChanged;
+        public UnityEvent SelectionSetsChanged;
 
         void Awake()
         {
             instance = this;
         }
+
+        bool SelectionSetIsEmpty(int selectionSetId)
+        {
+            
+            if (selectionLists.TryGetValue(selectionSetId, out tempSelection))
+            {
+                if (tempSelection.Count > 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            return true;
+        }
+        
+        public void CreateOrReplaceSelectionSet(int selectionSetId)
+        {
+            if (!SelectionSetIsEmpty(selectionSetId))
+            {
+                selectionLists.Remove(selectionSetId);
+            }
+            selectionLists.Add(selectionSetId, currentSelection);
+            SelectionSetsChanged.Invoke();
+        }
+
+        public void RecallSelectionSet(int selectionSetId)
+        {
+            if (selectionLists.TryGetValue(selectionSetId, out tempSelection))
+            {
+                currentSelection = tempSelection;
+                SelectionSetsChanged.Invoke();
+            }
+           
+        }
+
         public void SetSelection(ISelectable selectable)
         {
             bool containsNewSelectable = false;
@@ -38,6 +80,7 @@ namespace SpaceCommander.Selection
             if (!containsNewSelectable)
             {
                 selectable.Select();
+                SelectionChanged.Invoke();
             }
         }
 
@@ -59,6 +102,7 @@ namespace SpaceCommander.Selection
             }
 
             currentSelection.Clear();
+            SelectionChanged.Invoke();
         }
 
         public void RemoveFromSelection(ISelectable selectable)
@@ -67,6 +111,7 @@ namespace SpaceCommander.Selection
             {
                 Debug.Log("Removed " + selectable.GetOwningEntity() + " from selection");
                 currentSelection.Remove(selectable);
+                SelectionChanged.Invoke();
                 selectable.Deselect();
             }
         }

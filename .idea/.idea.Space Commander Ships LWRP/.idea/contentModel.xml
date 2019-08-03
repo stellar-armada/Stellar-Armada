@@ -8,6 +8,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="DamageableTest.cs" t="Include" />
+        <e p="IExplodable.cs" t="Include" />
         <e p="ISelector.cs" t="Include" />
         <e p="Paid Third Party" t="Include">
           <e p="AmplifyShaderEditor" t="Include">
@@ -989,7 +990,6 @@
           </e>
           <e p="Ships" t="Include">
             <e p="Scripts" t="Include">
-              <e p="HealthTest.cs" t="Include" />
               <e p="Interfaces" t="Include">
                 <e p="IPursuable.cs" t="Include" />
               </e>
@@ -1004,6 +1004,7 @@
               <e p="ShipUI.cs" t="Include" />
               <e p="ShipWarp.cs" t="Include" />
               <e p="ShipWeaponSystemController.cs" t="Include" />
+              <e p="TestDamageable.cs" t="Include" />
               <e p="Tests" t="Include">
                 <e p="ExplosionTest.cs" t="Include" />
                 <e p="HealthTest.cs" t="Include" />
