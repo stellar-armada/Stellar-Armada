@@ -138,7 +138,7 @@ namespace SpaceCommander.Editor
                     Selectable[] selectables = FindObjectsOfType<Selectable>();
                     Debug.Log("Number of Selectables found: " + selectables.Length);
 
-                    foreach (Selectable selectable in Selectable.allSelectables)
+                    foreach (Selectable selectable in Selectable.allSelectablesArray)
                     {
                         if (selectable.targetGraphic == text)
                         {

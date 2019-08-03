@@ -1,0 +1,22 @@
+﻿using SpaceCommander.Teams;
+using SpaceCommander.Ships;
+using UnityEngine;
+namespace SpaceCommander
+{
+    public interface IPlayer
+    {
+        bool IsLocalPlayer();
+        bool IsServer();
+        bool IsClient();
+        void RegisterPlayer();
+        void UnregisterPlayer();
+        IPlayer GetPlayer();
+        PlayerType GetPlayerType();
+        GameObject GetGameObject();
+        Team GetTeam();
+        uint GetId();
+        string GetName();
+        bool IsEnemy(IPlayer player);
+
+    }
+}

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SpaceCommander;
 using SpaceCommander.Game;
 using UnityEngine;
 
@@ -25,9 +26,9 @@ public class Timer
         Triggers.Add(_t, _e);
     }
 
-    public Timer(MatchClock clock, float length)
+    public Timer(Clock clock, float length)
     {
-        clock.OnUpdate += Update;
+        clock.OnUpdate.AddListener(Update);
         Triggers = new SortedDictionary<float, GameManager.EventHandler>();
 
         Length = length;
@@ -35,7 +36,7 @@ public class Timer
 
     private int lastInt;
 
-    public void Update()
+    void Update()
     {
         if (!running) return;
         if (Input.GetKeyDown(KeyCode.N))
