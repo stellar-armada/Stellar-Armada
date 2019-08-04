@@ -39,5 +39,10 @@ namespace SpaceCommander.Common.Tests
         {
             isAlive = false;
         }
+
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
     }
 }

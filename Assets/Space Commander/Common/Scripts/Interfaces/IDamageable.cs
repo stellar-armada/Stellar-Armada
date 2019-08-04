@@ -7,6 +7,6 @@ namespace SpaceCommander
         IPlayerEntity GetOwningEntity();
         void SetOwningEntity(IPlayerEntity playerEntity);
         GameObject GetGameObject();
-        void TakeDamage(float damage);
+        void TakeDamage(float damage, Vector3 point, Damager damager);
     }
 }

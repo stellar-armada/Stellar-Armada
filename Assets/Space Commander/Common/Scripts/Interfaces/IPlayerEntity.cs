@@ -1,4 +1,6 @@
-﻿namespace SpaceCommander
+﻿using UnityEngine;
+
+namespace SpaceCommander
 {
     public interface IPlayerEntity
     {
@@ -7,5 +9,6 @@
         IPlayer GetPlayer();
         bool IsAlive();
         void CmdDie();
+        GameObject GetGameObject();
     }
 }

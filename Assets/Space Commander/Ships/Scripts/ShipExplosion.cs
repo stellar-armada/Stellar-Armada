@@ -6,7 +6,8 @@ namespace SpaceCommander.Ships
     public class ShipExplosion : NetworkBehaviour, IExplodable
     {
         [SerializeField] GameObject explosion;
-        
+        private float hideShip = 1.5f;
+        private float deactivateShip = 6.5f;
         private Ship ship;
         
         void Awake()
@@ -19,8 +20,8 @@ namespace SpaceCommander.Ships
         {
             Debug.Log("Exploding");
             explosion.SetActive(true);
-            Invoke(nameof(HideShip), 1.5f);
-            Invoke(nameof(DeactivateShip), 6.5f);
+            Invoke(nameof(HideShip), hideShip);
+            Invoke(nameof(DeactivateShip), deactivateShip);
         }
         
         void HideShip()

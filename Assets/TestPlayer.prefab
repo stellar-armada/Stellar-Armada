@@ -47,7 +47,7 @@ MonoBehaviour:
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
   m_AssetId: 
-  m_SceneId: 1434546083
+  m_SceneId: 1238048944
 --- !u!114 &4213770416604511706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,4 +61,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  teamID: 0
+  teamId: 0
+  playerName: TestPlayer
+  isEnemy: 1

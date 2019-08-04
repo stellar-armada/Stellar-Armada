@@ -137,7 +137,8 @@ namespace SpaceCommander.Weapons
 
             foreach (Collider col in hitColliders)
             {
-
+                Debug.Log("col: " + col.name);
+                Debug.Log(col.GetComponent<ICollidable>().GetDamageable());
                 IDamageable d = col.GetComponent<ICollidable>().GetDamageable();
                 if (d == null) Debug.LogError("Damageable was not found on collidable reference on " + col.name);
                 if (d.GetOwningEntity().GetPlayer().IsEnemy(owningWeaponSystemController.GetEntity().GetPlayer()))

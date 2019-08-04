@@ -22,7 +22,7 @@ namespace SpaceCommander.Ships.Tests
         public void TakeDamage()
         {
             if(!CheckPlayer()) return;
-            shipHull.TakeDamage(amount);
+            shipHull.TakeDamage(amount, Vector3.zero, null);
         }
 
         public void RechargeShields()
@@ -40,15 +40,15 @@ namespace SpaceCommander.Ships.Tests
         public void Die()
         {
             if(!CheckPlayer()) return;
-            shipHull.TakeDamage(10000);
-            shipHull.TakeDamage(10000);
+            shipHull.TakeDamage(10000, Vector3.zero, null);
+            shipHull.TakeDamage(10000, Vector3.zero, null);
         }
         
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Comma))
             {
-                shipHull.TakeDamage(10);
+                shipHull.TakeDamage(10, Vector3.zero, null);
             } else if (Input.GetKeyDown(KeyCode.Period))
             {
                 shipShield.CmdRechargeShields(10);

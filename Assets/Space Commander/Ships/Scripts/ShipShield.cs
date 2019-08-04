@@ -12,19 +12,26 @@ namespace SpaceCommander.Ships
         public float maxShield;
 
         public MonoBehaviour[] shieldComponents;
-        
+
         [SerializeField] private float shieldRechargeDelayTime;
         [SerializeField] private float shieldRechargeRate;
-        
+        [SerializeField] private ShieldEffectController shieldEffectController;
+
         private float lastHit;
-        
-        [FormerlySerializedAs("shield")] [SyncVar (hook=nameof(HandleShieldChange))] public float currentShield;
-        
+
+        [FormerlySerializedAs("shield")] [SyncVar(hook = nameof(HandleShieldChange))]
+        public float currentShield;
+
         public UnityEvent ShieldChanged;
 
         void Awake()
         {
             currentShield = maxShield;
+        }
+
+        void Update()
+        {
+            if(isServer && owningEntity.IsAlive()) RechargeShieldsOverTime();
         }
 
         void RechargeShieldsOverTime()
@@ -58,7 +65,15 @@ namespace SpaceCommander.Ships
         {
             return gameObject;
         }
-        
+
+        public void TakeDamage(float damage, Vector3 point, Damager damager)
+        {
+            if (shieldEffectController && !shieldEffectController.GetIsDuringActivationAnim())
+            {
+                shieldEffectController.OnHit(point, damager.GetImpactSize());
+            }
+        }
+
         public void TakeDamage(float damage)
         {
             if (!owningEntity.IsAlive() && isServer) CmdTakeDamage(damage);
@@ -70,16 +85,24 @@ namespace SpaceCommander.Ships
             if (currentShield > 0)
             {
                 currentShield -= damage;
-            } else if (owningEntity.IsAlive())
-                {
-                    CmdDie();
-                }
+            }
+            else if (owningEntity.IsAlive())
+            {
+                CmdDie();
+            }
 
             lastHit = Time.time;
         }
 
+
+        [Command]
+        public void CmdDie()
+        {
+        }
+
         void EnableShieldComponents()
         {
+            shieldEffectController.SetShieldActive(true, true);
             foreach (MonoBehaviour c in shieldComponents)
             {
                 c.enabled = true;
@@ -88,17 +111,14 @@ namespace SpaceCommander.Ships
 
         void DisableShieldComponents()
         {
+            shieldEffectController.SetShieldActive(false, true);
+
             foreach (MonoBehaviour c in shieldComponents)
             {
                 c.enabled = false;
             }
         }
 
-        [Command]
-        public void CmdDie()
-        {
-            
-        }
 
         void HandleShieldChange(float s)
         {
@@ -113,9 +133,8 @@ namespace SpaceCommander.Ships
                 // Shields down
                 DisableShieldComponents();
             }
+
             ShieldChanged.Invoke();
-
         }
-    }  
+    }
 }
-

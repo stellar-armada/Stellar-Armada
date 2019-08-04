@@ -10,7 +10,7 @@ namespace SpaceCommander.Common.Tests
         public uint teamId;
         public string playerName = "TestPlayer";
 
-        public bool isEnemy;
+        public bool isEnemy = true;
         
         void Awake()
         {

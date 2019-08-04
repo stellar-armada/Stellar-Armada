@@ -70,6 +70,11 @@ namespace SpaceCommander.Ships
             isAlive = false;
         }
 
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
+
         void Awake()
         {
             ShipManager.instance.RegisterShip(this);

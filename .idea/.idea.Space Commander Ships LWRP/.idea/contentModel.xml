@@ -8,9 +8,28 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="DamageableTest.cs" t="Include" />
+        <e p="FXVShieldEffect" t="Include">
+          <e p="Editor" t="Include">
+            <e p="FXVShieldHitMaterialEditor.cs" t="Include" />
+            <e p="FXVShieldMaterialEditor.cs" t="Include" />
+          </e>
+          <e p="HowTo.txt" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="ShieldEffectController.cs" t="Include" />
+            <e p="ShieldHit.cs" t="Include" />
+            <e p="ShieldPostprocess.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="FXVPostprocessBlurH.shader" t="Include" />
+            <e p="FXVPostprocessBlurV.shader" t="Include" />
+            <e p="FXVPostrpocessAdd.shader" t="Include" />
+            <e p="FXVShieldEffect.shader" t="Include" />
+            <e p="FXVShieldEffect_mobile.shader" t="Include" />
+            <e p="FXVShieldHit.shader" t="Include" />
+          </e>
+        </e>
         <e p="IExplodable.cs" t="Include" />
         <e p="ISelector.cs" t="Include" />
-        <e p="IShield.cs" t="Include" />
         <e p="Paid Third Party" t="Include">
           <e p="AmplifyShaderEditor" t="Include">
             <e p="Plugins" t="Include">
@@ -920,9 +939,9 @@
               <e p="Interfaces" t="Include">
                 <e p="ICollidable.cs" t="Include" />
                 <e p="IDamageable.cs" t="Include" />
-                <e p="IDamager.cs" t="Include" />
                 <e p="IPlayer.cs" t="Include" />
                 <e p="IPlayerEntity.cs" t="Include" />
+                <e p="IPursuable.cs" t="Include" />
                 <e p="ISelectable.cs" t="Include" />
                 <e p="ISpawnable.cs" t="Include" />
                 <e p="IWeaponSystem.cs" t="Include" />
@@ -991,9 +1010,6 @@
           </e>
           <e p="Ships" t="Include">
             <e p="Scripts" t="Include">
-              <e p="Interfaces" t="Include">
-                <e p="IPursuable.cs" t="Include" />
-              </e>
               <e p="Ship.cs" t="Include" />
               <e p="ShipEngines.cs" t="Include" />
               <e p="ShipExplosion.cs" t="Include" />
@@ -1006,7 +1022,8 @@
               <e p="ShipUI.cs" t="Include" />
               <e p="ShipWarp.cs" t="Include" />
               <e p="ShipWeaponSystemController.cs" t="Include" />
-              <e p="TestDamageable.cs" t="Include" />
+              <e p="TestDamageableHull.cs" t="Include" />
+              <e p="TestDamageableShield.cs" t="Include" />
               <e p="Tests" t="Include">
                 <e p="ExplosionTest.cs" t="Include" />
                 <e p="HealthTest.cs" t="Include" />
@@ -1092,7 +1109,6 @@
             </e>
           </e>
         </e>
-        <e p="TestShield.cs" t="Include" />
         <e p="ThirdParty" t="Include">
           <e p="Mirror" t="Include">
             <e p="Components" t="Include">

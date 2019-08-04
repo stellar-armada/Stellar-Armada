@@ -1,7 +1,6 @@
 ﻿using Mirror;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace SpaceCommander.Ships
 {
@@ -13,7 +12,7 @@ namespace SpaceCommander.Ships
 
         public UnityEvent HullChanged;
 
-        [FormerlySerializedAs("hull")] [SyncVar (hook=nameof(HandleHullChange))] public float currentHull;
+        [SyncVar (hook=nameof(HandleHullChange))] public float currentHull;
 
         void Awake()
         {
@@ -41,17 +40,17 @@ namespace SpaceCommander.Ships
         {
             return gameObject;
         }
-        
-        public void TakeDamage(float damage)
+
+        public void TakeDamage(float damage, Vector3 point, Damager damager)
         {
             if (owningEntity.IsAlive() && isServer) CmdTakeDamage(damage);
+            // We can spawn burn decals here later
         }
 
         [Command]
         void CmdTakeDamage(float damage)
         {
-
-                currentHull -= damage;
+            currentHull -= damage;
                 if (currentHull <= 0 && owningEntity.IsAlive())
                 {
                     owningEntity.CmdDie();

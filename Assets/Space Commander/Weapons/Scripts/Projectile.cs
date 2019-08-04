@@ -73,13 +73,14 @@ namespace SpaceCommander.Weapons
         void HandleHit()
         {
             // Refactor to be a damageable thing
-                IDamageable damageable = hitPoint.transform.GetComponent<IDamageable>();
-                if (damageable == null)
+                ICollidable collidable = hitPoint.transform.GetComponent<ICollidable>();
+                if (collidable == null)
                 {
                     Debug.LogError("Couldn't find damagable on " + hitPoint.transform.name);
                     return;
                 }
-                damageable.TakeDamage(owningWeaponSystem.GetDamage());
+
+                collidable.GetDamageable().TakeDamage(owningWeaponSystem.GetDamage(), hitPoint.point, this);
 
                 //TO-DO: Make this function call way less disgusting
 

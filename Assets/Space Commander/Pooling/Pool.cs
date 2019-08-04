@@ -311,7 +311,7 @@ namespace SpaceCommander.Pooling
                     }
 
                     tempTransform.gameObject.SetActive(true);
-                    IDamager damager = tempTransform.GetComponent<IDamager>();
+                    Damager damager = tempTransform.GetComponent<Damager>();
                     damager.SetOwningWeaponSystem(owningWeaponSystem);
                     if (needBroadcasting && broadcastSpawnName != "")
                         tempTransform.BroadcastMessage(broadcastSpawnName, SendMessageOptions.DontRequireReceiver); 
@@ -324,7 +324,7 @@ namespace SpaceCommander.Pooling
                 poolLengthCurrent[curPos]++;
                 Transform newGO = Instantiate(templates[curPos], Vector3.zero, Quaternion.identity) as Transform; 
                 
-                IDamager damager = newGO.GetComponent<IDamager>();
+                Damager damager = newGO.GetComponent<Damager>();
                 damager.SetOwningWeaponSystem(owningWeaponSystem);
                 
                 newGO.transform.parent = this.gameObject.transform;
