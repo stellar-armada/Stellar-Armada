@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace SpaceCommander
+﻿namespace SpaceCommander
 {
     public interface ISpawnable
     {

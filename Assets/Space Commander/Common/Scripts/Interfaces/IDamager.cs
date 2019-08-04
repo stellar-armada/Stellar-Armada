@@ -1,6 +1,4 @@
-﻿using SpaceCommander.Teams;
-
-namespace SpaceCommander
+﻿namespace SpaceCommander
 {
     // Interface for classes that have the functionality of damaging other players
     public interface IDamager

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using SpaceCommander.Player;
-using SpaceCommander.Ships;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SpaceCommander.Teams
 {

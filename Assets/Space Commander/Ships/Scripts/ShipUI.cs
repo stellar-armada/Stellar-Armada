@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace SpaceCommander.Ships
@@ -15,13 +13,15 @@ namespace SpaceCommander.Ships
         
         private Ship ship;
         private Transform cameraTransform;
-        private ShipHealth health;
+        private ShipHull hull;
+        private ShipShield shield;
         void Awake()
         {
             ship = GetComponent<Ship>();
-             health = ship.shipHealth;
-             health.ShieldChanged.AddListener(SetShieldSlider);
-             health.HullChanged.AddListener(SetHullSlider);
+             hull = ship.shipHull;
+             shield = ship.shipShield;
+             shield.ShieldChanged.AddListener(SetShieldSlider);
+             hull.HullChanged.AddListener(SetHullSlider);
             
             cameraTransform = Camera.main.transform;
             LookAtMainCamera();
@@ -29,13 +29,13 @@ namespace SpaceCommander.Ships
 
         void SetHullSlider()
         {
-            hullSlider.value = health.hull / health.maxHull;
+            hullSlider.value = hull.currentHull / hull.maxHull;
             
         }
 
         void SetShieldSlider()
         {
-            shieldSlider.value = health.shield / health.maxShield;
+            shieldSlider.value = shield.currentShield / shield.maxShield;
         }
         
         void LateUpdate ()
@@ -50,9 +50,6 @@ namespace SpaceCommander.Ships
                 uiRoot.position.y, 
                 cameraTransform.position.z ) ;
             uiRoot.LookAt( targetPostition ) ;
-            
-            
-            
         }
         
         public void ShowUI()

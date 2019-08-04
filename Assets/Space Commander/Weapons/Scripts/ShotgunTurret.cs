@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
 {
@@ -7,11 +6,7 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            // Spawn impact prefab at specified position
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.shotGunImpact, point,
-                Quaternion.identity, null);
-            // Play impact sound effect
-            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.ShotGun, point);
+            Impact(point, WeaponType.Shotgun);
         }
 
         public override void StartFiring()
@@ -22,7 +17,7 @@ namespace SpaceCommander.Weapons
 
         void Fire()
         {
-            Fire(WeaponType.ShotGun);
+            Fire(WeaponType.Shotgun);
         }
 
         // Stop firing 

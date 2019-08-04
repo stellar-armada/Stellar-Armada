@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections.Generic;
-using SpaceCommander.Pooling;
+﻿using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
 {

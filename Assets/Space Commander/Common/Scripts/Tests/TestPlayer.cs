@@ -1,7 +1,6 @@
 ﻿using Mirror;
 using SpaceCommander.Game;
 using SpaceCommander.Teams;
-using SpaceCommander.Weapons;
 using UnityEngine;
 
 namespace SpaceCommander.Common.Tests

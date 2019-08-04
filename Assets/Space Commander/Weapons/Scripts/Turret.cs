@@ -42,7 +42,7 @@ namespace SpaceCommander.Weapons
 
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseImpact, point,
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.LaserImpulse).impact, point,
                 Quaternion.identity, null);
             WeaponAudioController.instance.PlayHitAtPosition(WeaponType.LaserImpulse, point);
         }
@@ -182,16 +182,25 @@ namespace SpaceCommander.Weapons
         {
             if (!IsFacingTarget()) return;
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseMuzzle,
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(type).muzzle,
                 TurretSocket[curSocket].position,
                 TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
             var newGO =
                 PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
-                    WeaponPrefabManager.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
+                    WeaponPrefabManager.instance.GetWeaponPrefab(type).projectile, TurretSocket[curSocket].position,
                     offset * TurretSocket[curSocket].rotation, null).gameObject;
-            WeaponAudioController.instance.PlayShotAtPosition(WeaponType.LaserImpulse, TurretSocket[curSocket].position);
+            WeaponAudioController.instance.PlayShotAtPosition(type, TurretSocket[curSocket].position);
             
             AdvanceSocket();
+        }
+        
+        public void Impact(Vector3 point, WeaponType weaponType)
+        {
+            // Spawn impact prefab at specified position
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(weaponType).impact, point,
+                Quaternion.identity, null);
+            // Play impact sound effect
+            WeaponAudioController.instance.PlayHitAtPosition(weaponType, point);
         }
 
         public override void StopFiring()
@@ -203,7 +212,7 @@ namespace SpaceCommander.Weapons
                 timerID = -1;
             }
         }
-
+        
         private void Update()
         {
             timer += Time.deltaTime;

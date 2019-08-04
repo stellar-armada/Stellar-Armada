@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using SpaceCommander.Game;
 
 namespace SpaceCommander.Weapons
 { 

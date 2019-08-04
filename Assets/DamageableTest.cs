@@ -1,6 +1,4 @@
-﻿using SpaceCommander;
-using SpaceCommander.Ships;
-using SpaceCommander.Teams;
+﻿using SpaceCommander.Ships;
 using UnityEngine;
 
 namespace SpaceCommander.Common.Tests

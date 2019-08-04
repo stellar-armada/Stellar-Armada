@@ -5,6 +5,7 @@
         void CmdSetPlayer(uint playerId);
         uint GetEntityId();
         IPlayer GetPlayer();
-
+        bool IsAlive();
+        void CmdDie();
     }
 }

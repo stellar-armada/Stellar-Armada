@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace SpaceCommander.Weapons
 {
     [RequireComponent(typeof (LineRenderer))]
-    public class Lightning : MonoBehaviour
+    public class GuardianBeam : MonoBehaviour
     {
         public LayerMask layerMask;
 

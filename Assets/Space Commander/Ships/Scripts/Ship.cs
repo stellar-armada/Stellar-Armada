@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mirror;
 using SpaceCommander.Game;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnitySteer.Behaviors;
 
 namespace SpaceCommander.Ships
@@ -10,12 +10,12 @@ namespace SpaceCommander.Ships
 
     public class Ship : NetworkBehaviour, IPlayerEntity
     {
-        public readonly ShipType shipType;
         public IPlayer player;
 
         [Header("Ship Subsystems")]
         public ShipMovement shipMovement;
-        public ShipHealth shipHealth;
+        [FormerlySerializedAs("shipHealth")] public ShipHull shipHull;
+        public ShipShield shipShield;
         public ShipExplosion shipExplosion;
         public ShipWarp shipWarp;
         public ShipUI shipUi;
@@ -30,7 +30,20 @@ namespace SpaceCommander.Ships
         public Collider shipCollider;
         public GameObject visualModel;
         public GameObject hologram;
+
+        [SyncVar(hook = nameof(HandleDeath))] public bool isAlive = true;
         
+        public UnityEvent ShipDestroyed;
+
+        void HandleDeath(bool alive)
+        {
+            Debug.Log("Handling death");
+            if (!alive)
+            {
+                ShipDestroyed.Invoke();
+            }
+        }
+
         [Command]
         public void CmdSetPlayer(uint playerId)
         {
@@ -45,6 +58,16 @@ namespace SpaceCommander.Ships
         public IPlayer GetPlayer()
         {
             return player;
+        }
+
+        public bool IsAlive()
+        {
+            return isAlive;
+        }
+
+        public void CmdDie()
+        {
+            isAlive = false;
         }
 
         void Awake()

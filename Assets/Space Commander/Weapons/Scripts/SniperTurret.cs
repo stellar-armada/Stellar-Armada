@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
@@ -9,7 +7,7 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperImpact, point, Quaternion.identity, null);
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.Sniper).impact, point, Quaternion.identity, null);
             WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Sniper, point);
         }
         public override void StartFiring()
@@ -19,7 +17,7 @@ namespace SpaceCommander.Weapons
 
         void Fire()
         {
-            Fire(WeaponType.ShotGun);
+            Fire(WeaponType.Shotgun);
         }
 
         // Stop firing 

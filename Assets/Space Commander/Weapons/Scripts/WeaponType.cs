@@ -1,8 +1,11 @@
-﻿public enum WeaponType
+﻿using System;
+
+[Serializable]
+public enum WeaponType
 {
     Vulcan,
     Sniper,
-    ShotGun,
-    LightningGun,
+    Shotgun,
+    GuardianBeam,
     LaserImpulse
 }

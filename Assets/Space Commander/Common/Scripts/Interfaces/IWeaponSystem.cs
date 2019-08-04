@@ -1,5 +1,4 @@
-﻿using SpaceCommander.Game;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SpaceCommander
 {

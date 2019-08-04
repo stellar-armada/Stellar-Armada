@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnitySteer.Attributes;
 
 namespace UnitySteer2D.Behaviors
 {

@@ -1,15 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using UnityEngine;
 using SpaceCommander.Pooling;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
-public enum WeaponAudioType
-{
-    Shot,
-    Hit
-}
-[SerializeField]
+[Serializable]
 public class EnumeratedAudioClip
 {
     
@@ -23,7 +17,7 @@ namespace SpaceCommander.Weapons
 {
     public class WeaponAudioController : MonoBehaviour
     {
-        private WeaponAudioClipDictionary weaponAudioClips = new WeaponAudioClipDictionary();
+        [SerializeField] WeaponAudioClipDictionary weaponAudioClips = new WeaponAudioClipDictionary();
 
         // Singleton instance 
         public static WeaponAudioController instance;
@@ -32,29 +26,10 @@ namespace SpaceCommander.Weapons
         float shotTimer, hitTimer;
         public Transform audioSource;
         
-        [Header("Vulcan")] public AudioClip[] vulcanHit; // Impact prefabs array  
-        public AudioClip vulcanShot; // Shot prefab
-        public float vulcanDelay; // Shot delay in ms
-        public float vulcanHitDelay; // Hit delay in ms
-
-        [Header("Sniper")] public AudioClip[] sniperHit;
-        public AudioClip sniperShot;
-        public float sniperDelay;
-        public float sniperHitDelay;
-
-        [Header("Shot gun")] public AudioClip[] shotGunHit;
-        public AudioClip shotGunShot;
-        public float shotGunDelay;
-        public float shotGunHitDelay;
-
-        [Header("Lightning gun")] public AudioClip lightningGunOpen;
-        [FormerlySerializedAs("lightningGunLoop")] public AudioClip guardianBeamLoop;
-        [FormerlySerializedAs("lightningGunClose")] public AudioClip guardianBeamClose;
-
-        [Header("Laser impulse")] public AudioClip[] laserImpulseHit;
-        public AudioClip laserImpulseShot;
-        public float laserImpulseDelay;
-        public float laserImpulseHitDelay;
+        [Header("Guardian Beam")] 
+        public AudioClip guardianBeamOpen;
+        public AudioClip guardianBeamLoop;
+        public AudioClip guardianBeamClose;
 
         void Awake()
         {
@@ -97,7 +72,7 @@ namespace SpaceCommander.Weapons
         public void PlayHitAtPosition(WeaponType weaponType, Vector3 pos)
         {
             // Audio source can only be played once for each vulcanDelay
-            if (shotTimer >= weaponAudioClips[weaponType].shotDelay)
+            if (hitTimer >= weaponAudioClips[weaponType].hitDelay)
             {
                 // Spawn audio source prefab from pool
                 AudioSource aSrc =
@@ -126,7 +101,7 @@ namespace SpaceCommander.Weapons
         public void GuardianBeamLoop(Vector3 pos, Transform loopParent)
         {
             AudioSource aOpen =
-                PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, lightningGunOpen, pos, null)
+                PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, guardianBeamOpen, pos, null)
                     .gameObject.GetComponent<AudioSource>();
             AudioSource aLoop =
                 PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, guardianBeamLoop, pos, loopParent.parent)

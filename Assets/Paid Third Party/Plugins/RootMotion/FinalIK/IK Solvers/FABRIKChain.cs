@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-	namespace RootMotion.FinalIK {
+namespace RootMotion.FinalIK {
 		
 	/// <summary>
 	/// Branch of FABRIK components in the FABRIKRoot hierarchy.

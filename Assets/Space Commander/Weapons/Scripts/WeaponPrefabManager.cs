@@ -1,32 +1,30 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using System;
+using UnityEngine;
 
 namespace SpaceCommander.Weapons
 {
-
+    [Serializable]
+    public class EnumeratedWeaponPrefab
+    {
+        public Transform projectile;
+        public Transform muzzle;
+        public Transform impact;
+    }
     public class WeaponPrefabManager : MonoBehaviour
     {
+        [SerializeField] private WeaponPrefabDictionary weaponPrefabs = new WeaponPrefabDictionary();
+
+        [Header("Guardian Beam")]
+        public Transform guardianBeam;
+        
+        public EnumeratedWeaponPrefab GetWeaponPrefab(WeaponType type)
+        {
+            return weaponPrefabs[type];
+        }
+        
         // Singleton instance
         public static WeaponPrefabManager instance;
-
-        [Header("Vulcan")] public Transform vulcanProjectile; // Projectile prefab
-        public Transform vulcanMuzzle; // Muzzle flash prefab  
-        public Transform vulcanImpact; // Impact prefab
         
-        [Header("Sniper")] public Transform sniperBeam;
-        public Transform sniperMuzzle;
-        public Transform sniperImpact;
-
-        [Header("Shotgun")] public Transform shotGunProjectile;
-        public Transform shotGunMuzzle;
-        public Transform shotGunImpact;
-
-        [FormerlySerializedAs("lightningGunBeam")] [Header("Lightning gun")] public Transform guardianBeam;
-
-        [Header("Laser impulse")] public Transform laserImpulseProjectile;
-        public Transform laserImpulseMuzzle;
-        public Transform laserImpulseImpact;
-
         private void Awake()
         {
             // Initialize singleton  

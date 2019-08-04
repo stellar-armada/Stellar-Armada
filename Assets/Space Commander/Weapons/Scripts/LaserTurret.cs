@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
@@ -9,7 +7,7 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseImpact, point, Quaternion.identity, null);
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.LaserImpulse).impact, point, Quaternion.identity, null);
             WeaponAudioController.instance.PlayHitAtPosition(WeaponType.LaserImpulse, point);
         }
         public override void StartFiring()
@@ -20,15 +18,9 @@ namespace SpaceCommander.Weapons
 
         void Fire()
         {
-            var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseMuzzle, TurretSocket[curSocket].position,
-                TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
-                    offset * TurretSocket[curSocket].rotation, null);
-            WeaponAudioController.instance.PlayShotAtPosition(WeaponType.LaserImpulse, TurretSocket[curSocket].position);
-
-            AdvanceSocket();
+            Fire(WeaponType.LaserImpulse);
         }
+
         // Stop firing 
         public override void StopFiring()
         {

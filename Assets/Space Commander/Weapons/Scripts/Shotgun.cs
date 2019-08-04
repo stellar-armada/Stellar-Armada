@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SpaceCommander.Weapons
@@ -22,7 +21,7 @@ namespace SpaceCommander.Weapons
             // Play collision sound and apply force to the rigidbody was hit
             for (var j = 0; j < numCollisionEvents; j++)
             {
-                WeaponAudioController.instance.PlayHitAtPosition(WeaponType.ShotGun,_collisionEvents[j].intersection);
+                WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Shotgun,_collisionEvents[j].intersection);
 
                 var rb = other.GetComponent<Rigidbody>();
                 if (!rb) continue;

@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using TickedPriorityQueue;
 using System.Collections.Generic;
-using System.Linq;
 
 /// <summary>
 /// A helper class to create Unity updated Ticked Priority Queues.

@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using SpaceCommander.Game;
-using SpaceCommander.Ships;
+﻿using SpaceCommander.Ships;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MovementTest : MonoBehaviour
 {

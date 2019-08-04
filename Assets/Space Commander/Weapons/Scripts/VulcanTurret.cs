@@ -8,7 +8,7 @@ namespace SpaceCommander.Weapons
         public override void Impact(Vector3 point)
         {
                 // Spawn impact prefab at specified position
-                PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.vulcanImpact, point, Quaternion.identity, null);
+                PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.Vulcan).impact, point, Quaternion.identity, null);
                 // Play impact sound effect
                 WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Vulcan, point);
         }

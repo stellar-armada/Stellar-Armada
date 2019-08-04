@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-	namespace RootMotion.FinalIK {
+namespace RootMotion.FinalIK {
 
 	/// <summary>
 	/// %Constraint used for fixing bend direction of 3-segment node chains in a node based %IK solver. 

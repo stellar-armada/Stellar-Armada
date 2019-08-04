@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Mirror;
+﻿using Mirror;
 using SpaceCommander.Game;
-using SpaceCommander.Ships;
 using UnityEngine;
 
 // Test the ship factory, which creates new ship objects for players

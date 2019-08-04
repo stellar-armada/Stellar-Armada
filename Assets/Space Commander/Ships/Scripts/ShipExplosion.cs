@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
-using UnityEngine.Rendering.LWRP;
 
 namespace SpaceCommander.Ships
 {
@@ -15,7 +12,7 @@ namespace SpaceCommander.Ships
         void Awake()
         {
             ship = GetComponent<Ship>();
-            ship.shipHealth.ShipDestroyed.AddListener(Explode);
+            ship.ShipDestroyed.AddListener(Explode);
         }
         
         public void Explode()

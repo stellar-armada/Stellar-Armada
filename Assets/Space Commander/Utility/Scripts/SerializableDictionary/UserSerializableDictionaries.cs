@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
+using SpaceCommander.Weapons;
 using UnityEngine;
 
 [Serializable]
@@ -11,6 +10,11 @@ public class ObjectColorDictionary : SerializableDictionary<UnityEngine.Object, 
 
 [Serializable]
 public class WeaponAudioClipDictionary : SerializableDictionary<WeaponType, EnumeratedAudioClip>
+{
+}
+
+[Serializable]
+public class WeaponPrefabDictionary : SerializableDictionary<WeaponType, EnumeratedWeaponPrefab>
 {
 }
 

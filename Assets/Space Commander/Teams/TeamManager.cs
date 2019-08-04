@@ -2,7 +2,6 @@
 using System.Linq;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SpaceCommander.Teams
 {

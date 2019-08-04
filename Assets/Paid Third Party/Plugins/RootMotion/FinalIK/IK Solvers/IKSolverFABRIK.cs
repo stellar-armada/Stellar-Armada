@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
-using System;
 
-	namespace RootMotion.FinalIK {
+namespace RootMotion.FinalIK {
 
 	/// <summary>
 	/// Forward and Backward Reaching Inverse Kinematics solver.

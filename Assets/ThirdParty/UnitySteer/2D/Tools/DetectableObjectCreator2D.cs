@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnitySteer2D.Behaviors;
-using UnitySteer.Attributes;
 
 namespace UnitySteer2D.Tools
 {

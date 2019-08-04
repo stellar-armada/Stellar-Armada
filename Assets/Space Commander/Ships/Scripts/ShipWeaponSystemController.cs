@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using SpaceCommander.Weapons;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpaceCommander.Ships

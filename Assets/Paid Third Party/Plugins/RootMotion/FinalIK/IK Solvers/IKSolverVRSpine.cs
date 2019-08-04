@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
-using RootMotion;
 using UnityEngine.Serialization;
 
 namespace RootMotion.FinalIK {

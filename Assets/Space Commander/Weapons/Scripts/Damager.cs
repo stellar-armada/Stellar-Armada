@@ -1,5 +1,4 @@
-﻿using SpaceCommander.Teams;
-using UnityEngine;
+﻿using UnityEngine;
 namespace SpaceCommander
 {
     public class Damager : MonoBehaviour, IDamager

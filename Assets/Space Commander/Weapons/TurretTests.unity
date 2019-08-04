@@ -657,6 +657,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
 --- !u!1 &120869935
 GameObject:
@@ -1119,6 +1120,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
 --- !u!4 &186248395
 Transform:
@@ -1573,51 +1575,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46462ffcbf71c3244b7a98291faef762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponAudioClips:
+    m_keys: 01000000000000000200000004000000
+    m_values:
+    - shotPrefab: {fileID: 8300000, guid: 0fc8936ede4d4c94cbc04ad25b442ebf, type: 3}
+      hitPrefabs:
+      - {fileID: 8300000, guid: 4e6abf7c3e3fb594bb0fdd6dbd713716, type: 3}
+      - {fileID: 8300000, guid: 390e6d5686f9f034bb094a074d154504, type: 3}
+      - {fileID: 8300000, guid: a615af9796db06242a84e175dec40171, type: 3}
+      - {fileID: 8300000, guid: 7ee9ede440422534192830c927230cc4, type: 3}
+      - {fileID: 8300000, guid: 07e57c9acd21fb24082df8e9fe8fac6c, type: 3}
+      - {fileID: 8300000, guid: 2406acbce4660b14caf81514ebdb27a3, type: 3}
+      shotDelay: 0.1
+      hitDelay: 0.1
+    - shotPrefab: {fileID: 8300000, guid: b12187930d6f4b04b8a14c4e942c7f93, type: 3}
+      hitPrefabs:
+      - {fileID: 8300000, guid: b12187930d6f4b04b8a14c4e942c7f93, type: 3}
+      - {fileID: 8300000, guid: ee945bf47a1d77342b0e71d7e4421695, type: 3}
+      - {fileID: 8300000, guid: 4baa43d1a2555714a9dcc3b0b06a220c, type: 3}
+      - {fileID: 8300000, guid: fd4838b36b4237d41b494abc26434ccd, type: 3}
+      - {fileID: 8300000, guid: 9d8dda217f9277a4190a9e722542bd4a, type: 3}
+      shotDelay: 1
+      hitDelay: 0.1
+    - shotPrefab: {fileID: 8300000, guid: 9db28af8564ff3f44ba56f1523e6561b, type: 3}
+      hitPrefabs:
+      - {fileID: 8300000, guid: 4e6abf7c3e3fb594bb0fdd6dbd713716, type: 3}
+      - {fileID: 8300000, guid: 390e6d5686f9f034bb094a074d154504, type: 3}
+      - {fileID: 8300000, guid: a615af9796db06242a84e175dec40171, type: 3}
+      - {fileID: 8300000, guid: 7ee9ede440422534192830c927230cc4, type: 3}
+      - {fileID: 8300000, guid: 07e57c9acd21fb24082df8e9fe8fac6c, type: 3}
+      - {fileID: 8300000, guid: 2406acbce4660b14caf81514ebdb27a3, type: 3}
+      shotDelay: 0.1
+      hitDelay: 0.05
+    - shotPrefab: {fileID: 8300000, guid: 15a3211a3c389664a94d401850cad8c7, type: 3}
+      hitPrefabs:
+      - {fileID: 8300000, guid: 4a5f1abf2aef3f84986f73751d63fc11, type: 3}
+      - {fileID: 8300000, guid: cc1180ee178a70e4db502919244f6755, type: 3}
+      - {fileID: 8300000, guid: 60ba8f3f1e4b1b145ad629b5ba4d5c0b, type: 3}
+      - {fileID: 8300000, guid: b7ec6b248f1d72648ac6aef71fe447e9, type: 3}
+      - {fileID: 8300000, guid: 8acc3a66fd56dcc46b110c7a0d3213e4, type: 3}
+      - {fileID: 8300000, guid: d3b08de41108d154b83f1fba126cc359, type: 3}
+      - {fileID: 8300000, guid: 7ca11a0945a5da14e8281e45670ad7ef, type: 3}
+      shotDelay: 0.1
+      hitDelay: 0.1
   audioSource: {fileID: 400000, guid: 9eeb3f92e3355994db8dc67cb3ea8ba0, type: 3}
-  vulcanHit:
-  - {fileID: 8300000, guid: b12187930d6f4b04b8a14c4e942c7f93, type: 3}
-  - {fileID: 8300000, guid: ee945bf47a1d77342b0e71d7e4421695, type: 3}
-  - {fileID: 8300000, guid: 4baa43d1a2555714a9dcc3b0b06a220c, type: 3}
-  - {fileID: 8300000, guid: fd4838b36b4237d41b494abc26434ccd, type: 3}
-  - {fileID: 8300000, guid: 9d8dda217f9277a4190a9e722542bd4a, type: 3}
-  - {fileID: 8300000, guid: e2b151c357bc3d848ab8ae87d63650f5, type: 3}
-  vulcanShot: {fileID: 8300000, guid: b12187930d6f4b04b8a14c4e942c7f93, type: 3}
-  vulcanDelay: 1
-  vulcanHitDelay: 0.1
-  sniperHit:
-  - {fileID: 8300000, guid: 4e6abf7c3e3fb594bb0fdd6dbd713716, type: 3}
-  - {fileID: 8300000, guid: 390e6d5686f9f034bb094a074d154504, type: 3}
-  - {fileID: 8300000, guid: a615af9796db06242a84e175dec40171, type: 3}
-  - {fileID: 8300000, guid: 7ee9ede440422534192830c927230cc4, type: 3}
-  - {fileID: 8300000, guid: 07e57c9acd21fb24082df8e9fe8fac6c, type: 3}
-  - {fileID: 8300000, guid: 2406acbce4660b14caf81514ebdb27a3, type: 3}
-  sniperShot: {fileID: 8300000, guid: 0fc8936ede4d4c94cbc04ad25b442ebf, type: 3}
-  sniperDelay: 0.1
-  sniperHitDelay: 0.1
-  shotGunHit:
-  - {fileID: 8300000, guid: 4e6abf7c3e3fb594bb0fdd6dbd713716, type: 3}
-  - {fileID: 8300000, guid: 390e6d5686f9f034bb094a074d154504, type: 3}
-  - {fileID: 8300000, guid: a615af9796db06242a84e175dec40171, type: 3}
-  - {fileID: 8300000, guid: 7ee9ede440422534192830c927230cc4, type: 3}
-  - {fileID: 8300000, guid: 07e57c9acd21fb24082df8e9fe8fac6c, type: 3}
-  - {fileID: 8300000, guid: 2406acbce4660b14caf81514ebdb27a3, type: 3}
-  shotGunShot: {fileID: 8300000, guid: 9db28af8564ff3f44ba56f1523e6561b, type: 3}
-  shotGunDelay: 0.1
-  shotGunHitDelay: 0.05
-  lightningGunOpen: {fileID: 8300000, guid: 51f46968ed339684b975b62416e9bd8e, type: 3}
-  lightningGunLoop: {fileID: 8300000, guid: 206809617a9f6dc4e813dfc96abc1da3, type: 3}
-  lightningGunClose: {fileID: 8300000, guid: 59ae4c7218192d443af48fa96d0883fe, type: 3}
-  laserImpulseHit:
-  - {fileID: 8300000, guid: 4a5f1abf2aef3f84986f73751d63fc11, type: 3}
-  - {fileID: 8300000, guid: cc1180ee178a70e4db502919244f6755, type: 3}
-  - {fileID: 8300000, guid: 60ba8f3f1e4b1b145ad629b5ba4d5c0b, type: 3}
-  - {fileID: 8300000, guid: b7ec6b248f1d72648ac6aef71fe447e9, type: 3}
-  - {fileID: 8300000, guid: 8acc3a66fd56dcc46b110c7a0d3213e4, type: 3}
-  - {fileID: 8300000, guid: d3b08de41108d154b83f1fba126cc359, type: 3}
-  - {fileID: 8300000, guid: 7ca11a0945a5da14e8281e45670ad7ef, type: 3}
-  laserImpulseShot: {fileID: 8300000, guid: 15a3211a3c389664a94d401850cad8c7, type: 3}
-  laserImpulseDelay: 0.1
-  laserImpulseHitDelay: 0.1
+  guardianBeamOpen: {fileID: 8300000, guid: 51f46968ed339684b975b62416e9bd8e, type: 3}
+  guardianBeamLoop: {fileID: 8300000, guid: 206809617a9f6dc4e813dfc96abc1da3, type: 3}
+  guardianBeamClose: {fileID: 8300000, guid: 59ae4c7218192d443af48fa96d0883fe, type: 3}
 --- !u!1 &437287115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2575,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
 --- !u!1 &657815878
 GameObject:
@@ -2911,6 +2916,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431ef4b1359de8f40804cb8d1a2f7cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponPrefabs:
+    m_keys: 00000000010000000200000004000000
+    m_values:
+    - projectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
+      muzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
+      impact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
+    - projectile: {fileID: 400000, guid: 12e7c1b739173c946b6fa3d40e9f62d1, type: 3}
+      muzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
+      impact: {fileID: 400004, guid: a980d2b7788c0ef489f3c79f44da79e1, type: 3}
+    - projectile: {fileID: 400002, guid: 0072b525437a5ed4891ebd255ec94fe6, type: 3}
+      muzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
+      impact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
+    - projectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce, type: 3}
+      muzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
+      impact: {fileID: 400010, guid: ce59e020d922ccb43866dee1ba26a673, type: 3}
   vulcanProjectile: {fileID: 400000, guid: e496166a742ada640b89650ebebbd052, type: 3}
   vulcanMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   vulcanImpact: {fileID: 400000, guid: bfa7781c328a236468eda51a8ae2be55, type: 3}
@@ -2920,7 +2940,7 @@ MonoBehaviour:
   shotGunProjectile: {fileID: 400002, guid: 0072b525437a5ed4891ebd255ec94fe6, type: 3}
   shotGunMuzzle: {fileID: 400002, guid: ca6dec307275d294ba519247d04b6733, type: 3}
   shotGunImpact: {fileID: 400000, guid: 5f10243d9632db04bb987838fb3b36b7, type: 3}
-  lightningGunBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
+  guardianBeam: {fileID: 400002, guid: 497cce4f043498049994c48e6e47f0ae, type: 3}
   laserImpulseProjectile: {fileID: 400004, guid: 64703ac190f718b4abd5d10cb23c96ce,
     type: 3}
   laserImpulseMuzzle: {fileID: 400004, guid: 45116fb1512dc704b99d70267628129a, type: 3}
@@ -3708,6 +3728,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.1
 --- !u!1 &970781331
 GameObject:
@@ -4154,6 +4175,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
 --- !u!1 &1169607154
 GameObject:
@@ -4751,6 +4773,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.1
 --- !u!1 &1306442744
 GameObject:
@@ -5626,6 +5649,7 @@ MonoBehaviour:
   smoothControlling: 1
   DebugDraw: 0
   curSocket: 0
+  maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
 --- !u!1 &1585210122
 GameObject:
