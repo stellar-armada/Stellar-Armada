@@ -14,4 +14,7 @@ namespace SpaceCommander
     
     [CustomPropertyDrawer((typeof(WeaponPrefabDictionary)))]
     public class WeaponPrefabPropertyDrawer : SerializableDictionaryPropertyDrawer { }
+    
+    [CustomPropertyDrawer((typeof(FleetDictionary)))]
+    public class FleetDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using SpaceCommander.Ships;
 using SpaceCommander.Weapons;
 using UnityEngine;
 
@@ -15,6 +16,11 @@ public class WeaponAudioClipDictionary : SerializableDictionary<WeaponType, Enum
 
 [Serializable]
 public class WeaponPrefabDictionary : SerializableDictionary<WeaponType, EnumeratedWeaponPrefab>
+{
+}
+
+[Serializable]
+public class FleetDictionary : SerializableDictionary<ShipType, int>
 {
 }
 

@@ -7,29 +7,9 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="DamageableTest.cs" t="Include" />
-        <e p="FXVShieldEffect" t="Include">
-          <e p="Editor" t="Include">
-            <e p="FXVShieldHitMaterialEditor.cs" t="Include" />
-            <e p="FXVShieldMaterialEditor.cs" t="Include" />
-          </e>
-          <e p="HowTo.txt" t="Include" />
-          <e p="Scripts" t="Include">
-            <e p="ShieldEffectController.cs" t="Include" />
-            <e p="ShieldHit.cs" t="Include" />
-            <e p="ShieldPostprocess.cs" t="Include" />
-          </e>
-          <e p="Shaders" t="Include">
-            <e p="FXVPostprocessBlurH.shader" t="Include" />
-            <e p="FXVPostprocessBlurV.shader" t="Include" />
-            <e p="FXVPostrpocessAdd.shader" t="Include" />
-            <e p="FXVShieldEffect.shader" t="Include" />
-            <e p="FXVShieldEffect_mobile.shader" t="Include" />
-            <e p="FXVShieldHit.shader" t="Include" />
-          </e>
-        </e>
-        <e p="IExplodable.cs" t="Include" />
-        <e p="ISelector.cs" t="Include" />
+        <e p="FleetSelectionUITest.cs" t="Include" />
+        <e p="Map.cs" t="Include" />
+        <e p="MatchSettings.cs" t="Include" />
         <e p="Paid Third Party" t="Include">
           <e p="AmplifyShaderEditor" t="Include">
             <e p="Plugins" t="Include">
@@ -916,10 +896,7 @@
             </e>
           </e>
         </e>
-        <e p="SelectionTest.cs" t="Include" />
-        <e p="SelectionType.cs" t="Include" />
-        <e p="SelectorTest.cs" t="Include" />
-        <e p="ShipCollisionHandler.cs" t="Include" />
+        <e p="Scenario.cs" t="Include" />
         <e p="Space Commander" t="Include">
           <e p="Audio" t="Include">
             <e p="Scripts" t="Include">
@@ -933,6 +910,9 @@
             </e>
           </e>
           <e p="Common" t="Include">
+            <e p="DamageableTest.cs" t="Include" />
+            <e p="IExplodable.cs" t="Include" />
+            <e p="ISelector.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="enums" t="Include">
                 <e p="PlayerType.cs" t="Include" />
@@ -1001,6 +981,9 @@
           </e>
           <e p="Selection" t="Include">
             <e p="SelectionManager.cs" t="Include" />
+            <e p="SelectionTest.cs" t="Include" />
+            <e p="SelectionType.cs" t="Include" />
+            <e p="SelectorTest.cs" t="Include" />
             <e p="ShipSelectionHandler.cs" t="Include" />
             <e p="Tests" t="Include">
               <e p="TestSelectionHandler.cs" t="Include" />
@@ -1008,6 +991,21 @@
           </e>
           <e p="Settings" t="Include">
             <e p="SettingsManager.cs" t="Include" />
+          </e>
+          <e p="Shields" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="ShieldHitMaterialEditor.cs" t="Include" />
+                <e p="ShieldMaterialEditor.cs" t="Include" />
+              </e>
+              <e p="ShieldEffectController.cs" t="Include" />
+              <e p="ShieldHit.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="ShieldEffect.shader" t="Include" />
+              <e p="ShieldEffect_mobile.shader" t="Include" />
+              <e p="ShieldHit.shader" t="Include" />
+            </e>
           </e>
           <e p="Ships" t="Include">
             <e p="Scripts" t="Include">
@@ -1039,6 +1037,7 @@
             <e p="Shaders" t="Include">
               <e p="Hologram.shader" t="Include" />
             </e>
+            <e p="ShipCollisionHandler.cs" t="Include" />
           </e>
           <e p="Teams" t="Include">
             <e p="Team.cs" t="Include" />
@@ -1110,6 +1109,7 @@
             </e>
           </e>
         </e>
+        <e p="TeamInfo.cs" t="Include" />
         <e p="ThirdParty" t="Include">
           <e p="Mirror" t="Include">
             <e p="Components" t="Include">
