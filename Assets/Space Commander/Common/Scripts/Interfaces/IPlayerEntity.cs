@@ -2,8 +2,8 @@
 {
     public interface IPlayerEntity
     {
-        void CmdSetPlayer(uint playerID);
-        uint GetId();
+        void CmdSetPlayer(uint playerId);
+        uint GetEntityId();
         IPlayer GetPlayer();
 
     }

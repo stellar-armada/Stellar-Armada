@@ -92,11 +92,6 @@ namespace SpaceCommander.Weapons
             throw new NotImplementedException();
         }
 
-        public override void Fire()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Impact(Vector3 point)
         {
             throw new NotImplementedException();

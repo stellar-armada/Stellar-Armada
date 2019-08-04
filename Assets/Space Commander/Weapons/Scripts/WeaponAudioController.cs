@@ -1,17 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using SpaceCommander.Pooling;
+using UnityEngine.Serialization;
+
+public enum WeaponAudioType
+{
+    Shot,
+    Hit
+}
+[SerializeField]
+public class EnumeratedAudioClip
+{
+    
+    public AudioClip shotPrefab;
+    public AudioClip[] hitPrefabs;
+    public float shotDelay; // in ms
+    public float hitDelay; // in ms
+}
 
 namespace SpaceCommander.Weapons
 {
     public class WeaponAudioController : MonoBehaviour
     {
+        private WeaponAudioClipDictionary weaponAudioClips = new WeaponAudioClipDictionary();
+
         // Singleton instance 
         public static WeaponAudioController instance;
 
         // Audio timers
-        float timer_01, timer_02;
+        float shotTimer, hitTimer;
         public Transform audioSource;
+        
         [Header("Vulcan")] public AudioClip[] vulcanHit; // Impact prefabs array  
         public AudioClip vulcanShot; // Shot prefab
         public float vulcanDelay; // Shot delay in ms
@@ -28,8 +48,8 @@ namespace SpaceCommander.Weapons
         public float shotGunHitDelay;
 
         [Header("Lightning gun")] public AudioClip lightningGunOpen;
-        public AudioClip lightningGunLoop;
-        public AudioClip lightningGunClose;
+        [FormerlySerializedAs("lightningGunLoop")] public AudioClip guardianBeamLoop;
+        [FormerlySerializedAs("lightningGunClose")] public AudioClip guardianBeamClose;
 
         [Header("Laser impulse")] public AudioClip[] laserImpulseHit;
         public AudioClip laserImpulseShot;
@@ -45,19 +65,18 @@ namespace SpaceCommander.Weapons
         void Update()
         {
             // Update timers
-            timer_01 += Time.deltaTime;
-            timer_02 += Time.deltaTime;
+            shotTimer += Time.deltaTime;
+            hitTimer += Time.deltaTime;
         }
 
-        // Play vulcan shot audio at specific position
-        public void VulcanShot(Vector3 pos)
+        public void PlayShotAtPosition(WeaponType weaponType, Vector3 pos)
         {
             // Audio source can only be played once for each vulcanDelay
-            if (timer_01 >= vulcanDelay)
+            if (shotTimer >= weaponAudioClips[weaponType].shotDelay)
             {
                 // Spawn audio source prefab from pool
                 AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, vulcanShot, pos, null)
+                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, weaponAudioClips[weaponType].shotPrefab, pos, null)
                         .gameObject.GetComponent<AudioSource>();
 
                 if (aSrc != null)
@@ -70,130 +89,47 @@ namespace SpaceCommander.Weapons
                     aSrc.Play();
 
                     // Reset delay timer
-                    timer_01 = 0f;
+                    shotTimer = 0f;
                 }
             }
         }
-
-        // Play vulcan hit audio at specific position
-        public void VulcanHit(Vector3 pos)
+        
+        public void PlayHitAtPosition(WeaponType weaponType, Vector3 pos)
         {
-            if (timer_02 >= vulcanHitDelay)
+            // Audio source can only be played once for each vulcanDelay
+            if (shotTimer >= weaponAudioClips[weaponType].shotDelay)
             {
-                // Spawn random hit audio prefab from pool for specific weapon type
+                // Spawn audio source prefab from pool
                 AudioSource aSrc =
                     PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource,
-                        vulcanHit[Random.Range(0, vulcanHit.Length)], pos, null).gameObject.GetComponent<AudioSource>();
+                            weaponAudioClips[weaponType].hitPrefabs[Random.Range(0, weaponAudioClips[weaponType].hitPrefabs.Length)],
+                            pos, null)
+                        .gameObject.GetComponent<AudioSource>();
+
                 if (aSrc != null)
                 {
+                    // Modify audio source settings specific to it's type
                     aSrc.pitch = Random.Range(0.95f, 1f);
                     aSrc.volume = Random.Range(0.6f, 1f);
                     aSrc.minDistance = 7f;
                     aSrc.loop = false;
                     aSrc.Play();
 
-                    timer_02 = 0f;
+                    // Reset delay timer
+                    hitTimer = 0f;
                 }
             }
         }
 
-        // Play sniper shot audio at specific position
-        public void SniperShot(Vector3 pos)
-        {
-            if (timer_01 >= sniperDelay)
-            {
-                AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, sniperShot, pos, null)
-                        .gameObject.GetComponent<AudioSource>();
-
-                if (aSrc != null)
-                {
-                    aSrc.pitch = Random.Range(0.9f, 1f);
-                    aSrc.volume = Random.Range(0.8f, 1f);
-                    aSrc.minDistance = 6f;
-                    aSrc.loop = false;
-
-                    aSrc.Play();
-
-                    timer_01 = 0f;
-                }
-            }
-        }
-
-        // Play sniper hit audio at specific position
-        public void SniperHit(Vector3 pos)
-        {
-            if (timer_02 >= sniperHitDelay)
-            {
-                AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource,
-                        sniperHit[Random.Range(0, sniperHit.Length)], pos, null).gameObject.GetComponent<AudioSource>();
-                if (aSrc != null)
-                {
-                    aSrc.pitch = Random.Range(0.9f, 1f);
-                    aSrc.volume = Random.Range(0.8f, 1f);
-                    aSrc.minDistance = 8f;
-                    aSrc.loop = false;
-                    aSrc.Play();
-
-                    timer_02 = 0f;
-                }
-            }
-        }
-
-        // Play shotgun shot audio at specific position
-        public void ShotGunShot(Vector3 pos)
-        {
-            if (timer_01 >= shotGunDelay)
-            {
-                AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, shotGunShot, pos, null)
-                        .gameObject.GetComponent<AudioSource>();
-
-                if (aSrc != null)
-                {
-                    aSrc.pitch = Random.Range(0.9f, 1f);
-                    aSrc.volume = Random.Range(0.8f, 1f);
-                    aSrc.minDistance = 8f;
-                    aSrc.loop = false;
-
-                    aSrc.Play();
-
-                    timer_01 = 0f;
-                }
-            }
-        }
-
-        // Play shotgun hit audio at specific position
-        public void ShotGunHit(Vector3 pos)
-        {
-            if (timer_02 >= shotGunHitDelay)
-            {
-                AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource,
-                        shotGunHit[Random.Range(0, shotGunHit.Length)], pos, null)
-                        .gameObject.GetComponent<AudioSource>();
-                if (aSrc != null)
-                {
-                    aSrc.pitch = Random.Range(0.9f, 1f);
-                    aSrc.volume = Random.Range(0.8f, 1f);
-                    aSrc.minDistance = 7f;
-                    aSrc.loop = false;
-                    aSrc.Play();
-
-                    timer_02 = 0f;
-                }
-            }
-        }
 
         // Play lightning gun shot and loop audio at specific position
-        public void LightningGunLoop(Vector3 pos, Transform loopParent)
+        public void GuardianBeamLoop(Vector3 pos, Transform loopParent)
         {
             AudioSource aOpen =
                 PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, lightningGunOpen, pos, null)
                     .gameObject.GetComponent<AudioSource>();
             AudioSource aLoop =
-                PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, lightningGunLoop, pos, loopParent.parent)
+                PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, guardianBeamLoop, pos, loopParent.parent)
                     .gameObject.GetComponent<AudioSource>();
 
 
@@ -215,10 +151,10 @@ namespace SpaceCommander.Weapons
         }
 
         // Play lightning gun closing audio at specific position
-        public void LightningGunClose(Vector3 pos)
+        public void GuardianBeamClose(Vector3 pos)
         {
             AudioSource aClose =
-                PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, lightningGunClose, pos, null)
+                PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, guardianBeamClose, pos, null)
                     .gameObject.GetComponent<AudioSource>();
 
             if (aClose != null)
@@ -228,51 +164,6 @@ namespace SpaceCommander.Weapons
                 aClose.minDistance = 50f;
                 aClose.loop = false;
                 aClose.Play();
-            }
-        }
-
-        // Play laser pulse shot audio at specific position
-        public void LaserImpulseShot(Vector3 pos)
-        {
-            if (timer_01 >= laserImpulseDelay)
-            {
-                AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource, laserImpulseShot, pos, null)
-                        .gameObject.GetComponent<AudioSource>();
-
-                if (aSrc != null)
-                {
-                    aSrc.pitch = Random.Range(0.9f, 1f);
-                    aSrc.volume = Random.Range(0.8f, 1f);
-                    aSrc.minDistance = 20f;
-                    aSrc.loop = false;
-                    aSrc.Play();
-
-                    timer_01 = 0f;
-                }
-            }
-        }
-
-        // Play laser pulse hit audio at specific position
-        public void LaserImpulseHit(Vector3 pos)
-        {
-            if (timer_02 >= laserImpulseHitDelay)
-            {
-                AudioSource aSrc =
-                    PoolManager.Pools["GeneratedPool"].SpawnAudio(audioSource,
-                        laserImpulseHit[Random.Range(0, laserImpulseHit.Length)], pos, null)
-                        .gameObject.GetComponent<AudioSource>();
-
-                if (aSrc != null)
-                {
-                    aSrc.pitch = Random.Range(0.8f, 1f);
-                    aSrc.volume = Random.Range(0.8f, 1f);
-                    aSrc.minDistance = 20f;
-                    aSrc.loop = false;
-                    aSrc.Play();
-
-                    timer_02 = 0f;
-                }
             }
         }
     }

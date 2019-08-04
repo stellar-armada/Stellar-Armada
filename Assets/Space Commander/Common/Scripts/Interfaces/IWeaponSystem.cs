@@ -12,7 +12,6 @@ namespace SpaceCommander
         float GetDamage();
         void StartFiring();
         void StopFiring();
-        void Fire();
         void Impact(Vector3 point);
     }
 }

@@ -10,33 +10,18 @@ namespace SpaceCommander.Weapons
                 // Spawn impact prefab at specified position
                 PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.vulcanImpact, point, Quaternion.identity, null);
                 // Play impact sound effect
-                WeaponAudioController.instance.VulcanHit(point);
+                WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Vulcan, point);
         }
         public override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(fireRate, Fire);
-
-            Fire();
-         
         }
 
-        public override void Fire()
+        void Fire()
         {
-            // Get random rotation that offset spawned projectile
-            var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            // Spawn muzzle flash and projectile with the rotation offset at current socket position
-            PoolManager.Pools["GeneratedPool"].Spawn( WeaponPrefabManager.instance.vulcanMuzzle, TurretSocket[curSocket].position,
-                TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            var newGO =
-                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.vulcanProjectile,
-                    TurretSocket[curSocket].position + TurretSocket[curSocket].forward,
-                    offset * TurretSocket[curSocket].rotation, null).gameObject;
-            
-            // Play shot sound effect
-            WeaponAudioController.instance.VulcanShot(TurretSocket[curSocket].position);
-            // Advance to next turret socket
-            AdvanceSocket();
+            Fire(WeaponType.Vulcan);
         }
+
         // Stop firing 
         public override void StopFiring()
         {

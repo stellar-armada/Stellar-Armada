@@ -22,7 +22,7 @@ namespace SpaceCommander.Weapons
             // Play collision sound and apply force to the rigidbody was hit
             for (var j = 0; j < numCollisionEvents; j++)
             {
-                WeaponAudioController.instance.ShotGunHit(_collisionEvents[j].intersection);
+                WeaponAudioController.instance.PlayHitAtPosition(WeaponType.ShotGun,_collisionEvents[j].intersection);
 
                 var rb = other.GetComponent<Rigidbody>();
                 if (!rb) continue;

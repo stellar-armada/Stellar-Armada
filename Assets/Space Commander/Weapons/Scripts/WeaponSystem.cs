@@ -63,8 +63,7 @@ public abstract class  WeaponSystem : MonoBehaviour, IWeaponSystem
 
     // Stop firing 
     public abstract void StopFiring();
-
-    public abstract void Fire();
+    
     public abstract void Impact(Vector3 point);
 
     public void CheckForFire()

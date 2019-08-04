@@ -32,12 +32,12 @@ namespace SpaceCommander.Ships
         public GameObject hologram;
         
         [Command]
-        public void CmdSetPlayer(uint playerID)
+        public void CmdSetPlayer(uint playerId)
         {
-            player = PlayerManager.GetPlayerByNetID(playerID);
+            player = PlayerManager.GetPlayerByNetId(playerId);
         }
         
-        public uint GetId()
+        public uint GetEntityId()
         {
             return netId;
         }

@@ -10,25 +10,18 @@ namespace SpaceCommander.Weapons
         public override void Impact(Vector3 point)
         {
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperImpact, point, Quaternion.identity, null);
-            WeaponAudioController.instance.SniperHit(point);
+            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Sniper, point);
         }
         public override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(0.3f, Fire);
-            Fire();
         }
 
-        public override void Fire()
+        void Fire()
         {
-            var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperMuzzle, TurretSocket[curSocket].position,
-                TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.sniperBeam, TurretSocket[curSocket].position,
-                    offset * TurretSocket[curSocket].rotation, null);
-            WeaponAudioController.instance.SniperShot(TurretSocket[curSocket].position);
-            AdvanceSocket();
+            Fire(WeaponType.ShotGun);
         }
+
         // Stop firing 
         public override void StopFiring()
         {

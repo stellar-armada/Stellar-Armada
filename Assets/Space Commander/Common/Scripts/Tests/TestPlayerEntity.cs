@@ -1,22 +1,24 @@
-﻿using UnityEngine;
+﻿using SpaceCommander.Game;
+using UnityEngine;
 namespace SpaceCommander.Common.Tests{
 public class TestPlayerEntity : MonoBehaviour, IPlayerEntity
 {
-    private TestPlayer testPlayer;
+    private IPlayer testPlayer;
 
-    public void SetPlayer(TestPlayer player)
+    public void SetPlayer(IPlayer player)
     {
         testPlayer = player;
     }
     
-    public void CmdSetPlayer(uint playerID)
+    public void CmdSetPlayer(uint playerId)
     {
-        throw new System.NotImplementedException();
+        testPlayer = PlayerManager.GetPlayerByNetId(playerId);
     }
 
-    public uint GetId()
+    public uint GetEntityId()
     {
-        throw new System.NotImplementedException();
+        return 0;
+        //TO-DO: Figure out how our entity registration works...
     }
 
     public IPlayer GetPlayer()

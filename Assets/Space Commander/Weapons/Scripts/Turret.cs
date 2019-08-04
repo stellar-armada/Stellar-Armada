@@ -35,6 +35,8 @@ namespace SpaceCommander.Weapons
         // Current firing socket
         [HideInInspector] public int curSocket = 0;
 
+        public float maximumAngleDifferenceToTarget = 10f;
+
 
         public float fireRate = .3f;
 
@@ -42,7 +44,7 @@ namespace SpaceCommander.Weapons
         {
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseImpact, point,
                 Quaternion.identity, null);
-            WeaponAudioController.instance.LaserImpulseHit(point);
+            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.LaserImpulse, point);
         }
 
 
@@ -74,6 +76,11 @@ namespace SpaceCommander.Weapons
         public float GetAngleToTarget()
         {
             return Vector3.Angle(Mount.transform.forward, targetPos - Mount.transform.position);
+        }
+        
+        bool IsFacingTarget()
+        {
+            return (GetAngleToTarget() < maximumAngleDifferenceToTarget);
         }
 
         // Angle between mount and target
@@ -114,6 +121,8 @@ namespace SpaceCommander.Weapons
                 StopFiring();
             }
         }
+
+
 
         public override void AcquireTarget()
         {
@@ -162,11 +171,16 @@ namespace SpaceCommander.Weapons
         public override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(fireRate, Fire);
-            Fire();
         }
 
-        public override void Fire()
+        void Fire()
         {
+            Fire(WeaponType.LaserImpulse); // Debug weapon type
+        }
+
+        public void Fire(WeaponType type)
+        {
+            if (!IsFacingTarget()) return;
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseMuzzle,
                 TurretSocket[curSocket].position,
@@ -175,8 +189,8 @@ namespace SpaceCommander.Weapons
                 PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
                     WeaponPrefabManager.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
                     offset * TurretSocket[curSocket].rotation, null).gameObject;
-            WeaponAudioController.instance.LaserImpulseShot(TurretSocket[curSocket].position);
-
+            WeaponAudioController.instance.PlayShotAtPosition(WeaponType.LaserImpulse, TurretSocket[curSocket].position);
+            
             AdvanceSocket();
         }
 

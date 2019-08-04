@@ -1056,6 +1056,7 @@
                   <e p="SerializableDictionaryPropertyDrawer.cs" t="Include" />
                 </e>
                 <e p="SerializableDictionary.cs" t="Include" />
+                <e p="UserSerializableDictionaries.cs" t="Include" />
               </e>
               <e p="Timer.cs" t="Include" />
             </e>
@@ -1064,9 +1065,9 @@
             <e p="Scripts" t="Include">
               <e p="Beam.cs" t="Include" />
               <e p="Damager.cs" t="Include" />
+              <e p="GuardianBeamTurret.cs" t="Include" />
               <e p="LaserTurret.cs" t="Include" />
               <e p="Lightning.cs" t="Include" />
-              <e p="LightningTurret.cs" t="Include" />
               <e p="Missile.cs" t="Include" />
               <e p="MissileLauncher.cs" t="Include" />
               <e p="Projectile.cs" t="Include" />

@@ -5,23 +5,18 @@ using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
 {
-    public class LightningTurret : Turret
+    public class GuardianBeamTurret : Turret
     {
-        public override void Impact(Vector3 point)
-        {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.sniperImpact, point, Quaternion.identity, null);
-            WeaponAudioController.instance.SniperHit(point);
-        }
         public override void StartFiring()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
-                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.lightningGunBeam, TurretSocket[i].position,
+                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.guardianBeam, TurretSocket[i].position,
                     TurretSocket[i].rotation,
                     TurretSocket[i]);
             }
 
-            WeaponAudioController.instance.LightningGunLoop(transform.position, transform);
+            WeaponAudioController.instance.GuardianBeamLoop(transform.position, transform);
         }
         // Stop firing 
         public override void StopFiring()
@@ -32,7 +27,7 @@ namespace SpaceCommander.Weapons
                 TimeManager.instance.RemoveTimer(timerID);
                 timerID = -1;
             }
-            WeaponAudioController.instance.LightningGunClose(transform.position);
+            WeaponAudioController.instance.GuardianBeamClose(transform.position);
 
         }
     }

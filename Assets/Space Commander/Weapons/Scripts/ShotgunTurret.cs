@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using SpaceCommander.Pooling;
 
 namespace SpaceCommander.Weapons
@@ -9,28 +7,22 @@ namespace SpaceCommander.Weapons
     {
         public override void Impact(Vector3 point)
         {
-                // Spawn impact prefab at specified position
-                PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.shotGunImpact, point, Quaternion.identity, null);
-                // Play impact sound effect
-                WeaponAudioController.instance.VulcanHit(point);
+            // Spawn impact prefab at specified position
+            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.shotGunImpact, point,
+                Quaternion.identity, null);
+            // Play impact sound effect
+            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.ShotGun, point);
         }
+
         public override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(.3f, Fire);
             Fire();
-
         }
 
-        public override void Fire()
+        void Fire()
         {
-            var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            PoolManager.Pools["GeneratedPool"].Spawn( WeaponPrefabManager.instance.shotGunMuzzle, TurretSocket[curSocket].position,
-                TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.shotGunProjectile, TurretSocket[curSocket].position,
-                offset * TurretSocket[curSocket].rotation, null);
-            WeaponAudioController.instance.ShotGunShot(TurretSocket[curSocket].position);
-            
-            AdvanceSocket();
+            Fire(WeaponType.ShotGun);
         }
 
         // Stop firing 

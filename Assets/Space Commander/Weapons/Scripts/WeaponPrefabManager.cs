@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SpaceCommander.Weapons
 {
@@ -20,7 +21,7 @@ namespace SpaceCommander.Weapons
         public Transform shotGunMuzzle;
         public Transform shotGunImpact;
 
-        [Header("Lightning gun")] public Transform lightningGunBeam;
+        [FormerlySerializedAs("lightningGunBeam")] [Header("Lightning gun")] public Transform guardianBeam;
 
         [Header("Laser impulse")] public Transform laserImpulseProjectile;
         public Transform laserImpulseMuzzle;

@@ -10,7 +10,7 @@ namespace SpaceCommander.Weapons
         public override void Impact(Vector3 point)
         {
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseImpact, point, Quaternion.identity, null);
-            WeaponAudioController.instance.LaserImpulseHit(point);
+            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.LaserImpulse, point);
         }
         public override void StartFiring()
         {
@@ -23,10 +23,9 @@ namespace SpaceCommander.Weapons
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.laserImpulseMuzzle, TurretSocket[curSocket].position,
                 TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            var newGO =
-                PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
-                    offset * TurretSocket[curSocket].rotation, null).gameObject;
-            WeaponAudioController.instance.LaserImpulseShot(TurretSocket[curSocket].position);
+            PoolManager.Pools["GeneratedPool"].SpawnDamager(this, WeaponPrefabManager.instance.laserImpulseProjectile, TurretSocket[curSocket].position,
+                    offset * TurretSocket[curSocket].rotation, null);
+            WeaponAudioController.instance.PlayShotAtPosition(WeaponType.LaserImpulse, TurretSocket[curSocket].position);
 
             AdvanceSocket();
         }
