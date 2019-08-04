@@ -7,11 +7,11 @@ namespace SpaceCommander.Selection
     public class SelectionManager : MonoBehaviour
     {
         public static SelectionManager instance;
-        
+
         private List<ISelectable> currentSelection = new List<ISelectable>();
-        
-        Dictionary<int, List<ISelectable>> selectionLists = new Dictionary<int, List<ISelectable>>();
-        
+
+        Dictionary<int, List<ISelectable>> selectionSets = new Dictionary<int, List<ISelectable>>();
+
         List<ISelectable> tempSelection;
 
         public UnityEvent SelectionChanged;
@@ -22,38 +22,73 @@ namespace SpaceCommander.Selection
             instance = this;
         }
 
-        bool SelectionSetIsEmpty(int selectionSetId)
+        public List<ISelectable> GetCurrentSelection()
         {
-            
-            if (selectionLists.TryGetValue(selectionSetId, out tempSelection))
+            return currentSelection;
+        }
+
+        public List<ISelectable> GetSelectionSet(int selectionSetId)
+        {
+            if (selectionSets.ContainsKey(selectionSetId))
             {
-                if (tempSelection.Count > 0)
-                {
-                    return false;
-                }
-                return true;
+                return selectionSets[selectionSetId];
             }
-            return true;
+
+            Debug.Log("Selection is null");
+            return null;
         }
         
         public void CreateOrReplaceSelectionSet(int selectionSetId)
         {
-            if (!SelectionSetIsEmpty(selectionSetId))
+            if (selectionSets.ContainsKey(selectionSetId))
             {
-                selectionLists.Remove(selectionSetId);
+                selectionSets.Remove(selectionSetId);
             }
-            selectionLists.Add(selectionSetId, currentSelection);
+
+            List<ISelectable> newSelection = new List<ISelectable>();
+            foreach(ISelectable selectable in currentSelection)
+            {
+                newSelection.Add(selectable);
+            }
+            Debug.Log("Added a selection with " + newSelection.Count + " members");
+            selectionSets.Add(selectionSetId, newSelection);
             SelectionSetsChanged.Invoke();
         }
 
         public void RecallSelectionSet(int selectionSetId)
         {
-            if (selectionLists.TryGetValue(selectionSetId, out tempSelection))
+            Debug.Log("Selection set id: " + selectionSetId);
+
+
+
+            if (selectionSets.ContainsKey(selectionSetId))
             {
-                currentSelection = tempSelection;
-                SelectionSetsChanged.Invoke();
+
+                List<ISelectable> selectionSet = selectionSets[selectionSetId];
+                
+                // For any object that is in current selection that isn't in selection set, Deselect
+                foreach(ISelectable selectable in currentSelection)
+                {
+                    if (!selectionSet.Contains(selectable))
+                    {
+                        selectable.Deselect();
+                    }
+                }
+
+                // For any object that is in the new selection that isn't in the current selection, Select
+// For any object that is in current selection that isn't in selection set, Deselect
+                foreach(ISelectable selectable in selectionSet)
+                {
+                    if (!currentSelection.Contains(selectable))
+                    {
+                        selectable.Select();
+                    }
+                }
+                
+                
+                currentSelection = selectionSets[selectionSetId];
+                SelectionChanged.Invoke();
             }
-           
         }
 
         public void SetSelection(ISelectable selectable)
@@ -91,6 +126,7 @@ namespace SpaceCommander.Selection
                 Debug.Log("Added " + selectable.GetOwningEntity() + " to selection");
                 currentSelection.Add(selectable);
                 selectable.Select();
+                SelectionChanged.Invoke();
             }
         }
 
@@ -111,8 +147,8 @@ namespace SpaceCommander.Selection
             {
                 Debug.Log("Removed " + selectable.GetOwningEntity() + " from selection");
                 currentSelection.Remove(selectable);
-                SelectionChanged.Invoke();
                 selectable.Deselect();
+                SelectionChanged.Invoke();
             }
         }
     }

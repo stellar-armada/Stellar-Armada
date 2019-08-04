@@ -4,6 +4,7 @@ namespace SpaceCommander.Selection.Tests
 {
     public class TestSelectionHandler : MonoBehaviour, ISelectable
     {
+        
         private IPlayerEntity owningEntity;
 
         private Renderer ren;
@@ -13,6 +14,7 @@ namespace SpaceCommander.Selection.Tests
         void Awake()
         {
             ren = GetComponent<Renderer>();
+            owningEntity = GetComponent<IPlayerEntity>();
         }
 
         public int GetSelectionSetID()
