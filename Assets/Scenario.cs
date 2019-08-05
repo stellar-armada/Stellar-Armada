@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class Scenario : ScriptableObject
 {
+    public float setupTime = 1f;
+    public float matchTime = 15f;
+    public float postMatchTime = 1f;
+    public string scenarioName;
+    public int minimumNumberOfPlayers;
+    public int maximumNumberOfPlayers;
+    public string description;
     public TeamInfo[] teamInfo;
-    public MatchSettings matchSettings;
-    public Map map;
+    public GameObject levelPrefab;
 }

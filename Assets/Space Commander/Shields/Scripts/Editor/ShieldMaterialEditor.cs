@@ -2,10 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
-
-namespace SpaceCommander
-{
-    public enum BLEND_MODE_OPTIONS
+public enum BLEND_MODE_OPTIONS
     {
         ALPHA_BLEND = 0,
         ADDITIVE_BLEND = 1,
@@ -381,4 +378,3 @@ namespace SpaceCommander
             }
         }
     }
-}

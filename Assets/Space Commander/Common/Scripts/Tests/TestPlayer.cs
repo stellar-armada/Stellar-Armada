@@ -7,10 +7,21 @@ namespace SpaceCommander.Common.Tests
 {
     public class TestPlayer : NetworkBehaviour, IPlayer
     {
-        public uint teamId;
+        [SyncVar(hook=nameof(HandleTeamChange))] public uint teamId;
         public string playerName = "TestPlayer";
 
         public bool isEnemy = true;
+
+        public override void OnStartServer()
+        {
+            
+            
+        }
+
+        void HandleTeamChange(uint newTeamId)
+        {
+            Debug.Log("Team changed to " +  newTeamId);
+        }
         
         void Awake()
         {

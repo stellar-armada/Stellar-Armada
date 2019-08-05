@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 88f8312c406ce46b7955f4b10c106252, type: 3}
   m_ShaderKeywords: USE_DISTORTION_FOR_PATTERN_TEXTURE USE_PATTERN_TEXTURE
   m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -85,11 +85,11 @@ Material:
     - _DistortionFactor: 0.51
     - _DstBlend: 0
     - _Glossiness: 0.5
-    - _HitAttenuation: 1
+    - _HitAttenuation: 2
     - _HitPosU: 0.1
     - _HitPosV: 0.55
-    - _HitPower: 1.7
-    - _HitRadius: 0.25
+    - _HitPower: 2.3
+    - _HitRadius: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -103,8 +103,8 @@ Material:
     - _RefractionScale: 0.15
     - _RimMax: 0.68
     - _RimMin: 0.23
-    - _RippleDistortion: 0.36
-    - _RippleScale: 5.45
+    - _RippleDistortion: 0.254
+    - _RippleScale: 5.98
     - _SrcBlend: 1
     - _TexturePower: 1
     - _TextureRimMax: 0.68

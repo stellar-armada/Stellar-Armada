@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 
-namespace SpaceCommander
-{
     public class ShieldHitMaterialEditor : ShaderGUI
     {
         public enum ACTIVATION_TYPE_OPTIONS
@@ -143,4 +141,3 @@ namespace SpaceCommander
             }
         }
     }
-}

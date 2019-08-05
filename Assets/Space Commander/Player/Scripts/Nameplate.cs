@@ -76,7 +76,7 @@ namespace SpaceCommander.Player
 
         public void HandleTeamChange()
         {
-            color = TeamManager.instance.infos[playerController.GetTeamId()].color;
+            color = TeamManager.instance.templates[playerController.GetTeamId()].color;
 
             playerName.color = color;
             healthBarFill.color = color;

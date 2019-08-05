@@ -122,7 +122,7 @@ namespace SpaceCommander.Player
         public void HandleTeamChange()
         {
             uint pTeam = playerController.GetTeam().teamID;
-            props.SetColor("_EmissionColor", TeamManager.instance.infos[pTeam].color);
+            props.SetColor("_EmissionColor", TeamManager.instance.templates[pTeam].color);
             bodyRenderer.SetPropertyBlock(props);
         }
 

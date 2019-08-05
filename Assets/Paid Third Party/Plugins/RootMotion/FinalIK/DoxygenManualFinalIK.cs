@@ -910,7 +910,7 @@ The Interaction Objects will automatically find all the Interaction Targets in t
 	- See this <a href="https://www.youtube.com/watch?v=sVWdCNEnxAE">tutorial video </a> 
 	- Duplicate your character, position and pose a hand to the Interaction Object
 	- Parent the hand hierarchy to the Interaction Object, delete the rest of the character
-	- Add the InteractionTarget component to the hand bone, fill out it's fields
+	- Add the InteractionTarget component to the hand bone, fill out it's fieldsF
 	- Add the HandPoser (or GenericPoser) component to the hand bone of the character (not the hand that you just posed). That will make the fingers match the posed target.
 	- Play the scene to try out the interaction
 

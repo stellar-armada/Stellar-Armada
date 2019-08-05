@@ -65,6 +65,7 @@ Shader "DepthFadeAdditive"
             #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/ShaderGraphFunctions.hlsl"
             #include "Packages/com.unity.render-pipelines.lightweight/Shaders/UnlitInput.hlsl"
 
+			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			float4 _TintColor;
 			float _Boost;
@@ -337,7 +338,7 @@ Shader "DepthFadeAdditive"
 }
 /*ASEBEGIN
 Version=16800
-0;1;1773;984;1879.813;723.0142;1.762848;True;True
+78;26;1773;984;1879.813;717.7256;1.762848;True;True
 Node;AmplifyShaderEditor.RangedFloatNode;9;-692,437;Float;False;Property;_InvFade;InvFade;2;0;Create;True;0;0;False;0;0;3;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.DepthFade;7;-434,442;Float;False;True;False;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.VertexColorNode;12;-442,185;Float;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -346,7 +347,7 @@ Node;AmplifyShaderEditor.RangedFloatNode;13;-417,351;Float;False;Property;_Boost
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;10;-130,-93;Float;False;5;5;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SaturateNode;8;-189,443;Float;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;11;36,318;Float;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SamplerNode;17;-486.9284,-474.574;Float;True;Property;_MainTex;MainTex;0;0;Fetch;True;0;0;False;0;None;0d2a1e17a9ebc2e4bad1cf53125d0233;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;17;-486.9284,-474.574;Float;True;Property;_MainTex;MainTex;0;0;Create;True;0;0;False;0;None;0d2a1e17a9ebc2e4bad1cf53125d0233;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;15;222,271;Float;False;False;2;Float;ASEMaterialInspector;0;3;Hidden/Templates/LightWeightSRPUnlit;e2514bdcf5e5399499a9eb24d175b9db;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=ShadowCaster;False;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;16;222,271;Float;False;False;2;Float;ASEMaterialInspector;0;3;Hidden/Templates/LightWeightSRPUnlit;e2514bdcf5e5399499a9eb24d175b9db;True;DepthOnly;0;2;DepthOnly;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthOnly;True;0;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;14;222,271;Float;False;True;2;Float;ASEMaterialInspector;0;3;DepthFadeAdditive;e2514bdcf5e5399499a9eb24d175b9db;True;Base;0;0;Base;5;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;True;4;1;False;-1;1;False;-1;0;1;False;-1;0;False;-1;False;False;False;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=LightweightForward;False;0;Hidden/InternalErrorShader;0;0;Standard;2;Vertex Position,InvertActionOnDeselection;1;Receive Shadows;1;0;3;True;True;True;False;5;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;0
@@ -361,4 +362,4 @@ WireConnection;11;0;10;0
 WireConnection;11;1;8;0
 WireConnection;14;0;11;0
 ASEEND*/
-//CHKSM=14562409C24ADDD2ED85E4422EE041CE7C538ADD
+//CHKSM=5D932E4FA55AD9E697EDBA961F0946B7AB1B903E

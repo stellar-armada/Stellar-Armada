@@ -22,6 +22,11 @@ namespace SpaceCommander.Game
         private static PlayerSettings settings;
         private static string settingsPath;
         #region Initialization
+
+        void Awake()
+        {
+            Init();
+        }
         
         void InitSettings()
         {
@@ -47,8 +52,8 @@ namespace SpaceCommander.Game
 
         public void Init()
         {
-            settingsPath = Application.persistentDataPath + "/settings.txt";
-            if (!File.Exists(Application.persistentDataPath + "/settings.txt"))
+            settingsPath = Application.streamingAssetsPath + "/settings.txt";
+            if (!File.Exists(Application.streamingAssetsPath + "/settings.txt"))
             {
                 InitSettings();
             } else

@@ -9,7 +9,7 @@ namespace SpaceCommander.Audio
     {
         public static MessageAudioController instance; // singleton accessor
         
-        [SerializeField] MessageData messageData;
+        [SerializeField] MatchMessageData matchMessageData;
         
         [SerializeField] AudioSource messageAudioSource;
 
@@ -25,8 +25,8 @@ namespace SpaceCommander.Audio
         
         public void PlayOneShot(MessageType _type)
         {
-            if (messageData.messages.ContainsKey(_type))
-                messageAudioSource.PlayOneShot(messageData.messages[_type].audioClip);
+            if (matchMessageData.messages.ContainsKey(_type))
+                messageAudioSource.PlayOneShot(matchMessageData.messages[_type].audioClip);
             else
                 Debug.LogError(_type.ToString() + " not found in MessageAudioLookup");
         }
