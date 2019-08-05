@@ -1,4 +1,4 @@
-﻿using SpaceCommander.UI;
+﻿using SpaceCommander.Match.Messaging;
 using UnityEngine;
 
 namespace SpaceCommander.Audio
@@ -23,7 +23,7 @@ namespace SpaceCommander.Audio
             instance = null;
         }
         
-        public void PlayOneShot(MessageType _type)
+        public void PlayOneShot(MatchMessageType _type)
         {
             if (matchMessageData.messages.ContainsKey(_type))
                 messageAudioSource.PlayOneShot(matchMessageData.messages[_type].audioClip);

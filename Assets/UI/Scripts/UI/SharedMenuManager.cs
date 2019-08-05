@@ -1,5 +1,4 @@
 ﻿using SpaceCommander.Game;
-using SpaceCommander.Player;
 using UnityEngine;
 
 namespace SpaceCommander.UI

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using SpaceCommander.Game;
-using SpaceCommander.Player;
 using TMPro;
 
 namespace SpaceCommander.UI

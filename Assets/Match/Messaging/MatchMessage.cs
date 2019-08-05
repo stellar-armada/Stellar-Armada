@@ -5,14 +5,14 @@ using SpaceCommander.Game;
 using SpaceCommander.Haptics;
 using TMPro;
 
-namespace SpaceCommander.UI
+namespace SpaceCommander.Match.Messaging
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class MatchMessage : MonoBehaviour
     {
         public bool hasPriority = false;
         public bool isActive = false;
-        private MessageType messageType;
+        private MatchMessageType _matchMessageType;
         [SerializeField] float fadeTime = .5f;
         [SerializeField] private TextMeshProUGUI textSingle;
         [SerializeField] private TextMeshProUGUI textDoubleHeader;
@@ -55,10 +55,10 @@ namespace SpaceCommander.UI
 
         #endregion
 
-        public void ShowMessage(MessageType _type, SerializedMessage _message)
+        public void ShowMessage(MatchMessageType _type, SerializedMessage _message)
         {
             //Debug.Log("Showing message of type " + _type.ToString());
-            messageType = _type;
+            _matchMessageType = _type;
 
             if (_message.subMessageContents == "")
             {
@@ -97,7 +97,7 @@ namespace SpaceCommander.UI
 
             Init();
             
-            if ((int)messageType < 5)
+            if ((int)_matchMessageType < 5)
             {
                 isActive = true;
                 group.alpha = 1;
@@ -105,7 +105,7 @@ namespace SpaceCommander.UI
             else
                 StartCoroutine(FadeIn());
 
-            MessageAudioController.instance.PlayOneShot(messageType);
+            MessageAudioController.instance.PlayOneShot(_matchMessageType);
 
             if (hapticAlert)
             {

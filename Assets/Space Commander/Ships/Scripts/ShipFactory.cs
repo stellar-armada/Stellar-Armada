@@ -20,11 +20,11 @@ public class ShipFactory : NetworkBehaviour
     }
 // Ship Factory
     [Command]
-    public void CmdCreateShip(uint playerID, ShipType shipShipType, Vector3 position, Quaternion rotation)
+    public void CmdCreateShipForPlayer(uint playerID, ShipType shipType, Vector3 position, Quaternion rotation)
     {
         GameObject shipPrefab;
         
-        bool success = ships.TryGetValue(shipShipType, out shipPrefab);
+        bool success = ships.TryGetValue(shipType, out shipPrefab);
         if (!success)
         {
             Debug.Log("Failed to create ship - was not found in dictionary");
@@ -40,4 +40,26 @@ public class ShipFactory : NetworkBehaviour
         s.CmdSetPlayer(playerID);
     }
     
+    // Ship Factory
+    [Command]
+    public void CmdCreateShipForTeam(uint teamId, int groupId, ShipType shipType, Vector3 position, Quaternion rotation)
+    {
+        GameObject shipPrefab;
+        
+        bool success = ships.TryGetValue(shipType, out shipPrefab);
+        if (!success)
+        {
+            Debug.Log("Failed to create ship - was not found in dictionary");
+            return;
+        }
+        
+        GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, SceneRoot.instance.transform);
+        
+        NetworkServer.Spawn(shipGameObject);
+        
+        Ship s = shipGameObject.GetComponent<Ship>();
+
+        s.CmdSetTeam(teamId);
+        s.CmdSetGroup(groupId);
+    }
 }

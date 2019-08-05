@@ -11,10 +11,8 @@ namespace SpaceCommander
         void UnregisterPlayer();
         PlayerType GetPlayerType();
         GameObject GetGameObject();
-        Team GetTeam();
         uint GetId();
         string GetName();
         bool IsEnemy(IPlayer player);
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpaceCommander.UI {
+namespace SpaceCommander.Match.Messaging {
     
     [System.Serializable]
     public class SerializedMessage
@@ -14,7 +14,7 @@ namespace SpaceCommander.UI {
     }
 
     [System.Serializable]
-    public class MessageDictionary : SerializableDictionary<MessageType, SerializedMessage>
+    public class MessageDictionary : SerializableDictionary<MatchMessageType, SerializedMessage>
     {
     }
 

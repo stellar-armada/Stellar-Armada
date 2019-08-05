@@ -16,8 +16,11 @@ GameObject:
   - component: {fileID: 6328202424092267344}
   - component: {fileID: 7757705480948646782}
   - component: {fileID: 7378485481420154886}
+  - component: {fileID: 3838795511025624325}
+  - component: {fileID: 1579186472911811138}
+  - component: {fileID: 8386132565998532455}
   m_Layer: 0
-  m_Name: MatchManagers
+  m_Name: NetworkManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,6 +168,9 @@ MonoBehaviour:
     name: DESERT
   - color: {r: 0.0016019973, g: 0.33962262, b: 0.017215258, a: 1}
     name: DARK GREEN
+  teamPrefab: {fileID: 3081098208325143664, guid: abb80ebac51239445a6c1da97ec76f77,
+    type: 3}
+  teams: []
 --- !u!114 &7757705480948646782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,5 +198,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  messageData: {fileID: 0}
+  matchMessageData: {fileID: 11400000, guid: 3b2d0221d5e8f234a80060646291e54a, type: 2}
   MessageTemplate: {fileID: 0}
+--- !u!114 &3838795511025624325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615222144381845693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c227e7c210df6b4c9ebc854b06471cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+--- !u!114 &1579186472911811138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615222144381845693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b7d5601029d6146a11d2740df35e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+--- !u!114 &8386132565998532455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615222144381845693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1884c97e5008f404485d17d472cb3351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1

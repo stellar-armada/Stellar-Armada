@@ -52,7 +52,7 @@ namespace SpaceCommander.Ships.Tests
         {
 
             IPlayer player = PlayerManager.GetPlayers()[0];
-            ShipFactory.instance.CmdCreateShip(player.GetId(), shipShipType, Vector3.zero, Quaternion.identity);
+            ShipFactory.instance.CmdCreateShipForPlayer(player.GetId(), shipShipType, Vector3.zero, Quaternion.identity);
         }
         
     }

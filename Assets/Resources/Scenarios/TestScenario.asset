@@ -12,16 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad77c10867700864186fcb2a6a762597, type: 3}
   m_Name: TestScenario
   m_EditorClassIdentifier: 
-  zone: 
-  minimumNumberOfPlayers: 0
-  maximumNumberOfPlayers: 0
-  description: 
+  setupTime: 1
+  matchTime: 15
+  postMatchTime: 1
+  scenarioName: TestationAlpha
+  minimumNumberOfPlayers: 2
+  maximumNumberOfPlayers: 2
+  description: Battle of Testation Alpha
   teamInfo:
-  - fleetBattleGroups: []
-    maxNumberOfPlayers: 2
-    playersCanJoin: 1
-  - fleetBattleGroups: []
-    maxNumberOfPlayers: 2
-    playersCanJoin: 0
-  matchSettings: {fileID: 0}
-  levelPrefab: {fileID: 0}
+  - fleetBattleGroups:
+    - m_keys: 05000000
+      m_values: 01000000
+    - m_keys: 05000000
+      m_values: 01000000
+    - m_keys: 05000000
+      m_values: 01000000
+    numberOfPlayerSlots: 1
+  - fleetBattleGroups:
+    - m_keys: 05000000
+      m_values: 01000000
+    - m_keys: 05000000
+      m_values: 01000000
+    - m_keys: 05000000
+      m_values: 01000000
+    numberOfPlayerSlots: 0
+  levelPrefab: {fileID: 3198974705040035564, guid: 4141f2fda0a005d4284ed301a4db48da,
+    type: 3}

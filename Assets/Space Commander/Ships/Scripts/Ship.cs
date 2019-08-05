@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using Mirror;
 using SpaceCommander.Game;
+using SpaceCommander.Teams;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnitySteer.Behaviors;
 
 namespace SpaceCommander.Ships
 {
-
-    public class Ship : NetworkBehaviour, IPlayerEntity
+    public class Ship : NetworkBehaviour, IPlayerEntity, ITeamEntity
     {
         public IPlayer player;
 
@@ -32,8 +32,13 @@ namespace SpaceCommander.Ships
         public GameObject hologram;
 
         [SyncVar(hook = nameof(HandleDeath))] public bool isAlive = true;
+
+        public delegate void TeamChangeDelegate(uint newTeam);
+        
+        private Team team;
         
         public UnityEvent ShipDestroyed;
+
 
         void HandleDeath(bool alive)
         {
@@ -50,6 +55,53 @@ namespace SpaceCommander.Ships
             player = PlayerManager.GetPlayerByNetId(playerId);
         }
         
+        [Command]
+        public void CmdSetGroup(uint newGroupId)
+        {
+            SetTeam(newGroupId);
+            RpcSetTeam(newGroupId);
+        }
+
+        [ClientRpc]
+        public void RpcSetGroup(uint newGroupId)
+        {
+            SetTeam(newGroupId);
+        }
+
+        void SetGroup(uint newGroupId)
+        {
+            
+            
+            if (team.entities != null && team.entities.Contains(this) && team.teamId != newTeamId) team.RemoveEntity(this);
+            team = TeamManager.instance.GetTeamByID(newTeamId);
+            team.AddEntity(this);
+        }
+        
+        [Command]
+        public void CmdSetTeam(uint newTeamId)
+        {
+            SetTeam(newTeamId);
+            RpcSetTeam(newTeamId);
+        }
+
+        [ClientRpc]
+        public void RpcSetTeam(uint newTeamId)
+        {
+            SetTeam(newTeamId);
+        }
+
+        void SetTeam(uint newTeamId)
+        {
+            if (team != null && team.entities.Contains(this) && team.teamId != newTeamId) team.RemoveEntity(this);
+            team = TeamManager.instance.GetTeamByID(newTeamId);
+            team.AddEntity(this);
+        }
+
+        public Team GetTeam()
+        {
+            return team;
+        }
+
         public uint GetEntityId()
         {
             return netId;

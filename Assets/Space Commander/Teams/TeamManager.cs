@@ -2,7 +2,6 @@
 using System.Linq;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SpaceCommander.Teams
 {
@@ -12,17 +11,17 @@ namespace SpaceCommander.Teams
         public Color color;
         public string name;
     }
-    public class SyncListTeam : SyncList<Team> {}
-    
     public class TeamManager : NetworkBehaviour
     {
         public static TeamManager instance; // singleton accessor
         
         public TeamTemplate[] templates;
-        
-        public SyncListTeam teams = new SyncListTeam();
 
-        private int team;
+        public GameObject teamPrefab;
+
+        public List<Team> teams = new List<Team>();
+
+        private int newTeamIndex;
 
         void Awake()
         {
@@ -32,9 +31,10 @@ namespace SpaceCommander.Teams
         [Command]
         public void CmdCreateNewTeam()
         {
-            TeamTemplate template = templates[team++];
-            Team t = new Team();
-            t.teamID = (uint)teams.Count;
+            TeamTemplate template = templates[newTeamIndex++];
+            Team t = Instantiate(teamPrefab, transform).GetComponent<Team>();
+            NetworkServer.Spawn(t.gameObject);
+            t.teamId = (uint)teams.Count;
             t.name = template.name;
             t.color = template.color;
             teams.Add(t);
@@ -43,12 +43,7 @@ namespace SpaceCommander.Teams
 
         public Team GetTeamByID(uint teamID)
         {
-            return teams.Single(t => t.teamID == teamID);
-        }
-
-        public void DestroyAllTeams()
-        {
-            teams = new SyncListTeam();
+            return teams.Single(t => t.teamId == teamID);
         }
 
         private void OnDestroy()

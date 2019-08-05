@@ -12,16 +12,20 @@
         </e>
         <e p="FleetSelectionUITest.cs" t="Include" />
         <e p="Game" t="Include">
-          <e p="MatchManager.cs" t="Include" />
+          <e p="MatchScenarioManager.cs" t="Include" />
         </e>
         <e p="Match" t="Include">
-          <e p="Clock.cs" t="Include" />
           <e p="MatchClock.cs" t="Include" />
+          <e p="MatchClockManager.cs" t="Include" />
+          <e p="MatchCountdown.cs" t="Include" />
+          <e p="MatchNetworkManager.cs" t="Include" />
+          <e p="MatchStateManager.cs" t="Include" />
+          <e p="Messaging" t="Include">
+            <e p="MatchMessage.cs" t="Include" />
+            <e p="MatchMessageData.cs" t="Include" />
+            <e p="MatchMessageManager.cs" t="Include" />
+          </e>
         </e>
-        <e p="MatchClockManager.cs" t="Include" />
-        <e p="MatchCountdown.cs" t="Include" />
-        <e p="MatchNetworkManager.cs" t="Include" />
-        <e p="MatchStateManager.cs" t="Include" />
         <e p="Paid Third Party" t="Include">
           <e p="AmplifyShaderEditor" t="Include">
             <e p="Plugins" t="Include">
@@ -911,6 +915,7 @@
         <e p="Scenario.cs" t="Include" />
         <e p="ScenarioManager.cs" t="Include" />
         <e p="ScenarioTest.cs" t="Include" />
+        <e p="SimpleMatchServerManager.cs" t="Include" />
         <e p="Space Commander" t="Include">
           <e p="Audio" t="Include">
             <e p="Scripts" t="Include">
@@ -934,11 +939,13 @@
               <e p="Interfaces" t="Include">
                 <e p="ICollidable.cs" t="Include" />
                 <e p="IDamageable.cs" t="Include" />
+                <e p="IEntity.cs" t="Include" />
                 <e p="IPlayer.cs" t="Include" />
                 <e p="IPlayerEntity.cs" t="Include" />
                 <e p="IPursuable.cs" t="Include" />
                 <e p="ISelectable.cs" t="Include" />
                 <e p="ISpawnable.cs" t="Include" />
+                <e p="ITeamEntity.cs" t="Include" />
                 <e p="IWeaponSystem.cs" t="Include" />
                 <e p="IWeaponSystemController.cs" t="Include" />
               </e>
@@ -960,11 +967,6 @@
           </e>
           <e p="Haptics" t="Include">
             <e p="HapticsManager.cs" t="Include" />
-          </e>
-          <e p="Messaging" t="Include">
-            <e p="MatchMessage.cs" t="Include" />
-            <e p="MatchMessageData.cs" t="Include" />
-            <e p="MatchMessageManager.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="PlayerManager.cs" t="Include" />
@@ -1055,6 +1057,7 @@
           </e>
           <e p="Teams" t="Include">
             <e p="Team.cs" t="Include" />
+            <e p="TeamInfo.cs" t="Include" />
             <e p="TeamManager.cs" t="Include" />
           </e>
           <e p="Time" t="Include">
@@ -1062,6 +1065,7 @@
           </e>
           <e p="Utility" t="Include">
             <e p="Scripts" t="Include">
+              <e p="Clock.cs" t="Include" />
               <e p="Editor" t="Include">
                 <e p="CustomEditorFunctions.cs" t="Include" />
                 <e p="UnityEventDrawer.cs" t="Include" />
@@ -1125,7 +1129,6 @@
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
         </e>
-        <e p="TeamInfo.cs" t="Include" />
         <e p="ThirdParty" t="Include">
           <e p="Mirror" t="Include">
             <e p="Components" t="Include">
@@ -1453,18 +1456,10 @@
         <e p="UI" t="Include">
           <e p="Scripts" t="Include">
             <e p="UI" t="Include">
-              <e p="ClientOptionsMenuManager.cs" t="Include" />
               <e p="FillImageOverTime.cs" t="Include" />
               <e p="MainMenuManager.cs" t="Include" />
               <e p="MenuScreen.cs" t="Include" />
-              <e p="Mobile" t="Include">
-                <e p="MenuButton.cs" t="Include" />
-                <e p="UIController.cs" t="Include" />
-              </e>
-              <e p="PlayerCanvasController.cs" t="Include" />
               <e p="Pointer.cs" t="Include" />
-              <e p="ScoreboardController.cs" t="Include" />
-              <e p="ScoreboardPlayerObject.cs" t="Include" />
               <e p="SettingsMenuManager.cs" t="Include" />
               <e p="SharedMenuManager.cs" t="Include" />
               <e p="VRCanvas.cs" t="Include" />

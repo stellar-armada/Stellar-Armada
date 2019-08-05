@@ -2,16 +2,15 @@
 using System.Collections;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
-namespace SpaceCommander.UI
+namespace SpaceCommander.Match.Messaging
 {
     /* Manager for Hud Messages (notifications at the bottom of player's screen)
      * TO-DO: Make methods static so we don't need to call HudMessageManager.instance all over the place :)
      */
 
-    public enum MessageType
+    public enum MatchMessageType
     {
         
         // Numbers
@@ -54,7 +53,7 @@ namespace SpaceCommander.UI
 
         [SerializeField] MatchMessage MessageTemplate;
         
-        public delegate void MessageRaisedDelegate(MessageType t);
+        public delegate void MessageRaisedDelegate(MatchMessageType t);
 
         [SyncEvent] public event MessageRaisedDelegate EventOnNewMessage;
 
@@ -110,7 +109,7 @@ namespace SpaceCommander.UI
             // AssignTeam(player);
         }
         [Command]
-        public void CmdRaiseMessageToClients(MessageType _t)
+        public void CmdRaiseMessageToClients(MatchMessageType _t)
         {
             MatchMessageManager.instance.RaiseMessage(_t);
         }
@@ -130,7 +129,7 @@ namespace SpaceCommander.UI
             currentMessage = null;
         }
 
-        public void RaiseMessage(MessageType _type)
+        public void RaiseMessage(MatchMessageType _type)
         {
             if (!matchMessageData.messages.ContainsKey(_type))
                 Debug.LogError("Message Type " + _type + " not found in message lookup");
@@ -138,20 +137,20 @@ namespace SpaceCommander.UI
                 MessageTemplate.ShowMessage(_type,matchMessageData.messages[_type]);
         }
         
-        public void RaiseMessageDelayedWithCondition(MessageType _type, Func<bool> conditionToCheck,bool evaluatesToTrue, float delay )
+        public void RaiseMessageDelayedWithCondition(MatchMessageType _type, Func<bool> conditionToCheck,bool evaluatesToTrue, float delay )
         {
             StartCoroutine(iRaiseMessageDelayedWithCondition(_type, conditionToCheck,evaluatesToTrue, delay ));
         }
         
-        public void RaiseMessageDelayedWithReturnLogic(Func<MessageType> Method, float delay )
+        public void RaiseMessageDelayedWithReturnLogic(Func<MatchMessageType> Method, float delay )
         {
             StartCoroutine(iRaiseMessageDelayedWithCondition(Method(), delay ));
         }
         
-        IEnumerator iRaiseMessageDelayedWithCondition(MessageType _type, float delay )
+        IEnumerator iRaiseMessageDelayedWithCondition(MatchMessageType _type, float delay )
         {
 
-            if (_type == MessageType.NONE) yield break;
+            if (_type == MatchMessageType.NONE) yield break;
             
                 yield return new WaitForSeconds(delay);
 
@@ -162,7 +161,7 @@ namespace SpaceCommander.UI
 
         }
 
-        IEnumerator iRaiseMessageDelayedWithCondition(MessageType _type, Func<bool> conditionToCheck,bool evaluatesToTrue, float delay )
+        IEnumerator iRaiseMessageDelayedWithCondition(MatchMessageType _type, Func<bool> conditionToCheck,bool evaluatesToTrue, float delay )
         {
             yield return new WaitForSeconds(delay);
 

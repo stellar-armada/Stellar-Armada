@@ -1,4 +1,4 @@
-﻿using SpaceCommander.UI;
+﻿using SpaceCommander.Match.Messaging;
 using UnityEngine;
 
 namespace SpaceCommander.Match
@@ -24,14 +24,14 @@ namespace SpaceCommander.Match
             // 30 second warning
             PreMatchTimer.SetTrigger(_preMatchLength - 30, () =>
             {
-                MatchMessageManager.instance.CmdRaiseMessageToClients(MessageType.CD_FLEET_ARRIVING_IN_30);
+                MatchMessageManager.instance.CmdRaiseMessageToClients(MatchMessageType.CD_FLEET_ARRIVING_IN_30);
             });
             
             // 5 second countdown
             PreMatchTimer.SetTrigger(_preMatchLength - 6, () =>
             {
                 MatchCountdown preMatchCountDown = new MatchCountdown(this, new MatchCountDownSettings(
-                    MessageType.CD_PREPARE_TO_ENGAGE_IN, CountdownType.PreMatch));
+                    MatchMessageType.CD_PREPARE_TO_ENGAGE_IN, CountdownType.PreMatch));
             });
             
             PreMatchTimer.OnTimerFinished += () =>
@@ -47,13 +47,13 @@ namespace SpaceCommander.Match
             // 30 second warning to match ending
             MatchTimer.SetTrigger(_matchLength - 30, () =>
             {
-                MatchMessageManager.instance.CmdRaiseMessageToClients(MessageType.CD_MATCH_ENDING_IN_30);
+                MatchMessageManager.instance.CmdRaiseMessageToClients(MatchMessageType.CD_MATCH_ENDING_IN_30);
             });
             // 5 second countdown
             MatchTimer.SetTrigger(_matchLength - 6, () =>
             {
                 MatchCountdown newCount = new MatchCountdown(this, new MatchCountDownSettings(
-                    MessageType.CD_MATCH_ENDING_IN, CountdownType.Match ));
+                    MatchMessageType.CD_MATCH_ENDING_IN, CountdownType.Match ));
             });
             // 
             MatchTimer.OnTimerFinished += () =>
@@ -70,7 +70,7 @@ namespace SpaceCommander.Match
 
         public void Start()
         {
-            MatchMessageManager.instance.CmdRaiseMessageToClients(MessageType.CD_FLEET_ARRIVING_IN_30);
+            MatchMessageManager.instance.CmdRaiseMessageToClients(MatchMessageType.CD_FLEET_ARRIVING_IN_30);
             PreMatchTimer.Start();
             currentTimer = PreMatchTimer;
         }
@@ -78,7 +78,7 @@ namespace SpaceCommander.Match
         void PostMatchCountdownEvent()
         {
             MatchCountdown newCount = new MatchCountdown(this, new MatchCountDownSettings(
-                MessageType.CD_SERVER_SHUTTING_DOWN_IN, CountdownType.PostMatch
+                MatchMessageType.CD_SERVER_SHUTTING_DOWN_IN, CountdownType.PostMatch
             ));
         }
 

@@ -2,13 +2,9 @@
 
 namespace SpaceCommander
 {
-    public interface IPlayerEntity
+    public interface IPlayerEntity : IEntity
     {
         void CmdSetPlayer(uint playerId);
-        uint GetEntityId();
         IPlayer GetPlayer();
-        bool IsAlive();
-        void CmdDie();
-        GameObject GetGameObject();
     }
 }

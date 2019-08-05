@@ -1,14 +1,13 @@
-﻿using SpaceCommander.Player;
-using SpaceCommander.UI;
+﻿using SpaceCommander.Match.Messaging;
 
 namespace SpaceCommander.Match
 {
     public struct MatchCountDownSettings
     {
 
-        public MessageType startingMessage;
+        public MatchMessageType startingMessage;
         public CountdownType countDownType;
-        public MatchCountDownSettings(MessageType startingMessage, CountdownType countDownType)
+        public MatchCountDownSettings(MatchMessageType startingMessage, CountdownType countDownType)
         {
             this.startingMessage = startingMessage;
             this.countDownType = countDownType;
@@ -51,7 +50,7 @@ namespace SpaceCommander.Match
             if (counter > 0)
             {
 
-                MatchMessageManager.instance.CmdRaiseMessageToClients((MessageType) counter);
+                MatchMessageManager.instance.CmdRaiseMessageToClients((MatchMessageType) counter);
                 counter--;
                 
                 t.Start();
@@ -70,7 +69,7 @@ namespace SpaceCommander.Match
 
         void DelayedPostCoundown()
         {
-            MatchMessageManager.instance.CmdRaiseMessageToClients(MessageType.MATCH_HAS_BEGUN);
+            MatchMessageManager.instance.CmdRaiseMessageToClients(MatchMessageType.MATCH_HAS_BEGUN);
         }
     }
 }

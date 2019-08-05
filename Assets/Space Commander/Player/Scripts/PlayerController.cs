@@ -160,7 +160,8 @@ namespace SpaceCommander.Player
         
         public bool IsEnemy(IPlayer player)
         {
-            if (teamId != player.GetTeam().teamID) return true;
+            //Temporary enemy check -- this could be smarter and more extensible?
+            if (player != this) return true;
             return false;
         }
 
