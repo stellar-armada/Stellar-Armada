@@ -6,24 +6,34 @@ namespace SpaceCommander.Selection
     {
         private IPlayerEntity owningEntity;
 
+        [SerializeField] private Renderer selectionCube;
+        
+        public int selectionSetID;
+
+        void Awake()
+        {
+            selectionCube.enabled = false;
+            owningEntity = GetComponent<IPlayerEntity>();
+        }
+
         public int GetSelectionSetID()
         {
-            throw new System.NotImplementedException();
+            return selectionSetID;
         }
 
         public void SetSelectionSetID(int id)
         {
-            throw new System.NotImplementedException();
+            selectionSetID = id;
         }
 
         public void Select()
         {
-            throw new System.NotImplementedException();
+            selectionCube.enabled = true;
         }
 
         public void Deselect()
         {
-            throw new System.NotImplementedException();
+            selectionCube.enabled = false;
         }
 
         public IPlayerEntity GetOwningEntity()
@@ -33,7 +43,7 @@ namespace SpaceCommander.Selection
 
         public bool IsSelectable()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
     }
 }

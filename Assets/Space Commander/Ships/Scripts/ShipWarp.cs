@@ -11,15 +11,10 @@ namespace SpaceCommander.Ships
             public Vector3 warpInStartPos;
             public float warpTime = 5f;
             private Ship ship;
-            [SerializeField] bool warpInOnStart = true;
 
             void Awake()
             {
                 ship = GetComponent<Ship>();
-            }
-            void Start()
-            {
-                if (warpInOnStart) InitWarp();
             }
 
             public void InitWarp() {

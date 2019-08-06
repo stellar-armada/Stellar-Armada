@@ -1,10 +1,11 @@
 ﻿using Mirror;
+using SpaceCommander.Selection;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace SpaceCommander.Ships
 {
-    public class ShipHull : NetworkBehaviour, IDamageable
+    public class ShipHull : NetworkBehaviour, IDamageable, ICollidable
     {
         private IPlayerEntity owningEntity;
 
@@ -12,6 +13,8 @@ namespace SpaceCommander.Ships
 
         public UnityEvent HullChanged;
 
+        [SerializeField] ShipSelectionHandler selectionHandler;
+        
         [SyncVar (hook=nameof(HandleHullChange))] public float currentHull;
 
         void Awake()
@@ -60,6 +63,19 @@ namespace SpaceCommander.Ships
         {
             HullChanged.Invoke();
         }
+
+           
+
+
+            public IDamageable GetDamageable()
+            {
+                return this;
+            }
+
+            public ISelectable GetSelectable()
+            {
+                return selectionHandler;
+            }
     }  
 }
 

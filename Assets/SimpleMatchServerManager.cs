@@ -55,7 +55,7 @@ namespace SpaceCommander.Match
                         for (int numShips = 0; numShips < key.Value; numShips++)
                         {
                             // For each ship, instantiate for current team
-                            ShipFactory.instance.CmdCreateShipForTeam(i, g, key.Key, Vector3.zero, Quaternion.identity);
+                            ShipFactory.instance.CmdCreateShipForTeam(i, g, key.Key, Random.onUnitSphere * 8f, Quaternion.identity);
                             Debug.Log("Gave a " + key.Key + " to team " + i);
                         }
                     }

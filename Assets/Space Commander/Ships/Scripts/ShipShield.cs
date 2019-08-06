@@ -1,10 +1,11 @@
 ﻿using Mirror;
+using SpaceCommander.Selection;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace SpaceCommander.Ships
 {
-    public class ShipShield : NetworkBehaviour, IDamageable
+    public class ShipShield : NetworkBehaviour, IDamageable, ICollidable
     {
         private IPlayerEntity owningEntity;
 
@@ -23,6 +24,9 @@ namespace SpaceCommander.Ships
 
         private Collider col;
         private bool shieldsUp = false;
+        
+        [SerializeField] ShipSelectionHandler selectionHandler;
+
 
         void Awake()
         {
@@ -126,6 +130,16 @@ namespace SpaceCommander.Ships
             }
 
             ShieldChanged.Invoke();
+        }
+        
+        public IDamageable GetDamageable()
+        {
+            return this;
+        }
+
+        public ISelectable GetSelectable()
+        {
+            return selectionHandler;
         }
     }
 }

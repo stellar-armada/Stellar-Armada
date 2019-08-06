@@ -41,6 +41,11 @@ namespace SpaceCommander.Ships
         
         public UnityEvent ShipDestroyed;
 
+        void Awake()
+        {
+            transform.parent = SceneRoot.instance.transform;
+            transform.localScale = Vector3.one;
+        }
 
         void HandleDeath(bool alive)
         {
@@ -67,7 +72,8 @@ namespace SpaceCommander.Ships
         [ClientRpc]
         public void RpcSetGroup(int newGroupId)
         {
-           SetGroup(newGroupId);
+            if(!isServer) // Prevent double calls if we're testing in host mode
+                SetGroup(newGroupId);
         }
 
         void SetGroup(int newGroupId)
@@ -85,6 +91,7 @@ namespace SpaceCommander.Ships
         [ClientRpc]
         public void RpcSetTeam(uint newTeamId)
         {
+            if(!isServer) // Prevent double calls if we're testing in host mode
             SetTeam(newTeamId);
         }
 
