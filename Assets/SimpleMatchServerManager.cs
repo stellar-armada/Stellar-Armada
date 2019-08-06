@@ -7,9 +7,9 @@ namespace SpaceCommander.Match
 {
     public class SimpleMatchServerManager : NetworkBehaviour
     {
-        public override void OnStartServer()
+        public void Start()
         {
-            base.OnStartServer();
+            if (!isServer) return;
             
             Debug.Log("Starting server initialization routine");
             
@@ -19,13 +19,25 @@ namespace SpaceCommander.Match
             
             Debug.Log("Getting current scenario");            
             Scenario scenario = MatchScenarioManager.instance.GetCurrentScenario();
+
+            if (SceneRoot.instance == null)
+            {
+                Debug.LogError("No scene root found");
+            }
             
             // Create map from scenario template
             Debug.Log("Creating map");
             GameObject m = Instantiate(scenario.levelPrefab, SceneRoot.instance.transform);
             
             NetworkServer.Spawn(m);
+            
+            // Create teams
+            foreach (TeamInfo teamInfo in scenario.teamInfo)
+            {
+                TeamManager.instance.CmdCreateNewTeam();
+            }
 
+            // Create ships
             for (uint i = 0; i < scenario.teamInfo.Length; i++)
             {
                 Debug.Log("Created a team new team at ID " + i);
@@ -44,28 +56,16 @@ namespace SpaceCommander.Match
                         for (int numShips = 0; numShips < key.Value; numShips++)
                         {
                             // For each ship, instantiate for current team
-                            ShipFactory.instance.CmdCreateShipForTeam(i, key.Key, Vector3.zero, Quaternion.identity);
+                            ShipFactory.instance.CmdCreateShipForTeam(i, g, key.Key, Vector3.zero, Quaternion.identity);
                             Debug.Log("Gave a " + key.Key + " to team " + i);
-                            
-                            
                         }
                     }
                 }
-
             }
-            
-            foreach (TeamInfo teamInfo in scenario.teamInfo)
-            {
-                TeamManager.instance.CmdCreateNewTeam();
-            }
-            
 
-
-            
-            
-            
             // Start prematch timer
-
+            
+            
         }
     }
 }

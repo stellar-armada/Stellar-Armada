@@ -8,6 +8,7 @@ namespace SpaceCommander.Teams
     public class Team : NetworkBehaviour
     {
         public uint teamId;
+
         // public int pointsToSpend; leaving here so we can add this mechanic later
         public string name;
         public Color color;
@@ -21,16 +22,23 @@ namespace SpaceCommander.Teams
             new List<IEntity>(),
             new List<IEntity>(),
         };
-        
+
         public void ChangeEntityGroup(IEntity entity, int group)
         {
             // Check if it's already in a group
-            
-            // If it is, check if the group is the same as the one we're trying to change to
-            
-            // If it isn't, remove from the old group and add to the new group
-            
-            // Otherwise do nothing
+            for (int i = 0; i < groups.Count; i++)
+            {
+                // If it is, check if the group is the same as the one we're trying to change to
+                if (groups[i].Contains(entity))
+                {
+                    // If it isn't, remove from the old group and add to the new group
+                    // Otherwise do nothing
+                    if (i != group)
+                    {
+                        RemoveEntityFromGroup(entity, i);
+                    }
+                }
+            }
         }
 
         public void AddEntityToGroup(IEntity entity, int group)
@@ -46,12 +54,12 @@ namespace SpaceCommander.Teams
                 }
             }
         }
-        
+
         public void RemoveEntityFromGroup(IEntity entity, int group)
         {
             groups[group].Remove(entity);
         }
-        
+
         public void AddPlayer(IPlayer player)
         {
             players.Add(player);

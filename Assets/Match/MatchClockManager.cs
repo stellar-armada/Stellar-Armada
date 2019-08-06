@@ -13,7 +13,7 @@ namespace SpaceCommander.Match
 
         private void Update()
         {
-            if (isServer)
+            if (isServer && clock != null)
             {
                 clock.Update();
                 CurrentTime = clock.GetMatchTime();

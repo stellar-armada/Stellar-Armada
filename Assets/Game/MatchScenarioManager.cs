@@ -27,6 +27,7 @@ namespace SpaceCommander.Match
 
         void Awake()
         {
+            instance = this;
             if (isClientOnly)
             {
                 LoadScenario();

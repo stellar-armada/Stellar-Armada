@@ -56,25 +56,21 @@ namespace SpaceCommander.Ships
         }
         
         [Command]
-        public void CmdSetGroup(uint newGroupId)
+        public void CmdSetGroup(int newGroupId)
         {
-            SetTeam(newGroupId);
-            RpcSetTeam(newGroupId);
+            SetGroup(newGroupId);
+            RpcSetGroup(newGroupId);
         }
 
         [ClientRpc]
-        public void RpcSetGroup(uint newGroupId)
+        public void RpcSetGroup(int newGroupId)
         {
-            SetTeam(newGroupId);
+           SetGroup(newGroupId);
         }
 
-        void SetGroup(uint newGroupId)
+        void SetGroup(int newGroupId)
         {
-            
-            
-            if (team.entities != null && team.entities.Contains(this) && team.teamId != newTeamId) team.RemoveEntity(this);
-            team = TeamManager.instance.GetTeamByID(newTeamId);
-            team.AddEntity(this);
+            team.ChangeEntityGroup(this, newGroupId);
         }
         
         [Command]

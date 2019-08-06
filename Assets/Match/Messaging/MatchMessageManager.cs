@@ -111,7 +111,7 @@ namespace SpaceCommander.Match.Messaging
         [Command]
         public void CmdRaiseMessageToClients(MatchMessageType _t)
         {
-            MatchMessageManager.instance.RaiseMessage(_t);
+            RaiseMessage(_t);
         }
         public static MatchMessage GetCurrentMessage()
         {
@@ -129,7 +129,7 @@ namespace SpaceCommander.Match.Messaging
             currentMessage = null;
         }
 
-        public void RaiseMessage(MatchMessageType _type)
+        void RaiseMessage(MatchMessageType _type)
         {
             if (!matchMessageData.messages.ContainsKey(_type))
                 Debug.LogError("Message Type " + _type + " not found in message lookup");
