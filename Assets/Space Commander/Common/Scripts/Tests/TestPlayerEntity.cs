@@ -9,6 +9,8 @@ namespace SpaceCommander.Common.Tests
 
         public bool isAlive;
 
+        private uint entityId = 0;
+
         public void SetPlayer(IPlayer player)
         {
             testPlayer = player;
@@ -21,8 +23,12 @@ namespace SpaceCommander.Common.Tests
 
         public uint GetEntityId()
         {
-            return 0;
-            //TO-DO: Figure out how our entity registration works...
+            return entityId;
+        }
+
+        public void SetEntityId(uint id)
+        {
+            entityId = id;
         }
 
         public IPlayer GetPlayer()

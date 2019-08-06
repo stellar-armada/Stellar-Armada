@@ -38,7 +38,6 @@ namespace SpaceCommander.Game
         private void OnDestroy()
         {
             instance = null;
-            PlayerController.ClearDelegates();
         }
         
         static PlayerController localPlayer;

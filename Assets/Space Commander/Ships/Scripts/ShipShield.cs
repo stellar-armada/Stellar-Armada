@@ -1,7 +1,6 @@
 ﻿using Mirror;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace SpaceCommander.Ships
 {
@@ -11,7 +10,7 @@ namespace SpaceCommander.Ships
 
         public float maxShield;
 
-        public MonoBehaviour[] shieldComponents;
+        public UnityEvent ShieldChanged;
 
         [SerializeField] private float shieldRechargeDelayTime;
         [SerializeField] private float shieldRechargeRate;
@@ -19,37 +18,61 @@ namespace SpaceCommander.Ships
 
         private float lastHit;
 
-        [FormerlySerializedAs("shield")] [SyncVar(hook = nameof(HandleShieldChange))]
         public float currentShield;
+        private float lastShield;
 
-        public UnityEvent ShieldChanged;
+        private Collider col;
+        private bool shieldsUp = false;
 
         void Awake()
         {
             currentShield = maxShield;
+            col = GetComponent<Collider>();
         }
 
         void Update()
         {
-            if(isServer && owningEntity.IsAlive()) RechargeShieldsOverTime();
-        }
-
-        void RechargeShieldsOverTime()
-        {
             //Automatic shield regen
-            if (isServer && Time.time > lastHit + shieldRechargeDelayTime)
+            if (currentShield < maxShield && Time.time > lastHit + shieldRechargeDelayTime)
             {
                 currentShield = Mathf.Min(currentShield + shieldRechargeRate * Time.deltaTime, maxShield);
             }
+
+            if (lastShield != currentShield)
+            {
+                HandleShieldChange(currentShield);
+                lastShield = currentShield;
+            }
         }
 
-        [Command]
+
+        public void TakeDamage(float damage, Vector3 point, Damager damager)
+        {
+            if (shieldEffectController && !shieldEffectController.GetIsDuringActivationAnim())
+            {
+                shieldEffectController.OnHit(point, damager.GetImpactSize());
+            }
+
+            CmdTakeDamage(damage);
+        }
+
+        void CmdTakeDamage(float damage)
+        {
+            if (currentShield > 0)
+            {
+                currentShield -= damage;
+            }
+            else if (owningEntity.IsAlive())
+                CmdDie();
+
+            lastHit = Time.time;
+        }
+
         public void CmdRechargeShields(float charge)
         {
             currentShield = Mathf.Min(currentShield + charge, maxShield);
             Debug.Log("Shields recharged to " + currentShield);
         }
-
 
         public IPlayerEntity GetOwningEntity()
         {
@@ -66,69 +89,37 @@ namespace SpaceCommander.Ships
             return gameObject;
         }
 
-        public void TakeDamage(float damage, Vector3 point, Damager damager)
-        {
-            if (shieldEffectController && !shieldEffectController.GetIsDuringActivationAnim())
-            {
-                shieldEffectController.OnHit(point, damager.GetImpactSize());
-            }
-        }
-
-        public void TakeDamage(float damage)
-        {
-            if (!owningEntity.IsAlive() && isServer) CmdTakeDamage(damage);
-        }
-
-        [Command]
-        void CmdTakeDamage(float damage)
-        {
-            if (currentShield > 0)
-            {
-                currentShield -= damage;
-            }
-            else if (owningEntity.IsAlive())
-            {
-                CmdDie();
-            }
-
-            lastHit = Time.time;
-        }
-
-
-        [Command]
         public void CmdDie()
         {
+            shieldEffectController.SetShieldActive(false, true);
+            GetComponent<Collider>().enabled = false;
         }
 
-        void EnableShieldComponents()
+        void EnableShield()
         {
             shieldEffectController.SetShieldActive(true, true);
-            foreach (MonoBehaviour c in shieldComponents)
-            {
-                c.enabled = true;
-            }
+            col.enabled = true;
+            shieldsUp = true;
         }
 
         void DisableShieldComponents()
         {
             shieldEffectController.SetShieldActive(false, true);
-
-            foreach (MonoBehaviour c in shieldComponents)
-            {
-                c.enabled = false;
-            }
+            col.enabled = false;
+            shieldsUp = false;
         }
 
 
         void HandleShieldChange(float s)
         {
-            if (s > 0 && currentShield < 0)
+            Debug.Log(s);
+            if (!shieldsUp && s >= maxShield / 10f) // Shield regenerates when it hits 1/10th HP
             {
                 // Shields back up
-                EnableShieldComponents();
+                EnableShield();
             }
 
-            if (s <= 0 && currentShield > 0)
+            if (shieldsUp && s <= 0)
             {
                 // Shields down
                 DisableShieldComponents();

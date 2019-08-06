@@ -20,12 +20,12 @@ namespace SpaceCommander.Ships
         
         public void RegisterShip(Ship ship)
         {
-            Ships.Add(ship.netId, ship);
+            Ships.Add(ship.GetEntityId(), ship);
         }
 
         public void UnregisterShip(Ship ship)
         {
-            Ships.Remove(ship.netId);
+            Ships.Remove(ship.GetEntityId());
         }
 
         public static List<Ship> GetShips() => Ships.Values.ToList();

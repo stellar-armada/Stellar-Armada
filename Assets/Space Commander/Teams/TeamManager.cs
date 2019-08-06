@@ -10,6 +10,7 @@ namespace SpaceCommander.Teams
     {
         public Color color;
         public string name;
+        public Texture insignia;
     }
     public class TeamManager : NetworkBehaviour
     {
@@ -37,6 +38,7 @@ namespace SpaceCommander.Teams
             t.teamId = (uint)teams.Count;
             t.name = template.name;
             t.color = template.color;
+            t.insignia = template.insignia;
             teams.Add(t);
             Debug.Log("Added team " + t);
         }

@@ -68,7 +68,6 @@ namespace SpaceCommander.Ships
         public void CmdRechargeShields(float charge)
         {
             currentShield = Mathf.Min(currentShield + charge, maxShield);
-            Debug.Log("Shields recharged to " + currentShield);
         }
 
         public IPlayerEntity GetOwningEntity()
@@ -91,13 +90,7 @@ namespace SpaceCommander.Ships
             shieldEffectController.SetShieldActive(false, true);
             GetComponent<Collider>().enabled = false;
         }
-
-        void ReactivateShield()
-        {
-            shieldEffectController.SetShieldActive(true, true);
-            GetComponent<Collider>().enabled = true;
-        }
-       
+        
         void EnableShield()
         {
             shieldEffectController.SetShieldActive(true, true);
@@ -115,7 +108,6 @@ namespace SpaceCommander.Ships
 
         void HandleShieldChange(float s)
         {
-            Debug.Log(s);
             if (!shieldsUp && s >= maxShield/10f) // Shield regenerates when it hits 1/10th HP
             {
                 // Shields back up

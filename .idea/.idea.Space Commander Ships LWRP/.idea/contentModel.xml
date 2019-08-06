@@ -5,26 +5,37 @@
     <e p="C:\Users\alexm\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Space Commander Ships LWRP.-763613520.00" t="ExcludeRecursive" />
     <e p="D:\Space Commander Ships LWRP" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="MatchNetworkManagerEditor.cs" t="Include" />
         </e>
+        <e p="EntityFactory.cs" t="Include" />
         <e p="FleetSelectionUITest.cs" t="Include" />
-        <e p="Game" t="Include">
-          <e p="MatchScenarioManager.cs" t="Include" />
-        </e>
-        <e p="Match" t="Include">
-          <e p="MatchClock.cs" t="Include" />
-          <e p="MatchClockManager.cs" t="Include" />
-          <e p="MatchCountdown.cs" t="Include" />
-          <e p="MatchNetworkManager.cs" t="Include" />
-          <e p="MatchStateManager.cs" t="Include" />
-          <e p="Messaging" t="Include">
-            <e p="MatchMessage.cs" t="Include" />
-            <e p="MatchMessageData.cs" t="Include" />
-            <e p="MatchMessageManager.cs" t="Include" />
+        <e p="IK" t="Include">
+          <e p="AxisTools.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="VRIKInspector.cs" t="Include" />
           </e>
+          <e p="Hierarchy.cs" t="Include" />
+          <e p="IK.cs" t="Include" />
+          <e p="IKSolver.cs" t="Include" />
+          <e p="IKSolverVR.cs" t="Include" />
+          <e p="IKSolverVRArm.cs" t="Include" />
+          <e p="IKSolverVRBodyPart.cs" t="Include" />
+          <e p="IKSolverVRFootstep.cs" t="Include" />
+          <e p="IKSolverVRLeg.cs" t="Include" />
+          <e p="IKSolverVRLocomotion.cs" t="Include" />
+          <e p="IKSolverVRSpine.cs" t="Include" />
+          <e p="IKSolverVRUtilities.cs" t="Include" />
+          <e p="Interp.cs" t="Include" />
+          <e p="QuaTools.cs" t="Include" />
+          <e p="RotationLimit.cs" t="Include" />
+          <e p="SolverManager.cs" t="Include" />
+          <e p="V3Tools.cs" t="Include" />
+          <e p="VRIK.cs" t="Include" />
+          <e p="Warning.cs" t="Include" />
         </e>
         <e p="Paid Third Party" t="Include">
           <e p="AmplifyShaderEditor" t="Include">
@@ -722,192 +733,98 @@
               </e>
             </e>
           </e>
-          <e p="Plugins" t="Include">
-            <e p="RootMotion" t="Include">
+          <e p="UltimateReplay" t="Include">
+            <e p="Demo" t="Include">
+              <e p="Audio" t="Include">
+                <e p="MediumExplosion.info.txt" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="AudioDemo.cs" t="Include" />
+                <e p="CubeSpawner.cs" t="Include" />
+                <e p="MultichannelDemo.cs" t="Include" />
+                <e p="ParticleDemo.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="_Attributes" t="Include">
+                <e p="ReplayComponentPreparerAttribute.cs" t="Include" />
+                <e p="ReplayIgnoreAttribute.cs" t="Include" />
+                <e p="ReplayVarAttribute.cs" t="Include" />
+              </e>
+              <e p="Core" t="Include">
+                <e p="DefaultReplayPreparer.cs" t="Include" />
+                <e p="IReplayDataSerialize.cs" t="Include" />
+                <e p="IReplayPreparer.cs" t="Include" />
+                <e p="IReplaySerialize.cs" t="Include" />
+                <e p="ReplayEvent.cs" t="Include" />
+                <e p="ReplayIdentity.cs" t="Include" />
+                <e p="ReplayScene.cs" t="Include" />
+                <e p="ReplaySequencer.cs" t="Include" />
+                <e p="ReplayTimer.cs" t="Include" />
+                <e p="ReplayVariable.cs" t="Include" />
+                <e p="StatePreparation" t="Include">
+                  <e p="AnimatorPreparer.cs" t="Include" />
+                  <e p="BehaviourPreparer.cs" t="Include" />
+                  <e p="ColliderPreparer.cs" t="Include" />
+                  <e p="ComponentPreparer.cs" t="Include" />
+                  <e p="RigidBodyPreparer.cs" t="Include" />
+                </e>
+              </e>
               <e p="Editor" t="Include">
-                <e p="FinalIK" t="Include">
-                  <e p="AimIKInspector.cs" t="Include" />
-                  <e p="AimPoserInspector.cs" t="Include" />
-                  <e p="ArmIKInspector.cs" t="Include" />
-                  <e p="BipedIKInspector.cs" t="Include" />
-                  <e p="BipedIKSolversInspector.cs" t="Include" />
-                  <e p="CCDIKInspector.cs" t="Include" />
-                  <e p="ConstraintsInspector.cs" t="Include" />
-                  <e p="FABRIKInspector.cs" t="Include" />
-                  <e p="FABRIKRootInspector.cs" t="Include" />
-                  <e p="FullBodyBipedIKInspector.cs" t="Include" />
-                  <e p="GroundingInspector.cs" t="Include" />
-                  <e p="IKEffectorInspector.cs" t="Include" />
-                  <e p="IKExecutionOrderInspector.cs" t="Include" />
-                  <e p="IKInspector.cs" t="Include" />
-                  <e p="IKSolverAimInspector.cs" t="Include" />
-                  <e p="IKSolverArmInspector.cs" t="Include" />
-                  <e p="IKSolverFABRIKRootInspector.cs" t="Include" />
-                  <e p="IKSolverFullBodyBipedInspector.cs" t="Include" />
-                  <e p="IKSolverFullBodyInspector.cs" t="Include" />
-                  <e p="IKSolverHeuristicInspector.cs" t="Include" />
-                  <e p="IKSolverInspector.cs" t="Include" />
-                  <e p="IKSolverLegInspector.cs" t="Include" />
-                  <e p="IKSolverLimbInspector.cs" t="Include" />
-                  <e p="IKSolverLookAtInspector.cs" t="Include" />
-                  <e p="IKSolverTrigonometricInspector.cs" t="Include" />
-                  <e p="InteractionTargetInspector.cs" t="Include" />
-                  <e p="InteractionTriggerInspector.cs" t="Include" />
-                  <e p="LegIKInspector.cs" t="Include" />
-                  <e p="LimbIKInspector.cs" t="Include" />
-                  <e p="LookAtIKInspector.cs" t="Include" />
-                  <e p="RotationLimitAngleInspector.cs" t="Include" />
-                  <e p="RotationLimitHingeInspector.cs" t="Include" />
-                  <e p="RotationLimitInspector.cs" t="Include" />
-                  <e p="RotationLimitPolygonalInspector.cs" t="Include" />
-                  <e p="RotationLimitSplineInspector.cs" t="Include" />
-                  <e p="TrigonometricIKInspector.cs" t="Include" />
-                  <e p="VRIKInspector.cs" t="Include" />
-                </e>
-                <e p="Shared Scripts" t="Include">
-                  <e p="BipedReferencesInspector.cs" t="Include" />
-                  <e p="CommentsInspector.cs" t="Include" />
-                  <e p="Inspector.cs" t="Include" />
-                  <e p="InspectorCommentDrawer.cs" t="Include" />
-                  <e p="LargeHeaderDrawer.cs" t="Include" />
-                  <e p="SerializedContent.cs" t="Include" />
-                </e>
+                <e p="ReplayBehaviourEditor.cs" t="Include" />
+                <e p="ReplayHelper.cs" t="Include" />
+                <e p="ReplayIdentityPropertyDrawer.cs" t="Include" />
+                <e p="ReplayManagerEditor.cs" t="Include" />
+                <e p="ReplayMemoryTargetEditor.cs" t="Include" />
+                <e p="ReplayObjectEditor.cs" t="Include" />
+                <e p="ReplayVariableValidator.cs" t="Include" />
               </e>
-              <e p="FinalIK" t="Include">
-                <e p="BipedIK" t="Include">
-                  <e p="BipedIK.cs" t="Include" />
-                  <e p="BipedIKSolvers.cs" t="Include" />
-                </e>
-                <e p="Constraints" t="Include">
-                  <e p="Constraint.cs" t="Include" />
-                  <e p="ConstraintPosition.cs" t="Include" />
-                  <e p="ConstraintPositionOffset.cs" t="Include" />
-                  <e p="ConstraintRotation.cs" t="Include" />
-                  <e p="ConstraintRotationOffset.cs" t="Include" />
-                  <e p="Constraints.cs" t="Include" />
-                </e>
-                <e p="DoxygenManualFinalIK.cs" t="Include" />
-                <e p="Grounder" t="Include">
-                  <e p="Grounder.cs" t="Include" />
-                  <e p="GrounderBipedIK.cs" t="Include" />
-                  <e p="GrounderFBBIK.cs" t="Include" />
-                  <e p="GrounderIK.cs" t="Include" />
-                  <e p="GrounderQuadruped.cs" t="Include" />
-                  <e p="GrounderVRIK.cs" t="Include" />
-                  <e p="Grounding.cs" t="Include" />
-                  <e p="GroundingLeg.cs" t="Include" />
-                  <e p="GroundingPelvis.cs" t="Include" />
-                </e>
-                <e p="IK Components" t="Include">
-                  <e p="AimIK.cs" t="Include" />
-                  <e p="ArmIK.cs" t="Include" />
-                  <e p="CCDIK.cs" t="Include" />
-                  <e p="FABRIK.cs" t="Include" />
-                  <e p="FABRIKRoot.cs" t="Include" />
-                  <e p="FullBodyBipedIK.cs" t="Include" />
-                  <e p="IK.cs" t="Include" />
-                  <e p="IKExecutionOrder.cs" t="Include" />
-                  <e p="LegIK.cs" t="Include" />
-                  <e p="LimbIK.cs" t="Include" />
-                  <e p="LookAtIK.cs" t="Include" />
-                  <e p="TrigonometricIK.cs" t="Include" />
-                  <e p="VRIK.cs" t="Include" />
-                </e>
-                <e p="IK Solvers" t="Include">
-                  <e p="FABRIKChain.cs" t="Include" />
-                  <e p="FBBIKArmBending.cs" t="Include" />
-                  <e p="FBBIKHeadEffector.cs" t="Include" />
-                  <e p="FBIKChain.cs" t="Include" />
-                  <e p="IKConstraintBend.cs" t="Include" />
-                  <e p="IKEffector.cs" t="Include" />
-                  <e p="IKMapping.cs" t="Include" />
-                  <e p="IKMappingBone.cs" t="Include" />
-                  <e p="IKMappingLimb.cs" t="Include" />
-                  <e p="IKMappingSpine.cs" t="Include" />
-                  <e p="IKSolver.cs" t="Include" />
-                  <e p="IKSolverAim.cs" t="Include" />
-                  <e p="IKSolverArm.cs" t="Include" />
-                  <e p="IKSolverCCD.cs" t="Include" />
-                  <e p="IKSolverFABRIK.cs" t="Include" />
-                  <e p="IKSolverFABRIKRoot.cs" t="Include" />
-                  <e p="IKSolverFullBody.cs" t="Include" />
-                  <e p="IKSolverFullBodyBiped.cs" t="Include" />
-                  <e p="IKSolverHeuristic.cs" t="Include" />
-                  <e p="IKSolverLeg.cs" t="Include" />
-                  <e p="IKSolverLimb.cs" t="Include" />
-                  <e p="IKSolverLookAt.cs" t="Include" />
-                  <e p="IKSolverTrigonometric.cs" t="Include" />
-                  <e p="IKSolverVR.cs" t="Include" />
-                  <e p="IKSolverVRArm.cs" t="Include" />
-                  <e p="IKSolverVRBodyPart.cs" t="Include" />
-                  <e p="IKSolverVRFootstep.cs" t="Include" />
-                  <e p="IKSolverVRLeg.cs" t="Include" />
-                  <e p="IKSolverVRLocomotion.cs" t="Include" />
-                  <e p="IKSolverVRSpine.cs" t="Include" />
-                  <e p="IKSolverVRUtilities.cs" t="Include" />
-                  <e p="TwistRelaxer.cs" t="Include" />
-                </e>
-                <e p="InteractionSystem" t="Include">
-                  <e p="InteractionEffector.cs" t="Include" />
-                  <e p="InteractionLookAt.cs" t="Include" />
-                  <e p="InteractionObject.cs" t="Include" />
-                  <e p="InteractionSystem.cs" t="Include" />
-                  <e p="InteractionTarget.cs" t="Include" />
-                  <e p="InteractionTrigger.cs" t="Include" />
-                </e>
-                <e p="Posers" t="Include">
-                  <e p="GenericPoser.cs" t="Include" />
-                  <e p="HandPoser.cs" t="Include" />
-                  <e p="Poser.cs" t="Include" />
-                </e>
-                <e p="Ragdoll Utility" t="Include">
-                  <e p="RagdollUtility.cs" t="Include" />
-                </e>
-                <e p="Rotation Limits" t="Include">
-                  <e p="RotationLimit.cs" t="Include" />
-                  <e p="RotationLimitAngle.cs" t="Include" />
-                  <e p="RotationLimitHinge.cs" t="Include" />
-                  <e p="RotationLimitPolygonal.cs" t="Include" />
-                  <e p="RotationLimitSpline.cs" t="Include" />
-                </e>
-                <e p="Tools" t="Include">
-                  <e p="AimController.cs" t="Include" />
-                  <e p="AimPoser.cs" t="Include" />
-                  <e p="Amplifier.cs" t="Include" />
-                  <e p="BodyTilt.cs" t="Include" />
-                  <e p="HitReaction.cs" t="Include" />
-                  <e p="HitReactionVRIK.cs" t="Include" />
-                  <e p="Inertia.cs" t="Include" />
-                  <e p="LookAtController.cs" t="Include" />
-                  <e p="OffsetModifier.cs" t="Include" />
-                  <e p="OffsetModifierVRIK.cs" t="Include" />
-                  <e p="OffsetPose.cs" t="Include" />
-                  <e p="PenetrationAvoidance.cs" t="Include" />
-                  <e p="Recoil.cs" t="Include" />
-                  <e p="ShoulderRotator.cs" t="Include" />
-                  <e p="VRIKCalibrator.cs" t="Include" />
-                  <e p="VRIKRootController.cs" t="Include" />
-                </e>
+              <e p="ReplayAnimator.cs" t="Include" />
+              <e p="ReplayAudio.cs" t="Include" />
+              <e p="ReplayBehaviour.cs" t="Include" />
+              <e p="ReplayControls.cs" t="Include" />
+              <e p="ReplayManager.cs" t="Include" />
+              <e p="ReplayObject.cs" t="Include" />
+              <e p="ReplayParticles.cs" t="Include" />
+              <e p="ReplayState.cs" t="Include" />
+              <e p="ReplayTime.cs" t="Include" />
+              <e p="ReplayTransform.cs" t="Include" />
+              <e p="Storage" t="Include">
+                <e p="Compression.cs" t="Include" />
+                <e p="ReplayFileBuffer.cs" t="Include" />
+                <e p="ReplayFileStream.cs" t="Include" />
+                <e p="ReplayFileTarget.cs" t="Include" />
+                <e p="ReplayFileTargetTypes.cs" t="Include" />
+                <e p="ReplayInitialDataBuffer.cs" t="Include" />
+                <e p="ReplayMemoryTarget.cs" t="Include" />
+                <e p="ReplayMultichannelMemoryTarget.cs" t="Include" />
+                <e p="ReplaySnapshot.cs" t="Include" />
+                <e p="ReplayTarget.cs" t="Include" />
               </e>
-              <e p="Shared Scripts" t="Include">
-                <e p="AxisTools.cs" t="Include" />
-                <e p="BipedLimbOrientations.cs" t="Include" />
-                <e p="BipedNaming.cs" t="Include" />
-                <e p="BipedReferences.cs" t="Include" />
-                <e p="Comments.cs" t="Include" />
-                <e p="DemoGUIMessage.cs" t="Include" />
-                <e p="Hierarchy.cs" t="Include" />
-                <e p="InspectorComment.cs" t="Include" />
-                <e p="Interp.cs" t="Include" />
-                <e p="LargeHeader.cs" t="Include" />
-                <e p="LayerMaskExtensions.cs" t="Include" />
-                <e p="Navigator.cs" t="Include" />
-                <e p="QuaTools.cs" t="Include" />
-                <e p="Singleton.cs" t="Include" />
-                <e p="SolverManager.cs" t="Include" />
-                <e p="TriggerEventBroadcaster.cs" t="Include" />
-                <e p="V3Tools.cs" t="Include" />
-                <e p="Warning.cs" t="Include" />
+              <e p="Util" t="Include">
+                <e p="BitConverterNonAlloc.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="RootMotion" t="Include">
+            <e p="Shared Demo Assets" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Camera Controllers" t="Include">
+                  <e p="CameraController.cs" t="Include" />
+                  <e p="CameraControllerFPS.cs" t="Include" />
+                </e>
+                <e p="Character Controllers" t="Include">
+                  <e p="CharacterAnimationBase.cs" t="Include" />
+                  <e p="CharacterBase.cs" t="Include" />
+                  <e p="SimpleLocomotion.cs" t="Include" />
+                  <e p="UserControlThirdPerson.cs" t="Include" />
+                </e>
+                <e p="Misc" t="Include">
+                  <e p="ApplicationQuit.cs" t="Include" />
+                  <e p="SlowMo.cs" t="Include" />
+                </e>
               </e>
             </e>
           </e>
@@ -915,6 +832,7 @@
         <e p="Scenario.cs" t="Include" />
         <e p="ScenarioManager.cs" t="Include" />
         <e p="ScenarioTest.cs" t="Include" />
+        <e p="ShipCollisionHandler.cs" t="Include" />
         <e p="SimpleMatchServerManager.cs" t="Include" />
         <e p="Space Commander" t="Include">
           <e p="Audio" t="Include">
@@ -957,6 +875,7 @@
             </e>
           </e>
           <e p="Game" t="Include">
+            <e p="MatchScenarioManager.cs" t="Include" />
             <e p="Scripts" t="Include">
               <e p="GameManager.cs" t="Include" />
               <e p="SceneRoot.cs" t="Include" />
@@ -967,6 +886,18 @@
           </e>
           <e p="Haptics" t="Include">
             <e p="HapticsManager.cs" t="Include" />
+          </e>
+          <e p="Match" t="Include">
+            <e p="MatchClock.cs" t="Include" />
+            <e p="MatchClockManager.cs" t="Include" />
+            <e p="MatchCountdown.cs" t="Include" />
+            <e p="MatchNetworkManager.cs" t="Include" />
+            <e p="MatchStateManager.cs" t="Include" />
+            <e p="Messaging" t="Include">
+              <e p="MatchMessage.cs" t="Include" />
+              <e p="MatchMessageData.cs" t="Include" />
+              <e p="MatchMessageManager.cs" t="Include" />
+            </e>
           </e>
           <e p="Player" t="Include">
             <e p="PlayerManager.cs" t="Include" />
@@ -1034,9 +965,9 @@
               <e p="ShipMovement.cs" t="Include" />
               <e p="ShipShield.cs" t="Include" />
               <e p="ShipType.cs" t="Include" />
-              <e p="ShipUI.cs" t="Include" />
               <e p="ShipWarp.cs" t="Include" />
               <e p="ShipWeaponSystemController.cs" t="Include" />
+              <e p="StatusBar.cs" t="Include" />
               <e p="TestDamageableHull.cs" t="Include" />
               <e p="TestDamageableShield.cs" t="Include" />
               <e p="Tests" t="Include">
@@ -1062,6 +993,20 @@
           </e>
           <e p="Time" t="Include">
             <e p="TimeManager.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="UI" t="Include">
+                <e p="FillImageOverTime.cs" t="Include" />
+                <e p="MainMenuManager.cs" t="Include" />
+                <e p="MenuScreen.cs" t="Include" />
+                <e p="Pointer.cs" t="Include" />
+                <e p="SettingsMenuManager.cs" t="Include" />
+                <e p="SharedMenuManager.cs" t="Include" />
+                <e p="VRCanvas.cs" t="Include" />
+              </e>
+              <e p="UIManager.cs" t="Include" />
+            </e>
           </e>
           <e p="Utility" t="Include">
             <e p="Scripts" t="Include">
@@ -1126,6 +1071,7 @@
             </e>
           </e>
         </e>
+        <e p="StatusBar.shader" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
         </e>
@@ -1278,6 +1224,109 @@
               <e p="SyncListTest.cs" t="Include" />
               <e p="WeaverAssembler.cs" t="Include" />
               <e p="WeaverTest.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Oculus" t="Include">
+            <e p="VR" t="Include">
+              <e p="Editor" t="Include">
+                <e p="AndroidManifest.OVRSubmission.xml" t="Include" />
+                <e p="Oculus.VR.Editor.asmdef" t="Include" />
+                <e p="OVRADBTool.cs" t="Include" />
+                <e p="OVRBuild.cs" t="Include" />
+                <e p="OVRConfig.cs" t="Include" />
+                <e p="OVRDeviceSelector.cs" t="Include" />
+                <e p="OVRDirectorySyncer.cs" t="Include" />
+                <e p="OVREngineConfigurationUpdater.cs" t="Include" />
+                <e p="OVRExpansionFileGenerator.cs" t="Include" />
+                <e p="OVRGradleGeneration.cs" t="Include" />
+                <e p="OVRLayerAttributeEditor.cs" t="Include" />
+                <e p="OVRLint.cs" t="Include" />
+                <e p="OVRManifestPreprocessor.cs" t="Include" />
+                <e p="OVRPlatformTool.cs" t="Include" />
+                <e p="OVRPlatformToolSettings.cs" t="Include" />
+                <e p="OVRPluginUpdater.cs" t="Include" />
+                <e p="OVRPluginUpdaterStub.cs" t="Include" />
+                <e p="OVRProjectConfig.cs" t="Include" />
+                <e p="OVRScreenshotWizard.cs" t="Include" />
+                <e p="OVRSystemProfilerPanel.cs" t="Include" />
+                <e p="PathHelper.cs" t="Include" />
+              </e>
+              <e p="License.txt" t="Include" />
+              <e p="NOTICE.txt" t="Include" />
+              <e p="Oculus.VR.asmdef" t="Include" />
+              <e p="Plugins" t="Include">
+                <e p="placeholder.txt" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="Composition" t="Include">
+                  <e p="OVRCameraComposition.cs" t="Include" />
+                  <e p="OVRComposition.cs" t="Include" />
+                  <e p="OVRCompositionUtil.cs" t="Include" />
+                  <e p="OVRDirectComposition.cs" t="Include" />
+                  <e p="OVRExternalComposition.cs" t="Include" />
+                  <e p="OVRSandwichComposition.cs" t="Include" />
+                </e>
+                <e p="Editor" t="Include">
+                  <e p="Oculus.VR.Scripts.Editor.asmdef" t="Include" />
+                  <e p="OVRManagerEditor.cs" t="Include" />
+                  <e p="OVROverlayDestRectEditor.shader" t="Include" />
+                  <e p="OVROverlayEditor.cs" t="Include" />
+                  <e p="OVROverlaySrcRectEditor.shader" t="Include" />
+                </e>
+                <e p="OVRBoundary.cs" t="Include" />
+                <e p="OVRCameraRig.cs" t="Include" />
+                <e p="OVRCommon.cs" t="Include" />
+                <e p="OVRDebugHeadController.cs" t="Include" />
+                <e p="OVRDisplay.cs" t="Include" />
+                <e p="OVRHaptics.cs" t="Include" />
+                <e p="OVRHapticsClip.cs" t="Include" />
+                <e p="OVRHeadsetEmulator.cs" t="Include" />
+                <e p="OVRInput.cs" t="Include" />
+                <e p="OVRLayerAttribute.cs" t="Include" />
+                <e p="OVRManager.cs" t="Include" />
+                <e p="OVRMixedReality.cs" t="Include" />
+                <e p="OVROnCompleteListener.cs" t="Include" />
+                <e p="OVROverlay.cs" t="Include" />
+                <e p="OVRPlatformMenu.cs" t="Include" />
+                <e p="OVRPlugin.cs" t="Include" />
+                <e p="OVRProfile.cs" t="Include" />
+                <e p="OVRTracker.cs" t="Include" />
+                <e p="Util" t="Include">
+                  <e p="OVRAudioSourceTest.cs" t="Include" />
+                  <e p="OVRChromaticAberration.cs" t="Include" />
+                  <e p="OVRControllerHelper.cs" t="Include" />
+                  <e p="OVRCubemapCapture.cs" t="Include" />
+                  <e p="OVRCursor.cs" t="Include" />
+                  <e p="OVRDebugInfo.cs" t="Include" />
+                  <e p="OVRGazePointer.cs" t="Include" />
+                  <e p="OVRGearVrControllerTest.cs" t="Include" />
+                  <e p="OVRGrabbable.cs" t="Include" />
+                  <e p="OVRGrabber.cs" t="Include" />
+                  <e p="OVRGridCube.cs" t="Include" />
+                  <e p="OVRInputModule.cs" t="Include" />
+                  <e p="OVRMixedRealityCaptureSettings.cs" t="Include" />
+                  <e p="OVRModeParms.cs" t="Include" />
+                  <e p="OVRMonoscopic.cs" t="Include" />
+                  <e p="OVRNetwork.cs" t="Include" />
+                  <e p="OVRPhysicsRaycaster.cs" t="Include" />
+                  <e p="OVRPlayerController.cs" t="Include" />
+                  <e p="OVRPointerEventData.cs" t="Include" />
+                  <e p="OVRProfiler.cs" t="Include" />
+                  <e p="OVRProgressIndicator.cs" t="Include" />
+                  <e p="OVRRaycaster.cs" t="Include" />
+                  <e p="OVRRecord.cs" t="Include" />
+                  <e p="OVRResetOrientation.cs" t="Include" />
+                  <e p="OVRSceneSampleController.cs" t="Include" />
+                  <e p="OVRScreenFade.cs" t="Include" />
+                  <e p="OVRSystemPerfMetrics.cs" t="Include" />
+                  <e p="OVRWaitCursor.cs" t="Include" />
+                </e>
+              </e>
+              <e p="ThirdParty" t="Include">
+                <e p="openvr_api.cs" t="Include" />
+                <e p="SimpleJSON.cs" t="Include" />
+                <e p="SimpleJSONUnity.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="TextMesh Pro" t="Include">
@@ -1453,26 +1502,15 @@
             </e>
           </e>
         </e>
-        <e p="UI" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="UI" t="Include">
-              <e p="FillImageOverTime.cs" t="Include" />
-              <e p="MainMenuManager.cs" t="Include" />
-              <e p="MenuScreen.cs" t="Include" />
-              <e p="Pointer.cs" t="Include" />
-              <e p="SettingsMenuManager.cs" t="Include" />
-              <e p="SharedMenuManager.cs" t="Include" />
-              <e p="VRCanvas.cs" t="Include" />
-            </e>
-            <e p="UIManager.cs" t="Include" />
-          </e>
-        </e>
         <e p="WinCondition.cs" t="Include" />
       </e>
       <e p="Mirror.csproj" t="IncludeRecursive" />
       <e p="Mirror.Tests.csproj" t="IncludeRecursive" />
       <e p="Mirror.Weaver.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
+      <e p="Oculus.VR.csproj" t="IncludeRecursive" />
+      <e p="Oculus.VR.Editor.csproj" t="IncludeRecursive" />
+      <e p="Oculus.VR.Scripts.Editor.csproj" t="IncludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Space Commander Ships LWRP.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />

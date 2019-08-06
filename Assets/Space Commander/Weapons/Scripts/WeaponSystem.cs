@@ -6,6 +6,7 @@ namespace SpaceCommander
 public abstract class  WeaponSystem : MonoBehaviour, IWeaponSystem
 {
     public Transform owningWeaponSystemTransform; // hack until we can update to 2019.3
+    [SerializeReference]
     public IWeaponSystemController owningWeaponSystemController;
     
     public Transform target;

@@ -1,6 +1,5 @@
 ﻿using Mirror;
 using SpaceCommander.Game;
-using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
 namespace SpaceCommander.Match

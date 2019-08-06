@@ -18,7 +18,7 @@ namespace SpaceCommander.Ships
         public ShipShield shipShield;
         public ShipExplosion shipExplosion;
         public ShipWarp shipWarp;
-        public ShipUI shipUi;
+        public StatusBar statusBar;
         
         [Header("UnitySteer Steering Systems")]
         public Radar radar;
@@ -36,6 +36,8 @@ namespace SpaceCommander.Ships
         public delegate void TeamChangeDelegate(uint newTeam);
         
         private Team team;
+
+        [SyncVar] [SerializeField] uint entityId;
         
         public UnityEvent ShipDestroyed;
 
@@ -91,6 +93,7 @@ namespace SpaceCommander.Ships
             if (team != null && team.entities.Contains(this) && team.teamId != newTeamId) team.RemoveEntity(this);
             team = TeamManager.instance.GetTeamByID(newTeamId);
             team.AddEntity(this);
+            statusBar.SetInsignia(team.insignia);
         }
 
         public Team GetTeam()
@@ -100,7 +103,12 @@ namespace SpaceCommander.Ships
 
         public uint GetEntityId()
         {
-            return netId;
+            return entityId;
+        }
+
+        public void SetEntityId(uint id)
+        {
+            entityId = id;
         }
 
         public IPlayer GetPlayer()
@@ -123,7 +131,7 @@ namespace SpaceCommander.Ships
             return gameObject;
         }
 
-        void Awake()
+        void Start()
         {
             ShipManager.instance.RegisterShip(this);
         }

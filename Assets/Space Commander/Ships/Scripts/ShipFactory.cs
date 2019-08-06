@@ -8,7 +8,7 @@ public class ShipDictionary : SerializableDictionary<ShipType, GameObject>
 {
 }
 
-public class ShipFactory : NetworkBehaviour
+public class ShipFactory : EntityFactory
 {
     public static ShipFactory instance;
 
@@ -59,6 +59,8 @@ public class ShipFactory : NetworkBehaviour
         
         Ship s = shipGameObject.GetComponent<Ship>();
 
+        Debug.Log("Entity ID is " + entityIncrement);
+        s.SetEntityId(entityIncrement++);
         s.CmdSetTeam(teamId);
         s.CmdSetGroup(groupId);
     }

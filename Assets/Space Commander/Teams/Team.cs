@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace SpaceCommander.Teams
 {
@@ -13,6 +12,7 @@ namespace SpaceCommander.Teams
         public string name;
         public Color color;
         public int playerSlots;
+        public Texture insignia;
         public List<IPlayer> players = new List<IPlayer>();
         public List<IEntity> entities = new List<IEntity>();
 
