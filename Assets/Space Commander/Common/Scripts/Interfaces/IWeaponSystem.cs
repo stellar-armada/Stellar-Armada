@@ -12,5 +12,7 @@ namespace SpaceCommander
         void StartFiring();
         void StopFiring();
         void Impact(Vector3 point);
+        void ClearTarget();
+        GameObject GetGameObject();
     }
 }

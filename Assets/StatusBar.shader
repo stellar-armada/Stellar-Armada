@@ -7,6 +7,9 @@ Shader "SpaceCommander/StatusBar"
 		[PerRendererData]_Insignia("Insignia", 2D) = "black" {}
 		_Health("Health", Range( 0 , 1)) = 0
 		_Shield("Shield", Range( 0 , 1)) = 0
+		_TextureSample0("Texture Sample 0", 2D) = "white" {}
+		_Visibility("Visibility", Range( 0 , 1)) = 1
+		[HideInInspector] _texcoord( "", 2D ) = "white" {}
     }
 
 
@@ -61,6 +64,7 @@ Shader "SpaceCommander/StatusBar"
         	#pragma fragment frag
 
         	#define ASE_SRP_VERSION 51601
+        	#define _AlphaClip 1
 
 
         	#include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
@@ -72,6 +76,9 @@ Shader "SpaceCommander/StatusBar"
 			sampler2D _Insignia;
 			float _Health;
 			float _Shield;
+			sampler2D _TextureSample0;
+			float4 _TextureSample0_ST;
+			float _Visibility;
 
             struct GraphVertexInput
             {
@@ -163,6 +170,8 @@ Shader "SpaceCommander/StatusBar"
 				float4 temp_output_5_0 = (( tex2DNode4.r > 0.99 ) ? (( tex2DNode4.b < 0.01 ) ? (( tex2DNode4.g < 0.01 ) ? tex2DNode4 :  float4( 0,0,0,0 ) ) :  float4( 0,0,0,0 ) ) :  float4( 0,0,0,0 ) );
 				float4 temp_cast_0 = 0;
 				
+				float2 uv_TextureSample0 = IN.ase_texcoord7.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
+				
 				
 		        float3 Albedo = (( ( temp_output_21_0 + temp_output_5_0 ) == temp_cast_0 ) ? tex2DNode4 :  ( (( uv010.x < _Health ) ? temp_output_5_0 :  float4( 0,0,0,0 ) ) + (( uv010.x < _Shield ) ? temp_output_21_0 :  float4( 0,0,0,0 ) ) ) ).rgb;
 				float3 Normal = float3(0, 0, 1);
@@ -171,8 +180,8 @@ Shader "SpaceCommander/StatusBar"
 				float Metallic = 0;
 				float Smoothness = 0.5;
 				float Occlusion = 1;
-				float Alpha = 1;
-				float AlphaClipThreshold = 0;
+				float Alpha = tex2D( _TextureSample0, uv_TextureSample0 ).r;
+				float AlphaClipThreshold = ( 1.0 - _Visibility );
 
         		InputData inputData;
         		inputData.positionWS = WorldSpacePosition;
@@ -253,6 +262,7 @@ Shader "SpaceCommander/StatusBar"
             #pragma fragment ShadowPassFragment
 
             #define ASE_SRP_VERSION 51601
+            #define _AlphaClip 1
 
 
             #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
@@ -264,15 +274,18 @@ Shader "SpaceCommander/StatusBar"
             {
                 float4 vertex : POSITION;
                 float3 ase_normal : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
-			
+			sampler2D _TextureSample0;
+			float4 _TextureSample0_ST;
+			float _Visibility;
+
         	struct VertexOutput
         	{
         	    float4 clipPos      : SV_POSITION;
-                
+                float4 ase_texcoord7 : TEXCOORD7;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
         	};
 
@@ -286,7 +299,10 @@ Shader "SpaceCommander/StatusBar"
         	    UNITY_SETUP_INSTANCE_ID(v);
                 UNITY_TRANSFER_INSTANCE_ID(v, o);
 
+				o.ase_texcoord7.xy = v.ase_texcoord.xy;
 				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord7.zw = 0;
 				float3 vertexValue =  float3(0,0,0) ;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				v.vertex.xyz = vertexValue;
@@ -324,10 +340,11 @@ Shader "SpaceCommander/StatusBar"
             {
                 UNITY_SETUP_INSTANCE_ID(IN);
 
+               float2 uv_TextureSample0 = IN.ase_texcoord7.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
                
 
-				float Alpha = 1;
-				float AlphaClipThreshold = AlphaClipThreshold;
+				float Alpha = tex2D( _TextureSample0, uv_TextureSample0 ).r;
+				float AlphaClipThreshold = ( 1.0 - _Visibility );
 
          #if _AlphaClip
         		clip(Alpha - AlphaClipThreshold);
@@ -361,6 +378,7 @@ Shader "SpaceCommander/StatusBar"
             #pragma fragment frag
 
             #define ASE_SRP_VERSION 51601
+            #define _AlphaClip 1
 
 
             #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
@@ -368,19 +386,22 @@ Shader "SpaceCommander/StatusBar"
             #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/ShaderGraphFunctions.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
-			
+			sampler2D _TextureSample0;
+			float4 _TextureSample0_ST;
+			float _Visibility;
+
             struct GraphVertexInput
             {
                 float4 vertex : POSITION;
 				float3 ase_normal : NORMAL;
-				
+				float4 ase_texcoord : TEXCOORD0;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
         	struct VertexOutput
         	{
         	    float4 clipPos      : SV_POSITION;
-                
+                float4 ase_texcoord : TEXCOORD0;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
                 UNITY_VERTEX_OUTPUT_STEREO
         	};
@@ -394,7 +415,10 @@ Shader "SpaceCommander/StatusBar"
                 UNITY_TRANSFER_INSTANCE_ID(v, o);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
+				o.ase_texcoord.xy = v.ase_texcoord.xy;
 				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				o.ase_texcoord.zw = 0;
 				float3 vertexValue =  float3(0,0,0) ;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				v.vertex.xyz = vertexValue;
@@ -412,10 +436,11 @@ Shader "SpaceCommander/StatusBar"
             {
                 UNITY_SETUP_INSTANCE_ID(IN);
 
+				float2 uv_TextureSample0 = IN.ase_texcoord.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
 				
 
-				float Alpha = 1;
-				float AlphaClipThreshold = AlphaClipThreshold;
+				float Alpha = tex2D( _TextureSample0, uv_TextureSample0 ).r;
+				float AlphaClipThreshold = ( 1.0 - _Visibility );
 
          #if _AlphaClip
         		clip(Alpha - AlphaClipThreshold);
@@ -444,6 +469,7 @@ Shader "SpaceCommander/StatusBar"
             #pragma fragment frag
 
             #define ASE_SRP_VERSION 51601
+            #define _AlphaClip 1
 
 
 			uniform float4 _MainTex_ST;
@@ -456,6 +482,9 @@ Shader "SpaceCommander/StatusBar"
 			sampler2D _Insignia;
 			float _Health;
 			float _Shield;
+			sampler2D _TextureSample0;
+			float4 _TextureSample0_ST;
+			float _Visibility;
 
             #pragma shader_feature _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
             #pragma shader_feature EDITOR_VISUALIZATION
@@ -517,11 +546,13 @@ Shader "SpaceCommander/StatusBar"
            		float4 temp_output_5_0 = (( tex2DNode4.r > 0.99 ) ? (( tex2DNode4.b < 0.01 ) ? (( tex2DNode4.g < 0.01 ) ? tex2DNode4 :  float4( 0,0,0,0 ) ) :  float4( 0,0,0,0 ) ) :  float4( 0,0,0,0 ) );
            		float4 temp_cast_0 = 0;
            		
+           		float2 uv_TextureSample0 = IN.ase_texcoord.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
+           		
 				
 		        float3 Albedo = (( ( temp_output_21_0 + temp_output_5_0 ) == temp_cast_0 ) ? tex2DNode4 :  ( (( uv010.x < _Health ) ? temp_output_5_0 :  float4( 0,0,0,0 ) ) + (( uv010.x < _Shield ) ? temp_output_21_0 :  float4( 0,0,0,0 ) ) ) ).rgb;
 				float3 Emission = 0;
-				float Alpha = 1;
-				float AlphaClipThreshold = 0;
+				float Alpha = tex2D( _TextureSample0, uv_TextureSample0 ).r;
+				float AlphaClipThreshold = ( 1.0 - _Visibility );
 
          #if _AlphaClip
         		clip(Alpha - AlphaClipThreshold);
@@ -543,7 +574,7 @@ Shader "SpaceCommander/StatusBar"
 }
 /*ASEBEGIN
 Version=16800
-2037;23;1773;984;1593.697;291.4697;1;True;True
+2091;125;1773;984;397.2631;838.5639;1.755155;True;True
 Node;AmplifyShaderEditor.TextureCoordinatesNode;10;-1090.75,-47.38965;Float;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;15;-819.5015,89.09106;Float;False;Constant;_MinThreshold;MinThreshold;2;0;Create;True;0;0;False;0;0.01;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;4;-842.2064,206.2857;Float;True;Property;_Insignia;Insignia;0;1;[PerRendererData];Create;True;0;0;False;0;None;217b5f3648a4834448b4d08015fe60c4;True;0;False;black;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -555,22 +586,25 @@ Node;AmplifyShaderEditor.CommentaryNode;22;419.3759,522.4061;Float;False;293.6;2
 Node;AmplifyShaderEditor.RangedFloatNode;7;-638.1622,9.660296;Float;False;Constant;_MaxThreshold;MaxThreshold;1;0;Create;True;0;0;False;0;0.99;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCCompareLower;20;-159.9615,244.2086;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCCompareLower;17;-153.2597,-46.5525;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.CommentaryNode;18;313.4566,-203.3081;Float;False;293.6;290.4;Health Slider;1;12;;1,1,1,1;0;0
-Node;AmplifyShaderEditor.RangedFloatNode;23;437.1764,570.8059;Float;False;Property;_Shield;Shield;2;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;9;180.0483,-371.5872;Float;False;Property;_Health;Health;1;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCCompareGreater;5;56.63674,-42.3462;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCCompareGreater;21;73.93495,246.8147;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;9;180.0483,-371.5872;Float;False;Property;_Health;Health;1;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.CommentaryNode;18;313.4566,-203.3081;Float;False;293.6;290.4;Health Slider;1;12;;1,1,1,1;0;0
+Node;AmplifyShaderEditor.RangedFloatNode;23;437.1764,570.8059;Float;False;Property;_Shield;Shield;2;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCCompareLower;24;475.1762,661.2057;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCCompareLower;12;379.7512,-66.87463;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.IntNode;31;916.4347,557.5255;Float;False;Constant;_Int1;Int 1;3;0;Create;True;0;0;False;0;0;0;0;1;INT;0
 Node;AmplifyShaderEditor.CommentaryNode;29;1035.866,210.8021;Float;False;403.2502;244.8244;If Blue is 0;1;30;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;32;952.751,-34.36201;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;33;652.4319,154.0035;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;34;774.4674,-369.9956;Float;False;Property;_Visibility;Visibility;4;0;Create;True;0;0;False;0;1;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SamplerNode;35;752.3634,-261.1178;Float;True;Property;_TextureSample0;Texture Sample 0;3;0;Create;True;0;0;False;0;None;30f384bc1d4410c4c9f953a6c08a3b28;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TFHCCompareEqual;30;1202.753,272.0941;Float;False;4;0;COLOR;0,0,0,0;False;1;INT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;1645.9,-107.7999;Half;False;True;2;Half;ASEMaterialInspector;0;2;SpaceCommander/StatusBar;1976390536c6c564abb90fe41f6ee334;True;Base;0;0;Base;11;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=LightweightForward;False;0;Hidden/InternalErrorShader;0;0;Standard;2;Vertex Position,InvertActionOnDeselection;1;Receive Shadows;1;1;_FinalColorxAlpha;0;4;True;True;True;True;False;11;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;9;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT3;0,0,0;False;10;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.OneMinusNode;37;1338.585,-322.5483;Float;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;2;Float;ASEMaterialInspector;0;2;Hidden/Templates/LightWeightSRPPBR;1976390536c6c564abb90fe41f6ee334;True;DepthOnly;0;2;DepthOnly;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;False;2;Float;ASEMaterialInspector;0;2;Hidden/Templates/LightWeightSRPPBR;1976390536c6c564abb90fe41f6ee334;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;2;Float;ASEMaterialInspector;0;2;Hidden/Templates/LightWeightSRPPBR;1976390536c6c564abb90fe41f6ee334;True;Meta;0;3;Meta;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;True;2;False;-1;False;False;False;False;False;True;1;LightMode=Meta;False;0;Hidden/InternalErrorShader;0;0;Standard;0;6;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;False;2;Float;ASEMaterialInspector;0;2;Hidden/Templates/LightWeightSRPPBR;1976390536c6c564abb90fe41f6ee334;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;1645.9,-107.7999;Half;False;True;2;Half;ASEMaterialInspector;0;2;SpaceCommander/StatusBar;1976390536c6c564abb90fe41f6ee334;True;Base;0;0;Base;11;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=LightweightForward;False;0;Hidden/InternalErrorShader;0;0;Standard;2;Vertex Position,InvertActionOnDeselection;1;Receive Shadows;1;1;_FinalColorxAlpha;0;4;True;True;True;True;False;11;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;9;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT3;0,0,0;False;10;FLOAT3;0,0,0;False;0
 WireConnection;4;1;10;0
 WireConnection;19;0;4;1
 WireConnection;19;1;15;0
@@ -604,6 +638,9 @@ WireConnection;30;0;33;0
 WireConnection;30;1;31;0
 WireConnection;30;2;4;0
 WireConnection;30;3;32;0
+WireConnection;37;0;34;0
 WireConnection;0;0;30;0
+WireConnection;0;6;35;0
+WireConnection;0;7;37;0
 ASEEND*/
-//CHKSM=92DAF3BE28C3D1A8B6D25A932A9C0BD83BDF8B9A
+//CHKSM=DCABC63BC9CD97179776C011BE706F86B6326584

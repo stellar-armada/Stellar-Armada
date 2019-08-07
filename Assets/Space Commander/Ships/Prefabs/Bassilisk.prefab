@@ -5751,7 +5751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 8081799463623299947}
-  maxShield: 500
+  maxShield: 20
   ShieldChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10926,8 +10926,9 @@ GameObject:
   - component: {fileID: 5053432013379271771}
   - component: {fileID: 3185618720127565515}
   - component: {fileID: 5100597383855941357}
+  - component: {fileID: 4800762148102477764}
   m_Layer: 2
-  m_Name: BassiliskShipHologram
+  m_Name: ShipHologram
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10945,7 +10946,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8113730419681309641}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3185618720127565515
 MeshFilter:
@@ -10994,6 +10995,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4800762148102477764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442099748244959011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005e26d7e6ef704f9f56bc31c237f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 8081799463623299947}
 --- !u!1 &5705574569978141201
 GameObject:
   m_ObjectHideFlags: 0
@@ -11102,7 +11116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8113730419681309641}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5999720128745486467
 GameObject:
@@ -11246,7 +11260,7 @@ Transform:
   - {fileID: 4153216346955437275}
   - {fileID: 6160416427464042262}
   m_Father: {fileID: 8113730419681309641}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6285758134887766800
 GameObject:
@@ -11278,7 +11292,7 @@ Transform:
   m_Children:
   - {fileID: 871993182557353781}
   m_Father: {fileID: 8113730419681309641}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6860565962929831040
 MonoBehaviour:
@@ -16373,6 +16387,7 @@ GameObject:
   - component: {fileID: 5150297697342301304}
   - component: {fileID: 6494030138726252701}
   - component: {fileID: 8081799463623299947}
+  - component: {fileID: 2574464254795025626}
   - component: {fileID: 713665586201178330}
   - component: {fileID: 8019088010132304523}
   - component: {fileID: 1917735330228775631}
@@ -16385,7 +16400,6 @@ GameObject:
   - component: {fileID: 1342043569228971231}
   - component: {fileID: 4490765840619911111}
   - component: {fileID: 5203609938197765614}
-  - component: {fileID: 2574464254795025626}
   - component: {fileID: 3611349499226454024}
   m_Layer: 9
   m_Name: Bassilisk
@@ -16405,11 +16419,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5053432013379271771}
   - {fileID: 1022722680563334117}
   - {fileID: 76652971646040623}
   - {fileID: 7489379683825240447}
   - {fileID: 5254177644510340698}
-  - {fileID: 5053432013379271771}
   - {fileID: 4068253464070832177}
   - {fileID: 7103633782339714638}
   - {fileID: 542051067242163675}
@@ -16460,7 +16474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   shipMovement: {fileID: 713665586201178330}
-  shipHull: {fileID: 0}
+  shipHull: {fileID: 2574464254795025626}
   shipShield: {fileID: 2271289916086615197}
   weaponSystemController: {fileID: 1900686764695909791}
   shipExplosion: {fileID: 5292198978933662320}
@@ -16470,8 +16484,8 @@ MonoBehaviour:
   autonomousVehicle: {fileID: 748346738348093578}
   steerForPursuit: {fileID: 1977461455125822363}
   steerForPoint: {fileID: 6430903243183470549}
-  shipCollider: {fileID: 0}
-  visualModel: {fileID: 0}
+  shipCollider: {fileID: 3611349499226454024}
+  visualModel: {fileID: 8801777087567244934}
   hologram: {fileID: 5442099748244959011}
   isAlive: 1
   entityId: 0
@@ -16481,6 +16495,28 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   entityTypes: 00000000
+--- !u!114 &2574464254795025626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be38265a506195746a2cd52e8cf633ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  ship: {fileID: 8081799463623299947}
+  maxHull: 20
+  HullChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  selectionHandler: {fileID: 1342043569228971231}
+  currentHull: 0
 --- !u!114 &713665586201178330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16545,7 +16581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 8081799463623299947}
-  weaponSystemsEnabled: 0
+  weaponSystemsEnabled: 1
 --- !u!114 &5292198978933662320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16706,28 +16742,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2574464254795025626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801777087567244934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be38265a506195746a2cd52e8cf633ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  ship: {fileID: 8081799463623299947}
-  maxHull: 500
-  HullChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  selectionHandler: {fileID: 1342043569228971231}
-  currentHull: 0
 --- !u!64 &3611349499226454024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16828,7 +16842,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
@@ -16930,12 +16944,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: aa332e291f79e8642954842c7550e2c9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: aa332e291f79e8642954842c7550e2c9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: aa332e291f79e8642954842c7550e2c9,
         type: 3}
@@ -16955,7 +16969,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: aa332e291f79e8642954842c7550e2c9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: aa332e291f79e8642954842c7550e2c9,
         type: 3}
@@ -16965,6 +16979,11 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: aa332e291f79e8642954842c7550e2c9,
         type: 3}
       propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: aa332e291f79e8642954842c7550e2c9,
+        type: 3}
+      propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

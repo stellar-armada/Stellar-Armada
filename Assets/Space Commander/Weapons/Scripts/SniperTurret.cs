@@ -17,7 +17,7 @@ namespace SpaceCommander.Weapons
 
         void Fire()
         {
-            Fire(WeaponType.Shotgun);
+            Fire(WeaponType.Sniper);
         }
 
         // Stop firing 

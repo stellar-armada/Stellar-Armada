@@ -14,24 +14,25 @@ namespace SpaceCommander.Ships
         public UnityEvent HullChanged;
 
         [SerializeField] ShipSelectionHandler selectionHandler;
-        
-        [SyncVar (hook=nameof(HandleHullChange))] public float currentHull;
+
+        [SyncVar] public float currentHull;
 
         void Awake()
         {
             currentHull = maxHull;
         }
+
         [Command]
         public void CmdRepairHull(float amount)
         {
             currentHull = Mathf.Min(currentHull + amount, maxHull);
         }
-        
+
         public IEntity GetOwningEntity()
         {
             return ship;
         }
-        
+
 
         public GameObject GetGameObject()
         {
@@ -40,28 +41,30 @@ namespace SpaceCommander.Ships
 
         public void TakeDamage(float damage, Vector3 point, Damager damager)
         {
-            if (!ship.IsAlive()) return;
-                currentHull -= damage;
+            if (!ship.IsAlive())
+            {
+                Debug.Log("Can't take damage, ship is dead");
+                return;
+            }
+
+            currentHull -= damage;
             if (currentHull <= 0 && ship.IsAlive())
             {
                 ship.CmdDie();
+                Debug.Log("Ship is dead");
             }
-        }
-        
-        void HandleHullChange(float h)
-        {
+
             HullChanged.Invoke();
         }
 
         public IDamageable GetDamageable()
-            {
-                return this;
-            }
+        {
+            return this;
+        }
 
-            public ISelectable GetSelectable()
-            {
-                return selectionHandler;
-            }
-    }  
+        public ISelectable GetSelectable()
+        {
+            return selectionHandler;
+        }
+    }
 }
-

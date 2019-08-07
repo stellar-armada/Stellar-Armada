@@ -32,7 +32,18 @@ namespace SpaceCommander.Ships
             weaponSystemsEnabled = false;
             foreach (IWeaponSystem weaponSystem in weaponSystems)
             {
-                weaponSystem.SetTarget(null);
+                weaponSystem.ClearTarget();
+            }
+        }
+
+        public void HideWeaponSystems()
+        {
+            foreach (IWeaponSystem weaponSystem in weaponSystems)
+            {
+                foreach (Renderer ren in weaponSystem.GetGameObject().transform.GetComponentsInChildren<Renderer>())
+                {
+                    ren.enabled = false;
+                }
             }
         }
 

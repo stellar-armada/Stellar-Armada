@@ -10,13 +10,9 @@ namespace SpaceCommander.Match
         {
             if (!isServer) return;
             
-            Debug.Log("Starting server initialization routine");
-            
             // Get a random scenario
-            Debug.Log("Fetching random scenario");
             MatchScenarioManager.instance.CmdChooseRandomScenario();
             
-            Debug.Log("Getting current scenario");            
             Scenario scenario = MatchScenarioManager.instance.GetCurrentScenario();
 
             if (SceneRoot.instance == null)
@@ -25,7 +21,6 @@ namespace SpaceCommander.Match
             }
             
             // Create map from scenario template
-            Debug.Log("Creating map");
             GameObject m = Instantiate(scenario.levelPrefab, SceneRoot.instance.transform);
             
             NetworkServer.Spawn(m);
@@ -39,7 +34,6 @@ namespace SpaceCommander.Match
             // Create ships
             for (uint i = 0; i < scenario.teamInfo.Length; i++)
             {
-                Debug.Log("Created a team new team at ID " + i);
                 // Create teams from scenario template
                 TeamManager.instance.CmdCreateNewTeam();
                 Team t = TeamManager.instance.GetTeamByID(i);
@@ -55,8 +49,7 @@ namespace SpaceCommander.Match
                         for (int numShips = 0; numShips < key.Value; numShips++)
                         {
                             // For each ship, instantiate for current team
-                            ShipFactory.instance.CmdCreateShipForTeam(i, g, key.Key, Random.onUnitSphere * 8f, Quaternion.identity);
-                            Debug.Log("Gave a " + key.Key + " to team " + i);
+                            ShipFactory.instance.CmdCreateShipForTeam(i, g, key.Key, Random.onUnitSphere * 10f, Quaternion.identity);
                         }
                     }
                 }

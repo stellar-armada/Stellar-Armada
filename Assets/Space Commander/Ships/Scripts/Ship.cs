@@ -152,10 +152,25 @@ namespace SpaceCommander.Ships
 
                 return false;
         }
-
+        
+        [Command]
+        public void CmdActivate()
+        {
+            isAlive = true;
+            statusBar.ShowStatusBar(); 
+            weaponSystemController.weaponSystemsEnabled = true;
+        }
+        
+        [Command]
         public void CmdDie()
         {
             isAlive = false;
+            statusBar.HideStatusBar();
+            shipExplosion.Explode();
+            weaponSystemController.weaponSystemsEnabled = false;
+            weaponSystemController.HideWeaponSystems();
+            shipShield.currentShield = 0;
+            shipShield.enabled = false;
         }
 
         public GameObject GetGameObject()

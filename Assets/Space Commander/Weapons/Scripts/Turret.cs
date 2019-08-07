@@ -40,6 +40,7 @@ namespace SpaceCommander.Weapons
 
         public float fireRate = .3f;
 
+        
         public override void Impact(Vector3 point)
         {
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.LaserImpulse).impact, point,
@@ -113,7 +114,7 @@ namespace SpaceCommander.Weapons
             // if current target cant be hit or object isn't within distance
             if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
             {
-                target = null;
+                ClearTarget();
                 Debug.Log("Lost target! ");
                 isFiring = false;
                 StopFiring();
@@ -152,10 +153,10 @@ namespace SpaceCommander.Weapons
                 IEntity damager = owningWeaponSystemController.GetEntity();
                 
                 if (damager.IsEnemy(damaged) &&
-                     CanHitPosition(damageable.GetGameObject().transform.position))
+                     CanHitPosition(damageable.GetGameObject().transform.position) && IsFacingTarget() && damaged.IsAlive())
                 {
                     // set target
-                    target = damageable.GetGameObject().transform;
+                    SetTarget(damageable.GetGameObject().transform);
                     return;
                 }
             }
@@ -173,7 +174,12 @@ namespace SpaceCommander.Weapons
 
         public void Fire(WeaponType type)
         {
-            if (!IsFacingTarget()) return;
+            if (targetEntity == null || !IsFacingTarget() || !targetEntity.IsAlive())
+            {
+                // IF we're not facing the target, let's see if we can get one
+                ClearTarget();
+                return;
+            };
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(type).muzzle,
                 TurretSocket[curSocket].position,
@@ -215,7 +221,7 @@ namespace SpaceCommander.Weapons
 
                 if (owningWeaponSystemController.WeaponSystemsEnabled())
                 {
-                    SetTarget(null);
+                    ClearTarget();
                 }
                 
                 if (target == null)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace SpaceCommander.Ships
 {
@@ -27,7 +28,7 @@ namespace SpaceCommander.Ships
              shield = ship.shipShield;
              shield.ShieldChanged.AddListener(SetShieldSlider);
              hull.HullChanged.AddListener(SetHullSlider);
-             cameraTransform = Camera.main.transform;
+             cameraTransform = GameObject.Find("Main Camera").transform; // TO-DO: change this to local player when we can!
             LookAtMainCamera();
         }
 
@@ -69,12 +70,36 @@ namespace SpaceCommander.Ships
         
         public void ShowStatusBar()
         {
-            statusBarRenderer.enabled = true;
+            StartCoroutine(FadeVisibility(1));
+        }
+
+        IEnumerator FadeVisibility(float to)
+        {
+            if (to > 0)
+            {
+                statusBarRenderer.enabled = true;
+            }
+            float timer = 0;
+            float fadeTime = .6f;
+            statusBarRenderer.GetPropertyBlock(m);
+            float currentVisibility = m.GetFloat("_Visibility");
+
+            do
+            {
+                timer += Time.deltaTime;
+                m.SetFloat("_Visibility", Mathf.Lerp(currentVisibility, to, timer / fadeTime));
+                yield return null;
+            } while (timer < fadeTime);
+
+            if (to.Equals(0))
+            {
+                statusBarRenderer.enabled = false;
+            }
         }
         
         public void HideStatusBar()
         {
-            statusBarRenderer.enabled = false;
+            StartCoroutine(FadeVisibility(0));
         }
         
         // Set flag / icon for ship team identification
