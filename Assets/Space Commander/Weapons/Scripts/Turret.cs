@@ -113,8 +113,6 @@ namespace SpaceCommander.Weapons
             // if current target cant be hit or object isn't within distance
             if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
             {
-                Debug.Log("Target Ship: " + target + " | CanHitPosition: " + CanHitPosition() + " | Distance: " +
-                          Vector3.Distance(transform.position, target.position));
                 target = null;
                 Debug.Log("Lost target! ");
                 isFiring = false;
@@ -137,33 +135,27 @@ namespace SpaceCommander.Weapons
 
             foreach (Collider col in hitColliders)
             {
-                Debug.Log("col: " + col.name);
-                Debug.Log(col.GetComponent<ICollidable>().GetDamageable());
                 IDamageable d = col.GetComponent<ICollidable>().GetDamageable();
                 if (d == null) Debug.LogError("Damageable was not found on collidable reference on " + col.name);
-                if (d.GetOwningEntity().GetPlayer().IsEnemy(owningWeaponSystemController.GetEntity().GetPlayer()))
+                if (d.GetOwningEntity().IsEnemy(owningWeaponSystemController.GetEntity()))
                 {
                     damageables.Add(d);
                 }
             }
-
-            Debug.Log("Hit " + damageables.Count + " ships!");
-
+            
             foreach (IDamageable damageable in damageables)
             {
                 // if enemy object can be hit
 
-                IPlayer sPlayerController = damageable.GetOwningEntity().GetPlayer();
-                IPlayer owningShipPlayerController = owningWeaponSystemController.GetEntity().GetPlayer();
-
-                if (damageable.GetGameObject().tag == "Debug" ||
-                    (owningShipPlayerController.IsEnemy(sPlayerController) &&
-                     CanHitPosition(damageable.GetGameObject().transform.position)))
+                IEntity damaged = damageable.GetOwningEntity();
+                
+                IEntity damager = owningWeaponSystemController.GetEntity();
+                
+                if (damager.IsEnemy(damaged) &&
+                     CanHitPosition(damageable.GetGameObject().transform.position))
                 {
                     // set target
                     target = damageable.GetGameObject().transform;
-                    Debug.Log("Set target to: " + damageable.GetGameObject().name + " owned by " +
-                              damageable.GetOwningEntity().GetPlayer().GetName());
                     return;
                 }
             }
@@ -186,10 +178,10 @@ namespace SpaceCommander.Weapons
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(type).muzzle,
                 TurretSocket[curSocket].position,
                 TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
-            var newGO =
-                PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
+            
+            PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
                     WeaponPrefabManager.instance.GetWeaponPrefab(type).projectile, TurretSocket[curSocket].position,
-                    offset * TurretSocket[curSocket].rotation, null).gameObject;
+                    offset * TurretSocket[curSocket].rotation, null);
             WeaponAudioController.instance.PlayShotAtPosition(type, TurretSocket[curSocket].position);
             
             AdvanceSocket();

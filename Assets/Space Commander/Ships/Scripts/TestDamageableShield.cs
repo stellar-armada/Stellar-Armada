@@ -6,7 +6,7 @@ namespace SpaceCommander.Ships
     [RequireComponent(typeof(Collider))]
     public class TestDamageableShield : MonoBehaviour, IDamageable
     {
-        private IPlayerEntity owningEntity;
+        private IEntity owningEntity;
         
         public float maxShield;
         
@@ -70,12 +70,12 @@ namespace SpaceCommander.Ships
             currentShield = Mathf.Min(currentShield + charge, maxShield);
         }
 
-        public IPlayerEntity GetOwningEntity()
+        public IEntity GetOwningEntity()
         {
             return owningEntity;
         }
 
-        public void SetOwningEntity(IPlayerEntity playerEntity)
+        public void SetOwningEntity(IEntity playerEntity)
         {
             owningEntity = playerEntity;
         }

@@ -16,37 +16,41 @@ namespace SpaceCommander.Ships
         public string shieldProperty = "_Shield";
 
         public Texture insignia; // delete me
-        
+
         private MaterialPropertyBlock m;
 
         void Awake()
         {
-             m = new MaterialPropertyBlock();
-             statusBarRenderer.GetPropertyBlock(m);
+            m = new MaterialPropertyBlock();
+             
              hull = ship.shipHull;
              shield = ship.shipShield;
              shield.ShieldChanged.AddListener(SetShieldSlider);
              hull.HullChanged.AddListener(SetHullSlider);
-            
-            cameraTransform = Camera.main.transform;
+             cameraTransform = Camera.main.transform;
             LookAtMainCamera();
         }
 
         public void SetInsignia(Texture t)
         {
+            statusBarRenderer.GetPropertyBlock(m);
             m.SetTexture("_Insignia", t);
             statusBarRenderer.SetPropertyBlock(m);
         }
 
         void SetHullSlider()
         {
-            statusBarRenderer.material.SetFloat(hullProperty, hull.currentHull / hull.maxHull);
+            statusBarRenderer.GetPropertyBlock(m);
+            m.SetFloat(hullProperty, hull.currentHull / hull.maxHull);
+            statusBarRenderer.SetPropertyBlock(m);
             
         }
 
         void SetShieldSlider()
         {
-            statusBarRenderer.material.SetFloat(shieldProperty, shield.currentShield / shield.maxShield);
+            statusBarRenderer.GetPropertyBlock(m);
+            m.SetFloat(shieldProperty, shield.currentShield / shield.maxShield);
+            statusBarRenderer.SetPropertyBlock(m);
         }
         
         void LateUpdate ()

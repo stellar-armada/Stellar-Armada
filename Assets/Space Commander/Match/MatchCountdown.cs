@@ -25,11 +25,11 @@ namespace SpaceCommander.Match
     {
         int counter = 5;
         private MatchCountDownSettings settings;
-        private Timer t;
+        private MatchTimer t;
         
         public void StartCountdown(MatchClock clock)
         {
-            Timer  t = new Timer(clock, 1.2f);
+            MatchTimer  t = new MatchTimer(clock, 1.2f);
 
             t.Start();
 
@@ -46,7 +46,7 @@ namespace SpaceCommander.Match
 
         void CountDown(MatchClock clock)
         {
-            t = new Timer(clock,1f);
+            t = new MatchTimer(clock,1f);
             if (counter > 0)
             {
 
@@ -60,7 +60,7 @@ namespace SpaceCommander.Match
 
             if (settings.countDownType == CountdownType.PreMatch)
             {
-                t = new Timer(clock, 1.5f);
+                t = new MatchTimer(clock, 1.5f);
                 t.Start();
                 t.OnTimerFinished += DelayedPostCoundown;
             }

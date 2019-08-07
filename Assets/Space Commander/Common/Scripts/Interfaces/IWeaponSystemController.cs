@@ -6,7 +6,6 @@ namespace SpaceCommander
     public interface IWeaponSystemController
     {
         IPlayerEntity GetEntity();
-        void SetOwner(IPlayerEntity owner);
         List<IWeaponSystem> GetWeaponSystems();
         void EnableWeaponSystems();
         void DisableWeaponSystems();

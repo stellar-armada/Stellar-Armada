@@ -14,13 +14,13 @@ namespace SpaceCommander.Ships
 		private List<Material> haloMaterials = new List<Material>();
 		private Vector3 lastForward = Vector3.zero;
 
-		private Ship ship;
+		private Ship _ship;
 		private float maxSpeed;
 		private float currentSpeed;
 
 		void Awake()
 		{
-			ship = GetComponent<Ship>();
+			_ship = GetComponent<Ship>();
 			CollectMaterials();
 		}
 

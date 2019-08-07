@@ -8,12 +8,12 @@ namespace SpaceCommander.Ships
         [SerializeField] GameObject explosion;
         private float hideShip = 1.5f;
         private float deactivateShip = 6.5f;
-        private Ship ship;
+        private Ship _ship;
         
         void Awake()
         {
-            ship = GetComponent<Ship>();
-            ship.ShipDestroyed.AddListener(Explode);
+            _ship = GetComponent<Ship>();
+            _ship.ShipDestroyed.AddListener(Explode);
         }
         
         public void Explode()
@@ -26,8 +26,8 @@ namespace SpaceCommander.Ships
         
         void HideShip()
         {
-            ship.visualModel.GetComponent<Renderer>().enabled = false;
-            ship.shipCollider.enabled = false;
+            _ship.visualModel.GetComponent<Renderer>().enabled = false;
+            _ship.shipCollider.enabled = false;
         }
 
         void DeactivateShip()

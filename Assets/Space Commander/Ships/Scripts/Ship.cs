@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Mirror;
 using SpaceCommander.Game;
 using SpaceCommander.Teams;
@@ -8,14 +9,15 @@ using UnitySteer.Behaviors;
 
 namespace SpaceCommander.Ships
 {
-    public class Ship : NetworkBehaviour, IPlayerEntity, ITeamEntity
+    public class Ship : NetworkBehaviour, ITeamEntity, IPlayerEntity
     {
-        public IPlayer player;
+        public IPlayer player; // Ships are only given to players in FFA or DOTA modes
 
         [Header("Ship Subsystems")]
         public ShipMovement shipMovement;
-        [FormerlySerializedAs("shipHealth")] public ShipHull shipHull;
+        public ShipHull shipHull;
         public ShipShield shipShield;
+        public ShipWeaponSystemController weaponSystemController;
         public ShipExplosion shipExplosion;
         public ShipWarp shipWarp;
         public StatusBar statusBar;
@@ -41,6 +43,8 @@ namespace SpaceCommander.Ships
         
         public UnityEvent ShipDestroyed;
 
+        [SerializeField] List<EntityType> entityTypes = new List<EntityType> {EntityType.TEAM};
+        
         void Awake()
         {
             transform.parent = SceneRoot.instance.transform;
@@ -61,7 +65,12 @@ namespace SpaceCommander.Ships
         {
             player = PlayerManager.GetPlayerByNetId(playerId);
         }
-        
+
+        public IPlayer GetPlayer()
+        {
+            return player;
+        }
+
         [Command]
         public void CmdSetGroup(int newGroupId)
         {
@@ -118,14 +127,30 @@ namespace SpaceCommander.Ships
             entityId = id;
         }
 
-        public IPlayer GetPlayer()
+        public (List<EntityType>, IEntity) GetEntityAndTypes()
         {
-            return player;
+            return (entityTypes, this);
         }
-
+        
         public bool IsAlive()
         {
             return isAlive;
+        }
+
+        public bool IsEnemy(IEntity otherEntity)
+        {
+            var entityKey = otherEntity.GetEntityAndTypes();
+                var entityTypes = entityKey.Item1;
+                if (entityTypes.Contains(EntityType.TEAM))
+                {
+                    if (((ITeamEntity)otherEntity).GetTeam().teamId != GetTeam().teamId) return true; // For now, players will all shoot each other FFA if they are controller "player ships"
+                }
+                else
+                {
+                    Debug.Log("Cant check if enemy, doesn't appear to be type TEAM");
+                }
+
+                return false;
         }
 
         public void CmdDie()

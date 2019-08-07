@@ -2,9 +2,10 @@
 using System.Linq;
 using SpaceCommander;
 using SpaceCommander.Game;
+using SpaceCommander.Match;
 using UnityEngine;
 
-public class Timer
+public class MatchTimer
 {
     private float Length;
     public float currentTime;
@@ -13,7 +14,7 @@ public class Timer
     private int currentTrigger;
     private bool running;
 
-    public Timer Start()
+    public MatchTimer Start()
     {
         currentTime = 0;
         currentTrigger = 0;
@@ -26,7 +27,7 @@ public class Timer
         Triggers.Add(_t, _e);
     }
 
-    public Timer(Clock clock, float length)
+    public MatchTimer(MatchClock clock, float length)
     {
         clock.OnUpdate.AddListener(Update);
         Triggers = new SortedDictionary<float, GameManager.EventHandler>();

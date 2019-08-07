@@ -10,15 +10,15 @@ namespace SpaceCommander.Ships
             
             public Vector3 warpInStartPos;
             public float warpTime = 5f;
-            private Ship ship;
+            private Ship _ship;
 
             void Awake()
             {
-                ship = GetComponent<Ship>();
+                _ship = GetComponent<Ship>();
             }
 
             public void InitWarp() {
-                ship.visualModel.transform.localPosition = warpInStartPos;
+                _ship.visualModel.transform.localPosition = warpInStartPos;
                 
                 PrepareForWarpIn();
                 
@@ -29,8 +29,8 @@ namespace SpaceCommander.Ships
             
             void PrepareForWarpIn()
             {
-                ship.shipMovement.controlEnabled = false;
-                ship.ShowHologram();
+                _ship.shipMovement.controlEnabled = false;
+                _ship.ShowHologram();
             }
             
             IEnumerator WarpIn()
@@ -39,7 +39,7 @@ namespace SpaceCommander.Ships
                 do
                 {
                     timer += Time.deltaTime;
-                    ship.visualModel.transform.localPosition = Vector3.Lerp(warpInStartPos, Vector3.zero, timer / warpTime);
+                    _ship.visualModel.transform.localPosition = Vector3.Lerp(warpInStartPos, Vector3.zero, timer / warpTime);
                     yield return null;
                 }
                 while (timer <= warpTime) ;
@@ -47,8 +47,8 @@ namespace SpaceCommander.Ships
 
             void PrepareForControl()
             {
-                ship.shipMovement.controlEnabled = true;
-                ship.HideHologram();
+                _ship.shipMovement.controlEnabled = true;
+                _ship.HideHologram();
             }
         }
    

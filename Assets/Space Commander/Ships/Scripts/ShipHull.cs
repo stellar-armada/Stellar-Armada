@@ -7,7 +7,7 @@ namespace SpaceCommander.Ships
 {
     public class ShipHull : NetworkBehaviour, IDamageable, ICollidable
     {
-        private IPlayerEntity owningEntity;
+        [SerializeField] private Ship ship;
 
         public float maxHull;
 
@@ -21,23 +21,17 @@ namespace SpaceCommander.Ships
         {
             currentHull = maxHull;
         }
-        
         [Command]
         public void CmdRepairHull(float amount)
         {
             currentHull = Mathf.Min(currentHull + amount, maxHull);
         }
-
-
-        public IPlayerEntity GetOwningEntity()
+        
+        public IEntity GetOwningEntity()
         {
-            return owningEntity;
+            return ship;
         }
-
-        public void SetOwningEntity(IPlayerEntity playerEntity)
-        {
-            owningEntity = playerEntity;
-        }
+        
 
         public GameObject GetGameObject()
         {
@@ -46,28 +40,20 @@ namespace SpaceCommander.Ships
 
         public void TakeDamage(float damage, Vector3 point, Damager damager)
         {
-            if (owningEntity.IsAlive() && isServer) CmdTakeDamage(damage);
-            // We can spawn burn decals here later
+            if (!ship.IsAlive()) return;
+                currentHull -= damage;
+            if (currentHull <= 0 && ship.IsAlive())
+            {
+                ship.CmdDie();
+            }
         }
-
-        [Command]
-        void CmdTakeDamage(float damage)
-        {
-            currentHull -= damage;
-                if (currentHull <= 0 && owningEntity.IsAlive())
-                {
-                    owningEntity.CmdDie();
-                }
-        }
+        
         void HandleHullChange(float h)
         {
             HullChanged.Invoke();
         }
 
-           
-
-
-            public IDamageable GetDamageable()
+        public IDamageable GetDamageable()
             {
                 return this;
             }

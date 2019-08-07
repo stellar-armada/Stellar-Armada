@@ -4,6 +4,52 @@ using System;
 
 namespace SpaceCommander
 {
+    
+    
+    /// <summary>
+    /// Timer entity class
+    /// </summary>
+   public class Timer
+    {
+        public int id;
+        public bool isActive;
+
+        public float rate;
+        public int ticks;
+        public int ticksElapsed;
+        public float last;
+        public Action callBack;
+
+        public Timer(int id_, float rate_, int ticks_, Action callback_)
+        {
+            id = id_;
+            rate = rate_ < 0 ? 0 : rate_;
+            ticks = ticks_ < 0 ? 0 : ticks_;
+            callBack = callback_;
+            last = 0;
+            ticksElapsed = 0;
+            isActive = true;
+        }
+
+        public void Tick()
+        {
+            last += Time.deltaTime;
+
+            if (isActive && last >= rate)
+            {
+                last = 0;
+                ticksElapsed++;
+                callBack.Invoke();
+
+                if (ticks > 0 && ticks == ticksElapsed)
+                {
+                    isActive = false;
+                    TimeManager.instance.RemoveTimer(id);
+                }
+            }
+        }
+    }
+    
     public class TimeManager : MonoBehaviour
     {
         public static TimeManager instance;
@@ -15,49 +61,7 @@ namespace SpaceCommander
 
         private int idCounter;
 
-        /// <summary>
-        /// Timer entity class
-        /// </summary>
-        class Timer
-        {
-            public int id;
-            public bool isActive;
 
-            public float rate;
-            public int ticks;
-            public int ticksElapsed;
-            public float last;
-            public Action callBack;
-
-            public Timer(int id_, float rate_, int ticks_, Action callback_)
-            {
-                id = id_;
-                rate = rate_ < 0 ? 0 : rate_;
-                ticks = ticks_ < 0 ? 0 : ticks_;
-                callBack = callback_;
-                last = 0;
-                ticksElapsed = 0;
-                isActive = true;
-            }
-
-            public void Tick()
-            {
-                last += Time.deltaTime;
-
-                if (isActive && last >= rate)
-                {
-                    last = 0;
-                    ticksElapsed++;
-                    callBack.Invoke();
-
-                    if (ticks > 0 && ticks == ticksElapsed)
-                    {
-                        isActive = false;
-                        TimeManager.instance.RemoveTimer(id);
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// Awake

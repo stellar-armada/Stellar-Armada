@@ -280,7 +280,6 @@ namespace SpaceCommander.Pooling
         public Transform SpawnDamager(IWeaponSystem owningWeaponSystem, Transform obj, Vector3 pos , Quaternion rot , Transform par)
         {
             
-            Debug.Log("Spawning damager for " + owningWeaponSystem.GetWeaponSystemController().GetEntity().GetPlayer().GetName() + " on " + obj.name);
             if (!CheckForExistingTemplate(obj))
             {
                 if (needDebugging)

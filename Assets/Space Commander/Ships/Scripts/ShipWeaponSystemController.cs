@@ -5,24 +5,16 @@ namespace SpaceCommander.Ships
 {
     public class ShipWeaponSystemController : MonoBehaviour, IWeaponSystemController
     {
-        public IPlayerEntity entity;
 
+        [SerializeField] private Ship ship;
+        
         List<IWeaponSystem> weaponSystems = new List<IWeaponSystem>();
 
         public bool weaponSystemsEnabled = false;
 
-        void Awake()
-        {
-            entity = GetComponent<IPlayerEntity>();
-        }
         public IPlayerEntity GetEntity()
         {
-            return entity;
-        }
-
-        public void SetOwner(IPlayerEntity newOwner)
-        {
-            entity = newOwner;
+            return ship;
         }
 
         public List<IWeaponSystem> GetWeaponSystems()

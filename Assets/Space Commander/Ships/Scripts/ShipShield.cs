@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 namespace SpaceCommander.Ships
 {
-    public class ShipShield : NetworkBehaviour, IDamageable, ICollidable
+    public class ShipShield : MonoBehaviour, IDamageable, ICollidable
     {
-        private IPlayerEntity owningEntity;
 
+        [SerializeField] private Ship ship;
+        
         public float maxShield;
 
         public UnityEvent ShieldChanged;
@@ -66,7 +67,7 @@ namespace SpaceCommander.Ships
             {
                 currentShield -= damage;
             }
-            else if (owningEntity.IsAlive())
+            else if (ship.IsAlive())
                 CmdDie();
 
             lastHit = Time.time;
@@ -78,14 +79,9 @@ namespace SpaceCommander.Ships
             Debug.Log("Shields recharged to " + currentShield);
         }
 
-        public IPlayerEntity GetOwningEntity()
+        public IEntity GetOwningEntity()
         {
-            return owningEntity;
-        }
-
-        public void SetOwningEntity(IPlayerEntity playerEntity)
-        {
-            owningEntity = playerEntity;
+            return ship;
         }
 
         public GameObject GetGameObject()
@@ -116,7 +112,6 @@ namespace SpaceCommander.Ships
 
         void HandleShieldChange(float s)
         {
-            Debug.Log(s);
             if (!shieldsUp && s >= maxShield / 10f) // Shield regenerates when it hits 1/10th HP
             {
                 // Shields back up

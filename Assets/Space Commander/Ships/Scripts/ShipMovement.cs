@@ -8,14 +8,14 @@ namespace SpaceCommander.Ships
         [SyncVar] public bool controlEnabled = false;
 
         [HideInInspector] public Transform currentTarget;
-        private Ship ship;
+        private Ship _ship;
         
-        Ship tempShip;
+        Ship _tempShip;
         private Transform transformToMoveTo;
 
         void Awake()
         {
-            ship = GetComponent<Ship>();
+            _ship = GetComponent<Ship>();
         }
         [Command]
         public void CmdMoveToPointInSpace(Vector3 pos)
@@ -28,8 +28,8 @@ namespace SpaceCommander.Ships
         public void CmdMoveToShip(uint shipID)
         {
             if (!controlEnabled) return;
-            tempShip = ShipManager.GetShipByNetId(shipID);
-            Transform shipToMoveTo = tempShip.GetComponent<Transform>();
+            _tempShip = ShipManager.GetShipByNetId(shipID);
+            Transform shipToMoveTo = _tempShip.GetComponent<Transform>();
             currentTarget = shipToMoveTo;
             GoToPoint(shipToMoveTo.position);
             Debug.Log("Moving to ship");
@@ -39,11 +39,11 @@ namespace SpaceCommander.Ships
         public void CmdPursueShip(uint shipID)
         {
             if (!controlEnabled) return;
-            tempShip = ShipManager.GetShipByNetId(shipID);
-            Transform shipToPursue = tempShip.GetComponent<Transform>();
-            ship.steerForPoint.enabled = false;
-            ship.steerForPursuit.Quarry = tempShip.autonomousVehicle;
-            ship.steerForPursuit.enabled = true;
+            _tempShip = ShipManager.GetShipByNetId(shipID);
+            Transform shipToPursue = _tempShip.GetComponent<Transform>();
+            _ship.steerForPoint.enabled = false;
+            _ship.steerForPursuit.Quarry = _tempShip.autonomousVehicle;
+            _ship.steerForPursuit.enabled = true;
             currentTarget = shipToPursue;
             Debug.Log("Pursuing ship");
         }
@@ -51,17 +51,17 @@ namespace SpaceCommander.Ships
         [Command]
         public void CmdStopMovement()
         {
-            ship.steerForPoint.TargetPoint = transform.position;
-            ship.steerForPoint.enabled = true;
-            ship.steerForPursuit.Quarry = null;
-            ship.steerForPursuit.enabled = false;
+            _ship.steerForPoint.TargetPoint = transform.position;
+            _ship.steerForPoint.enabled = true;
+            _ship.steerForPursuit.Quarry = null;
+            _ship.steerForPursuit.enabled = false;
         }
         
         void GoToPoint(Vector3 point)
         {
-            ship.steerForPoint.enabled = true;
-            ship.steerForPoint.TargetPoint = point;
-            ship.steerForPursuit.enabled = false;
+            _ship.steerForPoint.enabled = true;
+            _ship.steerForPoint.TargetPoint = point;
+            _ship.steerForPursuit.enabled = false;
         }
     }
 }
