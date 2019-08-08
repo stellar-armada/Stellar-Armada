@@ -5,39 +5,8 @@
     <e p="C:\Users\alexm\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Space Commander Ships LWRP.-763613520.00" t="ExcludeRecursive" />
     <e p="D:\Space Commander Ships LWRP" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
-      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Editor" t="Include">
-          <e p="MatchNetworkManagerEditor.cs" t="Include" />
-        </e>
-        <e p="EntityFactory.cs" t="Include" />
-        <e p="FleetSelectionUITest.cs" t="Include" />
-        <e p="GroupManager.cs" t="Include" />
-        <e p="IK" t="Include">
-          <e p="AxisTools.cs" t="Include" />
-          <e p="Editor" t="Include">
-            <e p="VRIKInspector.cs" t="Include" />
-          </e>
-          <e p="Hierarchy.cs" t="Include" />
-          <e p="IK.cs" t="Include" />
-          <e p="IKSolver.cs" t="Include" />
-          <e p="IKSolverVR.cs" t="Include" />
-          <e p="IKSolverVRArm.cs" t="Include" />
-          <e p="IKSolverVRBodyPart.cs" t="Include" />
-          <e p="IKSolverVRFootstep.cs" t="Include" />
-          <e p="IKSolverVRLeg.cs" t="Include" />
-          <e p="IKSolverVRLocomotion.cs" t="Include" />
-          <e p="IKSolverVRSpine.cs" t="Include" />
-          <e p="IKSolverVRUtilities.cs" t="Include" />
-          <e p="Interp.cs" t="Include" />
-          <e p="QuaTools.cs" t="Include" />
-          <e p="RotationLimit.cs" t="Include" />
-          <e p="SolverManager.cs" t="Include" />
-          <e p="V3Tools.cs" t="Include" />
-          <e p="VRIK.cs" t="Include" />
-          <e p="Warning.cs" t="Include" />
-        </e>
         <e p="LockRotation.cs" t="Include" />
         <e p="MatchTimer.cs" t="Include" />
         <e p="Paid Third Party" t="Include">
@@ -810,38 +779,38 @@
             </e>
           </e>
         </e>
-        <e p="Plugins" t="Include">
-          <e p="RootMotion" t="Include">
-            <e p="Shared Demo Assets" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="Camera Controllers" t="Include">
-                  <e p="CameraController.cs" t="Include" />
-                  <e p="CameraControllerFPS.cs" t="Include" />
-                </e>
-                <e p="Character Controllers" t="Include">
-                  <e p="CharacterAnimationBase.cs" t="Include" />
-                  <e p="CharacterBase.cs" t="Include" />
-                  <e p="SimpleLocomotion.cs" t="Include" />
-                  <e p="UserControlThirdPerson.cs" t="Include" />
-                </e>
-                <e p="Misc" t="Include">
-                  <e p="ApplicationQuit.cs" t="Include" />
-                  <e p="SlowMo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="QuaternionTools.cs" t="Include" />
-        <e p="Scenario.cs" t="Include" />
-        <e p="ScenarioManager.cs" t="Include" />
         <e p="ScenarioTest.cs" t="Include" />
         <e p="ShipFormationManager.cs" t="Include" />
         <e p="ShipHologram.cs" t="Include" />
         <e p="SimpleMatchServerManager.cs" t="Include" />
-        <e p="Space Commander" t="Include">
-          <e p="Audio" t="Include">
-            <e p="Scripts" t="Include">
+        <e p="SpaceCommander" t="Include">
+          <e p="IK" t="Include">
+            <e p="AxisTools.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="VRIKInspector.cs" t="Include" />
+            </e>
+            <e p="Hierarchy.cs" t="Include" />
+            <e p="IK.cs" t="Include" />
+            <e p="IKSolver.cs" t="Include" />
+            <e p="IKSolverVR.cs" t="Include" />
+            <e p="IKSolverVRArm.cs" t="Include" />
+            <e p="IKSolverVRBodyPart.cs" t="Include" />
+            <e p="IKSolverVRFootstep.cs" t="Include" />
+            <e p="IKSolverVRLeg.cs" t="Include" />
+            <e p="IKSolverVRLocomotion.cs" t="Include" />
+            <e p="IKSolverVRSpine.cs" t="Include" />
+            <e p="IKSolverVRUtilities.cs" t="Include" />
+            <e p="Interp.cs" t="Include" />
+            <e p="QuaTools.cs" t="Include" />
+            <e p="RotationLimit.cs" t="Include" />
+            <e p="SolverManager.cs" t="Include" />
+            <e p="V3Tools.cs" t="Include" />
+            <e p="VRIK.cs" t="Include" />
+            <e p="Warning.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Audio" t="Include">
               <e p="MessageAudioController.cs" t="Include" />
               <e p="MusicController.cs" t="Include" />
               <e p="MusicData.cs" t="Include" />
@@ -850,102 +819,84 @@
               <e p="SoundEffectButtonListener.cs" t="Include" />
               <e p="VolumeSliderListener.cs" t="Include" />
             </e>
-          </e>
-          <e p="Common" t="Include">
-            <e p="DamageableTest.cs" t="Include" />
-            <e p="IExplodable.cs" t="Include" />
-            <e p="ISelector.cs" t="Include" />
-            <e p="Scripts" t="Include">
-              <e p="enums" t="Include">
-                <e p="PlayerType.cs" t="Include" />
+            <e p="Controller" t="Include">
+              <e p="HapticsManager.cs" t="Include" />
+            </e>
+            <e p="EntityFactory.cs" t="Include" />
+            <e p="enums" t="Include">
+              <e p="PlayerType.cs" t="Include" />
+            </e>
+            <e p="Interfaces" t="Include">
+              <e p="ICollidable.cs" t="Include" />
+              <e p="IDamageable.cs" t="Include" />
+              <e p="IEntity.cs" t="Include" />
+              <e p="IExplodable.cs" t="Include" />
+              <e p="IPlayer.cs" t="Include" />
+              <e p="IPlayerEntity.cs" t="Include" />
+              <e p="IPursuable.cs" t="Include" />
+              <e p="ISelectable.cs" t="Include" />
+              <e p="ISelector.cs" t="Include" />
+              <e p="ISpawnable.cs" t="Include" />
+              <e p="ITeamEntity.cs" t="Include" />
+              <e p="IWeaponSystem.cs" t="Include" />
+              <e p="IWeaponSystemController.cs" t="Include" />
+            </e>
+            <e p="Match" t="Include">
+              <e p="MatchClock.cs" t="Include" />
+              <e p="MatchClockManager.cs" t="Include" />
+              <e p="MatchCountdown.cs" t="Include" />
+              <e p="MatchNetworkManager.cs" t="Include" />
+              <e p="MatchScenarioManager.cs" t="Include" />
+              <e p="MatchStateManager.cs" t="Include" />
+              <e p="Messaging" t="Include">
+                <e p="MatchMessage.cs" t="Include" />
+                <e p="MatchMessageData.cs" t="Include" />
+                <e p="MatchMessageManager.cs" t="Include" />
               </e>
-              <e p="Interfaces" t="Include">
-                <e p="ICollidable.cs" t="Include" />
-                <e p="IDamageable.cs" t="Include" />
-                <e p="IEntity.cs" t="Include" />
-                <e p="IPlayer.cs" t="Include" />
-                <e p="IPlayerEntity.cs" t="Include" />
-                <e p="IPursuable.cs" t="Include" />
-                <e p="ISelectable.cs" t="Include" />
-                <e p="ISpawnable.cs" t="Include" />
-                <e p="ITeamEntity.cs" t="Include" />
-                <e p="IWeaponSystem.cs" t="Include" />
-                <e p="IWeaponSystemController.cs" t="Include" />
-              </e>
-              <e p="Tests" t="Include">
-                <e p="TestCollisionHandler.cs" t="Include" />
-                <e p="TestPlayer.cs" t="Include" />
-                <e p="TestPlayerEntity.cs" t="Include" />
+            </e>
+            <e p="Networking" t="Include">
+              <e p="Editor" t="Include">
+                <e p="MatchNetworkManagerEditor.cs" t="Include" />
               </e>
             </e>
-          </e>
-          <e p="Game" t="Include">
-            <e p="MatchScenarioManager.cs" t="Include" />
-            <e p="Scripts" t="Include">
-              <e p="GameManager.cs" t="Include" />
-              <e p="SceneRoot.cs" t="Include" />
-            </e>
-            <e p="StreamingAssets" t="Include">
-              <e p="settings.txt" t="Include" />
-            </e>
-          </e>
-          <e p="Haptics" t="Include">
-            <e p="HapticsManager.cs" t="Include" />
-          </e>
-          <e p="Match" t="Include">
-            <e p="MatchClock.cs" t="Include" />
-            <e p="MatchClockManager.cs" t="Include" />
-            <e p="MatchCountdown.cs" t="Include" />
-            <e p="MatchNetworkManager.cs" t="Include" />
-            <e p="MatchStateManager.cs" t="Include" />
-            <e p="Messaging" t="Include">
-              <e p="MatchMessage.cs" t="Include" />
-              <e p="MatchMessageData.cs" t="Include" />
-              <e p="MatchMessageManager.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Player" t="Include">
-            <e p="PlayerManager.cs" t="Include" />
-            <e p="Scripts" t="Include">
+            <e p="Player" t="Include">
               <e p="BodyController.cs" t="Include" />
               <e p="FootGrounder.cs" t="Include" />
               <e p="LocalCameraController.cs" t="Include" />
               <e p="LocalRig.cs" t="Include" />
-              <e p="LookAtTarget.cs" t="Include" />
               <e p="LookTarget.cs" t="Include" />
-              <e p="Mobile" t="Include">
-                <e p="CenterAttachmentPoint.cs" t="Include" />
-                <e p="HapticsController.cs" t="Include" />
-              </e>
               <e p="Nameplate.cs" t="Include" />
               <e p="PlayerController.cs" t="Include" />
+              <e p="PlayerManager.cs" t="Include" />
             </e>
-          </e>
-          <e p="Pooling" t="Include">
-            <e p="Despawner.cs" t="Include" />
-            <e p="Editor" t="Include">
-              <e p="PoolManagerEditor.cs" t="Include" />
+            <e p="Pooling" t="Include">
+              <e p="Despawner.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="PoolManagerEditor.cs" t="Include" />
+              </e>
+              <e p="Pool.cs" t="Include" />
+              <e p="PoolContainer.cs" t="Include" />
+              <e p="PoolManager.cs" t="Include" />
+              <e p="PoolManagerDB.cs" t="Include" />
             </e>
-            <e p="Pool.cs" t="Include" />
-            <e p="PoolContainer.cs" t="Include" />
-            <e p="PoolManager.cs" t="Include" />
-            <e p="PoolManagerDB.cs" t="Include" />
-          </e>
-          <e p="Selection" t="Include">
-            <e p="SelectionManager.cs" t="Include" />
-            <e p="SelectionTest.cs" t="Include" />
-            <e p="SelectionType.cs" t="Include" />
-            <e p="SelectorTest.cs" t="Include" />
-            <e p="ShipSelectionHandler.cs" t="Include" />
-            <e p="Tests" t="Include">
-              <e p="TestSelectionHandler.cs" t="Include" />
+            <e p="Scenarios" t="Include">
+              <e p="Scenario.cs" t="Include" />
+              <e p="ScenarioManager.cs" t="Include" />
+              <e p="SceneRoot.cs" t="Include" />
+              <e p="WinCondition.cs" t="Include" />
             </e>
-          </e>
-          <e p="Settings" t="Include">
-            <e p="SettingsManager.cs" t="Include" />
-          </e>
-          <e p="Shields" t="Include">
-            <e p="Scripts" t="Include">
+            <e p="Selection" t="Include">
+              <e p="GroupManager.cs" t="Include" />
+              <e p="SelectionManager.cs" t="Include" />
+              <e p="SelectionTest.cs" t="Include" />
+              <e p="SelectionType.cs" t="Include" />
+              <e p="SelectorTest.cs" t="Include" />
+              <e p="ShipSelectionHandler.cs" t="Include" />
+            </e>
+            <e p="Settings" t="Include">
+              <e p="SettingsManager.cs" t="Include" />
+            </e>
+            <e p="Shields" t="Include">
               <e p="Editor" t="Include">
                 <e p="ShieldHitMaterialEditor.cs" t="Include" />
                 <e p="ShieldMaterialEditor.cs" t="Include" />
@@ -953,14 +904,7 @@
               <e p="ShieldEffectController.cs" t="Include" />
               <e p="ShieldHit.cs" t="Include" />
             </e>
-            <e p="Shaders" t="Include">
-              <e p="ShieldEffect.shader" t="Include" />
-              <e p="ShieldEffect_mobile.shader" t="Include" />
-              <e p="ShieldHit.shader" t="Include" />
-            </e>
-          </e>
-          <e p="Ships" t="Include">
-            <e p="Scripts" t="Include">
+            <e p="Ships" t="Include">
               <e p="Ship.cs" t="Include" />
               <e p="ShipEngines.cs" t="Include" />
               <e p="ShipExplosion.cs" t="Include" />
@@ -973,47 +917,24 @@
               <e p="ShipWarp.cs" t="Include" />
               <e p="ShipWeaponSystemController.cs" t="Include" />
               <e p="StatusBar.cs" t="Include" />
-              <e p="TestDamageableHull.cs" t="Include" />
-              <e p="TestDamageableShield.cs" t="Include" />
-              <e p="Tests" t="Include">
-                <e p="ExplosionTest.cs" t="Include" />
-                <e p="HealthTest.cs" t="Include" />
-                <e p="MovementTest.cs" t="Include" />
-                <e p="ShipFactoryTest.cs" t="Include" />
-                <e p="ShipTest.cs" t="Include" />
-                <e p="ThrusterTest.cs" t="Include" />
-                <e p="WarpTest.cs" t="Include" />
-                <e p="WeaponSystemsTest.cs" t="Include" />
-              </e>
             </e>
-            <e p="Shaders" t="Include">
-              <e p="Hologram.shader" t="Include" />
+            <e p="Teams" t="Include">
+              <e p="Team.cs" t="Include" />
+              <e p="TeamInfo.cs" t="Include" />
+              <e p="TeamManager.cs" t="Include" />
             </e>
-          </e>
-          <e p="Teams" t="Include">
-            <e p="Team.cs" t="Include" />
-            <e p="TeamInfo.cs" t="Include" />
-            <e p="TeamManager.cs" t="Include" />
-          </e>
-          <e p="Time" t="Include">
-            <e p="TimeManager.cs" t="Include" />
-          </e>
-          <e p="UI" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="UI" t="Include">
-                <e p="FillImageOverTime.cs" t="Include" />
-                <e p="MainMenuManager.cs" t="Include" />
-                <e p="MenuScreen.cs" t="Include" />
-                <e p="Pointer.cs" t="Include" />
-                <e p="SettingsMenuManager.cs" t="Include" />
-                <e p="SharedMenuManager.cs" t="Include" />
-                <e p="VRCanvas.cs" t="Include" />
-              </e>
+            <e p="Time" t="Include">
+              <e p="TimeManager.cs" t="Include" />
+            </e>
+            <e p="UI" t="Include">
+              <e p="FillImageOverTime.cs" t="Include" />
+              <e p="MenuScreen.cs" t="Include" />
+              <e p="Pointer.cs" t="Include" />
+              <e p="SettingsMenuManager.cs" t="Include" />
               <e p="UIManager.cs" t="Include" />
+              <e p="VRCanvas.cs" t="Include" />
             </e>
-          </e>
-          <e p="Utility" t="Include">
-            <e p="Scripts" t="Include">
+            <e p="Utility" t="Include">
               <e p="Editor" t="Include">
                 <e p="CustomEditorFunctions.cs" t="Include" />
                 <e p="UnityEventDrawer.cs" t="Include" />
@@ -1044,9 +965,7 @@
                 <e p="UserSerializableDictionaries.cs" t="Include" />
               </e>
             </e>
-          </e>
-          <e p="Weapons" t="Include">
-            <e p="Scripts" t="Include">
+            <e p="Weapons" t="Include">
               <e p="Beam.cs" t="Include" />
               <e p="Damager.cs" t="Include" />
               <e p="GuardianBeam.cs" t="Include" />
@@ -1058,9 +977,6 @@
               <e p="Shotgun.cs" t="Include" />
               <e p="ShotgunTurret.cs" t="Include" />
               <e p="SniperTurret.cs" t="Include" />
-              <e p="Tests" t="Include">
-                <e p="TurretTest.cs" t="Include" />
-              </e>
               <e p="Turret.cs" t="Include" />
               <e p="VulcanTurret.cs" t="Include" />
               <e p="WeaponAudioController.cs" t="Include" />
@@ -1068,8 +984,47 @@
               <e p="WeaponSystem.cs" t="Include" />
               <e p="WeaponType.cs" t="Include" />
             </e>
-            <e p="Shaders" t="Include">
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="Shields" t="Include">
+              <e p="ShieldEffect.shader" t="Include" />
+              <e p="ShieldEffect_mobile.shader" t="Include" />
+              <e p="ShieldHit.shader" t="Include" />
+            </e>
+            <e p="Ships" t="Include">
+              <e p="Hologram.shader" t="Include" />
+            </e>
+            <e p="Weapons" t="Include">
               <e p="DepthFadeAdditive.shader" t="Include" />
+            </e>
+          </e>
+          <e p="StreamingAssets" t="Include">
+            <e p="settings.txt" t="Include" />
+          </e>
+          <e p="Tests" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="DamageableTest.cs" t="Include" />
+              <e p="Selection" t="Include">
+                <e p="TestSelectionHandler.cs" t="Include" />
+              </e>
+              <e p="Ships" t="Include">
+                <e p="ExplosionTest.cs" t="Include" />
+                <e p="HealthTest.cs" t="Include" />
+                <e p="MovementTest.cs" t="Include" />
+                <e p="ShipFactoryTest.cs" t="Include" />
+                <e p="ShipTest.cs" t="Include" />
+                <e p="TestDamageableHull.cs" t="Include" />
+                <e p="TestDamageableShield.cs" t="Include" />
+                <e p="ThrusterTest.cs" t="Include" />
+                <e p="WarpTest.cs" t="Include" />
+                <e p="WeaponSystemsTest.cs" t="Include" />
+              </e>
+              <e p="TestCollisionHandler.cs" t="Include" />
+              <e p="TestPlayer.cs" t="Include" />
+              <e p="TestPlayerEntity.cs" t="Include" />
+              <e p="Weapons" t="Include">
+                <e p="TurretTest.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
@@ -1504,7 +1459,6 @@
             </e>
           </e>
         </e>
-        <e p="WinCondition.cs" t="Include" />
       </e>
       <e p="Mirror.csproj" t="IncludeRecursive" />
       <e p="Mirror.Tests.csproj" t="IncludeRecursive" />

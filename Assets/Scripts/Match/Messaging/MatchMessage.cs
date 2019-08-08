@@ -1,0 +1,201 @@
+﻿using System.Collections;
+using UnityEngine;
+using SpaceCommander.Audio;
+using SpaceCommander.Game;
+using SpaceCommander.Controller;
+using TMPro;
+
+namespace SpaceCommander.Match.Messaging
+{
+    [RequireComponent(typeof(CanvasGroup))]
+    public class MatchMessage : MonoBehaviour
+    {
+        public bool hasPriority = false;
+        public bool isActive = false;
+        private MatchMessageType _matchMessageType;
+        [SerializeField] float fadeTime = .5f;
+        [SerializeField] private TextMeshProUGUI textSingle;
+        [SerializeField] private TextMeshProUGUI textDoubleHeader;
+        [SerializeField] private TextMeshProUGUI textDoubleHeaderSecondary;
+
+
+        bool holdMessage = true;
+        float holdTime = 3f;
+        bool hapticAlert = false;
+
+        CanvasGroup group;
+        bool fading = false;
+        float lastShown = 0f;
+
+        #region Events // Subscribe to these for special message-specific logic and scripts
+
+        public event MatchTimer.EventHandler
+            EventOnMessageShown; // GameManager's void EventHandler is fine for our event purposes
+
+        public event MatchTimer.EventHandler EventOnMessageHidden;
+
+        #endregion
+
+        #region Initialization and Deinitialization
+
+        private void Awake()
+        {
+            group = GetComponent<CanvasGroup>();
+        }
+
+        void Init()
+        {
+            group = GetComponent<CanvasGroup>();
+        }
+
+        private void OnDisable()
+        {
+            group.alpha = 0f;
+        }
+
+        #endregion
+
+        public void ShowMessage(MatchMessageType _type, SerializedMessage _message)
+        {
+            //Debug.Log("Showing message of type " + _type.ToString());
+            _matchMessageType = _type;
+
+            if (_message.subMessageContents == "")
+            {
+                textSingle.text = _message.messageContents;
+                textDoubleHeader.text = "";
+                textDoubleHeaderSecondary.text = "";
+            }
+            else
+            {
+                textSingle.text = "";
+                textDoubleHeader.text = _message.messageContents;
+                textDoubleHeaderSecondary.text = _message.subMessageContents;
+            }
+            
+            holdMessage = _message.holdMessage;
+            holdTime = _message.holdTime;
+            hapticAlert = _message.hapticAlert;
+            ShowMessage();
+        }
+
+        public void ShowMessage()
+        {
+            if (MatchMessageManager.instance.HasCurrentMessage())
+            {
+                MatchMessageManager.GetCurrentMessage().HideMessage();
+            }
+
+            lastShown = Time.time;
+            gameObject.SetActive(true);
+            MatchMessageManager.SetCurrentMessage(this);
+
+            if (fading == true)
+            {
+                StopAllCoroutines();
+            }
+
+            Init();
+            
+            if ((int)_matchMessageType < 5)
+            {
+                isActive = true;
+                group.alpha = 1;
+            }
+            else
+                StartCoroutine(FadeIn());
+
+            MessageAudioController.instance.PlayOneShot(_matchMessageType);
+
+            if (hapticAlert)
+            {
+                HapticsManager.HandleHaptics_Alert();
+            }
+
+            EventOnMessageShown?.Invoke();
+        }
+
+        public void HideMessage()
+        {
+            if (!isActive) return;
+            if (fading == true)
+            {
+                StopAllCoroutines();
+            }
+
+            if (MatchMessageManager.GetCurrentMessage() == this)
+            {
+                MatchMessageManager.ClearCurrentMessage();
+            }
+
+            gameObject.SetActive(false);
+            isActive = false;
+            EventOnMessageHidden?.Invoke();
+        }
+
+        #region Private Methods
+
+        void FadeAndHideMessage()
+        {
+            if (!isActive) return;
+            if (fading == true)
+            {
+                StopAllCoroutines();
+            }
+
+            StartCoroutine(FadeOut(.25f));
+
+
+            isActive = false;
+            EventOnMessageHidden?.Invoke();
+        }
+
+        IEnumerator FadeIn()
+        {
+            isActive = true;
+            group.alpha = 0;
+            float timer = 0;
+            fading = true;
+            float startAlpha = group.alpha;
+
+            do
+            {
+                timer += Time.deltaTime;
+                group.alpha = Mathf.Lerp(group.alpha, 1f, timer / fadeTime);
+                yield return null;
+            } while (timer <= fadeTime);
+
+            fading = false;
+        }
+
+        IEnumerator FadeOut(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            isActive = false;
+            float timer = 0;
+            fading = true;
+            float startAlpha = group.alpha;
+            do
+            {
+                timer += Time.deltaTime;
+                group.alpha = Mathf.Lerp(group.alpha, 1f, timer / fadeTime);
+                yield return null;
+            } while (timer <= fadeTime);
+
+            fading = false;
+            group.alpha = 0;
+
+            gameObject.SetActive(false);
+        }
+
+        void Update()
+        {
+            if (holdMessage && Time.time > lastShown + holdTime && isActive)
+            {
+                FadeAndHideMessage();
+            }
+        }
+
+        #endregion
+    }
+}
