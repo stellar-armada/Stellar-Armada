@@ -19,5 +19,6 @@ namespace SpaceCommander
         bool IsEnemy(IEntity otherEntity);
         void CmdDie();
         GameObject GetGameObject();
+        ISelectable GetSelectionHandler();
     }
 }

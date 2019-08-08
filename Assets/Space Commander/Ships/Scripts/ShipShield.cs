@@ -16,7 +16,7 @@ namespace SpaceCommander.Ships
 
         [SerializeField] private float shieldRechargeDelayTime;
         [SerializeField] private float shieldRechargeRate;
-        [SerializeField] private ShieldEffectController shieldEffectController;
+        public ShieldEffectController shieldEffectController;
 
         private float lastHit;
 

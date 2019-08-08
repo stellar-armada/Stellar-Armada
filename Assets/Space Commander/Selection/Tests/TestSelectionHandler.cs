@@ -5,7 +5,7 @@ namespace SpaceCommander.Selection.Tests
     public class TestSelectionHandler : MonoBehaviour, ISelectable
     {
         
-        private IPlayerEntity owningEntity;
+        private IEntity owningEntity;
 
         private Renderer ren;
 
@@ -14,7 +14,7 @@ namespace SpaceCommander.Selection.Tests
         void Awake()
         {
             ren = GetComponent<Renderer>();
-            owningEntity = GetComponent<IPlayerEntity>();
+            owningEntity = GetComponent<IEntity>();
         }
 
         public int GetSelectionSetID()
@@ -37,7 +37,7 @@ namespace SpaceCommander.Selection.Tests
             ren.material.SetColor("_BaseColor", Color.white);
         }
 
-        public IPlayerEntity GetOwningEntity()
+        public IEntity GetOwningEntity()
         {
             return owningEntity;
         }

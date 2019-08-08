@@ -22,7 +22,7 @@ namespace SpaceCommander.Ships
 
         void Awake()
         {
-            m = new MaterialPropertyBlock();
+            if(m == null) m = new MaterialPropertyBlock();
              
              hull = ship.shipHull;
              shield = ship.shipShield;
@@ -98,6 +98,14 @@ namespace SpaceCommander.Ships
         }
         
         public void HideStatusBar()
+        {
+            if(m == null) m = new MaterialPropertyBlock();
+            statusBarRenderer.enabled = false;
+            statusBarRenderer.GetPropertyBlock(m);
+            m.SetFloat("_Visibility", 0);
+        }
+        
+        public void FadeOutStatusBar()
         {
             StartCoroutine(FadeVisibility(0));
         }

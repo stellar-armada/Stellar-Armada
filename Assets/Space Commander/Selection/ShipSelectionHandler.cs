@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using SpaceCommander.Ships;
+using UnityEngine;
 
 namespace SpaceCommander.Selection
 {
     public class ShipSelectionHandler : MonoBehaviour, ISelectable
     {
-        private IPlayerEntity owningEntity;
+        [SerializeField] Ship ship;
 
         [SerializeField] private Renderer selectionCube;
         
@@ -13,7 +14,7 @@ namespace SpaceCommander.Selection
         void Awake()
         {
             selectionCube.enabled = false;
-            owningEntity = GetComponent<IPlayerEntity>();
+            ship = GetComponent<Ship>();
         }
 
         public int GetSelectionSetID()
@@ -36,14 +37,16 @@ namespace SpaceCommander.Selection
             selectionCube.enabled = false;
         }
 
-        public IPlayerEntity GetOwningEntity()
+        public IEntity GetOwningEntity()
         {
-            return owningEntity;
+            return ship;
         }
 
         public bool IsSelectable()
         {
-            return true;
+            //If is alive and has warped in
+            if (ship.IsAlive() && ship.shipWarp.isWarpedIn) return true;
+            return false;
         }
     }
 }

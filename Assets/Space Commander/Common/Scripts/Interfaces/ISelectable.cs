@@ -6,7 +6,7 @@
         void SetSelectionSetID(int id);
         void Select();
         void Deselect();
-        IPlayerEntity GetOwningEntity();
+        IEntity GetOwningEntity();
         bool IsSelectable();
     }
 }

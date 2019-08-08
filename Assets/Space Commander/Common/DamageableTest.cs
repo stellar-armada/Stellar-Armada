@@ -13,8 +13,8 @@ namespace SpaceCommander.Common.Tests
 
         void Awake()
         {
-            health.SetOwningEntity(GetComponent<IPlayerEntity>());
-            shield.SetOwningEntity(GetComponent<IPlayerEntity>());
+            health.SetOwningEntity(GetComponent<IEntity>());
+            shield.SetOwningEntity(GetComponent<IEntity>());
         }
 
         public void ShipDestroyed()

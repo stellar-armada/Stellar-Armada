@@ -1,6 +1,8 @@
-﻿using Mirror;
+﻿using System.Linq;
+using Mirror;
 using SpaceCommander.Game;
 using SpaceCommander.Ships;
+using SpaceCommander.Teams;
 using UnityEngine;
 
 [System.Serializable]
@@ -62,6 +64,9 @@ public class ShipFactory : EntityFactory
         Debug.Log("Entity ID is " + entityIncrement);
         s.SetEntityId(entityIncrement++);
         s.CmdSetTeam(teamId);
-        s.CmdSetGroup(groupId);
+        
+        // Get group from group ID and add
+        TeamManager.instance.GetTeamByID(teamId).groups[groupId].Add(s);
+
     }
 }

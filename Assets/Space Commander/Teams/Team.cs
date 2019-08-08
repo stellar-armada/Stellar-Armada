@@ -73,6 +73,7 @@ namespace SpaceCommander.Teams
         public void AddEntity(IEntity entity)
         {
             entities.Add(entity);
+            GroupManager.instance.UpdateGroupManager(teamId);
         }
 
         public void RemoveEntity(IEntity entity)

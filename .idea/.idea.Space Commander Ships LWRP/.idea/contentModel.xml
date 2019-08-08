@@ -13,6 +13,7 @@
         </e>
         <e p="EntityFactory.cs" t="Include" />
         <e p="FleetSelectionUITest.cs" t="Include" />
+        <e p="GroupManager.cs" t="Include" />
         <e p="IK" t="Include">
           <e p="AxisTools.cs" t="Include" />
           <e p="Editor" t="Include">
@@ -831,9 +832,11 @@
             </e>
           </e>
         </e>
+        <e p="QuaternionTools.cs" t="Include" />
         <e p="Scenario.cs" t="Include" />
         <e p="ScenarioManager.cs" t="Include" />
         <e p="ScenarioTest.cs" t="Include" />
+        <e p="ShipFormationManager.cs" t="Include" />
         <e p="ShipHologram.cs" t="Include" />
         <e p="SimpleMatchServerManager.cs" t="Include" />
         <e p="Space Commander" t="Include">

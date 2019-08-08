@@ -12,7 +12,7 @@ namespace SpaceCommander.Ships
 
         public bool weaponSystemsEnabled = false;
 
-        public IPlayerEntity GetEntity()
+        public IEntity GetEntity()
         {
             return ship;
         }
@@ -37,6 +37,17 @@ namespace SpaceCommander.Ships
         }
 
         public void HideWeaponSystems()
+        {
+            foreach (IWeaponSystem weaponSystem in weaponSystems)
+            {
+                foreach (Renderer ren in weaponSystem.GetGameObject().transform.GetComponentsInChildren<Renderer>())
+                {
+                    ren.enabled = false;
+                }
+            }
+        }
+        
+        public void ShowWeaponSystems()
         {
             foreach (IWeaponSystem weaponSystem in weaponSystems)
             {

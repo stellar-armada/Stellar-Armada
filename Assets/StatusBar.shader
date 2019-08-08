@@ -574,7 +574,7 @@ Shader "SpaceCommander/StatusBar"
 }
 /*ASEBEGIN
 Version=16800
-2091;125;1773;984;397.2631;838.5639;1.755155;True;True
+2091;125;1773;984;2404.74;3016.879;4.379142;True;True
 Node;AmplifyShaderEditor.TextureCoordinatesNode;10;-1090.75,-47.38965;Float;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;15;-819.5015,89.09106;Float;False;Constant;_MinThreshold;MinThreshold;2;0;Create;True;0;0;False;0;0.01;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;4;-842.2064,206.2857;Float;True;Property;_Insignia;Insignia;0;1;[PerRendererData];Create;True;0;0;False;0;None;217b5f3648a4834448b4d08015fe60c4;True;0;False;black;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -586,18 +586,18 @@ Node;AmplifyShaderEditor.CommentaryNode;22;419.3759,522.4061;Float;False;293.6;2
 Node;AmplifyShaderEditor.RangedFloatNode;7;-638.1622,9.660296;Float;False;Constant;_MaxThreshold;MaxThreshold;1;0;Create;True;0;0;False;0;0.99;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCCompareLower;20;-159.9615,244.2086;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCCompareLower;17;-153.2597,-46.5525;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;9;180.0483,-371.5872;Float;False;Property;_Health;Health;1;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TFHCCompareGreater;5;56.63674,-42.3462;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCCompareGreater;21;73.93495,246.8147;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.CommentaryNode;18;313.4566,-203.3081;Float;False;293.6;290.4;Health Slider;1;12;;1,1,1,1;0;0
+Node;AmplifyShaderEditor.RangedFloatNode;9;180.0483,-371.5872;Float;False;Property;_Health;Health;1;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;23;437.1764,570.8059;Float;False;Property;_Shield;Shield;2;0;Create;True;0;0;True;0;0;1;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TFHCCompareGreater;5;56.63674,-42.3462;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.CommentaryNode;18;313.4566,-203.3081;Float;False;293.6;290.4;Health Slider;1;12;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.TFHCCompareLower;24;475.1762,661.2057;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCCompareLower;12;379.7512,-66.87463;Float;False;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.IntNode;31;916.4347,557.5255;Float;False;Constant;_Int1;Int 1;3;0;Create;True;0;0;False;0;0;0;0;1;INT;0
 Node;AmplifyShaderEditor.CommentaryNode;29;1035.866,210.8021;Float;False;403.2502;244.8244;If Blue is 0;1;30;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;32;952.751,-34.36201;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;33;652.4319,154.0035;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;34;774.4674,-369.9956;Float;False;Property;_Visibility;Visibility;4;0;Create;True;0;0;False;0;1;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;34;774.4674,-369.9956;Float;False;Property;_Visibility;Visibility;4;0;Create;True;0;0;False;0;1;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;35;752.3634,-261.1178;Float;True;Property;_TextureSample0;Texture Sample 0;3;0;Create;True;0;0;False;0;None;30f384bc1d4410c4c9f953a6c08a3b28;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TFHCCompareEqual;30;1202.753,272.0941;Float;False;4;0;COLOR;0,0,0,0;False;1;INT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.OneMinusNode;37;1338.585,-322.5483;Float;False;1;0;FLOAT;0;False;1;FLOAT;0
@@ -618,12 +618,12 @@ WireConnection;20;2;19;0
 WireConnection;17;0;4;3
 WireConnection;17;1;15;0
 WireConnection;17;2;14;0
-WireConnection;5;0;4;1
-WireConnection;5;1;7;0
-WireConnection;5;2;17;0
 WireConnection;21;0;4;3
 WireConnection;21;1;7;0
 WireConnection;21;2;20;0
+WireConnection;5;0;4;1
+WireConnection;5;1;7;0
+WireConnection;5;2;17;0
 WireConnection;24;0;10;1
 WireConnection;24;1;23;0
 WireConnection;24;2;21;0
@@ -643,4 +643,4 @@ WireConnection;0;0;30;0
 WireConnection;0;6;35;0
 WireConnection;0;7;37;0
 ASEEND*/
-//CHKSM=DCABC63BC9CD97179776C011BE706F86B6326584
+//CHKSM=14CCD6D19CC444687EE086C62086BB6813863CBF

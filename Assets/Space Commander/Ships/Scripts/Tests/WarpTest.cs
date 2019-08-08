@@ -15,7 +15,7 @@ namespace SpaceCommander.Ships.Test
         public void WarpIn()
         {
             if (!CheckPlayer()) return;
-            shipWarp.InitWarp();
+            shipWarp.InitWarp(Vector3.zero, Quaternion.identity);
         }
         
     }

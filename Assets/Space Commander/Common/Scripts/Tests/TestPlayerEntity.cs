@@ -71,5 +71,10 @@ namespace SpaceCommander.Common.Tests
         {
             return gameObject;
         }
+
+        public ISelectable GetSelectionHandler()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

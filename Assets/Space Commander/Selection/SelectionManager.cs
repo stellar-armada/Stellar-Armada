@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using SpaceCommander.Ships;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,6 +39,15 @@ namespace SpaceCommander.Selection
             Debug.Log("Selection is null");
             return null;
         }
+
+        public void SelectAll(int teamId)
+        {
+            var ships = ShipManager.GetShips().Where(s => s.GetTeam().teamId == (uint)teamId);
+            foreach (var ship in ships)
+            {
+                AddToSelection(ship.selectionHandler);
+            }
+        }
         
         public void CreateOrReplaceSelectionSet(int selectionSetId)
         {
@@ -58,9 +69,7 @@ namespace SpaceCommander.Selection
         public void RecallSelectionSet(int selectionSetId)
         {
             Debug.Log("Selection set id: " + selectionSetId);
-
-
-
+            
             if (selectionSets.ContainsKey(selectionSetId))
             {
 
@@ -76,7 +85,7 @@ namespace SpaceCommander.Selection
                 }
 
                 // For any object that is in the new selection that isn't in the current selection, Select
-// For any object that is in current selection that isn't in selection set, Deselect
+                // For any object that is in current selection that isn't in selection set, Deselect
                 foreach(ISelectable selectable in selectionSet)
                 {
                     if (!currentSelection.Contains(selectable))
@@ -91,6 +100,25 @@ namespace SpaceCommander.Selection
             }
         }
 
+        public void SetSelectionFromGroup(List<ISelectable> selectables)
+        {
+
+            foreach (var selectable in currentSelection)
+            {
+                if (!selectables.Contains(selectable)) selectable.Deselect();
+            }
+            
+            foreach (ISelectable selectable in selectables)
+            {
+                if(!currentSelection.Contains(selectable)) selectable.Select();
+            }
+
+            currentSelection = selectables;
+            SelectionChanged.Invoke();
+        }
+
+
+
         public void SetSelection(ISelectable selectable)
         {
             bool containsNewSelectable = false;
@@ -100,6 +128,7 @@ namespace SpaceCommander.Selection
                 if (currentSelection.Contains(selectable))
                 {
                     containsNewSelectable = true;
+                    // Remove the selectable from the selection for a second
                     currentSelection.Remove(selectable);
                 }
 
@@ -110,13 +139,15 @@ namespace SpaceCommander.Selection
 
                 currentSelection.Clear();
             }
-
+            // Add the selectable back to the selection
             currentSelection.Add(selectable);
             if (!containsNewSelectable)
             {
+                
                 selectable.Select();
-                SelectionChanged.Invoke();
+                
             }
+            SelectionChanged.Invoke();
         }
 
         public void AddToSelection(ISelectable selectable)

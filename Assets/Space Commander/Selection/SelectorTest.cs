@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using SpaceCommander.Teams;
+using UnityEngine;
 
 namespace SpaceCommander.Selection.Tests
 {
@@ -11,6 +13,8 @@ namespace SpaceCommander.Selection.Tests
 
         private bool isSelecting;
         private bool isDeselecting;
+
+        [SerializeField] uint teamId;
 
         void Update()
         {
@@ -56,6 +60,25 @@ namespace SpaceCommander.Selection.Tests
                 if (collidable != null)
                 {
                     ISelectable selectable = collidable.GetSelectable();
+                    if (!selectable.IsSelectable()) return;
+                    var entityAndType = selectable.GetOwningEntity().GetEntityAndTypes();
+                    bool canSelect = false;
+                    
+                    // Item 1 = list of entity types (ships could be player AND team, for example)
+                    if (entityAndType.Item1.Contains(EntityType.TEAM))
+                    {
+                        canSelect = ((ITeamEntity) entityAndType.Item2).GetTeam().teamId == teamId;
+                    } else if (entityAndType.Item1.Contains(EntityType.PLAYER))
+                    {
+                        throw new NotImplementedException(); // When we add player functionality we'll need to work this out
+                    }
+                    else
+                    {
+                        Debug.Log("Couldn't discern entity type");
+                    }
+
+                    if (!canSelect) return;
+                    
                     switch (selectionType)
                     {
                         case SelectionType.Selection:

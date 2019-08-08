@@ -23,6 +23,11 @@ namespace SpaceCommander.Teams
         public List<Team> teams = new List<Team>();
 
         private int newTeamIndex;
+        
+        public delegate void TeamEventSelectionHandler(uint teamId);
+
+        [SyncEvent] public event TeamEventSelectionHandler EventTeamShipsUpdated;
+        
 
         void Awake()
         {
