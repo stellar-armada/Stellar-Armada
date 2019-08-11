@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using SpaceCommander.Ships;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace SpaceCommander.Selection
 {
@@ -15,14 +17,40 @@ namespace SpaceCommander.Selection
         Dictionary<int, List<ISelectable>> selectionSets = new Dictionary<int, List<ISelectable>>();
 
         List<ISelectable> tempSelection;
-
-        public UnityEvent SelectionChanged;
-        public UnityEvent SelectionSetsChanged;
+        
+        public GameObject uiShipPrefab;
+        
+        [SerializeField] private Transform[] selectionSetContainers;
 
         void Awake()
         {
             instance = this;
         }
+
+        void UpdateSelectionSets(int selectionSet)
+        {
+            Transform[] children = selectionSetContainers[selectionSet].GetComponentsInChildren<Transform>();
+            if (children.Length > 0)
+            {
+                foreach (Transform t in children)
+                {
+                    if (t == selectionSetContainers[selectionSet]) continue;
+                    Destroy(t.gameObject);
+                }
+            }
+                
+                
+                
+                List<ISelectable> selection = GetSelectionSet(selectionSet);
+                if (selection == null) return;
+                foreach (ISelectable selectable in selection)
+                {
+                    GameObject uiShip = Instantiate(uiShipPrefab, selectionSetContainers[selectionSet]);// TO-DO -- refactor this to use pooling
+                    // Set the ship (so it can sample hull and shields)
+                    Ship s = (Ship)selectable.GetOwningEntity();
+                    
+                }
+            }
 
         public List<ISelectable> GetCurrentSelection()
         {
@@ -63,7 +91,7 @@ namespace SpaceCommander.Selection
             }
             Debug.Log("Added a selection with " + newSelection.Count + " members");
             selectionSets.Add(selectionSetId, newSelection);
-            SelectionSetsChanged.Invoke();
+            UpdateSelectionSets(selectionSetId);
         }
 
         public void RecallSelectionSet(int selectionSetId)
@@ -96,7 +124,6 @@ namespace SpaceCommander.Selection
                 
                 
                 currentSelection = selectionSets[selectionSetId];
-                SelectionChanged.Invoke();
             }
         }
 
@@ -114,7 +141,6 @@ namespace SpaceCommander.Selection
             }
 
             currentSelection = selectables;
-            SelectionChanged.Invoke();
         }
 
 
@@ -147,7 +173,6 @@ namespace SpaceCommander.Selection
                 selectable.Select();
                 
             }
-            SelectionChanged.Invoke();
         }
 
         public void AddToSelection(ISelectable selectable)
@@ -157,7 +182,6 @@ namespace SpaceCommander.Selection
                 Debug.Log("Added " + selectable.GetOwningEntity() + " to selection");
                 currentSelection.Add(selectable);
                 selectable.Select();
-                SelectionChanged.Invoke();
             }
         }
 
@@ -169,7 +193,6 @@ namespace SpaceCommander.Selection
             }
 
             currentSelection.Clear();
-            SelectionChanged.Invoke();
         }
 
         public void RemoveFromSelection(ISelectable selectable)
@@ -179,7 +202,6 @@ namespace SpaceCommander.Selection
                 Debug.Log("Removed " + selectable.GetOwningEntity() + " from selection");
                 currentSelection.Remove(selectable);
                 selectable.Deselect();
-                SelectionChanged.Invoke();
             }
         }
     }

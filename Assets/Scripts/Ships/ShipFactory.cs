@@ -34,7 +34,7 @@ public class ShipFactory : EntityFactory
             return;
         }
         
-        GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, SceneRoot.instance.transform);
+        GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, MapParent.instance.transform);
         
         NetworkServer.Spawn(shipGameObject);
         

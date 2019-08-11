@@ -16,9 +16,9 @@ namespace SpaceCommander.Player
 
     public class PlayerController : NetworkBehaviour, IPlayer
     {
-        public static PlayerController localInstance; // local player accessor
-        
         public delegate void EventHandler();
+
+        public GameObject localRig;
         
         [SerializeField] BodyController bodyController;
         
@@ -28,27 +28,16 @@ namespace SpaceCommander.Player
         
         [SyncVar] bool isHost; // Keeps track of which player is host, nice for displaying in scoreboard and the like
 
-        public static event EventHandler EventOnLocalNetworkPlayerCreated;
         public event EventHandler EventOnPlayerNameChange;
-        public event EventHandler EventOnPlayerClassChange;
         public event EventHandler EventOnPlayerTeamChange;
-        public event EventHandler EventOnWeaponHandChange;
-
-        public bool playerIsInitialized;
-
+        
         private Transform t; // Store local transform in an easy reference to reduce lookups through gameObject
 
         private bool playerIsReady;
-
-        public static void ClearDelegates()
-        {
-            EventOnLocalNetworkPlayerCreated = null;
-        }
-
+        
         private void Start()
         {
             t = transform; // skip the gameObject.transform lookup
-            bodyController = GetComponent<BodyController>();
 
             if (isLocalPlayer)
             {
@@ -73,20 +62,8 @@ namespace SpaceCommander.Player
             {
                 isHost = true; // Shorthand helper
             }
-
-            LocalRig.instance.transform.parent = t;
             
             SetUserName(SettingsManager.GetSavedPlayerName());
-            
-            EventOnLocalNetworkPlayerCreated?.Invoke();
-            
-            LocalCameraController.instance.ShowLevelAndPlayers();
-        }
-        
-        
-        public bool IsGameHost()
-        {
-            return isHost;
         }
 
         void UpdateName(string nameToChangeTo)

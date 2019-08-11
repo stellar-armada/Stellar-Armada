@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using SpaceCommander.Game;
 using SpaceCommander.Teams;
 
 namespace SpaceCommander.Player
@@ -12,17 +10,11 @@ namespace SpaceCommander.Player
         [SerializeField] TextMeshPro playerName;
         [SerializeField] PlayerController playerController;
         [SerializeField] Transform transformToFollow;
-        [SerializeField] Vector3 transformOffset;
-        [SerializeField] Slider playerHealth;
-        [SerializeField] private Image healthBarFill;
-
-        [SerializeField] IPlayer player;
 
         public IPlayer localPlayer;
         
         private Transform _t;
 
-        private bool isInited = false;
         private bool isLocalPlayer;
         private Color color;
         
@@ -32,30 +24,22 @@ namespace SpaceCommander.Player
         {
             playerController.EventOnPlayerNameChange += HandlePlayerNameChange;
             playerController.EventOnPlayerTeamChange += HandleTeamChange;
-            PlayerController.EventOnLocalNetworkPlayerCreated += Init;
-
-            if (PlayerManager.GetLocalNetworkPlayer().GetId() == player.GetId())
-                Init();
-        }
-
-        void Init()
-        {            
             _t = transform;
-            localPlayer = PlayerManager.GetLocalNetworkPlayer(); // this is who the nameplate will face
+        }
+        void Start()
+        {
+
             HandlePlayerNameChange();
             HandleTeamChange();
-            isInited = true;
-            if (PlayerManager.GetLocalNetworkPlayer().IsLocalPlayer()) isLocalPlayer = true;
+            isLocalPlayer = playerController.isLocalPlayer;
         }
-
         #endregion
 
         #region Private Methods
 
         void LateUpdate()
         {
-            if (!isInited) return;
-            _t.position = transformToFollow.position + transformOffset; // Follow player
+            _t.position = transformToFollow.position; // Follow player
             if (!isLocalPlayer) FaceLocalPlayer();
         }
 
@@ -79,19 +63,16 @@ namespace SpaceCommander.Player
             color = TeamManager.instance.templates[playerController.GetTeamId()].color;
 
             playerName.color = color;
-            healthBarFill.color = color;
         }
 
         public void ActivateNameplate()
         {
-            playerHealth.gameObject.SetActive(true);
             playerName.gameObject.SetActive(true);
         }
 
         public void DeactivateNameplate()
         {
             playerName.gameObject.SetActive(false);
-            playerHealth.gameObject.SetActive(false);
         }
 
         #endregion

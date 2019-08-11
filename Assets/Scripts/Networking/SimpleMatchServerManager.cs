@@ -16,13 +16,13 @@ namespace SpaceCommander.Match
             
             Scenario scenario = MatchScenarioManager.instance.GetCurrentScenario();
 
-            if (SceneRoot.instance == null)
+            if (MapParent.instance == null)
             {
                 Debug.LogError("No scene root found");
             }
             
             // Create map from scenario template
-            GameObject m = Instantiate(scenario.levelPrefab, SceneRoot.instance.transform);
+            GameObject m = Instantiate(scenario.levelPrefab, MapParent.instance.transform);
             
             NetworkServer.Spawn(m);
             

@@ -47,7 +47,7 @@ namespace SpaceCommander.Ships
         
         void Awake()
         {
-            transform.parent = SceneRoot.instance.transform;
+            transform.parent = MapParent.instance.transform;
             transform.localScale = Vector3.one;
         }
 
