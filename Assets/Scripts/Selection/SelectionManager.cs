@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using SpaceCommander.Ships;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace SpaceCommander.Selection
 {

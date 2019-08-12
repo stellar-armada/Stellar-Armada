@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using SpaceCommander.Player;
 using UnityEngine;
 
 namespace SpaceCommander.Ships

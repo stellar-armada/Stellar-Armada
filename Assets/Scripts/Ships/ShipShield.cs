@@ -1,5 +1,4 @@
-﻿using Mirror;
-using SpaceCommander.Selection;
+﻿using SpaceCommander.Selection;
 using UnityEngine;
 using UnityEngine.Events;
 

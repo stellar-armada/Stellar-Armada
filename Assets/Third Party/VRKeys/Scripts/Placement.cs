@@ -10,7 +10,6 @@
 
 using UnityEngine;
 using System;
-using System.Collections;
 
 namespace VRKeys {
 	/// <summary>

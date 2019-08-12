@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using SpaceCommander.Selection;
-using SpaceCommander.Ships;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace  SpaceCommander.Ships
 {

@@ -89,7 +89,7 @@ namespace Mirror
 
         public override bool OnSerialize(NetworkWriter writer, bool initialState)
         {
-            SerializeIntoWriter(writer, targetComponent.transform.position, targetComponent.transform.rotation, compressRotation);
+            SerializeIntoWriter(writer, targetComponent.transform.localPosition, targetComponent.transform.localRotation, compressRotation);
             return true;
         }
 
@@ -100,7 +100,7 @@ namespace Mirror
         //    -> elapsed based on send interval hoping that it roughly matches
         static float EstimateMovementSpeed(DataPoint from, DataPoint to, Transform transform, float sendInterval)
         {
-            Vector3 delta = to.position - (from != null ? from.position : transform.position);
+            Vector3 delta = to.position - (from != null ? from.position : transform.localPosition);
             float elapsed = from != null ? to.timeStamp - from.timeStamp : sendInterval;
             return elapsed > 0 ? delta.magnitude / elapsed : 0; // avoid NaN
         }
@@ -152,8 +152,8 @@ namespace Mirror
             {
                 start = new DataPoint{
                     timeStamp = Time.time - syncInterval,
-                    position = targetComponent.transform.position,
-                    rotation = targetComponent.transform.rotation,
+                    position = targetComponent.transform.localPosition,
+                    rotation = targetComponent.transform.localRotation,
                     movementSpeed = temp.movementSpeed
                 };
             }
@@ -195,10 +195,10 @@ namespace Mirror
 
                 // teleport / lag / obstacle detection: only continue at current
                 // position if we aren't too far away
-                if (Vector3.Distance(targetComponent.transform.position, start.position) < oldDistance + newDistance)
+                if (Vector3.Distance(targetComponent.transform.localPosition, start.position) < oldDistance + newDistance)
                 {
-                    start.position = targetComponent.transform.position;
-                    start.rotation = targetComponent.transform.rotation;
+                    start.position = targetComponent.transform.localPosition;
+                    start.rotation = targetComponent.transform.localRotation;
                 }
             }
 
@@ -292,8 +292,8 @@ namespace Mirror
         bool HasMovedOrRotated()
         {
             // moved or rotated?
-            bool moved = lastPosition != targetComponent.transform.position;
-            bool rotated = lastRotation != targetComponent.transform.rotation;
+            bool moved = lastPosition != targetComponent.transform.localPosition;
+            bool rotated = lastRotation != targetComponent.transform.localRotation;
 
             // save last for next frame to compare
             // (only if change was detected. otherwise slow moving objects might
@@ -302,8 +302,8 @@ namespace Mirror
             bool change = moved || rotated;
             if (change)
             {
-                lastPosition = targetComponent.transform.position;
-                lastRotation = targetComponent.transform.rotation;
+                lastPosition = targetComponent.transform.localPosition;
+                lastRotation = targetComponent.transform.localRotation;
             }
             return change;
         }
@@ -311,10 +311,10 @@ namespace Mirror
         // set position carefully depending on the target component
         void ApplyPositionAndRotation(Vector3 position, Quaternion rotation)
         {
-            targetComponent.transform.position = position;
+            targetComponent.transform.localPosition = position;
             if (Compression.NoRotation != compressRotation)
             {
-                targetComponent.transform.rotation = rotation;
+                targetComponent.transform.localRotation = rotation;
             }
         }
 
@@ -342,7 +342,7 @@ namespace Mirror
                         {
                             // serialize
                             NetworkWriter writer = new NetworkWriter();
-                            SerializeIntoWriter(writer, targetComponent.transform.position, targetComponent.transform.rotation, compressRotation);
+                            SerializeIntoWriter(writer, targetComponent.transform.localPosition, targetComponent.transform.localRotation, compressRotation);
 
                             // send to server
                             CmdClientToServerSync(writer.ToArray());
@@ -366,8 +366,8 @@ namespace Mirror
                         }
                         else
                         {
-                            ApplyPositionAndRotation(InterpolatePosition(start, goal, targetComponent.transform.position),
-                                                     InterpolateRotation(start, goal, targetComponent.transform.rotation));
+                            ApplyPositionAndRotation(InterpolatePosition(start, goal, targetComponent.transform.localPosition),
+                                                     InterpolateRotation(start, goal, targetComponent.transform.localRotation));
                         }
                     }
                 }

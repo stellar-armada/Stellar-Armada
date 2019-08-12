@@ -9,7 +9,6 @@
  */
 
 using UnityEngine;
-using System.Collections;
 using TMPro;
 
 namespace VRKeys {

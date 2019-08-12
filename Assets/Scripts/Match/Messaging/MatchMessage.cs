@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using SpaceCommander.Audio;
-using SpaceCommander.Game;
 using SpaceCommander.Controller;
 using TMPro;
 

@@ -1,5 +1,4 @@
-﻿using SpaceCommander;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SpaceCommander.Scenarios
 {

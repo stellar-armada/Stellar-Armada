@@ -8,7 +8,6 @@
  * Website: https://www.campfireunion.com
  */
 
-using UnityEngine;
 using VRKeys.Layouts;
 
 namespace VRKeys {

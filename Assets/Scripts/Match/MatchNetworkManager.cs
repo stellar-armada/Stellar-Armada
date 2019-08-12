@@ -7,11 +7,13 @@ namespace SpaceCommander.Networking
     public class MatchNetworkManager : NetworkManager
     {
         public GameObject matchManagerPrefab;
+        [SerializeField] bool startAsHost = true;
         
         // virtual so that inheriting classes' Awake() can call base.Awake() too
         public override void Awake()
         {
             base.Awake();
+            if (startAsHost) StartHost();
         }
 
         public override void Start()

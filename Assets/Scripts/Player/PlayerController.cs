@@ -41,6 +41,8 @@ namespace SpaceCommander.Player
         {
             t = transform; // skip the gameObject.transform lookup
 
+            t.parent = EnvironmentTransformRoot.instance.transform;
+            
             if (isLocalPlayer)
             {
                 Debug.Log("Player is local player");

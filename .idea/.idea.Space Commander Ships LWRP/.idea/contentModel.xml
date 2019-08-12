@@ -103,6 +103,8 @@
             <e p="PoolManagerDB.cs" t="Include" />
           </e>
           <e p="Scenarios" t="Include">
+            <e p="EnvironmentParent.cs" t="Include" />
+            <e p="EnvironmentTransformRoot.cs" t="Include" />
             <e p="MapParent.cs" t="Include" />
             <e p="MapTransformRoot.cs" t="Include" />
             <e p="Scenario.cs" t="Include" />

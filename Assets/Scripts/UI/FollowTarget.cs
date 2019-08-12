@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FollowTarget : MonoBehaviour
 {
@@ -8,8 +6,8 @@ public class FollowTarget : MonoBehaviour
 
    void LateUpdate()
    {
-      transform.position = targetToFollow.position;
-      transform.rotation = targetToFollow.rotation;
+      transform.localPosition = targetToFollow.localPosition;
+      transform.localPosition = targetToFollow.localPosition;
    }
    
 }

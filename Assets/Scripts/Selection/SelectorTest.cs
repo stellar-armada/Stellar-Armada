@@ -1,5 +1,4 @@
 ﻿using System;
-using SpaceCommander.Teams;
 using UnityEngine;
 
 namespace SpaceCommander.Selection.Tests

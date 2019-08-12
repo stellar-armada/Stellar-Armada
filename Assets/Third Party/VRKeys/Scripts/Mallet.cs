@@ -9,8 +9,6 @@
  */
 
 using UnityEngine;
-using UnityEngine.XR;
-using System.Collections;
 
 namespace VRKeys {
 

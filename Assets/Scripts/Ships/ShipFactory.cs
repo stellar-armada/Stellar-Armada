@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Mirror;
-using SpaceCommander.Game;
+﻿using Mirror;
 using SpaceCommander.Scenarios;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;

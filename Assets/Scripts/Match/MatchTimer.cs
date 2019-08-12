@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SpaceCommander;
-using SpaceCommander.Game;
 using SpaceCommander.Match;
 using UnityEngine;
 
