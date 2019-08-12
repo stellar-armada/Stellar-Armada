@@ -6,8 +6,8 @@ public class FollowTarget : MonoBehaviour
 
    void LateUpdate()
    {
-      transform.localPosition = targetToFollow.localPosition;
-      transform.localPosition = targetToFollow.localPosition;
+      transform.position = targetToFollow.position;
+      transform.rotation = targetToFollow.rotation;
    }
    
 }

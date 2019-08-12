@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using SpaceCommander.Game;
+using SpaceCommander.Player;
 using SpaceCommander.Teams;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,7 +44,7 @@ namespace SpaceCommander.Selection
 
         public void SetSelectionToGroup(int groupNum)
         {
-            uint playerTeamId = PlayerManager.localInstance.GetTeamId();
+            uint playerTeamId = PlayerController.localPlayer.GetTeamId();
             var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum];
             List<ISelectable> selectables = new List<ISelectable>();
             foreach (var entity in group)

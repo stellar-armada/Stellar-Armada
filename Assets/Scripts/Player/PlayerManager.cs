@@ -5,27 +5,15 @@ using UnityEngine;
 
 namespace SpaceCommander.Game
 {
-    public class PlayerManager : NetworkBehaviour
+    public class PlayerManager : MonoBehaviour
     {
         public static PlayerManager instance;
         
         public static List<IPlayer> players = new List<IPlayer>();
         
-        public static IPlayer localInstance; // local player accessor
-
         void Awake()
         {
             instance = this;
-        }
-
-        public static IPlayer GetLocalNetworkPlayer()
-        {
-            return localInstance;
-        }
-
-        public static void SetLocalPlayer(IPlayer newLocalPlayer)
-        {
-            localInstance = newLocalPlayer;
         }
 
         public void RegisterPlayer(IPlayer player)

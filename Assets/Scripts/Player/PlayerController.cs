@@ -37,37 +37,35 @@ namespace SpaceCommander.Player
 
         public static PlayerController localPlayer;
         
-        private void Awake()
+        private void Start()
         {
-            t = transform; // skip the gameObject.transform lookup
 
-            t.parent = EnvironmentTransformRoot.instance.transform;
-            
             if (isLocalPlayer)
             {
+                localRig.SetActive(true);
                 Debug.Log("Player is local player");
                 
-                HandleStartLocalPlayer();
+                //Instantiate(localObjects, transform);
+                
+                localPlayer = this;
+                Debug.Log("Called activation code");
+
                 if (isServer)
                 {
+                    isHost = true; // Shorthand helper
                     Debug.Log("Player is server");
                 }
             }
             
+            t = transform; // skip the gameObject.transform lookup
+            t.parent = EnvironmentTransformRoot.instance.transform;
+            t.localPosition = Vector3.zero;
+            t.localRotation = Quaternion.identity;
+            ;
             bodyController.Init();
             PlayerManager.instance.RegisterPlayer(this);
-        }
-
-        void HandleStartLocalPlayer()
-        {
-            PlayerManager.SetLocalPlayer(this);
-
-            if (isServer)
-            {
-                isHost = true; // Shorthand helper
-            }
-            
             SetUserName(SettingsManager.GetSavedPlayerName());
+
         }
 
         void UpdateName(string nameToChangeTo)

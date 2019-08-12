@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using SpaceCommander.Game;
+using SpaceCommander.Player;
 using TMPro;
 
 namespace SpaceCommander.UI
@@ -64,10 +65,12 @@ namespace SpaceCommander.UI
             if (playerNameKeyboardInputText.text == "") playerNameKeyboardInputText.text = "PLAYER";
 
             SettingsManager.SavePlayerName(playerNameKeyboardInputText.text);
-            if (PlayerManager.GetLocalNetworkPlayer() != null)
+            
+            if (PlayerController.localPlayer != null)
             {
-               // PlayerManager.GetLocalNetworkPlayer().SetUserName(playerNameKeyboardInputText.text);
+                PlayerController.localPlayer.SetUserName(playerNameKeyboardInputText.text);
             }
+            
             PopulateUserName();
             nameEntryPanel.SetActive(false);
             mainSettingsPanel.SetActive(true);

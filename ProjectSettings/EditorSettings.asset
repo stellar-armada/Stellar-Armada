@@ -3,13 +3,15 @@
 --- !u!159 &1
 EditorSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_ExternalVersionControlSupport: Visible Meta Files
   m_SerializationMode: 2
   m_LineEndingsForNewScripts: 0
   m_DefaultBehaviorMode: 0
-  m_PrefabRegularEnvironment: {fileID: 0}
-  m_PrefabUIEnvironment: {fileID: 0}
+  m_PrefabRegularEnvironment: {fileID: 102900000, guid: eb8ef6f1f906c7d4ea9d0cd18924a3f6,
+    type: 3}
+  m_PrefabUIEnvironment: {fileID: 102900000, guid: eb8ef6f1f906c7d4ea9d0cd18924a3f6,
+    type: 3}
   m_SpritePackerMode: 0
   m_SpritePackerPaddingPower: 1
   m_EtcTextureCompressorBehavior: 1
@@ -23,4 +25,7 @@ EditorSettings:
   m_EnableTextureStreamingInEditMode: 1
   m_EnableTextureStreamingInPlayMode: 1
   m_AsyncShaderCompilation: 1
+  m_EnterPlayModeOptionsEnabled: 0
+  m_EnterPlayModeOptions: 3
   m_ShowLightmapResolutionOverlay: 1
+  m_UseLegacyProbeSampleCount: 1
