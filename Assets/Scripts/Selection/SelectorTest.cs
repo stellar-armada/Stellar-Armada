@@ -53,6 +53,8 @@ namespace SpaceCommander.Selection.Tests
 
         public void Select(SelectionType selectionType)
         {
+            Debug.Log("Selector test needs updating no main camera?");
+            return;
             cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(cameraRay, out hit, 1000, layerMask))
             {

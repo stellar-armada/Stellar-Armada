@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using SpaceCommander.Game;
 using SpaceCommander.Teams;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,20 +11,18 @@ namespace SpaceCommander.Selection
     {
         public static GroupManager instance;
 
-        [SerializeField] private Player.PlayerController playerController;
         public Text[] groupTexts;
 
         void Awake()
         {
             instance = this;
-
         }
 
         public void UpdateGroupManager(uint updatedTeamId)
         {
-            uint playerTeamId = playerController.GetTeamId();
-            if (playerTeamId != updatedTeamId) return;
+            Debug.Log("Groups still need fixing!");
 
+            return;
             // Get groups
 
             var groups = TeamManager.instance.GetTeamByID(updatedTeamId).groups;
@@ -38,14 +37,13 @@ namespace SpaceCommander.Selection
                 {
                     stringBuilder.AppendLine(groups[g][s].GetGameObject().name);
                 }
-
-                groupTexts[g].text = stringBuilder.ToString();
+               // groupTexts[g].text = stringBuilder.ToString();
             }
         }
 
         public void SetSelectionToGroup(int groupNum)
         {
-            uint playerTeamId = playerController.GetTeamId();
+            uint playerTeamId = PlayerManager.localInstance.GetTeamId();
             var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum];
             List<ISelectable> selectables = new List<ISelectable>();
             foreach (var entity in group)
@@ -54,7 +52,7 @@ namespace SpaceCommander.Selection
             }
 
             SelectionManager.instance.SetSelectionFromGroup(selectables);
-            instance.UpdateGroupManager((uint) playerTeamId);
+            UpdateGroupManager(playerTeamId);
         }
     }
 }

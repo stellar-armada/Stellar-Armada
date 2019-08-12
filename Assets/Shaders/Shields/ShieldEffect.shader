@@ -56,7 +56,7 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
             #pragma vertex vert
             // use "frag" function as the pixel (fragment) shader
             #pragma fragment frag
-
+            #pragma multi_compile_instancing
 			#pragma multi_compile ACTIVATION_EFFECT_ON __
 			#pragma multi_compile ACTIVATION_TYPE_TEXTURE ACTIVATION_TYPE_TEX_UV ACTIVATION_TYPE_CUSTOM_TEX ACTIVATION_TYPE_CUSTOM_TEX_CALC_UV ACTIVATION_TYPE_UV ACTIVATION_TYPE_X ACTIVATION_TYPE_Y ACTIVATION_TYPE_Z
 			#pragma multi_compile USE_PATTERN_TEXTURE __
@@ -74,6 +74,7 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
                 float4 vertex : POSITION; // vertex position
                 float3 normal : NORMAL;
                 float2 uv : TEXCOORD0; // texture coordinate
+                UNITY_VERTEX_INPUT_INSTANCE_ID //Insert
             };
 
             // vertex shader outputs ("vertex to fragment")
@@ -88,12 +89,17 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
 				float depth : TEXCOORD3;
 				float4 screenPos : TEXCOORD4;
 				float4 objectSpacePos : TEXCOORD5;
+				UNITY_VERTEX_OUTPUT_STEREO //Insert
             };
 
             // vertex shader
             v2f vert (appdata v)
             {
+            
                 v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
@@ -153,23 +159,11 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
             fragOutput frag (v2f i)
 			{
 				float vdn = 1.0 - max(dot(i.rimV, i.rimN), 0.0);
-
-				float depthVisibility = 1.0;
-
-				float depthValue = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)));
-				float depthDiff = (depthValue - i.depth);
-				depthVisibility = max(_Preview, step(-depthDiff, 0.0));
-#if USE_DEPTH_OVERLAP_RIM
-				float depthRim = (1.0-_Preview)*(1.0 - min(1.0, depthDiff / _OverlapRim));
-#endif
-
+				
 				// color rim
 				fixed4 basicColor = fixed4(0, 0, 0, 0);
 #if USE_COLOR_RIM
 				float colorRim = smoothstep(_ColorRimMin, _ColorRimMax, vdn);
-	#if USE_DEPTH_OVERLAP_RIM
-				colorRim = max(colorRim, depthRim);
-	#endif
 #endif
 
 #if USE_DISTORTION_FOR_MAIN_TEXTURE
@@ -183,10 +177,6 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
 				float texRim = 1.0;
 #if USE_MAIN_TEXTURE
 				texRim = smoothstep(_TextureRimMin, _TextureRimMax, vdn);
-
-	#if USE_DEPTH_OVERLAP_RIM
-				texRim = max(texRim, depthRim);
-	#endif
 
 	#if USE_DISTORTION_FOR_MAIN_TEXTURE
 				tex = tex2D(_MainTex, float2(i.uv.x*_TextureScale + distortCoord.x + _TextureScrollX*_Time.x,
@@ -263,9 +253,9 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
 				float alphaFromEffects = tex.r * _TextureColor.a  + pattern.r * _PatternColor.a + basicColor.a;
 
 #if ACTIVATION_EFFECT_ON
-				alpha = max(activationRim, dirVisibility * activationVisibility * alphaFromEffects) * depthVisibility;
+				alpha = max(activationRim, dirVisibility * activationVisibility * alphaFromEffects);
 #else
-				alpha = dirVisibility * depthVisibility * alphaFromEffects;
+				alpha = dirVisibility * alphaFromEffects;
 #endif
 
 				o.color0.rgb = pattern.rgb * _PatternColor.rgb + tex.rgb * _TextureColor.rgb + basicColor.rgb;

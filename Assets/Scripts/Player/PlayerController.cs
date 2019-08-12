@@ -34,8 +34,10 @@ namespace SpaceCommander.Player
         private Transform t; // Store local transform in an easy reference to reduce lookups through gameObject
 
         private bool playerIsReady;
+
+        public static PlayerController localPlayer;
         
-        private void Start()
+        private void Awake()
         {
             t = transform; // skip the gameObject.transform lookup
 

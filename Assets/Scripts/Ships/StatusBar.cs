@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using SpaceCommander.Player;
 using UnityEngine;
 
 namespace SpaceCommander.Ships
@@ -28,6 +29,10 @@ namespace SpaceCommander.Ships
              shield = ship.shipShield;
              shield.ShieldChanged.AddListener(SetShieldSlider);
              hull.HullChanged.AddListener(SetHullSlider);
+             
+             Debug.Log("Status bar needs local player reference");
+             return;
+             
              cameraTransform = GameObject.Find("Main Camera").transform; // TO-DO: change this to local player when we can!
             LookAtMainCamera();
         }
@@ -56,6 +61,8 @@ namespace SpaceCommander.Ships
         
         void LateUpdate ()
         {
+            Debug.Log("Skipping late update while camera transform gets fixed");
+            return;
             LookAtMainCamera();
         }
 

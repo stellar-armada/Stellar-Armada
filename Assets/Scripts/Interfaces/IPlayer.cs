@@ -13,5 +13,6 @@ namespace SpaceCommander
         uint GetId();
         string GetName();
         bool IsEnemy(IPlayer player);
+        uint GetTeamId();
     }
 }
