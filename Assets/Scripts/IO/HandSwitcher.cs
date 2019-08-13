@@ -4,9 +4,9 @@ public class HandSwitcher : MonoBehaviour
 {
     public static HandSwitcher instance;
 
-    [SerializeField] Transform leftHandTarget;
+    [SerializeField] Transform leftHandTarget = null;
 
-    [SerializeField] Transform rightHandTarget;
+    [SerializeField] Transform rightHandTarget = null;
 
     Transform currentTarget;
 

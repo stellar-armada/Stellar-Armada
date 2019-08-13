@@ -45,8 +45,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@7.0.0/Runtime/Utilities/ResourceReloader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.0.17/UnityEditor.TestRunner/TestLaunchers/PlatformSetup/UwpPlatformSetup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Pointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VRInputModule/Scripts/LaserPointerInputModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VRInputModule/Scripts/IUILaserPointer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Selection/TestSelectionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/LaserPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Selection/SelectorTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" root0="FORCE_HIGHLIGHTING" />
@@ -59,9 +62,10 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.0.0/ShaderLibrary/MetaInput.hlsl" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.3.0a11/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect_mobile.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/DemoLaserPointerTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ExplosionTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/GoToPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessageManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Tracking/Follow/ObjectFollower.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkTransformBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Constants.cs" root0="FORCE_HIGHLIGHTING" />
@@ -75,16 +79,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/StatusBar.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/FollowTarget.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/Weaver/CompilationFinishedHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRLeg.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenarios/ScenarioManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/SpaceCommander/Ships/Scripts/Ship.cs" />
-        <option value="$PROJECT_DIR$/Assets/SpaceCommander/Player/Scripts/BodyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/SpaceCommander/UI/Scripts/UI/MainMenuManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/MatchTimer.cs" />
-        <option value="$PROJECT_DIR$/Assets/SpaceCommander/Scripts/Match/Messaging/MatchMessage.cs" />
         <option value="$PROJECT_DIR$/Assets/SpaceCommander/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Cursor.cs" />
         <option value="$PROJECT_DIR$/Assets/VRInputModule.cs" />
@@ -108,7 +110,6 @@
         <option value="$PROJECT_DIR$/Assets/MapParent.cs" />
         <option value="$PROJECT_DIR$/Assets/MapTransformRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/MapParent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectorTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect.shader" />
@@ -118,19 +119,25 @@
         <option value="$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkTransformBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IO/MapControls.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/FollowTarget.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party Paid/CurvedUI/Demo Scenes/Demo Scenes Content/CUI_GunMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party Paid/CurvedUI/Scripts/CurvedUILaserBeam.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IO/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/IO/HandSwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Action/Action.cs" />
         <option value="$PROJECT_DIR$/Assets/VRInputModule/Scripts/LaserPointerInputModule.cs" />
         <option value="$PROJECT_DIR$/Assets/LaserPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/VRInputModule/Scripts/IUILaserPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/GroupManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/Scripts/TestPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/SimpleMatchServerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IO/HandSwitcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessageManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Pointer.cs" />
       </list>
     </option>
   </component>
@@ -196,7 +203,8 @@
       <workItem from="1565661575942" duration="896000" />
       <workItem from="1565667584389" duration="636000" />
       <workItem from="1565668511192" duration="28000" />
-      <workItem from="1565668573667" duration="9095000" />
+      <workItem from="1565668573667" duration="13342000" />
+      <workItem from="1565686007681" duration="515000" />
     </task>
     <servers />
   </component>
@@ -224,6 +232,8 @@
   <component name="WindowStateProjectService">
     <state x="549" y="262" key="#Notifications" />
     <state x="549" y="262" key="#Notifications/1920.1080" />
+    <state x="2543" y="380" width="666" height="660" key="find.popup" />
+    <state x="2543" y="380" width="666" height="660" key="find.popup/1920.1080/1920.1080" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

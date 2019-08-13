@@ -68,7 +68,7 @@ namespace SpaceCommander.UI
             
             if (PlayerController.localPlayer != null)
             {
-                PlayerController.localPlayer.SetUserName(playerNameKeyboardInputText.text);
+                PlayerController.localPlayer.CmdSetUserName(playerNameKeyboardInputText.text);
             }
             
             PopulateUserName();

@@ -63,7 +63,7 @@ namespace SpaceCommander.Ships
         [Command]
         public void CmdSetPlayer(uint playerId)
         {
-            player = PlayerManager.GetPlayerByNetId(playerId);
+            player = PlayerManager.GetPlayerById(playerId);
         }
 
         public IPlayer GetPlayer()

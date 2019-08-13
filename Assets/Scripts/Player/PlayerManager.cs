@@ -45,6 +45,6 @@ namespace SpaceCommander.Game
         public static List<IPlayer> GetPlayers() => players;
 
 
-        public static IPlayer GetPlayerByNetId(uint netID) => players.Single(p => p.GetId() == netID);
+        public static IPlayer GetPlayerById(uint netID) => players.Single(p => p.GetId() == netID);
     }
 }

@@ -53,6 +53,10 @@ namespace SpaceCommander.Common.Tests
         public GameObject GetGameObject() => gameObject;
         public Team GetTeam() => TeamManager.instance.GetTeamByID(teamId);
         public uint GetTeamId() => teamId;
+        public void SetTeamId(uint teamId)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public uint GetId() => netId;
 

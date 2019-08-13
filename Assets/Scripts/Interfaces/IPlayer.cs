@@ -6,13 +6,12 @@ namespace SpaceCommander
         bool IsLocalPlayer();
         bool IsServer();
         bool IsClient();
-        void RegisterPlayer();
-        void UnregisterPlayer();
         PlayerType GetPlayerType();
         GameObject GetGameObject();
         uint GetId();
         string GetName();
         bool IsEnemy(IPlayer player);
         uint GetTeamId();
+        void SetTeamId(uint teamId);
     }
 }

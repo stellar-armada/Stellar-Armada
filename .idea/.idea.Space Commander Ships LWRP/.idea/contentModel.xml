@@ -7,7 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="DemoLaserPointerTest.cs" t="Include" />
         <e p="FORGE3D" t="Include">
           <e p="Sci-Fi Effects" t="Include">
             <e p="Shaders" t="Include">
@@ -73,7 +72,7 @@
           <e p="IO" t="Include">
             <e p="HandSwitcher.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
-            <e p="LongPress.cs" t="Include" />
+            <e p="LongPressEventTrigger.cs" t="Include" />
             <e p="MapControls.cs" t="Include" />
           </e>
           <e p="Match" t="Include">

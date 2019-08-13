@@ -21,7 +21,7 @@ namespace SpaceCommander.Common.Tests
 
         public void CmdSetPlayer(uint playerId)
         {
-            testPlayer = PlayerManager.GetPlayerByNetId(playerId);
+            testPlayer = PlayerManager.GetPlayerById(playerId);
         }
 
         public uint GetEntityId()

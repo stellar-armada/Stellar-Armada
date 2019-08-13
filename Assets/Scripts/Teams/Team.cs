@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Mirror;
+using SpaceCommander.Game;
 using SpaceCommander.Selection;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace SpaceCommander.Teams
 
         public TeamEvent OnEntitiesUpdated;
 
+        // Hardcoded 3 groups into each team
         public List<List<IEntity>> groups = new List<List<IEntity>>
         {
             new List<IEntity>(),
@@ -65,9 +67,27 @@ namespace SpaceCommander.Teams
             groups[group].Remove(entity);
         }
 
-        public void AddPlayer(IPlayer player)
+        [Command]
+        public void CmdAddPlayer(uint playerId)
         {
+            AddPlayer(playerId);
+            RpcAddPlayer(playerId);
+        }
+
+        [ClientRpc]
+        public void RpcAddPlayer(uint playerId)
+        {
+            if (!isServer)
+            {
+            AddPlayer(playerId);
+            }
+        }
+
+        void AddPlayer(uint playerId)
+        {
+            IPlayer player= PlayerManager.GetPlayerById(playerId);
             players.Add(player);
+            player.SetTeamId(teamId);
         }
 
         public void RemovePlayer(IPlayer player)
