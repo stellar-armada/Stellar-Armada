@@ -17,6 +17,10 @@ namespace SpaceCommander.Teams
         public List<IPlayer> players = new List<IPlayer>();
         public List<IEntity> entities = new List<IEntity>();
 
+        public delegate void TeamEvent();
+
+        public TeamEvent OnEntitiesUpdated;
+
         public List<List<IEntity>> groups = new List<List<IEntity>>
         {
             new List<IEntity>(),
@@ -74,8 +78,9 @@ namespace SpaceCommander.Teams
         public void AddEntity(IEntity entity)
         {
             entities.Add(entity);
-            GroupManager.instance.UpdateGroupManager(teamId);
+            OnEntitiesUpdated?.Invoke();
         }
+
 
         public void RemoveEntity(IEntity entity)
         {

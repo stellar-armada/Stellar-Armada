@@ -2,16 +2,31 @@
 
 public class HandSwitcher : MonoBehaviour
 {
+    public static HandSwitcher instance;
 
-    [SerializeField] private Transform leftHandTarget;
+    [SerializeField] Transform leftHandTarget;
 
-    [SerializeField] private Transform rightHandTarget;
+    [SerializeField] Transform rightHandTarget;
 
-    private Transform t;
+    Transform currentTarget;
+
     void Awake()
     {
-        t = transform;
+        instance = this;
         Deactivate();
+    }
+
+    public bool CurrentHandIsLeft()
+    {
+        Debug.Log("currentTarget: " + currentTarget);
+        return currentTarget == leftHandTarget;
+    }
+
+    public bool CurrentHandIsRight()
+    {
+        Debug.Log("currentTarget: " + currentTarget);
+
+        return currentTarget == rightHandTarget;
     }
     public void Deactivate()
     {
@@ -26,7 +41,8 @@ public class HandSwitcher : MonoBehaviour
     public void SwitchToRightHand()
     {
         Activate();
-        t.parent = rightHandTarget;
+        transform.SetParent(rightHandTarget);
+        currentTarget = rightHandTarget;
         ResetTransform();
 
     }
@@ -34,13 +50,14 @@ public class HandSwitcher : MonoBehaviour
     public void SwitchToLeftHand()
     {
         Activate();
-        transform.parent = leftHandTarget;
+        transform.SetParent(leftHandTarget);
+        currentTarget = leftHandTarget;
         ResetTransform();
     }
 
     void ResetTransform()
     {
-        t.localPosition = Vector3.zero;
-        t.localRotation = Quaternion.identity;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
     }
 }

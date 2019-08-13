@@ -12,7 +12,7 @@ namespace SpaceCommander.Selection
     {
         public static GroupManager instance;
 
-        public Text[] groupTexts;
+        public Transform[] groupShipContainers;
 
         void Awake()
         {

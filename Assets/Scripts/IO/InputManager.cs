@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SpaceCommander.IO
 {
@@ -15,8 +16,11 @@ namespace SpaceCommander.IO
 
         public delegate void InputButtonHandler(bool buttonState);
 
-        public InputButtonHandler LeftSecondaryTrigger;
-        public InputButtonHandler RightSecondaryTrigger;
+        public InputButtonHandler OnLeftSecondaryTrigger;
+        public InputButtonHandler OnRightSecondaryTrigger;
+        
+        public InputButtonHandler OnLeftTrigger;
+        public InputButtonHandler OnRightTrigger;
 
         void Awake()
         {
@@ -25,24 +29,25 @@ namespace SpaceCommander.IO
         public void LeftTrigger(bool on)
         {
             Debug.Log("LeftTrigger pulled: " + on);
+            OnLeftTrigger?.Invoke(on);
         }
 
         public void RightTrigger(bool on)
         {
             Debug.Log("RightTrigger pulled: " + on);
-
+OnRightTrigger?.Invoke(on);
         }
 
         public void LeftSecondary(bool on)
         {
             Debug.Log("LeftSecondary pulled: " + on);
-            LeftSecondaryTrigger?.Invoke(on);
+            OnLeftSecondaryTrigger?.Invoke(on);
         }
 
         public void RightSecondary(bool on)
         {
             Debug.Log("RightSecondary pulled: " + on);
-            RightSecondaryTrigger?.Invoke(on);
+            OnRightSecondaryTrigger?.Invoke(on);
         }
 
         public void LeftThumbstick(Vector2 value)

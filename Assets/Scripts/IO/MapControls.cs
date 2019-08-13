@@ -27,8 +27,8 @@ public class MapControls : MonoBehaviour
 
     void Start()
     {
-        InputManager.instance.LeftSecondaryTrigger += HandleLeftInput;
-        InputManager.instance.RightSecondaryTrigger += HandleRightInput;
+        InputManager.instance.OnLeftSecondaryTrigger += HandleLeftInput;
+        InputManager.instance.OnRightSecondaryTrigger += HandleRightInput;
         leftController = InputManager.instance.leftHand;
         rightController = InputManager.instance.rightHand;
         EnvironmentParent.instance.transform.localScale = Vector3.one * startScale;
