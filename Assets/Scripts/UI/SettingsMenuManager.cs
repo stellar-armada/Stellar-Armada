@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using SpaceCommander.Game;
-using SpaceCommander.Player;
+using SpaceCommander.Players;
 using TMPro;
 
 #pragma warning disable 0649
@@ -67,9 +67,9 @@ namespace SpaceCommander.UI
 
             SettingsManager.SavePlayerName(playerNameKeyboardInputText.text);
             
-            if (PlayerController.localPlayer != null)
+            if (HumanPlayerController.localPlayer != null)
             {
-                PlayerController.localPlayer.CmdSetUserName(playerNameKeyboardInputText.text);
+                HumanPlayerController.localPlayer.CmdSetUserName(playerNameKeyboardInputText.text);
             }
             
             PopulateUserName();

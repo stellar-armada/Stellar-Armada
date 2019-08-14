@@ -10,19 +10,19 @@ namespace SpaceCommander.Game
     {
         public static PlayerManager instance;
         
-        public static List<IPlayer> players = new List<IPlayer>();
+        public static List<PlayerController> players = new List<PlayerController>();
         
         void Awake()
         {
             instance = this;
         }
 
-        public void RegisterPlayer(IPlayer player)
+        public void RegisterPlayer(PlayerController playerController)
         {
             //Debug.Log("Registering player");
-            if (!players.Contains(player))
+            if (!players.Contains(playerController))
             {
-                players.Add(player);
+                players.Add(playerController);
             }
             else
             {
@@ -30,11 +30,11 @@ namespace SpaceCommander.Game
             }
         }
 
-        public void UnregisterPlayer(IPlayer player)
+        public void UnregisterPlayer(PlayerController playerController)
         {
-            if (!players.Contains(player))
+            if (!players.Contains(playerController))
             {
-                players.Remove(player);
+                players.Remove(playerController);
             }
             else
             {
@@ -43,9 +43,9 @@ namespace SpaceCommander.Game
             }
         }
         
-        public static List<IPlayer> GetPlayers() => players;
+        public static List<PlayerController> GetPlayers() => players;
 
 
-        public static IPlayer GetPlayerById(uint netID) => players.Single(p => p.GetId() == netID);
+        public static PlayerController GetPlayerById(uint netID) => players.Single(p => p.GetId() == netID);
     }
 }

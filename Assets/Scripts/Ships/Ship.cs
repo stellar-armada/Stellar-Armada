@@ -13,7 +13,7 @@ namespace SpaceCommander.Ships
 {
     public class Ship : NetworkBehaviour, ITeamEntity, IPlayerEntity
     {
-        public IPlayer player; // Ships are only given to players in FFA or DOTA modes, not implemented yet
+        public PlayerController playerController; // Ships are only given to players in FFA or DOTA modes, not implemented yet
 
         public ShipType type;
         [Header("Ship Subsystems")]
@@ -64,12 +64,12 @@ namespace SpaceCommander.Ships
         [Command]
         public void CmdSetPlayer(uint playerId)
         {
-            player = PlayerManager.GetPlayerById(playerId);
+            playerController = PlayerManager.GetPlayerById(playerId);
         }
 
-        public IPlayer GetPlayer()
+        public PlayerController GetPlayer()
         {
-            return player;
+            return playerController;
         }
 
         void SetGroup(int newGroupId)

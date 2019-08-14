@@ -16,7 +16,7 @@ namespace SpaceCommander.Teams
         public Color color;
         public int playerSlots;
         public Texture insignia;
-        public List<IPlayer> players = new List<IPlayer>();
+        public List<PlayerController> players = new List<PlayerController>();
         public List<IEntity> entities = new List<IEntity>();
 
         public delegate void TeamEvent();
@@ -86,14 +86,14 @@ namespace SpaceCommander.Teams
 
         void AddPlayer(uint playerId)
         {
-            IPlayer player= PlayerManager.GetPlayerById(playerId);
-            players.Add(player);
-            player.SetTeamId(teamId);
+            PlayerController playerController= PlayerManager.GetPlayerById(playerId);
+            players.Add(playerController);
+            playerController.SetTeamId(teamId);
         }
 
-        public void RemovePlayer(IPlayer player)
+        public void RemovePlayer(PlayerController playerController)
         {
-            players.Remove(player);
+            players.Remove(playerController);
         }
 
         public void AddEntity(IEntity entity)

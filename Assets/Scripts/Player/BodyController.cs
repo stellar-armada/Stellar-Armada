@@ -2,17 +2,11 @@
 using SpaceCommander.Teams;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Player
+namespace SpaceCommander.Players
 {
-
-    /* Manages visibility of the player's body
-     * Player body is hidden from local player
-     * To everyone else, player materializes on spawn and dematerializes on death
-     * If you want to swap your player mesh based on class, do that here
-     * */
     public class BodyController : MonoBehaviour
     {
-        [SerializeField] PlayerController playerController; // Reference to the local player
+        [SerializeField] HumanPlayerController humanPlayerController; // Reference to the local player
         
         [SerializeField] SkinnedMeshRenderer[] bodyRenderers;
         
@@ -21,12 +15,12 @@ namespace SpaceCommander.Player
         public void Init()
         {
             props = new MaterialPropertyBlock();
-            playerController.EventOnPlayerTeamChange += HandleTeamChange;
+            humanPlayerController.EventOnPlayerTeamChange += HandleTeamChange;
         }
 
         public void HandleTeamChange()
         {
-            uint pTeam = playerController.GetTeam().teamId;
+            uint pTeam = humanPlayerController.GetTeam().teamId;
             foreach (var ren in bodyRenderers)
             {
                 ren.GetPropertyBlock(props);

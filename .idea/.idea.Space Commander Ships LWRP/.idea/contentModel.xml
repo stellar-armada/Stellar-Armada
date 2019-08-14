@@ -7,16 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="FORGE3D" t="Include">
-          <e p="Sci-Fi Effects" t="Include">
-            <e p="Shaders" t="Include">
-              <e p="NebulaStaticBoard.shader" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="LaserPointer.cs" t="Include" />
-        <e p="NetworkTransform.cs" t="Include" />
-        <e p="PlayerCamera.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -27,10 +17,12 @@
             <e p="SoundEffectButtonListener.cs" t="Include" />
             <e p="VolumeSliderListener.cs" t="Include" />
           </e>
+          <e p="Common" t="Include">
+            <e p="EntityFactory.cs" t="Include" />
+          </e>
           <e p="Controller" t="Include">
             <e p="HapticsManager.cs" t="Include" />
           </e>
-          <e p="EntityFactory.cs" t="Include" />
           <e p="enums" t="Include">
             <e p="PlayerType.cs" t="Include" />
           </e>
@@ -60,7 +52,6 @@
             <e p="IDamageable.cs" t="Include" />
             <e p="IEntity.cs" t="Include" />
             <e p="IExplodable.cs" t="Include" />
-            <e p="IPlayer.cs" t="Include" />
             <e p="IPlayerEntity.cs" t="Include" />
             <e p="IPursuable.cs" t="Include" />
             <e p="ISelectable.cs" t="Include" />
@@ -68,10 +59,12 @@
             <e p="ISpawnable.cs" t="Include" />
             <e p="ITeamEntity.cs" t="Include" />
             <e p="IWeaponSystemController.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
           </e>
           <e p="IO" t="Include">
             <e p="HandSwitcher.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
+            <e p="LaserPointer.cs" t="Include" />
             <e p="LongPressEventTrigger.cs" t="Include" />
             <e p="MapControls.cs" t="Include" />
           </e>
@@ -95,12 +88,14 @@
             </e>
             <e p="SimpleMatchServerManager.cs" t="Include" />
           </e>
+          <e p="NetworkTransform.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="BodyController.cs" t="Include" />
+            <e p="HumanPlayerController.cs" t="Include" />
             <e p="Nameplate.cs" t="Include" />
-            <e p="PlayerController.cs" t="Include" />
             <e p="PlayerManager.cs" t="Include" />
           </e>
+          <e p="PlayerCamera.cs" t="Include" />
           <e p="Pooling" t="Include">
             <e p="Despawner.cs" t="Include" />
             <e p="Editor" t="Include">
@@ -121,11 +116,7 @@
             <e p="WinCondition.cs" t="Include" />
           </e>
           <e p="Selection" t="Include">
-            <e p="GroupUIManager.cs" t="Include" />
-            <e p="SelectionManager.cs" t="Include" />
-            <e p="SelectionTest.cs" t="Include" />
             <e p="SelectionType.cs" t="Include" />
-            <e p="SelectorTest.cs" t="Include" />
             <e p="ShipSelectionHandler.cs" t="Include" />
           </e>
           <e p="Settings" t="Include">
@@ -166,11 +157,15 @@
           <e p="UI" t="Include">
             <e p="FillImageOverTime.cs" t="Include" />
             <e p="FollowTarget.cs" t="Include" />
+            <e p="GroupUIManager.cs" t="Include" />
             <e p="MenuScreen.cs" t="Include" />
             <e p="Pointer.cs" t="Include" />
+            <e p="SelectionUIManager.cs" t="Include" />
             <e p="SettingsMenuManager.cs" t="Include" />
             <e p="UIGroupShip.cs" t="Include" />
             <e p="UIManager.cs" t="Include" />
+            <e p="UISelectionShip.cs" t="Include" />
+            <e p="UIShipFactory.cs" t="Include" />
             <e p="VRCanvas.cs" t="Include" />
           </e>
           <e p="Utility" t="Include">
@@ -248,6 +243,8 @@
             <e p="DamageableTest.cs" t="Include" />
             <e p="ScenarioTest.cs" t="Include" />
             <e p="Selection" t="Include">
+              <e p="SelectionTest.cs" t="Include" />
+              <e p="SelectorTest.cs" t="Include" />
               <e p="TestSelectionHandler.cs" t="Include" />
             </e>
             <e p="Ships" t="Include">
@@ -587,6 +584,17 @@
             <e p="TickedPriorityQueue" t="Include">
               <e p="License.txt" t="Include" />
               <e p="UnityTickedQueue.cs" t="Include" />
+            </e>
+          </e>
+          <e p="VRInputModule" t="Include">
+            <e p="Resources" t="Include">
+              <e p="LaserPointer.shader" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="IUILaserPointer.cs" t="Include" />
+              <e p="LaserPointerEventData.cs" t="Include" />
+              <e p="LaserPointerInputModule.cs" t="Include" />
+              <e p="UIIgnoreRaycast.cs" t="Include" />
             </e>
           </e>
           <e p="VRKeys" t="Include">
@@ -2188,19 +2196,6 @@
                 </e>
               </e>
             </e>
-          </e>
-        </e>
-        <e p="UISelectionShip.cs" t="Include" />
-        <e p="UIShipFactory.cs" t="Include" />
-        <e p="VRInputModule" t="Include">
-          <e p="Resources" t="Include">
-            <e p="LaserPointer.shader" t="Include" />
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="IUILaserPointer.cs" t="Include" />
-            <e p="LaserPointerEventData.cs" t="Include" />
-            <e p="LaserPointerInputModule.cs" t="Include" />
-            <e p="UIIgnoreRaycast.cs" t="Include" />
           </e>
         </e>
       </e>

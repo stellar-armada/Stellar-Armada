@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SpaceCommander.Players;
+using UnityEngine;
 using TMPro;
 using SpaceCommander.Teams;
 
@@ -9,10 +10,10 @@ namespace SpaceCommander.Player
     public class Nameplate : MonoBehaviour
     {
         [SerializeField] TextMeshPro playerName;
-        [SerializeField] PlayerController playerController;
+        [SerializeField] HumanPlayerController humanPlayerController;
         [SerializeField] Transform transformToFollow;
 
-        public IPlayer localPlayer;
+        public PlayerController localPlayerController;
         
         private Transform _t;
 
@@ -23,16 +24,16 @@ namespace SpaceCommander.Player
 
         void Awake()
         {
-            playerController.EventOnPlayerNameChange += HandlePlayerNameChange;
-            playerController.EventOnPlayerTeamChange += HandleTeamChange;
+            humanPlayerController.EventOnPlayerNameChange += HandleBasePlayerNameChange;
+            humanPlayerController.EventOnPlayerTeamChange += HandleTeamChange;
             _t = transform;
         }
         void Start()
         {
 
-            HandlePlayerNameChange();
+            HandleBasePlayerNameChange();
             HandleTeamChange();
-            isLocalPlayer = playerController.isLocalPlayer;
+            isLocalPlayer = humanPlayerController.isLocalPlayer;
         }
         #endregion
 
@@ -46,7 +47,7 @@ namespace SpaceCommander.Player
 
         void FaceLocalPlayer()
         {
-            _t.LookAt(localPlayer.GetGameObject().transform);
+            _t.LookAt(localPlayerController.GetGameObject().transform);
             _t.rotation = Quaternion.Euler(0, _t.rotation.eulerAngles.y + 180f, 0);
         }
 
@@ -54,14 +55,14 @@ namespace SpaceCommander.Player
 
         #region Public Methods
 
-        public void HandlePlayerNameChange()
+        public void HandleBasePlayerNameChange()
         {
-            playerName.text = playerController.GetName();
+            playerName.text = humanPlayerController.GetName();
         }
 
         public void HandleTeamChange()
         {
-            color = TeamManager.instance.templates[playerController.GetTeamId()].color;
+            color = TeamManager.instance.templates[humanPlayerController.GetTeamId()].color;
 
             playerName.color = color;
         }

@@ -103,7 +103,7 @@ namespace SpaceCommander.Match.Messaging
         }
         
         
-        public void AddPlayerToTeam(IPlayer player)
+        public void AddPlayerToTeam(PlayerController playerController)
         {
             //if (isServer)
             // AssignTeam(player);

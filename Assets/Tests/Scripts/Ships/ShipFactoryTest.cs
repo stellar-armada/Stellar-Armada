@@ -52,8 +52,8 @@ namespace SpaceCommander.Ships.Tests
         public void CreateShip(ShipType shipShipType)
         {
 
-            IPlayer player = PlayerManager.GetPlayers()[0];
-            ShipFactory.instance.CmdCreateShipForPlayer(player.GetId(), shipShipType, Vector3.zero, Quaternion.identity);
+            PlayerController playerController = PlayerManager.GetPlayers()[0];
+            ShipFactory.instance.CmdCreateShipForPlayer(playerController.GetId(), shipShipType, Vector3.zero, Quaternion.identity);
         }
         
     }

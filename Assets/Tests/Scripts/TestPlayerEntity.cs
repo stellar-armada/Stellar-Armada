@@ -7,7 +7,7 @@ namespace SpaceCommander.Common.Tests
 {
     public class TestPlayerEntity : MonoBehaviour, IPlayerEntity
     {
-        private IPlayer testPlayer;
+        private PlayerController _testPlayerController;
 
         public bool isAlive;
 
@@ -15,14 +15,14 @@ namespace SpaceCommander.Common.Tests
 
         private List<EntityType> entityTypes = new List<EntityType> {EntityType.TEAM};
 
-        public void SetPlayer(IPlayer player)
+        public void SetPlayer(PlayerController playerController)
         {
-            testPlayer = player;
+            _testPlayerController = playerController;
         }
 
         public void CmdSetPlayer(uint playerId)
         {
-            testPlayer = PlayerManager.GetPlayerById(playerId);
+            _testPlayerController = PlayerManager.GetPlayerById(playerId);
         }
 
         public uint GetEntityId()
@@ -40,9 +40,9 @@ namespace SpaceCommander.Common.Tests
             return (entityTypes, this);
         }
 
-        public IPlayer GetPlayer()
+        public PlayerController GetPlayer()
         {
-            return testPlayer;
+            return _testPlayerController;
         }
 
         public bool IsAlive()

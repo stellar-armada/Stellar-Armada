@@ -1,4 +1,5 @@
 ﻿using Mirror;
+using SpaceCommander;
 using SpaceCommander.Scenarios;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;
