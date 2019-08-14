@@ -37,7 +37,7 @@ namespace SpaceCommander.Ships
                 ship.statusBar.HideStatusBar();
                 ship.shipShield.gameObject.SetActive(false);
                 ship.visualModel.enabled = false;
-                ship.ShowHologram();
+                //ship.ShowHologram();
             }
             
             public void InitWarp(Vector3 position, Quaternion rotation)
@@ -72,7 +72,7 @@ namespace SpaceCommander.Ships
                 ship.statusBar.ShowStatusBar();
                 ship.shipShield.gameObject.SetActive(true);
                 ship.shipShield.shieldEffectController.SetShieldActive(true, true);
-                ship.HideHologram();
+                //ship.HideHologram();
                 isWarpedIn = true;
             }
 

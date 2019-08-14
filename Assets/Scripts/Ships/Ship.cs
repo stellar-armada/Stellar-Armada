@@ -15,6 +15,7 @@ namespace SpaceCommander.Ships
     {
         public IPlayer player; // Ships are only given to players in FFA or DOTA modes, not implemented yet
 
+        public ShipType type;
         [Header("Ship Subsystems")]
         public ShipMovement shipMovement;
         public ShipHull shipHull;
@@ -34,7 +35,6 @@ namespace SpaceCommander.Ships
         [Header("Ship Components")]
         public Collider shipCollider;
         public Renderer visualModel;
-        public GameObject hologram;
         
         [SyncVar(hook = nameof(HandleDeath))] public bool isAlive = true;
         
@@ -179,16 +179,6 @@ namespace SpaceCommander.Ships
         void OnDestroy()
         {
             ShipManager.instance.UnregisterShip(this);
-        }
-        
-        public void HideHologram()
-        {
-            hologram.GetComponent<Renderer>().enabled = false;
-        }
-
-        public void ShowHologram()
-        {
-            hologram.GetComponent<Renderer>().enabled = true;
         }
     }
 }
