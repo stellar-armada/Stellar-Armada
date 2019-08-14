@@ -5,6 +5,7 @@ using UnityEngine;
 // Test the ship factory, which creates new ship objects for players
 // 
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships.Tests
 {
     public class ShipFactoryTest : MonoBehaviour

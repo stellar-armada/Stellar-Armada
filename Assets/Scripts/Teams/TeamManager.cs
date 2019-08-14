@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
-using SpaceCommander.Game;
-using SpaceCommander.Player;
 using UnityEngine;
 
+#pragma warning disable 0649
+#pragma warning disable 0067
 namespace SpaceCommander.Teams
 {
     [System.Serializable]
@@ -43,7 +43,7 @@ namespace SpaceCommander.Teams
             Team t = Instantiate(teamPrefab, transform).GetComponent<Team>();
             NetworkServer.Spawn(t.gameObject);
             t.teamId = (uint)teams.Count;
-            t.name = template.name;
+            t.teamName = template.name;
             t.color = template.color;
             t.insignia = template.insignia;
             t.playerSlots = numerOfPlayerSlots;

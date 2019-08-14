@@ -11,6 +11,7 @@
 using UnityEngine;
 using System;
 
+#pragma warning disable 0618
 namespace VRKeys {
 	/// <summary>
 	/// Manages placement of the keyboard relative to the user, including

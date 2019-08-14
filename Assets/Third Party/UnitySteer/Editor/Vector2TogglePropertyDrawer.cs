@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnitySteer.Attributes;
 
+#pragma warning disable 0649
 namespace UnitySteer.Editor
 {
     [CustomPropertyDrawer(typeof (Vector2ToggleAttribute))]

@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
 
+#pragma warning disable 0618
 namespace VRKeys {
 
 	/// <summary>

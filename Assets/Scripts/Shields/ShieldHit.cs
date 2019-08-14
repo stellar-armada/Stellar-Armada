@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander
 {
     public class ShieldHit : MonoBehaviour
@@ -25,7 +26,7 @@ namespace SpaceCommander
 
             if (lifeTime <= 0.0f)
             {
-                DestroyObject(gameObject);
+                Destroy(gameObject);
             }
         }
 

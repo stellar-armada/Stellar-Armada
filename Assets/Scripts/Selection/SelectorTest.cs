@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Selection.Tests
 {
     public class SelectorTest : MonoBehaviour, ISelector

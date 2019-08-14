@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnitySteer2D.Behaviors;
 
+#pragma warning disable 0649
 namespace UnitySteer2D.Tools
 {
 	/// <summary>

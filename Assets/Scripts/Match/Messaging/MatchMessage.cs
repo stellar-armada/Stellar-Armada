@@ -4,6 +4,7 @@ using SpaceCommander.Audio;
 using SpaceCommander.Controller;
 using TMPro;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Match.Messaging
 {
     [RequireComponent(typeof(CanvasGroup))]

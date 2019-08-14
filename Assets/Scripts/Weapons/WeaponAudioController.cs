@@ -13,6 +13,7 @@ public class EnumeratedAudioClip
     public float hitDelay; // in ms
 }
 
+#pragma warning disable 0649
 namespace SpaceCommander.Weapons
 {
     public class WeaponAudioController : MonoBehaviour

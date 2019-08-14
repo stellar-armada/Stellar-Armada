@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Editor
 {
     public class CustomEditorMethods : MonoBehaviour

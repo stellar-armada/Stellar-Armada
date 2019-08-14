@@ -6,6 +6,7 @@ using SpaceCommander.Teams;
 using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Selection
 {
     public class GroupManager : MonoBehaviour

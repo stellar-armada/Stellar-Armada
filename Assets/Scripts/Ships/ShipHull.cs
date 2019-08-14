@@ -3,6 +3,7 @@ using SpaceCommander.Selection;
 using UnityEngine;
 using UnityEngine.Events;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
     public class ShipHull : NetworkBehaviour, IDamageable, ICollidable

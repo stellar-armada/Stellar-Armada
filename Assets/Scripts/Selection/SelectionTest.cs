@@ -4,42 +4,45 @@ using SpaceCommander;
 using SpaceCommander.Selection;
 using UnityEngine;
 using UnityEngine.UI;
+#pragma warning disable 0649
+ namespace SpaceCommander.Ships
+ {
+     public class SelectionTest : MonoBehaviour
+     {
+         [SerializeField] Text currentSelectionText;
+         [SerializeField] private Text[] selectionSetTexts;
 
-public class SelectionTest : MonoBehaviour
-{
-    [SerializeField] Text currentSelectionText;
-    [SerializeField] private Text[] selectionSetTexts;
-    
-    public void UpdateCurrentlySelected()
-    {
-        StringBuilder stringBuilder = new StringBuilder();
+         public void UpdateCurrentlySelected()
+         {
+             StringBuilder stringBuilder = new StringBuilder();
 
-        foreach (ISelectable selectable in SelectionManager.instance.GetCurrentSelection())
-        {
-            stringBuilder.AppendLine(selectable.GetOwningEntity().GetGameObject().name);
-        }
+             foreach (ISelectable selectable in SelectionManager.instance.GetCurrentSelection())
+             {
+                 stringBuilder.AppendLine(selectable.GetOwningEntity().GetGameObject().name);
+             }
 
-        currentSelectionText.text = stringBuilder.ToString();
-    }
+             currentSelectionText.text = stringBuilder.ToString();
+         }
 
-    public void UpdateSelectionSets()
-    {
-        StringBuilder stringBuilder;
-        for (int i = 0; i < selectionSetTexts.Length; i++)
-        {
-            stringBuilder = new StringBuilder();
+         public void UpdateSelectionSets()
+         {
+             StringBuilder stringBuilder;
+             for (int i = 0; i < selectionSetTexts.Length; i++)
+             {
+                 stringBuilder = new StringBuilder();
 
-            List<ISelectable> selection = SelectionManager.instance.GetSelectionSet(i);
-            if (selection == null) continue;
-            Debug.Log("Selection length: " + selection);
-            foreach (ISelectable selectable in selection)
-            {
-                stringBuilder.AppendLine(selectable.GetOwningEntity().GetGameObject().name);
-            }
+                 List<ISelectable> selection = SelectionManager.instance.GetSelectionSet(i);
+                 if (selection == null) continue;
+                 Debug.Log("Selection length: " + selection);
+                 foreach (ISelectable selectable in selection)
+                 {
+                     stringBuilder.AppendLine(selectable.GetOwningEntity().GetGameObject().name);
+                 }
 
-            selectionSetTexts[i].text = stringBuilder.ToString();
-            Debug.Log(stringBuilder.ToString());
-        }    
-    }
-    
-}
+                 selectionSetTexts[i].text = stringBuilder.ToString();
+                 Debug.Log(stringBuilder.ToString());
+             }
+         }
+
+     }
+ }

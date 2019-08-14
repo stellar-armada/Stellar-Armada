@@ -3,6 +3,7 @@ using UnityEngine;
 using Mirror; // Replacement for HLAPI, uses virtually identical syntax but strips some of HLAPI's functionality/bloat
 using SpaceCommander.Game;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Player
 {
     public class PlayerController : NetworkBehaviour, IPlayer
@@ -91,7 +92,7 @@ namespace SpaceCommander.Player
 
         public string GetName() => name;
 
-        public bool IsEnemy(IPlayer player) => player != this;
+        public bool IsEnemy(IPlayer player) => player.GetTeamId() != teamId;
 
         public Team GetTeam() => TeamManager.instance.GetTeamByID(teamId);
 

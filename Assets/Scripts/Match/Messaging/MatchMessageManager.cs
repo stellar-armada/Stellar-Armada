@@ -3,12 +3,12 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
-
+// remove 67 for production. 649 is just null checking serialized values
+#pragma warning disable 0067
+#pragma warning disable 0649
 namespace SpaceCommander.Match.Messaging
 {
-    /* Manager for Hud Messages (notifications at the bottom of player's screen)
-     * TO-DO: Make methods static so we don't need to call HudMessageManager.instance all over the place :)
-     */
+    /* Manager for Hud Messages (notifications at the bottom of player's screen) */
 
     public enum MatchMessageType
     {
@@ -54,7 +54,7 @@ namespace SpaceCommander.Match.Messaging
         [SerializeField] MatchMessage MessageTemplate;
         
         public delegate void MessageRaisedDelegate(MatchMessageType t);
-
+        
         [SyncEvent] public event MessageRaisedDelegate EventOnNewMessage;
 
         private void Awake()

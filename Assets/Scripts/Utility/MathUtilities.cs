@@ -1,4 +1,5 @@
-﻿namespace SpaceCommander.Utility
+﻿#pragma warning disable 0649
+namespace SpaceCommander.Utility
 {
     public class MathUtilities
     {

@@ -1,6 +1,7 @@
 ﻿using Mirror;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
     public class ShipExplosion : NetworkBehaviour, IExplodable

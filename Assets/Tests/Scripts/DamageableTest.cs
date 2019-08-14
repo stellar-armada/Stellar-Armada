@@ -1,6 +1,7 @@
 ﻿using SpaceCommander.Ships;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Common.Tests
 {
     public class DamageableTest : MonoBehaviour

@@ -3,6 +3,7 @@ using System.Linq;
 using Mirror;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Game
 {
     public class PlayerManager : MonoBehaviour

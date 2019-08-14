@@ -2,6 +2,7 @@
 using TMPro;
 using SpaceCommander.Teams;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Player
 {
     // Class to control the nameplate (health and name) over player's head

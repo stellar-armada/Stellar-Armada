@@ -2,6 +2,7 @@
 using SpaceCommander.Common.Tests;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Weapons.Tests
 {
     public class TurretTest : MonoBehaviour

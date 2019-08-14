@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
     [RequireComponent(typeof(Collider))]

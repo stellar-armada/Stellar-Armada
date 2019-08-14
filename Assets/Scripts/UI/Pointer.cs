@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 0649
 namespace SpaceCommander.UI
 {
     public class Pointer : MonoBehaviour

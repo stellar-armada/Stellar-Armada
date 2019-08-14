@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+#pragma warning disable 0649
 namespace Wacki {
     public class LaserPointerEventData : PointerEventData
     {

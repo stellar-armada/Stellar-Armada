@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+#pragma warning disable 0649
 namespace SpaceCommander
 {
     // Interface for classes that have the functionality of damaging other players
