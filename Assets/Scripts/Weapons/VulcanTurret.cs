@@ -13,7 +13,7 @@ namespace SpaceCommander.Weapons
                 // Play impact sound effect
                 WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Vulcan, point);
         }
-        public override void StartFiring()
+        protected override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(fireRate, Fire);
         }
@@ -24,7 +24,7 @@ namespace SpaceCommander.Weapons
         }
 
         // Stop firing 
-        public override void StopFiring()
+        protected override void StopFiring()
         {
             // Remove firing timer
             if (timerID != -1)

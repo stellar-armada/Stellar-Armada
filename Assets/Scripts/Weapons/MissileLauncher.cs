@@ -76,17 +76,17 @@ namespace SpaceCommander.Weapons
             ProcessInput();
         }
 
-        public override void AcquireTarget()
+        protected override void AcquireTarget()
         {
             throw new NotImplementedException();
         }
 
-        public override void StartFiring()
+        protected override void StartFiring()
         {
             throw new NotImplementedException();
         }
 
-        public override void StopFiring()
+        protected override void StopFiring()
         {
             throw new NotImplementedException();
         }

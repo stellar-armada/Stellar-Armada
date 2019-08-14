@@ -124,7 +124,7 @@ namespace SpaceCommander.Weapons
 
 
 
-        public override void AcquireTarget()
+        protected override void AcquireTarget()
         {
             if (!owningWeaponSystemController.WeaponSystemsEnabled()) return;
             // overlap sphere to get list of hitting objects
@@ -163,7 +163,7 @@ namespace SpaceCommander.Weapons
             }
         }
 
-        public override void StartFiring()
+        protected override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(fireRate, Fire);
         }
@@ -173,7 +173,7 @@ namespace SpaceCommander.Weapons
             Fire(WeaponType.LaserImpulse); // Debug weapon type
         }
 
-        public void Fire(WeaponType type)
+        protected void Fire(WeaponType type)
         {
             if (targetEntity == null || !IsFacingTarget() || !targetEntity.IsAlive())
             {
@@ -194,7 +194,7 @@ namespace SpaceCommander.Weapons
             AdvanceSocket();
         }
         
-        public void Impact(Vector3 point, WeaponType weaponType)
+        protected void Impact(Vector3 point, WeaponType weaponType)
         {
             // Spawn impact prefab at specified position
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(weaponType).impact, point,
@@ -203,7 +203,7 @@ namespace SpaceCommander.Weapons
             WeaponAudioController.instance.PlayHitAtPosition(weaponType, point);
         }
 
-        public override void StopFiring()
+        protected override void StopFiring()
         {
             // Remove firing timer
             if (timerID != -1)

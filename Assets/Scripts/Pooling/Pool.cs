@@ -278,7 +278,7 @@ namespace SpaceCommander.Pooling
 
 
         //Return transfrom of spawned object
-        public Transform SpawnDamager(IWeaponSystem owningWeaponSystem, Transform obj, Vector3 pos , Quaternion rot , Transform par)
+        public Transform SpawnDamager(WeaponSystem owningWeaponSystem, Transform obj, Vector3 pos , Quaternion rot , Transform par)
         {
             
             if (!CheckForExistingTemplate(obj))

@@ -15,9 +15,7 @@ namespace SpaceCommander.Ships
 
         public string hullProperty = "_Health";
         public string shieldProperty = "_Shield";
-
-        public Texture insignia; // delete me
-
+        
         private MaterialPropertyBlock m;
 
         void Awake()
@@ -26,8 +24,8 @@ namespace SpaceCommander.Ships
              
              hull = ship.shipHull;
              shield = ship.shipShield;
-             shield.ShieldChanged.AddListener(SetShieldSlider);
-             hull.HullChanged.AddListener(SetHullSlider);
+             shield.ShieldChanged += SetShieldSlider;
+             hull.HullChanged += SetHullSlider;
              
              Debug.Log("Status bar needs local player reference");
 
@@ -41,25 +39,23 @@ namespace SpaceCommander.Ships
             statusBarRenderer.SetPropertyBlock(m);
         }
 
-        void SetHullSlider()
+        void SetHullSlider(float currentHull)
         {
             statusBarRenderer.GetPropertyBlock(m);
-            m.SetFloat(hullProperty, hull.currentHull / hull.maxHull);
+            m.SetFloat(hullProperty, currentHull / hull.maxHull);
             statusBarRenderer.SetPropertyBlock(m);
             
         }
 
-        void SetShieldSlider()
+        void SetShieldSlider(float currentShield)
         {
             statusBarRenderer.GetPropertyBlock(m);
-            m.SetFloat(shieldProperty, shield.currentShield / shield.maxShield);
+            m.SetFloat(shieldProperty, currentShield / shield.maxShield);
             statusBarRenderer.SetPropertyBlock(m);
         }
         
         void LateUpdate ()
         {
-            Debug.Log("Skipping late update while camera transform gets fixed");
-            return;
             LookAtMainCamera();
         }
 

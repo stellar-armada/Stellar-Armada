@@ -9,7 +9,7 @@ namespace SpaceCommander.Ships
 
         [SerializeField] private Ship ship;
         
-        List<IWeaponSystem> weaponSystems = new List<IWeaponSystem>();
+        List<WeaponSystem> weaponSystems = new List<WeaponSystem>();
 
         public bool weaponSystemsEnabled = false;
 
@@ -18,7 +18,7 @@ namespace SpaceCommander.Ships
             return ship;
         }
 
-        public List<IWeaponSystem> GetWeaponSystems()
+        public List<WeaponSystem> GetWeaponSystems()
         {
             return weaponSystems;
         }
@@ -31,7 +31,7 @@ namespace SpaceCommander.Ships
         public void DisableWeaponSystems()
         {
             weaponSystemsEnabled = false;
-            foreach (IWeaponSystem weaponSystem in weaponSystems)
+            foreach (WeaponSystem weaponSystem in weaponSystems)
             {
                 weaponSystem.ClearTarget();
             }
@@ -39,7 +39,7 @@ namespace SpaceCommander.Ships
 
         public void HideWeaponSystems()
         {
-            foreach (IWeaponSystem weaponSystem in weaponSystems)
+            foreach (WeaponSystem weaponSystem in weaponSystems)
             {
                 foreach (Renderer ren in weaponSystem.GetGameObject().transform.GetComponentsInChildren<Renderer>())
                 {
@@ -50,7 +50,7 @@ namespace SpaceCommander.Ships
         
         public void ShowWeaponSystems()
         {
-            foreach (IWeaponSystem weaponSystem in weaponSystems)
+            foreach (WeaponSystem weaponSystem in weaponSystems)
             {
                 foreach (Renderer ren in weaponSystem.GetGameObject().transform.GetComponentsInChildren<Renderer>())
                 {

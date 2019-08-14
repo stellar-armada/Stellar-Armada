@@ -67,7 +67,6 @@
             <e p="ISelector.cs" t="Include" />
             <e p="ISpawnable.cs" t="Include" />
             <e p="ITeamEntity.cs" t="Include" />
-            <e p="IWeaponSystem.cs" t="Include" />
             <e p="IWeaponSystemController.cs" t="Include" />
           </e>
           <e p="IO" t="Include">
@@ -122,7 +121,7 @@
             <e p="WinCondition.cs" t="Include" />
           </e>
           <e p="Selection" t="Include">
-            <e p="GroupManager.cs" t="Include" />
+            <e p="GroupUIManager.cs" t="Include" />
             <e p="SelectionManager.cs" t="Include" />
             <e p="SelectionTest.cs" t="Include" />
             <e p="SelectionType.cs" t="Include" />
@@ -170,8 +169,8 @@
             <e p="MenuScreen.cs" t="Include" />
             <e p="Pointer.cs" t="Include" />
             <e p="SettingsMenuManager.cs" t="Include" />
+            <e p="UIGroupShip.cs" t="Include" />
             <e p="UIManager.cs" t="Include" />
-            <e p="UIShip.cs" t="Include" />
             <e p="VRCanvas.cs" t="Include" />
           </e>
           <e p="Utility" t="Include">
@@ -266,9 +265,6 @@
             <e p="TestCollisionHandler.cs" t="Include" />
             <e p="TestPlayer.cs" t="Include" />
             <e p="TestPlayerEntity.cs" t="Include" />
-            <e p="Weapons" t="Include">
-              <e p="TurretTest.cs" t="Include" />
-            </e>
           </e>
         </e>
         <e p="Third Party" t="Include">
@@ -2194,6 +2190,8 @@
             </e>
           </e>
         </e>
+        <e p="UISelectionShip.cs" t="Include" />
+        <e p="UIShipFactory.cs" t="Include" />
         <e p="VRInputModule" t="Include">
           <e p="Resources" t="Include">
             <e p="LaserPointer.shader" t="Include" />

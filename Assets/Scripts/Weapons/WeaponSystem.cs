@@ -3,7 +3,7 @@
 #pragma warning disable 0649
 namespace SpaceCommander
 {
-    public abstract class WeaponSystem : MonoBehaviour, IWeaponSystem
+    public abstract class WeaponSystem : MonoBehaviour
     {
         public Transform owningWeaponSystemTransform; // hack until we can update to 2019.3
         public IWeaponSystemController owningWeaponSystemController;
@@ -70,17 +70,17 @@ namespace SpaceCommander
             return damagePerHit;
         }
 
-        public abstract void AcquireTarget();
+        protected abstract void AcquireTarget();
 
         // Fire turret weapon
-        public abstract void StartFiring();
+        protected abstract void StartFiring();
 
         // Stop firing 
-        public abstract void StopFiring();
+        protected abstract void StopFiring();
 
         public abstract void Impact(Vector3 point);
 
-        public void CheckForFire()
+        protected void CheckForFire()
         {
             if (target == null) isFiring = false;
 

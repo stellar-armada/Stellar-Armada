@@ -1,5 +1,6 @@
 ﻿using SpaceCommander.Ships;
 using UnityEngine;
+using UnityEngine.Events;
 
 #pragma warning disable 0649
 namespace SpaceCommander.Selection
@@ -9,9 +10,12 @@ namespace SpaceCommander.Selection
         [SerializeField] Ship ship;
 
         [SerializeField] private Renderer selectionCube;
+
+        public delegate void SelectionChangedHandler(bool selected);
+
+        public SelectionChangedHandler OnSelectionChanged;
         
         public int selectionSetID;
-
         void Awake()
         {
             selectionCube.enabled = false;
@@ -31,11 +35,13 @@ namespace SpaceCommander.Selection
         public void Select()
         {
             selectionCube.enabled = true;
+            OnSelectionChanged?.Invoke(true);
         }
 
         public void Deselect()
         {
             selectionCube.enabled = false;
+            OnSelectionChanged?.Invoke(false);
         }
 
         public IEntity GetOwningEntity()

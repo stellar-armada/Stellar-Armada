@@ -12,7 +12,9 @@ namespace SpaceCommander.Ships
         
         public float maxShield;
 
-        public UnityEvent ShieldChanged;
+        public delegate void ShieldChangeEvent(float shieldVal);
+        
+        public ShieldChangeEvent ShieldChanged;
 
         [SerializeField] private float shieldRechargeDelayTime;
         [SerializeField] private float shieldRechargeRate;
@@ -124,7 +126,7 @@ namespace SpaceCommander.Ships
                 DisableShieldComponents();
             }
 
-            ShieldChanged.Invoke();
+            ShieldChanged.Invoke(s);
         }
         
         public IDamageable GetDamageable()

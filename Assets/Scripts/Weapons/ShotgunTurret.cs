@@ -10,7 +10,7 @@ namespace SpaceCommander.Weapons
             Impact(point, WeaponType.Shotgun);
         }
 
-        public override void StartFiring()
+        protected override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(.3f, Fire);
             Fire();
@@ -22,7 +22,7 @@ namespace SpaceCommander.Weapons
         }
 
         // Stop firing 
-        public override void StopFiring()
+        protected override void StopFiring()
         {
             // Remove firing timer
             if (timerID != -1)

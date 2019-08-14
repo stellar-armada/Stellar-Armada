@@ -7,7 +7,7 @@ namespace SpaceCommander
     public interface IWeaponSystemController
     {
         IEntity GetEntity();
-        List<IWeaponSystem> GetWeaponSystems();
+        List<WeaponSystem> GetWeaponSystems();
         void EnableWeaponSystems();
         void DisableWeaponSystems();
         void RegisterWeaponSystem(WeaponSystem weaponSystem);

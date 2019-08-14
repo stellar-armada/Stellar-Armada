@@ -4,19 +4,19 @@ namespace SpaceCommander
 {
     public abstract class Damager : MonoBehaviour
     {
-        public IWeaponSystem owningWeaponSystem;
+        public WeaponSystem owningWeaponSystem;
         
         public LayerMask layerMask;
         
         [SerializeField] float impactHitSize;
 
 
-        public void SetOwningWeaponSystem(IWeaponSystem weaponSystem)
+        public void SetOwningWeaponSystem(WeaponSystem weaponSystem)
         {
             owningWeaponSystem = weaponSystem;
         }
 
-        public IWeaponSystem GetOwningWeaponSystem()
+        public WeaponSystem GetOwningWeaponSystem()
         {
             return owningWeaponSystem;
         }

@@ -5,7 +5,7 @@ namespace SpaceCommander.Weapons
 {
     public class GuardianBeamTurret : Turret
     {
-        public override void StartFiring()
+        protected override void StartFiring()
         {
             for (var i = 0; i < TurretSocket.Length; i++)
             {
@@ -17,7 +17,7 @@ namespace SpaceCommander.Weapons
             WeaponAudioController.instance.GuardianBeamLoop(transform.position, transform);
         }
         // Stop firing 
-        public override void StopFiring()
+        protected override void StopFiring()
         {
             // Remove firing timer
             if (timerID != -1)

@@ -801,6 +801,7 @@ Transform:
   - {fileID: 5747669402091356058}
   - {fileID: 713246618569287089}
   - {fileID: 5442292917510968559}
+  - {fileID: 3289985712513492404}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1106,3 +1107,64 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8385078852642538006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3289985712513492404}
+  - component: {fileID: 6884279683614869520}
+  m_Layer: 0
+  m_Name: UIShipFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3289985712513492404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385078852642538006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5747669402256501384}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6884279683614869520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385078852642538006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4fe8c30fe50284bb08c4176432c6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupShipPrefabs:
+    m_keys: 000000000100000002000000030000000400000005000000
+    m_values:
+    - {fileID: 4312409327588767106, guid: b4b35561a5c73094bbc5e91a8ef792e0, type: 3}
+    - {fileID: 6026984977371430974, guid: 9143211be30a21949ba754ee0d5a2f6e, type: 3}
+    - {fileID: 7943976369294506547, guid: fc7f886bdd05fc340a68479bf0d61d4e, type: 3}
+    - {fileID: 7211150922952916740, guid: d10704bd1370dc44c9cb46f0302fffa0, type: 3}
+    - {fileID: 2871376767678347332, guid: 9b5325bb71648fc428bd6914299eb78b, type: 3}
+    - {fileID: 5988516292966015030, guid: 0eefb49aff8a09544ad8fe6f64bfc794, type: 3}
+  selectionShipPrefabs:
+    m_keys: 000000000100000002000000030000000400000005000000
+    m_values:
+    - {fileID: 5988516292966015030, guid: a3e7a8c0c915d4f4593c5fc7f6fa177a, type: 3}
+    - {fileID: 5988516292966015030, guid: 6b3aa0883f608f14196e5440e5c754b1, type: 3}
+    - {fileID: 5988516292966015030, guid: 631ce9309b3878244b90734eec5e9853, type: 3}
+    - {fileID: 5988516292966015030, guid: 0f5d8ab0f1d3e534fbbe68ce552e672b, type: 3}
+    - {fileID: 5988516292966015030, guid: c79c67b9c934dfa409bacadd7a167e85, type: 3}
+    - {fileID: 5988516292966015030, guid: 19c4a970f38bef54ea585bbafc7f435e, type: 3}

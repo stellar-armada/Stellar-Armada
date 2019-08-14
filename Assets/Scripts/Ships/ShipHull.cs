@@ -11,8 +11,10 @@ namespace SpaceCommander.Ships
         [SerializeField] private Ship ship;
 
         public float maxHull;
+        
+        public delegate void HullChangeEvent(float shieldVal);
 
-        public UnityEvent HullChanged;
+        public HullChangeEvent HullChanged;
 
         [SerializeField] ShipSelectionHandler selectionHandler;
 
@@ -55,7 +57,7 @@ namespace SpaceCommander.Ships
                 Debug.Log("Ship is dead");
             }
 
-            HullChanged.Invoke();
+            HullChanged.Invoke(currentHull);
         }
 
         public IDamageable GetDamageable()

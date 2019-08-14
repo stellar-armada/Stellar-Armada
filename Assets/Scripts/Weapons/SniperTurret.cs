@@ -11,7 +11,7 @@ namespace SpaceCommander.Weapons
             PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.Sniper).impact, point, Quaternion.identity, null);
             WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Sniper, point);
         }
-        public override void StartFiring()
+        protected override void StartFiring()
         {
             timerID = TimeManager.instance.AddTimer(0.3f, Fire);
         }
@@ -22,7 +22,7 @@ namespace SpaceCommander.Weapons
         }
 
         // Stop firing 
-        public override void StopFiring()
+        protected override void StopFiring()
         {
             // Remove firing timer
             if (timerID != -1)
