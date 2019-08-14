@@ -1,6 +1,7 @@
 using TickedPriorityQueue;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace UnitySteer2D.Tools
 {
     [AddComponentMenu("UnitySteer2D/Tools/Speedometer")]

@@ -1,6 +1,7 @@
 ﻿using SpaceCommander.Match.Messaging;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Audio
 {
 

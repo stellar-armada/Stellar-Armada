@@ -10,6 +10,7 @@
 
 using VRKeys.Layouts;
 
+#pragma warning disable 0618
 namespace VRKeys {
 
 	/// <summary>

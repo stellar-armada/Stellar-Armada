@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SpaceCommander.Teams;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Player
 {
 

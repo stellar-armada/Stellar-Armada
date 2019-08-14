@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnitySteer.Behaviors;
 
+#pragma warning disable 0649
 namespace UnitySteer.Tools
 {
 	/// <summary>

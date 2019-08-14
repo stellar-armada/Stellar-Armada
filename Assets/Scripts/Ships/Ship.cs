@@ -8,6 +8,7 @@ using SpaceCommander.Teams;
 using UnityEngine.Events;
 using UnitySteer.Behaviors;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
     public class Ship : NetworkBehaviour, ITeamEntity, IPlayerEntity

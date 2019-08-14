@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Wacki;
 
+#pragma warning disable 0649
 namespace SpaceCommander.IO {
 
     public class LaserPointer : IUILaserPointer

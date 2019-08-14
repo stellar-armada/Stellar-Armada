@@ -1,4 +1,5 @@
-﻿namespace UnitySteer.Attributes
+﻿#pragma warning disable 0649
+namespace UnitySteer.Attributes
 {
     public class AngleCosineAttribute: RangeAttribute 
     {

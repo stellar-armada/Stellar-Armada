@@ -3,6 +3,7 @@
 using System.Linq;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace UnitySteer2D.Behaviors
 {
     /// <summary>

@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Networking
 {
     [CustomEditor(typeof(MatchNetworkManager), true)]

@@ -16,6 +16,7 @@
         </e>
         <e p="LaserPointer.cs" t="Include" />
         <e p="NetworkTransform.cs" t="Include" />
+        <e p="PlayerCamera.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -2192,87 +2193,8 @@
               </e>
             </e>
           </e>
-          <e p="UltimateReplay" t="Include">
-            <e p="Demo" t="Include">
-              <e p="Audio" t="Include">
-                <e p="MediumExplosion.info.txt" t="Include" />
-              </e>
-              <e p="Scripts" t="Include">
-                <e p="AudioDemo.cs" t="Include" />
-                <e p="CubeSpawner.cs" t="Include" />
-                <e p="MultichannelDemo.cs" t="Include" />
-                <e p="ParticleDemo.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Scripts" t="Include">
-              <e p="_Attributes" t="Include">
-                <e p="ReplayComponentPreparerAttribute.cs" t="Include" />
-                <e p="ReplayIgnoreAttribute.cs" t="Include" />
-                <e p="ReplayVarAttribute.cs" t="Include" />
-              </e>
-              <e p="Core" t="Include">
-                <e p="DefaultReplayPreparer.cs" t="Include" />
-                <e p="IReplayDataSerialize.cs" t="Include" />
-                <e p="IReplayPreparer.cs" t="Include" />
-                <e p="IReplaySerialize.cs" t="Include" />
-                <e p="ReplayEvent.cs" t="Include" />
-                <e p="ReplayIdentity.cs" t="Include" />
-                <e p="ReplayScene.cs" t="Include" />
-                <e p="ReplaySequencer.cs" t="Include" />
-                <e p="ReplayTimer.cs" t="Include" />
-                <e p="ReplayVariable.cs" t="Include" />
-                <e p="StatePreparation" t="Include">
-                  <e p="AnimatorPreparer.cs" t="Include" />
-                  <e p="BehaviourPreparer.cs" t="Include" />
-                  <e p="ColliderPreparer.cs" t="Include" />
-                  <e p="ComponentPreparer.cs" t="Include" />
-                  <e p="RigidBodyPreparer.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Editor" t="Include">
-                <e p="ReplayBehaviourEditor.cs" t="Include" />
-                <e p="ReplayHelper.cs" t="Include" />
-                <e p="ReplayIdentityPropertyDrawer.cs" t="Include" />
-                <e p="ReplayManagerEditor.cs" t="Include" />
-                <e p="ReplayMemoryTargetEditor.cs" t="Include" />
-                <e p="ReplayObjectEditor.cs" t="Include" />
-                <e p="ReplayVariableValidator.cs" t="Include" />
-              </e>
-              <e p="ReplayAnimator.cs" t="Include" />
-              <e p="ReplayAudio.cs" t="Include" />
-              <e p="ReplayBehaviour.cs" t="Include" />
-              <e p="ReplayControls.cs" t="Include" />
-              <e p="ReplayManager.cs" t="Include" />
-              <e p="ReplayObject.cs" t="Include" />
-              <e p="ReplayParticles.cs" t="Include" />
-              <e p="ReplayState.cs" t="Include" />
-              <e p="ReplayTime.cs" t="Include" />
-              <e p="ReplayTransform.cs" t="Include" />
-              <e p="Storage" t="Include">
-                <e p="Compression.cs" t="Include" />
-                <e p="ReplayFileBuffer.cs" t="Include" />
-                <e p="ReplayFileStream.cs" t="Include" />
-                <e p="ReplayFileTarget.cs" t="Include" />
-                <e p="ReplayFileTargetTypes.cs" t="Include" />
-                <e p="ReplayInitialDataBuffer.cs" t="Include" />
-                <e p="ReplayMemoryTarget.cs" t="Include" />
-                <e p="ReplayMultichannelMemoryTarget.cs" t="Include" />
-                <e p="ReplaySnapshot.cs" t="Include" />
-                <e p="ReplayTarget.cs" t="Include" />
-              </e>
-              <e p="Util" t="Include">
-                <e p="BitConverterNonAlloc.cs" t="Include" />
-              </e>
-            </e>
-          </e>
         </e>
         <e p="VRInputModule" t="Include">
-          <e p="_demo" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="DemoMenu.cs" t="Include" />
-              <e p="GravityGun.cs" t="Include" />
-            </e>
-          </e>
           <e p="Resources" t="Include">
             <e p="LaserPointer.shader" t="Include" />
           </e>

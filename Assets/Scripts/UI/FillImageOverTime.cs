@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 0649
 namespace SpaceCommander.UI
 {
     // Nice little UI doodad to animate an image feel

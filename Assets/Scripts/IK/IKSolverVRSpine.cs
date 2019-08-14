@@ -2,6 +2,7 @@
 using System;
 using UnityEngine.Serialization;
 
+#pragma warning disable 0649
 namespace SpaceCommander.IK {
 	
 	/// <summary>

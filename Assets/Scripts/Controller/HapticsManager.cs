@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Controller
 {
     /* InputManager handles all input from various devices.

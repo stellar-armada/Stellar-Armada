@@ -4,6 +4,7 @@ using TickedPriorityQueue;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+#pragma warning disable 0649
 namespace UnitySteer.Behaviors
 {
     /// <summary>

@@ -1,6 +1,7 @@
 ﻿using SpaceCommander.Audio;
 using SpaceCommander.Match.Messaging;
 using UnityEditor;
+#pragma warning disable 0649
 namespace SpaceCommander
 {
     [CustomPropertyDrawer((typeof(SfxDictionary)))]

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Scenarios
 {
     [System.Serializable, CreateAssetMenu(fileName = nameof(Scenario), menuName = "Scenario", order = 56)]

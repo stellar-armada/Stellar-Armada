@@ -4,6 +4,7 @@ using SpaceCommander.Game;
 using SpaceCommander.Player;
 using TMPro;
 
+#pragma warning disable 0649
 namespace SpaceCommander.UI
 {
     // Settings menu manager scipt

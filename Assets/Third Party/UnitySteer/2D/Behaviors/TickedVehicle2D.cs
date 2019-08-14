@@ -5,6 +5,7 @@ using TickedPriorityQueue;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+#pragma warning disable 0649
 namespace UnitySteer2D.Behaviors
 {
     /// <summary>

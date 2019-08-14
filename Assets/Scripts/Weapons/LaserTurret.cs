@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SpaceCommander.Pooling;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Weapons
 {
     public class LaserTurret : Turret

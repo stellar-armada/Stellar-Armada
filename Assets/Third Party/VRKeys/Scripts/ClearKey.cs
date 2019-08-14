@@ -10,6 +10,7 @@
 
 using UnityEngine;
 
+#pragma warning disable 0618
 namespace VRKeys {
 
 	/// <summary>

@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
+#pragma warning disable 0649
 namespace Wacki {
 
     public class LaserPointerInputModule : BaseInputModule {

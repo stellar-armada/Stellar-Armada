@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnitySteer.Attributes;
 
+#pragma warning disable 0649
 namespace UnitySteer.Behaviors
 {
     /// <summary>

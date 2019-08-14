@@ -1,5 +1,6 @@
 ﻿using SpaceCommander.Match.Messaging;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Match
 {
     public struct MatchCountDownSettings

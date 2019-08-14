@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TickedPriorityQueue;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace UnitySteer.Behaviors
 {
     /// <summary>

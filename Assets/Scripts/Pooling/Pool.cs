@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Pooling
 {
     public class Pool : MonoBehaviour

@@ -4,6 +4,7 @@ using SpaceCommander.Game;
 using SpaceCommander.Selection;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Teams
 {
     public class Team : NetworkBehaviour
@@ -11,7 +12,7 @@ namespace SpaceCommander.Teams
         public uint teamId;
 
         // public int pointsToSpend; leaving here so we can add this mechanic later
-        public string name;
+        public string teamName;
         public Color color;
         public int playerSlots;
         public Texture insignia;
@@ -124,7 +125,7 @@ namespace SpaceCommander.Teams
 
         public string GetName()
         {
-            return name;
+            return teamName;
         }
 
         public bool IsEnemy(Team team)

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Game
 {
 

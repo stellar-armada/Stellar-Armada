@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.UI
 {
     /* UI Menu Screen object attached to all UI screens

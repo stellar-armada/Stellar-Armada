@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
-
-public class FollowTarget : MonoBehaviour
+#pragma warning disable 0649
+namespace SpaceCommander
 {
-   [SerializeField] private Transform targetToFollow;
-
-   void LateUpdate()
+   public class FollowTarget : MonoBehaviour
    {
-      transform.position = targetToFollow.position;
-      transform.rotation = targetToFollow.rotation;
+      [SerializeField] private Transform targetToFollow;
+
+      void LateUpdate()
+      {
+         transform.position = targetToFollow.position;
+         transform.rotation = targetToFollow.rotation;
+      }
+
    }
-   
 }

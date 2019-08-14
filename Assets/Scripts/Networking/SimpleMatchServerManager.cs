@@ -2,6 +2,7 @@
 using SpaceCommander.Scenarios;
 using SpaceCommander.Teams;
 using UnityEngine;
+#pragma warning disable 0649
 namespace SpaceCommander.Match
 {
     public class SimpleMatchServerManager : NetworkBehaviour

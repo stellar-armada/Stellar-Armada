@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#pragma warning disable 0649
 namespace SpaceCommander.Utility
 {
     // Helper script to ground an object onto the floor

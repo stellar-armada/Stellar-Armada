@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
 
+#pragma warning disable 0649
 namespace Wacki {
     abstract public class IUILaserPointer : MonoBehaviour {
 
         public GameObject hitPoint;
         public GameObject pointer;
-
+        
         [SerializeField] float laserThickness = .02f;
 
         private float _distanceLimit;

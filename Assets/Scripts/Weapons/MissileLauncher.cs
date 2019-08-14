@@ -4,12 +4,12 @@ using SpaceCommander.Pooling;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Weapons
 {
     public class MissileLauncher :  WeaponSystem
     {
         public Transform missilePrefab;
-        public Transform target;
         public Transform[] socket;
         public Transform explosionPrefab;
 

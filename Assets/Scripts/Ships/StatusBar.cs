@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
     public class StatusBar : MonoBehaviour
     {
 
         [SerializeField] Ship ship;
-        private Transform cameraTransform;
         private ShipHull hull;
         private ShipShield shield;
 
@@ -30,9 +30,7 @@ namespace SpaceCommander.Ships
              hull.HullChanged.AddListener(SetHullSlider);
              
              Debug.Log("Status bar needs local player reference");
-             return;
-             
-             cameraTransform = GameObject.Find("Main Camera").transform; // TO-DO: change this to local player when we can!
+
             LookAtMainCamera();
         }
 
@@ -67,7 +65,9 @@ namespace SpaceCommander.Ships
 
         void LookAtMainCamera()
         {
-            // TO-DO: Fix so that always facing camera, but also oriented nice vetically, not rotated with ship
+            if (PlayerCamera.instance == null) return;
+            Camera c = PlayerCamera.instance.GetCamera();
+            Transform cameraTransform = c.transform;
             Vector3 targetPostition = new Vector3( cameraTransform.position.x, 
                 transform.position.y, 
                 cameraTransform.position.z ) ;

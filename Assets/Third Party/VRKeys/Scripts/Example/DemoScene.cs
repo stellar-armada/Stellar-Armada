@@ -12,6 +12,7 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System.Collections;
 
+#pragma warning disable 0618
 namespace VRKeys {
 
 	/// <summary>

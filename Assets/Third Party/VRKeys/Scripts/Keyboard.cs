@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using TMPro;
 
+#pragma warning disable 0618
 namespace VRKeys {
 
 	/// <summary>

@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
     public class TestDamageableHull : MonoBehaviour, IDamageable

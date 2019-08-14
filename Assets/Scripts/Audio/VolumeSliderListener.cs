@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using SpaceCommander.Game;
 
+#pragma warning disable 0649
 namespace SpaceCommander.Audio
 {
 

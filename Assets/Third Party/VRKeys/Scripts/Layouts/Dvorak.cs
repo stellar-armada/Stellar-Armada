@@ -8,6 +8,7 @@
  * Website: https://www.campfireunion.com
  */
 
+#pragma warning disable 0618
 namespace VRKeys.Layouts {
 
 	/// <summary>
