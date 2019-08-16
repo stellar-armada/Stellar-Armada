@@ -7,13 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Nebulas" t="Include">
-          <e p="Shader" t="Include">
-            <e p="BNebula.shader" t="Include" />
-          </e>
-        </e>
-        <e p="RimLight.shader" t="Include" />
-        <e p="ScaleManager.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -26,6 +19,7 @@
           </e>
           <e p="Common" t="Include">
             <e p="EntityFactory.cs" t="Include" />
+            <e p="ScaleManager.cs" t="Include" />
           </e>
           <e p="Controller" t="Include">
             <e p="HapticsManager.cs" t="Include" />
@@ -71,6 +65,7 @@
             <e p="InputManager.cs" t="Include" />
             <e p="LongPressEventTrigger.cs" t="Include" />
             <e p="MapControls.cs" t="Include" />
+            <e p="Selector.cs" t="Include" />
             <e p="UIPointer.cs" t="Include" />
           </e>
           <e p="Match" t="Include">
@@ -164,6 +159,7 @@
             <e p="FollowTarget.cs" t="Include" />
             <e p="GroupUIManager.cs" t="Include" />
             <e p="MenuScreen.cs" t="Include" />
+            <e p="PlayerCanvasManager.cs" t="Include" />
             <e p="Pointer.cs" t="Include" />
             <e p="SelectionUIManager.cs" t="Include" />
             <e p="SettingsMenuManager.cs" t="Include" />
@@ -226,8 +222,8 @@
             <e p="WeaponType.cs" t="Include" />
           </e>
         </e>
-        <e p="Selector.cs" t="Include" />
         <e p="Shaders" t="Include">
+          <e p="InnerSphere.shader" t="Include" />
           <e p="Shields" t="Include">
             <e p="ShieldEffect.shader" t="Include" />
             <e p="ShieldEffect_mobile.shader" t="Include" />
@@ -237,11 +233,11 @@
             <e p="Hologram.shader" t="Include" />
           </e>
           <e p="StatusBar.shader" t="Include" />
+          <e p="Toon.shader" t="Include" />
           <e p="Weapons" t="Include">
             <e p="DepthFadeAdditive.shader" t="Include" />
           </e>
         </e>
-        <e p="SobelFilter.shader" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
         </e>
@@ -2202,7 +2198,6 @@
             </e>
           </e>
         </e>
-        <e p="Toon.shader" t="Include" />
       </e>
       <e p="Mirror.csproj" t="IncludeRecursive" />
       <e p="Mirror.Tests.csproj" t="IncludeRecursive" />

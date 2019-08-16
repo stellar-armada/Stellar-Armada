@@ -33,7 +33,7 @@ namespace SpaceCommander.UI
         {
             if (instance != null && instance != this)
             {
-                Debug.Log("Instance was already set. Replacing.");
+                Debug.LogError("Instance was already set.");
                 Destroy(instance);
             }
             instance = this;

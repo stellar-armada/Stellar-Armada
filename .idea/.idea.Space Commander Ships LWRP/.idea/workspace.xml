@@ -29,6 +29,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pooling/Pool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Action/Action.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/SteerForEvasion2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlayerCanvasManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pooling/Editor/PoolManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shields/ShieldHit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IWeaponSystemController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -40,7 +42,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/Keyboard/Alphabet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/PassiveVehicle2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/Keyboard/Key.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/SobelFilter.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/UserSerializableDictionaries.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,12 +59,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Damager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/GuardianBeamTurret.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Beam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Tracking/Follow/ObjectFollower.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkTransformBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/LaserTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForEvasion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/VulcanTurret.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RimLight.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/MissileLauncher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SniperTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/ShotgunTurret.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,6 +72,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForPursuit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForMinimumSpeed.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/NetworkManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -78,24 +80,34 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/Weaver/CompilationFinishedHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRLeg.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerToFollow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IK.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenarios/ScenarioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/Warning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Selection/SelectionType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Selection/ShipSelectionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRSpine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUILaserPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/Hierarchy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRLocomotion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/ISelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/HandSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Selector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/ISelectable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/Editor/MatchNetworkManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.0.17/UnityEditor.TestRunner/TestLaunchers/PlatformSetup/UwpPlatformSetup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Pointer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/MovementTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/SyncList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Selection/TestSelectionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Key.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Keyboard.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/VolumeSliderListener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SoundEffectButtonListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/SpaceKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SpaceCommanderXLifeScope/Assets/Scripts/Editor/UnityEventDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/UIPointer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -103,6 +115,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis2DAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Example/DemoScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Nodes/LogicalOperators/TFHCIf.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ExplosionTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/GoToPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessageManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -110,12 +124,17 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipWeaponSystemController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipHull.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectionTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipShield.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/Selector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipHologram.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/ScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/StatusBar.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipExplosion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/EntityFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,32 +143,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipShield.cs" />
-        <option value="$PROJECT_DIR$/Assets/UISelectionShip.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IWeaponSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pooling/Pool.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Damager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IWeaponSystemController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWeaponSystemController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GuardianBeamTurret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/LaserTurret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/MissileLauncher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/ShotgunTurret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/SniperTurret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/VulcanTurret.cs" />
-        <option value="$PROJECT_DIR$/Assets/UIShipFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/Editor/UserSerializableDictionaryPropertyDrawers.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Selection/GroupManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/GroupUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/EntityFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UISelectionShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipFactory.cs" />
@@ -160,21 +157,43 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ITeamEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/TestPlayerEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/TestPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Selector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/IO/UIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Oculus/VR/Editor/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Nameplate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/ScaleManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/MapParent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUILaserPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/SimpleMatchServerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlayerCanvasManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/ScaleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Selector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ISelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/ScaleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IO/Selector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IO/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchNetworkManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipShield.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IO/HandSwitcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Pointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipExplosion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipHull.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IO/UIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Beam.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlayerCanvasManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
       </list>
     </option>
   </component>
@@ -242,7 +261,8 @@
       <workItem from="1565668511192" duration="28000" />
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
-      <workItem from="1565857687040" duration="23210000" />
+      <workItem from="1565857687040" duration="26669000" />
+      <workItem from="1565984452880" duration="8423000" />
     </task>
     <servers />
   </component>
@@ -272,8 +292,8 @@
     <state x="549" y="262" key="#Notifications/1920.1080" />
     <state x="2810" y="324" key="SettingsEditor" />
     <state x="2810" y="324" key="SettingsEditor/1920.1080/1920.1080" />
-    <state x="2543" y="380" width="1244" height="660" key="find.popup" />
-    <state x="2543" y="380" width="1244" height="660" key="find.popup/1920.1080/1920.1080" />
+    <state x="2378" y="380" width="1244" height="660" key="find.popup" />
+    <state x="2378" y="380" width="1244" height="660" key="find.popup/1920.1080/1920.1080" />
     <state x="2532" y="344" key="run.anything.popup" />
     <state x="2532" y="344" key="run.anything.popup/1920.1080/1920.1080" />
     <state x="2539" y="361" width="672" height="678" key="search.everywhere.popup" />

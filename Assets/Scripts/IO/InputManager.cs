@@ -6,6 +6,7 @@ namespace SpaceCommander.IO
     public class InputManager : MonoBehaviour
     {
         public static InputManager instance;
+
         
         private Vector2 leftThumbstickValue;
 
@@ -16,73 +17,90 @@ namespace SpaceCommander.IO
 
         public delegate void InputButtonHandler(bool buttonState);
 
-        public InputButtonHandler OnLeftSecondaryTrigger;
-        public InputButtonHandler OnRightSecondaryTrigger;
+        public InputButtonHandler OnLeftGrip;
+        public InputButtonHandler OnRightGrip;
         
         public InputButtonHandler OnLeftTrigger;
         public InputButtonHandler OnRightTrigger;
 
+        public InputButtonHandler OnLeftThumbstickButton;
+        public InputButtonHandler OnRightThumbstickButton;
+
+        public InputButtonHandler OnButtonOne;
+        public InputButtonHandler OnButtonTwo;
+        public InputButtonHandler OnButtonThree;
+        public InputButtonHandler OnButtonFour;
+
+        public InputButtonHandler OnButtonStart;
+        
         void Awake()
         {
             instance = this;
         }
         public void LeftTrigger(bool on)
         {
-            Debug.Log("LeftTrigger pulled: " + on);
             OnLeftTrigger?.Invoke(on);
         }
 
         public void RightTrigger(bool on)
         {
-            Debug.Log("RightTrigger pulled: " + on);
 OnRightTrigger?.Invoke(on);
         }
 
         public void LeftSecondary(bool on)
         {
-            Debug.Log("LeftSecondary pulled: " + on);
-            OnLeftSecondaryTrigger?.Invoke(on);
+            OnLeftGrip?.Invoke(on);
         }
 
         public void RightSecondary(bool on)
         {
-            Debug.Log("RightSecondary pulled: " + on);
-            OnRightSecondaryTrigger?.Invoke(on);
+            OnRightGrip?.Invoke(on);
         }
 
         public void LeftThumbstick(Vector2 value)
         {
-            Debug.Log("LeftThumbstick pulled: " + value);
 
         }
 
         public void RightThumbstick(Vector2 value)
         {
-            Debug.Log("RightThumbstick pulled: " + value);
 
         }
 
         public void LeftThumbstickButton(bool on)
         {
-            Debug.Log("LeftThumbstickButton pulled: " + on);
-
+            OnLeftThumbstickButton?.Invoke(on);
         }
 
-        public void RightThumbstickButton(float on)
+        public void RightThumbstickButton(bool on)
         {
-            Debug.Log("RightThumbstickButton pulled: " + on);
-
+            OnRightThumbstickButton?.Invoke(on);
         }
 
         public void ButtonOne(bool on)
         {
-            Debug.Log("ButtonOne pulled: " + on);
-
+            OnButtonOne?.Invoke(on);
         }
 
         public void ButtonTwo(bool on)
         {
-            Debug.Log("ButtonTwo pulled: " + on);
+            OnButtonTwo?.Invoke(on);
         }
+        
+        public void ButtonThree(bool on)
+        {
+            OnButtonThree?.Invoke(on);
+        }
+
+        public void ButtonFour(bool on)
+        {
+            OnButtonFour?.Invoke(on);
+        }
+        
+        public void ButtonStart(bool on)
+        {
+            OnButtonStart?.Invoke(on);
+        }
+        
     }
 }

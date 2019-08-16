@@ -152,7 +152,6 @@ namespace SpaceCommander.Networking
 
         public override void OnStartServer()
         {
-            Debug.Log("Server started. Report to server list!");
             GameObject matchManager = Instantiate(matchManagerPrefab);
             NetworkServer.Spawn(matchManager);
         } 
@@ -163,7 +162,7 @@ namespace SpaceCommander.Networking
 
         public override void OnStopServer()
         {
-            Debug.Log("Let the server know that the server has stopped");
+            
         }
         public override void OnStopClient() {}
         public override void OnStopHost() {}

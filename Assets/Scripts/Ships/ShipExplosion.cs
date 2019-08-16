@@ -19,7 +19,6 @@ namespace SpaceCommander.Ships
         
         public void Explode()
         {
-            Debug.Log("Exploding");
             explosion.SetActive(true);
             Invoke(nameof(HideShip), hideShip);
             Invoke(nameof(DeactivateShip), deactivateShip);

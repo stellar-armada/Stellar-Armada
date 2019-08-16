@@ -33,7 +33,6 @@ namespace SpaceCommander.Ships
             Transform shipToMoveTo = _tempShip.GetComponent<Transform>();
             currentTarget = shipToMoveTo;
             GoToPoint(shipToMoveTo.position);
-            Debug.Log("Moving to ship");
         }
         
         [Command]
@@ -46,7 +45,6 @@ namespace SpaceCommander.Ships
             _ship.steerForPursuit.Quarry = _tempShip.autonomousVehicle;
             _ship.steerForPursuit.enabled = true;
             currentTarget = shipToPursue;
-            Debug.Log("Pursuing ship");
         }
 
         [Command]

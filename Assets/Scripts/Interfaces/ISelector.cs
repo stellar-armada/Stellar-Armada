@@ -1,5 +1,7 @@
-﻿#pragma warning disable 0649
-namespace SpaceCommander.Selection
+﻿using SpaceCommander.Selection;
+
+#pragma warning disable 0649
+namespace SpaceCommander
 {
     public interface ISelector
     {

@@ -77,7 +77,6 @@ namespace SpaceCommander.Ships
         public void CmdRechargeShields(float charge)
         {
             currentShield = Mathf.Min(currentShield + charge, maxShield);
-            Debug.Log("Shields recharged to " + currentShield);
         }
 
         public IEntity GetOwningEntity()

@@ -54,7 +54,6 @@ namespace SpaceCommander.Weapons
         // OnDespawned called by pool manager 
         public void OnDespawned()
         {
-            Debug.Log("Despawned");
             // Reset frame counter
             frameNo = 0;
 
@@ -87,7 +86,6 @@ namespace SpaceCommander.Weapons
                 // Spawn prefabs and apply force
                 owningWeaponSystem.Impact(hitPoint.point);
                 hit = true;
-                Debug.Log("Hit " + hitPoint.transform.name);
             }
             //checking in 2d mode
             else
@@ -122,7 +120,6 @@ namespace SpaceCommander.Weapons
         // Advance texture frame
         void OnFrameStep()
         {
-            Debug.Log("Frame stepping");
             // Set current texture frame based on frame counter
             lineRenderer.material.SetTexture("_BaseMap", BeamFrames[frameNo]);
             frameNo++;

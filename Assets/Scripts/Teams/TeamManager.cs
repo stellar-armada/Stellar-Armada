@@ -48,7 +48,6 @@ namespace SpaceCommander.Teams
             t.insignia = template.insignia;
             t.playerSlots = numerOfPlayerSlots;
             teams.Add(t);
-            Debug.Log("Added team " + t);
         }
 
         [Command]
@@ -60,7 +59,6 @@ namespace SpaceCommander.Teams
 
             // Set player teamId to team's
             sortedTeams[0].CmdAddPlayer(playerId);
-            Debug.Log("Put player " + playerId + " on team " + sortedTeams[0].teamId);
         }
 
         public Team GetTeamByID(uint teamID)

@@ -87,12 +87,10 @@ namespace SpaceCommander
             // Fire turret
             if (!isFiring && target != null)
             {
-                Debug.Log("Raycasting to see if we should fire");
                 // if we raycast, start shooting. otherwise, wait til next check :)
                 if (Physics.Raycast(transform.position, (target.position - transform.position), out hitInfo, maxRange,
                     allRaycastableLayersMask))
                 {
-                    Debug.Log("Raycast successful, shooting at " + hitInfo);
                     isFiring = true;
                     StartFiring();
                 }

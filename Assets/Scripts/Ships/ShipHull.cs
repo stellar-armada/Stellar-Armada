@@ -45,7 +45,6 @@ namespace SpaceCommander.Ships
         {
             if (!ship.IsAlive())
             {
-                Debug.Log("Can't take damage, ship is dead");
                 return;
             }
 
@@ -53,7 +52,6 @@ namespace SpaceCommander.Ships
             if (currentHull <= 0 && ship.IsAlive())
             {
                 ship.CmdDie();
-                Debug.Log("Ship is dead");
             }
 
             HullChanged.Invoke(currentHull);

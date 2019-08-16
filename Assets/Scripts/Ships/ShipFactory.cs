@@ -30,7 +30,7 @@ public class ShipFactory : EntityFactory
         bool success = ships.TryGetValue(shipType, out shipPrefab);
         if (!success)
         {
-            Debug.Log("Failed to create ship - was not found in dictionary");
+            Debug.LogError("Failed to create ship - was not found in dictionary");
             return;
         }
         
@@ -52,7 +52,7 @@ public class ShipFactory : EntityFactory
         bool success = ships.TryGetValue(shipType, out shipPrefab);
         if (!success)
         {
-            Debug.Log("Failed to create ship - was not found in dictionary");
+            Debug.LogError("Failed to create ship - was not found in dictionary");
             return;
         }
         
@@ -62,7 +62,6 @@ public class ShipFactory : EntityFactory
         
         Ship s = shipGameObject.GetComponent<Ship>();
 
-        Debug.Log("Entity ID is " + entityIncrement);
         s.SetEntityId(entityIncrement++);
         s.CmdSetTeam(teamId);
         

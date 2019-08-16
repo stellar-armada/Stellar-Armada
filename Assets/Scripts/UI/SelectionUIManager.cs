@@ -23,37 +23,25 @@ namespace SpaceCommander.UI
         [SerializeField] private Transform[] selectionSetContainers;
 
         private List<List<UISelectionShip>> uiShips = new List<List<UISelectionShip>>();
-
-        private bool isInited;
         
         void Awake()
         {
             instance = this;
-            playerController.EventOnPlayerTeamChange += InitializeSelectionSets;
         }
 
         void Start()
         {
-            // Race condition avoidance
-            if (!isInited)
-            {
-                InitializeSelectionSets();
-                Debug.Log("Initialized selection set from start"); // If subscription above hasn't happened by time start is called
-            }
-            else
-            {
-                Debug.LogError("Not inited from start. Delete this code block!");
-            }
+            InitializeSelectionSets();
         }
 
         void InitializeSelectionSets()
         {
-            isInited = true;
             ClearSelectionSets();
             
             // Get reference to all ships on player's team
             Team team = TeamManager.instance.GetTeamByID(playerController.teamId);
             
+            Debug.Log("Team entities count: " + team.entities.Count);
             //Foreach ship on team
             foreach (IEntity entity in team.entities)
             {
@@ -90,9 +78,9 @@ namespace SpaceCommander.UI
         void UpdateSelectionSet(int selectionSet)
         {
             // Disable all ships in selection set
-            foreach (GameObject child in selectionSetContainers[selectionSet].GetComponentsInChildren<GameObject>())
+            foreach (Transform child in selectionSetContainers[selectionSet])
             {
-                child.SetActive(false);
+                child.gameObject.SetActive(false);
             }
 
             // foreach ship in current selection
@@ -129,8 +117,6 @@ namespace SpaceCommander.UI
             {
                 return selectionSets[selectionSetId];
             }
-
-            Debug.Log("Selection is null");
             return null;
         }
 
@@ -156,15 +142,12 @@ namespace SpaceCommander.UI
                 newSelection.Add(selectable);
             }
 
-            Debug.Log("Added a selection with " + newSelection.Count + " members");
             selectionSets.Add(selectionSetId, newSelection);
             UpdateSelectionSet(selectionSetId);
         }
 
         public void RecallSelectionSet(int selectionSetId)
         {
-            Debug.Log("Selection set id: " + selectionSetId);
-
             if (selectionSets.ContainsKey(selectionSetId))
             {
                 List<ISelectable> selectionSet = selectionSets[selectionSetId];
@@ -242,7 +225,6 @@ namespace SpaceCommander.UI
         {
             if (!currentSelection.Contains(selectable))
             {
-                Debug.Log("Added " + selectable.GetOwningEntity() + " to selection");
                 currentSelection.Add(selectable);
                 selectable.Select();
             }
@@ -262,7 +244,6 @@ namespace SpaceCommander.UI
         {
             if (currentSelection.Contains(selectable))
             {
-                Debug.Log("Removed " + selectable.GetOwningEntity() + " from selection");
                 currentSelection.Remove(selectable);
                 selectable.Deselect();
             }

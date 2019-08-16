@@ -26,9 +26,7 @@ namespace SpaceCommander.Ships
              shield = ship.shipShield;
              shield.ShieldChanged += SetShieldSlider;
              hull.HullChanged += SetHullSlider;
-             
-             Debug.Log("Status bar needs local player reference");
-
+            
             LookAtMainCamera();
         }
 

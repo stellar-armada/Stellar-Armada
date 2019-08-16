@@ -24,9 +24,14 @@ namespace SpaceCommander.Ships
                 // for debugging
                 Vector3 position = Random.onUnitSphere * 20f;
                 Quaternion lookToCenter = Quaternion.LookRotation(-position);
-                Debug.Log("position: " + position);
                 
                 InitWarp(position,lookToCenter);
+            }
+            
+            void Start()
+            {
+                transform.localPosition = Random.onUnitSphere * 10f;
+                // For debug
             }
             
             void PrepareForWarpIn()

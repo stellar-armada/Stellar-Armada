@@ -116,7 +116,6 @@ namespace SpaceCommander.Weapons
             if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
             {
                 ClearTarget();
-                Debug.Log("Lost target! ");
                 isFiring = false;
                 StopFiring();
             }

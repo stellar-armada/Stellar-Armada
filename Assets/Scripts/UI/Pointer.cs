@@ -30,7 +30,7 @@ namespace SpaceCommander.UI
         {
             if (instance != null)
             {
-                Debug.Log("Pointer already exists. Destroying.");
+                Debug.LogError("Pointer already exists. Destroying.");
                 Destroy(instance);
             }
             instance = this;

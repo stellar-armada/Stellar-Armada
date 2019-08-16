@@ -21,38 +21,28 @@ namespace SpaceCommander.IO {
                 _buttonChanged = true;
                 _prevButtonState = buttonState;
             }
-
-            if(ButtonDown())
-                Debug.Log("Button down!");
-            if(ButtonUp())
-                Debug.Log("Button up!");
         }
 
         protected override void Initialize()
         {
             inputManager.OnRightTrigger += HandleButtonRight;
             inputManager.OnLeftTrigger += HandleButtonLeft;
-            Debug.Log("Initialized");
         }
 
         void HandleButtonRight(bool on)
         {
-            Debug.Log("HandleButtonRight called");
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
             buttonState = on;
         }
         
         void HandleButtonLeft(bool on)
         {
-            Debug.Log("HandleButtonLeft called");
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return;
             buttonState = on;
         }
 
         public override bool ButtonDown()
         {
-            Debug.Log("ButtonDown called");
-
             return _buttonChanged && buttonState;
         }
 
@@ -63,12 +53,12 @@ namespace SpaceCommander.IO {
 
         public override void OnEnterControl(GameObject control)
         {
-            Debug.Log("OnEnterControl " + control.name);
+            base.OnEnterControl(control);
         }
 
         public override void OnExitControl(GameObject control)
         {
-            Debug.Log("OnExitControl " + control.name);
+            base.OnExitControl(control);
         }
     }
 

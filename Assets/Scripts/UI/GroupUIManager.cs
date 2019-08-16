@@ -12,7 +12,7 @@ namespace SpaceCommander.UI
         [SerializeField] private HumanPlayerController humanPlayerController;
 
         private List<GameObject> ships = new List<GameObject>();
-        private List<Transform> uiShipContainers = new List<Transform>();
+        [SerializeField] List<Transform> uiShipContainers = new List<Transform>();
 
         private bool isInited; // catch race condition, can test
         
@@ -23,17 +23,16 @@ namespace SpaceCommander.UI
 
         void Start()
         {
-            if (!isInited)
-            {
-                Debug.Log("Not yet inited, so updating (you can remove init check)");
-                //UpdateGroupManager();
-            }
+
+                UpdateGroupManager();
         }
 
         public void UpdateGroupManager()
         {
             Debug.LogWarning("Updating group manager");
             var groups = TeamManager.instance.GetTeamByID(humanPlayerController.GetTeamId()).groups;
+            
+            Debug.Log("Groups length: " + groups.Count);
 
             if (ships.Count > 0) // Delete any if there are any. Would only be if we had more ships added or something
             {

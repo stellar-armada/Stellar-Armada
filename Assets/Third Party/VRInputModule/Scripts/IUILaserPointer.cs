@@ -13,7 +13,10 @@ namespace Wacki {
         private float _distanceLimit;
 
         [SerializeField] LayerMask layerMask;
-        
+
+        public delegate void UiPointerEvent(bool isPointingAtCanvas);
+
+        public UiPointerEvent OnCanvasStateChanged;
 
         // Use this for initialization
         void Start()
@@ -37,9 +40,26 @@ namespace Wacki {
                 LaserPointerInputModule.instance.RemoveController(this);
         }
 
-        protected virtual void Initialize() { }
-        public virtual void OnEnterControl(GameObject control) { }
-        public virtual void OnExitControl(GameObject control) { }
+        protected virtual void Initialize()
+        {
+            hitPoint.SetActive(false);
+            pointer.SetActive(false);
+            
+        }
+
+        public virtual void OnEnterControl(GameObject control)
+        {
+            OnCanvasStateChanged?.Invoke(true);
+            hitPoint.SetActive(true);
+            pointer.SetActive(true);
+        }
+
+        public virtual void OnExitControl(GameObject control)
+        {
+            OnCanvasStateChanged?.Invoke(false);
+            hitPoint.SetActive(false);
+            pointer.SetActive(false);
+        }
         abstract public bool ButtonDown();
         abstract public bool ButtonUp();
 

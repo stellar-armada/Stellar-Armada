@@ -54,7 +54,6 @@ namespace SpaceCommander.Ships
 
         void HandleDeath(bool alive)
         {
-            Debug.Log("Handling death");
             if (!alive)
             {
                 ShipDestroyed.Invoke();

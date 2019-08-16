@@ -12,14 +12,12 @@ namespace SpaceCommander.UI
         public Image hullImage;
         [SerializeField] GameObject selectionIndicator;
 
-        private ShipShield shield;
-        private ShipHull hull;
-        
         [SerializeField] private Color shieldColor;
-        
-        void Start()
+
+        public void Start()
         {
-            if(ship == null) Debug.LogError("Ship was not initialized on UI ship");
+            transform.localScale = Vector3.one;
+            transform.localPosition = Vector3.zero;
             ship.shipShield.ShieldChanged += HandleShieldChange;
             ship.shipHull.HullChanged += HandleHullChange;
             ship.selectionHandler.OnSelectionChanged += HandleSelectionChange;
@@ -32,13 +30,13 @@ namespace SpaceCommander.UI
 
         void HandleShieldChange(float shieldVal)
         {
-            shieldImage.color = new Color(shieldColor.r, shieldColor.g, shieldColor.b, ( shieldVal / shield.maxShield)); // A UI shader controlling these variables would be cheaper
+            shieldImage.color = new Color(shieldColor.r, shieldColor.g, shieldColor.b, ( shieldVal / ship.shipShield.maxShield)); // A UI shader controlling these variables would be cheaper
 
         }
 
         void HandleHullChange(float hullVal)
         {
-            hullImage.fillAmount = hullVal / hull.maxHull; // A UI shader controlling these variables would be cheaper
+            hullImage.fillAmount = hullVal / ship.shipHull.maxHull; // A UI shader controlling these variables would be cheaper
         }
         
     }
