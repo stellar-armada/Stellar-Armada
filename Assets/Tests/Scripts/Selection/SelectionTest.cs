@@ -1,7 +1,5 @@
 ﻿ using System.Collections.Generic;
 using System.Text;
-using SpaceCommander;
-using SpaceCommander.Selection;
  using SpaceCommander.UI;
  using UnityEngine;
 using UnityEngine.UI;

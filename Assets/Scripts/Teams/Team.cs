@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Mirror;
 using SpaceCommander.Game;
-using SpaceCommander.Selection;
 using UnityEngine;
 
 #pragma warning disable 0649

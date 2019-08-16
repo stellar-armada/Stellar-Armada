@@ -213,25 +213,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 346
 --- !u!1 &739136133717069969
 GameObject:
@@ -280,8 +272,6 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
@@ -309,13 +299,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -330,8 +316,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
   axisName: VRTK_Axis9_LeftTrigger
 --- !u!1 &750184165434380403
@@ -380,25 +364,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 341
 --- !u!1 &853336158226899680
 GameObject:
@@ -471,7 +447,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388138958603508093}
-  m_Mesh: {fileID: 4300000, guid: 32fbc8bcebb64584da5868aeeb086cda, type: 3}
+  m_Mesh: {fileID: 6209795772827467399, guid: 855e3abfdad24c74e8512d4482db6697, type: 3}
 --- !u!23 &2376706668483193915
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -788,8 +764,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: PLAYER1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1291,13 +1265,9 @@ MonoBehaviour:
       onLeftFootstep:
         m_PersistentCalls:
           m_Calls: []
-        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
       onRightFootstep:
         m_PersistentCalls:
           m_Calls: []
-        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
 --- !u!1 &1839945735331089096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,25 +1564,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 349
 --- !u!114 &502588171043902022
 MonoBehaviour:
@@ -1641,8 +1603,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &3868414033408688281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,8 +1630,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2589792301001437476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,25 +1904,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 344
 --- !u!1 &3154037176980474751
 GameObject:
@@ -2012,25 +1962,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 333
 --- !u!1 &3155153502302561786
 GameObject:
@@ -2062,7 +2004,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 6788390936727844586}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8060050531943811189
 MeshFilter:
@@ -2157,25 +2099,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 348
 --- !u!1 &3425805376189354724
 GameObject:
@@ -2223,8 +2157,6 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
@@ -2241,13 +2173,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -2262,8 +2190,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
   axisName: VRTK_Axis12_RightGrip
 --- !u!1 &3498376511305245291
@@ -2312,26 +2238,97 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 339
+--- !u!1 &3748079858928285737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7486238172814386563}
+  - component: {fileID: 8677610739149953513}
+  - component: {fileID: 192070442513063143}
+  m_Layer: 0
+  m_Name: SelectionSphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7486238172814386563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748079858928285737}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0612}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_Children: []
+  m_Father: {fileID: 6788390936727844586}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8677610739149953513
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748079858928285737}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &192070442513063143
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748079858928285737}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c74535f0141ea4b4ba761a833d5ae9d3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &3828844560009835627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,7 +2438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6869153744683839714}
   m_Layer: 0
-  m_Name: ButtonThree
+  m_Name: ButtonThree_X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2509,25 +2506,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 337
 --- !u!1 &4476503941238722940
 GameObject:
@@ -2576,8 +2565,6 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
@@ -2605,13 +2592,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -2626,8 +2609,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
   axisName: VRTK_Axis10_RightTrigger
 --- !u!1 &4588860116544149308
@@ -2676,25 +2657,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 332
 --- !u!1 &4706933311531421549
 GameObject:
@@ -2707,8 +2680,9 @@ GameObject:
   - component: {fileID: 6788390936727844586}
   - component: {fileID: 9093775507736711144}
   - component: {fileID: 4766300768544055363}
+  - component: {fileID: 4476374727524582979}
   m_Layer: 0
-  m_Name: TestLaserPointer
+  m_Name: Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2725,6 +2699,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7486238172814386563}
   - {fileID: 3185636162050483595}
   - {fileID: 3384118698790411945}
   m_Father: {fileID: 4270505688199268127}
@@ -2764,6 +2739,24 @@ MonoBehaviour:
     m_Bits: 32
   inputManager: {fileID: 9071246754439678743}
   buttonState: 0
+--- !u!114 &4476374727524582979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706933311531421549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4527773dc33c0924abdf518d93800556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorStartPoint: {fileID: 7486238172814386563}
+  selectorRadius: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2560
+  playerController: {fileID: 1839945735331089094}
 --- !u!1 &4720211804134819468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,7 +2772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &975098095954899418
 Transform:
   m_ObjectHideFlags: 0
@@ -2827,7 +2820,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6788390936727844586}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3179663990277625077
 MeshFilter:
@@ -4055,8 +4048,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f15a368896bf43f4291dab5accdded00, type: 2}
-  - {fileID: 2100000, guid: f15a368896bf43f4291dab5accdded00, type: 2}
+  - {fileID: 2100000, guid: 1561d9a670d360b489f2bb932eb17b3f, type: 2}
+  - {fileID: 2100000, guid: 1561d9a670d360b489f2bb932eb17b3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6590,7 +6583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5179058259715896959
 Transform:
   m_ObjectHideFlags: 0
@@ -8269,13 +8262,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176415243951440261}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.00017336608, y: 0.033169344, z: -1.1007121}
+  m_LocalRotation: {x: 0.69446397, y: 0.133116, z: 0.13311604, w: 0.69446385}
+  m_LocalPosition: {x: 0.00773897, y: 0.034620047, z: -1.1007122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5170272094080774109}
   m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 68.298004, y: 90.00001, z: 90.00001}
 --- !u!137 &5059781512362244763
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -9248,7 +9241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5178964883087858897
 Transform:
   m_ObjectHideFlags: 0
@@ -10058,25 +10051,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: {x: 0, y: 0}
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
   xAxisName: VRTK_Axis4_RightHorizontal
   yAxisName: VRTK_Axis5_RightVertical
@@ -10107,8 +10092,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &6699877303354913053
 GameObject:
   m_ObjectHideFlags: 0
@@ -10155,25 +10138,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 331
 --- !u!1 &6790183883776168739
 GameObject:
@@ -10185,7 +10160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6408893558890549608}
   m_Layer: 0
-  m_Name: ButtonFour
+  m_Name: ButtonFour_Y
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10283,25 +10258,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 330
 --- !u!1 &7240429805731679302
 GameObject:
@@ -10381,25 +10348,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 345
 --- !u!1 &7672192093865632196
 GameObject:
@@ -10447,8 +10406,6 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
@@ -10465,13 +10422,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -10486,8 +10439,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Action.FloatAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
   axisName: VRTK_Axis11_LeftGrip
 --- !u!1 &7791967278735557585
@@ -10536,25 +10487,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 347
 --- !u!1 &7822443193714822155
 GameObject:
@@ -10566,7 +10509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694130583296829560}
   m_Layer: 0
-  m_Name: ButtonOne
+  m_Name: ButtonOne_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10634,25 +10577,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 343
 --- !u!1 &8043370706672623141
 GameObject:
@@ -10791,8 +10726,6 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
@@ -10809,18 +10742,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 340
 --- !u!1 &8294476513153261324
 GameObject:
@@ -10870,25 +10797,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: {x: 0, y: 0}
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Vector2Action+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   equalityTolerance: 1e-45
   xAxisName: VRTK_Axis1_LeftHorizontal
   yAxisName: VRTK_Axis2_LeftVertical
@@ -10968,25 +10887,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 338
 --- !u!1 &8471395733235306079
 GameObject:
@@ -11035,7 +10946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5352723110035303522}
   m_Layer: 0
-  m_Name: ButtonTwo
+  m_Name: ButtonTwo_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11173,25 +11084,17 @@ MonoBehaviour:
   ActivationStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.Action+BooleanUnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   defaultValue: 0
   sources: []
   Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Zinnia.Action.BooleanAction+UnityEvent, Zinnia.Runtime, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   keyCode: 342
 --- !u!1 &8752761091366829511
 GameObject:
@@ -11250,8 +11153,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &6837779417147307691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11267,107 +11168,112 @@ PrefabInstance:
     - target: {fileID: 2473568674749557414, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2473568674749557414, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2473568674749557414, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2819138463028955265, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2819138463028955265, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2819138463028955265, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 720
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 534728754985415199, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 534728754985415199, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 534728754985415199, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1360
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1729624351206205369, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1729624351206205369, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1729624351206205369, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859016745699926682, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859016745699926682, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8859016745699926682, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 560
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522710611843633717, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522710611843633717, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522710611843633717, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1040
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5478524362202714360, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5478524362202714360, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5478524362202714360, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1520
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431555664103418074, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6746487401155768665, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
@@ -11581,9 +11487,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12001b42e5eb7f84ebdcf20c27abad08, type: 3}
---- !u!4 &5272710211020507762 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1713833130453449945, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+--- !u!224 &7123689026431495069 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4339430772819025206, guid: 12001b42e5eb7f84ebdcf20c27abad08,
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
@@ -11599,9 +11505,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2533021806803878756 stripped
+--- !u!1 &2081612310422619383 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9062286777764017615, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+  m_CorrespondingSourceObject: {fileID: 4758039231439893084, guid: 12001b42e5eb7f84ebdcf20c27abad08,
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
@@ -11611,9 +11517,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2081612310422619383 stripped
+--- !u!1 &2533021806803878756 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4758039231439893084, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+  m_CorrespondingSourceObject: {fileID: 9062286777764017615, guid: 12001b42e5eb7f84ebdcf20c27abad08,
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
@@ -11623,15 +11529,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6391884033090453874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 454903760277469145, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+--- !u!4 &5272710211020507762 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1713833130453449945, guid: 12001b42e5eb7f84ebdcf20c27abad08,
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &7123689026431495069 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4339430772819025206, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+--- !u!1 &6391884033090453874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 454903760277469145, guid: 12001b42e5eb7f84ebdcf20c27abad08,
     type: 3}
   m_PrefabInstance: {fileID: 6837779417147307691}
   m_PrefabAsset: {fileID: 0}

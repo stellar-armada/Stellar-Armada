@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SpaceCommander.Ships;
+using SpaceCommander.Teams;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -21,30 +22,72 @@ namespace SpaceCommander.UI
 
         [SerializeField] private Transform[] selectionSetContainers;
 
-        private List<UISelectionShip>[] uiShips;
+        private List<List<UISelectionShip>> uiShips;
 
+        private bool isInited;
+        
         void Awake()
         {
             instance = this;
+            playerController.EventOnPlayerTeamChange += InitializeSelectionSets;
+        }
+
+        void Start()
+        {
+            // Race condition avoidance
+            if (!isInited)
+            {
+                InitializeSelectionSets();
+                Debug.Log("Initialized selection set from start"); // If subscription above hasn't happened by time start is called
+            }
+            else
+            {
+                Debug.LogError("Not inited from start. Delete this code block!");
+            }
         }
 
         void InitializeSelectionSets()
         {
-            // Get reference to player
-
-
-            // Get all ships on team
-
+            isInited = true;
+            ClearSelectionSets();
+            
+            // Get reference to all ships on player's team
+            Team team = TeamManager.instance.GetTeamByID(playerController.teamId);
+            
             //Foreach ship on team
-
-            // Create a UI ship for each container
-
-            // Set UI ship to team ship ID
-
-            // Disable
+            foreach (IEntity entity in team.entities)
+            {
+                Ship s = entity as Ship;
+                
+                //foreach container
+                for (int c = 0; c < selectionSets.Count; c++)
+                {
+                    // Create a UI ship
+                    UISelectionShip selectionShip = UIShipFactory.instance.CreateSelectionShip(s.type)
+                        .GetComponent<UISelectionShip>();
+                    // Set UI ship to team ship ID
+                    selectionShip.entityId = s.GetEntityId();
+                    //Add to list
+                    uiShips[c].Add(selectionShip);
+                    // Disable
+                    selectionShip.gameObject.SetActive(false);
+                }
+            }
         }
 
-        void UpdateSelectionSets(int selectionSet)
+        void ClearSelectionSets()
+        {
+            // if there are already ships (i.e. switch teams or something)
+            if (uiShips.Count > 0)
+                foreach (List<UISelectionShip> list in uiShips)
+                foreach (UISelectionShip s in list)
+                    Destroy(s);
+            uiShips = new List<List<UISelectionShip>>(selectionSets.Count);
+            
+            // Any other cleanup we need? Might not even encounter this until mid-game team switching is possible...
+        }
+
+        void UpdateSelectionSet(int selectionSet)
         {
             // Disable all ships in selection set
             foreach (GameObject child in selectionSetContainers[selectionSet].GetComponentsInChildren<GameObject>())
@@ -58,6 +101,20 @@ namespace SpaceCommander.UI
                 // Get uiship with linq where entity id matches current ship and activate
                 uiShips[selectionSet].Single(s => s.entityId == selectable.GetOwningEntity().GetEntityId()).gameObject
                     .SetActive(true);
+            }
+        }
+
+        public void RemoveSelectableFromSelectionSets(uint entityId)
+        {
+            for (int i = 0; i < selectionSets.Count; i++)
+            {
+                var selectable = selectionSets[i].Single(s => s.GetOwningEntity().GetEntityId() == entityId);
+
+                if (selectable != null)
+                {
+                    selectionSets[i].Remove(selectable);
+                    UpdateSelectionSet(i);
+                }
             }
         }
 
@@ -101,7 +158,7 @@ namespace SpaceCommander.UI
 
             Debug.Log("Added a selection with " + newSelection.Count + " members");
             selectionSets.Add(selectionSetId, newSelection);
-            UpdateSelectionSets(selectionSetId);
+            UpdateSelectionSet(selectionSetId);
         }
 
         public void RecallSelectionSet(int selectionSetId)

@@ -8,18 +8,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TestationAlpha01
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP
-  m_LightmapFlags: 2
+  m_Shader: {fileID: 4800000, guid: 8b2f353da1dd05244a7bee1562a2306a, type: 3}
+  m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseColorRGBOutlineWidthA:
+        m_Texture: {fileID: 2800000, guid: 63563af1db66c3a4baf4050a89012d26, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 63563af1db66c3a4baf4050a89012d26, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -44,12 +47,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5717885ce6937eb469a754f7cd0916ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Highlight:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 63563af1db66c3a4baf4050a89012d26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: 76d2cf5d820fe1c4786a1e954cbae022, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -64,8 +75,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 1d50fccb4eb58ef4193bf599ce35ebba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+    - _BaseCellOffset: 0
+    - _BaseCellSharpness: 0.01
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -76,24 +93,43 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HighlightCellOffset: -0.5
+    - _HighlightCellSharpness: 0.01
+    - _IndirectDiffuseContribution: 1
+    - _IndirectSpecularContribution: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NormalScale: 1
     - _OcclusionStrength: 1
+    - _OutlineWidth: 0.02
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RimOffset: 0.6
+    - _RimPower: 0.4
+    - _ShadowContribution: 0.8
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StaticHighLights: 0
     - _Surface: 0
+    - _TessMax: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 4
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 0.42820066, g: 0.46875662, b: 0.48529404, a: 1}
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.4282007, g: 0.4687567, b: 0.4852941, a: 1}
     - _EmissionColor: {r: 1.536, g: 1.4908236, b: 1.4908236, a: 1}
+    - _HighlightTint: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineTint: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 0}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!114 &1244545929101933225
 MonoBehaviour:

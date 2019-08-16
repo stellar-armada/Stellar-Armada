@@ -21,18 +21,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AsteroidsMat
-  m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8b2f353da1dd05244a7bee1562a2306a, type: 3}
   m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _NORMALMAP _RECEIVE_SHADOWS_OFF _SPECULAR_COLOR
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseColorRGBOutlineWidthA:
+        m_Texture: {fileID: 2800000, guid: 69a7a64a8521ea84eac00a5245c531d5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 69a7a64a8521ea84eac00a5245c531d5, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -57,11 +60,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Highlight:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 69a7a64a8521ea84eac00a5245c531d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -77,8 +88,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+    - _BaseCellOffset: -0.28
+    - _BaseCellSharpness: 0.01
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -89,12 +106,21 @@ Material:
     - _Glossiness: 0.324
     - _GlossinessSource: 0
     - _GlossyReflections: 1
+    - _HighlightCellOffset: -0.921
+    - _HighlightCellSharpness: 0.652
+    - _IndirectDiffuseContribution: 1
+    - _IndirectSpecularContribution: 0.515
     - _Metallic: 0
     - _Mode: 0
+    - _NormalScale: 1
     - _OcclusionStrength: 1
+    - _OutlineWidth: 0.02
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 0
+    - _RimOffset: 0.51
+    - _RimPower: 0.316
+    - _ShadowContribution: 0.888
     - _Shininess: 0
     - _Smoothness: 0
     - _SmoothnessSource: 1
@@ -102,11 +128,21 @@ Material:
     - _SpecSource: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
+    - _StaticHighLights: 0
     - _Surface: 0
+    - _TessMax: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.45
+    - _TessValue: 4
     - _UVSec: 0
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HighlightTint: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineTint: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

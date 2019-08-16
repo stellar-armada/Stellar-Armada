@@ -21,14 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bassilisk
-  m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
-  m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _NORMALMAP _SPECULAR_COLOR
+  m_Shader: {fileID: 4800000, guid: 8b2f353da1dd05244a7bee1562a2306a, type: 3}
+  m_ShaderKeywords: _KEYWORD0_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -37,12 +36,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: 2a429bd834ad664489933b4ce324066d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BaseColorRGBOutlineWidthA:
+        m_Texture: {fileID: 2800000, guid: 6cb06f951724ee4469cc88698f36af28, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: b451ab0f7b5b5484b885aad322bc0bbc, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d68b4c384940e7840a6756a734b0bc82, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -61,8 +64,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Highlight:
+        m_Texture: {fileID: 2800000, guid: 6cb06f951724ee4469cc88698f36af28, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b451ab0f7b5b5484b885aad322bc0bbc, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -75,6 +82,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: 2bf1c94444a7c5a40b24cbdd9ce7988e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -99,6 +110,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+    - _BaseCellOffset: -0.55
+    - _BaseCellSharpness: 0.01
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -110,13 +123,21 @@ Material:
     - _Glossiness: 0.5
     - _GlossinessSource: 0
     - _GlossyReflections: 1
+    - _HighlightCellOffset: -0.814
+    - _HighlightCellSharpness: 0.264
+    - _IndirectDiffuseContribution: 1
+    - _IndirectSpecularContribution: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalScale: 1
+    - _NormalScale: 0.682
     - _OcclusionStrength: 1
+    - _OutlineWidth: 0.1373
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RimOffset: 0
+    - _RimPower: 0.01
+    - _ShadowContribution: 1
     - _Shininess: 0
     - _Smoothness: 0
     - _SmoothnessSource: 1
@@ -125,17 +146,26 @@ Material:
     - _Specular: 0.572
     - _SpecularHighlights: 0
     - _SrcBlend: 1
+    - _StaticHighLights: 0
     - _Surface: 0
+    - _TessMax: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 4
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 1}
     - _BlinkLights: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.46323532, g: 0.46323532, b: 0.46323532, a: 1}
     - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
     - _Exhaust: {r: 0.31617647, g: 0.18072724, b: 0.09299307, a: 1}
+    - _HighlightTint: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineTint: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0.22941168, g: 0.3505882, b: 0.4, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _TeamColor: {r: 0.22794119, g: 0.37616637, b: 0.5, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}

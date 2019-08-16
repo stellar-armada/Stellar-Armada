@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 #pragma warning disable 0649
 namespace SpaceCommander.IO

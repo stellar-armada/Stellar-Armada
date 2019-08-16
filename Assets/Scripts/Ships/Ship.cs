@@ -2,16 +2,18 @@
 using UnityEngine;
 using Mirror;
 using SpaceCommander.Game;
+using SpaceCommander.Players;
 using SpaceCommander.Scenarios;
 using SpaceCommander.Selection;
 using SpaceCommander.Teams;
+using SpaceCommander.UI;
 using UnityEngine.Events;
 using UnitySteer.Behaviors;
 
 #pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
-    public class Ship : NetworkBehaviour, ITeamEntity, IPlayerEntity
+    public class Ship : NetworkBehaviour, IEntity
     {
         public PlayerController playerController; // Ships are only given to players in FFA or DOTA modes, not implemented yet
 
@@ -43,8 +45,6 @@ namespace SpaceCommander.Ships
         [SyncVar] [SerializeField] uint entityId;
         
         public UnityEvent ShipDestroyed;
-
-        [SerializeField] List<EntityType> entityTypes = new List<EntityType> {EntityType.TEAM}; // Team for now, add player if we want players to own their own ships later
         
         void Awake()
         {
@@ -114,11 +114,6 @@ namespace SpaceCommander.Ships
             entityId = id;
         }
 
-        public (List<EntityType>, IEntity) GetEntityAndTypes()
-        {
-            return (entityTypes, this);
-        }
-        
         public bool IsAlive()
         {
             return isAlive;
@@ -126,18 +121,8 @@ namespace SpaceCommander.Ships
 
         public bool IsEnemy(IEntity otherEntity)
         {
-            var entityKey = otherEntity.GetEntityAndTypes();
-                var entityTypes = entityKey.Item1;
-                if (entityTypes.Contains(EntityType.TEAM))
-                {
-                    if (((ITeamEntity)otherEntity).GetTeam().teamId != GetTeam().teamId) return true; // For now, players will all shoot each other FFA if they are controller "player ships"
-                }
-                else
-                {
-                    Debug.Log("Cant check if enemy, doesn't appear to be type TEAM");
-                }
-
-                return false;
+            if (otherEntity.GetTeam().teamId != GetTeam().teamId) return true; // For now, players will all shoot each other FFA if they are controller "player ships"
+            return false;
         }
         
         [Command]
@@ -158,27 +143,39 @@ namespace SpaceCommander.Ships
             weaponSystemController.HideWeaponSystems();
             shipShield.currentShield = 0;
             shipShield.gameObject.SetActive(false);
+
+            // Foreach player, tell their selection manager to clear
+            foreach (PlayerController player in team.players)
+            {
+                if (player.isServer)
+                {
+                    RemoveFromSelectionSets(entityId); // If we're host, let's just do it here
+                }
+                else
+                {
+                    TargetRemoveFromSelectionSets(player.connectionToClient, entityId); // Otherwise, tell clients on the team to remove the ship
+                }
+            }
         }
         
-
-        public GameObject GetGameObject()
+        [TargetRpc]
+        void TargetRemoveFromSelectionSets(NetworkConnection target, uint entityId)
         {
-            return gameObject;
+            RemoveFromSelectionSets(entityId);
         }
 
-        public ISelectable GetSelectionHandler()
+        void RemoveFromSelectionSets(uint shipId)
         {
-            return selectionHandler;
+            if (HumanPlayerController.localPlayer == null) return; // No local human player, so don't worry about selection
+            SelectionUIManager.instance.RemoveSelectableFromSelectionSets(entityId);
         }
+        
+        public GameObject GetGameObject() => gameObject;
 
-        void Start()
-        {
-            ShipManager.instance.RegisterShip(this);
-        }
+        public ISelectable GetSelectionHandler() => selectionHandler;
 
-        void OnDestroy()
-        {
-            ShipManager.instance.UnregisterShip(this);
-        }
+        void Start() => ShipManager.instance.RegisterShip(this);
+
+        void OnDestroy() => ShipManager.instance.UnregisterShip(this);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SpaceCommander.Players;
-using SpaceCommander.Selection;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
