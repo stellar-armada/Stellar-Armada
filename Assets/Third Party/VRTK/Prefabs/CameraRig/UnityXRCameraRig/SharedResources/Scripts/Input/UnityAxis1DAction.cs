@@ -19,6 +19,7 @@
 
         protected virtual void Update()
         {
+            Debug.Log(AxisName);
             Receive(Input.GetAxis(AxisName));
         }
     }

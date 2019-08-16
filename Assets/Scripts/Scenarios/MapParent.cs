@@ -11,7 +11,7 @@ namespace SpaceCommander.Scenarios
         {
             if (instance == null)
                 instance = this;
-            
+            transform.localScale = Vector3.one * ScaleManager.scale;
         }
 
     }

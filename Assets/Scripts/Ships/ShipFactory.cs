@@ -4,6 +4,7 @@ using SpaceCommander.Scenarios;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
+using Zinnia.Extension;
 
 [System.Serializable]
 public class ShipDictionary : SerializableDictionary<ShipType, GameObject>
@@ -34,7 +35,7 @@ public class ShipFactory : EntityFactory
         }
         
         GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, MapParent.instance.transform);
-        
+        shipGameObject.transform.SetGlobalScale(Vector3.one * ScaleManager.scale);
         NetworkServer.Spawn(shipGameObject);
         
         Ship s = shipGameObject.GetComponent<Ship>();

@@ -100,7 +100,9 @@
     <setting file="file://$PROJECT_DIR$/../SpaceCommanderXLifeScope/Assets/Scripts/Editor/UnityEventDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/UIPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect_mobile.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis2DAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Example/DemoScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ExplosionTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/GoToPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessageManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -122,9 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShip.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipHull.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipShield.cs" />
         <option value="$PROJECT_DIR$/Assets/UISelectionShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IWeaponSystem.cs" />
@@ -149,18 +148,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/EntityFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UISelectionShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionType.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectorTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectionTest.cs" />
-        <option value="$PROJECT_DIR$/Assets/ScaleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ITeamEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs" />
@@ -173,6 +169,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Nameplate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/ScaleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/MapParent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/SimpleMatchServerManager.cs" />
       </list>
     </option>
   </component>
@@ -240,7 +242,7 @@
       <workItem from="1565668511192" duration="28000" />
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
-      <workItem from="1565857687040" duration="20544000" />
+      <workItem from="1565857687040" duration="23210000" />
     </task>
     <servers />
   </component>

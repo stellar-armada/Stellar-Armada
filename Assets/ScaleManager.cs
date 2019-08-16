@@ -2,7 +2,7 @@
 
 public class ScaleManager : MonoBehaviour
 {
-    static float scale = 1f;
+    public static float scale = 1f;
 
     public float startScale;
 
