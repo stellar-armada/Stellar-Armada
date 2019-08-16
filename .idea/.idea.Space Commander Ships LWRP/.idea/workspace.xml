@@ -107,6 +107,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipWeaponSystemController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipHull.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectionTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipShield.cs" root0="FORCE_HIGHLIGHTING" />
@@ -121,8 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessageManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Selection/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipHull.cs" />
@@ -151,7 +150,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Nameplate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/EntityFactory.cs" />
@@ -163,7 +161,6 @@
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectorTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectionTest.cs" />
         <option value="$PROJECT_DIR$/Assets/ScaleManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ITeamEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IEntity.cs" />
@@ -172,6 +169,10 @@
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/TestPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Selector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IO/UIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Oculus/VR/Editor/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Nameplate.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
       </list>
     </option>
   </component>
@@ -239,7 +240,7 @@
       <workItem from="1565668511192" duration="28000" />
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
-      <workItem from="1565857687040" duration="18371000" />
+      <workItem from="1565857687040" duration="20544000" />
     </task>
     <servers />
   </component>

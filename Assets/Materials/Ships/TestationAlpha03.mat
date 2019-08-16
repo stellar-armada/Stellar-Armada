@@ -115,8 +115,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighlightCellOffset: -0.5
-    - _HighlightCellSharpness: 0.01
+    - _HighlightCellOffset: -0.76
+    - _HighlightCellSharpness: 0.001
     - _IndirectDiffuseContribution: 1
     - _IndirectSpecularContribution: 1
     - _Metallic: 0
@@ -129,7 +129,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimOffset: 0.469
     - _RimPower: 0.32
-    - _ShadowContribution: 0
+    - _ShadowContribution: 1
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

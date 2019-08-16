@@ -22,7 +22,7 @@ namespace SpaceCommander.UI
 
         [SerializeField] private Transform[] selectionSetContainers;
 
-        private List<List<UISelectionShip>> uiShips;
+        private List<List<UISelectionShip>> uiShips = new List<List<UISelectionShip>>();
 
         private bool isInited;
         

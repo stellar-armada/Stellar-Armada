@@ -21,8 +21,8 @@ Material:
     m_TexEnvs:
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 267634a20a03c4247b1f78b30d1d6581, type: 3}
-        m_Scale: {x: 3, y: 1.84}
-        m_Offset: {x: 0, y: 3.34}
+        m_Scale: {x: 2, y: 1.99}
+        m_Offset: {x: 0.63, y: 1.38}
     - _Alpha:
         m_Texture: {fileID: 0}
         m_Scale: {x: 2, y: 2}
@@ -85,6 +85,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 1
+    - _Bias: 0.1
     - _BumpScale: 1
     - _ChromaticAberration: 0.059
     - _Cutoff: 0.5
@@ -97,7 +98,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimPower: 0.11
+    - _RimPower: 0.34
+    - _Scale: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -107,5 +109,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 0}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

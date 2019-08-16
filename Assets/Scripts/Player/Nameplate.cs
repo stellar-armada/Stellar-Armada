@@ -12,8 +12,6 @@ namespace SpaceCommander.Player
         [SerializeField] TextMeshPro playerName;
         [SerializeField] HumanPlayerController humanPlayerController;
         [SerializeField] Transform transformToFollow;
-
-        public PlayerController localPlayerController;
         
         private Transform _t;
 
@@ -47,7 +45,7 @@ namespace SpaceCommander.Player
 
         void FaceLocalPlayer()
         {
-            _t.LookAt(localPlayerController.GetGameObject().transform);
+            _t.LookAt(HumanPlayerController.localPlayer.GetGameObject().transform);
             _t.rotation = Quaternion.Euler(0, _t.rotation.eulerAngles.y + 180f, 0);
         }
 

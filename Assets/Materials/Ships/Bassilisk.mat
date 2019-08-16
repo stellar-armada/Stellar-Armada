@@ -131,7 +131,7 @@ Material:
     - _Mode: 0
     - _NormalScale: 0.682
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.1373
+    - _OutlineWidth: 0.0001
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -163,8 +163,8 @@ Material:
     - _Color: {r: 0.46323532, g: 0.46323532, b: 0.46323532, a: 1}
     - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
     - _Exhaust: {r: 0.31617647, g: 0.18072724, b: 0.09299307, a: 1}
-    - _HighlightTint: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineTint: {r: 0, g: 0, b: 0, a: 0}
+    - _HighlightTint: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineTint: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 0.22941168, g: 0.3505882, b: 0.4, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _TeamColor: {r: 0.22794119, g: 0.37616637, b: 0.5, a: 1}
