@@ -14,15 +14,25 @@ namespace SpaceCommander.UI
         [SerializeField] private PlayerController playerController;
         private List<ISelectable> currentSelection = new List<ISelectable>();
 
-        Dictionary<int, List<ISelectable>> selectionSets = new Dictionary<int, List<ISelectable>>();
+        List<List<ISelectable>> selectionSets = new List<List<ISelectable>>()
+        {
+            new List<ISelectable>(),
+            new List<ISelectable>(),
+            new List<ISelectable>(),
+            new List<ISelectable>(),
+        };
 
         List<ISelectable> tempSelection;
-
-        public GameObject uiShipPrefab;
-
+        
         [SerializeField] private Transform[] selectionSetContainers;
 
-        private List<List<UISelectionShip>> uiShips = new List<List<UISelectionShip>>();
+        private List<List<UISelectionShip>> uiShips = new List<List<UISelectionShip>>()
+        {
+            new List<UISelectionShip>(),
+            new List<UISelectionShip>(),
+            new List<UISelectionShip>(),
+            new List<UISelectionShip>(),
+        };
         
         void Awake()
         {
@@ -41,22 +51,30 @@ namespace SpaceCommander.UI
             // Get reference to all ships on player's team
             Team team = TeamManager.instance.GetTeamByID(playerController.teamId);
             
-            Debug.Log("Team entities count: " + team.entities.Count);
             //Foreach ship on team
             foreach (IEntity entity in team.entities)
             {
                 Ship s = entity as Ship;
                 
+                Debug.Log("Populating selection for ship " + s.GetEntityId());
+                
+                Debug.Log("Foreach container check");
                 //foreach container
                 for (int c = 0; c < selectionSets.Count; c++)
                 {
+                    Debug.Log("c: " + c);
+
                     // Create a UI ship
                     UISelectionShip selectionShip = UIShipFactory.instance.CreateSelectionShip(s.type)
                         .GetComponent<UISelectionShip>();
                     // Set UI ship to team ship ID
                     selectionShip.entityId = s.GetEntityId();
+                    Debug.Log("uiShips[c]: " + uiShips[c]);
+
                     //Add to list
                     uiShips[c].Add(selectionShip);
+                    Debug.Log("Selection set containers: " + selectionSetContainers[c]);
+                    selectionShip.transform.SetParent(selectionSetContainers[c]);
                     // Disable
                     selectionShip.gameObject.SetActive(false);
                 }
@@ -70,7 +88,13 @@ namespace SpaceCommander.UI
                 foreach (List<UISelectionShip> list in uiShips)
                 foreach (UISelectionShip s in list)
                     Destroy(s);
-            uiShips = new List<List<UISelectionShip>>(selectionSets.Count);
+            uiShips = new List<List<UISelectionShip>>()
+            {
+                new List<UISelectionShip>(),
+                new List<UISelectionShip>(),
+                new List<UISelectionShip>(),
+                new List<UISelectionShip>()
+            };
             
             // Any other cleanup we need? Might not even encounter this until mid-game team switching is possible...
         }
@@ -113,10 +137,7 @@ namespace SpaceCommander.UI
 
         public List<ISelectable> GetSelectionSet(int selectionSetId)
         {
-            if (selectionSets.ContainsKey(selectionSetId))
-            {
-                return selectionSets[selectionSetId];
-            }
+            return selectionSets[selectionSetId];
             return null;
         }
 
@@ -131,10 +152,7 @@ namespace SpaceCommander.UI
 
         public void CreateOrReplaceSelectionSet(int selectionSetId)
         {
-            if (selectionSets.ContainsKey(selectionSetId))
-            {
-                selectionSets.Remove(selectionSetId);
-            }
+            selectionSets[selectionSetId] = null;
 
             List<ISelectable> newSelection = new List<ISelectable>();
             foreach (ISelectable selectable in currentSelection)
@@ -142,15 +160,13 @@ namespace SpaceCommander.UI
                 newSelection.Add(selectable);
             }
 
-            selectionSets.Add(selectionSetId, newSelection);
+            selectionSets[selectionSetId] = newSelection;
             UpdateSelectionSet(selectionSetId);
         }
 
         public void RecallSelectionSet(int selectionSetId)
         {
-            if (selectionSets.ContainsKey(selectionSetId))
-            {
-                List<ISelectable> selectionSet = selectionSets[selectionSetId];
+            List<ISelectable> selectionSet = selectionSets[selectionSetId];
 
                 // For any object that is in current selection that isn't in selection set, Deselect
                 foreach (ISelectable selectable in currentSelection)
@@ -171,9 +187,7 @@ namespace SpaceCommander.UI
                     }
                 }
 
-
                 currentSelection = selectionSets[selectionSetId];
-            }
         }
 
         public void SetSelectionFromGroup(List<ISelectable> selectables)

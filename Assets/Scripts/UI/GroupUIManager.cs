@@ -29,11 +29,8 @@ namespace SpaceCommander.UI
 
         public void UpdateGroupManager()
         {
-            Debug.LogWarning("Updating group manager");
             var groups = TeamManager.instance.GetTeamByID(humanPlayerController.GetTeamId()).groups;
             
-            Debug.Log("Groups length: " + groups.Count);
-
             if (ships.Count > 0) // Delete any if there are any. Would only be if we had more ships added or something
             {
                 foreach (GameObject go in ships)
