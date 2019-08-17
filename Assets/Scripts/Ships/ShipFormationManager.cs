@@ -19,7 +19,7 @@ public struct FormationPoint
 
 public class ShipPositionInfo
 {
-    public Ship ship;
+    public Ship Ship;
     public Vector3 position;
 }
 
@@ -39,7 +39,7 @@ public class ShipFormationManager : MonoBehaviour
         foreach (Ship ship in ships)
         {
             ShipPositionInfo tuple = new ShipPositionInfo();
-            tuple.ship = ship;
+            tuple.Ship = ship;
             tuple.position = ship.transform.position;
             // Add to output
             positionTuple.Add(tuple);

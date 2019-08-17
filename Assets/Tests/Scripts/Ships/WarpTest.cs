@@ -9,8 +9,8 @@ namespace SpaceCommander.Ships.Test
 
         bool CheckPlayer()
         {
-            if (ShipManager.GetShips().Count < 1) return false;
-            if (shipWarp == null) shipWarp = ShipManager.GetShips()[0].shipWarp;
+            if (EntityManager.GetEntities().Count < 1) return false;
+            if (shipWarp == null) shipWarp = ((Ship)EntityManager.GetEntities()[0]).shipWarp;
             return true;
         }
         public void WarpIn()

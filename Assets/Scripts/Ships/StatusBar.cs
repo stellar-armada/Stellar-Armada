@@ -8,8 +8,8 @@ namespace SpaceCommander.Ships
     {
 
         [SerializeField] Ship ship;
-        private ShipHull hull;
-        private ShipShield shield;
+        private Hull hull;
+        private Shield shield;
 
         [SerializeField] private Renderer statusBarRenderer;
 
@@ -22,8 +22,8 @@ namespace SpaceCommander.Ships
         {
             if(m == null) m = new MaterialPropertyBlock();
              
-             hull = ship.shipHull;
-             shield = ship.shipShield;
+             hull = ship.hull;
+             shield = ship.shield;
              shield.ShieldChanged += SetShieldSlider;
              hull.HullChanged += SetHullSlider;
             

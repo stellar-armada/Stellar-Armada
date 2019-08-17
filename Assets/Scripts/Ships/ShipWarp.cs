@@ -10,13 +10,13 @@ namespace SpaceCommander.Ships
             
             public Vector3 warpInStartPos;
             public float warpTime = 5f;
-            private Ship ship;
+            private Ship _ship;
 
             public bool isWarpedIn = false;
             
             void Awake()
             {
-                ship = GetComponent<Ship>();
+                _ship = GetComponent<Ship>();
                 PrepareForWarpIn();
                 
                 
@@ -36,22 +36,22 @@ namespace SpaceCommander.Ships
             
             void PrepareForWarpIn()
             {
-                ship.shipMovement.controlEnabled = false;
-                ship.weaponSystemController.weaponSystemsEnabled = false;
-                ship.weaponSystemController.HideWeaponSystems();
-                ship.statusBar.HideStatusBar();
-                ship.shipShield.gameObject.SetActive(false);
-                ship.visualModel.enabled = false;
+                _ship.movement.DisableMovement();
+                _ship.weaponSystemController.weaponSystemsEnabled = false;
+                _ship.weaponSystemController.HideWeaponSystems();
+                _ship.statusBar.HideStatusBar();
+                _ship.shield.gameObject.SetActive(false);
+                _ship.visualModel.enabled = false;
                 //ship.ShowHologram();
             }
             
             public void InitWarp(Vector3 position, Quaternion rotation)
             {
-                ship.transform.localPosition = position;
-                ship.transform.rotation = rotation;
-                ship.visualModel.transform.localPosition = warpInStartPos;
-                ship.weaponSystemController.ShowWeaponSystems();
-                ship.visualModel.enabled = true;
+                _ship.transform.localPosition = position;
+                _ship.transform.rotation = rotation;
+                _ship.visualModel.transform.localPosition = warpInStartPos;
+                _ship.weaponSystemController.ShowWeaponSystems();
+                _ship.visualModel.enabled = true;
                 
                 StartCoroutine(WarpIn());
                 
@@ -64,7 +64,7 @@ namespace SpaceCommander.Ships
                 do
                 {
                     timer += Time.deltaTime;
-                    ship.visualModel.transform.localPosition = Vector3.Lerp(warpInStartPos, Vector3.zero, timer / warpTime);
+                    _ship.visualModel.transform.localPosition = Vector3.Lerp(warpInStartPos, Vector3.zero, timer / warpTime);
                     yield return null;
                 }
                 while (timer <= warpTime) ;
@@ -72,11 +72,11 @@ namespace SpaceCommander.Ships
 
             void CompleteWarp()
             {
-                ship.shipMovement.controlEnabled = true;
-                ship.weaponSystemController.weaponSystemsEnabled = true;
-                ship.statusBar.ShowStatusBar();
-                ship.shipShield.gameObject.SetActive(true);
-                ship.shipShield.shieldEffectController.SetShieldActive(true, true);
+                _ship.movement.EnableMovement();
+                _ship.weaponSystemController.weaponSystemsEnabled = true;
+                _ship.statusBar.ShowStatusBar();
+                _ship.shield.gameObject.SetActive(true);
+                _ship.shield.shieldEffectController.SetShieldActive(true, true);
                 //ship.HideHologram();
                 isWarpedIn = true;
             }

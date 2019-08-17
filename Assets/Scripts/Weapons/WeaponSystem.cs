@@ -9,9 +9,9 @@ namespace SpaceCommander
         public IWeaponSystemController owningWeaponSystemController;
 
         public Transform target;
-        public IEntity targetEntity;
+        public NetworkEntity targetNetworkEntity;
 
-        public IEntity owningEntity;
+        public NetworkEntity owningNetworkEntity;
 
         [SerializeField] private float damagePerHit;
 
@@ -51,13 +51,13 @@ namespace SpaceCommander
         public void SetTarget(Transform t)
         {
             target = t;
-            targetEntity = t.GetComponent<IDamageable>().GetOwningEntity();
+            targetNetworkEntity = t.GetComponent<IDamageable>().GetOwningEntity();
         }
 
         public void ClearTarget()
         {
             target = null;
-            targetEntity = null;
+            targetNetworkEntity = null;
         }
 
         public GameObject GetGameObject()

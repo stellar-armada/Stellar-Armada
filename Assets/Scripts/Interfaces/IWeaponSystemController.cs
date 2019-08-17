@@ -6,7 +6,7 @@ namespace SpaceCommander
     // Interface for classes that have the functionality of damaging other players
     public interface IWeaponSystemController
     {
-        IEntity GetEntity();
+        NetworkEntity GetEntity();
         List<WeaponSystem> GetWeaponSystems();
         void EnableWeaponSystems();
         void DisableWeaponSystems();

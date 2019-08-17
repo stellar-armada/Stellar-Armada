@@ -22,6 +22,7 @@ public class HandSwitcher : MonoBehaviour
         {
             if(on) SwitchToLeftHand();
         };
+        
         InputManager.instance.OnRightTrigger += (on) =>
         {
             if (on) SwitchToRightHand();

@@ -18,8 +18,8 @@ namespace SpaceCommander.UI
         {
             transform.localScale = Vector3.one;
             transform.localPosition = Vector3.zero;
-            ship.shipShield.ShieldChanged += HandleShieldChange;
-            ship.shipHull.HullChanged += HandleHullChange;
+            ship.shield.ShieldChanged += HandleShieldChange;
+            ship.hull.HullChanged += HandleHullChange;
             ship.selectionHandler.OnSelectionChanged += HandleSelectionChange;
         }
 
@@ -30,13 +30,13 @@ namespace SpaceCommander.UI
 
         void HandleShieldChange(float shieldVal)
         {
-            shieldImage.color = new Color(shieldColor.r, shieldColor.g, shieldColor.b, ( shieldVal / ship.shipShield.maxShield)); // A UI shader controlling these variables would be cheaper
+            shieldImage.color = new Color(shieldColor.r, shieldColor.g, shieldColor.b, ( shieldVal / ship.shield.maxShield)); // A UI shader controlling these variables would be cheaper
 
         }
 
         void HandleHullChange(float hullVal)
         {
-            hullImage.fillAmount = hullVal / ship.shipHull.maxHull; // A UI shader controlling these variables would be cheaper
+            hullImage.fillAmount = hullVal / ship.hull.maxHull; // A UI shader controlling these variables would be cheaper
         }
         
     }

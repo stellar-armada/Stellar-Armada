@@ -7,6 +7,10 @@ namespace SpaceCommander.Ships
 	public class ShipEngines : MonoBehaviour
 	{
 		public float thrustAmount = 1.0f;
+		private float maxSpeed;
+		private float currentSpeed;
+		
+		
 		public List<MeshRenderer> haloRenderers = new List<MeshRenderer>();
 		public string shaderColorProperty = "_TintColor";
 		public float minAlpha = 0.1f;
@@ -16,8 +20,7 @@ namespace SpaceCommander.Ships
 		private Vector3 lastForward = Vector3.zero;
 
 		private Ship _ship;
-		private float maxSpeed;
-		private float currentSpeed;
+
 
 		void Awake()
 		{

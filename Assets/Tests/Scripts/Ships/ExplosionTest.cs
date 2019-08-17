@@ -9,8 +9,8 @@ namespace SpaceCommander.Ships.Test
 
         bool CheckPlayer()
         {
-            if (ShipManager.GetShips().Count < 1) return false;
-            if (explosion == null) explosion = ShipManager.GetShips()[0].shipExplosion;
+            if (EntityManager.GetEntities().Count < 1) return false;
+            if (explosion == null) explosion = ((Ship)EntityManager.GetEntities()[0]).shipExplosion;
             return true;
         }
 

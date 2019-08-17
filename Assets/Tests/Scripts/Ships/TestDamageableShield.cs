@@ -7,7 +7,7 @@ namespace SpaceCommander.Ships
     [RequireComponent(typeof(Collider))]
     public class TestDamageableShield : MonoBehaviour, IDamageable
     {
-        private IEntity owningEntity;
+        private NetworkEntity _owningNetworkEntity;
         
         public float maxShield;
         
@@ -60,7 +60,7 @@ namespace SpaceCommander.Ships
             if (currentShield > 0)
             {
                 currentShield -= damage;
-            }  else if (owningEntity.IsAlive())
+            }  else if (_owningNetworkEntity.IsAlive())
                 CmdDie();
 
             lastHit = Time.time;
@@ -71,14 +71,14 @@ namespace SpaceCommander.Ships
             currentShield = Mathf.Min(currentShield + charge, maxShield);
         }
 
-        public IEntity GetOwningEntity()
+        public NetworkEntity GetOwningEntity()
         {
-            return owningEntity;
+            return _owningNetworkEntity;
         }
 
-        public void SetOwningEntity(IEntity playerEntity)
+        public void SetOwningEntity(NetworkEntity playerNetworkEntity)
         {
-            owningEntity = playerEntity;
+            _owningNetworkEntity = playerNetworkEntity;
         }
 
         public GameObject GetGameObject()

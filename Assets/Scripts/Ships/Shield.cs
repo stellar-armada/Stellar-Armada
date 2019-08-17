@@ -4,7 +4,7 @@ using UnityEngine;
 #pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
-    public class ShipShield : MonoBehaviour, IDamageable, ICollidable
+    public class Shield : MonoBehaviour, IDamageable, ICollidable
     {
 
         [SerializeField] private Ship ship;
@@ -27,7 +27,7 @@ namespace SpaceCommander.Ships
         private Collider col;
         private bool shieldsUp = false;
         
-        [SerializeField] ShipSelectionHandler selectionHandler;
+        [SerializeField] SelectionHandler selectionHandler;
 
 
         void Awake()
@@ -79,7 +79,7 @@ namespace SpaceCommander.Ships
             currentShield = Mathf.Min(currentShield + charge, maxShield);
         }
 
-        public IEntity GetOwningEntity()
+        public NetworkEntity GetOwningEntity()
         {
             return ship;
         }

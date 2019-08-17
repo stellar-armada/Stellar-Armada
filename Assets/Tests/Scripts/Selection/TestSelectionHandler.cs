@@ -6,7 +6,7 @@ namespace SpaceCommander.Selection.Tests
     public class TestSelectionHandler : MonoBehaviour, ISelectable
     {
         
-        private IEntity owningEntity;
+        private NetworkEntity _owningNetworkEntity;
 
         private Renderer ren;
 
@@ -15,7 +15,7 @@ namespace SpaceCommander.Selection.Tests
         void Awake()
         {
             ren = GetComponent<Renderer>();
-            owningEntity = GetComponent<IEntity>();
+            _owningNetworkEntity = GetComponent<NetworkEntity>();
         }
 
         public int GetSelectionSetID()
@@ -38,9 +38,9 @@ namespace SpaceCommander.Selection.Tests
             ren.material.SetColor("_BaseColor", Color.white);
         }
 
-        public IEntity GetOwningEntity()
+        public NetworkEntity GetOwningEntity()
         {
-            return owningEntity;
+            return _owningNetworkEntity;
         }
 
         public bool IsSelectable()

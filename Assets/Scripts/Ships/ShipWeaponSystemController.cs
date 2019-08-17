@@ -13,7 +13,7 @@ namespace SpaceCommander.Ships
 
         public bool weaponSystemsEnabled = false;
 
-        public IEntity GetEntity()
+        public NetworkEntity GetEntity()
         {
             return ship;
         }

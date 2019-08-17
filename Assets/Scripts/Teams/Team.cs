@@ -16,55 +16,55 @@ namespace SpaceCommander.Teams
         public int playerSlots;
         public Texture insignia;
         public List<PlayerController> players = new List<PlayerController>();
-        public List<IEntity> entities = new List<IEntity>();
+        public List<NetworkEntity> entities = new List<NetworkEntity>();
 
         public delegate void TeamEvent();
 
         public TeamEvent OnEntitiesUpdated;
 
         // Hardcoded 3 groups into each team
-        public List<List<IEntity>> groups = new List<List<IEntity>>
+        public List<List<NetworkEntity>> groups = new List<List<NetworkEntity>>
         {
-            new List<IEntity>(),
-            new List<IEntity>(),
-            new List<IEntity>(),
+            new List<NetworkEntity>(),
+            new List<NetworkEntity>(),
+            new List<NetworkEntity>(),
         };
 
-        public void ChangeEntityGroup(IEntity entity, int group)
+        public void ChangeEntityGroup(NetworkEntity networkEntity, int group)
         {
             // Check if it's already in a group
             for (int i = 0; i < groups.Count; i++)
             {
                 // If it is, check if the group is the same as the one we're trying to change to
-                if (groups[i].Contains(entity))
+                if (groups[i].Contains(networkEntity))
                 {
                     // If it isn't, remove from the old group and add to the new group
                     // Otherwise do nothing
                     if (i != group)
                     {
-                        RemoveEntityFromGroup(entity, i);
+                        RemoveEntityFromGroup(networkEntity, i);
                     }
                 }
             }
         }
 
-        public void AddEntityToGroup(IEntity entity, int group)
+        public void AddEntityToGroup(NetworkEntity networkEntity, int group)
         {
-            groups[group].Add(entity);
+            groups[group].Add(networkEntity);
 
             for (int i = 0; i < groups.Count; i++)
             {
                 if (i == group) continue;
-                if (groups[i].Contains(entity))
+                if (groups[i].Contains(networkEntity))
                 {
-                    RemoveEntityFromGroup(entity, i);
+                    RemoveEntityFromGroup(networkEntity, i);
                 }
             }
         }
 
-        public void RemoveEntityFromGroup(IEntity entity, int group)
+        public void RemoveEntityFromGroup(NetworkEntity networkEntity, int group)
         {
-            groups[group].Remove(entity);
+            groups[group].Remove(networkEntity);
         }
 
         [Command]
@@ -95,16 +95,16 @@ namespace SpaceCommander.Teams
             players.Remove(playerController);
         }
 
-        public void AddEntity(IEntity entity)
+        public void AddEntity(NetworkEntity networkEntity)
         {
-            entities.Add(entity);
+            entities.Add(networkEntity);
             OnEntitiesUpdated?.Invoke();
         }
 
 
-        public void RemoveEntity(IEntity entity)
+        public void RemoveEntity(NetworkEntity networkEntity)
         {
-            entities.Remove(entity);
+            entities.Remove(networkEntity);
         }
 
         public GameObject GetGameObject()

@@ -4,7 +4,7 @@ using UnityEngine;
 #pragma warning disable 0649
 namespace SpaceCommander.Selection
 {
-    public class ShipSelectionHandler : MonoBehaviour, ISelectable
+    public class SelectionHandler : MonoBehaviour, ISelectable
     {
         [SerializeField] Ship ship;
 
@@ -43,7 +43,7 @@ namespace SpaceCommander.Selection
             OnSelectionChanged?.Invoke(false);
         }
 
-        public IEntity GetOwningEntity()
+        public NetworkEntity GetOwningEntity()
         {
             return ship;
         }

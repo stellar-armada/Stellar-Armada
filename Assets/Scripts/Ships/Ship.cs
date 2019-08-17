@@ -1,75 +1,38 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mirror;
 using SpaceCommander.Game;
 using SpaceCommander.Players;
-using SpaceCommander.Scenarios;
-using SpaceCommander.Selection;
 using SpaceCommander.Teams;
 using SpaceCommander.UI;
-using UnityEngine.Events;
-using UnitySteer.Behaviors;
 
 #pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
-    public class Ship : NetworkBehaviour, IEntity
+    public class Ship : NetworkEntity
     {
-        public PlayerController playerController; // Ships are only given to players in FFA or DOTA modes, not implemented yet
+        public PlayerController playerController;
 
         public ShipType type;
         [Header("Ship Subsystems")]
-        public ShipMovement shipMovement;
-        public ShipHull shipHull;
-        public ShipShield shipShield;
+        public EntityMovement movement;
+        public Hull hull;
+        public Shield shield;
         public ShipWeaponSystemController weaponSystemController;
         public ShipExplosion shipExplosion;
         public ShipWarp shipWarp;
         public StatusBar statusBar;
-        public ShipSelectionHandler selectionHandler;
-        
-        [Header("UnitySteer Steering Systems")]
-        public Radar radar;
-        public AutonomousVehicle autonomousVehicle;
-        public SteerForPursuit steerForPursuit;
-        public SteerForPoint steerForPoint;
-        
+
         [Header("Ship Components")]
         public Collider shipCollider;
         public Renderer visualModel;
-        
-        [SyncVar(hook = nameof(HandleDeath))] public bool isAlive = true;
-        
-        private Team team; // Should be set by ship factory. Referenced in enemy checks.
-
-        [SyncVar] [SerializeField] uint entityId;
-        
-        public UnityEvent ShipDestroyed;
-        
-        void Awake()
-        {
-            transform.parent = MapParent.instance.transform;
-            transform.localScale = Vector3.one;
-        }
-
-        void HandleDeath(bool alive)
-        {
-            if (!alive)
-            {
-                ShipDestroyed.Invoke();
-            }
-        }
-
+      
         [Command]
         public void CmdSetPlayer(uint playerId)
         {
             playerController = PlayerManager.GetPlayerById(playerId);
         }
 
-        public PlayerController GetPlayer()
-        {
-            return playerController;
-        }
+        public PlayerController GetPlayer() => playerController;
 
         void SetGroup(int newGroupId)
         {
@@ -77,7 +40,7 @@ namespace SpaceCommander.Ships
         }
         
         [Command]
-        public void CmdSetTeam(uint newTeamId)
+        public override void CmdSetTeam(uint newTeamId)
         {
             SetTeam(newTeamId);
             RpcSetTeam(newTeamId);
@@ -97,32 +60,7 @@ namespace SpaceCommander.Ships
             team.AddEntity(this);
             statusBar.SetInsignia(team.insignia);
         }
-
-        public Team GetTeam()
-        {
-            return team;
-        }
-
-        public uint GetEntityId()
-        {
-            return entityId;
-        }
-
-        public void SetEntityId(uint id)
-        {
-            entityId = id;
-        }
-
-        public bool IsAlive()
-        {
-            return isAlive;
-        }
-
-        public bool IsEnemy(IEntity otherEntity)
-        {
-            if (otherEntity.GetTeam().teamId != GetTeam().teamId) return true; // For now, players will all shoot each other FFA if they are controller "player ships"
-            return false;
-        }
+        
         
         [Command]
         public void CmdActivate()
@@ -133,15 +71,15 @@ namespace SpaceCommander.Ships
         }
         
         [Command]
-        public void CmdDie()
+        public override void CmdDie()
         {
-            isAlive = false;
+            base.CmdDie();
             statusBar.FadeOutStatusBar();
             shipExplosion.Explode();
             weaponSystemController.weaponSystemsEnabled = false;
             weaponSystemController.HideWeaponSystems();
-            shipShield.currentShield = 0;
-            shipShield.gameObject.SetActive(false);
+            shield.currentShield = 0;
+            shield.gameObject.SetActive(false);
 
             // Foreach player, tell their selection manager to clear
             foreach (PlayerController player in team.players)
@@ -168,13 +106,5 @@ namespace SpaceCommander.Ships
             if (HumanPlayerController.localPlayer == null) return; // No local human player, so don't worry about selection
             SelectionUIManager.instance.RemoveSelectableFromSelectionSets(entityId);
         }
-        
-        public GameObject GetGameObject() => gameObject;
-
-        public ISelectable GetSelectionHandler() => selectionHandler;
-
-        void Start() => ShipManager.instance.RegisterShip(this);
-
-        void OnDestroy() => ShipManager.instance.UnregisterShip(this);
     }
 }

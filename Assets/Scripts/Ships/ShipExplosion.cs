@@ -14,7 +14,7 @@ namespace SpaceCommander.Ships
         void Awake()
         {
             _ship = GetComponent<Ship>();
-            _ship.ShipDestroyed.AddListener(Explode);
+            _ship.OnEntityDead.AddListener(Explode);
         }
         
         public void Explode()

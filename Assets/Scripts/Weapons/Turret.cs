@@ -148,9 +148,9 @@ namespace SpaceCommander.Weapons
             {
                 // if enemy object can be hit
 
-                IEntity damaged = damageable.GetOwningEntity();
+                NetworkEntity damaged = damageable.GetOwningEntity();
                 
-                IEntity damager = owningWeaponSystemController.GetEntity();
+                NetworkEntity damager = owningWeaponSystemController.GetEntity();
                 
                 if (damager.IsEnemy(damaged) &&
                      CanHitPosition(damageable.GetGameObject().transform.position) && IsFacingTarget() && damaged.IsAlive())
@@ -174,7 +174,7 @@ namespace SpaceCommander.Weapons
 
         protected void Fire(WeaponType type)
         {
-            if (targetEntity == null || !IsFacingTarget() || !targetEntity.IsAlive())
+            if (targetNetworkEntity == null || !IsFacingTarget() || !targetNetworkEntity.IsAlive())
             {
                 // IF we're not facing the target, let's see if we can get one
                 ClearTarget();

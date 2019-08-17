@@ -5,7 +5,7 @@ using UnityEngine;
 #pragma warning disable 0649
 namespace SpaceCommander.Ships
 {
-    public class ShipHull : NetworkBehaviour, IDamageable, ICollidable
+    public class Hull : NetworkBehaviour, IDamageable, ICollidable
     {
         [SerializeField] private Ship ship;
 
@@ -15,7 +15,7 @@ namespace SpaceCommander.Ships
 
         public HullChangeEvent HullChanged;
 
-        [SerializeField] ShipSelectionHandler selectionHandler;
+        [SerializeField] SelectionHandler selectionHandler;
 
         [SyncVar] public float currentHull;
 
@@ -30,7 +30,7 @@ namespace SpaceCommander.Ships
             currentHull = Mathf.Min(currentHull + amount, maxHull);
         }
 
-        public IEntity GetOwningEntity()
+        public NetworkEntity GetOwningEntity()
         {
             return ship;
         }
@@ -51,7 +51,8 @@ namespace SpaceCommander.Ships
             currentHull -= damage;
             if (currentHull <= 0 && ship.IsAlive())
             {
-                ship.CmdDie();
+                if(isServer)
+                    ship.CmdDie();
             }
 
             HullChanged.Invoke(currentHull);

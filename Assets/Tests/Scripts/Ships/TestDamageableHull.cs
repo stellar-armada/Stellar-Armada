@@ -7,7 +7,7 @@ namespace SpaceCommander.Ships
 {
     public class TestDamageableHull : MonoBehaviour, IDamageable
     {
-        private IEntity owningEntity;
+        private NetworkEntity _owningNetworkEntity;
 
         public float maxHull;
         public bool isDead;
@@ -30,14 +30,14 @@ namespace SpaceCommander.Ships
         }
 
 
-        public IEntity GetOwningEntity()
+        public NetworkEntity GetOwningEntity()
         {
-            return owningEntity;
+            return _owningNetworkEntity;
         }
 
-        public void SetOwningEntity(IEntity playerEntity)
+        public void SetOwningEntity(NetworkEntity playerNetworkEntity)
         {
-            owningEntity = playerEntity;
+            _owningNetworkEntity = playerNetworkEntity;
         }
 
         public GameObject GetGameObject()

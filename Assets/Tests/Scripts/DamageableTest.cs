@@ -14,8 +14,8 @@ namespace SpaceCommander.Common.Tests
 
         void Awake()
         {
-            health.SetOwningEntity(GetComponent<IEntity>());
-            shield.SetOwningEntity(GetComponent<IEntity>());
+            health.SetOwningEntity(GetComponent<NetworkEntity>());
+            shield.SetOwningEntity(GetComponent<NetworkEntity>());
         }
 
         public void ShipDestroyed()

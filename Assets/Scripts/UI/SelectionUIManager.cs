@@ -52,7 +52,7 @@ namespace SpaceCommander.UI
             Team team = TeamManager.instance.GetTeamByID(playerController.teamId);
             
             //Foreach ship on team
-            foreach (IEntity entity in team.entities)
+            foreach (NetworkEntity entity in team.entities)
             {
                 Ship s = entity as Ship;
                 
@@ -143,7 +143,7 @@ namespace SpaceCommander.UI
 
         public void SelectAll(int teamId)
         {
-            var ships = ShipManager.GetShips().Where(s => s.GetTeam().teamId == (uint) teamId);
+            var ships = EntityManager.GetEntities().Where(s => s.GetTeam().teamId == (uint) teamId);
             foreach (var ship in ships)
             {
                 AddToSelection(ship.selectionHandler);

@@ -7,7 +7,7 @@ namespace SpaceCommander
         void SetSelectionSetID(int id);
         void Select();
         void Deselect();
-        IEntity GetOwningEntity();
+        NetworkEntity GetOwningEntity();
         bool IsSelectable();
     }
 }
