@@ -45,12 +45,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/Keyboard/Key.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/UserSerializableDictionaries.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenarios/EnvironmentParent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenarios/EnvironmentTransformRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/Helpers/Tooltip/SharedResources/Scripts/TooltipFacade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/SerializableDictionary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/Editor/UserSerializableDictionaryPropertyDrawers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/MapControls.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/Editor/SerializableDictionaryPropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/EntityMovement.cs" root0="FORCE_HIGHLIGHTING" />
@@ -83,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/FollowTarget.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NewBehaviourScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/Weaver/CompilationFinishedHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRLeg.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerToFollow.cs" root0="FORCE_HIGHLIGHTING" />
@@ -128,6 +127,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRMatrixUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Key.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SfxAudioData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MessageAudioController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Keyboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MusicController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -170,19 +170,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/EntityFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Tools/DetectableObjectCreator2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PlacementManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Pointer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/IO/UIPointer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Beam.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlayerCanvasManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IO/HandSwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipHull.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipEngines.cs" />
@@ -221,10 +213,19 @@
         <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/SimpleMatchServerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/SerializedDictionaries/ShipPrefabDictionary.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/SfxAudioData.cs" />
+        <option value="$PROJECT_DIR$/Assets/SerializedDictionaries/SfxDictionary.cs" />
+        <option value="$PROJECT_DIR$/Assets/SerializedDictionaries/WeaponAudioClipDictionary.cs" />
+        <option value="$PROJECT_DIR$/Assets/SerializedDictionaries/WeaponPrefabDictionary.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/UserSerializableDictionaries.cs" />
+        <option value="$PROJECT_DIR$/Assets/SerializedDictionaries/ShipIdDictionary.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlacementManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/NewBehaviourScript.cs" />
       </list>
     </option>
   </component>
@@ -293,7 +294,7 @@
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
       <workItem from="1565857687040" duration="26669000" />
-      <workItem from="1565984452880" duration="44456000" />
+      <workItem from="1565984452880" duration="47717000" />
     </task>
     <servers />
   </component>

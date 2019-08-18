@@ -16,7 +16,7 @@ namespace SpaceCommander
     [Serializable]
     public class TeamInfo
     {
-         public List<FleetDictionary> fleetBattleGroups = new List<FleetDictionary>();
+         public List<ShipIdDictionary> fleetBattleGroups = new List<ShipIdDictionary>();
          public List<WarpVector> battleGroupWarpVectors;
          public int numberOfPlayerSlots;
     }

@@ -6,11 +6,6 @@ using SpaceCommander.Teams;
 using UnityEngine;
 using Zinnia.Extension;
 
-[System.Serializable]
-public class ShipDictionary : SerializableDictionary<ShipType, GameObject>
-{
-}
-
 public class ShipFactory : EntityFactory
 {
     public static ShipFactory instance;

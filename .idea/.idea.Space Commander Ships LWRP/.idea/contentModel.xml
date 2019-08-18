@@ -62,6 +62,9 @@
             </e>
           </e>
         </e>
+        <e p="NewBehaviourScript.cs" t="Include" />
+        <e p="PlacementIndicator.cs" t="Include" />
+        <e p="PlacementManager.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -175,6 +178,16 @@
             <e p="SelectionHandler.cs" t="Include" />
             <e p="SelectionType.cs" t="Include" />
           </e>
+          <e p="SerializedDictionaries" t="Include">
+            <e p="Editor" t="Include">
+              <e p="UserSerializableDictionaryPropertyDrawers.cs" t="Include" />
+            </e>
+            <e p="SfxDictionary.cs" t="Include" />
+            <e p="ShipIdDictionary.cs" t="Include" />
+            <e p="ShipPrefabDictionary.cs" t="Include" />
+            <e p="WeaponAudioClipDictionary.cs" t="Include" />
+            <e p="WeaponPrefabDictionary.cs" t="Include" />
+          </e>
           <e p="Settings" t="Include">
             <e p="SettingsManager.cs" t="Include" />
           </e>
@@ -244,10 +257,8 @@
             <e p="SerializableDictionary" t="Include">
               <e p="Editor" t="Include">
                 <e p="SerializableDictionaryPropertyDrawer.cs" t="Include" />
-                <e p="UserSerializableDictionaryPropertyDrawers.cs" t="Include" />
               </e>
               <e p="SerializableDictionary.cs" t="Include" />
-              <e p="UserSerializableDictionaries.cs" t="Include" />
             </e>
           </e>
           <e p="Weapons" t="Include">
