@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_WEBGL
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,3 +26,4 @@ public class WebVRControllerInput {
     [Tooltip("Whether gesture derives its value from Unity using `Input.GetButton` function.")]
     public bool unityInputIsButton;
 }
+#endif

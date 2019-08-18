@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_WEBGL
+using UnityEngine;
 
 [System.Serializable]
 class WebVRControllerData
@@ -15,3 +16,4 @@ class WebVRControllerData
 	public float[] axes = null;
 	public WebVRControllerButton[] buttons = new WebVRControllerButton[0];
 }
+#endif

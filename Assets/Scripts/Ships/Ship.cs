@@ -10,15 +10,16 @@ namespace SpaceCommander.Ships
 {
     public class Ship : NetworkEntity
     {
-        public PlayerController playerController;
+        [HideInInspector] public PlayerController playerController;
 
         public ShipType type;
+        
         [Header("Ship Subsystems")]
         public EntityMovement movement;
         public Hull hull;
         public Shield shield;
         public ShipWeaponSystemController weaponSystemController;
-        public ShipExplosion shipExplosion;
+        public EntityExplosion entityExplosion;
         public ShipWarp shipWarp;
         public StatusBar statusBar;
 
@@ -69,42 +70,20 @@ namespace SpaceCommander.Ships
             statusBar.ShowStatusBar(); 
             weaponSystemController.weaponSystemsEnabled = true;
         }
-        
-        [Command]
-        public override void CmdDie()
+
+        public override void Die()
         {
-            base.CmdDie();
+            base.Die();
             statusBar.FadeOutStatusBar();
-            shipExplosion.Explode();
+            entityExplosion.Explode();
             weaponSystemController.weaponSystemsEnabled = false;
             weaponSystemController.HideWeaponSystems();
             shield.currentShield = 0;
             shield.gameObject.SetActive(false);
-
-            // Foreach player, tell their selection manager to clear
-            foreach (PlayerController player in team.players)
-            {
-                if (player.isServer)
-                {
-                    RemoveFromSelectionSets(entityId); // If we're host, let's just do it here
-                }
-                else
-                {
-                    TargetRemoveFromSelectionSets(player.connectionToClient, entityId); // Otherwise, tell clients on the team to remove the ship
-                }
-            }
-        }
-        
-        [TargetRpc]
-        void TargetRemoveFromSelectionSets(NetworkConnection target, uint entityId)
-        {
-            RemoveFromSelectionSets(entityId);
+            if(HumanPlayerController.localPlayer != null == team.players.Contains(HumanPlayerController.localPlayer))
+                SelectionUIManager.instance.RemoveSelectableFromSelectionSets(entityId);
+            Debug.Log("Dead!");
         }
 
-        void RemoveFromSelectionSets(uint shipId)
-        {
-            if (HumanPlayerController.localPlayer == null) return; // No local human player, so don't worry about selection
-            SelectionUIManager.instance.RemoveSelectableFromSelectionSets(entityId);
-        }
     }
 }

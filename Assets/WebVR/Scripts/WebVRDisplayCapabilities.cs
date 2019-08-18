@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_WEBGL
+using UnityEngine;
 
 [System.Serializable]
 public class WebVRDisplayCapabilities
@@ -7,3 +8,4 @@ public class WebVRDisplayCapabilities
 	public bool hasPosition;
 	public bool hasExternalDisplay;
 }
+#endif

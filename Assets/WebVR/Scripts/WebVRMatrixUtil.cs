@@ -1,3 +1,4 @@
+#if UNITY_WEBGL
 using UnityEngine;
 
 public static class WebVRMatrixUtil
@@ -58,3 +59,4 @@ public static class WebVRMatrixUtil
         return mat;
     }
 }
+#endif

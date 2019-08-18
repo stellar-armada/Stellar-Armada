@@ -1,4 +1,6 @@
+
 using UnityEngine;
+#if UNITY_WEBGL
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -322,3 +324,8 @@ public class WebVRController : MonoBehaviour
         SetVisible(false);
     }
 }
+#else
+public class WebVRController : MonoBehaviour
+{
+}
+#endif

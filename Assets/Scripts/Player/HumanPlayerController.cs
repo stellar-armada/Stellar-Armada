@@ -18,19 +18,24 @@ namespace SpaceCommander.Players
 
         private bool playerIsReady;
 
-        private void Start()
+        private void Awake()
         {
             Transform t = transform; // skip the gameObject.transform lookup
             t.parent = EnvironmentTransformRoot.instance.transform;
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
             
-            bodyController.Init();
-            
             PlayerManager.instance.RegisterPlayer(this);
-            
-            if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
 
+            localRig.SetActive(false);
+        }
+
+        void Start()
+        {
+            bodyController.Init();
+
+            if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
+            
             if (isLocalPlayer)
             {
                 localRig.SetActive(true);
@@ -49,6 +54,7 @@ namespace SpaceCommander.Players
                 Destroy(localRig);
             }
         }
+        
         public bool IsLocalPlayer() => isLocalPlayer;
 
         public bool IsServer() => isServer;

@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.XR;
-using System.Linq;
 using System.Collections;
 using System.Runtime.InteropServices;
 
 public class WebVRCamera : MonoBehaviour
 {
-    private Camera cameraMain, cameraL, cameraR;
+    [SerializeField] Camera cameraMain, cameraL, cameraR;
     private bool vrActive = false;
-
+#if UNITY_WEBGL
     [DllImport("__Internal")]
     private static extern void PostRender();
 
@@ -23,11 +21,8 @@ public class WebVRCamera : MonoBehaviour
     {
         WebVRManager.Instance.OnVRChange += onVRChange;
         WebVRManager.Instance.OnHeadsetUpdate += onHeadsetUpdate;
-        
-        cameraMain = GameObject.Find("CameraMain").GetComponent<Camera>();
-        cameraL = GameObject.Find("CameraL").GetComponent<Camera>();
-        cameraR = GameObject.Find("CameraR").GetComponent<Camera>();
-
+        cameraL.gameObject.SetActive(true);
+        cameraR.gameObject.SetActive(true);
         cameraMain.transform.Translate(new Vector3(0, WebVRManager.Instance.DefaultHeight, 0));
     }
 
@@ -72,4 +67,12 @@ public class WebVRCamera : MonoBehaviour
             cameraR.projectionMatrix = rightProjectionMatrix;
         }
     }
+#else
+
+    void Awake()
+    {
+        Destroy(cameraL);
+        Destroy(cameraR);
+    }
+#endif
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_WEBGL
+using UnityEngine;
 
 // WebVR data class
 [System.Serializable]
@@ -10,3 +11,4 @@ class WebVRData
 		return JsonUtility.FromJson<WebVRData> (jsonString);
 	}
 }
+#endif

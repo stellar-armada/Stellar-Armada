@@ -7,6 +7,101 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="com.unity.xr.legacyinputhelpers" t="Include">
+          <e p="Editor" t="Include">
+            <e p="ArmModels" t="Include">
+              <e p="ArmModelEditor.cs" t="Include" />
+              <e p="SwingArmModelEditor.cs" t="Include" />
+              <e p="TransitionArmModelEditor.cs" t="Include" />
+            </e>
+            <e p="SeedXRInputBindings" t="Include">
+              <e p="SeedXRInputBindings.cs" t="Include" />
+            </e>
+            <e p="TrackedPoseDriver" t="Include">
+              <e p="TPDConfigurationProvider.cs" t="Include" />
+              <e p="TrackedPoseDriverEditor.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Runtime" t="Include">
+            <e p="ArmModels" t="Include">
+              <e p="ArmModel.cs" t="Include" />
+              <e p="SwingArmModel.cs" t="Include" />
+              <e p="TransitionArmModel.cs" t="Include" />
+            </e>
+            <e p="TrackedPoseDriver" t="Include">
+              <e p="AssemblyInfo.cs" t="Include" />
+              <e p="BasePoseProvider.cs" t="Include" />
+              <e p="TrackedPoseDriver.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Tests" t="Include">
+            <e p="Editor" t="Include">
+              <e p="SeedXRInputBindings" t="Include">
+                <e p="SeedXRInputBindingsTests.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Runtime" t="Include">
+              <e p="TrackedPoseDriver" t="Include">
+                <e p="TrackedPoseDriverTests.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Heureka" t="Include">
+          <e p="AssetHunterPRO" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="AH_BuildInfoManager.cs" t="Include" />
+                <e p="AH_BuildInfoMergerWindow.cs" t="Include" />
+                <e p="AH_BuildProcessor.cs" t="Include" />
+                <e p="AH_BuildReportFileInfo.cs" t="Include" />
+                <e p="AH_BuildReportWindow.cs" t="Include" />
+                <e p="AH_EditorData.cs" t="Include" />
+                <e p="AH_ElementList.cs" t="Include" />
+                <e p="AH_IgnoreList.cs" t="Include" />
+                <e p="AH_IgnoreListEventActionBase.cs" t="Include" />
+                <e p="AH_IIgnoreListActions.cs" t="Include" />
+                <e p="AH_PreProcessor.cs" t="Include" />
+                <e p="AH_SceneReferenceWindow.cs" t="Include" />
+                <e p="AH_SerializationHelper.cs" t="Include" />
+                <e p="AH_SerializedAssetInfo.cs" t="Include" />
+                <e p="AH_SerializedBuildInfo.cs" t="Include" />
+                <e p="AH_SettingsManager.cs" t="Include" />
+                <e p="AH_SettingsWindow.cs" t="Include" />
+                <e p="AH_TreeViewSelectionInfo.cs" t="Include" />
+                <e p="AH_Utils.cs" t="Include" />
+                <e p="AH_VersionUpgrader.cs" t="Include" />
+                <e p="AH_Window.cs" t="Include" />
+                <e p="AH_WindowStyler.cs" t="Include" />
+                <e p="External" t="Include">
+                  <e p="Docker.cs" t="Include" />
+                </e>
+                <e p="TreeViewDataModel" t="Include">
+                  <e p="AH_BuildInfoTreeView.cs" t="Include" />
+                  <e p="AH_MultiColumnHeader.cs" t="Include" />
+                  <e p="AH_TreeviewElement.cs" t="Include" />
+                  <e p="AH_TreeViewWithTreeModel.cs" t="Include" />
+                  <e p="TreeElement.cs" t="Include" />
+                  <e p="TreeElementUtility.cs" t="Include" />
+                  <e p="TreeModel.cs" t="Include" />
+                  <e p="TreeViewWithTreeModel.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Global" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Heureka_Serializer.cs" t="Include" />
+              <e p="Readme" t="Include">
+                <e p="Heureka_PackageData.cs" t="Include" />
+                <e p="Heureka_PackageDataManager.cs" t="Include" />
+                <e p="Heureka_PackageDataManagerEditor.cs" t="Include" />
+                <e p="Heureka_PackageDataPromo.cs" t="Include" />
+                <e p="Heureka_PackageDataVersioned.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -132,12 +227,12 @@
             <e p="ShieldHit.cs" t="Include" />
           </e>
           <e p="Ships" t="Include">
+            <e p="EntityExplosion.cs" t="Include" />
             <e p="EntityManager.cs" t="Include" />
             <e p="Hull.cs" t="Include" />
             <e p="Shield.cs" t="Include" />
             <e p="Ship.cs" t="Include" />
             <e p="ShipEngines.cs" t="Include" />
-            <e p="ShipExplosion.cs" t="Include" />
             <e p="ShipFactory.cs" t="Include" />
             <e p="ShipFormationManager.cs" t="Include" />
             <e p="ShipHologram.cs" t="Include" />
@@ -170,11 +265,6 @@
             <e p="VRCanvas.cs" t="Include" />
           </e>
           <e p="Utility" t="Include">
-            <e p="Editor" t="Include">
-              <e p="CustomEditorFunctions.cs" t="Include" />
-              <e p="UnityEventDrawer.cs" t="Include" />
-            </e>
-            <e p="EnumActionAttribute.cs" t="Include" />
             <e p="GoToPoint.cs" t="Include" />
             <e p="JsonHelper.cs" t="Include" />
             <e p="Keyboard" t="Include">
@@ -188,8 +278,6 @@
             <e p="LockRotation.cs" t="Include" />
             <e p="Math3d.cs" t="Include" />
             <e p="MathUtilities.cs" t="Include" />
-            <e p="PlaceTransformOnGround.cs" t="Include" />
-            <e p="PlaneSerializer.cs" t="Include" />
             <e p="QuaternionTools.cs" t="Include" />
             <e p="Randomize.cs" t="Include" />
             <e p="Rotate.cs" t="Include" />
@@ -286,7 +374,6 @@
                 <e p="CompilationFinishedHook.cs" t="Include" />
                 <e p="Extensions.cs" t="Include" />
                 <e p="Helpers.cs" t="Include" />
-                <e p="Mirror.Weaver.asmdef" t="Include" />
                 <e p="Processors" t="Include">
                   <e p="CommandProcessor.cs" t="Include" />
                   <e p="MessageClassProcessor.cs" t="Include" />
@@ -319,7 +406,6 @@
               <e p="LogFilter.cs" t="Include" />
               <e p="MessagePacker.cs" t="Include" />
               <e p="Messages.cs" t="Include" />
-              <e p="Mirror.asmdef" t="Include" />
               <e p="NetworkBehaviour.cs" t="Include" />
               <e p="NetworkClient.cs" t="Include" />
               <e p="NetworkConnection.cs" t="Include" />
@@ -406,7 +492,6 @@
               <e p="FloatBytePackerTest.cs" t="Include" />
               <e p="MessageBaseTests.cs" t="Include" />
               <e p="MessagePackerTest.cs" t="Include" />
-              <e p="Mirror.Tests.asmdef" t="Include" />
               <e p="NetworkWriterTest.cs" t="Include" />
               <e p="SyncDictionaryTest.cs" t="Include" />
               <e p="SyncListTest.cs" t="Include" />
@@ -631,7 +716,6 @@
                   <e p="Supyrb" t="Include">
                     <e p="Editor" t="Include">
                       <e p="SerializedPropertyExtensions.cs" t="Include" />
-                      <e p="Supyrb.Editor.asmdef" t="Include" />
                     </e>
                   </e>
                 </e>
@@ -657,7 +741,6 @@
                     <e p="PickerWindow.cs" t="Include" />
                     <e p="SerializedPropertyExtensions.cs" t="Include" />
                   </e>
-                  <e p="Zinnia.Editor.asmdef" t="Include" />
                 </e>
                 <e p="Runtime" t="Include">
                   <e p="Action" t="Include">
@@ -981,7 +1064,6 @@
                     <e p="CameraColorOverlay.cs" t="Include" />
                     <e p="PointsRenderer.cs" t="Include" />
                   </e>
-                  <e p="Zinnia.Runtime.asmdef" t="Include" />
                 </e>
                 <e p="Tests" t="Include">
                   <e p="Editor" t="Include">
@@ -1208,7 +1290,6 @@
                       <e p="CameraColorOverlayTest.cs" t="Include" />
                       <e p="PointsRendererTest.cs" t="Include" />
                     </e>
-                    <e p="Zinnia.Tests.Editor.asmdef" t="Include" />
                   </e>
                   <e p="Utility" t="Include">
                     <e p="Helper" t="Include">
@@ -1226,7 +1307,6 @@
                       <e p="TrueRuleStub.cs" t="Include" />
                     </e>
                     <e p="TimeSettingOverride.cs" t="Include" />
-                    <e p="Zinnia.Tests.Utility.asmdef" t="Include" />
                   </e>
                 </e>
               </e>
@@ -1497,7 +1577,6 @@
                   <e p="VertexLit_Color.shader" t="Include" />
                 </e>
               </e>
-              <e p="VRTK.Prefabs.Runtime.asmdef" t="Include" />
             </e>
           </e>
         </e>
@@ -2220,6 +2299,12 @@
       <e p="Space Commander Ships LWRP.sln" t="IncludeFlat" />
       <e p="Supyrb.Editor.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="UnityEditor.SpatialTracking.csproj" t="IncludeRecursive" />
+      <e p="UnityEditor.XR.LegacyInputHelpers.csproj" t="IncludeRecursive" />
+      <e p="UnityEditor.XR.LegacyInputHelpers.Tests.csproj" t="IncludeRecursive" />
+      <e p="UnityEngine.SpatialTracking.csproj" t="IncludeRecursive" />
+      <e p="UnityEngine.SpatialTracking.Tests.csproj" t="IncludeRecursive" />
+      <e p="UnityEngine.XR.LegacyInputHelpers.csproj" t="IncludeRecursive" />
       <e p="VRTK.Prefabs.Runtime.csproj" t="IncludeRecursive" />
       <e p="Zinnia.Editor.csproj" t="IncludeRecursive" />
       <e p="Zinnia.Runtime.csproj" t="IncludeRecursive" />

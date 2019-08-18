@@ -4,7 +4,6 @@ using SpaceCommander.Selection;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
-using UnityEngine.Events;
 
 #pragma warning disable 0649
 namespace SpaceCommander
@@ -19,7 +18,9 @@ namespace SpaceCommander
         
         public SelectionHandler selectionHandler;
 
-        public UnityEvent OnEntityDead;
+        public delegate void NetworkEntityEvent();
+        
+        public NetworkEntityEvent OnEntityDead;
         
         void HandleDeath(bool alive)
         {
@@ -57,7 +58,7 @@ namespace SpaceCommander
             return false;
         }
 
-        public virtual void CmdDie()
+        public virtual void Die()
         {
             isAlive = false;
         }

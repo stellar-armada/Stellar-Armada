@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9e0f8b64345f548a2a53ebfc479753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScale: 100
 --- !u!1 &5747669400580862052
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,41 +578,27 @@ MonoBehaviour:
   OnClientConnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClientDataReceived:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventByteArray, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnClientError:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventException, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnClientDisconnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnServerConnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventInt, Mirror, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnServerDataReceived:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventIntByteArray, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnServerError:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventIntException, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventInt, Mirror, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   port: 7777
   NoDelay: 1
   MaxMessageSize: 16384
@@ -799,6 +784,7 @@ Transform:
   - {fileID: 5747669402091356058}
   - {fileID: 713246618569287089}
   - {fileID: 3289985712513492404}
+  - {fileID: 4811830978465255958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -976,6 +962,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6339948930098592252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4811830978465255958}
+  - component: {fileID: 3341906962761870672}
+  m_Layer: 0
+  m_Name: FormationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4811830978465255958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339948930098592252}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5747669402256501384}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3341906962761870672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339948930098592252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7f054ccb729b478bbf45c17cdfdff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6426859846422639336
 GameObject:
   m_ObjectHideFlags: 0

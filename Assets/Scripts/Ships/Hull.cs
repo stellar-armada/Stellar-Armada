@@ -51,8 +51,7 @@ namespace SpaceCommander.Ships
             currentHull -= damage;
             if (currentHull <= 0 && ship.IsAlive())
             {
-                if(isServer)
-                    ship.CmdDie();
+                    ship.Die();
             }
 
             HullChanged.Invoke(currentHull);

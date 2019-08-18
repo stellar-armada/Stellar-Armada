@@ -19,12 +19,12 @@ MonoBehaviour:
   m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 1
   m_SupportsHDR: 0
-  m_MSAA: 2
+  m_MSAA: 1
   m_RenderScale: 1
   m_MainLightRenderingMode: 1
   m_MainLightShadowsSupported: 0
   m_MainLightShadowmapResolution: 1024
-  m_AdditionalLightsRenderingMode: 2
+  m_AdditionalLightsRenderingMode: 0
   m_AdditionalLightsPerObjectLimit: 2
   m_AdditionalLightShadowsSupported: 0
   m_AdditionalLightsShadowmapResolution: 512
@@ -39,7 +39,7 @@ MonoBehaviour:
   m_SupportsDynamicBatching: 1
   m_MixedLightingSupported: 0
   m_ColorGradingMode: 0
-  m_ColorGradingLutSize: 32
+  m_ColorGradingLutSize: 16
   m_ShadowType: 0
   m_LocalShadowsSupported: 0
   m_LocalShadowsAtlasResolution: 256

@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,13 +13,23 @@ MonoBehaviour:
   m_Name: LeftControllerMap
   m_EditorClassIdentifier: 
   inputs:
-  - actionName: Trigger
-    gamepadId: 1
+  - actionName: LeftTrigger
+    gamepadId: 6
     gamepadIsButton: 1
-    unityInputName: TriggerLeft
+    unityInputName: VRTK_Axis9_LeftTrigger
     unityInputIsButton: 0
-  - actionName: Grip
-    gamepadId: 2
+  - actionName: LeftGrip
+    gamepadId: 4
     gamepadIsButton: 1
-    unityInputName: GripLeft
+    unityInputName: VRTK_Axis11_LeftGrip
+    unityInputIsButton: 0
+  - actionName: RightTrigger
+    gamepadId: 7
+    gamepadIsButton: 1
+    unityInputName: VRTK_Axis10_RightTrigger
+    unityInputIsButton: 0
+  - actionName: RightGrip
+    gamepadId: 5
+    gamepadIsButton: 1
+    unityInputName: VRTK_Axis12_LeftTrigger
     unityInputIsButton: 0

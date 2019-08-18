@@ -1,3 +1,5 @@
+#if UNITY_WEBGL
+
 using UnityEngine;
 using UnityEngine.XR;
 using System;
@@ -238,3 +240,4 @@ public class WebVRManager : MonoBehaviour
          }
     }
 }
+#endif

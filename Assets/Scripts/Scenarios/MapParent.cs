@@ -7,11 +7,10 @@ namespace SpaceCommander.Scenarios
     public class MapParent : MonoBehaviour
     {
         public static MapParent instance;
-        private void Awake()
+        void Awake()
         {
-            if (instance == null)
                 instance = this;
-            transform.localScale = Vector3.one * ScaleManager.scale;
+            transform.localScale = Vector3.one * ScaleManager.GetScale();
         }
 
     }

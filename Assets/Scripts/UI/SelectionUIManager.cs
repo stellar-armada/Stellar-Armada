@@ -118,14 +118,15 @@ namespace SpaceCommander.UI
 
         public void RemoveSelectableFromSelectionSets(uint entityId)
         {
+            Debug.Log("Attempting to remove entity " + entityId + " from selections");
             for (int i = 0; i < selectionSets.Count; i++)
             {
-                var selectable = selectionSets[i].Single(s => s.GetOwningEntity().GetEntityId() == entityId);
-
-                if (selectable != null)
+                if (selectionSets[i].Exists(s => s.GetOwningEntity().GetEntityId() == entityId))
                 {
-                    selectionSets[i].Remove(selectable);
+                    var selectable = selectionSets[i].Single(s => s.GetOwningEntity().GetEntityId() == entityId);
+                        selectionSets[i].Remove(selectable);
                     UpdateSelectionSet(i);
+                    Destroy(selectable.GetOwningEntity().GetGameObject());
                 }
             }
         }

@@ -35,7 +35,7 @@ public class ShipFactory : EntityFactory
         }
         
         GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, MapParent.instance.transform);
-        shipGameObject.transform.SetGlobalScale(Vector3.one * ScaleManager.scale);
+        shipGameObject.transform.localScale = Vector3.one;
         NetworkServer.Spawn(shipGameObject);
         
         Ship s = shipGameObject.GetComponent<Ship>();
