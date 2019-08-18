@@ -12,7 +12,15 @@ namespace SpaceCommander.Ships
     {
         [HideInInspector] public PlayerController playerController;
 
+        public enum FormationPosition
+        {
+            Frontline = 0,
+            Midline = 1,
+            Backline = 2
+        }
+        
         public ShipType type;
+        public FormationPosition formationPosition;
         
         [Header("Ship Subsystems")]
         public EntityMovement movement;

@@ -46,7 +46,7 @@ PlayerSettings:
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 1920
   defaultScreenHeightWeb: 1080
-  m_StereoRenderingPath: 1
+  m_StereoRenderingPath: 2
   m_ActiveColorSpace: 1
   m_MTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
@@ -146,8 +146,8 @@ PlayerSettings:
       glCacheMaxBlobSize: 524288
       glCacheMaxFileSize: 8388608
     oculus:
-      sharedDepthBuffer: 0
-      dashSupport: 0
+      sharedDepthBuffer: 1
+      dashSupport: 1
       lowOverheadMode: 1
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0

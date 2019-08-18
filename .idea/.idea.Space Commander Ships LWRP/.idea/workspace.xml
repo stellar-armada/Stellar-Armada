@@ -62,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Damager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/GuardianBeamTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Beam.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/385D0F58-780E-4345-B8A9-CAFD1FA34231/bb/2a44f3d0/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Tracking/Follow/ObjectFollower.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkTransformBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/LaserTurret.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,7 +103,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/ISelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IO/HandSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/com.unity.xr.legacyinputhelpers/Runtime/TrackedPoseDriver/TrackedPoseDriver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/385D0F58-780E-4345-B8A9-CAFD1FA34231/db/4cab7db8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IExplodable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/ISelectable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRCamera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -162,8 +163,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/EntityManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/StatusBar.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/EntityExplosion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/SplinePathway.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/EntityFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Tools/DetectableObjectCreator2D.cs" root0="FORCE_HIGHLIGHTING" />
@@ -171,9 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchNetworkManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipShield.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Pointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
@@ -197,7 +197,6 @@
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/WarpTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/MovementTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ExplosionTest.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.xr.legacyinputhelpers@1.3.2/Runtime/TrackedPoseDriver/TrackedPoseDriver.cs" />
         <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRManager.cs" />
         <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRControllerData.cs" />
@@ -211,17 +210,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipExplosion.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/EntityExplosion.cs" />
-        <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/MapParent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/ScaleManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Hull.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UISelectionShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Entity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Settings/SettingsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/SimpleMatchServerManager.cs" />
       </list>
     </option>
   </component>
@@ -290,7 +293,7 @@
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
       <workItem from="1565857687040" duration="26669000" />
-      <workItem from="1565984452880" duration="32947000" />
+      <workItem from="1565984452880" duration="44456000" />
     </task>
     <servers />
   </component>

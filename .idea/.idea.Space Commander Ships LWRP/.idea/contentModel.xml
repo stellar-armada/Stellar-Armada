@@ -7,46 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="com.unity.xr.legacyinputhelpers" t="Include">
-          <e p="Editor" t="Include">
-            <e p="ArmModels" t="Include">
-              <e p="ArmModelEditor.cs" t="Include" />
-              <e p="SwingArmModelEditor.cs" t="Include" />
-              <e p="TransitionArmModelEditor.cs" t="Include" />
-            </e>
-            <e p="SeedXRInputBindings" t="Include">
-              <e p="SeedXRInputBindings.cs" t="Include" />
-            </e>
-            <e p="TrackedPoseDriver" t="Include">
-              <e p="TPDConfigurationProvider.cs" t="Include" />
-              <e p="TrackedPoseDriverEditor.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Runtime" t="Include">
-            <e p="ArmModels" t="Include">
-              <e p="ArmModel.cs" t="Include" />
-              <e p="SwingArmModel.cs" t="Include" />
-              <e p="TransitionArmModel.cs" t="Include" />
-            </e>
-            <e p="TrackedPoseDriver" t="Include">
-              <e p="AssemblyInfo.cs" t="Include" />
-              <e p="BasePoseProvider.cs" t="Include" />
-              <e p="TrackedPoseDriver.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Tests" t="Include">
-            <e p="Editor" t="Include">
-              <e p="SeedXRInputBindings" t="Include">
-                <e p="SeedXRInputBindingsTests.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Runtime" t="Include">
-              <e p="TrackedPoseDriver" t="Include">
-                <e p="TrackedPoseDriverTests.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="Heureka" t="Include">
           <e p="AssetHunterPRO" t="Include">
             <e p="Editor" t="Include">
@@ -2299,12 +2259,6 @@
       <e p="Space Commander Ships LWRP.sln" t="IncludeFlat" />
       <e p="Supyrb.Editor.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
-      <e p="UnityEditor.SpatialTracking.csproj" t="IncludeRecursive" />
-      <e p="UnityEditor.XR.LegacyInputHelpers.csproj" t="IncludeRecursive" />
-      <e p="UnityEditor.XR.LegacyInputHelpers.Tests.csproj" t="IncludeRecursive" />
-      <e p="UnityEngine.SpatialTracking.csproj" t="IncludeRecursive" />
-      <e p="UnityEngine.SpatialTracking.Tests.csproj" t="IncludeRecursive" />
-      <e p="UnityEngine.XR.LegacyInputHelpers.csproj" t="IncludeRecursive" />
       <e p="VRTK.Prefabs.Runtime.csproj" t="IncludeRecursive" />
       <e p="Zinnia.Editor.csproj" t="IncludeRecursive" />
       <e p="Zinnia.Runtime.csproj" t="IncludeRecursive" />

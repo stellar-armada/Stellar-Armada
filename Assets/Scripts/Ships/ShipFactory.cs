@@ -43,20 +43,20 @@ public class ShipFactory : EntityFactory
         s.CmdSetPlayer(playerID);
     }
     
-    // Ship Factory
-    [Command]
-    public void CmdCreateShipForTeam(uint teamId, int groupId, ShipType shipType, Vector3 position, Quaternion rotation)
+    public Ship CreateShipForTeam(uint teamId, int groupId, ShipType shipType)
     {
+        if (!isServer) return null;
+        
         GameObject shipPrefab;
         
         bool success = ships.TryGetValue(shipType, out shipPrefab);
         if (!success)
         {
             Debug.LogError("Failed to create ship - was not found in dictionary");
-            return;
+            return null;
         }
         
-        GameObject shipGameObject = Instantiate(shipPrefab, position, rotation);
+        GameObject shipGameObject = Instantiate(shipPrefab);
         
         NetworkServer.Spawn(shipGameObject);
         
@@ -67,6 +67,6 @@ public class ShipFactory : EntityFactory
         
         // Get group from group ID and add
         TeamManager.instance.GetTeamByID(teamId).groups[groupId].Add(s);
-
+        return s;
     }
 }

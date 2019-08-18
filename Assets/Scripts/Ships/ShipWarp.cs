@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Mirror;
+using SpaceCommander.Scenarios;
 using UnityEngine;
 #pragma warning disable 0649
 namespace SpaceCommander.Ships
@@ -18,22 +19,9 @@ namespace SpaceCommander.Ships
             {
                 _ship = GetComponent<Ship>();
                 PrepareForWarpIn();
-                
-                
-                
-                // for debugging
-                Vector3 position = Random.onUnitSphere * 20f;
-                Quaternion lookToCenter = Quaternion.LookRotation(-position);
-                
-                InitWarp(position,lookToCenter);
+
             }
-            
-            void Start()
-            {
-                transform.localPosition = Random.onUnitSphere * 10f;
-                // For debug
-            }
-            
+
             void PrepareForWarpIn()
             {
                 _ship.movement.DisableMovement();
@@ -47,6 +35,8 @@ namespace SpaceCommander.Ships
             
             public void InitWarp(Vector3 position, Quaternion rotation)
             {
+                _ship.transform.SetParent(MapParent.instance.transform); // if not done already. check to see if it's already called by now
+                Debug.Log("Warping ship to: " + position);
                 _ship.transform.localPosition = position;
                 _ship.transform.rotation = rotation;
                 _ship.visualModel.transform.localPosition = warpInStartPos;

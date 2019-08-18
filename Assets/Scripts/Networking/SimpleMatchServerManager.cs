@@ -1,5 +1,7 @@
-﻿using Mirror;
+﻿using System.Collections.Generic;
+using Mirror;
 using SpaceCommander.Scenarios;
+using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
 #pragma warning disable 0649
@@ -44,17 +46,54 @@ namespace SpaceCommander.Match
                 // Iterate through battle groups
                 for (int g = 0; g < scenario.teamInfo[i].fleetBattleGroups.Count; g++)
                 {
-                    // Iterate through ship type
+                    //Store ships in a list for a second
+                    List<Ship> ships = new List<Ship>();
+                    
                     foreach (var key in scenario.teamInfo[i].fleetBattleGroups[g])
                     {
                         for (int numShips = 0; numShips < key.Value; numShips++)
                         {
                             // For each ship, instantiate for current team
-                            ShipFactory.instance.CmdCreateShipForTeam(i, g, key.Key, Random.onUnitSphere, Quaternion.identity);
+                            Ship s = ShipFactory.instance.CreateShipForTeam(i, g, key.Key);
+                            ships.Add(s);
                         }
                     }
+                    
+                    // for each battlegroup, make a new transform with vector 
+                    GameObject go = new GameObject();
+                    go.name = "Group Position: " + g;
+
+                    // get positions back for list of ships from formation manager
+                    Dictionary<Ship, Vector3> shipPositions = ShipFormationManager.GetFormationPositionsForShips(ships);
+
+                    foreach (Ship s in ships)
+                    {
+                        // transform their positions by inverse transform point of the transform
+                        // and warp in ship at point, with heading
+                        Vector3 pos = scenario.teamInfo[i].battleGroupWarpVectors[g].position;
+                        Quaternion rot = Quaternion.Euler(scenario.teamInfo[i].battleGroupWarpVectors[g].rotation);
+                        Matrix4x4 parentMatrix = Matrix4x4.TRS(pos, rot, Vector3.one).inverse;
+ 
+                       Vector3 newPos = parentMatrix.MultiplyPoint3x4(shipPositions[s]);
+                       
+                       Debug.Log("Position: " + pos + " | Ship formation position: " + shipPositions[s] + " | Transformed position: " + newPos);
+                       
+                       
+                        s.shipWarp.InitWarp( newPos, Quaternion.Inverse(rot));
+                       
+                    }
+
                 }
+                
+               
+            
+                
+            
+
             }
+            
+
+            
 
             // Start prematch timer
             
