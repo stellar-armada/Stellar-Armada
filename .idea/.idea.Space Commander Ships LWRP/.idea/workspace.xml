@@ -61,6 +61,7 @@
     <setting file="mock:///C# Console" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Damager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/GuardianBeamTurret.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Level.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Beam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/385D0F58-780E-4345-B8A9-CAFD1FA34231/bb/2a44f3d0/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FormationMatrices.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,6 +69,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkTransformBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/LaserTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForEvasion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/WarpPoint.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/VulcanTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Missile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/MissileLauncher.cs" root0="FORCE_HIGHLIGHTING" />
@@ -179,8 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/EntityManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/HealthTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/WarpTest.cs" />
@@ -230,6 +230,8 @@
         <option value="$PROJECT_DIR$/Assets/PlacementUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/PlacementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Placer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Level.cs" />
+        <option value="$PROJECT_DIR$/Assets/WarpPoint.cs" />
       </list>
     </option>
   </component>
@@ -298,7 +300,7 @@
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
       <workItem from="1565857687040" duration="26669000" />
-      <workItem from="1565984452880" duration="61448000" />
+      <workItem from="1565984452880" duration="63239000" />
     </task>
     <servers />
   </component>

@@ -63,10 +63,14 @@
             </e>
           </e>
         </e>
+        <e p="Level.cs" t="Include" />
         <e p="MovementIndicator.cs" t="Include" />
         <e p="PlacementIndicator.cs" t="Include" />
         <e p="PlacementUIManager.cs" t="Include" />
         <e p="Placer.cs" t="Include" />
+        <e p="PlanetPackFree" t="Include">
+          <e p="Readme.txt" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -2249,6 +2253,7 @@
             </e>
           </e>
         </e>
+        <e p="WarpPoint.cs" t="Include" />
         <e p="WebVR" t="Include">
           <e p="Scripts" t="Include">
             <e p="WebVRCamera.cs" t="Include" />
