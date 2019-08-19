@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using SpaceCommander.Scenarios;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -61,11 +62,8 @@ namespace SpaceCommander.Ships
         {
             if (PlayerCamera.instance == null) return;
             Camera c = PlayerCamera.instance.GetCamera();
-            Transform cameraTransform = c.transform;
-            Vector3 targetPostition = new Vector3( cameraTransform.position.x, 
-                transform.position.y, 
-                cameraTransform.position.z ) ;
-            transform.LookAt( targetPostition ) ;
+            // Multiply the inverse rotation of our scene by the vector to face
+            transform.rotation = c.transform.rotation;
         }
         
         public void ShowStatusBar()

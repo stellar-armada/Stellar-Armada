@@ -30,7 +30,7 @@ public class MapControls : MonoBehaviour
         InputManager.instance.OnRightGrip += HandleRightInput;
         leftController = InputManager.instance.leftHand;
         rightController = InputManager.instance.rightHand;
-        EnvironmentParent.instance.transform.localScale = Vector3.one * startScale;
+        SceneTransformableParent.instance.transform.localScale = Vector3.one * startScale;
     }
 
     void HandleLeftInput(bool on)
@@ -87,17 +87,17 @@ public class MapControls : MonoBehaviour
     void StartTransformationInverted()
     {
         // Unparent scene root from scene parent
-        EnvironmentTransformRoot.instance.transform.SetParent(null, true);
+        SceneRoot.instance.transform.SetParent(null, true);
 
         // Calculate midpoint
 
         Vector3 midpoint = (leftController.position + rightController.position) / 2f;
 
         // Place scene parent at midpoint
-        EnvironmentParent.instance.transform.position = midpoint;
+        SceneTransformableParent.instance.transform.position = midpoint;
 
         // reparent 
-        EnvironmentTransformRoot.instance.transform.SetParent(EnvironmentParent.instance.transform, true);
+        SceneRoot.instance.transform.SetParent(SceneTransformableParent.instance.transform, true);
     }
 
     void Update()
@@ -133,7 +133,7 @@ public class MapControls : MonoBehaviour
         Vector3 midPos = (leftPos + rightPos) / 2f;
         Vector3 prevMidPos = (leftPosPrev + rightPosPrev) / 2f;
         Vector3 distance = prevMidPos - midPos;
-        EnvironmentTransformRoot.instance.transform.Translate(distance, Space.World);
+        SceneRoot.instance.transform.Translate(distance, Space.World);
     }
 
     void RotateInverted()
@@ -151,7 +151,7 @@ public class MapControls : MonoBehaviour
         Vector3 cross = Vector3.Cross(prevDir, dir);
 
         //perform rotation
-        EnvironmentParent.instance.transform.RotateAround(center, cross, -angle);
+        SceneTransformableParent.instance.transform.RotateAround(center, cross, -angle);
     }
 
     void ScaleInverted()
@@ -165,12 +165,12 @@ public class MapControls : MonoBehaviour
 
         //convert middle position of hands from global to local space
         Vector3 midPosPreScale = (rightPosPrev + leftPosPrev) / 2f;
-        Vector3 midPosLocal = EnvironmentParent.instance.transform.InverseTransformPoint(midPosPreScale);
+        Vector3 midPosLocal = SceneTransformableParent.instance.transform.InverseTransformPoint(midPosPreScale);
         
-        float currentScale = EnvironmentParent.instance.transform.localScale.x;
+        float currentScale = SceneTransformableParent.instance.transform.localScale.x;
         
         //apply scale to model
-        EnvironmentParent.instance.transform.localScale = Vector3.one * Mathf.Clamp(currentScale * (newScale * scaleFactor), scaleMin, scaleMax);
+        SceneTransformableParent.instance.transform.localScale = Vector3.one * Mathf.Clamp(currentScale * (newScale * scaleFactor), scaleMin, scaleMax);
         
         //convert local position back to global and perform corrective translation
       // Vector3 midPosPostScale = EnvironmentParent.instance.transform.TransformPoint(midPosLocal);

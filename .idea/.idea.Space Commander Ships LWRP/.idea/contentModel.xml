@@ -63,15 +63,13 @@
             </e>
           </e>
         </e>
+        <e p="Impact.cs" t="Include" />
         <e p="Level.cs" t="Include" />
         <e p="MovementIndicator.cs" t="Include" />
         <e p="New Amplify Shader.shader" t="Include" />
         <e p="PlacementIndicator.cs" t="Include" />
         <e p="PlacementUIManager.cs" t="Include" />
         <e p="Placer.cs" t="Include" />
-        <e p="PlanetPackFree" t="Include">
-          <e p="Readme.txt" t="Include" />
-        </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -173,12 +171,12 @@
             <e p="PoolManagerDB.cs" t="Include" />
           </e>
           <e p="Scenarios" t="Include">
-            <e p="EnvironmentParent.cs" t="Include" />
-            <e p="EnvironmentTransformRoot.cs" t="Include" />
             <e p="MapParent.cs" t="Include" />
             <e p="MapTransformRoot.cs" t="Include" />
             <e p="Scenario.cs" t="Include" />
             <e p="ScenarioManager.cs" t="Include" />
+            <e p="SceneRoot.cs" t="Include" />
+            <e p="SceneTransformableParent.cs" t="Include" />
             <e p="WinCondition.cs" t="Include" />
           </e>
           <e p="Selection" t="Include">

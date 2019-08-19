@@ -21,7 +21,7 @@ namespace SpaceCommander.Players
         private void Awake()
         {
             Transform t = transform; // skip the gameObject.transform lookup
-            t.parent = EnvironmentTransformRoot.instance.transform;
+            t.parent = SceneRoot.instance.transform;
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
             

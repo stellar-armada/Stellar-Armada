@@ -10,18 +10,12 @@ namespace SpaceCommander.Players
         
         [SerializeField] SkinnedMeshRenderer[] bodyRenderers;
 
-        [SerializeField] private Renderer[] renderersToHideFromLocalPlayer;
-        
         private MaterialPropertyBlock props;
 
         public void Init()
         {
             props = new MaterialPropertyBlock();
             humanPlayerController.EventOnPlayerTeamChange += HandleTeamChange;
-            
-            if(humanPlayerController.isLocalPlayer) 
-                foreach (Renderer ren in renderersToHideFromLocalPlayer)
-                    ren.enabled = false;
         }
 
         public void HandleTeamChange()
