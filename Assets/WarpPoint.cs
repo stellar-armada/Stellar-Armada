@@ -9,7 +9,7 @@ public class WarpPoint : MonoBehaviour
 
     void Awake()
     {
-        GetComponent<Renderer>().enabled = false;
+       // GetComponent<Renderer>().enabled = false;
     }
 
 }

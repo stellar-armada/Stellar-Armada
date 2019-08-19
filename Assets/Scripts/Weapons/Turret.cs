@@ -113,7 +113,7 @@ namespace SpaceCommander.Weapons
         {
 
             // if current target cant be hit or object isn't within distance
-            if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.position, target.position) > maxRange)
+            if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.localPosition, target.localPosition) > maxRange)
             {
                 ClearTarget();
                 isFiring = false;
@@ -127,7 +127,7 @@ namespace SpaceCommander.Weapons
         {
             if (!owningWeaponSystemController.WeaponSystemsEnabled()) return;
             // overlap sphere to get list of hitting objects
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange, damageableLayerMask);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange * transform.lossyScale.x, damageableLayerMask); // Scale by overall to be resistant to world scale changes
 
             if (hitColliders.Length < 1) return; // No colliders hit
 

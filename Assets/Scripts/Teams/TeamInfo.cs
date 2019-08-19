@@ -17,7 +17,6 @@ namespace SpaceCommander
     public class TeamInfo
     {
          public List<ShipIdDictionary> fleetBattleGroups = new List<ShipIdDictionary>();
-         public List<WarpVector> battleGroupWarpVectors;
          public int numberOfPlayerSlots;
     }
 }
