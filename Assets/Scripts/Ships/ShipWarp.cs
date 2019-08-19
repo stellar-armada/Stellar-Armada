@@ -37,7 +37,7 @@ namespace SpaceCommander.Ships
             {
                 _ship.transform.SetParent(MapParent.instance.transform); // if not done already. check to see if it's already called by now
                 Debug.Log("Warping ship to: " + position);
-                _ship.transform.position = position;
+                _ship.transform.localPosition = position;
                 _ship.transform.rotation = rotation;
                 _ship.visualModel.transform.localPosition = warpInStartPos;
                 _ship.weaponSystemController.ShowWeaponSystems();

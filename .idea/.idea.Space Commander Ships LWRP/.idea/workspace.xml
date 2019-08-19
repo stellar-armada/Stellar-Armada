@@ -94,6 +94,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenarios/ScenarioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/Transport/Websocket/Ninja.WebSockets/Exceptions/EntityTooLargeException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenarios/Scenario.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/Warning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Selection/SelectionType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Selection/SelectionHandler.cs" root0="FORCE_HIGHLIGHTING" />
@@ -203,7 +204,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Settings/SettingsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/SimpleMatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/SerializedDictionaries/ShipPrefabDictionary.cs" />
@@ -229,9 +229,10 @@
         <option value="$PROJECT_DIR$/Assets/Placer.cs" />
         <option value="$PROJECT_DIR$/Assets/Level.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/MatchServerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Assets/WarpPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/MatchServerManager.cs" />
       </list>
     </option>
   </component>
@@ -300,7 +301,7 @@
       <workItem from="1565668573667" duration="13342000" />
       <workItem from="1565686007681" duration="23368000" />
       <workItem from="1565857687040" duration="26669000" />
-      <workItem from="1565984452880" duration="65933000" />
+      <workItem from="1565984452880" duration="67144000" />
     </task>
     <servers />
   </component>

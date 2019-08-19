@@ -62,31 +62,29 @@ namespace SpaceCommander.Match
                         }
                     }
 
-                    // for each battlegroup, make a new transform with vector 
-                    GameObject go = new GameObject();
-                    go.name = "Group Position: " + g;
-
                     // get positions back for list of ships from formation manager
                     Dictionary<Ship, Vector3> shipPositions = ShipFormationManager.GetFormationPositionsForShips(ships);
 
                     // Get list of warp vectors in level
                     var warpPoints = m.GetComponent<Level>().warpPoints;
 
+                    Transform wp = warpPoints.Single(w => (w.teamIndex == i && w.groupNumber == g)).transform;
+                    
                     foreach (Ship s in ships)
                     {
-                        Transform wp = warpPoints.Single(w => (w.teamIndex == i && w.groupNumber == g)).transform;
-                        Vector3 pos = wp.position;
+                        
+                        Vector3 pos = wp.localPosition;
                         Quaternion rot = wp.rotation;
 
-                        Matrix4x4 parentMatrix = Matrix4x4.TRS(pos, rot, Vector3.one).inverse;
+                        Matrix4x4 parentMatrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one).inverse;
 
                         Vector3 newPos = parentMatrix.MultiplyPoint3x4(shipPositions[s]);
 
                         Debug.Log("Position: " + pos + " | Ship formation position: " + shipPositions[s] +
-                                  " | Transformed position: " + newPos);
+                                  " | Transformed position: " + pos + newPos);
 
 
-                        s.shipWarp.InitWarp(newPos, Quaternion.Inverse(rot));
+                        s.shipWarp.InitWarp(pos + newPos, rot);
                     }
                 }
             }
