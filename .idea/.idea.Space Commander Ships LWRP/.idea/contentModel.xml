@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="FormationMatrices.cs" t="Include" />
         <e p="Heureka" t="Include">
           <e p="AssetHunterPRO" t="Include">
             <e p="Editor" t="Include">
@@ -64,7 +65,7 @@
         </e>
         <e p="MovementIndicator.cs" t="Include" />
         <e p="PlacementIndicator.cs" t="Include" />
-        <e p="PlacementManager.cs" t="Include" />
+        <e p="PlacementUIManager.cs" t="Include" />
         <e p="Placer.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
@@ -209,7 +210,6 @@
             <e p="ShipEngines.cs" t="Include" />
             <e p="ShipFactory.cs" t="Include" />
             <e p="ShipFormationManager.cs" t="Include" />
-            <e p="ShipHologram.cs" t="Include" />
             <e p="ShipType.cs" t="Include" />
             <e p="ShipWarp.cs" t="Include" />
             <e p="ShipWeaponSystemController.cs" t="Include" />

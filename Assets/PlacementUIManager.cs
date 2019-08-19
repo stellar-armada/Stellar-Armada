@@ -3,9 +3,9 @@ using SpaceCommander.Players;
 using SpaceCommander.Ships;
 using UnityEngine;
 
-public class PlacementManager : MonoBehaviour
+public class PlacementUIManager : MonoBehaviour
 {
-    public static PlacementManager instance;
+    public static PlacementUIManager instance;
 
     [SerializeField] private HumanPlayerController humanPlayerController;
     

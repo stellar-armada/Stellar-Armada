@@ -1,11 +1,10 @@
 ﻿using SpaceCommander;
-using SpaceCommander.Ships;
 using UnityEngine;
 
 public class PlacementIndicator : MonoBehaviour
 {
-    public uint entityId;
-    public NetworkEntity entity;
+    [HideInInspector] public uint entityId;
+    [HideInInspector] public NetworkEntity entity;
     public GameObject visualModel;
 
     void Awake()

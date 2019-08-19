@@ -32,7 +32,7 @@ public class Placer : MonoBehaviour
         foreach (Ship s in ships)
         {
             // Get the placement indicator
-            PlacementIndicator pI = PlacementManager.placementIndicators.Single(p => p.entity == s);
+            PlacementIndicator pI = PlacementUIManager.placementIndicators.Single(p => p.entity == s);
             
             //Activate
             pI.gameObject.SetActive(true);
@@ -65,6 +65,7 @@ public class Placer : MonoBehaviour
     void Start()
     {
         SelectionUIManager.instance.OnSelectionChanged += ShowPlacements;
+        
     }
 
 
