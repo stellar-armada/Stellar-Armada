@@ -16613,8 +16613,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 1140206090
+  m_AssetId: 97c9ecdb36ab09e409f7da9f6151d19e
+  m_SceneId: 0
 --- !u!114 &6494030138726252701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16696,6 +16696,7 @@ MonoBehaviour:
   selectionHandler: {fileID: 1342043569228971231}
   playerController: {fileID: 0}
   type: 5
+  formationPosition: 2
   movement: {fileID: 6613500308364987285}
   hull: {fileID: 2574464254795025626}
   shield: {fileID: 2271289916086615197}
@@ -16981,16 +16982,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.8
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-        type: 3}
-      propertyPath: m_Name
-      value: SelectionBox
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
       propertyPath: m_CastShadows
@@ -17001,6 +16992,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d17bd9fbd833fae468bd75c96393138e, type: 2}
+    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+        type: 3}
+      propertyPath: m_Name
+      value: SelectionBox
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 078c3191bfc9b8f46848f6b4cd1c7410, type: 3}
 --- !u!4 &76652971646040623 stripped

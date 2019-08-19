@@ -15,7 +15,11 @@ namespace SpaceCommander
         protected Team team; // Should be set by ship factory. Referenced in enemy checks.
 
         [SyncVar] protected uint entityId;
-        
+
+        [Header("Entity Subsystems")]
+        public EntityMovement movement;
+        public EntityExplosion entityExplosion;
+
         public SelectionHandler selectionHandler;
 
         public delegate void NetworkEntityEvent();

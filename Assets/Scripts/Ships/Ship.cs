@@ -23,11 +23,9 @@ namespace SpaceCommander.Ships
         public FormationPosition formationPosition;
         
         [Header("Ship Subsystems")]
-        public EntityMovement movement;
         public Hull hull;
         public Shield shield;
         public ShipWeaponSystemController weaponSystemController;
-        public EntityExplosion entityExplosion;
         public ShipWarp shipWarp;
         public StatusBar statusBar;
 

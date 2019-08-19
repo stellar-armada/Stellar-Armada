@@ -4,7 +4,6 @@ using SpaceCommander.Scenarios;
 using SpaceCommander.Ships;
 using SpaceCommander.Teams;
 using UnityEngine;
-using Zinnia.Extension;
 
 public class ShipFactory : EntityFactory
 {

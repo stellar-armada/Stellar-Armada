@@ -17,7 +17,7 @@ public class MovementTest : MonoBehaviour
 
     public void MoveToPointInSpace()
     {
-        shipMovement.MoveToPointInSpace(new Vector3(Random.Range(-300f, 300f), Random.Range(0f, 0f), Random.Range(-300f, 300f)));
+        shipMovement.MoveToPoint(new Vector3(Random.Range(-300f, 300f), Random.Range(0f, 0f), Random.Range(-300f, 300f)), Quaternion.identity);
     }
 
     public void StopMovement()
@@ -54,7 +54,7 @@ public class MovementTest : MonoBehaviour
                 }
                 else
                 {
-                    shipMovement.MoveToPointInSpace(hit.point);
+                    shipMovement.MoveToPoint(hit.point, Quaternion.identity);
                     Debug.Log("Raycast ground, moving toward it");
                 }
             }

@@ -19,15 +19,23 @@ namespace SpaceCommander
         public SteerForPoint steerForPoint;
         public AutonomousVehicle autonomousVehicle;
 
+        public delegate void MoveToPointEvent(Vector3 pos, Quaternion orientation);
+
+        public delegate void MovementEvent();
+
+        public MoveToPointEvent OnMoveToPoint;
+        public MovementEvent OnStop;
+
         void Awake()
         {
             entity = GetComponent<NetworkEntity>();
         }
         
-        public void MoveToPointInSpace(Vector3 pos)
+        public void MoveToPoint(Vector3 pos, Quaternion rot)
         {
             if (!controlEnabled || !entity.isServer) return;
             GoToPoint(pos);
+            OnMoveToPoint?.Invoke(pos, rot);
         }
 
         public void MoveToEntity(uint shipID)
@@ -57,6 +65,7 @@ namespace SpaceCommander
             steerForPoint.enabled = true;
             steerForPursuit.Quarry = null;
             steerForPursuit.enabled = false;
+            OnStop?.Invoke();
         }
         
         void GoToPoint(Vector3 point)
@@ -74,8 +83,10 @@ namespace SpaceCommander
 
         public void DisableMovement()
         {
+            OnStop?.Invoke();
             if (!entity.isServer) return;
             controlEnabled = false;
+            
         }
     }
 }

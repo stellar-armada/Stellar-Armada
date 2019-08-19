@@ -33,6 +33,10 @@ namespace SpaceCommander.UI
             new List<UISelectionShip>(),
             new List<UISelectionShip>(),
         };
+
+        public delegate void SelectionEvent();
+
+        public SelectionEvent OnSelectionChanged;
         
         void Awake()
         {
@@ -79,6 +83,7 @@ namespace SpaceCommander.UI
                     selectionShip.gameObject.SetActive(false);
                 }
             }
+            OnSelectionChanged?.Invoke();
         }
 
         void ClearSelectionSets()
@@ -129,6 +134,7 @@ namespace SpaceCommander.UI
                     Destroy(selectable.GetOwningEntity().GetGameObject());
                 }
             }
+            OnSelectionChanged?.Invoke();
         }
 
         public List<ISelectable> GetCurrentSelection()
@@ -149,6 +155,7 @@ namespace SpaceCommander.UI
             {
                 AddToSelection(ship.selectionHandler);
             }
+            OnSelectionChanged?.Invoke();
         }
 
         public void CreateOrReplaceSelectionSet(int selectionSetId)
@@ -189,6 +196,7 @@ namespace SpaceCommander.UI
                 }
 
                 currentSelection = selectionSets[selectionSetId];
+                OnSelectionChanged?.Invoke();
         }
 
         public void SetSelectionFromGroup(List<ISelectable> selectables)
@@ -204,6 +212,7 @@ namespace SpaceCommander.UI
             }
 
             currentSelection = selectables;
+            OnSelectionChanged?.Invoke();
         }
 
 
@@ -234,6 +243,7 @@ namespace SpaceCommander.UI
             {
                 selectable.Select();
             }
+            OnSelectionChanged?.Invoke();
         }
 
         public void AddToSelection(ISelectable selectable)
@@ -243,6 +253,7 @@ namespace SpaceCommander.UI
                 currentSelection.Add(selectable);
                 selectable.Select();
             }
+            OnSelectionChanged?.Invoke();
         }
 
         public void ClearSelection()
@@ -253,6 +264,7 @@ namespace SpaceCommander.UI
             }
 
             currentSelection.Clear();
+            OnSelectionChanged?.Invoke();
         }
 
         public void RemoveFromSelection(ISelectable selectable)
@@ -262,6 +274,7 @@ namespace SpaceCommander.UI
                 currentSelection.Remove(selectable);
                 selectable.Deselect();
             }
+            OnSelectionChanged?.Invoke();
         }
     }
 }
