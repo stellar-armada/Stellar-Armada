@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using SpaceCommander.Pooling;
+using SpaceCommander.Scenarios;
+using Zinnia.Extension;
+
 #pragma warning disable 0649
 namespace SpaceCommander.Weapons
 {
@@ -7,7 +10,8 @@ namespace SpaceCommander.Weapons
     {
         public float lifeTime = 5f; // Projectile life time
         public float despawnDelay; // Delay despawn in ms
-        public float velocity = 300f; // Projectile velocity
+        float scaledVelocity = 300f; // Projectile velocity
+        public float velocity = 300f; // Start velocy before scaling by scale manager
         public float RaycastAdvance = 2f; // Raycast advance multiplier 
         public bool DelayDespawn = false; // Projectile despawn flag 
         public ParticleSystem[] delayedParticles; // Array of delayed particles
@@ -24,11 +28,16 @@ namespace SpaceCommander.Weapons
             // Cache transform and get all particle systems attached
             transform = GetComponent<Transform>();
             particles = GetComponentsInChildren<ParticleSystem>();
+            float scale = ScaleManager.GetScale();
+            transform.SetParent(MapParent.instance.transform);
+            transform.SetGlobalScale(scale * Vector3.one);
+            scaledVelocity = velocity * scale;
         }
 
         // OnSpawned called by pool manager 
         public void OnSpawned()
         {
+            transform.SetParent(MapParent.instance.transform);
             // Reset flags and raycast structure
             isHit = false;
             isFXSpawned = false;
@@ -100,7 +109,7 @@ namespace SpaceCommander.Weapons
         void StepForward()
         {
             // Projectile step per frame based on velocity and time
-            Vector3 step = transform.forward * Time.deltaTime * velocity;
+            Vector3 step = transform.forward * Time.deltaTime * scaledVelocity;
 
             // Raycast for targets with ray length based on frame step by ray cast advance multiplier
             if (Physics.Raycast(transform.position, transform.forward, out hitPoint,

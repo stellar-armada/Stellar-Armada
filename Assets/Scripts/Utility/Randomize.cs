@@ -24,7 +24,7 @@ namespace SpaceCommander
         void OnEnable()
         {
             if (RandomScale)
-                transform.localScale = defaultScale*Random.Range(MinScale, MaxScale);
+                transform.localScale = defaultScale*Random.Range(MinScale, MaxScale)*ScaleManager.GetScale();
 
             if (RandomRotation)
                 transform.rotation *= Quaternion.Euler(0, 0, Random.Range(MinRotation, MaxRotaion));

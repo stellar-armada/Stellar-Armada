@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: vulcan_projectile
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 7937de49c09a3ba4ebb7a88a9476de5f, type: 3}
   m_ShaderKeywords: _COLORADDSUBDIFF_ON _RECEIVE_SHADOWS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,6 +33,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2393d3b244821af4ebc2711245f23e8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
         m_Texture: {fileID: 2800000, guid: 2393d3b244821af4ebc2711245f23e8a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -66,6 +70,7 @@ Material:
     - _SoftParticlesNearFadeDistance: 0
     - _SrcBlend: 1
     - _Surface: 1
+    - _Threshold: 0.005
     - _ZWrite: 0
     - __dirty: 1
     m_Colors:
