@@ -1004,8 +1004,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: fb8ab71d819054e3b98147408561d499
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 664870829
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -3874,6 +3874,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 975098095954899418}
     m_Modifications:
+    - target: {fileID: 2324894883842395963, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 1713833130453449945, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3928,11 +3933,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2324894883842395963, guid: 12001b42e5eb7f84ebdcf20c27abad08,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8797611113099095665, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
@@ -4157,6 +4157,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839945733948412457}
     m_Modifications:
+    - target: {fileID: 8737627309138390813, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Name
+      value: Cybergirl_Root
+      objectReference: {fileID: 0}
     - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: humanPlayerController
@@ -4166,11 +4171,6 @@ PrefabInstance:
         type: 3}
       propertyPath: hiddenFromLocalPlayerMask.m_Bits
       value: 16384
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737627309138390813, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Name
-      value: Cybergirl_Root
       objectReference: {fileID: 0}
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
@@ -4227,26 +4227,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1715712190217704534, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300028, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
-    - target: {fileID: 1715663141446104650, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300070, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
-    - target: {fileID: 1715866064328620402, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300014, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
-    - target: {fileID: 1711909624056842600, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300124, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
     - target: {fileID: 2171049363706591617, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: solver.spine.headTarget
@@ -4282,6 +4262,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300158, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
+    - target: {fileID: 1715712190217704534, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300028, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
     - target: {fileID: 1715682858803811802, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_Mesh
@@ -4297,6 +4282,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300118, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
+    - target: {fileID: 1715663141446104650, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300070, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
     - target: {fileID: 1715647466476764816, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_Mesh
@@ -4307,6 +4297,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300200, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
+    - target: {fileID: 1715866064328620402, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300014, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
     - target: {fileID: 1715850596150015018, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_Mesh
@@ -4477,6 +4472,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300142, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
+    - target: {fileID: 1711909624056842600, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300124, guid: 3ad5797f413c88c4294ed5e0bb3a844e, type: 3}
     - target: {fileID: 1711890678414742082, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_Mesh

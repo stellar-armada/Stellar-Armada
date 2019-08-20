@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: ed02990919015e14a86f331d76982750
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  AndroidEnableSustainedPerformanceMode: 1
+  AndroidEnableSustainedPerformanceMode: 0
   defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
@@ -164,7 +164,7 @@ PlayerSettings:
     Android: com.volcorp.spacecommander
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 26
+  AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -263,7 +263,7 @@ PlayerSettings:
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
-  androidUseLowAccuracyLocation: 1
+  androidUseLowAccuracyLocation: 0
   androidUseCustomKeystore: 0
   m_AndroidBanners:
   - width: 320
@@ -434,7 +434,7 @@ PlayerSettings:
     m_Enabled: 1
     m_Devices:
     - Oculus
-  openGLRequireES31: 1
+  openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   vuforiaEnabled: 0
@@ -452,7 +452,7 @@ PlayerSettings:
     m_EncodingQuality: 0
   m_BuildTargetGroupLightmapSettings:
   - m_BuildTarget: Android
-    m_TextureStreamingEnabled: 1
+    m_TextureStreamingEnabled: 0
     m_TextureStreamingPriority: 0
   - m_BuildTarget: WebGL
     m_TextureStreamingEnabled: 0
@@ -710,7 +710,7 @@ PlayerSettings:
     Standalone: 3
     WebGL: 3
   incrementalIl2cppBuild: {}
-  allowUnsafeCode: 0
+  allowUnsafeCode: 1
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1

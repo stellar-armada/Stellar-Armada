@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DestroyImmediately.cs" t="Include" />
         <e p="FormationMatrices.cs" t="Include" />
         <e p="Heureka" t="Include">
           <e p="AssetHunterPRO" t="Include">
@@ -67,6 +68,88 @@
         <e p="Level.cs" t="Include" />
         <e p="MovementIndicator.cs" t="Include" />
         <e p="New Amplify Shader.shader" t="Include" />
+        <e p="Oculus" t="Include">
+          <e p="VR" t="Include">
+            <e p="Editor" t="Include">
+              <e p="AndroidManifest.OVRSubmission.xml" t="Include" />
+              <e p="OVRADBTool.cs" t="Include" />
+              <e p="OVRConfig.cs" t="Include" />
+              <e p="OVRDeviceSelector.cs" t="Include" />
+              <e p="OVRDirectorySyncer.cs" t="Include" />
+              <e p="OVRExpansionFileGenerator.cs" t="Include" />
+              <e p="OVRGradleGeneration.cs" t="Include" />
+              <e p="OVRManifestPreprocessor.cs" t="Include" />
+              <e p="OVRPluginUpdater.cs" t="Include" />
+              <e p="OVRPluginUpdaterStub.cs" t="Include" />
+              <e p="OVRProjectConfig.cs" t="Include" />
+              <e p="OVRScreenshotWizard.cs" t="Include" />
+              <e p="PathHelper.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Composition" t="Include">
+                <e p="OVRCameraComposition.cs" t="Include" />
+                <e p="OVRComposition.cs" t="Include" />
+                <e p="OVRCompositionUtil.cs" t="Include" />
+                <e p="OVRDirectComposition.cs" t="Include" />
+                <e p="OVRExternalComposition.cs" t="Include" />
+                <e p="OVRSandwichComposition.cs" t="Include" />
+              </e>
+              <e p="OVRBoundary.cs" t="Include" />
+              <e p="OVRCameraRig.cs" t="Include" />
+              <e p="OVRCommon.cs" t="Include" />
+              <e p="OVRDebugHeadController.cs" t="Include" />
+              <e p="OVRDisplay.cs" t="Include" />
+              <e p="OVRHaptics.cs" t="Include" />
+              <e p="OVRHapticsClip.cs" t="Include" />
+              <e p="OVRHeadsetEmulator.cs" t="Include" />
+              <e p="OVRInput.cs" t="Include" />
+              <e p="OVRLayerAttribute.cs" t="Include" />
+              <e p="OVRManager.cs" t="Include" />
+              <e p="OVRMixedReality.cs" t="Include" />
+              <e p="OVROnCompleteListener.cs" t="Include" />
+              <e p="OVROverlay.cs" t="Include" />
+              <e p="OVRPlatformMenu.cs" t="Include" />
+              <e p="OVRPlugin.cs" t="Include" />
+              <e p="OVRProfile.cs" t="Include" />
+              <e p="OVRTracker.cs" t="Include" />
+              <e p="Util" t="Include">
+                <e p="OVRAudioSourceTest.cs" t="Include" />
+                <e p="OVRChromaticAberration.cs" t="Include" />
+                <e p="OVRControllerHelper.cs" t="Include" />
+                <e p="OVRCubemapCapture.cs" t="Include" />
+                <e p="OVRCursor.cs" t="Include" />
+                <e p="OVRDebugInfo.cs" t="Include" />
+                <e p="OVRGazePointer.cs" t="Include" />
+                <e p="OVRGearVrControllerTest.cs" t="Include" />
+                <e p="OVRGrabbable.cs" t="Include" />
+                <e p="OVRGrabber.cs" t="Include" />
+                <e p="OVRGridCube.cs" t="Include" />
+                <e p="OVRInputModule.cs" t="Include" />
+                <e p="OVRMixedRealityCaptureSettings.cs" t="Include" />
+                <e p="OVRModeParms.cs" t="Include" />
+                <e p="OVRMonoscopic.cs" t="Include" />
+                <e p="OVRNetwork.cs" t="Include" />
+                <e p="OVRPhysicsRaycaster.cs" t="Include" />
+                <e p="OVRPlayerController.cs" t="Include" />
+                <e p="OVRPointerEventData.cs" t="Include" />
+                <e p="OVRProfiler.cs" t="Include" />
+                <e p="OVRProgressIndicator.cs" t="Include" />
+                <e p="OVRRaycaster.cs" t="Include" />
+                <e p="OVRRecord.cs" t="Include" />
+                <e p="OVRResetOrientation.cs" t="Include" />
+                <e p="OVRSceneSampleController.cs" t="Include" />
+                <e p="OVRScreenFade.cs" t="Include" />
+                <e p="OVRSystemPerfMetrics.cs" t="Include" />
+                <e p="OVRWaitCursor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="ThirdParty" t="Include">
+              <e p="openvr_api.cs" t="Include" />
+              <e p="SimpleJSON.cs" t="Include" />
+              <e p="SimpleJSONUnity.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="PlacementIndicator.cs" t="Include" />
         <e p="PlacementUIManager.cs" t="Include" />
         <e p="Placer.cs" t="Include" />
