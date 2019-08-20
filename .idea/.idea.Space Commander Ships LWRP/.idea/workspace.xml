@@ -58,7 +58,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/SpaceKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/GoToPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Oculus/SampleFramework/Core/Locomotion/Scripts/TeleportTargetHandlerNavMesh.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis2DAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Oculus/SampleFramework/Core/Locomotion/Scripts/TeleportInputHandlerAvatarTouch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Example/DemoScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/LockRotation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -161,7 +163,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForMinimumSpeed.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/Weaver/CompilationFinishedHook.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/New Amplify Shader.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ShipFactoryTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerToFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Nodes/LogicalOperators/TFHCIf.cs" root0="FORCE_HIGHLIGHTING" />
@@ -190,8 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRDisplayCapabilities.cs" />
-        <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRMatrixUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRUI.cs" />
         <option value="$PROJECT_DIR$/Assets/com.unity.xr.legacyinputhelpers/Runtime/TrackedPoseDriver/TrackedPoseDriver.cs" />
         <option value="$PROJECT_DIR$/Assets/WebVR/Scripts/WebVRCamera.cs" />
@@ -241,6 +240,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/TickedVehicle.cs" />
         <option value="$PROJECT_DIR$/Assets/DestroyImmediately.cs" />
+        <option value="$PROJECT_DIR$/Assets/Oculus/SampleFramework/Core/Locomotion/Scripts/TeleportInputHandlerAvatarTouch.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -311,7 +312,7 @@
       <workItem from="1565857687040" duration="26669000" />
       <workItem from="1565984452880" duration="74490000" />
       <workItem from="1566262450496" duration="91000" />
-      <workItem from="1566263866026" duration="960000" />
+      <workItem from="1566263866026" duration="2259000" />
     </task>
     <servers />
   </component>
