@@ -19,16 +19,16 @@ public class TeleportTargetHandlerNavMesh : TeleportTargetHandler
 	/// <summary>
 	/// Controls which areas are to be used when doing nav mesh queries.
 	/// </summary>
-	public int NavMeshAreaMask; // = UnityEngine.AI.NavMesh.AllAreas;
+	public int NavMeshAreaMask = UnityEngine.AI.NavMesh.AllAreas;
 
 	/// <summary>
 	/// A NavMeshPath that is necessary for doing pathing queries and is reused with each request.
 	/// </summary>
-	//private UnityEngine.AI.NavMeshPath _path;
+	private UnityEngine.AI.NavMeshPath _path;
 
 	void Awake()
 	{
-		//_path = new UnityEngine.AI.NavMeshPath();
+		_path = new UnityEngine.AI.NavMeshPath();
 	}
 
 	/// <summary>
@@ -64,9 +64,9 @@ public class TeleportTargetHandlerNavMesh : TeleportTargetHandler
 		{
             Vector3 start = LocomotionTeleport.GetCharacterPosition();
             Vector3 dest = result.GetValueOrDefault();
-          //  UnityEngine.AI.NavMesh.CalculatePath(start, dest, NavMeshAreaMask, _path);
+            UnityEngine.AI.NavMesh.CalculatePath(start, dest, NavMeshAreaMask, _path);
                 
-			//if (_path.status == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+			if (_path.status == UnityEngine.AI.NavMeshPathStatus.PathComplete)
 			{
 				return result;
 			}
