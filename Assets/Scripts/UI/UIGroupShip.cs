@@ -21,6 +21,7 @@ namespace SpaceCommander.UI
             ship.shield.ShieldChanged += HandleShieldChange;
             ship.hull.HullChanged += HandleHullChange;
             ship.selectionHandler.OnSelectionChanged += HandleSelectionChange;
+            selectionIndicator.SetActive(false);
         }
 
         void HandleSelectionChange(bool on)

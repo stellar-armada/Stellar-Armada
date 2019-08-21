@@ -12,6 +12,7 @@ namespace SpaceCommander.Player
         [SerializeField] TextMeshPro playerName;
         [SerializeField] HumanPlayerController humanPlayerController;
         [SerializeField] Transform transformToFollow;
+        [SerializeField] private Renderer nameRenderer;
         
         private Transform _t;
 
@@ -32,6 +33,7 @@ namespace SpaceCommander.Player
             HandleBasePlayerNameChange();
             HandleTeamChange();
             isLocalPlayer = humanPlayerController.isLocalPlayer;
+            if (humanPlayerController == HumanPlayerController.localPlayer) nameRenderer.enabled = false;
         }
         #endregion
 

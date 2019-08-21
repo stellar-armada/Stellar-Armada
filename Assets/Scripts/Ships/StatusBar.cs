@@ -22,13 +22,22 @@ namespace SpaceCommander.Ships
         void Awake()
         {
             if(m == null) m = new MaterialPropertyBlock();
-             
+
+            SetVisibility(0);
+            
              hull = ship.hull;
              shield = ship.shield;
              shield.ShieldChanged += SetShieldSlider;
              hull.HullChanged += SetHullSlider;
             
             LookAtMainCamera();
+        }
+
+        void SetVisibility(float v)
+        {
+            statusBarRenderer.GetPropertyBlock(m);
+            m.SetFloat("_Visibility", v);
+            statusBarRenderer.SetPropertyBlock(m);
         }
 
         public void SetInsignia(Texture t)
@@ -79,13 +88,12 @@ namespace SpaceCommander.Ships
             }
             float timer = 0;
             float fadeTime = .6f;
-            statusBarRenderer.GetPropertyBlock(m);
             float currentVisibility = m.GetFloat("_Visibility");
 
             do
             {
                 timer += Time.deltaTime;
-                m.SetFloat("_Visibility", Mathf.Lerp(currentVisibility, to, timer / fadeTime));
+                SetVisibility(Mathf.Lerp(currentVisibility, to, timer / fadeTime));
                 yield return null;
             } while (timer < fadeTime);
 
@@ -94,15 +102,7 @@ namespace SpaceCommander.Ships
                 statusBarRenderer.enabled = false;
             }
         }
-        
-        public void HideStatusBar()
-        {
-            if(m == null) m = new MaterialPropertyBlock();
-            statusBarRenderer.enabled = false;
-            statusBarRenderer.GetPropertyBlock(m);
-            m.SetFloat("_Visibility", 0);
-        }
-        
+
         public void FadeOutStatusBar()
         {
             StartCoroutine(FadeVisibility(0));

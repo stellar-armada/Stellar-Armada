@@ -898,12 +898,15 @@
           <e p="Ships" t="Include">
             <e p="Hologram.shader" t="Include" />
           </e>
+          <e p="SingleChannelColor.shader" t="Include" />
+          <e p="SingleChannelToon.shader" t="Include" />
           <e p="StatusBar.shader" t="Include" />
           <e p="Toon.shader" t="Include" />
           <e p="Weapons" t="Include">
             <e p="DepthFadeAdditive.shader" t="Include" />
           </e>
         </e>
+        <e p="SingleChannelTransparent.shader" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
         </e>

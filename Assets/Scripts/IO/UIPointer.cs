@@ -11,6 +11,9 @@ namespace SpaceCommander.IO {
         bool _prevButtonState = false;
         bool _buttonChanged = false;
 
+        private bool leftMenuButtonActive;
+        private bool rightMenuButtonActive;
+
         protected override void Update()
         {
             base.Update();
@@ -23,10 +26,33 @@ namespace SpaceCommander.IO {
             }
         }
 
+        void Awake()
+        {
+            pointer.SetActive(false);
+        }
+
         protected override void Initialize()
         {
             inputManager.OnRightTrigger += HandleButtonRight;
             inputManager.OnLeftTrigger += HandleButtonLeft;
+            inputManager.OnLeftThumbstickButton += HandleLeftMenuButtonActivated;
+            inputManager.OnRightThumbstickButton += HandleRightMenuButtonActivated;
+        }
+
+        void HandleLeftMenuButtonActivated(bool down)
+        {
+            if (rightMenuButtonActive) return;
+            if (!down && !leftMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            leftMenuButtonActive = down; // filter ups from this side if race conditioned to other side
+            pointer.SetActive(down);
+        }
+
+        void HandleRightMenuButtonActivated(bool down)
+        {
+            if (leftMenuButtonActive) return;
+            if (!down && !rightMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            rightMenuButtonActive = down;
+            pointer.SetActive(down);
         }
 
         void HandleButtonRight(bool on)

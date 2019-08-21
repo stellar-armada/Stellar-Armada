@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SpaceCommander;
+using SpaceCommander.IO;
 using SpaceCommander.Ships;
 using SpaceCommander.UI;
 using UnityEngine;
@@ -14,6 +15,70 @@ public class Placer : MonoBehaviour
 
     private List<PlacementIndicator> activePlacements = new List<PlacementIndicator>();
 
+    private bool uiPointerIsActive;
+        
+    private bool leftThumbstickIsDown;
+    private bool rightThumbstickIsDown;
+
+    private bool rightPlaceButtonIsDown;
+    private bool leftPlaceButtonIsDown;
+    
+        
+    void Awake()
+    {
+        instance = this;
+    }
+
+    void Start()
+    {
+        SelectionUIManager.instance.OnSelectionChanged += ShowPlacements;
+        
+        // Thumbsticks show hide our placementPositionRoot
+        InputManager.instance.OnLeftThumbstickButton += HandleLeftThumbstick;
+        InputManager.instance.OnRightThumbstickButton += HandleRightThumbstick;
+
+        InputManager.instance.OnButtonOne += HandleRightPlaceButton;
+        InputManager.instance.OnButtonThree += HandleLeftPlaceButton;
+
+    }
+
+    void HandleRightPlaceButton(bool down)
+    {
+        if (!HandSwitcher.instance.CurrentHandIsRight()) return;
+        if (leftPlaceButtonIsDown) return; // if the other button is down, ignore this input
+        if (!down && !rightPlaceButtonIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+        rightPlaceButtonIsDown = down;
+        if (down) Place();
+    }
+
+    void HandleLeftPlaceButton(bool down)
+    {
+        if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
+        if (rightPlaceButtonIsDown) return; // if the other button is down, ignore this input
+        if (!down && !leftPlaceButtonIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+        leftPlaceButtonIsDown = down;
+        if (down) Place();
+    }
+
+    void HandleLeftThumbstick(bool down)
+    {
+        if (rightThumbstickIsDown) return; // if the other button is down, ignore this input
+        if (!down && !leftThumbstickIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+        leftThumbstickIsDown = down;
+        placementPositionRoot.gameObject.SetActive(!down);
+        uiPointerIsActive = down;
+    }
+
+    void HandleRightThumbstick(bool down)
+    {
+        if (leftThumbstickIsDown) return; // if the other button is down, ignore this input
+        if (!down && !rightThumbstickIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+        rightThumbstickIsDown = down;
+        placementPositionRoot.gameObject.SetActive(!down);
+        uiPointerIsActive = down;
+    }
+
+    
     public void ShowPlacements()
     {
         HidePlacements(); // reset our placements for another round of formation calculations
@@ -52,21 +117,13 @@ public class Placer : MonoBehaviour
 
     public void Place()
     {
+        Debug.Log("Placing!");
+        if (uiPointerIsActive) return;
         Transform t = transform;
         foreach (PlacementIndicator pi in activePlacements)
-            pi.entity.movement.MoveToPoint(t.position, t.rotation);
-    }
-    
-    void Awake()
-    {
-        instance = this;
+            pi.entity.movement.CmdMoveToPoint(t.position, t.rotation);
     }
 
-    void Start()
-    {
-        SelectionUIManager.instance.OnSelectionChanged += ShowPlacements;
-        
-    }
 
 
 }

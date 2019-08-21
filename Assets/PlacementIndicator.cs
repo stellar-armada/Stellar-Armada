@@ -18,7 +18,7 @@ public class PlacementIndicator : MonoBehaviour
         Transform t = transform;
         // position the placement indicator in local space
         t.localPosition = pos;
-        t.rotation = Quaternion.identity;
+        t.localRotation = Quaternion.identity;
         t.localScale = Vector3.one;
         visualModel.SetActive(true);
     }

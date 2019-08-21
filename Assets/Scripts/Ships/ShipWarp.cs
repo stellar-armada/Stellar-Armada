@@ -24,13 +24,11 @@ namespace SpaceCommander.Ships
 
             void PrepareForWarpIn()
             {
-                _ship.movement.DisableMovement();
+                _ship.movement.CmdDisableMovement();
                 _ship.weaponSystemController.weaponSystemsEnabled = false;
                 _ship.weaponSystemController.HideWeaponSystems();
-                _ship.statusBar.HideStatusBar();
                 _ship.shield.gameObject.SetActive(false);
                 _ship.visualModel.enabled = false;
-                //ship.ShowHologram();
             }
             
             public void InitWarp(Vector3 position, Quaternion rotation)
@@ -62,12 +60,11 @@ namespace SpaceCommander.Ships
 
             void CompleteWarp()
             {
-                _ship.movement.EnableMovement();
+                _ship.movement.CmdEnableMovement();
                 _ship.weaponSystemController.weaponSystemsEnabled = true;
                 _ship.statusBar.ShowStatusBar();
                 _ship.shield.gameObject.SetActive(true);
                 _ship.shield.shieldEffectController.SetShieldActive(true, true);
-                //ship.HideHologram();
                 isWarpedIn = true;
             }
 

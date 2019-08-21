@@ -1005,7 +1005,7 @@ MonoBehaviour:
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
   m_AssetId: 
-  m_SceneId: 664870829
+  m_SceneId: 129189817
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,6 +1202,7 @@ MonoBehaviour:
   playerName: {fileID: 1839945734415724481}
   humanPlayerController: {fileID: 1839945735331089094}
   transformToFollow: {fileID: 1839945733917424044}
+  nameRenderer: {fileID: 1839945734415724483}
 --- !u!1 &1893740290942381977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,8 +2481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4527773dc33c0924abdf518d93800556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 3384118698790411945}
-  pointer: {fileID: 4766300768544055363}
+  selectionCursor: {fileID: 7486238172814386563}
   selectorRadius: 0.1
   layerMask:
     serializedVersion: 2
@@ -2990,7 +2990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7206417724791626268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0, z: 0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6788390936727844586}

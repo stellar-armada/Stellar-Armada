@@ -1,13 +1,14 @@
-﻿using SpaceCommander.Ships;
+﻿using Mirror;
+using SpaceCommander.Ships;
 using UnityEngine;
 using UnitySteer.Behaviors;
 
 #pragma warning disable 0649
 namespace SpaceCommander
 {
-    public class EntityMovement: MonoBehaviour
+    public class EntityMovement: NetworkBehaviour
     {
-        bool controlEnabled = false;
+        [SyncVar] public bool controlEnabled = false;
         [HideInInspector] public Transform currentTarget;
         
         [SerializeField] NetworkEntity entity;
@@ -31,9 +32,15 @@ namespace SpaceCommander
             entity = GetComponent<NetworkEntity>();
         }
         
-        public void MoveToPoint(Vector3 pos, Quaternion rot)
+        [Command]
+        public void CmdMoveToPoint(Vector3 pos, Quaternion rot)
         {
-            if (!controlEnabled || !entity.isServer) return;
+            Debug.Log("Move to point called!");
+            if (!controlEnabled)
+            {
+                
+                Debug.LogError("Can't move, control not enabled");
+            }
             GoToPoint(pos);
             OnMoveToPoint?.Invoke(pos, rot);
         }
@@ -75,16 +82,16 @@ namespace SpaceCommander
             steerForPursuit.enabled = false;
         }
 
-        public void EnableMovement()
+        [Command]
+        public void CmdEnableMovement()
         {
-            if (!entity.isServer) return;
             controlEnabled = false;
         }
 
-        public void DisableMovement()
+        [Command]
+        public void CmdDisableMovement()
         {
             OnStop?.Invoke();
-            if (!entity.isServer) return;
             controlEnabled = false;
             
         }
