@@ -1,14 +1,17 @@
 fileFormatVersion: 2
 guid: ffb7c2eee2eb4a04f8efb11586549d05
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -623603649343465320
     second: Scene
+  - first:
+      74: -4449781122294624311
+    second: Bip001|Bip001|Take 001|BaseLayer
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -72,6 +75,7 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human:
@@ -1153,11 +1157,9 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: cf11de619a4992b4c9c2de23d0f50dab,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
