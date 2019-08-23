@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     
     

@@ -1,4 +1,4 @@
-﻿using SpaceCommander.IO;
+﻿using StellarArmada.IO;
 using UnityEngine;
 
 public class HandSwitcher : MonoBehaviour

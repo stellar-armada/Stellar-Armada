@@ -2,13 +2,13 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public class EntityExplosion : NetworkBehaviour, IExplodable
     {
         [SerializeField] Renderer[] renderersToHideOnExplosion;
         [SerializeField] Collider[] collidersToDisableOnExplosion;
-        [SerializeField] GameObject explosion;
+        [SerializeField] GameObject[] explosions;
         private float hideShip = 1.5f;
         private float deactivateShip = 6.5f;
         private NetworkEntity entity;
@@ -21,7 +21,8 @@ namespace SpaceCommander
         
         public void Explode()
         {
-            explosion.SetActive(true);
+            foreach(var explosion in explosions)
+                explosion.SetActive(true);
             Invoke(nameof(HideShip), hideShip);
             Invoke(nameof(DeactivateShip), deactivateShip);
         }

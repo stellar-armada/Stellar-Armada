@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public class PlayerCamera : MonoBehaviour
     {

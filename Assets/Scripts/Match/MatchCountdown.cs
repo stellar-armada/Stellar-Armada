@@ -1,7 +1,7 @@
-﻿using SpaceCommander.Match.Messaging;
+﻿using StellarArmada.Match.Messaging;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match
+namespace StellarArmada.Match
 {
     public struct MatchCountDownSettings
     {

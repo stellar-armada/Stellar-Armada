@@ -1,10 +1,10 @@
 ﻿using Mirror;
-using SpaceCommander.Ships;
+using StellarArmada.Ships;
 using UnityEngine;
 using UnitySteer.Behaviors;
 
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public class EntityMovement: NetworkBehaviour
     {

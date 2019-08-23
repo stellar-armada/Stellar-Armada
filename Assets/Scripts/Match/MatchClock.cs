@@ -1,9 +1,9 @@
-﻿using SpaceCommander.Match.Messaging;
+﻿using StellarArmada.Match.Messaging;
 using UnityEngine;
 using UnityEngine.Events;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match
+namespace StellarArmada.Match
 
 {
     public class MatchClock

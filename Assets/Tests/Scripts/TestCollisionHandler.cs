@@ -1,9 +1,9 @@
-﻿using SpaceCommander.Selection.Tests;
-using SpaceCommander.Ships;
+﻿using StellarArmada.Selection.Tests;
+using StellarArmada.Ships;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Common.Tests
+namespace StellarArmada.Common.Tests
 {
     public class TestCollisionHandler : MonoBehaviour, ICollidable
     {

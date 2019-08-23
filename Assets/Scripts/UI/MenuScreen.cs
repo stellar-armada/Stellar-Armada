@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     /* UI Menu Screen object attached to all UI screens
      * Add fancy fade logic or special handlers when menu screens are activated or deactivated here

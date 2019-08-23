@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class UISelectionShip : MonoBehaviour
     {

@@ -1,5 +1,5 @@
-﻿using SpaceCommander.IO;
-using SpaceCommander.Scenarios;
+﻿using StellarArmada.IO;
+using StellarArmada.Scenarios;
 using UnityEngine;
 
 public class MapControls : MonoBehaviour
@@ -17,12 +17,9 @@ public class MapControls : MonoBehaviour
     private Vector3 rightPosPrev;
 
     float scaleFactor = 1f;
-
-    bool invertControl = true;
     
-    [SerializeField] private float scaleMin = 1f;
-    [SerializeField] private float scaleMax = 100f;
-    [SerializeField] private float startScale = 50f;
+    [SerializeField] private float scaleMin = .0001f;
+    [SerializeField] private float scaleMax = .001f;
 
     void Start()
     {
@@ -30,17 +27,18 @@ public class MapControls : MonoBehaviour
         InputManager.instance.OnRightGrip += HandleRightInput;
         leftController = InputManager.instance.leftHand;
         rightController = InputManager.instance.rightHand;
-        SceneTransformableParent.instance.transform.localScale = Vector3.one * startScale;
     }
 
     void HandleLeftInput(bool on)
     {
+        Debug.Log("Left grip pressed");
         leftGripPressed = on;
         CheckState();
     }
 
     void HandleRightInput(bool on)
     {
+        Debug.Log("Right grip pressed");
         rightGripPressed = on;
         CheckState();
     }
@@ -50,16 +48,9 @@ public class MapControls : MonoBehaviour
         // Both are pressed and they weren't before, so activate logic
         if (leftGripPressed && rightGripPressed && !isActive)
         {
-            if (invertControl)
-            {
-                StartTransformationInverted();
-            }
-            else
-            {
-                StartTransformation();
-            }
+            StartTransformation();
 
-            isActive = true;
+                isActive = true;
         }
         else if (isActive)
         {
@@ -70,34 +61,23 @@ public class MapControls : MonoBehaviour
 
     void StartTransformation()
     {
+        Debug.Log("Start transformation called");
+        MapTransformRoot.instance.transform.SetParent(SceneRoot.instance.transform, true);
         // Unparent scene root from scene parent
-        MapTransformRoot.instance.transform.SetParent(null, true);
+        MiniMap.instance.transform.SetParent(SceneRoot.instance.transform, true);
+        Debug.Log("Minimap parent: (should be) " + SceneRoot.instance.transform + " but is actually " + MiniMap.instance.transform.parent);
 
         // Calculate midpoint
 
         Vector3 midpoint = (leftController.position + rightController.position) / 2f;
 
         // Place scene parent at midpoint
-        MapParent.instance.transform.position = midpoint;
+        MapTransformRoot.instance.transform.position = midpoint;
 
         // reparent 
-        MapTransformRoot.instance.transform.SetParent(MapParent.instance.transform, true);
-    }
-
-    void StartTransformationInverted()
-    {
-        // Unparent scene root from scene parent
-        SceneRoot.instance.transform.SetParent(null, true);
-
-        // Calculate midpoint
-
-        Vector3 midpoint = (leftController.position + rightController.position) / 2f;
-
-        // Place scene parent at midpoint
-        SceneTransformableParent.instance.transform.position = midpoint;
-
-        // reparent 
-        SceneRoot.instance.transform.SetParent(SceneTransformableParent.instance.transform, true);
+        MiniMap.instance.transform.SetParent(MapTransformRoot.instance.transform, true);
+        Debug.Log("Minimap parent: (should be) " + MapTransformRoot.instance.transform + " but is actually " +
+                  MiniMap.instance.transform.parent);
     }
 
     void Update()
@@ -106,76 +86,16 @@ public class MapControls : MonoBehaviour
         leftPos = leftController.position;
         rightPos = rightController.position;
 
-        if (leftGripPressed && rightGripPressed)
+        if (isActive)
         {
-            if (invertControl)
-            {
-                TwoHandDragInverted();
-                RotateInverted();
-                ScaleInverted();
-            }
-            else
-            {
-                TwoHandDrag();
+            TwoHandDrag();
                 Rotate();
                 Scale();
-            }
         }
 
         //previous position of controllers, to be used in the next frame
-        leftPosPrev = leftController.transform.position;
-        rightPosPrev = rightController.transform.position;
-    }
-
-    void TwoHandDragInverted()
-    {
-        //get middle position of hands
-        Vector3 midPos = (leftPos + rightPos) / 2f;
-        Vector3 prevMidPos = (leftPosPrev + rightPosPrev) / 2f;
-        Vector3 distance = prevMidPos - midPos;
-        SceneRoot.instance.transform.Translate(distance, Space.World);
-    }
-
-    void RotateInverted()
-    {
-        //project on XZ plane to restric rotation to flat table
-        Vector3 dir = rightPos - leftPos;
-        Vector3 prevDir = rightPosPrev - leftPosPrev;
-
-        //center of hand pos
-        Vector3 center = (leftPos + rightPos) / 2f;
-
-        float angle = Vector3.Angle(dir, prevDir);
-
-        //calculate direction of rotation
-        Vector3 cross = Vector3.Cross(prevDir, dir);
-
-        //perform rotation
-        SceneTransformableParent.instance.transform.RotateAround(center, cross, -angle);
-    }
-
-    void ScaleInverted()
-    {
-        //distance between hands 
-        float dist = Vector3.Distance(leftPos, rightPos);
-        float prevDist = Vector3.Distance(leftPosPrev, rightPosPrev);
-
-        //scale factor based on difference in hand distance
-        float newScale = prevDist / dist; // invert
-
-        //convert middle position of hands from global to local space
-        Vector3 midPosPreScale = (rightPosPrev + leftPosPrev) / 2f;
-        Vector3 midPosLocal = SceneTransformableParent.instance.transform.InverseTransformPoint(midPosPreScale);
-        
-        float currentScale = SceneTransformableParent.instance.transform.localScale.x;
-        
-        //apply scale to model
-        SceneTransformableParent.instance.transform.localScale = Vector3.one * Mathf.Clamp(currentScale * (newScale * scaleFactor), scaleMin, scaleMax);
-        
-        //convert local position back to global and perform corrective translation
-      // Vector3 midPosPostScale = EnvironmentParent.instance.transform.TransformPoint(midPosLocal);
-      // Vector3 distance = (midPosPreScale - midPosPostScale);
-      // EnvironmentParent.instance.transform.Translate(-distance, Space.World);
+        leftPosPrev = leftController.position;
+        rightPosPrev = rightController.position;
     }
 
     private void TwoHandDrag()
@@ -189,7 +109,7 @@ public class MapControls : MonoBehaviour
     private void Translate(Vector3 startPos, Vector3 endPos)
     {
         Vector3 distance = endPos - startPos;
-        MapParent.instance.transform.Translate(distance, Space.World);
+        MapTransformRoot.instance.transform.Translate(distance, Space.World);
     }
 
     private void Rotate()
@@ -207,7 +127,7 @@ public class MapControls : MonoBehaviour
         Vector3 cross = Vector3.Cross(prevDir, dir);
 
         //perform rotation
-        MapParent.instance.transform.RotateAround(center, cross, angle);
+        MapTransformRoot.instance.transform.RotateAround(center, cross, angle);
     }
 
     private void Scale()
@@ -221,13 +141,11 @@ public class MapControls : MonoBehaviour
 
         //convert middle position of hands from global to local space
         Vector3 midPosPreScale = (rightPosPrev + leftPosPrev) / 2f;
-        Vector3 midPosLocal = MapParent.instance.transform.InverseTransformPoint(midPosPreScale);
 
+        Transform t = MapTransformRoot.instance.transform;
+        
         //apply scale to model
-        MapParent.instance.transform.localScale *= scaleFactor;
-
-        //convert local position back to global and perform corrective translation
-        Vector3 midPosPostScale = MapParent.instance.transform.TransformPoint(midPosLocal);
-        Translate(midPosPostScale, midPosPreScale);
+        t.localScale *= scaleFactor;
+        t.localScale =  Vector3.one * Mathf.Clamp(t.localScale.x, MiniMap.instance.minScale, MiniMap.instance.maxScale);
     }
 }

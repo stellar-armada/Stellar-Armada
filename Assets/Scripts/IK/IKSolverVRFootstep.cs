@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IK {
+namespace StellarArmada.IK {
 
 	public partial class IKSolverVR: IKSolver {
 

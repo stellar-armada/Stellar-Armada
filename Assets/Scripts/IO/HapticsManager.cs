@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Controller
+namespace StellarArmada.Controller
 {
     /* InputManager handles all input from various devices.
      * Instantiation of the ML controller prefab object happens here (if your GameManager devicetype is Magic Leap)

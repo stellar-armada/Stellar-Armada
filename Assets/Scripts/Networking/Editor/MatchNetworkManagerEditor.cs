@@ -4,7 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Networking
+namespace StellarArmada.Networking
 {
     [CustomEditor(typeof(MatchNetworkManager), true)]
     [CanEditMultipleObjects]

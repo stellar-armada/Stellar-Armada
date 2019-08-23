@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IK {
+namespace StellarArmada.IK {
 	
 	/// <summary>
 	/// A full-body IK solver designed specifically for a VR HMD and hand controllers.

@@ -1,9 +1,9 @@
-﻿using SpaceCommander.Selection;
-using SpaceCommander.UI;
+﻿using StellarArmada.Selection;
+using StellarArmada.UI;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IO
+namespace StellarArmada.IO
 {
     public class Selector : MonoBehaviour, ISelector
     {
@@ -120,10 +120,9 @@ namespace SpaceCommander.IO
             Collider[] hitColliders = Physics.OverlapSphere(selectionCursor.position, selectorRadius, layerMask);
             foreach(Collider collider in hitColliders)
             {
-                ICollidable collidable = collider.GetComponent<ICollidable>();
-                if (collidable != null)
+                ISelectable selectable = collider.GetComponent<ISelectable>();
+                if (selectable != null)
                 {
-                    ISelectable selectable = collidable.GetSelectable();
                     if (!selectable.IsSelectable()) return;
                     if (selectable.GetOwningEntity().GetTeam().teamId != playerController.teamId) return;
                     

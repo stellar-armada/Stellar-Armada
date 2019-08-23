@@ -1,8 +1,8 @@
-﻿using SpaceCommander.Selection;
+﻿using StellarArmada.Selection;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     public class Shield : MonoBehaviour, IDamageable, ICollidable
     {
@@ -26,9 +26,6 @@ namespace SpaceCommander.Ships
 
         private Collider col;
         private bool shieldsUp = false;
-        
-        [SerializeField] SelectionHandler selectionHandler;
-
 
         void Awake()
         {
@@ -132,9 +129,5 @@ namespace SpaceCommander.Ships
             return this;
         }
 
-        public ISelectable GetSelectable()
-        {
-            return selectionHandler;
-        }
     }
 }

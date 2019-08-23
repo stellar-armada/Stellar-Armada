@@ -2,7 +2,7 @@
 using System;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Pooling
+namespace StellarArmada.Pooling
 {
     [Serializable]
     public class PoolContainer

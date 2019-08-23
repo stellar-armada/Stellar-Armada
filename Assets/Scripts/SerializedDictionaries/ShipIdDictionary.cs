@@ -1,5 +1,5 @@
 ﻿using System;
-using SpaceCommander.Ships;
+using StellarArmada.Ships;
 
 [Serializable]
 public class ShipIdDictionary : SerializableDictionary<ShipType, int>

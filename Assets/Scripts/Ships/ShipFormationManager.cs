@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SpaceCommander.Ships;
+using StellarArmada.Ships;
 using UnityEngine;
 
 public class ShipFormationManager : MonoBehaviour
@@ -8,24 +8,28 @@ public class ShipFormationManager : MonoBehaviour
 
     public float scaleXY = 350f;
     public float scaleZ = 250f;
-    
+    private Dictionary<Ship, Vector3> shipPositions;
     void Awake()
     {
         instance = this;
     }
 
-    public static Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
+    public Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
     {
-        Dictionary<Ship, Vector3> shipPositions = new Dictionary<Ship, Vector3>();
-
+        Debug.Log("Ships: " + ships.Count);
+        shipPositions = new Dictionary<Ship, Vector3>();
+        Debug.Log("Shippositions: " + shipPositions);
+        
         int currentFrontlinePosition = 0;
         int currentMidlinePosition = 0;
         int currentBacklinePosition = 0;
 
         foreach (Ship s in ships)
         {
+            Debug.Log("Ship: " + s.GetEntityId());
             Vector3 pos = Vector3.zero;
             
+            Debug.Log("Formation position: " + s.formationPosition);
             // determine what type of ship it is and return next coordinate
             switch (s.formationPosition)
             {
@@ -40,10 +44,12 @@ public class ShipFormationManager : MonoBehaviour
                     break;
             }
             
+            Debug.Log("Formation manager: " + instance);
+            
             // scale vector up to formation size
-            pos.x *= instance.scaleXY;
-            pos.y *= instance.scaleXY;
-            pos.z *= instance.scaleZ;
+            pos.x *= scaleXY;
+            pos.y *= scaleXY;
+            pos.z *= scaleZ;
             
             // add to dictionary
             shipPositions.Add(s, pos);

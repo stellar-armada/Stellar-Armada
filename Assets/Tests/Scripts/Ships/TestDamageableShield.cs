@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     [RequireComponent(typeof(Collider))]
     public class TestDamageableShield : MonoBehaviour, IDamageable

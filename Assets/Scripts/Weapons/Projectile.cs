@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using SpaceCommander.Pooling;
-using SpaceCommander.Scenarios;
+using StellarArmada.Pooling;
+using StellarArmada.Scenarios;
 using Zinnia.Extension;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Weapons
+namespace StellarArmada.Weapons
 {
     public class Projectile : Damager, ISpawnable
     {
@@ -28,16 +28,14 @@ namespace SpaceCommander.Weapons
             // Cache transform and get all particle systems attached
             transform = GetComponent<Transform>();
             particles = GetComponentsInChildren<ParticleSystem>();
-            float scale = ScaleManager.GetScale();
-            transform.SetParent(MapParent.instance.transform);
-            transform.SetGlobalScale(scale * Vector3.one);
-            scaledVelocity = velocity * scale;
+            transform.SetParent(LevelRoot.instance.transform);
+            scaledVelocity = velocity;
         }
 
         // OnSpawned called by pool manager 
         public void OnSpawned()
         {
-            transform.SetParent(MapParent.instance.transform);
+            transform.SetParent(LevelRoot.instance.transform);
             // Reset flags and raycast structure
             isHit = false;
             isFXSpawned = false;

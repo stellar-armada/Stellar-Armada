@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
-using SpaceCommander.Game;
+using StellarArmada.Game;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Audio
+namespace StellarArmada.Audio
 {
 
     // Script to control 

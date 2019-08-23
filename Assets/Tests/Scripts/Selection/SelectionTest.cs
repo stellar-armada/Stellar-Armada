@@ -1,10 +1,10 @@
 ﻿ using System.Collections.Generic;
 using System.Text;
- using SpaceCommander.UI;
+ using StellarArmada.UI;
  using UnityEngine;
 using UnityEngine.UI;
 #pragma warning disable 0649
- namespace SpaceCommander.Ships
+ namespace StellarArmada.Ships
  {
      public class SelectionTest : MonoBehaviour
      {

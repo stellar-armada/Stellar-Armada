@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
 using Mirror;
-using SpaceCommander.Game;
-using SpaceCommander.Players;
-using SpaceCommander.Teams;
-using SpaceCommander.UI;
+using StellarArmada.Game;
+using StellarArmada.Players;
+using StellarArmada.Teams;
+using StellarArmada.UI;
+
+public enum ShipMeta
+{
+    None,
+    Flagship_Empty,
+    Flagship_Occupied
+}
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     public class Ship : NetworkEntity
     {
@@ -20,9 +27,12 @@ namespace SpaceCommander.Ships
         }
         
         public ShipType type;
-        public FormationPosition formationPosition;
+        public bool availableAsFlagship; // can be start on and be switched off if a player populates this ship
         
+        public FormationPosition formationPosition;
+
         [Header("Ship Subsystems")]
+        public ShipBridge bridge;
         public Hull hull;
         public Shield shield;
         public ShipWeaponSystemController weaponSystemController;
@@ -30,9 +40,8 @@ namespace SpaceCommander.Ships
         public StatusBar statusBar;
 
         [Header("Ship Components")]
-        public Collider shipCollider;
         public Renderer visualModel;
-      
+
         [Command]
         public void CmdSetPlayer(uint playerId)
         {

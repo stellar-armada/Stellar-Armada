@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using SpaceCommander.Players;
-using SpaceCommander.Ships;
+using StellarArmada.Players;
+using StellarArmada.Ships;
 using UnityEngine;
 
 public class PlacementUIManager : MonoBehaviour
@@ -32,6 +32,7 @@ public class PlacementUIManager : MonoBehaviour
 
     public void UpdatePlacementMarkers()
     {
+        Debug.Log("UpdatePlacementMarkers called");
         // clear indicators if there already are some
         if(placementIndicators.Count > 0)
             foreach (var entity in placementIndicators)
@@ -47,16 +48,12 @@ public class PlacementUIManager : MonoBehaviour
             
             // Set references to the entity
             p.entityId = e.GetEntityId(); // cache the ID for future ref
+            Debug.Log("Entity ID: " + e.GetEntityId());
             p.entity = e;
-            
-            // parent placement markers to placer
-            placementIndicatorObject.transform.SetParent(Placer.instance.placementPositionRoot);
-            
+
             // add to list
             placementIndicators.Add(p);
 
-            // deactivate
-            placementIndicatorObject.SetActive(false);
         }
     }
 

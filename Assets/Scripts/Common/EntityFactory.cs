@@ -1,6 +1,6 @@
 ﻿using Mirror;
 
-namespace SpaceCommander
+namespace StellarArmada
 {
     public abstract class EntityFactory : NetworkBehaviour
     {

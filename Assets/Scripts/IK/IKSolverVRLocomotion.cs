@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IK {
+namespace StellarArmada.IK {
 
 	/// <summary>
 	/// Hybrid %IK solver designed for mapping a character to a VR headset and 2 hand controllers 

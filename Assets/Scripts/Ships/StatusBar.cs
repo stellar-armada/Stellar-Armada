@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using SpaceCommander.Scenarios;
+using StellarArmada.Scenarios;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     public class StatusBar : MonoBehaviour
     {

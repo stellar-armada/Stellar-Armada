@@ -1,14 +1,17 @@
 fileFormatVersion: 2
 guid: 340d8ea79a86ffa4a9304b5d0fcecce3
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -623603649343465320
     second: Scene
+  - first:
+      74: -1683304528407024898
+    second: Armature|Armature|Armature|Armature|SpaceCommandClothed(0)_TempMotion|Sp
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -72,6 +75,7 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -91,7 +95,6 @@ ModelImporter:
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

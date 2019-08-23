@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Audio
+namespace StellarArmada.Audio
 {
     // Manage all UI and non-weapon, non HUD message/announcement messages
 

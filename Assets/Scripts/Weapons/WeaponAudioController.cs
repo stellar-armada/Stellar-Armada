@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using SpaceCommander.Pooling;
+using StellarArmada.Pooling;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -14,7 +14,7 @@ public class EnumeratedAudioClip
 }
 
 #pragma warning disable 0649
-namespace SpaceCommander.Weapons
+namespace StellarArmada.Weapons
 {
     public class WeaponAudioController : MonoBehaviour
     {

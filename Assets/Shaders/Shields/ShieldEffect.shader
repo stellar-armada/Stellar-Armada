@@ -180,10 +180,10 @@ Shader "SpaceCommander/Shields/ShieldEffect" {
 
 	#if USE_DISTORTION_FOR_MAIN_TEXTURE
 				tex = tex2D(_MainTex, float2(i.uv.x*_TextureScale + distortCoord.x + _TextureScrollX*_Time.x,
-                							 i.uv.y*_TextureScale + distortCoord.y + _TextureScrollY*_Time.x)) * _TexturePower;
+                							 i.uv.y*_TextureScale + distortCoord.y + _TextureScrollY*_Time.x)).r * _TexturePower;
 	#else
 				tex = tex2D(_MainTex, float2(i.uv.x*_TextureScale + _TextureScrollX*_Time.x,
-					i.uv.y*_TextureScale + _TextureScrollY*_Time.x)) * _TexturePower;
+					i.uv.y*_TextureScale + _TextureScrollY*_Time.x)).r * _TexturePower;
 	#endif
 #endif
 

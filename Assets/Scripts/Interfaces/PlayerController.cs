@@ -1,8 +1,8 @@
 ﻿using Mirror;
-using SpaceCommander.Teams;
+using StellarArmada.Teams;
 using UnityEngine;
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public abstract class PlayerController: NetworkBehaviour
     {
@@ -22,7 +22,7 @@ namespace SpaceCommander
         public event EventHandler EventOnPlayerNameChange;
         public event EventHandler EventOnPlayerTeamChange;
 
-        public virtual void HandleTeamChange(uint pTeam)
+        public void HandleTeamChange(uint pTeam)
         {
             if (teamId == pTeam) return;
             teamId = pTeam;

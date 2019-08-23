@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using Mirror;
-using SpaceCommander.Scenarios;
+using StellarArmada.Scenarios;
 using UnityEngine;
 #pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     public class ShipWarp : NetworkBehaviour
         {
@@ -33,7 +33,7 @@ namespace SpaceCommander.Ships
             
             public void InitWarp(Vector3 position, Quaternion rotation)
             {
-                _ship.transform.SetParent(MapParent.instance.transform); // if not done already. check to see if it's already called by now
+                _ship.transform.SetParent(LevelRoot.instance.transform); // if not done already. check to see if it's already called by now
                 Debug.Log("Warping ship to: " + position);
                 _ship.transform.localPosition = position;
                 _ship.transform.rotation = rotation;

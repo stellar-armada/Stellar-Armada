@@ -1,18 +1,18 @@
-﻿using SpaceCommander.Scenarios;
+﻿using StellarArmada.Scenarios;
 using UnityEngine;
 
 public class LockRotation : MonoBehaviour
 {
     private Transform t;
     private Transform rootTransform;
-    void Awake()
+    void Start()
     {
         t = transform;
-        rootTransform = SceneTransformableParent.instance.transform;
+        rootTransform = LevelRoot.instance.transform;
     }
     void LateUpdate()
     {
-        // Remember, we are probably rotating ourselves (the map is static in the scene in inverse scale mode, set in MapControls
-        t.rotation = rootTransform.rotation;
+        if(rootTransform == null) rootTransform = LevelRoot.instance.transform;
+        else t.rotation = rootTransform.rotation;
     }
 }

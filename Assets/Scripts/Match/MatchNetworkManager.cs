@@ -2,7 +2,7 @@ using Mirror;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Networking
+namespace StellarArmada.Networking
 {
     [AddComponentMenu("Network/MatchNetworkManager")]
     public class MatchNetworkManager : NetworkManager

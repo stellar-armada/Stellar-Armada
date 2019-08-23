@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using UnityEngine;
 using Mirror;
-using SpaceCommander.Scenarios;
+using StellarArmada.Scenarios;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match
+namespace StellarArmada.Match
 {
     public class MatchScenarioManager : NetworkBehaviour
     {

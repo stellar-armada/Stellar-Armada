@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships.Tests
+namespace StellarArmada.Ships.Tests
 {
     public class HealthTest : MonoBehaviour
     {

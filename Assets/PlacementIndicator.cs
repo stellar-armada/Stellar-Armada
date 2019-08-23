@@ -1,10 +1,10 @@
-﻿using SpaceCommander;
+﻿using StellarArmada;
 using UnityEngine;
 
 public class PlacementIndicator : MonoBehaviour
 {
-    [HideInInspector] public uint entityId;
-    [HideInInspector] public NetworkEntity entity;
+    public uint entityId; 
+    public NetworkEntity entity;
     public GameObject visualModel;
 
     void Awake()

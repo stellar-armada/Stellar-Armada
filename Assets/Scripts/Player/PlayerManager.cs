@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Game
+namespace StellarArmada.Game
 {
     public class PlayerManager : MonoBehaviour
     {

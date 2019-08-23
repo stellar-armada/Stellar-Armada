@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System;
-using SpaceCommander.Pooling;
+using StellarArmada.Pooling;
 
 [CustomEditor(typeof(PoolManager))]
 [CanEditMultipleObjects()]

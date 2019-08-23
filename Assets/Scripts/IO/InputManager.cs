@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IO
+namespace StellarArmada.IO
 {
     public class InputManager : MonoBehaviour
     {

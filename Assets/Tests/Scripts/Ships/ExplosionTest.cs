@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships.Test
+namespace StellarArmada.Ships.Test
 {
     public class ExplosionTest : MonoBehaviour
     {

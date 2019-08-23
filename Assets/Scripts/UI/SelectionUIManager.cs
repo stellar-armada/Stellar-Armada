@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SpaceCommander.Ships;
-using SpaceCommander.Teams;
+using StellarArmada.Ships;
+using StellarArmada.Teams;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class SelectionUIManager : MonoBehaviour
     {

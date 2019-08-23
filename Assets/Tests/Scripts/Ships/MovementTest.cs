@@ -1,5 +1,5 @@
-﻿using SpaceCommander;
-using SpaceCommander.Ships;
+﻿using StellarArmada;
+using StellarArmada.Ships;
 using UnityEngine;
 
 public class MovementTest : MonoBehaviour

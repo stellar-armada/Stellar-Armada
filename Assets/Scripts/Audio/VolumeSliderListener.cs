@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using SpaceCommander.Game;
+using StellarArmada.Game;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Audio
+namespace StellarArmada.Audio
 {
 
     // Added to volume sliders for controlling audio-specific settings

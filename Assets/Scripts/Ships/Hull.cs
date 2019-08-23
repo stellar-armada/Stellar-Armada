@@ -1,9 +1,9 @@
 ﻿using Mirror;
-using SpaceCommander.Selection;
+using StellarArmada.Selection;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     public class Hull : NetworkBehaviour, IDamageable, ICollidable
     {
@@ -14,9 +14,7 @@ namespace SpaceCommander.Ships
         public delegate void HullChangeEvent(float shieldVal);
 
         public HullChangeEvent HullChanged;
-
-        [SerializeField] SelectionHandler selectionHandler;
-
+        
         [SyncVar] public float currentHull;
 
         void Awake()
@@ -62,9 +60,5 @@ namespace SpaceCommander.Ships
             return this;
         }
 
-        public ISelectable GetSelectable()
-        {
-            return selectionHandler;
-        }
     }
 }

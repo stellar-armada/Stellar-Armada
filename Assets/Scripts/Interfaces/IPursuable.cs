@@ -1,5 +1,5 @@
 ﻿#pragma warning disable 0649
-namespace SpaceCommander.Ships
+namespace StellarArmada.Ships
 {
     public interface IPursuable
     {

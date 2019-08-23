@@ -2,7 +2,7 @@
 using System.Collections;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class Pointer : MonoBehaviour
     {

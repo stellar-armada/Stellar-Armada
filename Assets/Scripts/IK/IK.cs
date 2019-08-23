@@ -1,5 +1,5 @@
 #pragma warning disable 0649
-namespace SpaceCommander.IK {
+namespace StellarArmada.IK {
 
 	/// <summary>
 	/// Base abstract class for %IK solver components.

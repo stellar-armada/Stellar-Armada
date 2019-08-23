@@ -1,9 +1,9 @@
-﻿using SpaceCommander.Ships;
+﻿using StellarArmada.Ships;
 using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class UIGroupShip : MonoBehaviour
     {
@@ -32,7 +32,6 @@ namespace SpaceCommander.UI
         void HandleShieldChange(float shieldVal)
         {
             shieldImage.color = new Color(shieldColor.r, shieldColor.g, shieldColor.b, ( shieldVal / ship.shield.maxShield)); // A UI shader controlling these variables would be cheaper
-
         }
 
         void HandleHullChange(float hullVal)

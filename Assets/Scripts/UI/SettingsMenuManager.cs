@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using SpaceCommander.Game;
-using SpaceCommander.Players;
+using StellarArmada.Game;
+using StellarArmada.Players;
 using TMPro;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     // Settings menu manager scipt
 

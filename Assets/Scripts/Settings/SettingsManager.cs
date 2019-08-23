@@ -2,7 +2,7 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Game
+namespace StellarArmada.Game
 {
 
     /* Serialize and store all player data here

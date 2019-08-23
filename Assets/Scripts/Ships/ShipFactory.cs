@@ -1,8 +1,8 @@
 ﻿using Mirror;
-using SpaceCommander;
-using SpaceCommander.Scenarios;
-using SpaceCommander.Ships;
-using SpaceCommander.Teams;
+using StellarArmada;
+using StellarArmada.Scenarios;
+using StellarArmada.Ships;
+using StellarArmada.Teams;
 using UnityEngine;
 
 public class ShipFactory : EntityFactory
@@ -28,7 +28,7 @@ public class ShipFactory : EntityFactory
             return;
         }
         
-        GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, MapParent.instance.transform);
+        GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, LevelRoot.instance.transform);
         shipGameObject.transform.localScale = Vector3.one;
         NetworkServer.Spawn(shipGameObject);
         

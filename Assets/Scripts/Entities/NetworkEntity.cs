@@ -1,12 +1,12 @@
 ﻿using Mirror;
-using SpaceCommander.Scenarios;
-using SpaceCommander.Selection;
-using SpaceCommander.Ships;
-using SpaceCommander.Teams;
+using StellarArmada.Scenarios;
+using StellarArmada.Selection;
+using StellarArmada.Ships;
+using StellarArmada.Teams;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public abstract class NetworkEntity : NetworkBehaviour
     {
@@ -36,8 +36,8 @@ namespace SpaceCommander
         
         void Awake()
         {
-            transform.parent = MapParent.instance.transform;
-            transform.localScale = Vector3.one;
+            //transform.parent = MapParent.instance.transform;
+            //transform.localScale = Vector3.one;
         }
         
         public Team GetTeam() => team;

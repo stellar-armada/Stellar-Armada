@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Mirror;
-using SpaceCommander.Game;
+using StellarArmada.Game;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Teams
+namespace StellarArmada.Teams
 {
     public class Team : NetworkBehaviour
     {
@@ -80,6 +80,7 @@ namespace SpaceCommander.Teams
             if (!isServer)
             {
             AddPlayer(playerId);
+            PlayerManager.GetPlayerById(playerId).SetTeamId(teamId);
             }
         }
 

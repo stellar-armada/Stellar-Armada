@@ -1,7 +1,7 @@
 ﻿using Mirror;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match
+namespace StellarArmada.Match
 {
     public enum MatchState
     {

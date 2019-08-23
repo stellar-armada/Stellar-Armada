@@ -1,8 +1,8 @@
-﻿using SpaceCommander.Ships;
+﻿using StellarArmada.Ships;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Selection
+namespace StellarArmada.Selection
 {
     public class SelectionHandler : MonoBehaviour, ISelectable
     {

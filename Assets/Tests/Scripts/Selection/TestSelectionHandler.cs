@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Selection.Tests
+namespace StellarArmada.Selection.Tests
 {
     public class TestSelectionHandler : MonoBehaviour, ISelectable
     {

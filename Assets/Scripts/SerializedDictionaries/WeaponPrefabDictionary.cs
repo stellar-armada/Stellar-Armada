@@ -1,5 +1,5 @@
 ﻿using System;
-using SpaceCommander.Weapons;
+using StellarArmada.Weapons;
 
 [Serializable]
 public class WeaponPrefabDictionary : SerializableDictionary<WeaponType, EnumeratedWeaponPrefab>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SpaceCommander.Match;
+using StellarArmada.Match;
 using UnityEngine;
 
 public class MatchTimer

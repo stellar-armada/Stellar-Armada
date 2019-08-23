@@ -1,10 +1,10 @@
-﻿using SpaceCommander.Players;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using SpaceCommander.Teams;
+using StellarArmada.Players;
+using StellarArmada.Teams;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Player
+namespace StellarArmada.Player
 {
     // Class to control the nameplate (health and name) over player's head
     public class Nameplate : MonoBehaviour

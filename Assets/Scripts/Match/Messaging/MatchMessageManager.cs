@@ -6,7 +6,7 @@ using UnityEngine;
 // remove 67 for production. 649 is just null checking serialized values
 #pragma warning disable 0067
 #pragma warning disable 0649
-namespace SpaceCommander.Match.Messaging
+namespace StellarArmada.Match.Messaging
 {
     /* Manager for Hud Messages (notifications at the bottom of player's screen) */
 

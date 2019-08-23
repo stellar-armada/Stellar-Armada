@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Utility
+namespace StellarArmada.Utility
 {
     public static class JsonHelper
     {

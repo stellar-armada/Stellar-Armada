@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Weapons
+namespace StellarArmada.Weapons
 {
     public class Shotgun : Damager, ISpawnable
     {

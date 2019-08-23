@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using SpaceCommander.Players;
-using SpaceCommander.Ships;
-using SpaceCommander.Teams;
+using StellarArmada.Players;
+using StellarArmada.Ships;
+using StellarArmada.Teams;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class GroupUIManager : MonoBehaviour
     {

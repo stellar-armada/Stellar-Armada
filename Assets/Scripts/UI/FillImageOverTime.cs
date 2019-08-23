@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     // Nice little UI doodad to animate an image feel
     // Used on the SceneRootIndicator animation

@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 #pragma warning disable 0649
-namespace SpaceCommander.Audio
+namespace StellarArmada.Audio
 {
     // Add class to buttons for them to have UI sounds
     public class SoundEffectButtonListener : MonoBehaviour, ISelectHandler

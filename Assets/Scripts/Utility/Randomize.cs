@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public class Randomize : MonoBehaviour
     {
@@ -24,7 +24,7 @@ namespace SpaceCommander
         void OnEnable()
         {
             if (RandomScale)
-                transform.localScale = defaultScale*Random.Range(MinScale, MaxScale)*ScaleManager.GetScale();
+                transform.localScale = defaultScale*Random.Range(MinScale, MaxScale);
 
             if (RandomRotation)
                 transform.rotation *= Quaternion.Euler(0, 0, Random.Range(MinRotation, MaxRotaion));

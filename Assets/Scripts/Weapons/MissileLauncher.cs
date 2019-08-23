@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
-using SpaceCommander.Pooling;
+using StellarArmada.Pooling;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Weapons
+namespace StellarArmada.Weapons
 {
     public class MissileLauncher :  WeaponSystem
     {

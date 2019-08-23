@@ -1,8 +1,8 @@
-﻿using SpaceCommander.Match.Messaging;
+﻿using StellarArmada.Match.Messaging;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Audio
+namespace StellarArmada.Audio
 {
 
 

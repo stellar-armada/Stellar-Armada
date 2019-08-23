@@ -1,5 +1,5 @@
 ﻿#pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     // Interface for collision handlers (i.e. scripts attached to colliders) that might not be directly on the IDamageable or ISelectable object this interface references
     // All damageables need a ICollidable reference to be detected by the turret system
@@ -7,6 +7,5 @@ namespace SpaceCommander
     public interface ICollidable
     {
         IDamageable GetDamageable();
-        ISelectable GetSelectable();
     }
 }

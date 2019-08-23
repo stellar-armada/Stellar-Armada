@@ -1,12 +1,12 @@
 ﻿using Mirror;
-using SpaceCommander.Game;
+using StellarArmada.Game;
 using UnityEngine;
 
 // Test the ship factory, which creates new ship objects for players
 // 
 
 #pragma warning disable 0649
-namespace SpaceCommander.Ships.Tests
+namespace StellarArmada.Ships.Tests
 {
     public class ShipFactoryTest : MonoBehaviour
     {

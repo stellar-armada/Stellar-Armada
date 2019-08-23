@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
-using SpaceCommander.Audio;
-using SpaceCommander.Controller;
+using StellarArmada.Audio;
+using StellarArmada.Controller;
 using TMPro;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match.Messaging
+namespace StellarArmada.Match.Messaging
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class MatchMessage : MonoBehaviour

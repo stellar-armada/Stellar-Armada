@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
+using StellarArmada.Game;
 using UnityEngine;
 
 #pragma warning disable 0649
 #pragma warning disable 0067
-namespace SpaceCommander.Teams
+namespace StellarArmada.Teams
 {
     [System.Serializable]
     public class TeamTemplate
@@ -60,7 +61,7 @@ namespace SpaceCommander.Teams
             // Set player teamId to team's
             sortedTeams[0].CmdAddPlayer(playerId);
         }
-
+        
         public Team GetTeamByID(uint teamID)
         {
             return teams.Single(t => t.teamId == teamID);

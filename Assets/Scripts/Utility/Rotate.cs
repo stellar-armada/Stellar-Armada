@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Utility
+namespace StellarArmada.Utility
 {
     // Simple helper script to rotate components, used on SceneRootIndicator
     public class Rotate : MonoBehaviour

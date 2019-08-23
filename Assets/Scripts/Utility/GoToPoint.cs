@@ -2,7 +2,7 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Utility
+namespace StellarArmada.Utility
 {
     // Simple UI movement animation component, used on the SceneRootIndicator
 

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using SpaceCommander.Teams;
+using StellarArmada.Teams;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Players
+namespace StellarArmada.Players
 {
     public class BodyController : MonoBehaviour
     {

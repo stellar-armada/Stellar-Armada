@@ -1,8 +1,8 @@
-﻿using SpaceCommander.Audio;
-using SpaceCommander.Match.Messaging;
+﻿using StellarArmada.Audio;
+using StellarArmada.Match.Messaging;
 using UnityEditor;
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     [CustomPropertyDrawer((typeof(SfxDictionary)))]
     public class SfxPropertyDrawer : SerializableDictionaryPropertyDrawer { }

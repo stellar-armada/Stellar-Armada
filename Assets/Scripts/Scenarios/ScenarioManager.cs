@@ -2,7 +2,7 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Scenarios
+namespace StellarArmada.Scenarios
 {
     public class ScenarioManager : MonoBehaviour
     {

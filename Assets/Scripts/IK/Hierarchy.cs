@@ -2,7 +2,7 @@
 using System;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IK {
+namespace StellarArmada.IK {
 
 	/// <summary>
 	/// Contains tools for working on Transform hierarchies.

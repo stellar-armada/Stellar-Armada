@@ -1,7 +1,7 @@
-﻿using SpaceCommander.Ships;
+﻿using StellarArmada.Ships;
 using UnityEngine;
 
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class UIShipFactory : MonoBehaviour
     {

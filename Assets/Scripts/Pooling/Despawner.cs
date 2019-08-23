@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Pooling
+namespace StellarArmada.Pooling
 {
     public class Despawner : MonoBehaviour
     {

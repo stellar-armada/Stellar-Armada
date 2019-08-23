@@ -1,10 +1,10 @@
-﻿using SpaceCommander.Teams;
-using UnityEngine;
-using Mirror; // Replacement for HLAPI, uses virtually identical syntax but strips some of HLAPI's functionality/bloat
-using SpaceCommander.Game;
+﻿using UnityEngine;
+using StellarArmada.Game;
+using StellarArmada.Ships;
+using StellarArmada.Teams;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Players
+namespace StellarArmada.Players
 {
     public class HumanPlayerController : PlayerController
     {
@@ -13,21 +13,18 @@ namespace SpaceCommander.Players
         public GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
         
         [SerializeField] BodyController bodyController;
-
-        [SyncVar] public bool isHost; // Keeps track of which player is host, nice for displaying in scoreboard and the like
-
+        
         private bool playerIsReady;
 
         private void Awake()
         {
-            Transform t = transform; // skip the gameObject.transform lookup
-            t.parent = SceneRoot.instance.transform;
-            t.localPosition = Vector3.zero;
-            t.localRotation = Quaternion.identity;
+
             
             PlayerManager.instance.RegisterPlayer(this);
 
             localRig.SetActive(false);
+            
+            
         }
 
         void Start()
@@ -44,17 +41,30 @@ namespace SpaceCommander.Players
                 
                 localPlayer = this;
 
-                if (isServer)
-                {
-                    isHost = true; // Shorthand helper
-                }
+                Invoke(nameof(PickCapitalShip), .5f);
             }
             else
             {
                 Destroy(localRig);
             }
         }
-        
+
+        void PickCapitalShip()
+        {
+            foreach (NetworkEntity e in GetTeam().entities)
+            {
+                Ship s = (Ship) e;
+                if (s.availableAsFlagship)
+                {
+                    s.bridge.ActivateBridgeForLocalPlayer();
+                    Transform t = transform; // skip the gameObject.transform lookup
+                    t.parent = SceneRoot.instance.transform;
+                    t.localPosition = Vector3.zero;
+                    t.localRotation = Quaternion.identity;
+                    return;
+                }
+            }
+        }
         public bool IsLocalPlayer() => isLocalPlayer;
 
         public bool IsServer() => isServer;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match.Messaging {
+namespace StellarArmada.Match.Messaging {
     
     [System.Serializable]
     public class SerializedMessage

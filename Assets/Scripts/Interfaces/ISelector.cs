@@ -1,7 +1,7 @@
-﻿using SpaceCommander.Selection;
+﻿using StellarArmada.Selection;
 
 #pragma warning disable 0649
-namespace SpaceCommander
+namespace StellarArmada
 {
     public interface ISelector
     {

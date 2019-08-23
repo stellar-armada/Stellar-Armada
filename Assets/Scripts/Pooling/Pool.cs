@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Pooling
+namespace StellarArmada.Pooling
 {
     public class Pool : MonoBehaviour
     {

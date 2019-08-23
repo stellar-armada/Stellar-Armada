@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
-using SpaceCommander.Scenarios;
-using SpaceCommander.Ships;
-using SpaceCommander.Teams;
+using StellarArmada.Scenarios;
+using StellarArmada.Ships;
+using StellarArmada.Teams;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.Match
+namespace StellarArmada.Match
 {
     public class MatchServerManager : NetworkBehaviour
     {
@@ -20,13 +20,13 @@ namespace SpaceCommander.Match
 
             Scenario scenario = MatchScenarioManager.instance.GetCurrentScenario();
 
-            if (MapParent.instance == null)
+            if (LevelRoot.instance == null)
             {
                 Debug.LogError("No scene root found");
             }
 
             // Create map from scenario template
-            GameObject m = Instantiate(scenario.levelPrefab, MapParent.instance.transform);
+            GameObject m = Instantiate(scenario.levelPrefab, LevelRoot.instance.transform);
 
             NetworkServer.Spawn(m);
 
@@ -54,6 +54,7 @@ namespace SpaceCommander.Match
 
                     foreach (var key in scenario.teamInfo[i].fleetBattleGroups[g])
                     {
+                        bool hasFlagship = false;
                         for (int numShips = 0; numShips < key.Value; numShips++)
                         {
                             // For each ship, instantiate for current team
@@ -63,7 +64,7 @@ namespace SpaceCommander.Match
                     }
 
                     // get positions back for list of ships from formation manager
-                    Dictionary<Ship, Vector3> shipPositions = ShipFormationManager.GetFormationPositionsForShips(ships);
+                    Dictionary<Ship, Vector3> shipPositions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
                     // Get list of warp vectors in level
                     var warpPoints = m.GetComponent<Level>().warpPoints;

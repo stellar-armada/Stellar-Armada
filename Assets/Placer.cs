@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SpaceCommander;
-using SpaceCommander.IO;
-using SpaceCommander.Ships;
-using SpaceCommander.UI;
+using StellarArmada;
+using StellarArmada.IO;
+using StellarArmada.Ships;
+using StellarArmada.UI;
 using UnityEngine;
 using Zinnia.Extension;
 
 public class Placer : MonoBehaviour
 {
     public static Placer instance;
-
-    public Transform placementPositionRoot;
-
+    
     private List<PlacementIndicator> activePlacements = new List<PlacementIndicator>();
 
     private bool uiPointerIsActive;
@@ -65,7 +63,7 @@ public class Placer : MonoBehaviour
         if (rightThumbstickIsDown) return; // if the other button is down, ignore this input
         if (!down && !leftThumbstickIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
         leftThumbstickIsDown = down;
-        placementPositionRoot.gameObject.SetActive(!down);
+        PlacementCursor.instance.gameObject.SetActive(!down);
         uiPointerIsActive = down;
     }
 
@@ -74,7 +72,7 @@ public class Placer : MonoBehaviour
         if (leftThumbstickIsDown) return; // if the other button is down, ignore this input
         if (!down && !rightThumbstickIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
         rightThumbstickIsDown = down;
-        placementPositionRoot.gameObject.SetActive(!down);
+        PlacementCursor.instance.gameObject.SetActive(!down);
         uiPointerIsActive = down;
     }
 
@@ -84,13 +82,31 @@ public class Placer : MonoBehaviour
         HidePlacements(); // reset our placements for another round of formation calculations
         
         // Set scale of our placer (for backward compatibility with our non-inverse universe scaling method)
-        placementPositionRoot.SetGlobalScale(Vector3.one * ScaleManager.GetScale());
+        PlacementCursor.instance.transform.localScale = Vector3.one;
+
+        List<NetworkEntity> entities = SelectionUIManager.instance.GetCurrentSelection()
+            .Select(selectable => selectable.GetOwningEntity()).ToList();
+
+        var selects = SelectionUIManager.instance.GetCurrentSelection();
+        
+        foreach(ISelectable s in selects)
+        {
+            Debug.Log(s.GetOwningEntity().name);
+        }
+        
+        foreach(NetworkEntity e in entities)
+            Debug.Log(e.name);
         
         // Get current ships
         List<Ship> ships = SelectionUIManager.instance.GetCurrentSelection().Select(selectable => selectable.GetOwningEntity() as Ship).ToList();
         
+        Debug.Log("Ships in Placer: " + ships.Count);
+        
+        foreach(Ship s in ships)
+            Debug.Log(s.name);
+        
         // Get formation positions for selection
-        var positions = ShipFormationManager.GetFormationPositionsForShips(ships);
+        var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
         // Foreach ship in selection, get the placer object
         
@@ -117,11 +133,17 @@ public class Placer : MonoBehaviour
 
     public void Place()
     {
-        Debug.Log("Placing!");
         if (uiPointerIsActive) return;
-        Transform t = transform;
+        Debug.Log("Placing!");
+
         foreach (PlacementIndicator pi in activePlacements)
-            pi.entity.movement.CmdMoveToPoint(t.position, t.rotation);
+        {
+            // For each placer, set the minimap parent so we can grab local pos and rot easier
+            // Otherwise we could optimise with some matrix/quaternion math!
+            pi.transform.SetParent(MiniMap.instance.transform);
+            pi.entity.movement.CmdMoveToPoint(pi.transform.localPosition, pi.transform.localRotation);
+            pi.transform.SetParent(PlacementCursor.instance.transform);
+        }
     }
 
 

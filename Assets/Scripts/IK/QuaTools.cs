@@ -1,7 +1,7 @@
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.IK {
+namespace StellarArmada.IK {
 
 	/// <summary>
 	/// Helper methods for dealing with Quaternions.

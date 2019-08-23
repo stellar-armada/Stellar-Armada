@@ -1,8 +1,8 @@
-﻿using SpaceCommander.IO;
+﻿using StellarArmada.IO;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace SpaceCommander.UI
+namespace StellarArmada.UI
 {
     public class PlayerCanvasManager : MonoBehaviour
     {
