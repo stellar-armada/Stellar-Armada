@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using StellarArmada.Scenarios;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using Zinnia.Extension;
 
 public class MiniMap : MonoBehaviour
@@ -53,20 +49,13 @@ public class MiniMap : MonoBehaviour
     
     void SetLayerRecursively(GameObject obj, int newLayer)
     {
-        if (null == obj)
-        {
-            return;
-        }
+        if (obj == null) return;
            
         obj.layer = newLayer;
            
         foreach (Transform child in obj.transform)
         {
-            if (null == child)
-            {
-                continue;
-            }
-            SetLayerRecursively(child.gameObject, newLayer);
+            if (child != null) SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 }
