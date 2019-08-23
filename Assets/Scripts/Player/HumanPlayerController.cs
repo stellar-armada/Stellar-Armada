@@ -41,7 +41,7 @@ namespace StellarArmada.Players
                 
                 localPlayer = this;
 
-                Invoke(nameof(PickCapitalShip), .5f);
+                PickCapitalShip();
             }
             else
             {

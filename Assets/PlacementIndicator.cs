@@ -9,7 +9,7 @@ public class PlacementIndicator : MonoBehaviour
 
     void Start()
     {
-        transform.SetParent(Placer.instance.transform);
+        transform.SetParent(PlacementCursor.instance.transform);
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.one;
         Hide();

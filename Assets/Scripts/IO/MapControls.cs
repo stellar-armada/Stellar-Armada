@@ -79,6 +79,7 @@ public class MapControls : MonoBehaviour
 
         // Place scene parent at midpoint
         MapTransformRoot.instance.transform.localPosition = midpoint;
+        MapTransformRoot.instance.transform.localRotation = Quaternion.identity;
 
         // reparent 
         MiniMap.instance.transform.SetParent(MapTransformRoot.instance.transform, true);
@@ -152,6 +153,6 @@ public class MapControls : MonoBehaviour
         //apply scale to model
         t.localScale *= scaleFactor;
         t.localScale =  Vector3.one * Mathf.Clamp(t.localScale.x, MiniMap.instance.minScale, MiniMap.instance.maxScale);
-        OnScaleChanged(t.localScale);
+        OnScaleChanged?.Invoke(t.localScale);
     }
 }

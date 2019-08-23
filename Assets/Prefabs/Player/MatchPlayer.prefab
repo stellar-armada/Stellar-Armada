@@ -1010,8 +1010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: fb8ab71d819054e3b98147408561d499
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 994463323
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,8 +1395,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.2
-  far clip plane: 10000
+  near clip plane: 0.05
+  far clip plane: 25000
   field of view: 105
   orthographic: 0
   orthographic size: 5
@@ -2549,7 +2549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionCursor: {fileID: 7486238172814386563}
-  selectorRadius: 0.1
+  selectorRadius: 0.01
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -4428,17 +4428,17 @@ PrefabInstance:
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
