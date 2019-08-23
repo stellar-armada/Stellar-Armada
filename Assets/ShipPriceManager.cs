@@ -27,6 +27,4 @@ public class ShipPriceManager : MonoBehaviour
 
         return val;
     }
-    
-    
 }

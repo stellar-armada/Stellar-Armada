@@ -97,7 +97,6 @@ namespace StellarArmada.Ships
             shield.gameObject.SetActive(false);
             if(HumanPlayerController.localPlayer != null == team.players.Contains(HumanPlayerController.localPlayer))
                 SelectionUIManager.instance.RemoveSelectableFromSelectionSets(entityId);
-            Debug.Log("Dead!");
         }
 
     }

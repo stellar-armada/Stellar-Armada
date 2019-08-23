@@ -123,7 +123,6 @@ namespace StellarArmada.UI
 
         public void RemoveSelectableFromSelectionSets(uint entityId)
         {
-            Debug.Log("Attempting to remove entity " + entityId + " from selections");
             for (int i = 0; i < selectionSets.Count; i++)
             {
                 if (selectionSets[i].Exists(s => s.GetOwningEntity().GetEntityId() == entityId))

@@ -81,10 +81,6 @@ namespace StellarArmada.Match
 
                         Vector3 newPos = parentMatrix.MultiplyPoint3x4(shipPositions[s]);
 
-                        Debug.Log("Position: " + pos + " | Ship formation position: " + shipPositions[s] +
-                                  " | Transformed position: " + pos + newPos);
-
-
                         s.shipWarp.InitWarp(pos + newPos, rot);
                     }
                 }

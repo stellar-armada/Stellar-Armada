@@ -6,7 +6,7 @@ namespace StellarArmada.Selection
 {
     public class SelectionHandler : MonoBehaviour, ISelectable
     {
-        [SerializeField] Ship ship;
+        [SerializeField] NetworkEntity entity;
 
         [SerializeField] private Renderer selectionCube;
 
@@ -14,25 +14,14 @@ namespace StellarArmada.Selection
 
         public SelectionChangedHandler OnSelectionChanged;
         
-        public int selectionSetID;
         void Awake()
         {
             selectionCube.enabled = false;
-            ship = GetComponent<Ship>();
-        }
-
-        public int GetSelectionSetID()
-        {
-            return selectionSetID;
-        }
-
-        public void SetSelectionSetID(int id)
-        {
-            selectionSetID = id;
         }
 
         public void Select()
         {
+            Debug.Log("Selected!");
             selectionCube.enabled = true;
             OnSelectionChanged?.Invoke(true);
         }
@@ -45,13 +34,14 @@ namespace StellarArmada.Selection
 
         public NetworkEntity GetOwningEntity()
         {
-            return ship;
+            return entity;
         }
 
         public bool IsSelectable()
         {
-            //If is alive and has warped in
-            if (ship.IsAlive() && ship.shipWarp.isWarpedIn) return true;
+            Debug.Log("Checking if is selectable: " + (entity.IsAlive() && entity.movement.controlEnabled));
+            //If is alive and has warped inentity.shipWarp.isWarpedIn
+            if (entity.IsAlive()) return true;
             return false;
         }
     }

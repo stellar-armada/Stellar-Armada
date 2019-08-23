@@ -15,6 +15,10 @@ namespace UnitySteer.Behaviors
         /// </remarks>
         [SerializeField] private Vector3 _targetPoint = Vector3.zero;
 
+        public delegate void SteeringEvent();
+
+        public SteeringEvent OnArrivalAtDestination;
+        
         /// <summary>
         /// Should the vehicle's velocity be considered in the seek calculations?
         /// </summary>
@@ -72,6 +76,7 @@ namespace UnitySteer.Behaviors
             if(Vector3.Distance(transform.localPosition, _targetPoint) < .01f)
             {
                 Debug.Log("Disabling because we're close to point");
+                OnArrivalAtDestination?.Invoke();
                 enabled = false;
             }
         }

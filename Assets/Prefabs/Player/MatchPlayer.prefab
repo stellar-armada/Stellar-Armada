@@ -77,7 +77,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4270505688199268127}
   - component: {fileID: 9071246754439678743}
-  - component: {fileID: 3476508778554506423}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -115,20 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: {fileID: 7098531358120435754}
   rightHand: {fileID: 1059622817193560118}
---- !u!114 &3476508778554506423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269172697730369145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0f67140fa04ce4bbdf628deed0cbf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftGripPressed: 0
-  rightGripPressed: 0
 --- !u!1 &357393510733624154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: 4141f2fda0a005d4284ed301a4db48da
+  m_AssetId: fb8ab71d819054e3b98147408561d499
   m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
@@ -2490,8 +2475,9 @@ GameObject:
   - component: {fileID: 4766300768544055363}
   - component: {fileID: 4476374727524582979}
   - component: {fileID: 6495260259024785693}
+  - component: {fileID: 4652558798829865101}
   m_Layer: 0
-  m_Name: Selector
+  m_Name: ControllerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2580,6 +2566,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bf583f31f8cb54d8986b22561d40bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4652558798829865101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706933311531421549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0f67140fa04ce4bbdf628deed0cbf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftGripPressed: 0
+  rightGripPressed: 0
+  scaleMin: 0.0001
+  scaleMax: 0.001
 --- !u!1 &4720211804134819468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,6 +4424,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}

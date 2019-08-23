@@ -32,14 +32,12 @@ using UnityEngine.UI;
 
                  List<ISelectable> selection = SelectionUIManager.instance.GetSelectionSet(i);
                  if (selection == null) continue;
-                 Debug.Log("Selection length: " + selection);
                  foreach (ISelectable selectable in selection)
                  {
                      stringBuilder.AppendLine(selectable.GetOwningEntity().GetGameObject().name);
                  }
 
                  selectionSetTexts[i].text = stringBuilder.ToString();
-                 Debug.Log(stringBuilder.ToString());
              }
          }
 

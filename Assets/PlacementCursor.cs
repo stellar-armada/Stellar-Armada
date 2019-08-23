@@ -15,6 +15,7 @@ public class PlacementCursor : MonoBehaviour
     }
     void Start()
     {
+        MapControls.instance.OnScaleChanged += newScale => t.localScale = newScale;
         t.SetParent(MiniMap.instance.transform);
         t.localPosition = Vector3.zero;
     }

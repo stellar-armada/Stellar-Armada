@@ -34,7 +34,6 @@ namespace StellarArmada.Ships
             public void InitWarp(Vector3 position, Quaternion rotation)
             {
                 _ship.transform.SetParent(LevelRoot.instance.transform); // if not done already. check to see if it's already called by now
-                Debug.Log("Warping ship to: " + position);
                 _ship.transform.localPosition = position;
                 _ship.transform.rotation = rotation;
                 _ship.visualModel.transform.localPosition = warpInStartPos;

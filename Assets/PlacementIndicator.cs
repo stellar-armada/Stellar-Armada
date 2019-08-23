@@ -7,9 +7,11 @@ public class PlacementIndicator : MonoBehaviour
     public NetworkEntity entity;
     public GameObject visualModel;
 
-    void Awake()
+    void Start()
     {
         transform.SetParent(Placer.instance.transform);
+        transform.localRotation = Quaternion.identity;
+        transform.localScale = Vector3.one;
         Hide();
     }
 
@@ -18,8 +20,6 @@ public class PlacementIndicator : MonoBehaviour
         Transform t = transform;
         // position the placement indicator in local space
         t.localPosition = pos;
-        t.localRotation = Quaternion.identity;
-        t.localScale = Vector3.one;
         visualModel.SetActive(true);
     }
     public void Hide() =>  visualModel.SetActive(false);

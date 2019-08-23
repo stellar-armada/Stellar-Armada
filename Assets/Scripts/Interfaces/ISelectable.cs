@@ -3,8 +3,6 @@ namespace StellarArmada
 {
     public interface ISelectable
     {
-        int GetSelectionSetID();
-        void SetSelectionSetID(int id);
         void Select();
         void Deselect();
         NetworkEntity GetOwningEntity();

@@ -37,7 +37,7 @@ public class MiniMap : MonoBehaviour
         SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
         
         // Parent the MapTransformRoot to the SceneRoot (bride)
-        MapTransformRoot.instance.transform.SetParent(SceneRoot.instance.transform);
+        MapTransformRoot.instance.transform.SetParent(SceneRoot.instance.transform, true);
         MapTransformRoot.instance.transform.localPosition = new Vector3(0, yOffset, 0);
         MapTransformRoot.instance.transform.SetGlobalScale(startScale * Vector3.one);
         

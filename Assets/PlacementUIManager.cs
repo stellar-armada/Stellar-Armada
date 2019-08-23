@@ -32,7 +32,6 @@ public class PlacementUIManager : MonoBehaviour
 
     public void UpdatePlacementMarkers()
     {
-        Debug.Log("UpdatePlacementMarkers called");
         // clear indicators if there already are some
         if(placementIndicators.Count > 0)
             foreach (var entity in placementIndicators)
@@ -48,7 +47,6 @@ public class PlacementUIManager : MonoBehaviour
             
             // Set references to the entity
             p.entityId = e.GetEntityId(); // cache the ID for future ref
-            Debug.Log("Entity ID: " + e.GetEntityId());
             p.entity = e;
 
             // add to list

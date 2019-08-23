@@ -35,7 +35,6 @@ namespace StellarArmada
         [Command]
         public void CmdMoveToPoint(Vector3 pos, Quaternion rot)
         {
-            Debug.Log("Move to point called!");
             if (!controlEnabled)
             {
                 

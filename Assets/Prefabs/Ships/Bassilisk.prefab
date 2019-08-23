@@ -10427,7 +10427,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018048851463502376}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 59.8, z: -73.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -26546,9 +26546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4666f7d6cc836394590ea7818b968e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 8081799463623299947}
+  entity: {fileID: 8081799463623299947}
   selectionCube: {fileID: 3420445077128117472}
-  selectionSetID: 0
 --- !u!65 &7640196921884593222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32773,17 +32772,17 @@ MonoBehaviour:
   _drawGizmos: 0
   _center: {x: 0, y: 0, z: 0}
   _radius: 300
-  _minSpeedForTurning: 1
-  _movementPriority: 0
-  _turnTime: 0.25
+  _minSpeedForTurning: 10
+  _movementPriority: -165532
+  _turnTime: 4
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 475
-  _maxSpeed: 1
-  _maxForce: 10
+  _maxSpeed: 300
+  _maxForce: 100
   _canMove: 1
-  _accelerationRate: 5
-  _decelerationRate: 8
+  _accelerationRate: 300000
+  _decelerationRate: 200000
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 15
@@ -33058,16 +33057,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6787116511349424934}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
-      propertyPath: m_Name
-      value: SelectionBox
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
-      propertyPath: m_Layer
-      value: 15
+      propertyPath: m_LightProbeUsage
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d17bd9fbd833fae468bd75c96393138e, type: 2}
     - target: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33138,26 +33147,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5.4
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
-      propertyPath: m_CastShadows
-      value: 0
+      propertyPath: m_Name
+      value: SelectionBox
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 0
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-        type: 3}
-      propertyPath: m_ReflectionProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d17bd9fbd833fae468bd75c96393138e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 078c3191bfc9b8f46848f6b4cd1c7410, type: 3}
 --- !u!1 &3984289979099924540 stripped

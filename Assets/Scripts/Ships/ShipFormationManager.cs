@@ -16,9 +16,7 @@ public class ShipFormationManager : MonoBehaviour
 
     public Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
     {
-        Debug.Log("Ships: " + ships.Count);
         shipPositions = new Dictionary<Ship, Vector3>();
-        Debug.Log("Shippositions: " + shipPositions);
         
         int currentFrontlinePosition = 0;
         int currentMidlinePosition = 0;
@@ -26,10 +24,7 @@ public class ShipFormationManager : MonoBehaviour
 
         foreach (Ship s in ships)
         {
-            Debug.Log("Ship: " + s.GetEntityId());
             Vector3 pos = Vector3.zero;
-            
-            Debug.Log("Formation position: " + s.formationPosition);
             // determine what type of ship it is and return next coordinate
             switch (s.formationPosition)
             {
