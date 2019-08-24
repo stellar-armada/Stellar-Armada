@@ -6,7 +6,7 @@ public class MapControls : MonoBehaviour
 {
     public static MapControls instance;
     
-    private bool isActive = false;
+    public bool isActive = false;
 
     Transform leftController;
     Transform rightController;
@@ -93,7 +93,7 @@ public class MapControls : MonoBehaviour
 
         if (isActive)
         {
-           // TwoHandDrag();
+            TwoHandDrag();
                 Rotate();
                 Scale();
         }
@@ -105,17 +105,10 @@ public class MapControls : MonoBehaviour
 
     private void TwoHandDrag()
     {
-        //get middle position of hands
-        Vector3 midPos = (leftPos + rightPos) / 2f;
-        Vector3 prevMidPos = (leftPosPrev + rightPosPrev) / 2f;
-        Translate(prevMidPos, midPos);
+        Vector3 center = (leftPos + rightPos) / 2f;
+        MapTransformRoot.instance.transform.localPosition = center;
     }
 
-    private void Translate(Vector3 startPos, Vector3 endPos)
-    {
-        Vector3 distance = endPos - startPos;
-        MapTransformRoot.instance.transform.Translate(distance, Space.World);
-    }
 
     private void Rotate()
     {
@@ -123,15 +116,10 @@ public class MapControls : MonoBehaviour
         Vector3 dir = rightPos - leftPos;
         Vector3 prevDir = rightPosPrev - leftPosPrev;
 
-        //center of hand pos
-        Vector3 center = (leftPos + rightPos) / 2f;
-
         float angle = Vector3.Angle(dir, prevDir);
 
         //calculate direction of rotation
         Vector3 cross = Vector3.Cross(prevDir, dir);
-
-        MapTransformRoot.instance.transform.localPosition = center;
         //perform rotation
         MapTransformRoot.instance.transform.Rotate(cross, angle);
     }

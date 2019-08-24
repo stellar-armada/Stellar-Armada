@@ -8,4 +8,5 @@ public class MapTransformRoot : MonoBehaviour
     {
         instance = this;
     }
+
 }

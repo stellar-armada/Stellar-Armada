@@ -96,7 +96,7 @@ public class Placer : MonoBehaviour
             //Activate
             pI.gameObject.SetActive(true);
             activePlacements.Add(pI); // Quick cache for disabling on placement
-            pI.transform.SetParent(MiniMap.instance.transform, true);
+            pI.transform.SetParent(PlacementCursor.instance.transform, true);
             pI.transform.localScale = Vector3.one;
             pI.transform.localRotation = Quaternion.identity;
             pI.Show(positions[s]);

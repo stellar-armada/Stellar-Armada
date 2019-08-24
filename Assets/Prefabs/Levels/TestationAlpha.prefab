@@ -11147,9 +11147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene: {fileID: 8126029599117291699}
   yOffset: 1.4
-  startScale: 0.0003
-  minScale: 0.0001
-  maxScale: 0.001
+  startScale: 0.00025
+  minScale: 0.00005
+  maxScale: 0.0005
   uiLayerMask:
     serializedVersion: 2
     m_Bits: 32768

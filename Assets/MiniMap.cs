@@ -12,6 +12,8 @@ public class MiniMap : MonoBehaviour
     public float minScale;
     public float maxScale;
 
+    public float rotationDamping = 10;
+
     [SerializeField] private LayerMask uiLayerMask;
     void Awake()
     {
@@ -45,6 +47,14 @@ public class MiniMap : MonoBehaviour
         transform.SetParent(MapTransformRoot.instance.transform);
         transform.localScale = Vector3.one;
         transform.localPosition = Vector3.zero;
+    }
+    
+    
+    void LateUpdate()
+    {
+        if (MapControls.instance == null || MapControls.instance.isActive) return;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
+        
     }
     
     void SetLayerRecursively(GameObject obj, int newLayer)

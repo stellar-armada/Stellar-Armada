@@ -1010,8 +1010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 994463323
+  m_AssetId: fb8ab71d819054e3b98147408561d499
+  m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,6 +2578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0f67140fa04ce4bbdf628deed0cbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   leftGripPressed: 0
   rightGripPressed: 0
   scaleMin: 0.0001
@@ -3115,6 +3116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformToFollow: {fileID: 952658930748559431}
+  yOffset: 0.05
 --- !u!1 &7240429805731679302
 GameObject:
   m_ObjectHideFlags: 0
