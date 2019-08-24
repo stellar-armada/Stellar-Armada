@@ -50,12 +50,10 @@ public class MovementTest : MonoBehaviour
                 if (hit.transform.tag == "Ship" && hit.transform != transform)
                 {
                     shipMovement.MoveToEntity(hit.transform.GetComponent<Ship>().netId);
-                    Debug.Log("Raycast a ship, moving toward it");
                 }
                 else
                 {
                     shipMovement.CmdMoveToPoint(hit.point, Quaternion.identity);
-                    Debug.Log("Raycast ground, moving toward it");
                 }
             }
         }

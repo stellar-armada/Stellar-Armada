@@ -20,17 +20,14 @@ namespace StellarArmada.Common.Tests
 
         public void ShipDestroyed()
         {
-            Debug.Log("Dummy destroyed!");
         }
 
         public void HullChanged()
         {
-            Debug.Log("Hull changed to " + health.currentHull);
         }
 
         public void ShieldChanged()
         {
-            Debug.Log("Hull changed to " + shield.currentShield);
         }
     }
 }

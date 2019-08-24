@@ -32707,9 +32707,11 @@ GameObject:
   - component: {fileID: 7251706484669647788}
   - component: {fileID: 6430903243183470549}
   - component: {fileID: 1977461455125822363}
+  - component: {fileID: 810771506513414909}
   - component: {fileID: 3611349499226454024}
   - component: {fileID: 8582956399299895816}
-  - component: {fileID: 810771506513414909}
+  - component: {fileID: 741652607477629037}
+  - component: {fileID: 2175313936342113083}
   m_Layer: 9
   m_Name: Bassilisk
   m_TagString: Ship
@@ -32947,11 +32949,11 @@ MonoBehaviour:
   _maxQueueProcessedPerUpdate: 20
   _tickLength: 0.5
   _detectionRadius: 1000
-  _detectDisabledVehicles: 0
+  _detectDisabledVehicles: 1
   _layersChecked:
     serializedVersion: 2
-    m_Bits: 2560
-  _drawGizmos: 1
+    m_Bits: 3584
+  _drawGizmos: 0
   _preAllocateSize: 30
 --- !u!114 &6430903243183470549
 MonoBehaviour:
@@ -32986,6 +32988,20 @@ MonoBehaviour:
   _slowDownOnApproach: 1
   _quarry: {fileID: 0}
   _maxPredictionTime: 5
+--- !u!114 &810771506513414909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weight: 10
+  _estimationTime: 2
 --- !u!64 &3611349499226454024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32998,7 +33014,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: -4193246298073379989, guid: 9926dc06be445be4495977d717ab0128, type: 3}
 --- !u!114 &8582956399299895816
 MonoBehaviour:
@@ -33016,7 +33032,7 @@ MonoBehaviour:
   bridgePrefab: {fileID: 3734985492088278481, guid: e0ba0fe99d9d5ed47ad81be0c7f781be,
     type: 3}
   bridgeRoot: {fileID: 1960992285473818226}
---- !u!114 &810771506513414909
+--- !u!114 &741652607477629037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33025,11 +33041,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 8801777087567244934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
+  m_Script: {fileID: 11500000, guid: c589e228a3db54ba7830738331a921c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _estimationTime: 2
+  _minRadius: 3
+  _maxRadius: 7.5
+  _drawNeighbors: 0
+  _angleCos: 0.7
+--- !u!114 &2175313936342113083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb541a7bf4d841a8a655dc685b730bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weight: 1
+  _minDistance: 250
+  _maxDistance: 100000
+  _comfortDistance: 350
+  _multiplierInsideComfortDistance: 1
+  _vehicleRadiusImpact: 0
 --- !u!1 &8887671907898053240
 GameObject:
   m_ObjectHideFlags: 0
@@ -33275,15 +33312,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 078c3191bfc9b8f46848f6b4cd1c7410, type: 3}
---- !u!1 &3984289979099924540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-    type: 3}
-  m_PrefabInstance: {fileID: 4930007511926903093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &76652971646040623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+    type: 3}
+  m_PrefabInstance: {fileID: 4930007511926903093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3984289979099924540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
     type: 3}
   m_PrefabInstance: {fileID: 4930007511926903093}
   m_PrefabAsset: {fileID: 0}

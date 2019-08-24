@@ -26,7 +26,6 @@ namespace StellarArmada.Ships
         public void CmdRepairHull(float amount)
         {
             currentHull = Mathf.Min(currentHull + amount, maxHull);
-            Debug.Log("Hull repaired to " + currentHull);
         }
 
 

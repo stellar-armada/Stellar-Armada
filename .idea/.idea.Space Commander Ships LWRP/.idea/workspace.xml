@@ -44,9 +44,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/MainMatchScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRArm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRUtilities.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/TickedVehicle2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IK.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/385D0F58-780E-4345-B8A9-CAFD1FA34231/bb/2a44f3d0/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVR.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/Steering2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/Warning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRSpine.cs" root0="FORCE_HIGHLIGHTING" />
@@ -109,6 +111,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ExplosionTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/HealthTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/Hull.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/TestDamageableHull.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectionTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/EntityManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ships/EntityExplosion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -169,6 +172,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Action/Action.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Missile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/MissileLauncher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A1CE4CA8-4A94-4D8A-A5E2-3AA6FA322F2E/73/591dc06c/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SniperTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/ShotgunTurret.cs" root0="FORCE_HIGHLIGHTING" />
@@ -219,12 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/AutonomousVehicle.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/EntityExplosion.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/Scenario.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utility/LockRotation.cs" />
         <option value="$PROJECT_DIR$/Assets/LayerUtil.cs" />
@@ -249,15 +247,11 @@
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Selection/SelectionTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkServer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ISelectable.cs" />
         <option value="$PROJECT_DIR$/Assets/ShipPriceManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utility/LockRotationToScene.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/IO/Selector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Placer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/MapTransformRoot.cs" />
@@ -270,6 +264,16 @@
         <option value="$PROJECT_DIR$/Assets/MovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/PlacementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/MiniMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/AutonomousVehicle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IO/Selector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/Scripts/DamageableTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/TestDamageableHull.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/MovementTest.cs" />
       </list>
     </option>
   </component>
@@ -340,7 +344,7 @@
       <workItem from="1565857687040" duration="26669000" />
       <workItem from="1565984452880" duration="74490000" />
       <workItem from="1566262450496" duration="91000" />
-      <workItem from="1566263866026" duration="80779000" />
+      <workItem from="1566263866026" duration="85547000" />
     </task>
     <servers />
   </component>

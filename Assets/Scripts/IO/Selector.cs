@@ -61,17 +61,11 @@ namespace StellarArmada.IO
 
         void HandleRightTrigger(bool down)
         {
-            Debug.Log("!HandSwitcher.instance.CurrentHandIsRight()");
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
-            Debug.Log("isDeselecting" + isDeselecting);
             if (isDeselecting) return; // we're already deselection, so we don't want to start a selection
-            Debug.Log("leftTriggerIsDown" + leftTriggerIsDown);
-
             if (leftTriggerIsDown) return; // if the other button is down, ignore this input
-            Debug.Log("!down && !rightTriggerIsDown" + (!down && !rightTriggerIsDown));
             if (!down && !rightTriggerIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightTriggerIsDown = down;
-            Debug.Log("Down: " + down);
             if(down)StartSelection();
             else EndSelection();
         }

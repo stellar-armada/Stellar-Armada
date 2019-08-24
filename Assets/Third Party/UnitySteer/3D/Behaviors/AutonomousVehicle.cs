@@ -1,6 +1,7 @@
 #define TRACE_ADJUSTMENTS
 using System;
 using System.Diagnostics;
+using System.Runtime.Remoting.Messaging;
 using TickedPriorityQueue;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -29,7 +30,7 @@ namespace UnitySteer.Behaviors
         [SerializeField] private float _accelerationRate = 5;
 
         /// <summary>
-        /// Deceleration rate - it'll be used as a multiplier for the speed
+        /// Deceleration rate - it'll be used as a multiplier for the speedd
         /// at which the velocity is interpolated when decelerating. A rate
         /// of 1 means that we interpolate across 1 second; a rate of 5 means
         /// we do it five times as fast.
@@ -88,6 +89,7 @@ namespace UnitySteer.Behaviors
             {
                 var rate = TargetSpeed > _speed ? _accelerationRate : _decelerationRate;
                 _speed = Mathf.Lerp(_speed, targetSpeed, deltaTime * rate);
+                Debug.Log("Speed: " + _speed);
             }
 
             return Velocity * deltaTime;
@@ -334,20 +336,8 @@ namespace UnitySteer.Behaviors
         {
             // Euler integrate (per frame) velocity into position
             var acceleration = CalculatePositionDelta(elapsedTime);
-            acceleration = Vector3.Scale(acceleration, AllowedMovementAxes);
-
-            if (CharacterController != null)
-            {
-                CharacterController.Move(acceleration);
-            }
-            else if (Rigidbody == null || Rigidbody.isKinematic)
-            {
-                Transform.position += acceleration;
-            }
-            else
-            {
-                Rigidbody.MovePosition(Rigidbody.position + acceleration);
-            }
+            if(float.IsNaN(acceleration.x)) return;
+            Transform.position += acceleration;
         }
 
 

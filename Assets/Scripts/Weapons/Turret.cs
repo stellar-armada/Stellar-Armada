@@ -7,7 +7,6 @@ namespace StellarArmada.Weapons
 {
     public class Turret : WeaponSystem
     {
-
         [Header("Turret setup")] public Transform[] TurretSocket; // Sockets reference
 
         public Transform Mount;
@@ -133,7 +132,7 @@ namespace StellarArmada.Weapons
 
             // if object is an enemy
             List<IDamageable> damageables = new List<IDamageable>();
-
+            
             foreach (Collider col in hitColliders)
             {
                 IDamageable d = col.GetComponent<ICollidable>().GetDamageable();

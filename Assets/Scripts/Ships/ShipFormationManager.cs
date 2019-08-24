@@ -39,8 +39,6 @@ public class ShipFormationManager : MonoBehaviour
                     break;
             }
             
-            Debug.Log("Formation manager: " + instance);
-            
             // scale vector up to formation size
             pos.x *= scaleXY;
             pos.y *= scaleXY;

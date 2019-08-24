@@ -59,25 +59,16 @@ namespace StellarArmada.UI
             foreach (NetworkEntity entity in team.entities)
             {
                 Ship s = entity as Ship;
-                
-                Debug.Log("Populating selection for ship " + s.GetEntityId());
-                
-                Debug.Log("Foreach container check");
                 //foreach container
                 for (int c = 0; c < selectionSets.Count; c++)
                 {
-                    Debug.Log("c: " + c);
-
                     // Create a UI ship
                     UISelectionShip selectionShip = UIShipFactory.instance.CreateSelectionShip(s.type)
                         .GetComponent<UISelectionShip>();
                     // Set UI ship to team ship ID
                     selectionShip.entityId = s.GetEntityId();
-                    Debug.Log("uiShips[c]: " + uiShips[c]);
-
                     //Add to list
                     uiShips[c].Add(selectionShip);
-                    Debug.Log("Selection set containers: " + selectionSetContainers[c]);
                     selectionShip.transform.SetParent(selectionSetContainers[c]);
                     // Disable
                     selectionShip.gameObject.SetActive(false);

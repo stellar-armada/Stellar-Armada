@@ -21,7 +21,6 @@ namespace StellarArmada.Selection
 
         public void Select()
         {
-            Debug.Log("Selected!");
             selectionCube.enabled = true;
             OnSelectionChanged?.Invoke(true);
         }
@@ -39,7 +38,6 @@ namespace StellarArmada.Selection
 
         public bool IsSelectable()
         {
-            Debug.Log("Checking if is selectable: " + (entity.IsAlive() && entity.movement.controlEnabled));
             //If is alive and has warped inentity.shipWarp.isWarpedIn
             if (entity.IsAlive()) return true;
             return false;
