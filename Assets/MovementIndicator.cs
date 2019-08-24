@@ -4,26 +4,54 @@ using UnityEngine;
 public class MovementIndicator : MonoBehaviour
 {
     [SerializeField] EntityMovement movement;
+    private bool isActive = false;
     public GameObject visualModel;
+    [SerializeField] LineRenderer lineRenderer;
+    public float lineRendererWidth = .1f;
 
+    [SerializeField] Transform entityTransform;
+
+    void Awake()
+    {
+        visualModel.SetActive(false);
+    }
     void Start()
     {
         // Subscribe to on ship start move (Vector 3, Quaternion)
-        movement.OnMoveToPoint += ShowPlacementIndicator;
+        movement.OnMoveToPoint += ShowMovementIndicator;
         // Subscribe to on ship stop move
-        movement.OnStop += HidePlacementIndicator;
+        movement.OnArrival += HideMovementIndicator;
     }
 
-    void ShowPlacementIndicator(Vector3 pos, Quaternion rot)
+    void LateUpdate()
     {
-        transform.position = pos;
-        transform.rotation = rot;
-        gameObject.SetActive(true);
+        if (isActive)
+        {
+            lineRenderer.SetPositions(new []
+            {
+                transform.position, 
+                entityTransform.position
+            });
+            lineRenderer.widthMultiplier = lineRendererWidth;
+        }
     }
 
-    void HidePlacementIndicator()
+    void ShowMovementIndicator(Vector3 pos, Quaternion rot)
     {
-        gameObject.SetActive(false);
+        isActive = true;
+        transform.SetParent(MiniMap.instance.transform);
+        transform.localPosition = pos;
+        transform.localRotation = rot;
+        transform.localScale = Vector3.one;
+        visualModel.SetActive(true);
+        lineRenderer.enabled = true;
+    }
+
+    void HideMovementIndicator()
+    {
+        isActive = false;
+        visualModel.SetActive(false);
+        lineRenderer.enabled = false;
     }
 
 }

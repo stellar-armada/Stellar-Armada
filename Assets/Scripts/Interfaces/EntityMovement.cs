@@ -11,7 +11,7 @@ namespace StellarArmada
         [SyncVar] public bool controlEnabled = false;
         [HideInInspector] public Transform currentTarget;
         
-        [SerializeField] NetworkEntity entity;
+        public NetworkEntity entity;
         
         NetworkEntity tempShip;
         private Transform transformToMoveTo; // for pursuit
@@ -25,13 +25,19 @@ namespace StellarArmada
         public delegate void MovementEvent();
 
         public MoveToPointEvent OnMoveToPoint;
-        public MovementEvent OnStop;
+        public MovementEvent OnArrival;
 
         void Awake()
         {
             entity = GetComponent<NetworkEntity>();
+            steerForPoint.OnArrival += Test;
         }
-        
+
+        private void Test(Steering obj)
+        {
+            OnArrival?.Invoke();
+        }
+
         [Command]
         public void CmdMoveToPoint(Vector3 pos, Quaternion rot)
         {
@@ -71,7 +77,7 @@ namespace StellarArmada
             steerForPoint.enabled = true;
             steerForPursuit.Quarry = null;
             steerForPursuit.enabled = false;
-            OnStop?.Invoke();
+            OnArrival?.Invoke();
         }
         
         void GoToPoint(Vector3 point)
@@ -90,7 +96,7 @@ namespace StellarArmada
         [Command]
         public void CmdDisableMovement()
         {
-            OnStop?.Invoke();
+            OnArrival?.Invoke();
             controlEnabled = false;
             
         }

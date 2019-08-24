@@ -3,6 +3,7 @@ using StellarArmada.Scenarios;
 using StellarArmada.Selection;
 using StellarArmada.Ships;
 using StellarArmada.Teams;
+using StellarArmada.UI;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -19,6 +20,7 @@ namespace StellarArmada
         [Header("Entity Subsystems")]
         public EntityMovement movement;
         public EntityExplosion entityExplosion;
+        public MapEntity mapEntity;
 
         public SelectionHandler selectionHandler;
 
