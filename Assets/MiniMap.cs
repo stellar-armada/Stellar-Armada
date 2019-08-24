@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnitySteer.Behaviors;
 using Zinnia.Extension;
 
 public class MiniMap : MonoBehaviour
@@ -62,6 +63,10 @@ public class MiniMap : MonoBehaviour
         if (obj == null) return;
            
         obj.layer = newLayer;
+
+        // Destroy any detectables, also, so we don't throw off our ship nav
+        var detectable = obj.GetComponent<DetectableObject>();
+        if(detectable) Destroy(detectable);
            
         foreach (Transform child in obj.transform)
         {

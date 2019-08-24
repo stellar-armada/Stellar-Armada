@@ -73,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/RandomizeStartPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlayerCanvasManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Radar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UISelectionShip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForEvasion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,6 +83,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Vehicle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MessageAudioController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MusicController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForSphericalObstacles.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/VolumeSliderListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SoundEffectButtonListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForPursuit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -261,13 +263,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/MapTransformRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IO/MapControls.cs" />
         <option value="$PROJECT_DIR$/Assets/PlacementCursor.cs" />
-        <option value="$PROJECT_DIR$/Assets/MiniMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Steering.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/EntityMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/MovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/PlacementIndicator.cs" />
+        <option value="$PROJECT_DIR$/Assets/MiniMap.cs" />
       </list>
     </option>
   </component>
@@ -338,7 +340,7 @@
       <workItem from="1565857687040" duration="26669000" />
       <workItem from="1565984452880" duration="74490000" />
       <workItem from="1566262450496" duration="91000" />
-      <workItem from="1566263866026" duration="79640000" />
+      <workItem from="1566263866026" duration="80779000" />
     </task>
     <servers />
   </component>
