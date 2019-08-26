@@ -49,6 +49,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/385D0F58-780E-4345-B8A9-CAFD1FA34231/bb/2a44f3d0/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVR.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/VRIK.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/Steering2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/Warning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRSpine.cs" root0="FORCE_HIGHLIGHTING" />
@@ -94,6 +95,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/Platform/Editor/OculusPlatformSettingsEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/DamageableTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/Weaver/CompilationFinishedHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Scripts/Ships/ShipFactoryTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -224,7 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Shield.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/SceneRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/LevelRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/PlacementRoot.cs" />
@@ -262,19 +263,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/TestDamageableHull.cs" />
-        <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/MovementTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWeaponSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/MapEntity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/FormationMatrices.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Placer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/StatusBar.cs" />
         <option value="$PROJECT_DIR$/Assets/MiniMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/MovementTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IK/VRIK.cs" />
       </list>
     </option>
   </component>
@@ -347,7 +349,7 @@
       <workItem from="1566262450496" duration="91000" />
       <workItem from="1566263866026" duration="85555000" />
       <workItem from="1566691009433" duration="9716000" />
-      <workItem from="1566799512712" duration="3737000" />
+      <workItem from="1566799512712" duration="4368000" />
     </task>
     <servers />
   </component>
@@ -383,7 +385,7 @@
     <state x="2721" y="189" key="RiderGenerateDialog/1920.1080/1920.1080" />
     <state x="2810" y="324" key="SettingsEditor" />
     <state x="2810" y="324" key="SettingsEditor/1920.1080/1920.1080" />
-    <state x="627" y="600" width="666" height="440" key="find.popup" />
+    <state x="603" y="286" width="1244" height="660" key="find.popup" />
     <state x="627" y="600" width="666" height="440" key="find.popup/1920.1080" />
     <state x="603" y="286" width="1244" height="660" key="find.popup/1920.1080/1920.1080" />
     <state x="2532" y="344" key="run.anything.popup" />

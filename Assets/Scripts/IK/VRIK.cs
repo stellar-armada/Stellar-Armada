@@ -10,7 +10,7 @@ namespace StellarArmada.IK {
 	[AddComponentMenu("Scripts/SpaceCommander.IK/IK/VR IK")]
 	public class VRIK : IK {
 
-		/// <summary>
+		/// <summary>`
 		/// VRIK-specific definition of a humanoid biped.
 		/// </summary>
 		[System.Serializable]
