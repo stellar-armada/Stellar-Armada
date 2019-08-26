@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1513776540261661944}
   - component: {fileID: 3025353710147340970}
   m_Layer: 12
-  m_Name: sniper_beam_example
+  m_Name: sniper_beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4864206, y: 0.6268916, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -270.04, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,7 +47,6 @@ LineRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -151,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094a4e796b521cf4594d64756c82fdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningWeaponSystem: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 2560
@@ -167,10 +167,11 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 7dd4e50cc1ba5c84096d32f046d96c3e, type: 3}
   - {fileID: 2800000, guid: 7dd4e50cc1ba5c84096d32f046d96c3e, type: 3}
   FrameStep: 0.05
-  beamScale: 2
-  MaxBeamLength: 100
+  beamScale: 200
+  MaxBeamLength: 5000
   AnimateUV: 0
   UVTime: 0
+  lineRendererThickness: 20
 --- !u!114 &3025353710147340970
 MonoBehaviour:
   m_ObjectHideFlags: 0

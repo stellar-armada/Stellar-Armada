@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -49,10 +49,10 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2560
-  impactHitSize: 1
-  lifeTime: 2
+  impactHitSize: 5
+  lifeTime: 2.5
   despawnDelay: 0
-  velocity: 555
+  velocity: 600
   RaycastAdvance: 0.5
   DelayDespawn: 0
   delayedParticles: []
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RandomScale: 1
   RandomRotation: 1
-  MinScale: 25
-  MaxScale: 30
+  MinScale: 3.6
+  MaxScale: 4.2
   MinRotation: -360
   MaxRotaion: 360
 --- !u!1 &100002

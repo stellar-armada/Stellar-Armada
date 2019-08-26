@@ -24,6 +24,8 @@ namespace StellarArmada.Weapons
         float beamLength; // Current beam length
         float initialBeamOffset; // Initial UV offset 
 
+        [SerializeField] private float lineRendererThickness;
+
         private bool hit;
 
         void Awake()
@@ -34,6 +36,8 @@ namespace StellarArmada.Weapons
             // Assign first frame texture
             if (!AnimateUV && BeamFrames.Length > 0)
                 lineRenderer.material.SetTexture("_BaseMap", BeamFrames[0]);
+
+            lineRenderer.widthMultiplier = lineRendererThickness;
 
             // Randomize uv offset
             initialBeamOffset = Random.Range(0f, 5f);
@@ -72,7 +76,7 @@ namespace StellarArmada.Weapons
             hitPoint = new RaycastHit();
             Ray ray = new Ray(transform.position, transform.forward);
             // Calculate default beam proportion multiplier based on default scale and maximum length
-            float propMult = MaxBeamLength*(beamScale/10f);
+            float propMult = MaxBeamLength*beamScale;
 
             // Raycast
             if (Physics.Raycast(ray, out hitPoint, MaxBeamLength, layerMask))
@@ -82,7 +86,7 @@ namespace StellarArmada.Weapons
                 lineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
 
                 // Calculate default beam proportion multiplier based on default scale and current length
-                propMult = beamLength*(beamScale/10f);
+                propMult = beamLength*beamScale;
                 // Spawn prefabs and apply force
                 owningWeaponSystem.Impact(hitPoint.point);
                 hit = true;
@@ -99,7 +103,7 @@ namespace StellarArmada.Weapons
                     lineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
 
                     // Calculate default beam proportion multiplier based on default scale and current length
-                    propMult = beamLength*(beamScale/10f);
+                    propMult = beamLength*beamScale;
                     // Spawn prefabs and apply force
                     owningWeaponSystem.Impact(ray2D.point);
                     hit = true;

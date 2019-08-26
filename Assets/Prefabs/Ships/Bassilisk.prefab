@@ -25941,29 +25941,29 @@ MonoBehaviour:
   target: {fileID: 0}
   targetNetworkEntity: {fileID: 0}
   owningNetworkEntity: {fileID: 8081799463623299947}
-  damagePerHit: 5
+  damagePerHit: 8
   timerID: -1
-  timer: 0.1
+  timer: 0.5
   tickRate: 0.2
-  maxRange: 100000
+  maxRange: 3000
   damageableLayerMask:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 512
   allRaycastableLayersMask:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 1536
   isFiring: 0
   TurretSocket:
   - {fileID: 7881953878158757258}
   Mount: {fileID: 5648614917923509780}
   Swivel: {fileID: 2563242716870141266}
-  HeadingTrackingSpeed: 2
-  ElevationTrackingSpeed: 2
+  HeadingTrackingSpeed: 3
+  ElevationTrackingSpeed: 3
   headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: -30, y: 30}
-  ElevationLimit: {x: -10, y: 60}
+  HeadingLimit: {x: -25, y: 25}
+  ElevationLimit: {x: -8, y: 50}
   smoothControlling: 1
-  DebugDraw: 1
+  DebugDraw: 0
   curSocket: 0
   maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
@@ -26019,13 +26019,13 @@ MonoBehaviour:
   timerID: -1
   timer: 0.1
   tickRate: 0.2
-  maxRange: 100000
+  maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 512
   allRaycastableLayersMask:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 1536
   isFiring: 0
   TurretSocket:
   - {fileID: 7389018626280629774}
@@ -26037,7 +26037,7 @@ MonoBehaviour:
   HeadingLimit: {x: -100, y: 100}
   ElevationLimit: {x: -5, y: 120}
   smoothControlling: 1
-  DebugDraw: 1
+  DebugDraw: 0
   curSocket: 0
   maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
@@ -27164,7 +27164,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2418946794332889089}
-  - component: {fileID: 5875054751939514787}
   m_Layer: 15
   m_Name: VulanTurretLight
   m_TagString: Untagged
@@ -27187,48 +27186,6 @@ Transform:
   m_Father: {fileID: 6624077124924178801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5875054751939514787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5796958133982373742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e65da01919a6f644bf35bb8a5e5bc6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owningWeaponSystemTransform: {fileID: 8113730419681309641}
-  target: {fileID: 0}
-  targetNetworkEntity: {fileID: 0}
-  owningNetworkEntity: {fileID: 8081799463623299947}
-  damagePerHit: 5
-  timerID: -1
-  timer: 0.1
-  tickRate: 0.2
-  maxRange: 100
-  damageableLayerMask:
-    serializedVersion: 2
-    m_Bits: 2560
-  allRaycastableLayersMask:
-    serializedVersion: 2
-    m_Bits: 3584
-  isFiring: 0
-  TurretSocket:
-  - {fileID: 3304865104626502287}
-  Mount: {fileID: 2802506286488076709}
-  Swivel: {fileID: 1111154373318806276}
-  HeadingTrackingSpeed: 2
-  ElevationTrackingSpeed: 2
-  headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: -100, y: 100}
-  ElevationLimit: {x: -5, y: 120}
-  smoothControlling: 1
-  DebugDraw: 0
-  curSocket: 0
-  maximumAngleDifferenceToTarget: 10
-  fireRate: 0.3
 --- !u!1 &5797802756706680167
 GameObject:
   m_ObjectHideFlags: 0
@@ -33325,7 +33282,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7333188974148569895}
-  - component: {fileID: 2811868872674499762}
   m_Layer: 15
   m_Name: SniperTurretLight (1)
   m_TagString: Untagged
@@ -33348,48 +33304,6 @@ Transform:
   m_Father: {fileID: 6624077124924178801}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &2811868872674499762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076735764883444463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0469fba481febc545bdfa7d738810e2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owningWeaponSystemTransform: {fileID: 8113730419681309641}
-  target: {fileID: 0}
-  targetNetworkEntity: {fileID: 0}
-  owningNetworkEntity: {fileID: 8081799463623299947}
-  damagePerHit: 5
-  timerID: -1
-  timer: 0.1
-  tickRate: 0.2
-  maxRange: 100
-  damageableLayerMask:
-    serializedVersion: 2
-    m_Bits: 2560
-  allRaycastableLayersMask:
-    serializedVersion: 2
-    m_Bits: 3584
-  isFiring: 0
-  TurretSocket:
-  - {fileID: 6160248659975759828}
-  Mount: {fileID: 1045952769259330780}
-  Swivel: {fileID: 3154065120922795010}
-  HeadingTrackingSpeed: 2
-  ElevationTrackingSpeed: 2
-  headingVetor: {x: 0, y: 0, z: 0}
-  HeadingLimit: {x: -30, y: 30}
-  ElevationLimit: {x: -10, y: 60}
-  smoothControlling: 1
-  DebugDraw: 0
-  curSocket: 0
-  maximumAngleDifferenceToTarget: 10
-  fireRate: 0.3
 --- !u!1 &9171050535732525523
 GameObject:
   m_ObjectHideFlags: 0
@@ -33536,15 +33450,15 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 4930007511926903093}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &76652971646040623 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-    type: 3}
-  m_PrefabInstance: {fileID: 4930007511926903093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3984289979099924540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+    type: 3}
+  m_PrefabInstance: {fileID: 4930007511926903093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &76652971646040623 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
     type: 3}
   m_PrefabInstance: {fileID: 4930007511926903093}
   m_PrefabAsset: {fileID: 0}

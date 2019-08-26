@@ -19,7 +19,7 @@ Shader "SpaceCommander/InnerSphere"
 		
 
         Tags { "RenderPipeline"="LightweightPipeline" "RenderType"="Transparent" "Queue"="Transparent" }
-        Cull Back
+        Cull Front
 		HLSLINCLUDE
 		#pragma target 3.0
 		ENDHLSL
@@ -38,6 +38,8 @@ Shader "SpaceCommander/InnerSphere"
 			
 
             HLSLPROGRAM
+            #define _RECEIVE_SHADOWS_OFF 1
+
             // Required to compile gles 2.0 with standard srp library
             #pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
@@ -58,7 +60,6 @@ Shader "SpaceCommander/InnerSphere"
             #pragma fragment frag
 
             #define ASE_SRP_VERSION 51601
-            #define _RECEIVE_SHADOWS_OFF 1
 
 
             // Lighting include is needed because of GI
@@ -159,8 +160,8 @@ Shader "SpaceCommander/InnerSphere"
 	
 }
 /*ASEBEGIN
-Version=16800
-2186;190;1484;754;887.0533;117.0186;1.3;True;True
+Version=16900
+2251;192;1484;748;887.0533;109.2186;1.3;True;True
 Node;AmplifyShaderEditor.WorldNormalVector;51;-1579.073,74.75289;Float;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.ViewDirInputsCoordNode;56;-1159.236,340.1856;Float;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.RangedFloatNode;28;-1241.394,571.815;Half;False;Property;_RimPower;RimPower;1;0;Create;True;0;0;False;0;0;2.03;0;10;0;1;FLOAT;0
@@ -184,7 +185,7 @@ Node;AmplifyShaderEditor.SimpleMultiplyOpNode;35;50.20276,498.0284;Float;False;2
 Node;AmplifyShaderEditor.SimpleAddOpNode;59;192.0463,333.0792;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;42;300.5999,314.9;Float;False;False;2;Float;ASEMaterialInspector;0;3;Hidden/Templates/LightWeightSRPUnlit;e2514bdcf5e5399499a9eb24d175b9db;True;DepthOnly;0;2;DepthOnly;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthOnly;True;0;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;41;300.5999,314.9;Float;False;False;2;Float;ASEMaterialInspector;0;3;Hidden/Templates/LightWeightSRPUnlit;e2514bdcf5e5399499a9eb24d175b9db;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=ShadowCaster;False;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;40;427.2444,250.7104;Half;False;True;2;Half;ASEMaterialInspector;0;3;SpaceCommander/InnerSphere;e2514bdcf5e5399499a9eb24d175b9db;True;Base;0;0;Base;5;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;0;True;4;1;False;-1;1;False;-1;0;1;False;-1;0;False;-1;False;False;False;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;2;False;-1;True;3;False;-1;True;False;0;False;-1;0;False;-1;True;1;LightMode=LightweightForward;False;0;Hidden/InternalErrorShader;0;0;Standard;2;Vertex Position,InvertActionOnDeselection;1;Receive Shadows;0;0;3;True;False;False;False;5;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;40;427.2444,250.7104;Half;False;True;2;Half;ASEMaterialInspector;0;3;SpaceCommander/InnerSphere;e2514bdcf5e5399499a9eb24d175b9db;True;Base;0;0;Base;5;False;False;False;True;1;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;0;True;4;1;False;-1;1;False;-1;0;1;False;-1;0;False;-1;False;False;False;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;2;False;-1;True;3;False;-1;True;False;0;False;-1;0;False;-1;True;1;LightMode=LightweightForward;False;0;Hidden/InternalErrorShader;0;0;Standard;2;Vertex Position,InvertActionOnDeselection;1;Receive Shadows;0;0;3;True;False;False;False;5;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;0
 WireConnection;50;0;51;0
 WireConnection;50;4;56;0
 WireConnection;50;1;52;0
@@ -210,4 +211,4 @@ WireConnection;40;0;59;0
 WireConnection;40;1;35;0
 WireConnection;40;3;57;0
 ASEEND*/
-//CHKSM=0C12DA2977EAF9620D8FFE697DC93226D1FF8377
+//CHKSM=F3FF9FFE0B9D57EC3DED4C46F353696AEEF6F7DC

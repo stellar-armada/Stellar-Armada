@@ -95,12 +95,8 @@ namespace StellarArmada.Weapons
         public bool CanHitPosition(Vector3 pos)
         {
             Vector3 targetDirection = (pos - Mount.transform.position).normalized;
-
-            Quaternion rotationToTarget = Quaternion.LookRotation(targetDirection);
-
-            float angle = Quaternion.Angle(rotationToTarget, Mount.transform.rotation);
-
-            if (angle <= HeadingLimit.y)
+            
+            if(Vector3.Dot(transform.forward, targetDirection) > 0.8f) // Magic number .8f = pretty facing
             {
                 return true;
             }
@@ -136,7 +132,7 @@ namespace StellarArmada.Weapons
 
             // if object is an enemy
             List<IDamageable> damageables = new List<IDamageable>();
-            Debug.Log("Damageables count");
+            Debug.Log("Damageables count:" + damageables.Count);
             
             foreach (Collider col in hitColliders)
             {
@@ -159,11 +155,20 @@ namespace StellarArmada.Weapons
                 
                 Debug.Log("damager.IsEnemy(damaged): " + damager.IsEnemy(damaged));
                 
-                Debug.Log("CanHitPosition(damageable.GetGameObject().transform.position)");
+                Debug.Log("CanHitPosition(damageable.GetGameObject().transform.position): " + CanHitPosition(damageable.GetGameObject().transform.position));
                 
-                if (damager.IsEnemy(damaged) && CanHitPosition(damageable.GetGameObject().transform.position) && IsFacingTarget() && damaged.IsAlive())
+                Debug.Log("damager.IsEnemy(damaged) && CanHitPosition(damageable.GetGameObject().transform.position) && damaged.IsAlive(): " + (damager.IsEnemy(damaged) && CanHitPosition(damageable.GetGameObject().transform.position) && damaged.IsAlive()));
+                
+                Debug.Log("CanHitPosition(damageable.GetGameObject().transform.position): " + CanHitPosition(damageable.GetGameObject().transform.position));
+                
+                Debug.Log("IsFacingTarget(): " + IsFacingTarget());
+                
+                Debug.Log("damaged.IsAlive(): " + damaged.IsAlive());
+                
+                if (damager.IsEnemy(damaged) && damaged.IsAlive())
                 {
                     // set target
+                    Debug.Log("setting target");
                     SetTarget(damageable.GetGameObject().transform);
                     return;
                 }
@@ -182,7 +187,7 @@ namespace StellarArmada.Weapons
 
         protected void Fire(WeaponType type)
         {
-            if (targetNetworkEntity == null || !IsFacingTarget() || !targetNetworkEntity.IsAlive())
+            if (targetNetworkEntity == null || !IsFacingTarget() || !targetNetworkEntity.IsAlive() || !CanHitPosition(targetNetworkEntity.transform.position))
             {
                 // IF we're not facing the target, let's see if we can get one
                 ClearTarget();
@@ -227,7 +232,7 @@ namespace StellarArmada.Weapons
             {
                 timer -= tickRate;
 
-                if (owningWeaponSystemController.WeaponSystemsEnabled())
+                if (!owningWeaponSystemController.WeaponSystemsEnabled())
                 {
                     ClearTarget();
                 }
