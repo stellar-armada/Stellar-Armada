@@ -54,7 +54,7 @@ namespace StellarArmada.Ships
             {
                 foreach (Renderer ren in weaponSystem.GetGameObject().transform.GetComponentsInChildren<Renderer>())
                 {
-                    ren.enabled = false;
+                    ren.enabled = true;
                 }
             }
         }

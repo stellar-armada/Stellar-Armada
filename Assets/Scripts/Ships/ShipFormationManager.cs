@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using StellarArmada.Ships;
 using UnityEngine;
+using VRKeys;
 
 public class ShipFormationManager : MonoBehaviour
 {
@@ -13,11 +15,69 @@ public class ShipFormationManager : MonoBehaviour
     {
         instance = this;
     }
-
     public Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
     {
         shipPositions = new Dictionary<Ship, Vector3>();
         
+        
+        
+        // Get center of mass
+
+        Vector3 centerOfMass = Vector3.zero;
+        int count = 0;
+        foreach (Ship s in ships)
+        {
+            centerOfMass += s.transform.position;
+            count++;
+        }
+
+        centerOfMass /= count;
+        
+        // Get rotation of placer
+
+
+        Ship[][] shipsByLine = new Ship[3][] {
+            ships.Where(s => s.formationPosition == Ship.FormationPosition.Frontline).ToArray(),
+            ships.Where(s => s.formationPosition == Ship.FormationPosition.Midline).ToArray(),
+            ships.Where(s => s.formationPosition == Ship.FormationPosition.Backline).ToArray()
+        };
+        
+        for (int shipLine = 0; shipLine < shipsByLine.Length; shipLine++)
+        {
+            int currentPosition = 0;
+            while(shipsByLine[shipLine].Length > 0)
+            {
+                Vector3 pos = FormationMatrices.shipPositionVectors[shipLine][currentPosition++];
+                // scale vector up to formation size
+                pos.x *= scaleXY;
+                pos.y *= scaleXY;
+                pos.z *= scaleZ;
+                
+                // Calculate the position in real space and order ships by distance
+
+                var lineShips = shipsByLine[shipLine].OrderBy(s =>
+                        Vector3.Distance(
+                            centerOfMass +
+                            Quaternion.Euler(PlacementCursor.instance.transform.forward) * pos, s.transform.position)).ToList();
+                
+                Ship ship = lineShips[0];
+
+                // add to the list of ship positions to return
+                shipPositions.Add(ship, pos);
+                
+                // Remove from the available pool of ships to sort
+                shipsByLine[shipLine] = shipsByLine[shipLine].Where(s => s != ship).ToArray();
+            }
+        }
+        
+        return shipPositions;
+        
+    }
+    
+    public Dictionary<Ship, Vector3> GetFormationPositionWarp(List<Ship> ships)
+    {
+        shipPositions = new Dictionary<Ship, Vector3>();
+
         int currentFrontlinePosition = 0;
         int currentMidlinePosition = 0;
         int currentBacklinePosition = 0;
@@ -29,13 +89,13 @@ public class ShipFormationManager : MonoBehaviour
             switch (s.formationPosition)
             {
                 case Ship.FormationPosition.Frontline:
-                    pos = FormationMatrices.frontlineVectors[currentFrontlinePosition++];
+                    pos = FormationMatrices.shipPositionVectors[0][currentFrontlinePosition++];
                     break;
                 case Ship.FormationPosition.Midline:
-                    pos = FormationMatrices.midlineVectors[currentMidlinePosition++];
+                    pos = FormationMatrices.shipPositionVectors[1][currentMidlinePosition++];
                     break;
                 case Ship.FormationPosition.Backline:
-                    pos = FormationMatrices.backlineVectors[currentBacklinePosition++];
+                    pos = FormationMatrices.shipPositionVectors[2][currentBacklinePosition++];
                     break;
             }
             

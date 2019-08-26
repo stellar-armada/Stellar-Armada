@@ -61,6 +61,7 @@ namespace StellarArmada.Players
                     t.parent = SceneRoot.instance.transform;
                     t.localPosition = Vector3.zero;
                     t.localRotation = Quaternion.identity;
+                    s.CmdSetPlayer(netId);
                     return;
                 }
             }

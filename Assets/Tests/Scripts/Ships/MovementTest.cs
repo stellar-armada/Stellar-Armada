@@ -43,7 +43,6 @@ public class MovementTest : MonoBehaviour
         {
             if(!CheckPlayer()) return;
             cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(cameraRay);
             if (Physics.Raycast(cameraRay, out hit))
             {
 

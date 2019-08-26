@@ -6,7 +6,7 @@ public class MiniMap : MonoBehaviour
 {
     public static MiniMap instance;
     public GameObject scene;
-    private GameObject miniMapSecene;
+    // private GameObject miniMapSecene;
     public float yOffset = 1.2f;
 
     public float startScale = .04f;
@@ -23,21 +23,42 @@ public class MiniMap : MonoBehaviour
 
     void Start()
     {
-        miniMapSecene = Instantiate(scene);
-        SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
+       // miniMapSecene = Instantiate(scene);
+       //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
         SceneRoot.SceneRootCreated += InitializeMiniMap;
+    }
+
+    private bool lockRotation = true;
+
+    public void ToggleRotationLock()
+    {
+        lockRotation = !lockRotation;
+    }
+
+    public void LockRotation()
+    {
+        lockRotation = true;
+    }
+
+    public void UnlockRotation()
+    {
+        lockRotation = false;
     }
 
     void InitializeMiniMap()
     {
-        // Create mini map scene
-        miniMapSecene = Instantiate(scene);
-        miniMapSecene.transform.SetParent(MiniMap.instance.transform);
-        miniMapSecene.transform.localScale = Vector3.one;
-        miniMapSecene.transform.localRotation = Quaternion.identity;
+        
+        // TO-DO: Simplify references to create less garbage
+        
+        // 
+        
+       // miniMapSecene = Instantiate(scene);
+      //  miniMapSecene.transform.SetParent(MiniMap.instance.transform);
+      //  miniMapSecene.transform.localScale = Vector3.one;
+      //  miniMapSecene.transform.localRotation = Quaternion.identity;
         
         // Put the minimap scene on on our UI ship layer for collision handling
-        SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
+      //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
         
         // Parent the MapTransformRoot to the SceneRoot (bride)
         MapTransformRoot.instance.transform.SetParent(SceneRoot.instance.transform, true);
@@ -53,7 +74,7 @@ public class MiniMap : MonoBehaviour
     
     void LateUpdate()
     {
-        if (MapControls.instance == null || MapControls.instance.isActive) return;
+        if (!lockRotation || MapControls.instance == null || MapControls.instance.isActive) return;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
         
     }

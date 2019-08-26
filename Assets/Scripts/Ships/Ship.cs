@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Mirror;
 using StellarArmada.Game;
 using StellarArmada.Players;
@@ -42,10 +43,22 @@ namespace StellarArmada.Ships
         [Header("Ship Components")]
         public Renderer visualModel;
 
+        public Action OnPlayerUpdated = delegate {  };
+        
         [Command]
         public void CmdSetPlayer(uint playerId)
         {
             playerController = PlayerManager.GetPlayerById(playerId);
+            OnPlayerUpdated?.Invoke();
+            RpcSetPlayer(playerId);
+        }
+
+        [ClientRpc]
+        public void RpcSetPlayer(uint playerId)
+        {
+            playerController = PlayerManager.GetPlayerById(playerId);
+            if(!isServer)
+                OnPlayerUpdated?.Invoke();
         }
 
         public PlayerController GetPlayer() => playerController;

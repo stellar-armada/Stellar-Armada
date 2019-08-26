@@ -78,6 +78,8 @@ public class Placer : MonoBehaviour
     
     public void ShowPlacements()
     {
+        if(IsInvoking(nameof(ShowPlacements))) CancelInvoke(nameof(ShowPlacements));
+        
         HidePlacements(); // reset our placements for another round of formation calculations
 
         // Get current ships
@@ -100,12 +102,13 @@ public class Placer : MonoBehaviour
             pI.transform.localScale = Vector3.one;
             pI.transform.localRotation = Quaternion.identity;
             pI.Show(positions[s]);
-
+            Invoke(nameof(ShowPlacements), .2f);
         }
     }
 
     public void HidePlacements()
     {
+        if(IsInvoking(nameof(ShowPlacements))) CancelInvoke(nameof(ShowPlacements));
         foreach(PlacementIndicator pI in activePlacements)
             pI.Hide();
         activePlacements = new List<PlacementIndicator>();

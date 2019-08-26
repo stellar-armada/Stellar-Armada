@@ -1010,8 +1010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: 97c9ecdb36ab09e409f7da9f6151d19e
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 690036585
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,8 +1983,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3748079858928285737}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.04}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalPosition: {x: 0, y: 0, z: 0.025}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 6788390936727844586}
   m_RootOrder: 2
@@ -2581,7 +2581,7 @@ MonoBehaviour:
   isActive: 0
   leftGripPressed: 0
   rightGripPressed: 0
-  scaleMin: 0.0001
+  scaleMin: 0.00005
   scaleMax: 0.001
 --- !u!1 &4720211804134819468
 GameObject:
@@ -4372,6 +4372,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839945733948412457}
     m_Modifications:
+    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: humanPlayerController
+      value: 
+      objectReference: {fileID: 1839945735331089094}
+    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: hiddenFromLocalPlayerMask.m_Bits
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 8737627309138390813, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Name
+      value: Cybergirl_Root
+      objectReference: {fileID: 0}
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4441,21 +4456,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: humanPlayerController
-      value: 
-      objectReference: {fileID: 1839945735331089094}
-    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: hiddenFromLocalPlayerMask.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737627309138390813, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Name
-      value: Cybergirl_Root
       objectReference: {fileID: 0}
     - target: {fileID: 2171049363706591617, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using StellarArmada.Scenarios;
+using TMPro;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -12,6 +13,8 @@ namespace StellarArmada.Ships
         private Hull hull;
         private Shield shield;
 
+        [SerializeField] private TextMeshPro captainNameText;
+        
         [SerializeField] private Renderer statusBarRenderer;
 
         public string hullProperty = "_Health";
@@ -21,7 +24,10 @@ namespace StellarArmada.Ships
 
         void Awake()
         {
-            if(m == null) m = new MaterialPropertyBlock();
+            captainNameText.renderer.enabled = false;
+            ship.OnPlayerUpdated += HandleUpdateToCaptain;
+            
+            m = new MaterialPropertyBlock();
 
             SetVisibility(0);
             
@@ -33,6 +39,27 @@ namespace StellarArmada.Ships
             LookAtMainCamera();
         }
 
+        void Start()
+        {
+            if (ship.playerController != null)
+            {
+                HandleUpdateToCaptain();
+            }
+        }
+
+        void HandleUpdateToCaptain()
+        {
+            captainNameText.renderer.enabled = true;
+            captainNameText.text = ship.playerController.playerName;
+            captainNameText.color = ship.GetTeam().color;
+            ship.playerController.EventOnPlayerNameChange += HandleNameChange;
+        }
+
+        void HandleNameChange()
+        {
+            captainNameText.text = ship.playerController.playerName;
+        }
+
         void SetVisibility(float v)
         {
             statusBarRenderer.GetPropertyBlock(m);
@@ -42,6 +69,7 @@ namespace StellarArmada.Ships
 
         public void SetInsignia(Texture t)
         {
+            if(m == null) m = new MaterialPropertyBlock();
             statusBarRenderer.GetPropertyBlock(m);
             m.SetTexture("_Insignia", t);
             statusBarRenderer.SetPropertyBlock(m);
@@ -72,7 +100,17 @@ namespace StellarArmada.Ships
             if (PlayerCamera.instance == null) return;
             Camera c = PlayerCamera.instance.GetCamera();
             // Multiply the inverse rotation of our scene by the vector to face
-            transform.rotation = c.transform.rotation;
+            
+            // Linear algebra!
+            
+            // Compute the distance away from the plane (on the Y) our camera is (in local space relation to this status bar)
+            float distanceToPlane = Vector3.Dot(transform.up, c.transform.position - transform.position);
+            
+            // Subtract the local Y so that we reduce our rotation to 2 dimensions (since they are both y = 0)
+            Vector3 pointOnPlane = c.transform.position - (transform.up * distanceToPlane);
+ 
+            // Look at the 2D version of the camera position vector
+            transform.LookAt(pointOnPlane, transform.up);
         }
         
         public void ShowStatusBar()
