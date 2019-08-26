@@ -82,6 +82,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForEvasion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SFXController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/AutonomousVehicle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForSeparation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SfxAudioData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Vehicle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MessageAudioController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -89,6 +90,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForSphericalObstacles.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/VolumeSliderListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SoundEffectButtonListener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForNeighborGroup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForPursuit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/NetworkManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForMinimumSpeed.cs" root0="FORCE_HIGHLIGHTING" />
@@ -152,6 +154,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Data/Operation/Mutation/TransformEulerRotationMutatorTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/GoToPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/VRIKToSceneRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis2DAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/LockRotationToScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -226,8 +229,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/SceneRoot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scenarios/LevelRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/PlacementRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" />
@@ -260,7 +261,6 @@
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/DamageableTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SelectionUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Selection/SelectionHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IK/SolverManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/Scripts/Ships/TestDamageableHull.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipWarp.cs" />
@@ -277,6 +277,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ships/ShipFormationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IK/VRIK.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IK/VRIKPlatform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IK/VRIKToSceneRoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Turret.cs" />
       </list>
     </option>
   </component>
@@ -349,7 +352,7 @@
       <workItem from="1566262450496" duration="91000" />
       <workItem from="1566263866026" duration="85555000" />
       <workItem from="1566691009433" duration="9716000" />
-      <workItem from="1566799512712" duration="4368000" />
+      <workItem from="1566799512712" duration="6552000" />
     </task>
     <servers />
   </component>

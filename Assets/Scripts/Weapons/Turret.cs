@@ -126,12 +126,17 @@ namespace StellarArmada.Weapons
         {
             if (!owningWeaponSystemController.WeaponSystemsEnabled()) return;
             // overlap sphere to get list of hitting objects
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange * transform.lossyScale.x, damageableLayerMask); // Scale by overall to be resistant to world scale changes
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange, damageableLayerMask);
 
-            if (hitColliders.Length < 1) return; // No colliders hit
+            if (hitColliders.Length < 1)
+            {
+                Debug.LogError("No colliders found");
+                return; // No colliders hit
+            }
 
             // if object is an enemy
             List<IDamageable> damageables = new List<IDamageable>();
+            Debug.Log("Damageables count");
             
             foreach (Collider col in hitColliders)
             {
@@ -140,6 +145,7 @@ namespace StellarArmada.Weapons
                 if (d.GetOwningEntity().IsEnemy(owningWeaponSystemController.GetEntity()))
                 {
                     damageables.Add(d);
+                    Debug.Log("Adding damageable");
                 }
             }
             
@@ -151,8 +157,11 @@ namespace StellarArmada.Weapons
                 
                 NetworkEntity damager = owningWeaponSystemController.GetEntity();
                 
-                if (damager.IsEnemy(damaged) &&
-                     CanHitPosition(damageable.GetGameObject().transform.position) && IsFacingTarget() && damaged.IsAlive())
+                Debug.Log("damager.IsEnemy(damaged): " + damager.IsEnemy(damaged));
+                
+                Debug.Log("CanHitPosition(damageable.GetGameObject().transform.position)");
+                
+                if (damager.IsEnemy(damaged) && CanHitPosition(damageable.GetGameObject().transform.position) && IsFacingTarget() && damaged.IsAlive())
                 {
                     // set target
                     SetTarget(damageable.GetGameObject().transform);

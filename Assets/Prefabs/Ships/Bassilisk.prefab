@@ -5221,7 +5221,7 @@ GameObject:
   - component: {fileID: 6943865875497285737}
   - component: {fileID: 6064384367044741713}
   m_Layer: 9
-  m_Name: VisualModel
+  m_Name: RealShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25945,7 +25945,7 @@ MonoBehaviour:
   timerID: -1
   timer: 0.1
   tickRate: 0.2
-  maxRange: 100
+  maxRange: 100000
   damageableLayerMask:
     serializedVersion: 2
     m_Bits: 2560
@@ -25963,7 +25963,7 @@ MonoBehaviour:
   HeadingLimit: {x: -30, y: 30}
   ElevationLimit: {x: -10, y: 60}
   smoothControlling: 1
-  DebugDraw: 0
+  DebugDraw: 1
   curSocket: 0
   maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
@@ -26019,7 +26019,7 @@ MonoBehaviour:
   timerID: -1
   timer: 0.1
   tickRate: 0.2
-  maxRange: 100
+  maxRange: 100000
   damageableLayerMask:
     serializedVersion: 2
     m_Bits: 2560
@@ -26037,7 +26037,7 @@ MonoBehaviour:
   HeadingLimit: {x: -100, y: 100}
   ElevationLimit: {x: -5, y: 120}
   smoothControlling: 1
-  DebugDraw: 0
+  DebugDraw: 1
   curSocket: 0
   maximumAngleDifferenceToTarget: 10
   fireRate: 0.3
@@ -32915,19 +32915,19 @@ GameObject:
   - component: {fileID: 8113730419681309641}
   - component: {fileID: 5150297697342301304}
   - component: {fileID: 6494030138726252701}
-  - component: {fileID: 2574464254795025626}
-  - component: {fileID: 6613500308364987285}
-  - component: {fileID: 8019088010132304523}
+  - component: {fileID: 3611349499226454024}
   - component: {fileID: 8081799463623299947}
+  - component: {fileID: 8582956399299895816}
+  - component: {fileID: 2574464254795025626}
+  - component: {fileID: 8019088010132304523}
   - component: {fileID: 1900686764695909791}
+  - component: {fileID: 6613500308364987285}
   - component: {fileID: 3145361286118619456}
   - component: {fileID: 5292198978933662320}
   - component: {fileID: 7251706484669647788}
   - component: {fileID: 6430903243183470549}
   - component: {fileID: 1977461455125822363}
   - component: {fileID: 810771506513414909}
-  - component: {fileID: 3611349499226454024}
-  - component: {fileID: 8582956399299895816}
   - component: {fileID: 741652607477629037}
   - component: {fileID: 2175313936342113083}
   m_Layer: 9
@@ -32985,57 +32985,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   compressRotation: 1
---- !u!114 &2574464254795025626
-MonoBehaviour:
+--- !u!64 &3611349499226454024
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801777087567244934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be38265a506195746a2cd52e8cf633ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  ship: {fileID: 8081799463623299947}
-  maxHull: 20
-  currentHull: 0
---- !u!114 &6613500308364987285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801777087567244934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281a752953243fa4fb84cffe5e6e0b69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.2
-  controlEnabled: 0
-  currentTarget: {fileID: 0}
-  entity: {fileID: 8081799463623299947}
-  steerForPursuit: {fileID: 1977461455125822363}
-  steerForPoint: {fileID: 6430903243183470549}
-  autonomousVehicle: {fileID: 3145361286118619456}
---- !u!114 &8019088010132304523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801777087567244934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b8c1b64d7b65843ab2c3c9b87c3f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  warpInStartPos: {x: 0, y: 0, z: -2500}
-  warpTime: 5
-  isWarpedIn: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: -1
+  m_Mesh: {fileID: -4193246298073379989, guid: 9926dc06be445be4495977d717ab0128, type: 3}
 --- !u!114 &8081799463623299947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33065,6 +33028,54 @@ MonoBehaviour:
   shipWarp: {fileID: 8019088010132304523}
   statusBar: {fileID: 6860565962929831040}
   visualModel: {fileID: 2441857817114618104}
+--- !u!114 &8582956399299895816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93deb1bcbf7c1c348915663e81503183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 8081799463623299947}
+  bridgePrefab: {fileID: 3734985492088278481, guid: e0ba0fe99d9d5ed47ad81be0c7f781be,
+    type: 3}
+  bridgeRoot: {fileID: 1960992285473818226}
+--- !u!114 &2574464254795025626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be38265a506195746a2cd52e8cf633ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  ship: {fileID: 8081799463623299947}
+  maxHull: 20
+  currentHull: 0
+--- !u!114 &8019088010132304523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b8c1b64d7b65843ab2c3c9b87c3f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  warpInStartPos: {x: 0, y: 0, z: -2500}
+  warpTime: 5
+  isWarpedIn: 0
 --- !u!114 &1900686764695909791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33079,6 +33090,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 8081799463623299947}
   weaponSystemsEnabled: 0
+--- !u!114 &6613500308364987285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801777087567244934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281a752953243fa4fb84cffe5e6e0b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.2
+  controlEnabled: 0
+  currentTarget: {fileID: 0}
+  entity: {fileID: 8081799463623299947}
+  steerForPursuit: {fileID: 1977461455125822363}
+  steerForPoint: {fileID: 6430903243183470549}
+  autonomousVehicle: {fileID: 3145361286118619456}
 --- !u!114 &3145361286118619456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33218,38 +33248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 10
+  _weight: 1
   _estimationTime: 2
---- !u!64 &3611349499226454024
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801777087567244934}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: -1
-  m_Mesh: {fileID: -4193246298073379989, guid: 9926dc06be445be4495977d717ab0128, type: 3}
---- !u!114 &8582956399299895816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801777087567244934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93deb1bcbf7c1c348915663e81503183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ship: {fileID: 8081799463623299947}
-  bridgePrefab: {fileID: 3734985492088278481, guid: e0ba0fe99d9d5ed47ad81be0c7f781be,
-    type: 3}
-  bridgeRoot: {fileID: 1960992285473818226}
 --- !u!114 &741652607477629037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33262,9 +33262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c589e228a3db54ba7830738331a921c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 5
-  _minRadius: 350
-  _maxRadius: 500
+  _weight: 1
+  _minRadius: 0
+  _maxRadius: 1000
   _drawNeighbors: 1
   _angleCos: -0.1736482
 --- !u!114 &2175313936342113083
@@ -33280,10 +33280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _minDistance: 350
-  _maxDistance: 450
+  _minDistance: 0
+  _maxDistance: 1000
   _comfortDistance: 400
-  _multiplierInsideComfortDistance: 1
+  _multiplierInsideComfortDistance: 5
   _vehicleRadiusImpact: 350
 --- !u!1 &8887671907898053240
 GameObject:
