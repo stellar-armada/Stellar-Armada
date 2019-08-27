@@ -4,8 +4,6 @@ namespace Oculus.Platform
 {
   using UnityEngine;
   using System;
-  using System.Collections;
-  using System.Collections.Generic;
   using Oculus.Platform.Models;
 
   public abstract class Message<T> : Message

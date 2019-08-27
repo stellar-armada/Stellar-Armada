@@ -131,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 648790774}
+  - component: {fileID: 648790775}
   - component: {fileID: 648790773}
   m_Layer: 0
   m_Name: MiniMapTransformRoot
@@ -165,6 +166,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &648790775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648790772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9314cea09d02046ae8d79916c910c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: 'Transform root of the minimap for local player
+
+    When player tries to manipulate the minimap, this will be parented to the minimap
+    and transformed instead (to keep the relative transform between the player''s
+    controllers)'
 --- !u!1 &1625732238
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1625732240}
+  - component: {fileID: 1625732241}
   - component: {fileID: 1625732239}
   m_Layer: 0
   m_Name: LevelRoot
@@ -208,6 +227,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625732241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625732238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9314cea09d02046ae8d79916c910c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: Root of all objects in level -- including ships, environment, etc.
 --- !u!1001 &5747669402298686366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,48 +307,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 342647809, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}
-      propertyPath: spawnPrefabs.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 342647809, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}
-      propertyPath: dontDestroyOnLoad
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342647809, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}
-      propertyPath: spawnPrefabs.Array.data[8]
-      value: 
-      objectReference: {fileID: 3198974705040035564, guid: 4141f2fda0a005d4284ed301a4db48da,
-        type: 3}
-    - target: {fileID: 342647809, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}
-      propertyPath: startAsHost
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 342647809, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 1839945735331089096, guid: fb8ab71d819054e3b98147408561d499,
-        type: 3}
-    - target: {fileID: 5080427874578277092, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca,
-        type: 3}
-      propertyPath: startScale
-      value: 0.0004
-      objectReference: {fileID: 0}
-    - target: {fileID: 5747669402091356063, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341906962761870672, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca,
-        type: 3}
-      propertyPath: scaleXY
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341906962761870672, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca,
-        type: 3}
-      propertyPath: scaleZ
-      value: 400
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5747669402091356063, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c36c8fc4ee5296644b3dd7c5e5c3aeca, type: 3}

@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada
 {
-
-    [Serializable]
-    public class WarpVector
-    {
-        public Vector3 position;
-        public Vector3 rotation;
-
-    }
+// Used inside of scenario scriptable object to describe teams that need to be created
     [Serializable]
     public class TeamInfo
     {

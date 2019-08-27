@@ -3,6 +3,9 @@
 #pragma warning disable 0649
 namespace StellarArmada.Match
 {
+    // Manage the current state of the match
+    // TO-DO: Integrate!
+    
     public enum MatchState
     {
         Lobby,

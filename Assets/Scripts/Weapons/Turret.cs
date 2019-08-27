@@ -1,71 +1,96 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using StellarArmada.Entities;
 using StellarArmada.Pooling;
 
 #pragma warning disable 0649
 namespace StellarArmada.Weapons
 {
+    // Base class for all turrets / most ship weapons
+    // Most methods are overridable, so this could be extended to missiles, etc.
     public class Turret : WeaponSystem
     {
         [Header("Turret setup")] public Transform[] TurretSocket; // Sockets reference
 
         public Transform Mount;
         public Transform Swivel;
-
-        private Vector3 defaultDir;
-        private Quaternion defaultRot;
-
         public float HeadingTrackingSpeed = 2f;
         public float ElevationTrackingSpeed = 2f;
-
-        [HideInInspector] public Vector3 headingVetor;
-
-        private float curHeadingAngle;
-        private float curElevationAngle;
-
+        public float maximumAngleDifferenceToTarget = 10f;
+        public float fireRate = .3f;
         public Vector2 HeadingLimit;
         public Vector2 ElevationLimit;
-
         public bool smoothControlling;
         public bool DebugDraw;
+
+        // Local references (ugly optimization for GC prevention)
+        protected WeaponPrefabManager weaponPrefabManager;
+        protected WeaponAudioController weaponAudioController;
+        protected TimeManager timeManager;
+        Vector3 headingVector;
+        private float curHeadingAngle;
+        private float curElevationAngle;
+        private Vector3 defaultDir;
+        private Quaternion defaultRot;
+        private Vector3 targetDirection;
         private bool fullAccess;
         RaycastHit hitInfo; // Raycast structure
         private Vector3 targetPos;
+        int currentFiringSocket = 0;
+        private Collider[] hitColliders;
+        private List<IDamageable> damageables;
+        private IDamageable d;
+        NetworkEntity damaged;
+        NetworkEntity damager;
+        Vector3 targetX;
+        Quaternion targetRotationX;
+        Vector3 targetY;
+        Quaternion targetRotationY;
+        float headingAngle;
+        float turretDefaultToTargetAngle;
+        float turretHeading;
+        float headingStep;
+        Vector3 elevationVector;
+        float elevationAngle;
+        float elevationStep;
+        
+        private Transform t;
 
-        // Current firing socket
-        [HideInInspector] public int curSocket = 0;
-
-        public float maximumAngleDifferenceToTarget = 10f;
-
-
-        public float fireRate = .3f;
-
+        public override void Awake()
+        {
+            base.Awake();
+            t = transform;
+        }
+        
+        private void Start()
+        {
+            weaponPrefabManager = WeaponPrefabManager.instance;
+            weaponAudioController = WeaponAudioController.instance;
+            timeManager = TimeManager.instance;
+            
+            targetPos = Swivel.position + Swivel.forward * 100f;
+            defaultDir = Swivel.transform.forward;
+            defaultRot = Quaternion.FromToRotation(t.forward, defaultDir);
+            if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
+                fullAccess = true;
+        }
         
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.LaserImpulse).impact, point,
+            PoolManager.Pools["GeneratedPool"].Spawn(weaponPrefabManager.GetWeaponPrefab(WeaponType.LaserImpulse).impact, point,
                 Quaternion.identity, null);
-            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.LaserImpulse, point);
+            weaponAudioController.PlayHitAtPosition(WeaponType.LaserImpulse, point);
         }
 
 
         // Advance to next turret socket
         public void AdvanceSocket()
         {
-            curSocket++;
-            if (curSocket >= TurretSocket.Length)
-                curSocket = 0;
+            currentFiringSocket++;
+            if (currentFiringSocket >= TurretSocket.Length)
+                currentFiringSocket = 0;
         }
 
-        // Use this for initialization
-        private void Start()
-        {
-            targetPos = Swivel.position + Swivel.forward * 100f;
-            defaultDir = Swivel.transform.forward;
-            defaultRot = Quaternion.FromToRotation(transform.forward, defaultDir);
-            if (HeadingLimit.y - HeadingLimit.x >= 359.9f)
-                fullAccess = true;
-        }
 
         // Autotrack
         public void SetNewTarget(Vector3 _targetPos)
@@ -94,9 +119,9 @@ namespace StellarArmada.Weapons
 
         public bool CanHitPosition(Vector3 pos)
         {
-            Vector3 targetDirection = (pos - Mount.transform.position).normalized;
+            targetDirection = (pos - Mount.transform.position).normalized;
             
-            if(Vector3.Dot(transform.forward, targetDirection) > 0.8f) // Magic number .8f = pretty facing
+            if(Vector3.Dot(t.forward, targetDirection) > 0.8f) // Magic number .8f = pretty facing
             {
                 return true;
             }
@@ -108,7 +133,7 @@ namespace StellarArmada.Weapons
         {
 
             // if current target cant be hit or object isn't within distance
-            if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(transform.localPosition, target.localPosition) > maxRange)
+            if (!owningWeaponSystemController.WeaponSystemsEnabled() || target == null || !CanHitPosition() || Vector3.Distance(t.localPosition, target.localPosition) > maxRange)
             {
                 ClearTarget();
                 isFiring = false;
@@ -122,7 +147,7 @@ namespace StellarArmada.Weapons
         {
             if (!owningWeaponSystemController.WeaponSystemsEnabled()) return;
             // overlap sphere to get list of hitting objects
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxRange, damageableLayerMask);
+            hitColliders = Physics.OverlapSphere(t.position, maxRange, damageableLayerMask);
 
             if (hitColliders.Length < 1)
             {
@@ -131,44 +156,25 @@ namespace StellarArmada.Weapons
             }
 
             // if object is an enemy
-            List<IDamageable> damageables = new List<IDamageable>();
-            Debug.Log("Damageables count:" + damageables.Count);
-            
+            damageables = new List<IDamageable>();
             foreach (Collider col in hitColliders)
             {
-                IDamageable d = col.GetComponent<ICollidable>().GetDamageable();
+                d = col.GetComponent<ICollidable>().GetDamageable();
                 if (d == null) Debug.LogError("Damageable was not found on collidable reference on " + col.name);
                 if (d.GetOwningEntity().IsEnemy(owningWeaponSystemController.GetEntity()))
                 {
                     damageables.Add(d);
-                    Debug.Log("Adding damageable");
                 }
             }
             
             foreach (IDamageable damageable in damageables)
             {
                 // if enemy object can be hit
-
-                NetworkEntity damaged = damageable.GetOwningEntity();
-                
-                NetworkEntity damager = owningWeaponSystemController.GetEntity();
-                
-                Debug.Log("damager.IsEnemy(damaged): " + damager.IsEnemy(damaged));
-                
-                Debug.Log("CanHitPosition(damageable.GetGameObject().transform.position): " + CanHitPosition(damageable.GetGameObject().transform.position));
-                
-                Debug.Log("damager.IsEnemy(damaged) && CanHitPosition(damageable.GetGameObject().transform.position) && damaged.IsAlive(): " + (damager.IsEnemy(damaged) && CanHitPosition(damageable.GetGameObject().transform.position) && damaged.IsAlive()));
-                
-                Debug.Log("CanHitPosition(damageable.GetGameObject().transform.position): " + CanHitPosition(damageable.GetGameObject().transform.position));
-                
-                Debug.Log("IsFacingTarget(): " + IsFacingTarget());
-                
-                Debug.Log("damaged.IsAlive(): " + damaged.IsAlive());
-                
+                damaged = damageable.GetOwningEntity();
+                damager = owningWeaponSystemController.GetEntity();
                 if (damager.IsEnemy(damaged) && damaged.IsAlive())
                 {
                     // set target
-                    Debug.Log("setting target");
                     SetTarget(damageable.GetGameObject().transform);
                     return;
                 }
@@ -177,7 +183,7 @@ namespace StellarArmada.Weapons
 
         protected override void StartFiring()
         {
-            timerID = TimeManager.instance.AddTimer(fireRate, Fire);
+            timerID = timeManager.AddTimer(fireRate, Fire);
         }
 
         void Fire()
@@ -194,14 +200,17 @@ namespace StellarArmada.Weapons
                 return;
             };
             var offset = Quaternion.Euler(UnityEngine.Random.onUnitSphere);
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(type).muzzle,
-                TurretSocket[curSocket].position,
-                TurretSocket[curSocket].rotation, TurretSocket[curSocket]);
+            
+            // Muzzle flash
+            PoolManager.Pools["GeneratedPool"].Spawn(weaponPrefabManager.GetWeaponPrefab(type).muzzle,
+                TurretSocket[currentFiringSocket].position,
+                TurretSocket[currentFiringSocket].rotation, TurretSocket[currentFiringSocket]);
+            // Projectile
             
             PoolManager.Pools["GeneratedPool"].SpawnDamager(this,
-                    WeaponPrefabManager.instance.GetWeaponPrefab(type).projectile, TurretSocket[curSocket].position,
-                    offset * TurretSocket[curSocket].rotation, null);
-            WeaponAudioController.instance.PlayShotAtPosition(type, TurretSocket[curSocket].position);
+                    weaponPrefabManager.GetWeaponPrefab(type).projectile, TurretSocket[currentFiringSocket].position,
+                    offset * TurretSocket[currentFiringSocket].rotation, null);
+           weaponAudioController.PlayShotAtPosition(type, TurretSocket[currentFiringSocket].position);
             
             AdvanceSocket();
         }
@@ -209,10 +218,10 @@ namespace StellarArmada.Weapons
         protected void Impact(Vector3 point, WeaponType weaponType)
         {
             // Spawn impact prefab at specified position
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(weaponType).impact, point,
+            PoolManager.Pools["GeneratedPool"].Spawn(weaponPrefabManager.GetWeaponPrefab(weaponType).impact, point,
                 Quaternion.identity, null);
             // Play impact sound effect
-            WeaponAudioController.instance.PlayHitAtPosition(weaponType, point);
+           weaponAudioController.PlayHitAtPosition(weaponType, point);
         }
 
         protected override void StopFiring()
@@ -220,7 +229,7 @@ namespace StellarArmada.Weapons
             // Remove firing timer
             if (timerID != -1)
             {
-                TimeManager.instance.RemoveTimer(timerID);
+                timeManager.RemoveTimer(timerID);
                 timerID = -1;
             }
         }
@@ -252,18 +261,19 @@ namespace StellarArmada.Weapons
             {
                 if (Mount != null)
                 {
+
                     /////// Heading
-                    headingVetor =
+                    headingVector =
                         Vector3.Normalize(Math3d.ProjectVectorOnPlane(Swivel.up,
                             targetPos - Swivel.position));
-                    float headingAngle =
-                        Math3d.SignedVectorAngle(Swivel.forward, headingVetor, Swivel.up);
-                    float turretDefaultToTargetAngle = Math3d.SignedVectorAngle(defaultRot * Swivel.forward,
-                        headingVetor, Swivel.up);
-                    float turretHeading = Math3d.SignedVectorAngle(defaultRot * Swivel.forward,
+                    headingAngle =
+                        Math3d.SignedVectorAngle(Swivel.forward, headingVector, Swivel.up);
+                    turretDefaultToTargetAngle = Math3d.SignedVectorAngle(defaultRot * Swivel.forward,
+                        headingVector, Swivel.up);
+                    turretHeading = Math3d.SignedVectorAngle(defaultRot * Swivel.forward,
                         Swivel.forward, Swivel.up);
 
-                    float headingStep = HeadingTrackingSpeed * Time.deltaTime;
+                    headingStep = HeadingTrackingSpeed * Time.deltaTime;
 
                     // Heading step and correction
                     // Full rotation
@@ -286,14 +296,14 @@ namespace StellarArmada.Weapons
                     }
 
                     /////// Elevation
-                    Vector3 elevationVector =
+                    elevationVector =
                         Vector3.Normalize(Math3d.ProjectVectorOnPlane(Swivel.right,
                             targetPos - Mount.position));
-                    float elevationAngle =
+                    elevationAngle =
                         Math3d.SignedVectorAngle(Mount.forward, elevationVector, Swivel.right);
 
                     // Elevation step and correction
-                    float elevationStep = Mathf.Sign(elevationAngle) * ElevationTrackingSpeed * Time.deltaTime;
+                    elevationStep = Mathf.Sign(elevationAngle) * ElevationTrackingSpeed * Time.deltaTime;
                     if (Mathf.Abs(elevationStep) > Mathf.Abs(elevationAngle))
                         elevationStep = elevationAngle;
 
@@ -308,55 +318,53 @@ namespace StellarArmada.Weapons
             }
             else
             {
-                Transform barrelX = Mount;
-                Transform barrelY = Swivel.transform;
 
                 //finding position for turning just for X axis (down-up)
-                Vector3 targetX = targetPos - barrelX.transform.position;
-                Quaternion targetRotationX = Quaternion.LookRotation(targetX, Mount.up);
+                targetX = targetPos - Mount.transform.position;
+                targetRotationX = Quaternion.LookRotation(targetX, Mount.up);
 
-                barrelX.transform.rotation = Quaternion.Slerp(barrelX.transform.rotation, targetRotationX,
+                Mount.transform.rotation = Quaternion.Slerp(Mount.transform.rotation, targetRotationX,
                     HeadingTrackingSpeed * Time.deltaTime);
-                barrelX.transform.localEulerAngles = new Vector3(barrelX.transform.localEulerAngles.x, 0f, 0f);
+                Mount.transform.localEulerAngles = new Vector3(Mount.transform.localEulerAngles.x, 0f, 0f);
 
                 //checking for turning up too much
-                if (barrelX.transform.localEulerAngles.x >= 180f &&
-                    barrelX.transform.localEulerAngles.x < (360f - ElevationLimit.y))
+                if (Mount.transform.localEulerAngles.x >= 180f &&
+                    Mount.transform.localEulerAngles.x < (360f - ElevationLimit.y))
                 {
-                    barrelX.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
+                    Mount.transform.localEulerAngles = new Vector3(360f - ElevationLimit.y, 0f, 0f);
                 }
 
                 //down
-                else if (barrelX.transform.localEulerAngles.x < 180f &&
-                         barrelX.transform.localEulerAngles.x > -ElevationLimit.x)
+                else if (Mount.transform.localEulerAngles.x < 180f &&
+                         Mount.transform.localEulerAngles.x > -ElevationLimit.x)
                 {
-                    barrelX.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
+                    Mount.transform.localEulerAngles = new Vector3(-ElevationLimit.x, 0f, 0f);
                 }
 
                 //finding position for turning just for Y axis
-                Vector3 targetY = targetPos;
-                targetY.y = barrelY.position.y;
+                targetY = targetPos;
+                targetY.y = Swivel.position.y;
 
-                Quaternion targetRotationY = Quaternion.LookRotation(targetY - barrelY.position, barrelY.transform.up);
+                targetRotationY = Quaternion.LookRotation(targetY - Swivel.position, Swivel.transform.up);
 
-                barrelY.transform.rotation = Quaternion.Slerp(barrelY.transform.rotation, targetRotationY,
+                Swivel.transform.rotation = Quaternion.Slerp(Swivel.transform.rotation, targetRotationY,
                     ElevationTrackingSpeed * Time.deltaTime);
-                barrelY.transform.localEulerAngles = new Vector3(0f, barrelY.transform.localEulerAngles.y, 0f);
+                Swivel.transform.localEulerAngles = new Vector3(0f, Swivel.transform.localEulerAngles.y, 0f);
 
                 if (!fullAccess)
                 {
                     //checking for turning left
-                    if (barrelY.transform.localEulerAngles.y >= 180f &&
-                        barrelY.transform.localEulerAngles.y < (360f - HeadingLimit.y))
+                    if (Swivel.transform.localEulerAngles.y >= 180f &&
+                        Swivel.transform.localEulerAngles.y < (360f - HeadingLimit.y))
                     {
-                        barrelY.transform.localEulerAngles = new Vector3(0f, 360f - HeadingLimit.y, 0f);
+                        Swivel.transform.localEulerAngles = new Vector3(0f, 360f - HeadingLimit.y, 0f);
                     }
 
                     //right
-                    else if (barrelY.transform.localEulerAngles.y < 180f &&
-                             barrelY.transform.localEulerAngles.y > -HeadingLimit.x)
+                    else if (Swivel.transform.localEulerAngles.y < 180f &&
+                             Swivel.transform.localEulerAngles.y > -HeadingLimit.x)
                     {
-                        barrelY.transform.localEulerAngles = new Vector3(0f, -HeadingLimit.x, 0f);
+                        Swivel.transform.localEulerAngles = new Vector3(0f, -HeadingLimit.x, 0f);
                     }
                 }
             }

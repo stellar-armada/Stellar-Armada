@@ -3,6 +3,8 @@
 #pragma warning disable 0649
 namespace StellarArmada.Pooling
 {
+    // Despawns a pooled object after a time (delay)
+    // For use with the pooling system and pool manager
     public class Despawner : MonoBehaviour
     {
 
@@ -55,14 +57,6 @@ namespace StellarArmada.Pooling
         {
 
             PoolManager.Pools["GeneratedPool"].Despawn(transform);
-        }
-
-        void Update()
-        {
-            // Despawn on mouse up        
-            if (Input.GetMouseButtonUp(0))
-                if (aSrc != null && aSrc.loop || DespawnFixedAmountOfTimeAfterSpawn)
-                    Despawn();
         }
     }
 }

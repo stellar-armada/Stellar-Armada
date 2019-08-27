@@ -24,9 +24,9 @@ namespace Wacki {
 
         private Camera UICamera;
         private PhysicsRaycaster raycaster;
-        private HashSet<IUILaserPointer> _controllers;
+        private HashSet<IUIPointer> _controllers;
         // controller data
-        private Dictionary<IUILaserPointer, ControllerData> _controllerData = new Dictionary<IUILaserPointer, ControllerData>();
+        private Dictionary<IUIPointer, ControllerData> _controllerData = new Dictionary<IUIPointer, ControllerData>();
 
         protected override void Awake()
         {
@@ -61,17 +61,17 @@ namespace Wacki {
             }
         }
 
-        public void AddController(IUILaserPointer controller)
+        public void AddController(IUIPointer controller)
         {
             _controllerData.Add(controller, new ControllerData());
         }
 
-        public void RemoveController(IUILaserPointer controller)
+        public void RemoveController(IUIPointer controller)
         {
             _controllerData.Remove(controller);
         }
 
-        protected void UpdateCameraPosition(IUILaserPointer controller)
+        protected void UpdateCameraPosition(IUIPointer controller)
         {
             UICamera.transform.position = controller.transform.position;
             UICamera.transform.rotation = controller.transform.rotation;
@@ -100,7 +100,7 @@ namespace Wacki {
             raycaster.eventMask = layerMask;
 
             foreach(var pair in _controllerData) {
-                IUILaserPointer controller = pair.Key;
+                IUIPointer controller = pair.Key;
                 ControllerData data = pair.Value;
 
                 // Test if UICamera is looking at a GUI element

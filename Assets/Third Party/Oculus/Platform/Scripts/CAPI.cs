@@ -1,6 +1,5 @@
 // This file was @generated with LibOVRPlatform/codegen/main. Do not modify it!
 
-using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;

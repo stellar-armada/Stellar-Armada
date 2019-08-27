@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using StellarArmada.Game;
-using StellarArmada.Players;
+using StellarArmada.Player;
 using TMPro;
 
 #pragma warning disable 0649
 namespace StellarArmada.UI
 {
     // Settings menu manager scipt
-
+    // TO-DO: Reimpliment with UI!
     public class SettingsMenuManager : MonoBehaviour
     {
 
@@ -19,9 +18,7 @@ namespace StellarArmada.UI
         [SerializeField] TextMeshProUGUI playerNameKeyboardInputText;
         [SerializeField] Slider SoundFxSlider;
         [SerializeField] Slider MusicSlider;
-        [SerializeField] TextMeshProUGUI weaponHandPreviewText;
         [SerializeField] GameObject mainSettingsPanel;
-        [SerializeField] GameObject weaponHandEntryPanel;
         [SerializeField] GameObject nameEntryPanel;
         #endregion
 
@@ -65,7 +62,7 @@ namespace StellarArmada.UI
         {
             if (playerNameKeyboardInputText.text == "") playerNameKeyboardInputText.text = "PLAYER";
 
-            SettingsManager.SavePlayerName(playerNameKeyboardInputText.text);
+            PlayerSettingsManager.SavePlayerName(playerNameKeyboardInputText.text);
             
             if (HumanPlayerController.localPlayer != null)
             {
@@ -83,19 +80,19 @@ namespace StellarArmada.UI
 
         void PopulateMusicVolume()
         {
-            MusicSlider.value = SettingsManager.GetMusicVolume();
+            MusicSlider.value = PlayerSettingsManager.GetMusicVolume();
         }
 
         void PopulateSoundFXVolume()
         {
-            SoundFxSlider.value = SettingsManager.GetSoundFxVolume();
+            SoundFxSlider.value = PlayerSettingsManager.GetSoundFxVolume();
         }
 
       
         void PopulateUserName()
         {
-            playerNamePreviewText.text = SettingsManager.GetSavedPlayerName();
-            playerNameKeyboardInputText.text = SettingsManager.GetSavedPlayerName();
+            playerNamePreviewText.text = PlayerSettingsManager.GetSavedPlayerName();
+            playerNameKeyboardInputText.text = PlayerSettingsManager.GetSavedPlayerName();
         }
 
         #endregion

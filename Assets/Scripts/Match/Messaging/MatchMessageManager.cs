@@ -102,12 +102,6 @@ namespace StellarArmada.Match.Messaging
             }
         }
         
-        
-        public void AddPlayerToTeam(PlayerController playerController)
-        {
-            //if (isServer)
-            // AssignTeam(player);
-        }
         [Command]
         public void CmdRaiseMessageToClients(MatchMessageType _t)
         {

@@ -1,10 +1,13 @@
-﻿using StellarArmada.Ships;
+﻿using StellarArmada.Entities.Ships;
 using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable 0649
 namespace StellarArmada.UI
 {
+    // Local player representation of ships in their fleet
+    // Instantiated by the UI Ship Factory
+    // Interacted with in the player's match menu
     public class UIGroupShip : MonoBehaviour
     {
         public Ship ship;
@@ -13,14 +16,15 @@ namespace StellarArmada.UI
         [SerializeField] GameObject selectionIndicator;
 
         [SerializeField] private Color shieldColor;
-
+        
         public void Start()
         {
-            transform.localScale = Vector3.one;
-            transform.localPosition = Vector3.zero;
+            Transform t = transform;
+            t.localScale = Vector3.one;
+            t.localPosition = Vector3.zero;
             ship.shield.ShieldChanged += HandleShieldChange;
             ship.hull.HullChanged += HandleHullChange;
-            ship.selectionHandler.OnSelectionChanged += HandleSelectionChange;
+            ship.shipSelectionHandler.OnSelectionChanged += HandleSelectionChange;
             selectionIndicator.SetActive(false);
         }
 

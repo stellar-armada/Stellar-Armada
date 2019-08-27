@@ -1,9 +1,7 @@
 namespace Oculus.Platform.Models
 {
-  using UnityEngine;
   using System.Collections;
   using System.Collections.Generic;
-  using Oculus.Platform.Models;
 
   public class DeserializableList<T> : IList<T>
   {

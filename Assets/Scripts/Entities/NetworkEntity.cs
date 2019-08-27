@@ -1,47 +1,56 @@
 ﻿using Mirror;
-using StellarArmada.Scenarios;
-using StellarArmada.Selection;
-using StellarArmada.Ships;
+using StellarArmada.Levels;
 using StellarArmada.Teams;
-using StellarArmada.UI;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace StellarArmada
+namespace StellarArmada.Entities
 {
+    // Base class for entities that are shared over the network
+    // Ships, stations, fighters, missiles, etc. inherit from this class 
     public abstract class NetworkEntity : NetworkBehaviour
     {
+        // All network entities start alive and can be killed
+        // When isAlive is changed on the network, call the HandleDeath() callback
         [SyncVar(hook = nameof(HandleDeath))] public bool isAlive = true;
         
-        protected Team team; // Should be set by ship factory. Referenced in enemy checks.
-
-        [SyncVar] protected uint entityId;
-
         [Header("Entity Subsystems")]
-        public EntityMovement movement;
-        public EntityExplosion entityExplosion;
-        public MapEntity mapEntity;
+        public EntityHull hull; // Handles damage to the ship
+        public EntityShield shield; // Reference to the shield, which blocks hull damage
+        public EntityWeaponSystemController weaponSystemController; // Manages the various weapon systems on the ship, especially enabling/disabling or targeting/focus fire
+        
+        // All entities are assigned to a team in the factory
+        // In an FFA, each player would be assigned to their own team
+        protected Team team;
 
-        public SelectionHandler selectionHandler;
+        // Unique identifier for each entity. Set by any factory inheriting from the EntityFactory baseclass
+        [SyncVar] protected uint entityId;
+        
+        [Header("Entity Subsystems")]
+        // All entity movement is handled here. If !movement.canMove, then movement is ignored
+        public EntityMovement movement;
+        
+        // A sequence of particle effects and timers played when the entity dies
+        public EntityExplosion entityExplosion;
+        
+        public Renderer visualModel; // Visual model of the ship -- moved when warping in, hidden when killed
+
+        // A representation of the entity on the minimap for the local human player
+        public MiniMapEntity miniMapEntity;
 
         public delegate void NetworkEntityEvent();
         
+        // Delegate called when entity dies
         public NetworkEntityEvent OnEntityDead;
         
         void HandleDeath(bool alive)
         {
             if (!alive)
             {
-                OnEntityDead.Invoke();
+                OnEntityDead?.Invoke();
             }
         }
-        
-        void Awake()
-        {
-            //transform.parent = MapParent.instance.transform;
-            //transform.localScale = Vector3.one;
-        }
-        
+
         public Team GetTeam() => team;
 
         public uint GetEntityId() => entityId;
@@ -55,19 +64,29 @@ namespace StellarArmada
         void Start() => EntityManager.instance.RegisterEntity(this);
 
         void OnDestroy() => EntityManager.instance.UnregisterEntity(this);
-        
-        public ISelectable GetSelectionHandler() => selectionHandler;
 
+        // Enemy-ness is currently checked by whether or not both entities are on the same team
+        // In the future we may wish to add alliance logic here
         public bool IsEnemy(NetworkEntity otherNetworkEntity)
         {
-            if (otherNetworkEntity.GetTeam().teamId != GetTeam().teamId) return true; // For now, players will all shoot each other FFA if they are controller "player ships"
+            if (otherNetworkEntity.GetTeam().teamId != GetTeam().teamId) return true;
             return false;
         }
 
-        public virtual void Die()
+        // 
+        [Command]
+        public virtual void CmdDie()
+        {
+            isAlive = false;
+            RpcDie();
+        }
+
+        [ClientRpc]
+        public virtual void RpcDie()
         {
             isAlive = false;
         }
+        
         public abstract void CmdSetTeam(uint teamId);
     }
 }

@@ -5,6 +5,10 @@ using System;
 #pragma warning disable 0649
 namespace StellarArmada.Pooling
 {
+    // Manages a pool of objects, which are stored in a scriptable object database (PoolManagerDB)
+    // Pooling prevents garbage collection problems by re-using objects instead of destroying them
+    // TO-DO: More thorough commenting
+
     [Serializable]
     public class PoolManager : MonoBehaviour
     { 

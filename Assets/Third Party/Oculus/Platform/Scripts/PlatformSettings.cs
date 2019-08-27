@@ -1,7 +1,6 @@
 namespace Oculus.Platform
 {
   using UnityEngine;
-  using System.Collections;
 
 #if UNITY_EDITOR
   [UnityEditor.InitializeOnLoad]

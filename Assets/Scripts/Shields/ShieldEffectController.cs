@@ -14,6 +14,8 @@ namespace StellarArmada
 
     public class ShieldEffectController : MonoBehaviour
     {
+        // Manages the shield look and effect on ships
+        // TO-DO: Add pooling
         public bool shieldActive = true;
         public float shieldActivationSpeed = 1.0f;
         private float shieldActivationRim = 0.2f;

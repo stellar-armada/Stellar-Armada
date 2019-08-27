@@ -3,9 +3,9 @@
 #pragma warning disable 0649
 namespace StellarArmada.Match
 {
+    // TO-DO: Integrate and comment
     public struct MatchCountDownSettings
     {
-
         public MatchMessageType startingMessage;
         public CountdownType countDownType;
         public MatchCountDownSettings(MatchMessageType startingMessage, CountdownType countDownType)

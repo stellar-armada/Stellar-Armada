@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using StellarArmada.Game;
+using StellarArmada.Player;
 
 #pragma warning disable 0649
 namespace StellarArmada.Audio
@@ -31,11 +31,11 @@ namespace StellarArmada.Audio
 
             if (audioVolumeType == AudioVolumeType.Music)
             {
-                slider.value = SettingsManager.GetMusicVolume();
+                slider.value = PlayerSettingsManager.GetMusicVolume();
             }
             else if (audioVolumeType == AudioVolumeType.Sfx)
             {
-                slider.value = SettingsManager.GetSoundFxVolume();
+                slider.value = PlayerSettingsManager.GetSoundFxVolume();
 
             }
         }

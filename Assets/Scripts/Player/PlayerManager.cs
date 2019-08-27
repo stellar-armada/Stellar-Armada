@@ -3,8 +3,10 @@ using System.Linq;
 using UnityEngine;
 
 #pragma warning disable 0649
-namespace StellarArmada.Game
+namespace StellarArmada.Player
 {
+    // Manages the list of current players for easy access
+    // Players register on spawn and re-register on despawn
     public class PlayerManager : MonoBehaviour
     {
         public static PlayerManager instance;

@@ -1,46 +1,50 @@
-﻿using UnityEngine;
-using StellarArmada.Game;
-using StellarArmada.Ships;
+﻿using StellarArmada.Entities;
+using UnityEngine;
+using StellarArmada.Entities.Ships;
+using StellarArmada.Levels;
 using StellarArmada.Teams;
 
 #pragma warning disable 0649
-namespace StellarArmada.Players
+namespace StellarArmada.Player
 {
+    // Human player controller inheriting from the player controller base class
+    // Manages setting up the local stuff
+    // TO-DO: PickCapitalShip is not automatic
+    
     public class HumanPlayerController : PlayerController
     {
+        // Handy reference to the local player controller, set when the player inits
         public static HumanPlayerController localPlayer;
         
         public GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
         
         [SerializeField] BodyController bodyController;
         
-        private bool playerIsReady;
-
         private void Awake()
         {
-
-            
             PlayerManager.instance.RegisterPlayer(this);
 
             localRig.SetActive(false);
-            
-            
         }
 
         void Start()
         {
             bodyController.Init();
 
+            // Server sets player's team
             if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
             
+            // If this is the local player's object, set up local player logic
+            // The localrig in the MatchPlayer prefab contains all the local managers for selection, map control, etc.
             if (isLocalPlayer)
             {
                 localRig.SetActive(true);
                 
-                CmdSetUserName(SettingsManager.GetSavedPlayerName());
+                CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
                 
                 localPlayer = this;
 
+                // This is being called automatically
                 PickCapitalShip();
             }
             else
@@ -49,6 +53,7 @@ namespace StellarArmada.Players
             }
         }
 
+        // TO-DO: Refactor for when player selects the capital ship of their choice
         void PickCapitalShip()
         {
             foreach (NetworkEntity e in GetTeam().entities)
@@ -61,7 +66,7 @@ namespace StellarArmada.Players
                     t.parent = SceneRoot.instance.transform;
                     t.localPosition = Vector3.zero;
                     t.localRotation = Quaternion.identity;
-                    s.CmdSetPlayer(netId);
+                    s.CmdSetCaptain(netId);
                     return;
                 }
             }

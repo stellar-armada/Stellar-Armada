@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MatchTimer
 {
+    // The actual timer object that gets created and ticked down by the Clock
+    // TO-DO: Integrate
     private float Length;
     public float currentTime;
 

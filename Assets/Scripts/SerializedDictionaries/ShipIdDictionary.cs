@@ -1,5 +1,5 @@
 ﻿using System;
-using StellarArmada.Ships;
+using StellarArmada.Entities.Ships;
 
 [Serializable]
 public class ShipIdDictionary : SerializableDictionary<ShipType, int>

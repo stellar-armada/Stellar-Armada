@@ -2,6 +2,7 @@
 #pragma warning disable 0649
 namespace StellarArmada
 {
+    // Base class for objects that can cause damage to other objects when hitting them (i.e. projectiles, etc)
     public abstract class Damager : MonoBehaviour
     {
         public WeaponSystem owningWeaponSystem;

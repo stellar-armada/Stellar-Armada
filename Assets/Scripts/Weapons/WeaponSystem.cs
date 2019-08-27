@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StellarArmada.Entities;
+using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada
@@ -27,7 +28,7 @@ namespace StellarArmada
         RaycastHit hitInfo; // Raycast structure
         public bool isFiring; // Is turret currently in firing state
 
-        void Awake()
+        public virtual void Awake()
         {
             owningWeaponSystemController = owningWeaponSystemTransform.GetComponent<IWeaponSystemController>();
             owningWeaponSystemController.RegisterWeaponSystem(this);

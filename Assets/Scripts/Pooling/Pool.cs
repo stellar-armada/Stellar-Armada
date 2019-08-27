@@ -4,6 +4,8 @@ using System.Collections.Generic;
 #pragma warning disable 0649
 namespace StellarArmada.Pooling
 {
+    // Pool objects
+    // Managed by the pool manager
     public class Pool : MonoBehaviour
     {
         [HideInInspector]

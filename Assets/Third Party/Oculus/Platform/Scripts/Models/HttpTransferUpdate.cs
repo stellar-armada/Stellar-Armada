@@ -1,11 +1,7 @@
 namespace Oculus.Platform.Models
 {
   using System;
-  using System.Collections;
-  using System.Collections.Generic;
   using System.Runtime.InteropServices;
-  using Oculus.Platform.Models;
-  using UnityEngine;
 
   public class HttpTransferUpdate
   {

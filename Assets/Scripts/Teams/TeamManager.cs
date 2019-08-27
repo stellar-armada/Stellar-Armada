@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
-using StellarArmada.Game;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -17,6 +16,7 @@ namespace StellarArmada.Teams
     }
     public class TeamManager : NetworkBehaviour
     {
+        // Network manager that manages the creation of teams, and autojoins players to teams with empty slots
         public static TeamManager instance; // singleton accessor
         
         public TeamTemplate[] templates;

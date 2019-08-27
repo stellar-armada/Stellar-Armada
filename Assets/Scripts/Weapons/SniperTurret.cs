@@ -8,12 +8,12 @@ namespace StellarArmada.Weapons
     {
         public override void Impact(Vector3 point)
         {
-            PoolManager.Pools["GeneratedPool"].Spawn(WeaponPrefabManager.instance.GetWeaponPrefab(WeaponType.Sniper).impact, point, Quaternion.identity, null);
-            WeaponAudioController.instance.PlayHitAtPosition(WeaponType.Sniper, point);
+            PoolManager.Pools["GeneratedPool"].Spawn(weaponPrefabManager.GetWeaponPrefab(WeaponType.Sniper).impact, point, Quaternion.identity, null);
+            weaponAudioController.PlayHitAtPosition(WeaponType.Sniper, point);
         }
         protected override void StartFiring()
         {
-            timerID = TimeManager.instance.AddTimer(0.3f, Fire);
+            timerID = timeManager.AddTimer(0.3f, Fire);
         }
 
         void Fire()
@@ -27,7 +27,7 @@ namespace StellarArmada.Weapons
             // Remove firing timer
             if (timerID != -1)
             {
-                TimeManager.instance.RemoveTimer(timerID);
+                timeManager.RemoveTimer(timerID);
                 timerID = -1;
             }
         }

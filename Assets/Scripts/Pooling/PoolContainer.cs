@@ -4,6 +4,9 @@ using System;
 #pragma warning disable 0649
 namespace StellarArmada.Pooling
 {
+    // Contains information about specific pools
+    // For use by the pool manager and pooling system
+    // TO-DO: More thorough commenting
     [Serializable]
     public class PoolContainer
     {

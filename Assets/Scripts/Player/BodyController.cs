@@ -2,8 +2,10 @@
 using StellarArmada.Teams;
 
 #pragma warning disable 0649
-namespace StellarArmada.Players
+namespace StellarArmada.Player
 {
+    // Manages the body of the player
+    // TO-DO: Avatar management / customization and prefab instantiation
     public class BodyController : MonoBehaviour
     {
         [SerializeField] HumanPlayerController humanPlayerController; // Reference to the local player

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
-using StellarArmada.Players;
-using StellarArmada.Ships;
+using System.Linq;
+using StellarArmada.Entities;
+using StellarArmada.Player;
+using StellarArmada.Entities.Ships;
 using StellarArmada.Teams;
 using UnityEngine;
 
@@ -9,6 +11,9 @@ namespace StellarArmada.UI
 {
     public class GroupUIManager : MonoBehaviour
     {
+        // Local manager to handle population and selection of groups in the player's UI menu
+        // Singleton object inside the MatchPlayer prefab
+        
         [SerializeField] private HumanPlayerController humanPlayerController;
 
         private List<GameObject> ships = new List<GameObject>();
@@ -58,14 +63,14 @@ namespace StellarArmada.UI
         public void SetSelectionToGroup(int groupNum)
         {
             uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
-            var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum];
+            var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
             List<ISelectable> selectables = new List<ISelectable>();
             foreach (var entity in group)
             {
-                selectables.Add(entity.GetSelectionHandler());
+                selectables.Add(((Ship)entity).GetSelectionHandler());
             }
 
-            SelectionUIManager.instance.SetSelectionFromGroup(selectables);
+            ShipSelectionManager.instance.SetSelectionFromGroup(selectables);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Wacki {
     public class LaserPointerEventData : PointerEventData
     {
         public GameObject current;
-        public IUILaserPointer controller;
+        public IUIPointer controller;
         public LaserPointerEventData(EventSystem e) : base(e) { }
 
         public override void Reset()

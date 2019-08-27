@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StellarArmada.Levels;
+using UnityEngine;
 
 public class LockRotationToScene : MonoBehaviour
 {

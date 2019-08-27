@@ -1,7 +1,7 @@
 ﻿using System.Collections;
+using StellarArmada.Player;
 using UnityEngine;
 using UnityEngine.Audio;
-using StellarArmada.Game;
 
 #pragma warning disable 0649
 namespace StellarArmada.Audio
@@ -55,8 +55,8 @@ namespace StellarArmada.Audio
             aud[1] = gameObject.AddComponent<AudioSource>();
 
 
-            SetMusicVolume(SettingsManager.GetMusicVolume());
-            SetSfxVolume(SettingsManager.GetSoundFxVolume());
+            SetMusicVolume(PlayerSettingsManager.GetMusicVolume());
+            SetSfxVolume(PlayerSettingsManager.GetSoundFxVolume());
         }
         private void Start() // calls when object is first activated
         {
@@ -78,7 +78,7 @@ namespace StellarArmada.Audio
         public void SetMusicVolume(float value)
         {
             audioMixer.SetFloat("MusicVolume", value);
-            SettingsManager.SetMusicVolume(value);
+            PlayerSettingsManager.SetMusicVolume(value);
 
         }
         public void SetSfxVolume(float value)
@@ -86,7 +86,7 @@ namespace StellarArmada.Audio
 
             audioMixer.SetFloat("SfxVolume", value);
 
-            SettingsManager.SetSoundFxVolume(value);
+            PlayerSettingsManager.SetSoundFxVolume(value);
         }
         public void StartTitleMusic()
         {

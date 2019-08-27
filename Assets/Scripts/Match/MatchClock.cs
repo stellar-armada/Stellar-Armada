@@ -4,11 +4,14 @@ using UnityEngine.Events;
 
 #pragma warning disable 0649
 namespace StellarArmada.Match
-
 {
+    // Master clock for a match
+    // TO-DO: Hook up and integrate into server script!
+    // TO-DO: Connect to UI for timer functionality
+    // TO-DO: Clean up and comment this class as it's implemented!
+    
     public class MatchClock
     {
-        
         public MatchTimer currentTimer;
         public UnityEvent OnUpdate;
 

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using TMPro;
-using StellarArmada.Players;
 using StellarArmada.Teams;
 
 #pragma warning disable 0649
@@ -14,47 +13,37 @@ namespace StellarArmada.Player
         [SerializeField] Transform transformToFollow;
         [SerializeField] private Renderer nameRenderer;
         
-        private Transform _t;
-
+        // local reference vars
+        private Transform t;
         private bool isLocalPlayer;
         private Color color;
-        
-        #region Initialization and Deinitialization
 
         void Awake()
         {
             humanPlayerController.EventOnPlayerNameChange += HandleBasePlayerNameChange;
             humanPlayerController.EventOnPlayerTeamChange += HandleTeamChange;
-            _t = transform;
+            t = transform;
         }
         void Start()
         {
-
             HandleBasePlayerNameChange();
             HandleTeamChange();
             isLocalPlayer = humanPlayerController.isLocalPlayer;
-            if (humanPlayerController == HumanPlayerController.localPlayer) nameRenderer.enabled = false;
+            if (humanPlayerController == HumanPlayerController.localPlayer) nameRenderer.enabled = false; // Hide from local player
         }
-        #endregion
-
-        #region Private Methods
 
         void LateUpdate()
         {
-            _t.position = transformToFollow.position; // Follow player
+            t.position = transformToFollow.position; // Follow player
             if (!isLocalPlayer) FaceLocalPlayer();
         }
 
         void FaceLocalPlayer()
         {
-            _t.LookAt(HumanPlayerController.localPlayer.GetGameObject().transform);
-            _t.rotation = Quaternion.Euler(0, _t.rotation.eulerAngles.y + 180f, 0);
+            t.LookAt(HumanPlayerController.localPlayer.GetGameObject().transform);
+            t.rotation = Quaternion.Euler(0, t.rotation.eulerAngles.y + 180f, 0);
         }
-
-        #endregion
-
-        #region Public Methods
-
+        
         public void HandleBasePlayerNameChange()
         {
             playerName.text = humanPlayerController.GetName();
@@ -76,7 +65,5 @@ namespace StellarArmada.Player
         {
             playerName.gameObject.SetActive(false);
         }
-
-        #endregion
     }
 }

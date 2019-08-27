@@ -1,0 +1,13 @@
+﻿#pragma warning disable 0649
+namespace StellarArmada.Entities.Ships
+{
+    public enum ShipType
+    {
+        Battlecruiser = 0,
+        Dreadnaught = 1,
+        Phalanx = 2,
+        Guardian = 3,
+        Marauder = 4,
+        Bassilisk = 5
+    }
+}

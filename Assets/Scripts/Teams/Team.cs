@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using Mirror;
-using StellarArmada.Game;
+using StellarArmada.Entities;
+using StellarArmada.Player;
 using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada.Teams
 {
+    // Team object, instantiated and spaned over the network by the match server manager after the server's read the scenario data in
+    // Contains all ships for teams. Organizes ships into three battle groups (List<List<NetworkEntity>> groups)
+    // Also contains references to players, team specific colors, etc.
     public class Team : NetworkBehaviour
     {
-        public uint teamId;
+        public uint teamId; // unique ID incremented when team is created
 
         // public int pointsToSpend; leaving here so we can add this mechanic later
         public string teamName;

@@ -1,8 +1,6 @@
 namespace Oculus.Platform.Models
 {
-  using UnityEngine;
   using System;
-  using System.ComponentModel;
 
   public class PingResult
   {

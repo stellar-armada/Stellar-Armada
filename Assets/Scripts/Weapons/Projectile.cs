@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using StellarArmada.Entities;
+using StellarArmada.Levels;
+using UnityEngine;
 using StellarArmada.Pooling;
-using StellarArmada.Scenarios;
-using Zinnia.Extension;
 
 #pragma warning disable 0649
 namespace StellarArmada.Weapons
@@ -23,6 +23,8 @@ namespace StellarArmada.Weapons
         float timer = 0f; // Projectile timer
         float fxOffset; // Offset of fxImpact
 
+        [SerializeField] private Transform miniMapRepresentation; // Copy of the projectile that displays on the minimap
+
         void Awake()
         {
             // Cache transform and get all particle systems attached
@@ -41,11 +43,16 @@ namespace StellarArmada.Weapons
             isFXSpawned = false;
             timer = 0f;
             hitPoint = new RaycastHit();
+            miniMapRepresentation.gameObject.SetActive(true);
+            miniMapRepresentation.SetParent(MiniMap.instance.transform);
+            miniMapRepresentation.localScale = transform.lossyScale;
         }
 
         // OnDespawned called by pool manager 
         public void OnDespawned()
         {
+            miniMapRepresentation.gameObject.SetActive(false);
+            miniMapRepresentation.SetParent(transform);
             OnProjectileDestroy();
         }
 
@@ -134,6 +141,8 @@ namespace StellarArmada.Weapons
 
             // Advances projectile forward
             transform.position += step;
+            miniMapRepresentation.localPosition = transform.position;
+            miniMapRepresentation.localRotation = transform.rotation;
         }
         
         void Update()
