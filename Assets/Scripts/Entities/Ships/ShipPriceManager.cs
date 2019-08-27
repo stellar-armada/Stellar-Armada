@@ -2,6 +2,7 @@
 using StellarArmada.Entities.Ships;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
     public class ShipPriceManager : MonoBehaviour

@@ -35,7 +35,7 @@ namespace StellarArmada.Entities.Ships
             {
                 ship.transform.SetParent(LevelRoot.instance.transform); // if not done already. check to see if it's already called by now
                 ship.transform.localPosition = position;
-                ship.transform.rotation = rotation;
+                ship.transform.localRotation = rotation;
                 ship.visualModel.transform.localPosition = warpInStartPos;
                 ship.weaponSystemController.ShowWeaponSystems();
                 ship.visualModel.enabled = true;

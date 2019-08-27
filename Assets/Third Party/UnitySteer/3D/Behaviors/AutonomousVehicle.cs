@@ -88,7 +88,6 @@ namespace UnitySteer.Behaviors
             {
                 var rate = TargetSpeed > _speed ? _accelerationRate : _decelerationRate;
                 _speed = Mathf.Lerp(_speed, targetSpeed, deltaTime * rate);
-                Debug.Log("Speed: " + _speed);
             }
 
             return Velocity * deltaTime;

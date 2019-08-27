@@ -58,7 +58,6 @@ namespace StellarArmada.Match
 
                     foreach (var key in scenario.teamInfo[i].fleetBattleGroups[g])
                     {
-                        bool hasFlagship = false;
                         for (int numShips = 0; numShips < key.Value; numShips++)
                         {
                             // For each ship, instantiate for current team

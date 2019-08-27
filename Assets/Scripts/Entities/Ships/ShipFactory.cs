@@ -3,6 +3,7 @@ using StellarArmada.Levels;
 using StellarArmada.Teams;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
     public class ShipFactory : EntityFactory

@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DefaultCamera.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
@@ -497,61 +498,6 @@
                 <e p="OculusPluginUpdaterStub.cs" t="Include" />
                 <e p="OculusStandalonePlatformResponse.cs" t="Include" />
               </e>
-              <e p="Samples" t="Include">
-                <e p="EntitlementCheck" t="Include">
-                  <e p="EntitlementCheck.cs" t="Include" />
-                </e>
-                <e p="NetChat" t="Include">
-                  <e p="DataEntry.cs" t="Include" />
-                </e>
-                <e p="SimplePlatformSample" t="Include">
-                  <e p="DataEntry.cs" t="Include" />
-                </e>
-                <e p="VrBoardGame" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="BoardPosition.cs" t="Include" />
-                    <e p="EyeCamera.cs" t="Include" />
-                    <e p="GameBoard.cs" t="Include" />
-                    <e p="GameController.cs" t="Include" />
-                    <e p="GamePiece.cs" t="Include" />
-                    <e p="IAPManager.cs" t="Include" />
-                    <e p="MatchmakingManager.cs" t="Include" />
-                    <e p="PlatformManager.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="VrHoops" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="AchievementsManager.cs" t="Include" />
-                    <e p="AIPlayer.cs" t="Include" />
-                    <e p="BallEjector.cs" t="Include" />
-                    <e p="Camera2DController.cs" t="Include" />
-                    <e p="DetectBasket.cs" t="Include" />
-                    <e p="FlyText.cs" t="Include" />
-                    <e p="GoalMover.cs" t="Include" />
-                    <e p="LeaderboardManager.cs" t="Include" />
-                    <e p="LocalPlayer.cs" t="Include" />
-                    <e p="MatchController.cs" t="Include" />
-                    <e p="MatchmakingManager.cs" t="Include" />
-                    <e p="P2PManager.cs" t="Include" />
-                    <e p="P2PNetworkBall.cs" t="Include" />
-                    <e p="P2PNetworkGoal.cs" t="Include" />
-                    <e p="PlatformManager.cs" t="Include" />
-                    <e p="Player.cs" t="Include" />
-                    <e p="PlayerArea.cs" t="Include" />
-                    <e p="RemotePlayer.cs" t="Include" />
-                    <e p="VREyeRaycaster.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="VrVoiceChat" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="P2PManager.cs" t="Include" />
-                    <e p="PlatformManager.cs" t="Include" />
-                    <e p="RoomManager.cs" t="Include" />
-                    <e p="VoipManager.cs" t="Include" />
-                    <e p="VREyeRaycaster.cs" t="Include" />
-                  </e>
-                </e>
-              </e>
               <e p="Scripts" t="Include">
                 <e p="AbuseReportOptions.cs" t="Include" />
                 <e p="AbuseReportType.cs" t="Include" />
@@ -684,124 +630,6 @@
                 <e p="WindowsPlatform.cs" t="Include" />
               </e>
             </e>
-            <e p="SampleFramework" t="Include">
-              <e p="Core" t="Include">
-                <e p="CustomHands" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="Hand.cs" t="Include" />
-                    <e p="HandPose.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="DebugUI" t="Include">
-                  <e p="Fonts" t="Include">
-                    <e p="Montserrat" t="Include">
-                      <e p="OFL.txt" t="Include" />
-                    </e>
-                  </e>
-                  <e p="Scripts" t="Include">
-                    <e p="DebugUIBuilder.cs" t="Include" />
-                    <e p="HandedInputSelector.cs" t="Include" />
-                    <e p="LaserPointer.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="DistanceGrab" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="ColorGrabbable.cs" t="Include" />
-                    <e p="DistanceGrabbable.cs" t="Include" />
-                    <e p="DistanceGrabber.cs" t="Include" />
-                    <e p="GrabbableCrosshair.cs" t="Include" />
-                    <e p="GrabManager.cs" t="Include" />
-                    <e p="PauseOnInputLoss.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="GuardianBoundarySystem" t="Include">
-                  <e p="BoundsLockedObject.cs" t="Include" />
-                  <e p="GuardianBoundaryDisplay.cs" t="Include" />
-                  <e p="GuardianBoundaryEnforcer.cs" t="Include" />
-                </e>
-                <e p="Locomotion" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="CharacterCameraConstraint.cs" t="Include" />
-                    <e p="Editor" t="Include">
-                      <e p="TeleportTransitionWarpInspector.cs" t="Include" />
-                    </e>
-                    <e p="LocomotionController.cs" t="Include" />
-                    <e p="LocomotionTeleport.cs" t="Include" />
-                    <e p="TeleportAimHandler.cs" t="Include" />
-                    <e p="TeleportAimHandlerLaser.cs" t="Include" />
-                    <e p="TeleportAimHandlerParabolic.cs" t="Include" />
-                    <e p="TeleportAimVisualLaser.cs" t="Include" />
-                    <e p="TeleportDestination.cs" t="Include" />
-                    <e p="TeleportInputHandler.cs" t="Include" />
-                    <e p="TeleportInputHandlerAvatarTouch.cs" t="Include" />
-                    <e p="TeleportInputHandlerHMD.cs" t="Include" />
-                    <e p="TeleportOrientationHandler.cs" t="Include" />
-                    <e p="TeleportOrientationHandler360.cs" t="Include" />
-                    <e p="TeleportOrientationHandlerHMD.cs" t="Include" />
-                    <e p="TeleportOrientationHandlerThumbstick.cs" t="Include" />
-                    <e p="TeleportPoint.cs" t="Include" />
-                    <e p="TeleportSupport.cs" t="Include" />
-                    <e p="TeleportTargetHandler.cs" t="Include" />
-                    <e p="TeleportTargetHandlerNavMesh.cs" t="Include" />
-                    <e p="TeleportTargetHandlerNode.cs" t="Include" />
-                    <e p="TeleportTargetHandlerPhysical.cs" t="Include" />
-                    <e p="TeleportTransition.cs" t="Include" />
-                    <e p="TeleportTransitionBlink.cs" t="Include" />
-                    <e p="TeleportTransitionInstant.cs" t="Include" />
-                    <e p="TeleportTransitionWarp.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="TouchControllers" t="Include">
-                  <e p="TouchController.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Editor" t="Include">
-                <e p="BuildAssetPackages.cs" t="Include" />
-                <e p="OculusSampleFrameworkUtil.cs" t="Include" />
-              </e>
-              <e p="License.txt" t="Include" />
-              <e p="Usage" t="Include">
-                <e p="DebugUI" t="Include">
-                  <e p="DebugUISample.cs" t="Include" />
-                </e>
-                <e p="DistanceGrab" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="DistanceGrabberSample.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="Locomotion" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="CharacterCapsule.cs" t="Include" />
-                    <e p="LocomotionSampleSupport.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="OVROverlay" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="OVROverlaySample.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="StartScene" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="StartMenu.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="Stereo180Video" t="Include">
-                  <e p="Plugins" t="Include">
-                    <e p="Android" t="Include">
-                      <e p="Audio360" t="Include">
-                        <e p="ThirdPartyNotices.txt" t="Include" />
-                      </e>
-                      <e p="NativeVideoPlayer.cs" t="Include" />
-                    </e>
-                  </e>
-                  <e p="Scripts" t="Include">
-                    <e p="MoviePlayerSample.cs" t="Include" />
-                    <e p="OVROverlayMeshGenerator.cs" t="Include" />
-                    <e p="VectorUtil.cs" t="Include" />
-                  </e>
-                </e>
-              </e>
-            </e>
             <e p="Spatializer" t="Include">
               <e p="Editor" t="Include">
                 <e p="ONSPAudioPluginUpdater.cs" t="Include" />
@@ -836,23 +664,6 @@
                 <e p="ONSPPropagationMaterial.cs" t="Include" />
                 <e p="ONSPPropagationSettings.cs" t="Include" />
                 <e p="ONSPVersion.cs" t="Include" />
-              </e>
-            </e>
-            <e p="VoiceMod" t="Include">
-              <e p="Scenes" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="VoiceModDemo_Logic.cs" t="Include" />
-                  <e p="VoiceModEnableSwitch.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Scripts" t="Include">
-                <e p="Helpers" t="Include">
-                  <e p="OVRDebugConsole.cs" t="Include" />
-                  <e p="OVRMessenger.cs" t="Include" />
-                  <e p="OVRMicInput.cs" t="Include" />
-                </e>
-                <e p="OVRVoiceMod.cs" t="Include" />
-                <e p="OVRVoiceModContext.cs" t="Include" />
               </e>
             </e>
             <e p="VR" t="Include">

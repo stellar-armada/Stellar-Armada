@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace StellarArmada.Entities.Ships
 {
+#pragma warning disable 0649
     public class ShipPlacer : MonoBehaviour
     {
         public static ShipPlacer instance;

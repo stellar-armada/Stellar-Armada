@@ -51,8 +51,6 @@ namespace StellarArmada.Weapons
         // OnDespawned called by pool manager 
         public void OnDespawned()
         {
-            miniMapRepresentation.gameObject.SetActive(false);
-            miniMapRepresentation.SetParent(transform);
             OnProjectileDestroy();
         }
 
@@ -82,6 +80,8 @@ namespace StellarArmada.Weapons
         // OnDespawned called by pool manager 
         void OnProjectileDestroy()
         {
+            miniMapRepresentation.gameObject.SetActive(false);
+            miniMapRepresentation.SetParent(transform);
             PoolManager.Pools["GeneratedPool"].Despawn(transform);
         }
 

@@ -138,7 +138,6 @@ namespace StellarArmada.Entities.Ships
         public List<ISelectable> GetSelectionSet(int selectionSetId)
         {
             return selectionSets[selectionSetId];
-            return null;
         }
 
         public void SelectAll(int teamId)

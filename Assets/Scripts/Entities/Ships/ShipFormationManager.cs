@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
 // Local player singleton that manages how ships group together when warping in or being placed by selection

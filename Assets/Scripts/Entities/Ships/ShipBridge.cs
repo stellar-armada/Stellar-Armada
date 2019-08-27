@@ -1,6 +1,7 @@
 ﻿using StellarArmada.Player;
 using UnityEngine;
 
+#pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
     public class ShipBridge : MonoBehaviour

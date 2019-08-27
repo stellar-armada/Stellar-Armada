@@ -13,7 +13,7 @@ namespace StellarArmada.Weapons
         }
         protected override void StartFiring()
         {
-            timerID = timeManager.AddTimer(0.3f, Fire);
+            timerID = timeManager.AddTimer(fireRate, Fire);
         }
 
         void Fire()

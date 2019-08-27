@@ -1,6 +1,7 @@
 ﻿using StellarArmada.IO;
 using UnityEngine;
 using StellarArmada.Player;
+
 #pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {

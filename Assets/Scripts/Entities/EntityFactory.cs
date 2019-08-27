@@ -1,5 +1,6 @@
 ﻿using Mirror;
 
+#pragma warning disable 0649
 namespace StellarArmada.Entities
 {
     // Base class for factories that create entities

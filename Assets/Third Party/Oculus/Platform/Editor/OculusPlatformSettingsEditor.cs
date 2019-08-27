@@ -360,16 +360,9 @@ namespace Oculus.Platform
         pi.SetCompatibleWithPlatform(BuildTarget.Android, false);
         pi.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows, false);
         pi.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows64, false);
-        pi.SetCompatibleWithPlatform(BuildTarget.StandaloneLinux, false);
         pi.SetCompatibleWithPlatform(BuildTarget.StandaloneLinux64, false);
-        pi.SetCompatibleWithPlatform(BuildTarget.StandaloneLinuxUniversal, false);
-#if UNITY_2017_3_OR_NEWER
         pi.SetCompatibleWithPlatform(BuildTarget.StandaloneOSX, false);
-#else
-        pi.SetCompatibleWithPlatform(BuildTarget.StandaloneOSXUniversal, false);
-        pi.SetCompatibleWithPlatform(BuildTarget.StandaloneOSXIntel, false);
-        pi.SetCompatibleWithPlatform(BuildTarget.StandaloneOSXIntel64, false);
-#endif
+
 
         switch (platform)
         {

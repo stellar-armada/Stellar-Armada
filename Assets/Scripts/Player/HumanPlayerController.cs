@@ -43,6 +43,8 @@ namespace StellarArmada.Player
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
                 
                 localPlayer = this;
+                
+                Destroy(DefaultCamera.instance.gameObject);
 
                 // This is being called automatically
                 PickCapitalShip();

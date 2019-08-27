@@ -28,21 +28,24 @@ namespace StellarArmada.Weapons
         [SerializeField] private float lineRendererThickness;
 
         [SerializeField] private Transform miniMapRepresentation;
-        private LineRenderer miniMapLineRenderer;
+        [SerializeField] LineRenderer miniMapLineRenderer;
 
         private bool hit;
 
+        private Transform t;
         void Awake()
         {
+            t = GetComponent<Transform>();
             // Get line renderer component
             lineRenderer = GetComponent<LineRenderer>();
             miniMapLineRenderer = miniMapRepresentation.GetComponent<LineRenderer>();
             // Assign first frame texture
             if (!AnimateUV && BeamFrames.Length > 0)
+            {
                 lineRenderer.material.SetTexture("_BaseMap", BeamFrames[0]);
             miniMapLineRenderer.material.SetTexture("_BaseMap", BeamFrames[0]);
+            }
             lineRenderer.widthMultiplier = lineRendererThickness;
-
             // Randomize uv offset
             initialBeamOffset = Random.Range(0f, 5f);
         }
@@ -60,7 +63,8 @@ namespace StellarArmada.Weapons
                 
             miniMapRepresentation.gameObject.SetActive(true);
             miniMapRepresentation.SetParent(MiniMap.instance.transform);
-            miniMapRepresentation.localScale = transform.lossyScale;
+            miniMapRepresentation.localScale = t.lossyScale;
+            miniMapRepresentation.localPosition = t.position;
             miniMapLineRenderer.widthMultiplier = lineRendererThickness * MiniMap.instance.transform.lossyScale.x;
         }
 
@@ -85,7 +89,7 @@ namespace StellarArmada.Weapons
         { 
             // Prepare structure and create ray
             hitPoint = new RaycastHit();
-            Ray ray = new Ray(transform.position, transform.forward);
+            Ray ray = new Ray(t.position, t.forward);
             // Calculate default beam proportion multiplier based on default scale and maximum length
             float propMult = MaxBeamLength*beamScale;
 
@@ -93,44 +97,27 @@ namespace StellarArmada.Weapons
             if (Physics.Raycast(ray, out hitPoint, MaxBeamLength, layerMask))
             {
                 // Get current beam length and update line renderer accordingly
-                beamLength = Vector3.Distance(transform.position, hitPoint.point);
+                beamLength = Vector3.Distance(t.position, hitPoint.point);
                 lineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
-
+                miniMapLineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
+                
                 // Calculate default beam proportion multiplier based on default scale and current length
                 propMult = beamLength*beamScale;
                 // Spawn prefabs and apply force
                 owningWeaponSystem.Impact(hitPoint.point);
                 hit = true;
             }
-            //checking in 2d mode
             else
-            {
-                RaycastHit2D ray2D = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y),
-                    new Vector2(transform.forward.x, transform.forward.y), beamLength, layerMask);
-                if (ray2D)
-                {
-                    // Get current beam length and update line renderer accordingly
-                    beamLength = Vector3.Distance(transform.position, ray2D.point);
-                    lineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
-
-                    // Calculate default beam proportion multiplier based on default scale and current length
-                    propMult = beamLength*beamScale;
-                    // Spawn prefabs and apply force
-                    owningWeaponSystem.Impact(ray2D.point);
-                    hit = true;
-                }
-                // Nothing was his
-                else
                 {
                     // Set beam to maximum length
                     beamLength = MaxBeamLength;
                     lineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
+                    miniMapLineRenderer.SetPosition(1, new Vector3(0f, 0f, beamLength));
                 }
-            }
 
             // Set beam scaling according to its length
             lineRenderer.material.SetTextureScale("_BaseMap", new Vector2(propMult, 1f));
-            miniMapLineRenderer.material.SetTextureScale("_BaseMap", new Vector2(propMult * MiniMap.instance.transform.lossyScale.x, 1f));
+            miniMapLineRenderer.material.SetTextureScale("_BaseMap", new Vector2(propMult, 1f));
         }
 
         // Advance texture frame

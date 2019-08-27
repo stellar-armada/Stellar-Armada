@@ -15895,9 +15895,9 @@ MonoBehaviour:
   entity: {fileID: 8081799463623299947}
   maxShield: 2000
   shieldRechargeDelayTime: 0
-  shieldRechargeRate: 3000
+  shieldRechargeRate: 30
   shieldEffectController: {fileID: 3286973454117072613}
-  currentShield: 0
+  currentShield: 2000
 --- !u!1 &4007513039453171211
 GameObject:
   m_ObjectHideFlags: 0
@@ -25904,7 +25904,7 @@ GameObject:
   - component: {fileID: 2446590202653477151}
   - component: {fileID: 2048886304391249286}
   m_Layer: 12
-  m_Name: SniperTurretLight (1)
+  m_Name: SniperTurretLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25943,12 +25943,12 @@ MonoBehaviour:
   owningNetworkEntity: {fileID: 8081799463623299947}
   damagePerHit: 8
   timerID: -1
-  timer: 0.5
+  timer: 0.1
   tickRate: 0.2
   maxRange: 3000
   damageableLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   allRaycastableLayersMask:
     serializedVersion: 2
     m_Bits: 1536
@@ -25960,7 +25960,7 @@ MonoBehaviour:
   HeadingTrackingSpeed: 3
   ElevationTrackingSpeed: 3
   maximumAngleDifferenceToTarget: 10
-  fireRate: 0.3
+  fireRate: 1.2
   HeadingLimit: {x: -25, y: 25}
   ElevationLimit: {x: -8, y: 50}
   smoothControlling: 1
@@ -25976,7 +25976,7 @@ GameObject:
   - component: {fileID: 6289403244380746495}
   - component: {fileID: 4912557179441416806}
   m_Layer: 12
-  m_Name: VulanTurretLight
+  m_Name: VulcanTurretLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26020,7 +26020,7 @@ MonoBehaviour:
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   allRaycastableLayersMask:
     serializedVersion: 2
     m_Bits: 1536
@@ -26032,7 +26032,7 @@ MonoBehaviour:
   HeadingTrackingSpeed: 2
   ElevationTrackingSpeed: 2
   maximumAngleDifferenceToTarget: 10
-  fireRate: 0.3
+  fireRate: 0.5
   HeadingLimit: {x: -100, y: 100}
   ElevationLimit: {x: -5, y: 120}
   smoothControlling: 1
@@ -27161,7 +27161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2418946794332889089}
   m_Layer: 15
-  m_Name: VulanTurretLight
+  m_Name: VulcanTurretLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33027,7 +33027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   entity: {fileID: 8081799463623299947}
-  maxHull: 20
+  maxHull: 500
   currentHull: 0
 --- !u!114 &8019088010132304523
 MonoBehaviour:
@@ -33092,12 +33092,12 @@ MonoBehaviour:
   _drawGizmos: 1
   _center: {x: 0, y: 0, z: 0}
   _radius: 300
-  _minSpeedForTurning: 5
+  _minSpeedForTurning: 4.5
   _movementPriority: 0
   _turnTime: 4
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
-  _arrivalRadius: 200
+  _arrivalRadius: 10
   _maxSpeed: 300
   _maxForce: 100
   _canMove: 1
@@ -33105,7 +33105,7 @@ MonoBehaviour:
   _decelerationRate: 10000
   _queueName: Steering
   _tickLength: 0.1
-  _maxQueueProcessedPerUpdate: 30
+  _maxQueueProcessedPerUpdate: 50
   _traceAdjustments: 0
 --- !u!114 &5292198978933662320
 MonoBehaviour:
@@ -33164,13 +33164,13 @@ MonoBehaviour:
   _queueName: Radar
   _maxQueueProcessedPerUpdate: 100
   _tickLength: 0.25
-  _detectionRadius: 1200
-  _detectDisabledVehicles: 0
+  _detectionRadius: 600
+  _detectDisabledVehicles: 1
   _layersChecked:
     serializedVersion: 2
     m_Bits: 1536
-  _drawGizmos: 1
-  _preAllocateSize: 350
+  _drawGizmos: 0
+  _preAllocateSize: 100
 --- !u!114 &6430903243183470549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33232,8 +33232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 1
   _minRadius: 0
-  _maxRadius: 1000
-  _drawNeighbors: 1
+  _maxRadius: 600
+  _drawNeighbors: 0
   _angleCos: -0.1736482
 --- !u!114 &2175313936342113083
 MonoBehaviour:
@@ -33249,10 +33249,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 1
   _minDistance: 0
-  _maxDistance: 1000
-  _comfortDistance: 400
+  _maxDistance: 600
+  _comfortDistance: 500
   _multiplierInsideComfortDistance: 5
-  _vehicleRadiusImpact: 350
+  _vehicleRadiusImpact: 300
 --- !u!1 &8887671907898053240
 GameObject:
   m_ObjectHideFlags: 0
@@ -33294,7 +33294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7333188974148569895}
   m_Layer: 15
-  m_Name: SniperTurretLight (1)
+  m_Name: SniperTurretLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

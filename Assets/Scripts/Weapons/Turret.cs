@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using StellarArmada.Entities;
 using StellarArmada.Pooling;
 
@@ -40,7 +41,7 @@ namespace StellarArmada.Weapons
         private Collider[] hitColliders;
         private List<IDamageable> damageables;
         private IDamageable d;
-        NetworkEntity damaged;
+        NetworkEntity damageableEntity;
         NetworkEntity damager;
         Vector3 targetX;
         Quaternion targetRotationX;
@@ -157,28 +158,21 @@ namespace StellarArmada.Weapons
 
             // if object is an enemy
             damageables = new List<IDamageable>();
+            damager = owningWeaponSystemController.GetEntity();
+            
             foreach (Collider col in hitColliders)
             {
                 d = col.GetComponent<ICollidable>().GetDamageable();
                 if (d == null) Debug.LogError("Damageable was not found on collidable reference on " + col.name);
-                if (d.GetOwningEntity().IsEnemy(owningWeaponSystemController.GetEntity()))
+                if (d.GetOwningEntity().IsEnemy(damager) && d.GetOwningEntity().IsAlive())
                 {
                     damageables.Add(d);
                 }
             }
+
+            damageables = damageables.OrderBy(x => Vector3.Distance(Mount.position, x.GetGameObject().transform.position)).ToList();
             
-            foreach (IDamageable damageable in damageables)
-            {
-                // if enemy object can be hit
-                damaged = damageable.GetOwningEntity();
-                damager = owningWeaponSystemController.GetEntity();
-                if (damager.IsEnemy(damaged) && damaged.IsAlive())
-                {
-                    // set target
-                    SetTarget(damageable.GetGameObject().transform);
-                    return;
-                }
-            }
+            if(damageables.Count > 0) SetTarget(damageables[0].GetGameObject().transform);
         }
 
         protected override void StartFiring()
@@ -193,7 +187,7 @@ namespace StellarArmada.Weapons
 
         protected void Fire(WeaponType type)
         {
-            if (targetNetworkEntity == null || !IsFacingTarget() || !targetNetworkEntity.IsAlive() || !CanHitPosition(targetNetworkEntity.transform.position))
+            if (targetNetworkEntity == null || !targetNetworkEntity.IsAlive() || !CanHitPosition(targetNetworkEntity.transform.position))
             {
                 // IF we're not facing the target, let's see if we can get one
                 ClearTarget();

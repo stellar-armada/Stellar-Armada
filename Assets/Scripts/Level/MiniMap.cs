@@ -7,9 +7,7 @@ namespace StellarArmada.Levels
     public class MiniMap : MonoBehaviour
     {
         public static MiniMap instance;
-
-        public GameObject scene;
-
+        
         // private GameObject miniMapSecene;
         public float yOffset = 1.2f;
 

@@ -46,15 +46,12 @@ namespace StellarArmada.Player
 
         static void SaveSettings()
         {
-           // File.WriteAllText(settingsPath,  JsonUtility.ToJson(settings));
-           // Removing this for now since file io is removed from webgl
+           File.WriteAllText(settingsPath,  JsonUtility.ToJson(settings));
         }
 
         public void Init()
         {
             InitSettings();
-            return;
-            // Hidden for WebGL fileIO purposes
             settingsPath = Application.streamingAssetsPath + "/settings.txt";
             if (!File.Exists(Application.streamingAssetsPath + "/settings.txt"))
             {
