@@ -1,4 +1,5 @@
-﻿using StellarArmada.Entities;
+﻿using Mirror;
+using StellarArmada.Entities;
 using UnityEngine;
 using StellarArmada.Entities.Ships;
 using StellarArmada.Levels;
@@ -19,44 +20,72 @@ namespace StellarArmada.Player
         public GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
         
         [SerializeField] BodyController bodyController;
-        
-        private void Awake()
-        {
-            PlayerManager.instance.RegisterPlayer(this);
 
-            localRig.SetActive(false);
-        }
+        public delegate void PlayerControllerInitializationEvent();
+
+        public PlayerControllerInitializationEvent OnLocalPlayerInitialized;
+
+        public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
 
         void Start()
         {
+            OnLocalPlayerInitialized += () => Debug.Log("<color=green>Initialized local player</color>");
+            PlayerManager.instance.RegisterPlayer(this);
+            if (isLocalPlayer)
+            {
+                localPlayer = this;
+            }
+        }
+
+        [Command]
+        public void CmdInitialize()
+        {
+            Initialize();
+            RpcInitialize();
+        }
+
+        [ClientRpc]
+        public void RpcInitialize()
+        {
+            if (!isServer) Initialize();
+        }
+        
+        void Initialize()
+        {
+            Debug.Log("<color=blue>Initializing player...</color>");
             bodyController.Init();
 
             // Server sets player's team
             if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
             
             // If this is the local player's object, set up local player logic
-            // The localrig in the MatchPlayer prefab contains all the local managers for selection, map control, etc.
             if (isLocalPlayer)
             {
+                // The localrig in the MatchPlayer prefab contains all the local managers for selection, map control, etc.
                 localRig.SetActive(true);
                 
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
                 
-                localPlayer = this;
+                Debug.Log("Populate shipyard menu here");
+                
+                LocalMenuStateManager.instance.GoToShipyard();
+                
+                //localPlayer = this;
 
-                LocalPlayerRig.instance.Disable();
-
-                // This is being called automatically
-                PickCapitalShip();
+                // LocalPlayerRig.instance.Disable();
+                OnLocalPlayerInitialized?.Invoke();
             }
             else
             {
                 Destroy(localRig);
+                OnNonLocalPlayerInitialized?.Invoke();
             }
         }
+        
+        
 
         // TO-DO: Refactor for when player selects the capital ship of their choice
-        void PickCapitalShip()
+        public void PickCapitalShip()
         {
             foreach (NetworkEntity e in GetTeam().entities)
             {

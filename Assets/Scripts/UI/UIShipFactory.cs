@@ -24,7 +24,7 @@ namespace StellarArmada.UI
 
         public GameObject CreateShipyardShip(ShipType type)
         {
-            newUIShip = Instantiate(groupShipPrefabs[type]);
+            newUIShip = Instantiate(shipyardShipPrefabs[type]);
             return newUIShip;
         }
         
@@ -40,26 +40,26 @@ namespace StellarArmada.UI
             return newUIShip;
         }
         
-        public void PopulateShipyard(int teamId)
+        public List<UIShipyardShip> GetShipyardShips(uint teamId)
         {
             Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
+            //Store ships in a list for a second
+            List<UIShipyardShip> ships = new List<UIShipyardShip>();
             for (int g = 0; g < currentScenario.teamInfo[teamId].fleetBattleGroups.Count; g++)
             {
-                //Store ships in a list for a second
-                List<UIShipyardShip> ships = new List<UIShipyardShip>();
-
-                foreach (var key in currentScenario.teamInfo[teamId].fleetBattleGroups[g])
+                foreach (var shipKeyVal in currentScenario.teamInfo[teamId].fleetBattleGroups[g])
                 {
-                    for (int numShips = 0; numShips < key.Value; numShips++)
+                    for (int numShips = 0; numShips < shipKeyVal.Value; numShips++)
                     {
                         // For each ship, instantiate for current team
-                        UIShipyardShip s = UIShipFactory.instance.CreateShipyardShip(key.Key)
-                            .GetComponent<UIShipyardShip>();
+                        UIShipyardShip s = CreateShipyardShip(shipKeyVal.Key).GetComponent<UIShipyardShip>();
                         s.group = g;
                         ships.Add(s);
                     }
                 }
             }
+
+            return ships;
         }
     }
 }

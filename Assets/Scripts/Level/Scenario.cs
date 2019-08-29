@@ -11,8 +11,7 @@ namespace StellarArmada.Levels
         public float matchTime = 15f;
         public float postMatchTime = 1f;
         public string scenarioName;
-        public int minimumNumberOfPlayers;
-        public int maximumNumberOfPlayers;
+        public int numberOfHumanPlayers;
         public string description;
         public TeamInfo[] teamInfo;
         public GameObject levelPrefab;

@@ -8,7 +8,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="DontDestroyOnLoad.cs" t="Include" />
-        <e p="LocalMenuManager.cs" t="Include" />
+        <e p="LocalMenuStateManager.cs" t="Include" />
         <e p="Match Up" t="Include">
           <e p="Examples" t="Include">
             <e p="Mirror" t="Include">
@@ -30,6 +30,7 @@
           </e>
           <e p="Matchmaker.cs" t="Include" />
         </e>
+        <e p="MatchMenuStartButtonController.cs" t="Include" />
         <e p="MenuView.cs" t="Include" />
         <e p="Mirror" t="Include">
           <e p="Runtime" t="Include">
@@ -410,6 +411,8 @@
             <e p="DepthFadeAdditive.shader" t="Include" />
           </e>
         </e>
+        <e p="Shipyard.cs" t="Include" />
+        <e p="ShipyardGroup.cs" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
         </e>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Mirror;
+﻿using StellarArmada.Match;
 using StellarArmada.Networking;
 using UnityEngine;
 
@@ -11,23 +10,20 @@ public enum MenuState
     HowToPlay,
     Connecting,
     InGame_WaitingForPlayers,
-    InGame_ReadyTo_Start,
-    InGame_FleetSelection,
+    InGame_Shipyard,
     InGame_Defeat,
     InGame_Victory
 }
 
-public class LocalMenuManager : MonoBehaviour
+public class LocalMenuStateManager : MonoBehaviour
 {
     [SerializeField] MenuStateDictionary menuStates = new MenuStateDictionary();
-    
-    public MenuState startMenuState = MenuState.MainMenu;
 
-    public MenuState networkStartMenuState = MenuState.InGame_WaitingForPlayers;
+    [SerializeField] private Shipyard shipyard;
     
-    private MenuState menuState = MenuState.None;
+    private static MenuState menuState = MenuState.None; // passes across scenes to maintain state
     
-    public static LocalMenuManager instance;
+    public static LocalMenuStateManager instance;
 
     public void GoToMainMenu()
     {
@@ -55,14 +51,21 @@ public class LocalMenuManager : MonoBehaviour
         ChangeMenuState(MenuState.InGame_WaitingForPlayers);
     }
 
-    public void ShowGameIsReadyToStartMenu()
+    public void StartMatch()
     {
-        ChangeMenuState(MenuState.InGame_ReadyTo_Start);
+        // Call server to put all players on teams (i.e. initialize player)
+        MatchServerManager.instance.InitializePlayers();
     }
 
-    public void ShowFleetSelectionMenu()
+    public void GoToShipyard()
     {
-        ChangeMenuState(MenuState.InGame_FleetSelection);
+        ChangeMenuState(MenuState.InGame_Shipyard);
+        shipyard.PopulateShipyard();
+    }
+
+    public void WarpIn()
+    {
+        HideMenu();
     }
 
     public void HideMenu()
@@ -87,20 +90,15 @@ public class LocalMenuManager : MonoBehaviour
 
     public void Start()
     {
-        MenuState m;
-        if (NetworkManager.singleton.isNetworkActive)
+        if (menuState == MenuState.None)
         {
-            m = networkStartMenuState;
+            ChangeMenuState(MenuState.MainMenu);
         }
-        else
-        {
-            m = startMenuState;
-        }
-        ChangeMenuState(m);
+
         // Hide all menus, just in case one got left on in dev
         foreach (var view in menuStates)
         {
-            if (view.Key != m)
+            if (view.Key != menuState)
             {
                 view.Value.HideMenu();
             }

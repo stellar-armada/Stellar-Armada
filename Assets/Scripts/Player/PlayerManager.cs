@@ -16,6 +16,7 @@ namespace StellarArmada.Player
         void Awake()
         {
             instance = this;
+            players = new List<PlayerController>(); // Clear static reference
         }
 
         public void RegisterPlayer(PlayerController playerController)

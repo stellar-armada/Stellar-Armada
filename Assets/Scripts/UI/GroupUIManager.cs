@@ -26,12 +26,6 @@ namespace StellarArmada.UI
             humanPlayerController.EventOnPlayerTeamChange += UpdateGroupManager;
         }
 
-        void Start()
-        {
-
-                UpdateGroupManager();
-        }
-
         public void UpdateGroupManager()
         {
             var groups = TeamManager.instance.GetTeamByID(humanPlayerController.GetTeamId()).groups;

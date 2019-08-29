@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MatchUp;
 using NobleConnect.Mirror;
 using UnityEngine;
 using Mirror;
+using StellarArmada.Match;
 
-    // Example implementation of NobleNetworkManager utilizing Match Up for matchmaking
+// Example implementation of NobleNetworkManager utilizing Match Up for matchmaking
     // Look at ExampleMatchUpHUD for more information on how to use it. 
     public class MatchUpNobleNetworkManager : NobleNetworkManager
     {
@@ -13,16 +15,29 @@ using Mirror;
         // Networked prefab to instantiate for all players, containing all the networked managers (as opposed to Static managers)
         public GameObject matchManagerPrefab;
         
-        public void StartMatch()
+        public void CreateMatchManager()
         {
+            Debug.Log("Creating match manager");
             GameObject matchManager = Instantiate(matchManagerPrefab);
             NetworkServer.Spawn(matchManager);
         }
-        
+
+        private void OnServerInitialized()
+        {
+            Debug.Log("Server initialized!");
+           
+        }
+
         override public void Start()
         {
             base.Start();
             matchUp = GetComponent<Matchmaker>();
+        }
+
+        public override void OnStartServer()
+        {
+            Debug.Log("OnStartServer called");
+            base.OnStartServer();
         }
 
         public override void OnClientConnect(NetworkConnection conn)
@@ -72,7 +87,8 @@ using Mirror;
 
             // Create the Match with the associated MatchData
             matchUp.CreateMatch(maxConnections + 1, matchData);
-
             Debug.Log("Creating match: " + hostAddress + ":" + hostPort);
+            CreateMatchManager();
+
         }
     }

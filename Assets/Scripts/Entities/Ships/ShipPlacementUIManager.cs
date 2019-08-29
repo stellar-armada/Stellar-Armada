@@ -33,7 +33,6 @@ namespace StellarArmada.Entities.Ships{
 
         void Start()
         {
-            UpdatePlacementMarkers();
             humanPlayerController.EventOnPlayerTeamChange += UpdatePlacementMarkers;
         }
 

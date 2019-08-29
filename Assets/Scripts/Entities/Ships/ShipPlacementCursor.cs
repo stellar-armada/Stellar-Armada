@@ -1,4 +1,5 @@
 ﻿using StellarArmada.Levels;
+using StellarArmada.Player;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -11,21 +12,23 @@ namespace StellarArmada.Entities.Ships
         public Transform transformToFollow;
 
         private Transform t;
-
-        private Vector3 transformToFollowLocalPos;
-
+        
         public float yOffset = .15f;
 
+        private bool isInitialized = false;
+
+        [SerializeField] private HumanPlayerController playerController;
         void Awake()
         {
             instance = this;
             t = GetComponent<Transform>();
-            transformToFollowLocalPos = transformToFollow.localPosition;
-
+            playerController.OnLocalPlayerInitialized += Initialize;
         }
 
-        void Start()
+        void Initialize()
         {
+            Debug.Log("<color=green>Initialized placement cursor</color>");
+            isInitialized = true;
             t.SetParent(MiniMap.instance.transform);
             t.localPosition = Vector3.zero;
             t.localScale = Vector3.one;
@@ -33,8 +36,8 @@ namespace StellarArmada.Entities.Ships
 
         void LateUpdate()
         {
-            Vector3 yOff = transformToFollow.forward *
-                           (yOffset * (MiniMap.instance.transform.lossyScale.x / MiniMap.instance.startScale));
+            if (!isInitialized) return;
+            Vector3 yOff = transformToFollow.forward * (yOffset * (MiniMap.instance.transform.lossyScale.x / MiniMap.instance.startScale));
 
             t.position = transformToFollow.position + yOff;
             t.rotation = transformToFollow.rotation;

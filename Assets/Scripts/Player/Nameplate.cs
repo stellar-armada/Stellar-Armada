@@ -20,14 +20,13 @@ namespace StellarArmada.Player
 
         void Awake()
         {
-            humanPlayerController.EventOnPlayerNameChange += HandleBasePlayerNameChange;
+            humanPlayerController.EventOnPlayerNameChange += HandlePlayerNameChange;
             humanPlayerController.EventOnPlayerTeamChange += HandleTeamChange;
             t = transform;
         }
         void Start()
         {
-            HandleBasePlayerNameChange();
-            HandleTeamChange();
+            HandlePlayerNameChange();
             isLocalPlayer = humanPlayerController.isLocalPlayer;
             if (humanPlayerController == HumanPlayerController.localPlayer) nameRenderer.enabled = false; // Hide from local player
         }
@@ -40,11 +39,12 @@ namespace StellarArmada.Player
 
         void FaceLocalPlayer()
         {
+            if (!HumanPlayerController.localPlayer) return;
             t.LookAt(HumanPlayerController.localPlayer.GetGameObject().transform);
             t.rotation = Quaternion.Euler(0, t.rotation.eulerAngles.y + 180f, 0);
         }
         
-        public void HandleBasePlayerNameChange()
+        public void HandlePlayerNameChange()
         {
             playerName.text = humanPlayerController.GetName();
         }

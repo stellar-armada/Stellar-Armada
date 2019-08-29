@@ -1,4 +1,5 @@
 ﻿using StellarArmada.IO;
+using StellarArmada.Player;
 using UnityEngine;
 
 namespace StellarArmada.Levels
@@ -10,6 +11,7 @@ namespace StellarArmada.Levels
     {
         public static MiniMapController instance;
 
+        [SerializeField] private HumanPlayerController playerController;
         public bool isActive = false;
 
         Transform leftController;
@@ -27,10 +29,12 @@ namespace StellarArmada.Levels
         private Transform sceneRoot;
         private Transform miniMapTransform;
         private MiniMap miniMap;
-        
+
+        private bool isInitialized = false;
         void Awake()
         {
             instance = this;
+            playerController.OnLocalPlayerInitialized += Initialize;
         }
 
         void Start()
@@ -40,13 +44,16 @@ namespace StellarArmada.Levels
             InputManager.instance.OnRightGrip += HandleRightInput;
             leftController = InputManager.instance.leftHand;
             rightController = InputManager.instance.rightHand;
-            
+        }
+
+        public void Initialize()
+        {
+            isInitialized = true;
             // Set local references
             miniMapTransformRoot = MiniMapTransformRoot.instance.transform;
             miniMap = MiniMap.instance;
             miniMapTransform = MiniMap.instance.transform;
             sceneRoot = SceneRoot.instance.transform;
-            
         }
 
         void HandleLeftInput(bool on)
@@ -97,6 +104,7 @@ namespace StellarArmada.Levels
 
         void Update()
         {
+            if (!isInitialized) return;
             //current position of controllers
             leftPos = leftController.localPosition;
             rightPos = rightController.localPosition;

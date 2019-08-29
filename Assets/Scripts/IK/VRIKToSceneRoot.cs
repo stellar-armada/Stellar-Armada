@@ -1,4 +1,6 @@
-﻿using StellarArmada.Levels;
+﻿using Mirror;
+using StellarArmada.Levels;
+using StellarArmada.Player;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -6,21 +8,30 @@ namespace StellarArmada.IK {
 
 	public class VRIKToSceneRoot : MonoBehaviour
 	{
-
+		[SerializeField] HumanPlayerController playerController;
 		public VRIK ik;
 
 		Vector3 lastPosition;
 		Quaternion lastRotation = Quaternion.identity;
 		private Transform root;
-		void Start()
+		private bool isInitialized = false;
+
+		void Awake()
+		{
+			playerController.OnLocalPlayerInitialized += Initialize;
+		}
+		
+		void Initialize()
 		{
 			root = SceneRoot.instance.transform;
+			isInitialized = true;
 			lastPosition = root.position;
 			lastRotation = root.rotation;
 		}
 
 		void Update()
 		{
+			if (!isInitialized) return;
 			ik.solver.AddPlatformMotion(root.position - lastPosition,
 				root.rotation * Quaternion.Inverse(lastRotation), root.position);
 

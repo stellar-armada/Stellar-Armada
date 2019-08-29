@@ -15,7 +15,7 @@ namespace StellarArmada.Entities.Ships
     {
         public static ShipSelectionManager instance;
 
-        [SerializeField] private PlayerController playerController;
+        [SerializeField] private HumanPlayerController playerController;
         private List<ISelectable> currentSelection = new List<ISelectable>();
 
         // 4 selection sets by default
@@ -43,15 +43,11 @@ namespace StellarArmada.Entities.Ships
         public delegate void SelectionEvent();
 
         public SelectionEvent OnSelectionChanged;
-        
+
         void Awake()
         {
+            playerController.OnLocalPlayerInitialized += InitializeSelectionSets;
             instance = this;
-        }
-
-        void Start()
-        {
-            InitializeSelectionSets();
         }
 
         void InitializeSelectionSets()

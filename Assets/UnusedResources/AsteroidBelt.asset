@@ -16,8 +16,7 @@ MonoBehaviour:
   matchTime: 15
   postMatchTime: 1
   scenarioName: AsteroidBelt
-  minimumNumberOfPlayers: 2
-  maximumNumberOfPlayers: 2
+  numberOfHumanPlayers: 2
   description: 1v1 at the asteroids!
   teamInfo:
   - fleetBattleGroups:

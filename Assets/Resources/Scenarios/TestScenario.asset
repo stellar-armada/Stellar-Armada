@@ -16,8 +16,7 @@ MonoBehaviour:
   matchTime: 15
   postMatchTime: 1
   scenarioName: TestationAlpha
-  minimumNumberOfPlayers: 2
-  maximumNumberOfPlayers: 2
+  numberOfHumanPlayers: 1
   description: Battle of Testation Alpha
   teamInfo:
   - fleetBattleGroups:

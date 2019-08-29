@@ -58,12 +58,12 @@ namespace StellarArmada.Networking
                     isClient = false;
                     networkManager.StartHost();
                 }
-                LocalMenuManager.instance.InitializeMatchMenu();
+                LocalMenuStateManager.instance.InitializeMatchMenu();
             }
             else
             {
                 Debug.LogError("Failed to get matches");
-                LocalMenuManager.instance.GoToMainMenu();
+                LocalMenuStateManager.instance.GoToMainMenu();
             }
         }
 

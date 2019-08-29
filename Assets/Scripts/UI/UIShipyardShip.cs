@@ -11,5 +11,10 @@ namespace StellarArmada.UI
     {
         public ShipType shipType;
         public int group;
+
+        void Start()
+        {
+            Shipyard.instance.PlaceShipInGroup(this, group);
+        }
     }
 }

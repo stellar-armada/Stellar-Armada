@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 916555967
+  m_AssetId: 41e036104fb93154288777bd50cb86b1
+  m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e946b7e3c4a57504891800536073099a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1839945735331089094}
   ik: {fileID: 8916119036272460082}
 --- !u!1 &2589792301001437476
 GameObject:
@@ -1393,7 +1394,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.05
-  far clip plane: 25000
+  far clip plane: 20000
   field of view: 105
   orthographic: 0
   orthographic size: 5
@@ -1461,7 +1462,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf296f28af518d42bce2ab5df305693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 5792980018504796770}
+  camera: {fileID: 5792980018504796770}
+  matchLayers:
+    serializedVersion: 2
+    m_Bits: 311073
+  purgatory:
+    serializedVersion: 2
+    m_Bits: 466944
 --- !u!114 &8680276412865331407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,6 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0f67140fa04ce4bbdf628deed0cbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1839945735331089094}
   isActive: 0
   leftGripPressed: 0
   rightGripPressed: 0
@@ -3030,6 +3038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformToFollow: {fileID: 952658930748559431}
   yOffset: 0.05
+  playerController: {fileID: 1839945735331089094}
 --- !u!1 &7240429805731679302
 GameObject:
   m_ObjectHideFlags: 0
