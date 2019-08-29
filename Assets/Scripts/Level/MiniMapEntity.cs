@@ -14,14 +14,12 @@ namespace StellarArmada.Levels
 
         [SerializeField] string teamColorMaterialInput;
 
-        private MaterialPropertyBlock m;
         [SerializeField] List<Renderer> renderers;
 
         void Awake()
         {
             e = networkEntity.transform;
             t = transform;
-            m = new MaterialPropertyBlock();
         }
 
         public void Start()
@@ -33,9 +31,7 @@ namespace StellarArmada.Levels
 
             foreach(Renderer ren in renderers)
             {
-               ren.GetPropertyBlock(m);
-               m.SetColor(teamColorMaterialInput, networkEntity.GetTeam().color);
-               ren.SetPropertyBlock(m);
+                ren.material.SetColor(teamColorMaterialInput, networkEntity.GetTeam().color);
             }
             
         }

@@ -43,8 +43,8 @@ namespace StellarArmada.Player
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
                 
                 localPlayer = this;
-                
-                Destroy(DefaultCamera.instance.gameObject);
+
+                LocalPlayerRig.instance.Disable();
 
                 // This is being called automatically
                 PickCapitalShip();
@@ -69,10 +69,22 @@ namespace StellarArmada.Player
                     t.localPosition = Vector3.zero;
                     t.localRotation = Quaternion.identity;
                     s.CmdSetCaptain(netId);
+                    s.OnEntityDead += HandleDeath;
                     return;
                 }
             }
         }
+
+        void HandleDeath()
+        {
+            if (!isLocalPlayer) return;
+            // Our ship has died, so we are dead
+            LocalPlayerRig.instance.Enable();
+            gameObject.SetActive(false);
+            Debug.Log("You have died!");
+        }
+        
+        
         public bool IsLocalPlayer() => isLocalPlayer;
 
         public bool IsServer() => isServer;

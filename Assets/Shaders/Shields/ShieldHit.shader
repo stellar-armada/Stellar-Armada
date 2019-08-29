@@ -6,17 +6,11 @@ Shader "SpaceCommander/Shields/ShieldHit" {
 		_PatternTex("Albedo (RGB)", 2D) = "black" {}
 		_PatternScale("PatternScale", Range(0.01,100)) = 1.0
 
-		_RippleTex("Albedo (RGB)", 2D) = "black" {}
-		_RippleScale("RippleScale", Range(0.1,10)) = 1.0
-		_RippleDistortion("RippleDistortion", Range(0.01,1)) = 1.0
-
 		_HitAttenuation("HitAttenuation", Range(0.01,100)) = 1.0
 		_HitPower("HitPower", Range(0.01,20)) = 1.0
 		_HitRadius("HitRadius", Range(0.01,20)) = 0.25
 
 		_HitPos("HitPos", Vector) = (0,0,-0.5)
-		_HitTan1("HitTan1", Vector) = (0,1,0)
-		_HitTan2("HitTan2", Vector) = (1,0,0)
 		_WorldScale("WorldScale", Vector) = (1,1,1)
 
 		_BlendSrcMode("BlendSrcMode", Int) = 0
@@ -38,34 +32,37 @@ Shader "SpaceCommander/Shields/ShieldHit" {
             // use "frag" function as the pixel (fragment) shader
             #pragma fragment frag
 
-			#pragma multi_compile USE_PATTERN_TEXTURE __
-			#pragma multi_compile USE_DISTORTION_FOR_PATTERN_TEXTURE __
-
             #include "UnityCG.cginc"
 
             // vertex shader inputs
             struct appdata
             {
-                float4 vertex : POSITION; // vertex position
-                float3 normal : NORMAL;
-                float2 uv : TEXCOORD0; // texture coordinate
+                half4 vertex : POSITION; // vertex position
+                half3 normal : NORMAL;
+                half2 uv : TEXCOORD0; // texture coordinate
+                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             // vertex shader outputs ("vertex to fragment")
             struct v2f
             {
-                float2 uv : TEXCOORD0; // texture coordinate
-                float4 pos : SV_POSITION; // clip space position
+                half2 uv : TEXCOORD0; // texture coordinate
+                half4 pos : SV_POSITION; // clip space position
  
-				float depth : TEXCOORD3;
-				float4 objectSpacePos : TEXCOORD4;
-				float4 screenPos : TEXCOORD5;
+				half depth : TEXCOORD3;
+				half4 objectSpacePos : TEXCOORD4;
+				half4 screenPos : TEXCOORD5;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             // vertex shader
             v2f vert (appdata v)
             {
                 v2f o;
+                
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_TRANSFER_INSTANCE_ID(v, o); // necessary only if you want to access instanced properties in the fragment Shader.
+
 
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
@@ -80,21 +77,14 @@ Shader "SpaceCommander/Shields/ShieldHit" {
             }
             
 			sampler2D _PatternTex;
-			sampler2D _RippleTex;
             fixed4 _Color;
-			float _PatternScale;
-			float3 _HitPos;
-			float3 _HitTan1;
-			float3 _HitTan2;
-			float3 _WorldScale;
-			float _HitAttenuation;
-			float _HitPower;
-			float _HitRadius;
-			float _HitShieldCovering;
-			float _RippleScale;
-			float _RippleDistortion;
-			float _RefractionScale;
-
+            half _HitAttenuation;
+			half _HitPower;
+			half _PatternScale;
+			half3 _HitPos;
+			half3 _WorldScale;
+			half _HitRadius;
+        
 			struct fragOutput 
 			{
 				fixed4 color0 : SV_Target;
@@ -102,31 +92,21 @@ Shader "SpaceCommander/Shields/ShieldHit" {
 
             fragOutput frag (v2f i)
 			{
-				float3 diff = _HitPos - i.objectSpacePos;
+			
+			UNITY_SETUP_INSTANCE_ID(i);
+			
+				half3 diff = UNITY_ACCESS_INSTANCED_PROP(Props, _HitPos) - i.objectSpacePos;
 
-				float distOrg = length(diff);
+                half3 ws = UNITY_ACCESS_INSTANCED_PROP(Props, _WorldScale);
+				diff.x *=  ws.x;
+				diff.y *=  ws.y;
+				diff.z *=  ws.z;
 
-				diff.x *= _WorldScale.x;
-				diff.y *= _WorldScale.y;
-				diff.z *= _WorldScale.z;
+				half dist = length(diff);
 
-				float dist = length(diff);
-
-				fixed4 pattern = fixed4(1.0, 1.0, 1.0, 1.0);
-
-#if USE_PATTERN_TEXTURE
-	#if USE_DISTORTION_FOR_PATTERN_TEXTURE
-				float3 dirHit = diff / dist;
-				float2 dirFX = normalize(float2(dot(dirHit, _HitTan1), dot(dirHit, _HitTan2)));
-
-				fixed4 ripple = tex2D(_RippleTex, float2(distOrg*_Color.a*_RippleScale, 0.5));// +diff*_Color.a);
-				pattern = tex2D(_PatternTex, i.uv*_PatternScale +_RippleDistortion*dirFX*ripple.r);
-	#else
-				pattern = tex2D(_PatternTex, i.uv*_PatternScale);
-
-	#endif
-#endif
-				float att = (1.0 - min(dist / _HitRadius, 1.0));
+				fixed4 pattern = tex2D(_PatternTex, i.uv*_PatternScale);
+				
+				half att = (1.0 - min(dist / UNITY_ACCESS_INSTANCED_PROP(Props, _HitRadius), 1.0));
 
 				fragOutput o;
 

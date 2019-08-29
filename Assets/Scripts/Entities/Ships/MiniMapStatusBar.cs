@@ -20,14 +20,10 @@ namespace StellarArmada.Entities.Ships
         public string hullProperty = "_Health";
         public string shieldProperty = "_Shield";
         
-        private MaterialPropertyBlock m;
-
         void Awake()
         {
             captainNameText.renderer.enabled = false;
             ship.OnCaptainUpdated += HandleUpdateToCaptain;
-            
-            m = new MaterialPropertyBlock();
 
             SetVisibility(0);
             
@@ -62,32 +58,22 @@ namespace StellarArmada.Entities.Ships
 
         void SetVisibility(float v)
         {
-            statusBarRenderer.GetPropertyBlock(m);
-            m.SetFloat("_Visibility", v);
-            statusBarRenderer.SetPropertyBlock(m);
+            statusBarRenderer.material.SetFloat("_Visibility", v);
         }
 
         public void SetInsignia(Texture t)
         {
-            if(m == null) m = new MaterialPropertyBlock();
-            statusBarRenderer.GetPropertyBlock(m);
-            m.SetTexture("_Insignia", t);
-            statusBarRenderer.SetPropertyBlock(m);
+            statusBarRenderer.material.SetTexture("_Insignia", t);
         }
 
         void SetHullSlider(float currentHull)
         {
-            statusBarRenderer.GetPropertyBlock(m);
-            m.SetFloat(hullProperty, currentHull / entityHull.maxHull);
-            statusBarRenderer.SetPropertyBlock(m);
-            
+            statusBarRenderer.material.SetFloat(hullProperty, currentHull / entityHull.maxHull);
         }
 
         void SetShieldSlider(float currentShield)
         {
-            statusBarRenderer.GetPropertyBlock(m);
-            m.SetFloat(shieldProperty, currentShield / entityShield.maxShield);
-            statusBarRenderer.SetPropertyBlock(m);
+            statusBarRenderer.material.SetFloat(shieldProperty, currentShield / entityShield.maxShield);
         }
         
         void LateUpdate ()
@@ -126,7 +112,7 @@ namespace StellarArmada.Entities.Ships
             }
             float timer = 0;
             float fadeTime = .6f;
-            float currentVisibility = m.GetFloat("_Visibility");
+            float currentVisibility = statusBarRenderer.material.GetFloat("_Visibility");
 
             do
             {

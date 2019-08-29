@@ -1,5 +1,4 @@
-﻿using StellarArmada.Audio;
-using StellarArmada.Match.Messaging;
+﻿using StellarArmada.Match.Messaging;
 using UnityEditor;
 #pragma warning disable 0649
 namespace StellarArmada
@@ -21,4 +20,7 @@ namespace StellarArmada
     
     [CustomPropertyDrawer((typeof(ShipDictionary)))]
     public class ShipDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
+    
+    [CustomPropertyDrawer((typeof(MenuStateDictionary)))]
+    public class MenuStateDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 }

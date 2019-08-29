@@ -15,9 +15,9 @@ namespace StellarArmada
         {
             lifeTime -= Time.deltaTime;
 
-            Color c = myRenderer.material.color;
+            Color c = myRenderer.material.GetColor("_Color");
             c.a = Mathf.Max(0.0f, (lifeTime - coveringTime) / lifeStart);
-            myRenderer.material.color = c;
+            myRenderer.material.SetColor("_Color", c);
 
             if (lifeTime < coveringTime)
             {
@@ -25,9 +25,7 @@ namespace StellarArmada
             }
 
             if (lifeTime <= 0.0f)
-            {
                 Destroy(gameObject);
-            }
         }
 
         public void StartHitFX(float time)
@@ -36,9 +34,9 @@ namespace StellarArmada
             lifeTime += coveringTime;
 
             myRenderer = GetComponent<MeshRenderer>();
-            Color c = myRenderer.material.color;
+            Color c = myRenderer.material.GetColor("_Color");
             c.a = 1.0f;
-            myRenderer.material.color = c;
+            myRenderer.material.SetColor("_Color", c);
         }
     }
 

@@ -15778,9 +15778,9 @@ GameObject:
   - component: {fileID: 7103633782339714638}
   - component: {fileID: 6725454601845240038}
   - component: {fileID: 1960456489736019244}
-  - component: {fileID: 3286973454117072613}
-  - component: {fileID: 4811923950147316831}
-  - component: {fileID: 2271289916086615197}
+  - component: {fileID: 3423551138265869305}
+  - component: {fileID: 8839432174143578893}
+  - component: {fileID: 2199714103910787439}
   m_Layer: 11
   m_Name: Shield
   m_TagString: Untagged
@@ -15820,7 +15820,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -15848,27 +15848,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3286973454117072613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4001168951700432561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf46bbe9d7c89bf4a8f0de85a44e5f6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldActive: 1
-  shieldActivationSpeed: 1
-  hitEffectDuration: 1.01
-  hitMaterial: {fileID: 2100000, guid: dd3ff0d97bfbd49939c5ec10c055908c, type: 2}
-  hitColor: {r: 0.046550598, g: 0.62043005, b: 0.9044118, a: 1}
-  autoHitPatternScale: 1
-  renderSides: 0
---- !u!135 &4811923950147316831
-SphereCollider:
+--- !u!64 &3423551138265869305
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15877,10 +15858,11 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2271289916086615197
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 6a62346754b0a7347a7122e5a1fa1246, type: 2}
+--- !u!114 &8839432174143578893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15893,11 +15875,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 8081799463623299947}
-  maxShield: 2000
-  shieldRechargeDelayTime: 0
-  shieldRechargeRate: 30
-  shieldEffectController: {fileID: 3286973454117072613}
-  currentShield: 2000
+  maxShield: 300
+  shieldRechargeDelayTime: 2
+  shieldRechargeRate: 3
+  shieldEffectController: {fileID: 2199714103910787439}
+  currentShield: 300
+--- !u!114 &2199714103910787439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001168951700432561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf46bbe9d7c89bf4a8f0de85a44e5f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldActivationSpeed: 1
+  shieldActivationRim: 0.2
+  shieldHitPrefab: {fileID: 5066397838618827269, guid: 75806d53c1ef88340985cccf5c84c4f2,
+    type: 3}
+  hitEffectDuration: 0.5
+  hitColor: {r: 0, g: 0.59772396, b: 1, a: 0.5647059}
+  autoHitPatternScale: 1
 --- !u!1 &4007513039453171211
 GameObject:
   m_ObjectHideFlags: 0
@@ -32983,7 +32984,7 @@ MonoBehaviour:
   syncInterval: 0.1
   isAlive: 1
   hull: {fileID: 2574464254795025626}
-  shield: {fileID: 2271289916086615197}
+  shield: {fileID: 0}
   weaponSystemController: {fileID: 1900686764695909791}
   movement: {fileID: 6613500308364987285}
   entityExplosion: {fileID: 5292198978933662320}
@@ -33143,7 +33144,7 @@ MonoBehaviour:
   - {fileID: 3420445077128117472}
   - {fileID: 5244320573282003808}
   collidersToDisableOnExplosion:
-  - {fileID: 4811923950147316831}
+  - {fileID: 0}
   - {fileID: 3611349499226454024}
   - {fileID: 7640196921884593222}
   explosions:

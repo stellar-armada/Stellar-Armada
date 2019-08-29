@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace StellarArmada.Levels
@@ -8,5 +9,11 @@ namespace StellarArmada.Levels
     public class Level : MonoBehaviour
     {
         public List<WarpPoint> warpPoints = new List<WarpPoint>();
+        public static Level currentLevel;
+
+        void Awake()
+        {
+            currentLevel = this;
+        }
     }
 }

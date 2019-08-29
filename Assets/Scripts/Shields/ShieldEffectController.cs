@@ -1,205 +1,71 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
+using StellarArmada.Pooling;
 
 #pragma warning disable 0649
 namespace StellarArmada
 {
-    public enum ShieldRenderSidesOptions
-    {
-        OUTSIDE_ONLY = 0,
-        OUTSIDE_AND_INSIDE,
-        INSIDE_ONLY
-    };
 
     public class ShieldEffectController : MonoBehaviour
     {
         // Manages the shield look and effect on ships
-        // TO-DO: Add pooling
-        public bool shieldActive = true;
         public float shieldActivationSpeed = 1.0f;
-        private float shieldActivationRim = 0.2f;
-
+        [SerializeField] float shieldActivationRim = 0.2f;
+        [SerializeField] GameObject shieldHitPrefab;
+        
         public float hitEffectDuration = 0.5f;
 
-        public Material hitMaterial;
         public Color hitColor;
-        public bool autoHitPatternScale = true;
 
-        public ShieldRenderSidesOptions renderSides = ShieldRenderSidesOptions.OUTSIDE_ONLY;
-        
-        private GameObject inside = null;
-        private Renderer insideRenderer = null;
-
-        private Material baseMaterial;
-        private Material activationMaterial;
-        private Material postprocessMaterial;
-        private Material postprocessActivationMaterial;
-
-        private Collider myCollider;
         private CommandBuffer cmdBuffer;
         private Renderer myRenderer;
 
-        private float shieldActivationTime;
+        private float shieldActivationTime = 1.0f;
         private float shieldActivationDir;
 
         private int activationTimeProperty;
         private int shieldDirectionProperty;
 
         private int currentHitIndex = 1;
-
-        private static Dictionary<string, Mesh> insideMeshes = new Dictionary<string, Mesh>();
-
+        
+        // Reference variables to store
+        private Transform t;
+        private MeshFilter meshFilter;
+        
+        // hold and reuse for gc
+        private Vector4 dir4;
+        private Vector3 hitLocalSpace;
+        private Vector3 dir;
+        private Vector3 tan1;
+        private Vector3 tan2;
+        private MeshRenderer mr;
+        private ShieldHit hit;
+        
         void Awake()
         {
+            t = transform;
+            meshFilter = gameObject.GetComponent<MeshFilter>();
+            
             myRenderer = GetComponent<Renderer>();
-            activationTimeProperty = Shader.PropertyToID("_ActivationTime");
-            shieldDirectionProperty = Shader.PropertyToID("_ShieldDirection");
 
             shieldActivationDir = 0.0f;
 
-            myCollider = transform.GetComponent<Collider>();
-
-            if (shieldActive)
-            {
-                shieldActivationTime = 1.0f;
-                myCollider.enabled = true;
-            }
-            else
-            {
-                shieldActivationTime = 0.0f;
-                myCollider.enabled = false;
-            }
-
-            if (renderSides == ShieldRenderSidesOptions.OUTSIDE_AND_INSIDE || renderSides == ShieldRenderSidesOptions.INSIDE_ONLY)
-            {
-                inside = new GameObject("inside");
-                inside.transform.parent = transform;
-                inside.transform.localPosition = Vector3.zero;
-                inside.transform.localScale = Vector3.one;
-                inside.transform.localRotation = Quaternion.identity;
-                inside.layer = gameObject.layer;
-
-                inside.AddComponent<MeshRenderer>();
-                MeshFilter mf = inside.AddComponent<MeshFilter>();
-
-                Mesh baseMesh = gameObject.GetComponent<MeshFilter>().mesh;
-
-                string insideMeshName = baseMesh.name + "_inside";
-
-                Mesh flippedMesh = null;
-                if (insideMeshes.ContainsKey(insideMeshName))
-                    flippedMesh = insideMeshes[insideMeshName];
-                else
-                {
-                    //Debug.Log("create inside mesh " + insideMeshName);
-
-                    flippedMesh = Instantiate(baseMesh);
-
-                    Vector3[] normals = flippedMesh.normals;
-                    for (int i = 0; i < normals.Length; i++)
-                        normals[i] = -normals[i];
-                    flippedMesh.normals = normals;
-
-                    for (int m = 0; m < flippedMesh.subMeshCount; m++)
-                    {
-                        int[] triangles = flippedMesh.GetTriangles(m);
-                        for (int i = 0; i < triangles.Length; i += 3)
-                        {
-                            int temp = triangles[i + 0];
-                            triangles[i + 0] = triangles[i + 1];
-                            triangles[i + 1] = temp;
-                        }
-                        flippedMesh.SetTriangles(triangles, m);
-                    }
-
-                    insideMeshes.Add(insideMeshName, flippedMesh);
-                }
-
-                mf.mesh = flippedMesh;
-
-                insideRenderer = inside.GetComponent<Renderer>();
-                insideRenderer.sortingOrder = insideRenderer.sortingOrder - 1;
-
-                MeshCollider mc = inside.AddComponent<MeshCollider>();
-                mc.sharedMesh = flippedMesh;
-            }
-
-            if (renderSides == ShieldRenderSidesOptions.INSIDE_ONLY)
-                myRenderer.enabled = false;
-
-            SetMaterial(myRenderer.material);
-            SetHitMaterial(hitMaterial);
-        }
-
-        void OnDestroy()
-        {
-
-            if (inside)
-            {
-                Destroy(inside.GetComponent<MeshFilter>().mesh);
-            }
-
-            if (baseMaterial)
-                Destroy(baseMaterial);
-            if (postprocessMaterial)
-                Destroy(postprocessMaterial);
-            if (postprocessActivationMaterial)
-                Destroy(postprocessActivationMaterial);
-            if (activationMaterial)
-                Destroy(activationMaterial);
-        }
-
-        public void SetHitMaterial(Material newMat)
-        {
-            hitMaterial = newMat;
-
-        }
-
-        public void SetMaterial(Material newMat)
-        {
-            if (baseMaterial)
-                Destroy(baseMaterial);
-            if (postprocessMaterial)
-                Destroy(postprocessMaterial);
-            if (postprocessActivationMaterial)
-                Destroy(postprocessActivationMaterial);
-            if (activationMaterial)
-                Destroy(activationMaterial);
-
-            baseMaterial = new Material(newMat);
-            baseMaterial.SetFloat(activationTimeProperty, 1.0f);
-
-            postprocessMaterial = new Material(baseMaterial);
-            List<string> keywords = new List<string>(postprocessMaterial.shaderKeywords);
-
-            if (keywords.Contains("ACTIVATION_EFFECT_ON"))
-                keywords.Remove("ACTIVATION_EFFECT_ON");
-            postprocessMaterial.shaderKeywords = keywords.ToArray();
-            postprocessMaterial.SetVector(shieldDirectionProperty, new Vector4(1.0f, 0.0f, 0.0f, 0.0f));
-
-            postprocessActivationMaterial = new Material(baseMaterial);
-            keywords = new List<string>(postprocessActivationMaterial.shaderKeywords);
-
-            postprocessActivationMaterial.shaderKeywords = keywords.ToArray();
-            postprocessActivationMaterial.SetVector(shieldDirectionProperty, new Vector4(1.0f, 0.0f, 0.0f, 0.0f));
-
-            activationMaterial = new Material(baseMaterial);
-            shieldActivationRim = activationMaterial.GetFloat("_ActivationRim");
-
-            keywords = new List<string>(baseMaterial.shaderKeywords);
-            if (keywords.Contains("ACTIVATION_EFFECT_ON"))
-            {
-                //Debug.Log("remove ACTIVATION_EFFECT_ON");
-                keywords.Remove("ACTIVATION_EFFECT_ON");
-            }
-            baseMaterial.shaderKeywords = keywords.ToArray();
-            myRenderer.sharedMaterial = baseMaterial;
-
-            if (insideRenderer)
-                insideRenderer.sharedMaterial = baseMaterial;
-
+            ResetActivationTime();
+            
             SetShieldEffectDirection(new Vector3(1.0f, 0.0f, 0.0f));
+        }
+        
+        public void SetShieldEffectDirection(Vector3 dir)
+        {
+            dir4 = new Vector4(dir.x, dir.y, dir.z, 0.0f);
+            myRenderer.material.SetVector(shieldDirectionProperty, dir4);
+
+        }
+
+        void ResetActivationTime()
+        {
+            myRenderer.material.SetFloat(activationTimeProperty, 1.0f);
         }
 
         void Update()
@@ -211,9 +77,6 @@ namespace StellarArmada
                 {
                     shieldActivationTime = 1.0f;
                     shieldActivationDir = 0.0f;
-                    myRenderer.sharedMaterial = baseMaterial;
-                    if (insideRenderer)
-                        insideRenderer.sharedMaterial = baseMaterial;
                 }
             }
             else if (shieldActivationDir < 0.0f)
@@ -224,22 +87,10 @@ namespace StellarArmada
                     shieldActivationTime = -shieldActivationRim;
                     shieldActivationDir = 0.0f;
                     myRenderer.enabled = false;
-                    myRenderer.sharedMaterial = baseMaterial;
-                    if (insideRenderer)
-                    {
-                        insideRenderer.enabled = false;
-                        insideRenderer.sharedMaterial = baseMaterial;
-                    }
                 }
             }
-
-            myRenderer.sharedMaterial.SetFloat(activationTimeProperty, shieldActivationTime);
-            postprocessActivationMaterial.SetFloat(activationTimeProperty, shieldActivationTime);
-        }
-
-        public bool GetIsShieldActive()
-        {
-            return (shieldActivationTime == 1.0f) || (shieldActivationDir == 1.0f);
+            
+            myRenderer.material.SetFloat(activationTimeProperty, shieldActivationTime);
         }
 
         public bool GetIsDuringActivationAnim()
@@ -249,127 +100,43 @@ namespace StellarArmada
 
         public void SetShieldActive(bool active, bool animated = true)
         {
-            if (animated)
-            {
-                shieldActivationDir = (active) ? 1.0f : -1.0f;
-                if (activationMaterial)
-                {
-                    activationMaterial.SetFloat("_ActivationRim", shieldActivationRim);
-                    activationMaterial.SetFloat(activationTimeProperty, shieldActivationTime);
-
-                    postprocessActivationMaterial.SetFloat("_ActivationRim", shieldActivationRim);
-                    postprocessActivationMaterial.SetFloat(activationTimeProperty, shieldActivationTime);
-
-                    myRenderer.sharedMaterial = activationMaterial;
-                    if (insideRenderer)
-                        insideRenderer.sharedMaterial = activationMaterial;
-                }
-
-                if (active)
-                {
-                    myRenderer.enabled = (renderSides != ShieldRenderSidesOptions.INSIDE_ONLY);
-                    if (insideRenderer)
-                        insideRenderer.enabled = true;
-                }
+            shieldActivationDir = (active) ? 1.0f : -1.0f;
+            myRenderer.material.SetFloat(activationTimeProperty, shieldActivationTime);
+            myRenderer.material.SetFloat("_ActivationRim", shieldActivationTime);
             }
-            else
-            {
-                shieldActivationTime = (active) ? 1.0f : 0.0f;
-                shieldActivationDir = 0.0f;
-                myRenderer.enabled = active;
-                if (insideRenderer)
-                    insideRenderer.enabled = active;
-            }
-
-            myCollider.enabled = active;
-        }
-
-        public void SetShieldEffectDirection(Vector3 dir)
-        {
-            Vector4 dir4 = new Vector4(dir.x, dir.y, dir.z, 0.0f);
-            myRenderer.material.SetVector(shieldDirectionProperty, dir4);
-            baseMaterial.SetVector(shieldDirectionProperty, dir4);
-            activationMaterial.SetVector(shieldDirectionProperty, dir4);
-            postprocessMaterial.SetVector(shieldDirectionProperty, dir4);
-            postprocessActivationMaterial.SetVector(shieldDirectionProperty, dir4);
-        }
+        
 
         public void OnHit(Vector3 hitPos, float hitScale)
         {
-            AddHitMeshAtPos(gameObject.GetComponent<MeshFilter>().mesh, hitPos, hitScale);
-
-            if (renderSides == ShieldRenderSidesOptions.OUTSIDE_AND_INSIDE || renderSides == ShieldRenderSidesOptions.INSIDE_ONLY)
-                AddHitMeshAtPos(insideRenderer.GetComponent<MeshFilter>().mesh, hitPos, hitScale);
+            AddHitMeshAtPos(meshFilter.mesh, hitPos, hitScale);
         }
 
         private void AddHitMeshAtPos(Mesh mesh, Vector3 hitPos, float hitScale)
         {
-            GameObject hitObject = new GameObject("hitFX");
-            hitObject.transform.parent = transform;
-            hitObject.transform.position = transform.position;
+            GameObject hitObject = PoolManager.Pools["GeneratedPool"].Spawn(shieldHitPrefab.transform, Vector3.zero, Quaternion.identity, null).gameObject;
+            hitObject.transform.parent = t;
+            hitObject.transform.position = t.position;
             hitObject.transform.localScale = Vector3.one;
-            hitObject.transform.rotation = transform.rotation;
+            hitObject.transform.rotation = t.rotation;
 
-            Vector3 hitLocalSpace = transform.InverseTransformPoint(hitPos);
+            hitLocalSpace = t.InverseTransformPoint(hitPos);
 
-            Vector3 dir = hitLocalSpace.normalized;
-            Vector3 tan1 = Vector3.up - dir * Vector3.Dot(dir, Vector3.up);
-            tan1.Normalize();
-            Vector3 tan2 = Vector3.Cross(dir, tan1);
+            dir = hitLocalSpace.normalized;
 
-            MeshRenderer mr = hitObject.AddComponent<MeshRenderer>();
-            MeshFilter mf = hitObject.AddComponent<MeshFilter>();
-
-            mf.mesh = mesh;
-            mr.material = new Material(hitMaterial);
+            mr = hitObject.GetComponent<MeshRenderer>();
 
             mr.material.SetVector("_HitPos", hitLocalSpace);
-            mr.material.SetVector("_HitTan1", tan1);
-            mr.material.SetVector("_HitTan2", tan2);
             mr.material.SetFloat("_HitRadius", hitScale);
             mr.material.SetVector("_WorldScale", transform.lossyScale);
-            mr.material.SetFloat("_HitShieldCovering", 1.0f);
-            mr.material.renderQueue = mr.material.renderQueue + currentHitIndex;
-
-            if (autoHitPatternScale)
-            {
-                if (myRenderer.material.HasProperty("_PatternScale"))
-                    mr.material.SetFloat("_PatternScale", myRenderer.material.GetFloat("_PatternScale"));
-                else
-                    autoHitPatternScale = false;
-            }
-            mr.material.color = hitColor;
-
-            ShieldHit hit = hitObject.AddComponent<ShieldHit>();
+            mr.material.SetFloat("_PatternScale", myRenderer.material.GetFloat("_PatternScale"));
+            mr.material.SetColor("_Color", hitColor);
+            
+            hit = hitObject.GetComponent<ShieldHit>();
             hit.StartHitFX(hitEffectDuration);
 
             currentHitIndex++;
             if (currentHitIndex > 100)
                 currentHitIndex = 1;
-        }
-
-        public void RenderPostprocess(CommandBuffer cmd)
-        {
-            if (myRenderer && gameObject.activeSelf && gameObject.activeInHierarchy)
-            {
-                if (myRenderer.enabled)
-                    cmd.DrawRenderer(myRenderer, GetPostprocessMaterial());
-                if (insideRenderer && insideRenderer.enabled)
-                    cmd.DrawRenderer(insideRenderer, GetPostprocessMaterial());
-            }
-        }
-
-        public Material GetPostprocessMaterial()
-        {
-            if (GetIsDuringActivationAnim())
-                return postprocessActivationMaterial;
-
-            return postprocessMaterial;
-        }
-
-        public Renderer GetRenderer()
-        {
-            return myRenderer;
         }
     }
 }

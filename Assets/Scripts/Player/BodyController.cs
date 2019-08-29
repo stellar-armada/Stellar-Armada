@@ -11,12 +11,8 @@ namespace StellarArmada.Player
         [SerializeField] HumanPlayerController humanPlayerController; // Reference to the local player
         
         [SerializeField] SkinnedMeshRenderer[] bodyRenderers;
-
-        private MaterialPropertyBlock props;
-
         public void Init()
         {
-            props = new MaterialPropertyBlock();
             humanPlayerController.EventOnPlayerTeamChange += HandleTeamChange;
         }
 
@@ -25,9 +21,7 @@ namespace StellarArmada.Player
             uint pTeam = humanPlayerController.GetTeam().teamId;
             foreach (var ren in bodyRenderers)
             {
-                ren.GetPropertyBlock(props);
-                props.SetColor("_EmissionColor", TeamManager.instance.templates[pTeam].color);
-                ren.SetPropertyBlock(props);
+                ren.material.SetColor("_EmissionColor", TeamManager.instance.templates[pTeam].color);
             }
 
         }

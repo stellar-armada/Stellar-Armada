@@ -580,13 +580,14 @@ MonoBehaviour:
   comment: 'MatchNetworkManager extends the NetworkManager base class, but with two
     key features:
 
-    1. the instantiation/spawning of a "Match Manager Prefab". This contains all the
-    networked managers, i.e. any system that shares data between clients and the server
-    and requires a NetworkIdentity component. These scripts can be found on the "NetworkManagers"
-    prefab.
+    1. the instantiation/spawning of a "Match Manager Prefab".
+    This contains all the networked managers, i.e. any system that shares data between
+    clients and the server and requires a NetworkIdentity component. These scripts
+    can be found on the "NetworkManagers" prefab.
 
-    2. "Start as host" manages whether the server will also initialize as the client.
-    In a purely server-auth environment, this is for debug only.'
+    2. "Start as host" manages
+    whether the server will also initialize as the client. In a purely server-auth
+    environment, this is for debug only.'
 --- !u!114 &5747669402091356060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,41 +603,27 @@ MonoBehaviour:
   OnClientConnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClientDataReceived:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventByteArray, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnClientError:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventException, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnClientDisconnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnServerConnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventInt, Mirror, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnServerDataReceived:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventIntByteArray, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnServerError:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventIntException, Mirror, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Mirror.UnityEventInt, Mirror, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   port: 7777
   NoDelay: 1
   MaxMessageSize: 16384
@@ -1074,8 +1061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comment: Manages formation logic, and exposes variables for setting ship distances
-    in formation (Scale XY - distance from neighors next to and above each other --
-    scale z - distance from ships in the next formation line)
+    in formation (Scale XY - distance from neighors next to and above each other
+    -- scale z - distance from ships in the next formation line)
 --- !u!114 &3341906962761870672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,3 +1281,6 @@ MonoBehaviour:
     - {fileID: 5988516292966015030, guid: 0f5d8ab0f1d3e534fbbe68ce552e672b, type: 3}
     - {fileID: 5988516292966015030, guid: c79c67b9c934dfa409bacadd7a167e85, type: 3}
     - {fileID: 5988516292966015030, guid: 19c4a970f38bef54ea585bbafc7f435e, type: 3}
+  shipyardShipPrefabs:
+    m_keys: 
+    m_values: []

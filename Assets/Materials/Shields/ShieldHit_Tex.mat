@@ -84,7 +84,7 @@ Material:
     - _HitPosU: 0.1
     - _HitPosV: 0.55
     - _HitPower: 1
-    - _HitRadius: 0.25
+    - _HitRadius: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -103,7 +103,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.6689658, b: 1, a: 0.772}
+    - _Color: {r: 0, g: 0.6689658, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HitPos: {r: 0, g: 0, b: -0.5, a: 0}
     - _HitTan1: {r: 0, g: 1, b: 0, a: 1}

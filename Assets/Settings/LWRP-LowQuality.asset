@@ -16,12 +16,12 @@ MonoBehaviour:
   m_RendererType: 1
   m_RendererData: {fileID: 11400000, guid: 618d298269e66c542b306de85db1faea, type: 2}
   m_RequireDepthTexture: 0
-  m_RequireOpaqueTexture: 1
+  m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 2
   m_SupportsHDR: 0
   m_MSAA: 2
   m_RenderScale: 1
-  m_MainLightRenderingMode: 1
+  m_MainLightRenderingMode: 0
   m_MainLightShadowsSupported: 0
   m_MainLightShadowmapResolution: 1024
   m_AdditionalLightsRenderingMode: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   m_SupportsDynamicBatching: 1
   m_MixedLightingSupported: 0
   m_ColorGradingMode: 0
-  m_ColorGradingLutSize: 16
+  m_ColorGradingLutSize: 32
   m_ShadowType: 0
   m_LocalShadowsSupported: 0
   m_LocalShadowsAtlasResolution: 256

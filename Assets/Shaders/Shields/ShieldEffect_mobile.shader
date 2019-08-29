@@ -2,7 +2,7 @@
 
 Shader "SpaceCommander/Shields/ShieldEffectMobile" {
 	Properties {
-		_Color ("Color", Color) = (1,1,1,1)
+		
 		_ColorRimMin("ColorRimMin", Range(-2,1)) = 0.6
 		_ColorRimMax("ColorRimMax", Range(0,4)) = 1.0
 
@@ -28,9 +28,10 @@ Shader "SpaceCommander/Shields/ShieldEffectMobile" {
 		_DirectionVisibility("DirectionVisibility", Range(-2.0,2.0)) = 0.0
 
 		_ActivationTex("Albedo (RGB)", 2D) = "black" {}
+		
+		_Color ("Color", Color) = (1,1,1,1)
 		_ActivationRim("ActivationRim", Range(0.0,1.0)) = 0.0
 		_ActivationTime("ActivationTime", Range(0.0,1.0)) = 1.0
-
 		_ShieldDirection("ShieldDirection", Vector) = (1,0,0,0)
 
 		_BlendSrcMode("BlendSrcMode", Int) = 0
