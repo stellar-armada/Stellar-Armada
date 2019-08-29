@@ -63,8 +63,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -138,8 +136,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: f5f9a4b384425445ca81afc6836c410a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -213,8 +209,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b392523f3b4be4af6807b2d65af9b721, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -288,8 +282,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: f5f9a4b384425445ca81afc6836c410a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -311,8 +303,9 @@ GameObject:
   - component: {fileID: 8931010825416812643}
   - component: {fileID: 7918910584777688149}
   - component: {fileID: 925843254586773568}
+  - component: {fileID: -8424956432967020051}
   m_Layer: 5
-  m_Name: PhalanxUIShipPrefab
+  m_Name: PhalanxUIGroupShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,4 +357,17 @@ MonoBehaviour:
   ship: {fileID: 0}
   shieldImage: {fileID: 3347840303033529860}
   hullImage: {fileID: 8966908446096479607}
+  selectionIndicator: {fileID: 0}
   shieldColor: {r: 0, g: 0.6431373, b: 1, a: 1}
+--- !u!114 &-8424956432967020051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943976369294506547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4c3040e07670a4ebdb9b4b737e5057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

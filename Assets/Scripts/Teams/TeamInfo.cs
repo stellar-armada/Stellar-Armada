@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using StellarArmada.Entities.Ships;
 
 #pragma warning disable 0649
 namespace StellarArmada
@@ -8,7 +9,9 @@ namespace StellarArmada
     [Serializable]
     public class TeamInfo
     {
-         public List<ShipIdDictionary> fleetBattleGroups = new List<ShipIdDictionary>();
-         public int numberOfPlayerSlots;
+        public List<ShipType> availableShipTypes;
+        public int pointsToSpend;
+        public int numberOfPlayerSlots;
+        public List<ShipIdDictionary> fleetBattleGroups = new List<ShipIdDictionary>();
     }
 }

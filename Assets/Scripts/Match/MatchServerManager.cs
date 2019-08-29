@@ -52,7 +52,7 @@ namespace StellarArmada.Match
                 // Create teams
                 foreach (TeamInfo teamInfo in currentScenario.teamInfo)
                 {
-                    TeamManager.instance.CmdCreateNewTeam(teamInfo.numberOfPlayerSlots);
+                    TeamManager.instance.CreateNewTeam(teamInfo);
                     
                 }
                 RpcInitializeMenu();

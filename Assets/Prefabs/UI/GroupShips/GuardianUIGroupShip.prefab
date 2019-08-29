@@ -63,8 +63,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: aa3df952124f043e590da3e766f404a7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -138,8 +136,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: c45ff68e4b3124dd898dca6865b443e4, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -213,8 +209,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: aa3df952124f043e590da3e766f404a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -236,8 +230,9 @@ GameObject:
   - component: {fileID: 325714826189638258}
   - component: {fileID: 8930505673736858633}
   - component: {fileID: 4957714479954389077}
+  - component: {fileID: 8687509023624151066}
   m_Layer: 5
-  m_Name: GuardianUIShipPrefab
+  m_Name: GuardianUIGroupShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +284,20 @@ MonoBehaviour:
   ship: {fileID: 0}
   shieldImage: {fileID: 5929497982159617153}
   hullImage: {fileID: 1846124143019819303}
+  selectionIndicator: {fileID: 0}
   shieldColor: {r: 0, g: 0.6431373, b: 1, a: 1}
+--- !u!114 &8687509023624151066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211150922952916740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4c3040e07670a4ebdb9b4b737e5057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9181659534017794942
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,8 +361,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Mirror;
 using StellarArmada.Entities;
+using StellarArmada.Entities.Ships;
 using StellarArmada.Player;
 using UnityEngine;
 
@@ -21,7 +22,9 @@ namespace StellarArmada.Teams
         public Texture insignia;
         public List<PlayerController> players = new List<PlayerController>();
         public List<NetworkEntity> entities = new List<NetworkEntity>();
-
+        public List<ShipType> availableShipTypes;
+        public int pointsToSpend;
+        
         public delegate void TeamEvent();
 
         public TeamEvent OnEntitiesUpdated;

@@ -63,8 +63,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: af5053440e129462f8fa60575d8b3435, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -138,8 +136,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: af5053440e129462f8fa60575d8b3435, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -213,8 +209,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -288,8 +282,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: cad8aefb1a589495297a97840ba7b955, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -311,8 +303,9 @@ GameObject:
   - component: {fileID: 8947860389156925981}
   - component: {fileID: 5268411718234605414}
   - component: {fileID: 8513383571645740483}
+  - component: {fileID: 5589461460951712236}
   m_Layer: 5
-  m_Name: DreadnaughtUIShipPrefab
+  m_Name: DreadnaughtUIGroupShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,4 +357,17 @@ MonoBehaviour:
   ship: {fileID: 0}
   shieldImage: {fileID: 929483843400167521}
   hullImage: {fileID: 6745651767519982375}
+  selectionIndicator: {fileID: 0}
   shieldColor: {r: 0, g: 0.6431373, b: 1, a: 1}
+--- !u!114 &5589461460951712236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026984977371430974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4c3040e07670a4ebdb9b4b737e5057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

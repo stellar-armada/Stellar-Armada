@@ -27,6 +27,9 @@ namespace StellarArmada.Entities.Ships
         // An enum identifying what type of ship this is
         public ShipType type;
         
+        // handy reference to which group this ship is in
+        public int group = -1;
+        
         // All capital ships are available as flagships, potentially
         // Once a team captain has selected a ship as their flagship, this bool becomes false
         // So other players can't also select it

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
+using StellarArmada.Entities.Ships;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -37,8 +38,8 @@ namespace StellarArmada.Teams
             instance = this;
         }
         
-        [Command]
-        public void CmdCreateNewTeam(int numerOfPlayerSlots) // Would be great to pass full TeamInfo, but Cmds can only take basic types
+        [Server]
+        public void CreateNewTeam(TeamInfo teamInfo) // Would be great to pass full TeamInfo, but Cmds can only take basic types
         {
             TeamTemplate template = templates[newTeamIndex++];
             Team t = Instantiate(teamPrefab, transform).GetComponent<Team>();
@@ -47,7 +48,9 @@ namespace StellarArmada.Teams
             t.teamName = template.name;
             t.color = template.color;
             t.insignia = template.insignia;
-            t.playerSlots = numerOfPlayerSlots;
+            t.playerSlots = teamInfo.numberOfPlayerSlots;
+            t.pointsToSpend = teamInfo.pointsToSpend;
+            t.availableShipTypes = teamInfo.availableShipTypes;
             teams.Add(t);
         }
 

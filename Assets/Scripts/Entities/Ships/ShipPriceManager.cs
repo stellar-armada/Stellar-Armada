@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using StellarArmada.Entities.Ships;
+using StellarArmada.UI;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -15,15 +16,15 @@ namespace StellarArmada.Entities.Ships
             instance = this;
         }
 
-        public int GetShipPrice(Ship ship)
+        public int GetShipPrice(UIShipyardShip ship)
         {
-            return shipPriceDictionary[ship.type];
+            return shipPriceDictionary[ship.shipType];
         }
 
-        public int GetGroupPrice(List<Ship> ships)
+        public int GetGroupPrice(List<UIShipyardShip> ships)
         {
             int val = 0;
-            foreach (Ship s in ships)
+            foreach (UIShipyardShip s in ships)
             {
                 val += GetShipPrice(s);
             }

@@ -27,6 +27,7 @@ namespace StellarArmada.Player
 
         public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
 
+        
         void Start()
         {
             OnLocalPlayerInitialized += () => Debug.Log("<color=green>Initialized local player</color>");

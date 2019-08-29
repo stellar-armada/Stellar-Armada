@@ -1,5 +1,7 @@
-﻿using StellarArmada.Entities.Ships;
+﻿using System;
+using StellarArmada.Entities.Ships;
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 namespace StellarArmada.UI
@@ -11,10 +13,40 @@ namespace StellarArmada.UI
     {
         public ShipType shipType;
         public int group;
+        [SerializeField] Image flag;
+        public bool hasCaptain = false;
+        private void Awake()
+        {
+            SetFlagToInactive();
+        }
 
         void Start()
         {
             Shipyard.instance.PlaceShipInGroup(this, group);
+        }
+
+        public void SetAsFlagship()
+        {
+            Shipyard.instance.SetFlagshipForLocalPlayer(this);
+            SetFlagToActiveForLocalUser();
+        }
+
+        public void SetFlagToActiveForLocalUser()
+        {
+            flag.color = Color.green;
+            hasCaptain = true;
+        }
+
+        public void SetFlagToActiveForTeamMate()
+        {
+            // TO-DO: Add teammate notify of occupation of ship
+            flag.color = Color.blue;
+            hasCaptain = true;
+        }
+
+        public void SetFlagToInactive()
+        {
+            flag.color = Color.gray;
         }
     }
 }
