@@ -27,6 +27,7 @@ namespace StellarArmada.UI
 
         public void SetAsFlagship()
         {
+            Debug.Log("Setting flagship for local player -- " + gameObject.name);
             Shipyard.instance.SetFlagshipForLocalPlayer(this);
             SetFlagToActiveForLocalUser();
         }

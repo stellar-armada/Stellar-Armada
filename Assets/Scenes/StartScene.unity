@@ -471,30 +471,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8911269486726611887, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8352626201595394217, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_text
-      value: '<b>Alpha Build - v.1</b>
-
-        This is the first release of Stellar
-        Armada. Please visit our Discord for support and friend finding.
-
-
-        <b>Contributors</b>
-
-        Shaw
-        Walters (Programming and Design) - Alex McKelley (Characters and Ships) -
-        Liam Broza (Web stuff)
-
-        <i>Want your name here?</i> Easy! Push a
-        contrib module to the GitHub and credit yourself for your achievements. Visit
-        http://defend.earth to join the fight!'
-      objectReference: {fileID: 0}
     - target: {fileID: 5019265945252818156, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -691,6 +667,56 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 248571356678305484, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128082308536581465, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128082308536581465, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128082308536581465, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128082308536581465, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0

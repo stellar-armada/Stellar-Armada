@@ -43,7 +43,7 @@
            t.localPosition = Vector3.zero;
            t.localScale = Vector3.one;
            t.localRotation = Quaternion.identity;
-           
+           t.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
            isDragging = true;
            // disable raycasting on this object
            canvasGroup.blocksRaycasts = false;
@@ -90,6 +90,7 @@
            // enable raycasting on object, maybe
            canvasGroup.blocksRaycasts = true;
             transform.localRotation = Quaternion.identity;
+            transform.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
            isDragging = false;
            if (shipyardShip != null)
            {

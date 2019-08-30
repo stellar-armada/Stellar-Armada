@@ -112,7 +112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 192, y: -235.5}
-  m_SizeDelta: {x: 115, y: 180}
+  m_SizeDelta: {x: 57.5, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5346785084315748885
 CanvasRenderer:
@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipType: 0
   group: -1
+  flag: {fileID: 0}
+  hasCaptain: 0
 --- !u!225 &6101007976502957146
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -173,3 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef7cfc6f08c6af4196cd790872b75fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxtime: 0.2
