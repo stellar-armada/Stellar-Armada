@@ -12,6 +12,8 @@ namespace StellarArmada.UI {
     {
         [SerializeField] private InputManager inputManager;
 
+        public static UIPointer instance;
+        
         // State
         // TO-DO: All these bools look ugly, could use some refactor
         private bool leftMenuButtonActive;
@@ -19,6 +21,8 @@ namespace StellarArmada.UI {
         public bool buttonState = false; // Store current button state
         bool prevButtonState = false; // Store last frame state for triggering EventSystem.Process
         bool buttonChanged = false; // Called in the event system process loop if true, then falsed next frame
+
+        public Canvas uiPlacerCanvas;
         
         protected override void Update()
         {
@@ -35,6 +39,7 @@ namespace StellarArmada.UI {
 
         void Awake()
         {
+            instance = this;
             pointer.SetActive(false); // Hide on start
         }
 

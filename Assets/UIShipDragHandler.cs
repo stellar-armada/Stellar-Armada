@@ -20,40 +20,40 @@
        void Awake()
        {
            canvasGroup = GetComponent<CanvasGroup>();
-           canvasGroup.blocksRaycasts = false;
+           canvasGroup.blocksRaycasts = true;
            groupShip = GetComponent<UIGroupShip>();
            shipyardShip = GetComponent<UIShipyardShip>();
            t = GetComponent<RectTransform>();
        }
-   
-       public static GameObject itemBeingDragged;
        private PointerEventData data;
-   
-       private GroupContainer startContainer;
+
+       private bool isReadyToDrag = false;
        
        public void OnBeginDrag(PointerEventData eventData)
        {
+           dragTimer = 0f;
+           isReadyToDrag = true;
 
-           data = new PointerEventData(EventSystem.current);
-           itemBeingDragged = gameObject;
-           startPosition = t.position;
+       }
+
+       void Init()
+       {
+           isReadyToDrag = false;
+           t.SetParent(UIPointer.instance.uiPlacerCanvas.transform);
+           t.localPosition = Vector3.zero;
+           t.localScale = Vector3.one;
+           t.localRotation = Quaternion.identity;
+           
            isDragging = true;
            // disable raycasting on this object
            canvasGroup.blocksRaycasts = false;
-           Debug.Log("Setting start container");
-           startContainer = GroupContainer.currentGroup;
-           if(shipyardShip!=null) shipyardShip.transform.SetParent(startContainer.GetComponentInParent<Canvas>().transform);
-           else if (groupShip != null) groupShip.transform.SetParent(startContainer.GetComponentInParent<Canvas>().transform);
-               dragTimer = 0f;
        }
-   
+
        public void OnDrag(PointerEventData eventData)
        {
            dragTimer += Time.deltaTime;
            if (dragTimer < dragDelay) return;
-           data = new PointerEventData(EventSystem.current);
-           t.position = data.position;
-           
+           if (isReadyToDrag) Init();
        }
 
        public void OnEndDrag(PointerEventData eventData)
@@ -78,18 +78,22 @@
                // return to original group
                if (shipyardShip != null)
                {
-                   Shipyard.instance.MoveShip(shipyardShip, startContainer.transform);
+                   Shipyard.instance.MoveShip(shipyardShip, Shipyard.instance.availableShipsContainer);
+                  
                }
                else if (groupShip != null)
                {
                    // Group ship logic
-                   GroupUIManager.instance.MoveShipToGroup(groupShip, startContainer.groupId);
+                   GroupUIManager.instance.MoveShipToGroup(groupShip, groupShip.ship.group);
                }
            }
            // enable raycasting on object, maybe
            canvasGroup.blocksRaycasts = true;
-
-           itemBeingDragged = null;
+            transform.localRotation = Quaternion.identity;
            isDragging = false;
+           if (shipyardShip != null)
+           {
+               Shipyard.instance.ShowAvailableShips();
+           }
        }
    }

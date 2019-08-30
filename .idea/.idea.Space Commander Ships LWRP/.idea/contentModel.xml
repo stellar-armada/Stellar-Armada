@@ -8,6 +8,11 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="DontDestroyOnLoad.cs" t="Include" />
+        <e p="Fonts" t="Include">
+          <e p="Jupiter" t="Include">
+            <e p="License.txt" t="Include" />
+          </e>
+        </e>
         <e p="GroupContainer.cs" t="Include" />
         <e p="LocalMenuStateManager.cs" t="Include" />
         <e p="Match Up" t="Include">
@@ -32,6 +37,9 @@
           <e p="Matchmaker.cs" t="Include" />
         </e>
         <e p="MatchMenuStartButtonController.cs" t="Include" />
+        <e p="Materials" t="Include">
+          <e p="UI-Default-No-Alpha.shader" t="Include" />
+        </e>
         <e p="MenuView.cs" t="Include" />
         <e p="Mirror" t="Include">
           <e p="Runtime" t="Include">
@@ -180,6 +188,8 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="ActiveStateToggler.cs" t="Include" />
+          <e p="ApplicationManager.cs" t="Include" />
           <e p="Audio" t="Include">
             <e p="MessageAudioController.cs" t="Include" />
             <e p="MusicController.cs" t="Include" />
@@ -189,10 +199,14 @@
             <e p="SoundEffectButtonListener.cs" t="Include" />
             <e p="VolumeSliderListener.cs" t="Include" />
           </e>
+          <e p="ChangeColor.cs" t="Include" />
           <e p="Common" t="Include">
             <e p="LocalPlayerRig.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
           </e>
+          <e p="DragMe.cs" t="Include" />
+          <e p="DragPanel.cs" t="Include" />
+          <e p="DropMe.cs" t="Include" />
           <e p="Entities" t="Include">
             <e p="EntityExplosion.cs" t="Include" />
             <e p="EntityFactory.cs" t="Include" />
@@ -292,6 +306,7 @@
             <e p="MatchNetworkManager.cs" t="Include" />
             <e p="NetworkTransform.cs" t="Include" />
           </e>
+          <e p="PanelManager.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="BodyController.cs" t="Include" />
             <e p="HumanPlayerController.cs" t="Include" />
@@ -312,6 +327,8 @@
             <e p="PoolManager.cs" t="Include" />
             <e p="PoolManagerDB.cs" t="Include" />
           </e>
+          <e p="ResizePanel.cs" t="Include" />
+          <e p="ScrollDetailTexture.cs" t="Include" />
           <e p="SerializedDictionaries" t="Include">
             <e p="Editor" t="Include">
               <e p="UserSerializableDictionaryPropertyDrawers.cs" t="Include" />
@@ -327,11 +344,13 @@
             <e p="ShieldEffectController.cs" t="Include" />
             <e p="ShieldHit.cs" t="Include" />
           </e>
+          <e p="ShowSliderValue.cs" t="Include" />
           <e p="Teams" t="Include">
             <e p="Team.cs" t="Include" />
             <e p="TeamInfo.cs" t="Include" />
             <e p="TeamManager.cs" t="Include" />
           </e>
+          <e p="TiltWindow.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="FillImageOverTime.cs" t="Include" />
             <e p="FollowTarget.cs" t="Include" />
@@ -415,6 +434,13 @@
         <e p="Shipyard.cs" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
+        </e>
+        <e p="Textures and Sprites" t="Include">
+          <e p="SF UI" t="Include">
+            <e p="Background" t="Include">
+              <e p="License.txt" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Third Party" t="Include">
           <e p="Mirror" t="Include">

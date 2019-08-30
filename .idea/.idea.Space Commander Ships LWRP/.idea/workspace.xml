@@ -26,6 +26,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DropMe.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScrollDetailTexture.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DragMe.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Extension/TransformExtensionsTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Key.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Keyboard.cs" root0="FORCE_HIGHLIGHTING" />
@@ -36,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Mirror/Runtime/Transport/LiteNetLib4Mirror/Dependencies/LiteNetLib/NetStatistics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Tracking/Modification/TransformPropertyApplier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/VR/Scripts/Util/OVRInputModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/MatchNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Mirror/Runtime/Transport/LiteNetLib4Mirror/Dependencies/LiteNetLib/NetSocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Mirror/Runtime/Transport/LiteNetLib4Mirror/Dependencies/LiteNetLib/NetPeer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -85,6 +89,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MatchPlayerMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Radar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Mirror/Runtime/Transport/LiteNetLib4Mirror/Dependencies/Open.Nat/NatDiscoverer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Mirror/Runtime/Transport/LiteNetLib4Mirror/LiteNetLib4MirrorClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UISelectionShip.cs" root0="FORCE_HIGHLIGHTING" />
@@ -260,7 +265,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/MiniMapStatusBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldHit.cs" />
@@ -308,9 +312,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/UIShipClickHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/GroupContainer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Shipyard.cs" />
         <option value="$PROJECT_DIR$/Assets/UIShipDragHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Shipyard.cs" />
       </list>
     </option>
   </component>
@@ -385,7 +390,7 @@
       <workItem from="1566691009433" duration="9716000" />
       <workItem from="1566799512712" duration="36926000" />
       <workItem from="1566887408386" duration="4039000" />
-      <workItem from="1566892618194" duration="72386000" />
+      <workItem from="1566892618194" duration="82542000" />
     </task>
     <servers />
   </component>

@@ -17,7 +17,7 @@ public class Shipyard : MonoBehaviour
     [SerializeField] Text availablePointsText;
     
     [HideInInspector] public UIShipyardShip flagship;
-
+    
     void Awake()
     {
         instance = this;
@@ -71,11 +71,12 @@ public class Shipyard : MonoBehaviour
     {
         return Mathf.Max(0, HumanPlayerController.localPlayer.GetTeam().pointsToSpend - ComputeCurrentShipCost());
     }
-    
+
     public void ShowAvailableShips()
     {
+        Debug.Log("Calling ShowAvailableShips");
         int currentPoints = ComputeAvailablePoints();
-        
+        availablePointsText.text = currentPoints.ToString();
         // Get all entity types represented
         System.Collections.Generic.List<ShipType> availableShipTypes = HumanPlayerController.localPlayer.GetTeam().availableShipTypes;
         
@@ -90,15 +91,15 @@ public class Shipyard : MonoBehaviour
             if (addedShipTypes.Contains(s.shipType))
             {
                 Destroy(s);
+                Debug.Log("Destroyed double ship");
                 continue;
             }
 
             addedShipTypes.Add(s.shipType); 
             ships.Add(s);
             // if ship costs less than $ available, show it
-            if (ShipPriceManager.instance.GetShipPrice(s) >= currentPoints) s.gameObject.SetActive(true);
+            if (ShipPriceManager.instance.GetShipPrice(s) > currentPoints) Destroy(s.gameObject);
             // otherwise, hide it
-            else s.gameObject.SetActive(false);
         }
         
         // iterate through available ship types
@@ -138,8 +139,7 @@ public class Shipyard : MonoBehaviour
         {
             Destroy(ship.gameObject);
         }
-       
-        ShowAvailableShips();
+       Invoke(nameof(ShowAvailableShips), .02f);
     }
 
     public void PlaceShipInGroup(UIShipyardShip ship, int group)
