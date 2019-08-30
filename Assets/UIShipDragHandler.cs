@@ -58,6 +58,7 @@
 
        public void OnEndDrag(PointerEventData eventData)
        {
+           if (dragTimer < dragDelay) return;
            if (GroupContainer.currentGroup)
            {
                Debug.Log("Dropped onto a group, executing group transfer logic");
@@ -92,9 +93,5 @@
             transform.localRotation = Quaternion.identity;
             transform.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
            isDragging = false;
-           if (shipyardShip != null)
-           {
-               Shipyard.instance.ShowAvailableShips();
-           }
        }
    }

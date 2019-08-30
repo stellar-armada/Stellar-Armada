@@ -16,20 +16,21 @@ namespace StellarArmada.Entities.Ships
             instance = this;
         }
 
-        public int GetShipPrice(UIShipyardShip ship)
+        public int GetShipPrice(ShipPrototype ship)
         {
             return shipPriceDictionary[ship.shipType];
         }
 
-        public int GetGroupPrice(List<UIShipyardShip> ships)
+        public int GetGroupPrice(List<ShipPrototype> protos)
         {
-            int val = 0;
-            foreach (UIShipyardShip s in ships)
+            int price = 0;
+            foreach (var proto in protos)
             {
-                val += GetShipPrice(s);
+                price += GetShipPrice(proto);
             }
 
-            return val;
+            return price;
         }
+        
     }
 }

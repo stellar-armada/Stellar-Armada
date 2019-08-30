@@ -68,25 +68,28 @@ namespace StellarArmada.Entities.Ships
             TeamManager.instance.GetTeamByID(teamId).groups[groupId].Add(s);
             return s;
         }
-        
-        public void CreateShipsForTeam(uint teamId)
+
+        [Command]
+        public void CmdCreateShipsForTeam(uint teamId)
         {
-            // Create ships
+
+            Team t = TeamManager.instance.GetTeamByID(teamId);
+            
             Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
             // Iterate through battle groups
             for (int g = 0; g < currentScenario.teamInfo[teamId].fleetBattleGroups.Count; g++)
             {
                 //Store ships in a list for a second
                 List<Ship> ships = new List<Ship>();
+                
+                // get all from prototypes where t.group == g
+                var groupPrototypes = t.prototypes.Where(p => p.group == g);
 
-                foreach (var key in currentScenario.teamInfo[teamId].fleetBattleGroups[g])
+                foreach (var groupPrototype in groupPrototypes)
                 {
-                    for (int numShips = 0; numShips < key.Value; numShips++)
-                    {
-                        // For each ship, instantiate for current team
-                        Ship s = ShipFactory.instance.CreateShipForTeam(teamId, g, key.Key);
+                    // For each ship, instantiate for current team
+                        Ship s = CreateShipForTeam(teamId, groupPrototype.group, groupPrototype.shipType);
                         ships.Add(s);
-                    }
                 }
 
                 // get positions back for list of ships from formation manager

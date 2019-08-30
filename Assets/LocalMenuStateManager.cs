@@ -1,5 +1,7 @@
-﻿using StellarArmada.Match;
+﻿using StellarArmada.Entities.Ships;
+using StellarArmada.Match;
 using StellarArmada.Networking;
+using StellarArmada.Player;
 using UnityEngine;
 
 public enum MenuState
@@ -66,6 +68,19 @@ public class LocalMenuStateManager : MonoBehaviour
     public void WarpIn()
     {
         HideMenu();
+            
+            // Format shipyard data and feed into createships for team
+            // create bridge
+            // get ship that matches player’s criteria for flagship
+            // instantiate bridge in at ship’s bridgeroot
+            // parent sceneroot to ship bridge root
+            // parent player, minimap, etc to sceneroot
+            // rename sceneroot to bridgesceneroot
+            // initialize warp and on-screen warp effects
+            // on dewarp, hide warp effects and scale up minimap
+
+            ShipFactory.instance.CmdCreateShipsForTeam(HumanPlayerController.localPlayer.GetTeam().teamId);
+
     }
 
     public void HideMenu()

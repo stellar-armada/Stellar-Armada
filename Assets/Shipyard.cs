@@ -1,127 +1,153 @@
-﻿using System.Linq;
-using Boo.Lang;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Mirror;
 using StellarArmada.Entities.Ships;
 using StellarArmada.Player;
+using StellarArmada.Teams;
 using StellarArmada.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
+public struct ShipPrototype
+{
+    public bool hasCaptain;
+    public ShipType shipType;
+    public int group;
+}
+
+public class SyncListShipPrototype : SyncList<ShipPrototype>
+{
+}
+
 public class Shipyard : MonoBehaviour
 {
     public static Shipyard instance;
+
+    private List<UIShipyardShip> shipyardShips = new List<UIShipyardShip>();
     
-    public System.Collections.Generic.List<GroupContainer> shipyardGroups = new System.Collections.Generic.List<GroupContainer>();
+    public List<GroupContainer> shipyardGroups = new List<GroupContainer>();
 
     public Transform availableShipsContainer;
-    
+
     [SerializeField] Text availablePointsText;
-    
-    [HideInInspector] public UIShipyardShip flagship;
-    
+
+    public ShipPrototype flagship; // public for debug
+
     void Awake()
     {
         instance = this;
     }
+
+    private Team t;
+
+    void Start()
+    {
+        t = TeamManager.instance.GetTeamByID(HumanPlayerController.localPlayer.teamId);
+        t.prototypes.Callback +=
+            NetworkUpdateShips; // This is sensitive to team changes and will need refactor for later flexibility
+    }
+    public void PopulateShipyard()
+    {
+        UIShipFactory.instance.GetShipyardShips(HumanPlayerController.localPlayer.teamId);
+        ShowAvailableShips();
+    }
+    void PopulateShipyardShips()
+    {
+        // Delete all shipyard ships
+        foreach (var s in shipyardShips)
+        {
+            Destroy(s.gameObject);
+        }
+        
+        shipyardShips = new List<UIShipyardShip>();
+
+        foreach (var prototype in t.prototypes)
+        {
+            // Create a new ship
+            // Assign prototype to it
+            // Set it's parent to the right group container
+            // Add it to the ship list
+        }
+        
+    }
+
     
-    // tell shipyard that a ship of this type in this group is the flagship
+    public void NetworkUpdateShips(SyncList<ShipPrototype>.Operation op, int itemindex, ShipPrototype proto)
+    {
+        PopulateShipyardShips();
+
+        ShowAvailableShips();
+        }
 
     public void SetFlagshipForLocalPlayer(UIShipyardShip shipyardShip)
     {
         // shipyard --
-            
+
         // if local player's flagship is already set / claimed, unset / unclaim
-        if (flagship != null)
+        if (flagship.hasCaptain == true)
         {
             // Make ship available as flagship
             flagship.hasCaptain = false;
-            
+
             // Unset flag
-            flagship.SetFlagToInactive();
-            
-            flagship = null;
+            //flagship.SetFlagToInactive();
         }
 
-        shipyardShip.hasCaptain = true;
+        shipyardShip.prototype.hasCaptain = true;
 
-        flagship = shipyardShip;
-        
-        flagship.SetFlagToActiveForLocalUser();
+        flagship = shipyardShip.prototype;
 
-        // TO-DO: make ship not available as a flagship
-
-
+        // flagship.SetFlagToActiveForLocalUser();
     }
-
-    public int ComputeCurrentShipCost()
-    {
-        System.Collections.Generic.List<UIShipyardShip> ships = new System.Collections.Generic.List<UIShipyardShip>();
-        foreach (var group in shipyardGroups)
-        {
-           var g = group.GetComponentsInChildren<UIShipyardShip>();
-            foreach (UIShipyardShip s in g)
-            {
-                ships.Add(s);
-            }
-        }
-
-        return ShipPriceManager.instance.GetGroupPrice(ships);
-    }
-
-    public int ComputeAvailablePoints()
-    {
-        return Mathf.Max(0, HumanPlayerController.localPlayer.GetTeam().pointsToSpend - ComputeCurrentShipCost());
-    }
-
+    
     public void ShowAvailableShips()
     {
-        Debug.Log("Calling ShowAvailableShips");
-        int currentPoints = ComputeAvailablePoints();
+
+        int currentPoints = Mathf.Max(0, HumanPlayerController.localPlayer.GetTeam().pointsToSpend - ShipPriceManager.instance.GetGroupPrice(t.prototypes.ToList()));
         availablePointsText.text = currentPoints.ToString();
         // Get all entity types represented
-        System.Collections.Generic.List<ShipType> availableShipTypes = HumanPlayerController.localPlayer.GetTeam().availableShipTypes;
-        
+        System.Collections.Generic.List<ShipType> availableShipTypes =
+            HumanPlayerController.localPlayer.GetTeam().availableShipTypes;
+
         // Get all children of the availableship container
-        System.Collections.Generic.List<UIShipyardShip> ships = new System.Collections.Generic.List<UIShipyardShip>();
+        //
+        List<UIShipyardShip> ships = new List<UIShipyardShip>();
         var g = availableShipsContainer.GetComponentsInChildren<UIShipyardShip>();
         List<ShipType> addedShipTypes = new List<ShipType>();
-        
+
         foreach (UIShipyardShip s in g)
         {
             // If any is already reped, destroy it
-            if (addedShipTypes.Contains(s.shipType))
+            if (addedShipTypes.Contains(s.prototype.shipType))
             {
                 Destroy(s);
                 Debug.Log("Destroyed double ship");
                 continue;
             }
 
-            addedShipTypes.Add(s.shipType); 
+            addedShipTypes.Add(s.prototype.shipType);
             ships.Add(s);
             // if ship costs less than $ available, show it
             if (ShipPriceManager.instance.GetShipPrice(s) > currentPoints) Destroy(s.gameObject);
             // otherwise, hide it
         }
-        
+
         // iterate through available ship types
         foreach (ShipType type in availableShipTypes)
         {
             // if any are not represented in the availableship container, create one
             if (!addedShipTypes.Contains(type))
             {
-               Transform ship = UIShipFactory.instance.CreateShipyardShip(type).GetComponent<Transform>();
-               ship.SetParent(availableShipsContainer);
-               ship.localPosition = Vector3.zero;
-               ship.localRotation = Quaternion.identity;
-               ship.localScale = Vector3.one;
+                Transform ship = UIShipFactory.instance.CreateShipyardShip(type).GetComponent<Transform>();
+                ship.SetParent(availableShipsContainer);
+                ship.localPosition = Vector3.zero;
+                ship.localRotation = Quaternion.identity;
+                ship.localScale = Vector3.one;
             }
         }
     }
-    
-    public void PopulateShipyard()
-    {
-        UIShipFactory.instance.GetShipyardShips(HumanPlayerController.localPlayer.teamId);
-        ShowAvailableShips();
-    }
+
+  
 
     public void MoveShip(UIShipyardShip ship, Transform to)
     {
@@ -139,7 +165,8 @@ public class Shipyard : MonoBehaviour
         {
             Destroy(ship.gameObject);
         }
-       Invoke(nameof(ShowAvailableShips), .02f);
+
+        Invoke(nameof(ShowAvailableShips), .02f);
     }
 
     public void PlaceShipInGroup(UIShipyardShip ship, int group)
@@ -153,10 +180,5 @@ public class Shipyard : MonoBehaviour
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
         } // Not a valid group (a good way to dispose?)
-        else
-        {
-            
-        }
     }
-    
 }

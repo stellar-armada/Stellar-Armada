@@ -11,10 +11,8 @@ namespace StellarArmada.UI
     // Interacted with in the player's match menu
     public class UIShipyardShip : MonoBehaviour
     {
-        public ShipType shipType;
-        public int group;
+        public ShipPrototype prototype;
         [SerializeField] Image flag;
-        public bool hasCaptain = false;
         private void Awake()
         {
             SetFlagToInactive();
