@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MatchUp;
 using NobleConnect.Mirror;
 using UnityEngine;
 using Mirror;
-using StellarArmada.Match;
 
 // Example implementation of NobleNetworkManager utilizing Match Up for matchmaking
     // Look at ExampleMatchUpHUD for more information on how to use it. 

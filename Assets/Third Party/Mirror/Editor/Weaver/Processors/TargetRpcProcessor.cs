@@ -1,12 +1,12 @@
 // all the [TargetRpc] code from NetworkBehaviourProcessor in one place
-using Mono.Cecil;
-using Mono.Cecil.Cil;
+using Mono.CecilX;
+using Mono.CecilX.Cil;
 
 namespace Mirror.Weaver
 {
     public static class TargetRpcProcessor
     {
-        const string k_TargetRpcPrefix = "InvokeTargetRpc";
+        const string TargetRpcPrefix = "InvokeTargetRpc";
 
         // helper functions to check if the method has a NetworkConnection parameter
         public static bool HasNetworkConnectionParameter(MethodDefinition md)
@@ -17,7 +17,7 @@ namespace Mirror.Weaver
 
         public static MethodDefinition ProcessTargetRpcInvoke(TypeDefinition td, MethodDefinition md)
         {
-            MethodDefinition rpc = new MethodDefinition(RpcProcessor.k_RpcPrefix + md.Name, MethodAttributes.Family |
+            MethodDefinition rpc = new MethodDefinition(RpcProcessor.RpcPrefix + md.Name, MethodAttributes.Family |
                     MethodAttributes.Static |
                     MethodAttributes.HideBySig,
                     Weaver.voidType);
@@ -40,7 +40,7 @@ namespace Mirror.Weaver
             }
 
             // process reader parameters and skip first one if first one is NetworkConnection
-            if (!NetworkBehaviourProcessor.ProcessNetworkReaderParameters(td, md, rpcWorker, hasNetworkConnection))
+            if (!NetworkBehaviourProcessor.ProcessNetworkReaderParameters(md, rpcWorker, hasNetworkConnection))
                 return null;
 
             // invoke actual command function
@@ -91,14 +91,14 @@ namespace Mirror.Weaver
 
             // write all the arguments that the user passed to the TargetRpc call
             // (skip first one if first one is NetworkConnection)
-            if (!NetworkBehaviourProcessor.WriteArguments(rpcWorker, md, "TargetRPC", hasNetworkConnection))
+            if (!NetworkBehaviourProcessor.WriteArguments(rpcWorker, md, hasNetworkConnection))
                 return null;
 
-            var rpcName = md.Name;
-            int index = rpcName.IndexOf(k_TargetRpcPrefix);
+            string rpcName = md.Name;
+            int index = rpcName.IndexOf(TargetRpcPrefix);
             if (index > -1)
             {
-                rpcName = rpcName.Substring(k_TargetRpcPrefix.Length);
+                rpcName = rpcName.Substring(TargetRpcPrefix.Length);
             }
 
             // invoke SendInternal and return
@@ -118,35 +118,34 @@ namespace Mirror.Weaver
             rpcWorker.Append(rpcWorker.Create(OpCodes.Ldc_I4, NetworkBehaviourProcessor.GetChannelId(ca)));
             rpcWorker.Append(rpcWorker.Create(OpCodes.Callvirt, Weaver.sendTargetRpcInternal));
 
+            NetworkBehaviourProcessor.WriteRecycleWriter(rpcWorker);
+
             rpcWorker.Append(rpcWorker.Create(OpCodes.Ret));
 
             return rpc;
         }
 
-        public static bool ProcessMethodsValidateTargetRpc(TypeDefinition td, MethodDefinition md, CustomAttribute ca)
+        public static bool ProcessMethodsValidateTargetRpc(MethodDefinition md, CustomAttribute ca)
         {
-            const string targetPrefix = "Target";
-            int prefixLen = targetPrefix.Length;
-
-            if (md.Name.Length > prefixLen && md.Name.Substring(0, prefixLen) != targetPrefix)
+            if (!md.Name.StartsWith("Target"))
             {
-                Weaver.Error("Target Rpc function [" + td.FullName + ":" + md.Name + "] doesnt have 'Target' prefix");
+                Weaver.Error($"{md} must start with Target.  Consider renaming it to Target{md.Name}");
                 return false;
             }
 
             if (md.IsStatic)
             {
-                Weaver.Error("TargetRpc function [" + td.FullName + ":" + md.Name + "] cant be a static method");
+                Weaver.Error($"{md} must not be static");
                 return false;
             }
 
-            if (!NetworkBehaviourProcessor.ProcessMethodsValidateFunction(td, md, "Target Rpc"))
+            if (!NetworkBehaviourProcessor.ProcessMethodsValidateFunction(md))
             {
                 return false;
             }
 
             // validate
-            return NetworkBehaviourProcessor.ProcessMethodsValidateParameters(td, md, ca, "Target Rpc");
+            return NetworkBehaviourProcessor.ProcessMethodsValidateParameters(md, ca);
         }
     }
 }

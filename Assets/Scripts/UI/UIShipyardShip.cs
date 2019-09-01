@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using StellarArmada.Entities.Ships;
+using StellarArmada.Player;
+using StellarArmada.Teams;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,41 +14,54 @@ namespace StellarArmada.UI
     // Interacted with in the player's match menu
     public class UIShipyardShip : MonoBehaviour
     {
-        public ShipPrototype prototype;
+        public int id = -1;
+        
         [SerializeField] Image flag;
-        private void Awake()
-        {
-            SetFlagToInactive();
-        }
+
+        private Team team;
 
         void Start()
         {
-            Shipyard.instance.PlaceShipInGroup(this, group);
+            team = HumanPlayerController.localPlayer.GetTeam();
+
         }
 
-        public void SetAsFlagship()
+        public ShipPrototype GetPrototype()
         {
-            Debug.Log("Setting flagship for local player -- " + gameObject.name);
-            Shipyard.instance.SetFlagshipForLocalPlayer(this);
-            SetFlagToActiveForLocalUser();
+            return team.prototypes.Single(p => p.id == id);
         }
 
-        public void SetFlagToActiveForLocalUser()
+        public void SetFlagshipStatus()
+        {
+            var p = GetPrototype();
+            if (p.hasCaptain)
+            {
+            uint captain = GetPrototype().captain;
+            if (captain == HumanPlayerController.localPlayer.netId)
+                SetFlagToActiveForLocalUser();
+            else
+                SetFlagToActiveForTeamMate();
+            }
+            else
+            {
+                SetFlagToInactive();
+            }
+        }
+
+        void SetFlagToActiveForLocalUser()
         {
             flag.color = Color.green;
-            hasCaptain = true;
         }
 
-        public void SetFlagToActiveForTeamMate()
+        void SetFlagToActiveForTeamMate()
         {
             // TO-DO: Add teammate notify of occupation of ship
             flag.color = Color.blue;
-            hasCaptain = true;
         }
 
-        public void SetFlagToInactive()
+        void SetFlagToInactive()
         {
-            flag.color = Color.gray;
+            flag.color = new Color(0,0,0,0);
         }
     }
 }

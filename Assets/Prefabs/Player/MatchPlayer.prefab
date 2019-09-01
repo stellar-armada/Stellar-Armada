@@ -1000,10 +1000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  serverOnly: 0
+  localPlayerAuthority: 1
   m_AssetId: 
-  m_SceneId: 1031661548
+  m_SceneId: 2976835717
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4006,6 +4006,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 975098095954899418}
     m_Modifications:
+    - target: {fileID: 2324894883842395963, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 1713833130453449945, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4060,11 +4065,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2324894883842395963, guid: 12001b42e5eb7f84ebdcf20c27abad08,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8797611113099095665, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
@@ -4293,6 +4293,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cybergirl_Root
       objectReference: {fileID: 0}
+    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: humanPlayerController
+      value: 
+      objectReference: {fileID: 1839945735331089094}
+    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: hiddenFromLocalPlayerMask.m_Bits
+      value: 16384
+      objectReference: {fileID: 0}
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4362,16 +4372,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: humanPlayerController
-      value: 
-      objectReference: {fileID: 1839945735331089094}
-    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: hiddenFromLocalPlayerMask.m_Bits
-      value: 16384
       objectReference: {fileID: 0}
     - target: {fileID: 2171049363706591617, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}

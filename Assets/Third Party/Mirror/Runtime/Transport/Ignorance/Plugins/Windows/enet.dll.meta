@@ -22,9 +22,9 @@ PluginImporter:
         Exclude Linux64: 0
         Exclude LinuxUniversal: 0
         Exclude OSXUniversal: 0
-        Exclude WebGL: 1
         Exclude Win: 1
         Exclude Win64: 0
+        Exclude iOS: 1
   - first:
       Android: Android
     second:
@@ -67,7 +67,7 @@ PluginImporter:
     second:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86_64
   - first:
       Standalone: LinuxUniversal
     second:
@@ -93,10 +93,13 @@ PluginImporter:
       settings:
         CPU: AnyCPU
   - first:
-      WebGL: WebGL
+      iPhone: iOS
     second:
       enabled: 0
-      settings: {}
+      settings:
+        AddToEmbeddedBinaries: false
+        CompileFlags: 
+        FrameworkDependencies: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

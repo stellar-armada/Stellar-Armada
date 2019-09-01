@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -671,36 +671,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.x
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.x
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.x
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.y
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 3128082308536581465, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -720,6 +690,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e036104fb93154288777bd50cb86b1, type: 3}
@@ -3370,9 +3370,8 @@ GameObject:
   - component: {fileID: 2092436207}
   - component: {fileID: 2092436210}
   - component: {fileID: 2092436208}
-  - component: {fileID: 2092436206}
-  - component: {fileID: 2092436209}
   - component: {fileID: 2092436211}
+  - component: {fileID: 2092436205}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -3380,7 +3379,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2092436206
+--- !u!114 &2092436205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3389,9 +3388,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 2092436204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3753e33ee60873246a9cda6452687c5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 71e9bc32a33e875449302faaac757daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClientConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientDataReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClientDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerDataReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnServerDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  DebugEnabled: 0
+  ServerBindAll: 1
+  ServerBindAddress: 127.0.0.1
+  CommunicationPort: 7777
+  MaxPacketSizeInKb: 64
+  Channels: 0100000002000000
+  CustomMaxPeerLimit: 0
+  CustomMaxPeers: 1000
+  CustomTimeoutLimit: 0
+  CustomTimeoutBaseTicks: 5000
+  CustomTimeoutMultiplier: 3
+  PingCalculationEnabled: 1
+  PingCalculationFrameTimer: 120
 --- !u!4 &2092436207
 Transform:
   m_ObjectHideFlags: 0
@@ -3423,67 +3459,6 @@ MonoBehaviour:
   timeout: 5
   maxReconnectionAttempts: 5
   externalIPSource: ipv4.noblewhale.com
---- !u!114 &2092436209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092436204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5671dcb80f9d69240b71f5612676a3fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnClientConnected:
-    m_PersistentCalls:
-      m_Calls: []
-  OnClientDataReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  OnClientError:
-    m_PersistentCalls:
-      m_Calls: []
-  OnClientDisconnected:
-    m_PersistentCalls:
-      m_Calls: []
-  OnServerConnected:
-    m_PersistentCalls:
-      m_Calls: []
-  OnServerDataReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  OnServerError:
-    m_PersistentCalls:
-      m_Calls: []
-  OnServerDisconnected:
-    m_PersistentCalls:
-      m_Calls: []
-  clientAddress: 127.0.0.1
-  serverIPv4BindAddress: 0.0.0.0
-  serverIPv6BindAddress: '::'
-  port: 7777
-  useUpnP: 1
-  maxConnections: 20
-  ipv6Enabled: 1
-  channels: 0204010300
-  authCode: 
-  updateTime: 15
-  pingInterval: 1000
-  disconnectTimeout: 5000
-  reconnectDelay: 500
-  maxConnectAttempts: 10
-  simulatePacketLoss: 0
-  simulationPacketLossChance: 10
-  simulateLatency: 0
-  simulationMinLatency: 30
-  simulationMaxLatency: 100
-  onClientSocketError:
-    m_PersistentCalls:
-      m_Calls: []
-  onServerSocketError:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2092436210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,7 +3478,7 @@ MonoBehaviour:
   showDebugMessages: 0
   offlineScene: StartScene
   onlineScene: MainMatchScene
-  transport: {fileID: 2092436209}
+  transport: {fileID: 2092436205}
   networkAddress: localhost
   maxConnections: 4
   playerPrefab: {fileID: 1839945735331089096, guid: fb8ab71d819054e3b98147408561d499,

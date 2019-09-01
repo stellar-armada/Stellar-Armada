@@ -72,12 +72,10 @@ namespace StellarArmada.Entities.Ships
         [Command]
         public void CmdCreateShipsForTeam(uint teamId)
         {
-
             Team t = TeamManager.instance.GetTeamByID(teamId);
             
-            Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
-            // Iterate through battle groups
-            for (int g = 0; g < currentScenario.teamInfo[teamId].fleetBattleGroups.Count; g++)
+            // Iterate through hardcoded three battle groups
+            for (int g = 0; g < 3; g++)
             {
                 //Store ships in a list for a second
                 List<Ship> ships = new List<Ship>();

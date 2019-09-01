@@ -28,7 +28,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
         pointerDown = false;
         if (timer < maxtime)
         {
-            shipyardShip.SetAsFlagship();
+            Shipyard.instance.SetFlagshipForLocalPlayer(shipyardShip);
         }
     }
 }

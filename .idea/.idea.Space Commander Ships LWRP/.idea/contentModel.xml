@@ -41,114 +41,6 @@
           <e p="UI-Default-No-Alpha.shader" t="Include" />
         </e>
         <e p="MenuView.cs" t="Include" />
-        <e p="Mirror" t="Include">
-          <e p="Runtime" t="Include">
-            <e p="Transport" t="Include">
-              <e p="LiteNetLib4Mirror" t="Include">
-                <e p="DefineAdder.cs" t="Include" />
-                <e p="Dependencies" t="Include">
-                  <e p="LiteNetLib" t="Include">
-                    <e p="BaseChannel.cs" t="Include" />
-                    <e p="ConnectionRequest.cs" t="Include" />
-                    <e p="INetEventListener.cs" t="Include" />
-                    <e p="NatPunchModule.cs" t="Include" />
-                    <e p="NetConstants.cs" t="Include" />
-                    <e p="NetDebug.cs" t="Include" />
-                    <e p="NetExceptions.cs" t="Include" />
-                    <e p="NetManager.cs" t="Include" />
-                    <e p="NetPacket.cs" t="Include" />
-                    <e p="NetPacketPool.cs" t="Include" />
-                    <e p="NetPeer.cs" t="Include" />
-                    <e p="NetSocket.cs" t="Include" />
-                    <e p="NetStatistics.cs" t="Include" />
-                    <e p="NetUtils.cs" t="Include" />
-                    <e p="ReliableChannel.cs" t="Include" />
-                    <e p="SequencedChannel.cs" t="Include" />
-                    <e p="SimpleChannel.cs" t="Include" />
-                    <e p="Utils" t="Include">
-                      <e p="FastBitConverter.cs" t="Include" />
-                      <e p="INetSerializable.cs" t="Include" />
-                      <e p="NetDataReader.cs" t="Include" />
-                      <e p="NetDataWriter.cs" t="Include" />
-                      <e p="NetPacketProcessor.cs" t="Include" />
-                      <e p="NetSerializer.cs" t="Include" />
-                      <e p="NtpPacket.cs" t="Include" />
-                      <e p="NtpRequest.cs" t="Include" />
-                    </e>
-                  </e>
-                  <e p="Open.Nat" t="Include">
-                    <e p="Discovery" t="Include">
-                      <e p="ISearcher.cs" t="Include" />
-                      <e p="Searcher.cs" t="Include" />
-                    </e>
-                    <e p="Enums" t="Include">
-                      <e p="ProtocolType.cs" t="Include" />
-                    </e>
-                    <e p="EventArgs" t="Include">
-                      <e p="DeviceEventArgs.cs" t="Include" />
-                    </e>
-                    <e p="Exceptions" t="Include">
-                      <e p="MappingException.cs" t="Include" />
-                      <e p="NatDeviceNotFoundException.cs" t="Include" />
-                    </e>
-                    <e p="Finalizer.cs" t="Include" />
-                    <e p="Mapping.cs" t="Include" />
-                    <e p="NatDevice.cs" t="Include" />
-                    <e p="NatDiscoverer.cs" t="Include" />
-                    <e p="Pmp" t="Include">
-                      <e p="PmpConstants.cs" t="Include" />
-                      <e p="PmpNatDevice.cs" t="Include" />
-                      <e p="PmpSearcher.cs" t="Include" />
-                    </e>
-                    <e p="PortMapper.cs" t="Include" />
-                    <e p="Upnp" t="Include">
-                      <e p="DiscoveryResponseMessage.cs" t="Include" />
-                      <e p="Messages" t="Include">
-                        <e p="DiscoverDeviceMessage.cs" t="Include" />
-                        <e p="Requests" t="Include">
-                          <e p="CreatePortMappingMessage.cs" t="Include" />
-                          <e p="DeletePortMappingMessage.cs" t="Include" />
-                          <e p="GetExternalIPAddressMessage.cs" t="Include" />
-                          <e p="GetGenericPortMappingEntry.cs" t="Include" />
-                          <e p="GetSpecificPortMappingEntryMessage.cs" t="Include" />
-                        </e>
-                        <e p="Responses" t="Include">
-                          <e p="AddPortMappingResponseMessage.cs" t="Include" />
-                          <e p="DeletePortMappingResponseMessage.cs" t="Include" />
-                          <e p="GetExternalIPAddressResponseMessage.cs" t="Include" />
-                          <e p="GetGenericPortMappingEntryResponseMessage.cs" t="Include" />
-                        </e>
-                      </e>
-                      <e p="RequestMessageBase.cs" t="Include" />
-                      <e p="ResponseMessageBase.cs" t="Include" />
-                      <e p="SoapClient.cs" t="Include" />
-                      <e p="UpnpConstants.cs" t="Include" />
-                      <e p="UpnpNatDevice.cs" t="Include" />
-                      <e p="UpnpNatDeviceInfo.cs" t="Include" />
-                      <e p="UpnpSearcher.cs" t="Include" />
-                    </e>
-                    <e p="Utils" t="Include">
-                      <e p="Extensions.cs" t="Include" />
-                      <e p="Guard.cs" t="Include" />
-                      <e p="IIPAddressesProvider.cs" t="Include" />
-                      <e p="IPAddressesProvider.cs" t="Include" />
-                      <e p="WellKnownConstants.cs" t="Include" />
-                    </e>
-                  </e>
-                </e>
-                <e p="LiteNetLib4MirrorClient.cs" t="Include" />
-                <e p="LiteNetLib4MirrorCore.cs" t="Include" />
-                <e p="LiteNetLib4MirrorDiscovery.cs" t="Include" />
-                <e p="LiteNetLib4MirrorNetworkManager.cs" t="Include" />
-                <e p="LiteNetLib4MirrorServer.cs" t="Include" />
-                <e p="LiteNetLib4MirrorTransport.cs" t="Include" />
-                <e p="LiteNetLib4MirrorUtils.cs" t="Include" />
-                <e p="NetworkDiscoveryHUD.cs" t="Include" />
-                <e p="RenameAttribute.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="Noble Connect" t="Include">
           <e p="Common" t="Include">
             <e p="NobleConnectSettings.cs" t="Include" />
@@ -166,8 +58,8 @@
                 <e p="ExampleMirrorNobleNetworkLobbyManager.cs" t="Include" />
               </e>
               <e p="Match Up" t="Include">
+                <e p="ExampleMatchUpHUD.cs" t="Include" />
                 <e p="INSTALL.txt" t="Include" />
-                <e p="MatchConnectionManager.cs" t="Include" />
                 <e p="MatchUpNobleNetworkManager.cs" t="Include" />
                 <e p="Readme.txt" t="Include" />
               </e>
@@ -453,6 +345,7 @@
               <e p="NetworkTransformChild.cs" t="Include" />
             </e>
             <e p="Editor" t="Include">
+              <e p="NetworkAnimatorEditor.cs" t="Include" />
               <e p="NetworkBehaviourInspector.cs" t="Include" />
               <e p="NetworkIdentityEditor.cs" t="Include" />
               <e p="NetworkInformationPreview.cs" t="Include" />
@@ -469,19 +362,78 @@
                   <e p="MessageClassProcessor.cs" t="Include" />
                   <e p="MonoBehaviourProcessor.cs" t="Include" />
                   <e p="NetworkBehaviourProcessor.cs" t="Include" />
+                  <e p="PropertySiteProcessor.cs" t="Include" />
                   <e p="RpcProcessor.cs" t="Include" />
                   <e p="SyncDictionaryProcessor.cs" t="Include" />
                   <e p="SyncEventProcessor.cs" t="Include" />
                   <e p="SyncListInitializer.cs" t="Include" />
                   <e p="SyncListProcessor.cs" t="Include" />
+                  <e p="SyncListStructProcessor.cs" t="Include" />
                   <e p="SyncObjectInitializer.cs" t="Include" />
                   <e p="SyncObjectProcessor.cs" t="Include" />
                   <e p="SyncVarProcessor.cs" t="Include" />
                   <e p="TargetRpcProcessor.cs" t="Include" />
                 </e>
                 <e p="Program.cs" t="Include" />
+                <e p="Readers.cs" t="Include" />
                 <e p="Resolvers.cs" t="Include" />
                 <e p="Weaver.cs" t="Include" />
+                <e p="Writers.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Examples" t="Include">
+              <e p="AdditiveScenes" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="AdditiveNetworkManager.cs" t="Include" />
+                  <e p="PlayerController.cs" t="Include" />
+                  <e p="SceneLoader.cs" t="Include" />
+                  <e p="ShootingTankBehaviour.cs" t="Include" />
+                  <e p="ZoneHandler.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Basic" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="Player.cs" t="Include" />
+                </e>
+              </e>
+              <e p="ListServer" t="Include">
+                <e p="ListServer.cs" t="Include" />
+                <e p="UI" t="Include">
+                  <e p="UIServerStatusSlot.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Lobby" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="NetworkLobbyManagerExt.cs" t="Include" />
+                  <e p="NetworkLobbyPlayerExt.cs" t="Include" />
+                  <e p="OfflineGUI.cs" t="Include" />
+                  <e p="PlayerController.cs" t="Include" />
+                  <e p="Reward.cs" t="Include" />
+                  <e p="Spawner.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Pong" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="Ball.cs" t="Include" />
+                  <e p="NetworkManagerPong.cs" t="Include" />
+                  <e p="Player.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Tanks" t="Include">
+                <e p="Models" t="Include">
+                  <e p="(Public Domain) Recon_Tank" t="Include">
+                    <e p="Recon_Tank - License.txt" t="Include" />
+                  </e>
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="Projectile.cs" t="Include" />
+                  <e p="Tank.cs" t="Include" />
+                </e>
+                <e p="Textures" t="Include">
+                  <e p="(Public Domain) Dirt Hand Painted Texture" t="Include">
+                    <e p="Dirt Hand Painted Texture - License.txt" t="Include" />
+                  </e>
+                </e>
               </e>
             </e>
             <e p="License.txt" t="Include" />
@@ -492,6 +444,7 @@
               <e p="DotNetCompatibility.cs" t="Include" />
               <e p="ExponentialMovingAverage.cs" t="Include" />
               <e p="FloatBytePacker.cs" t="Include" />
+              <e p="LocalClient.cs" t="Include" />
               <e p="LocalConnections.cs" t="Include" />
               <e p="LogFilter.cs" t="Include" />
               <e p="MessagePacker.cs" t="Include" />
@@ -508,29 +461,26 @@
               <e p="NetworkStartPosition.cs" t="Include" />
               <e p="NetworkTime.cs" t="Include" />
               <e p="NetworkWriter.cs" t="Include" />
+              <e p="NetworkWriterPool.cs" t="Include" />
               <e p="StringHash.cs" t="Include" />
               <e p="SyncDictionary.cs" t="Include" />
               <e p="SyncList.cs" t="Include" />
               <e p="SyncObject.cs" t="Include" />
+              <e p="SyncSet.cs" t="Include" />
               <e p="Transport" t="Include">
-                <e p="Ignorance" t="Include">
-                  <e p="Dependencies" t="Include">
-                    <e p="ENet.cs" t="Include" />
-                  </e>
-                  <e p="Editor" t="Include">
-                    <e p="AddScriptingDefine.cs" t="Include" />
-                  </e>
-                  <e p="IgnoranceTransport.cs" t="Include" />
-                  <e p="IgnoranceTransportInspector.cs" t="Include" />
-                  <e p="ISegmentTransport.cs" t="Include" />
-                  <e p="Plugins" t="Include">
-                    <e p="Readme.txt" t="Include" />
-                  </e>
-                  <e p="RenameAttribute.cs" t="Include" />
-                </e>
-                <e p="ISegmentTransport.cs" t="Include" />
                 <e p="LLAPITransport.cs" t="Include" />
                 <e p="MultiplexTransport.cs" t="Include" />
+                <e p="Telepathy" t="Include">
+                  <e p="Client.cs" t="Include" />
+                  <e p="Common.cs" t="Include" />
+                  <e p="EventType.cs" t="Include" />
+                  <e p="Logger.cs" t="Include" />
+                  <e p="Message.cs" t="Include" />
+                  <e p="NetworkStreamExtensions.cs" t="Include" />
+                  <e p="SafeQueue.cs" t="Include" />
+                  <e p="Server.cs" t="Include" />
+                  <e p="Utils.cs" t="Include" />
+                </e>
                 <e p="TelepathyTransport.cs" t="Include" />
                 <e p="Transport.cs" t="Include" />
                 <e p="Websocket" t="Include">
@@ -578,6 +528,8 @@
               <e p="UNetwork.cs" t="Include" />
             </e>
             <e p="Tests" t="Include">
+              <e p="ArraySegmentWriterTest.cs" t="Include" />
+              <e p="ArrayWriterTest.cs" t="Include" />
               <e p="ExponentialMovingAverageTest.cs" t="Include" />
               <e p="FloatBytePackerTest.cs" t="Include" />
               <e p="MessageBaseTests.cs" t="Include" />
@@ -585,6 +537,8 @@
               <e p="NetworkWriterTest.cs" t="Include" />
               <e p="SyncDictionaryTest.cs" t="Include" />
               <e p="SyncListTest.cs" t="Include" />
+              <e p="SyncSetTest.cs" t="Include" />
+              <e p="SyncVarTest.cs" t="Include" />
               <e p="WeaverAssembler.cs" t="Include" />
               <e p="WeaverTest.cs" t="Include" />
             </e>
@@ -2801,7 +2755,10 @@
         <e p="UIShipClickHandler.cs" t="Include" />
         <e p="UIShipDragHandler.cs" t="Include" />
       </e>
+      <e p="Mirror.Components.csproj" t="IncludeRecursive" />
       <e p="Mirror.csproj" t="IncludeRecursive" />
+      <e p="Mirror.Editor.csproj" t="IncludeRecursive" />
+      <e p="Mirror.Examples.csproj" t="IncludeRecursive" />
       <e p="Mirror.Tests.csproj" t="IncludeRecursive" />
       <e p="Mirror.Weaver.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />

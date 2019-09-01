@@ -16,9 +16,9 @@ namespace StellarArmada.Entities.Ships
             instance = this;
         }
 
-        public int GetShipPrice(ShipPrototype ship)
+        public int GetShipPrice(ShipType shipType)
         {
-            return shipPriceDictionary[ship.shipType];
+            return shipPriceDictionary[shipType];
         }
 
         public int GetGroupPrice(List<ShipPrototype> protos)
@@ -26,7 +26,7 @@ namespace StellarArmada.Entities.Ships
             int price = 0;
             foreach (var proto in protos)
             {
-                price += GetShipPrice(proto);
+                price += GetShipPrice(proto.shipType);
             }
 
             return price;

@@ -23,17 +23,10 @@ namespace Mirror
         /// </summary>
         public void Start()
         {
-            if (isClient) SceneManager.sceneLoaded += ClientLoadedScene;
-
             if (NetworkManager.singleton as NetworkLobbyManager)
                 OnClientEnterLobby();
             else
                 Debug.LogError("LobbyPlayer could not find a NetworkLobbyManager. The LobbyPlayer requires a NetworkLobbyManager object to function. Make sure that there is one in the scene.");
-        }
-
-        void OnDisable()
-        {
-            SceneManager.sceneLoaded -= ClientLoadedScene;
         }
 
         #endregion
@@ -45,21 +38,17 @@ namespace Mirror
         {
             ReadyToBegin = ReadyState;
             NetworkLobbyManager lobby = NetworkManager.singleton as NetworkLobbyManager;
-            lobby?.ReadyStatusChanged();
-        }
-
-        [Command]
-        public void CmdSendLevelLoaded()
-        {
-            NetworkLobbyManager lobby = NetworkManager.singleton as NetworkLobbyManager;
-            lobby?.PlayerLoadedScene(GetComponent<NetworkIdentity>().connectionToClient);
+            if (lobby != null)
+            {
+                lobby.ReadyStatusChanged();
+            }
         }
 
         #endregion
 
         #region SyncVar Hooks
 
-        private void ReadyStateChanged(bool NewReadyState)
+        void ReadyStateChanged(bool NewReadyState)
         {
             OnClientReady(ReadyToBegin);
         }
@@ -73,16 +62,6 @@ namespace Mirror
         public virtual void OnClientExitLobby() {}
 
         public virtual void OnClientReady(bool readyState) {}
-
-        public virtual void ClientLoadedScene(Scene arg0, LoadSceneMode arg1)
-        {
-            NetworkLobbyManager lobby = NetworkManager.singleton as NetworkLobbyManager;
-            if (lobby != null && SceneManager.GetActiveScene().name == lobby.LobbyScene)
-                return;
-
-            if (this != null && isLocalPlayer)
-                CmdSendLevelLoaded();
-        }
 
         #endregion
 
@@ -111,7 +90,7 @@ namespace Mirror
                 else
                     GUILayout.Label("Not Ready");
 
-                if (isServer && Index > 0 && GUILayout.Button("REMOVE"))
+                if (((isServer && Index > 0) || isServerOnly) && GUILayout.Button("REMOVE"))
                 {
                     // This button only shows on the Host for all players other than the Host
                     // Host and Players can't remove themselves (stop the client instead)

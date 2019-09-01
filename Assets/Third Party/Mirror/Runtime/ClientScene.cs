@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 using Guid = System.Guid;
@@ -29,15 +30,13 @@ namespace Mirror
         // then the client's player object won't be removed after disconnecting!
         internal static void Shutdown()
         {
-            NetworkIdentity.spawned.Clear();
             ClearSpawners();
             pendingOwnerNetIds.Clear();
             spawnableObjects = null;
             readyConnection = null;
             ready = false;
             isSpawnFinished = false;
-
-            Transport.activeTransport.ClientDisconnect();
+            DestroyAllClientObjects();
         }
 
         // this is called from message handler for Owner message
@@ -89,11 +88,11 @@ namespace Mirror
 
             if (LogFilter.Debug) Debug.Log("ClientScene.AddPlayer() called with connection [" + readyConnection + "]");
 
-            AddPlayerMessage msg = new AddPlayerMessage()
+            AddPlayerMessage message = new AddPlayerMessage()
             {
                 value = extraData
             };
-            readyConnection.Send(msg);
+            readyConnection.Send(message);
             return true;
         }
 
@@ -103,8 +102,7 @@ namespace Mirror
 
             if (readyConnection.playerController != null)
             {
-                RemovePlayerMessage msg = new RemovePlayerMessage();
-                readyConnection.Send(msg);
+                readyConnection.Send(new RemovePlayerMessage());
 
                 Object.Destroy(readyConnection.playerController.gameObject);
 
@@ -322,7 +320,7 @@ namespace Mirror
             NetworkIdentity.spawned.Clear();
         }
 
-        [Obsolete("Use NetworkIdentity.spawned[netId] instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never), Obsolete("Use NetworkIdentity.spawned[netId] instead.")]
         public static GameObject FindLocalObject(uint netId)
         {
             if (NetworkIdentity.spawned.TryGetValue(netId, out NetworkIdentity identity))
@@ -332,16 +330,21 @@ namespace Mirror
             return null;
         }
 
-        static void ApplySpawnPayload(NetworkIdentity identity, Vector3 position, Quaternion rotation, Vector3 scale, byte[] payload, uint netId)
+        static void ApplySpawnPayload(NetworkIdentity identity, Vector3 position, Quaternion rotation, Vector3 scale, ArraySegment<byte> payload, uint netId)
         {
             if (!identity.gameObject.activeSelf)
             {
                 identity.gameObject.SetActive(true);
             }
-            identity.transform.position = position;
-            identity.transform.rotation = rotation;
+
+            // apply local values for VR support
+            identity.transform.localPosition = position;
+            identity.transform.localRotation = rotation;
             identity.transform.localScale = scale;
-            if (payload != null && payload.Length > 0)
+
+            // deserialize components if any payload
+            // (Count is 0 if there were no components)
+            if (payload.Count > 0)
             {
                 NetworkReader payloadReader = new NetworkReader(payload);
                 identity.OnUpdateVars(payloadReader, true);
@@ -367,6 +370,12 @@ namespace Mirror
                 return;
             }
             if (LogFilter.Debug) Debug.Log("Client spawn handler instantiating [netId:" + msg.netId + " asset ID:" + msg.assetId + " pos:" + msg.position + "]");
+
+            // owner?
+            if (msg.owner)
+            {
+                OnSpawnMessageForOwner(msg.netId);
+            }
 
             if (NetworkIdentity.spawned.TryGetValue(msg.netId, out NetworkIdentity localObject) && localObject != null)
             {
@@ -422,6 +431,12 @@ namespace Mirror
         {
             if (LogFilter.Debug) Debug.Log("Client spawn scene handler instantiating [netId:" + msg.netId + " sceneId:" + msg.sceneId + " pos:" + msg.position);
 
+            // owner?
+            if (msg.owner)
+            {
+                OnSpawnMessageForOwner(msg.netId);
+            }
+
             if (NetworkIdentity.spawned.TryGetValue(msg.netId, out NetworkIdentity localObject) && localObject != null)
             {
                 // this object already exists (was in the scene)
@@ -434,9 +449,14 @@ namespace Mirror
             if (spawnedId == null)
             {
                 Debug.LogError("Spawn scene object not found for " + msg.sceneId.ToString("X") + " SpawnableObjects.Count=" + spawnableObjects.Count);
+
                 // dump the whole spawnable objects dict for easier debugging
-                foreach (KeyValuePair<ulong, NetworkIdentity> kvp in spawnableObjects)
-                    Debug.Log("Spawnable: SceneId=" + kvp.Key + " name=" + kvp.Value.name);
+                if (LogFilter.Debug)
+                {
+                    foreach (KeyValuePair<ulong, NetworkIdentity> kvp in spawnableObjects)
+                        Debug.Log("Spawnable: SceneId=" + kvp.Key + " name=" + kvp.Value.name);
+                }
+
                 return;
             }
 
@@ -475,6 +495,7 @@ namespace Mirror
         {
             DestroyObject(msg.netId);
         }
+
         internal static void OnObjectDestroy(NetworkConnection conn, ObjectDestroyMessage msg)
         {
             DestroyObject(msg.netId);
@@ -592,15 +613,18 @@ namespace Mirror
             }
         }
 
-        // OnClientAddedPlayer?
-        internal static void OnOwnerMessage(NetworkConnection conn, OwnerMessage msg)
+        // called for the one object in the spawn message which is the owner!
+        internal static void OnSpawnMessageForOwner(uint netId)
         {
-            if (LogFilter.Debug) Debug.Log("ClientScene.OnOwnerMessage - connectionId=" + readyConnection.connectionId + " netId: " + msg.netId);
+            if (LogFilter.Debug) Debug.Log("ClientScene.OnOwnerMessage - connectionId=" + readyConnection.connectionId + " netId: " + netId);
 
             // is there already an owner that is a different object??
-            readyConnection.playerController?.SetNotLocalPlayer();
+            if (readyConnection.playerController != null)
+            {
+                readyConnection.playerController.SetNotLocalPlayer();
+            }
 
-            if (NetworkIdentity.spawned.TryGetValue(msg.netId, out NetworkIdentity localObject) && localObject != null)
+            if (NetworkIdentity.spawned.TryGetValue(netId, out NetworkIdentity localObject) && localObject != null)
             {
                 // this object already exists
                 localObject.connectionToServer = readyConnection;
@@ -609,7 +633,7 @@ namespace Mirror
             }
             else
             {
-                pendingOwnerNetIds.Add(msg.netId);
+                pendingOwnerNetIds.Add(netId);
             }
         }
 

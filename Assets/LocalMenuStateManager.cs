@@ -34,7 +34,8 @@ public class LocalMenuStateManager : MonoBehaviour
 
     public void StartMatchmaking()
     {
-        MatchConnectionManager.instance.StartMatchmaking();
+        Debug.Log("Reinstate match connection manager");
+        // MatchConnectionManager.instance.StartMatchmaking();
         ChangeMenuState(MenuState.Connecting);
     }
 
@@ -62,7 +63,7 @@ public class LocalMenuStateManager : MonoBehaviour
     public void GoToShipyard()
     {
         ChangeMenuState(MenuState.InGame_Shipyard);
-        shipyard.PopulateShipyard();
+        shipyard.InitializeShipyard();
     }
 
     public void WarpIn()
@@ -70,16 +71,21 @@ public class LocalMenuStateManager : MonoBehaviour
         HideMenu();
             
             // Format shipyard data and feed into createships for team
-            // create bridge
-            // get ship that matches player’s criteria for flagship
-            // instantiate bridge in at ship’s bridgeroot
+            ShipFactory.instance.CmdCreateShipsForTeam(HumanPlayerController.localPlayer.GetTeam().teamId);
+            
+            // create bridges for local player's flagship / instantiate bridge in at ship’s bridgeroot
+            
+            
             // parent sceneroot to ship bridge root
+            
             // parent player, minimap, etc to sceneroot
+            
             // rename sceneroot to bridgesceneroot
+            
             // initialize warp and on-screen warp effects
+            
             // on dewarp, hide warp effects and scale up minimap
 
-            ShipFactory.instance.CmdCreateShipsForTeam(HumanPlayerController.localPlayer.GetTeam().teamId);
 
     }
 

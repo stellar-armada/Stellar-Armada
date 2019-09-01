@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: VOLCORP INC
-  productName: Star Commander
+  companyName: VOLCORP, INC
+  productName: Stellar Armada
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -163,7 +163,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.volcorp.spacecommander
-    Standalone: com.VOLCORPINC.StellarArmada
+    Standalone: com.volcorp.StellarArmada
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 25
@@ -693,7 +693,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 1
   scriptingDefineSymbols:
-    1: UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;UNITY_CCU;CURVEDUI_TMP;MATCH_UP;IGNORANCE;IGNORANCE_1;IGNORANCE_1_2
+    1: UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;UNITY_CCU;MATCH_UP;NOBLE_CONNECT;NOBLE_CONNECT_1;NOBLE_CONNECT_1_06;MIRROR_3_0_OR_NEWER;IGNORANCE;IGNORANCE_1;IGNORANCE_1_3
     4: UNITY_POST_PROCESSING_STACK_V2
     7: R_NEWER;UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;UNITY_CCU;CURVEDUI_TMP;MATCH_UP;NOBLE_CONNECT;NOBLE_CONNECT_1;NOBLE_CONNECT_1_06;LITENETLIB4MIRROR;IGNORANCE;IGNORANCE_1;IGNORANCE_1_2
     13: UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;IGNORANCE;IGNORANCE_1;IGNORANCE_1_2

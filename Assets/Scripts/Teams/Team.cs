@@ -2,6 +2,8 @@
 using Mirror;
 using StellarArmada.Entities;
 using StellarArmada.Entities.Ships;
+using StellarArmada.Levels;
+using StellarArmada.Match;
 using StellarArmada.Player;
 using UnityEngine;
 
@@ -31,6 +33,29 @@ namespace StellarArmada.Teams
         public delegate void TeamEvent();
 
         public TeamEvent OnEntitiesUpdated;
+
+        void Start()
+        {
+            InitializeShipProtoypes();
+        }
+
+        void InitializeShipProtoypes(){
+        Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
+            for (int g = 0; g < currentScenario.teamInfo[teamId].fleetBattleGroups.Count; g++)
+            {
+                foreach (var shipKeyVal in currentScenario.teamInfo[teamId].fleetBattleGroups[g])
+                {
+                    for (int numShips = 0; numShips < shipKeyVal.Value; numShips++)
+                    {
+                        // For each ship, instantiate for current team
+                        ShipPrototype p = new ShipPrototype();
+                        p.shipType = shipKeyVal.Key;
+                        p.group = g;
+                        prototypes.Add(p);
+                    }
+                }
+            }
+        }
 
         // Hardcoded 3 groups into each team
         public List<List<NetworkEntity>> groups = new List<List<NetworkEntity>>
