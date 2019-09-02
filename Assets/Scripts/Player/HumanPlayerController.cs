@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Linq;
+using Mirror;
 using StellarArmada.Entities;
 using UnityEngine;
 using StellarArmada.Entities.Ships;
@@ -86,23 +87,15 @@ namespace StellarArmada.Player
         
 
         // TO-DO: Refactor for when player selects the capital ship of their choice
-        public void PickCapitalShip()
+        public void PickCapitalShip(Ship ship)
         {
-            foreach (NetworkEntity e in GetTeam().entities)
-            {
-                Ship s = (Ship) e;
-                if (s.availableAsFlagship)
-                {
-                    s.bridge.ActivateBridgeForLocalPlayer();
-                    Transform t = transform; // skip the gameObject.transform lookup
-                    t.parent = SceneRoot.instance.transform;
-                    t.localPosition = Vector3.zero;
-                    t.localRotation = Quaternion.identity;
-                    s.CmdSetCaptain(netId);
-                    s.OnEntityDead += HandleDeath;
-                    return;
-                }
-            }
+            Debug.Log("Captal ship called");
+            // Get entity where capital ship is this player
+            Transform t = transform; // skip the gameObject.transform lookup
+            t.parent = SceneRoot.instance.transform;
+            t.localPosition = Vector3.zero;
+            t.localRotation = Quaternion.identity;
+            ship.OnEntityDead += HandleDeath;
         }
 
         void HandleDeath()

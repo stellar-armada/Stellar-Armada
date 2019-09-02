@@ -29,12 +29,7 @@ namespace StellarArmada.Entities.Ships
         
         // handy reference to which group this ship is in
         public int group = -1;
-        
-        // All capital ships are available as flagships, potentially
-        // Once a team captain has selected a ship as their flagship, this bool becomes false
-        // So other players can't also select it
-        public bool availableAsFlagship = true;
-        
+
         // Where in the formation should this ship be? Frontline, backline, etc.
         public FormationPosition formationPosition;
 
@@ -49,6 +44,7 @@ namespace StellarArmada.Entities.Ships
         [Command] // Server-side logic
         public void CmdSetCaptain(uint playerId)
         {
+            Debug.Log("Captain set");
             captain = PlayerManager.GetPlayerById(playerId);
             OnCaptainUpdated?.Invoke();
             RpcSetCaptain(playerId);
@@ -57,9 +53,16 @@ namespace StellarArmada.Entities.Ships
         [ClientRpc] // Client-side logic
         public void RpcSetCaptain(uint playerId)
         {
-            captain = PlayerManager.GetPlayerById(playerId);
-            if(!isServer) // Prevent double calls on host
+            if (!isServer)
+            {
+                // Prevent double calls on host
+                Debug.Log("Rpc captain called");
+                captain = PlayerManager.GetPlayerById(playerId);
                 OnCaptainUpdated?.Invoke();
+            }
+
+            ((HumanPlayerController)captain).PickCapitalShip(this);
+            bridge.ActivateBridgeForLocalPlayer();
         }
 
         public PlayerController GetCaptain() => captain;

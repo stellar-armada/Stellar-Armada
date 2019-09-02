@@ -14,21 +14,25 @@ namespace StellarArmada.Teams
     // Contains all ships for teams. Organizes ships into three battle groups (List<List<NetworkEntity>> groups)
     // Also contains references to players, team specific colors, etc.
     
+    public class SyncListShipPrototype : SyncList<ShipPrototype> { }
+
+
     public class Team : NetworkBehaviour
     {
-        public uint teamId; // unique ID incremented when team is created
+        [SyncVar (hook=nameof(HandleTeamSet))] public uint teamId; // unique ID incremented when team is created
 
         public SyncListShipPrototype prototypes = new SyncListShipPrototype();
         
         // public int pointsToSpend; leaving here so we can add this mechanic later
-        public string teamName;
-        public Color color;
-        public int playerSlots;
+        [SyncVar] public string teamName;
+        [SyncVar] public Color color;
+        [SyncVar] public int playerSlots;
+        public List<ShipType> availableShipTypes;
+        [SyncVar] public int pointsToSpend;
+        
         public Texture insignia;
         public List<PlayerController> players = new List<PlayerController>();
         public List<NetworkEntity> entities = new List<NetworkEntity>();
-        public List<ShipType> availableShipTypes;
-        public int pointsToSpend;
         
         public delegate void TeamEvent();
 
@@ -37,6 +41,12 @@ namespace StellarArmada.Teams
         void Start()
         {
             InitializeShipProtoypes();
+            if (insignia == null) HandleTeamSet(teamId);
+        }
+
+        void HandleTeamSet(uint teamId)
+        {
+            insignia = TeamManager.instance.templates[teamId].insignia;
         }
 
         void InitializeShipProtoypes(){

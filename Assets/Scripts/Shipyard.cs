@@ -17,7 +17,6 @@ public struct ShipPrototype
     public int group;
 }
 
-public class SyncListShipPrototype : SyncList<ShipPrototype> { }
 
 public class Shipyard : MonoBehaviour
 {
@@ -40,8 +39,9 @@ public class Shipyard : MonoBehaviour
         instance = this;
     }
     
-    void Start()
+    void Init()
     {
+        Debug.Log("Calling init");
         localPlayer = HumanPlayerController.localPlayer;
 
         localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
@@ -52,16 +52,19 @@ public class Shipyard : MonoBehaviour
 
     public void InitializeShipyard()
     {
+        Init();
         PopulateUIShipyardShips();
         ShowAvailableShips();
     }
 
     void HandleTeamChange()
     {
+        Debug.Log("Handle team change called");
         team.prototypes.Callback -= OnShipListUpdated;
         team = localPlayer.GetTeam();
         team.prototypes.Callback += OnShipListUpdated;
         PopulateUIShipyardShips();
+        ShowAvailableShips();
     }
     
     public void OnShipListUpdated(SyncList<ShipPrototype>.Operation op, int itemindex, ShipPrototype proto)
@@ -93,6 +96,8 @@ public class Shipyard : MonoBehaviour
         // Parent to appropriate container
         ship.transform.SetParent(shipyardGroups[proto.group].transform);
         ship.transform.localPosition = Vector3.zero;
+        ship.transform.localScale = Vector3.one;
+        ship.transform.localRotation = Quaternion.identity;
         // add to list of UI ships
         shipyardShips.Add(ship);
     }
@@ -141,6 +146,7 @@ public class Shipyard : MonoBehaviour
 
     void PopulateUIShipyardShips()
     {
+        Debug.Log("Populating shipyard");
         // Destroy all shipyard ships and clear the list
         foreach (var ship in shipyardShips)
         {
@@ -150,6 +156,7 @@ public class Shipyard : MonoBehaviour
         // Foreach ship in the team's list
         foreach (var proto in team.prototypes)
         {
+
         // Create a new shipyard ship and assign it the prototype's ID
             CreateUIShip(proto);
         }
@@ -251,6 +258,9 @@ public class Shipyard : MonoBehaviour
             proto.hasCaptain = false;
         }
         
+        Debug.Log("Shipyard ship: " + shipyardShip.id);
+        
+        Debug.Log("Shipyard protoype: " + shipyardShip.GetPrototype());
         ShipPrototype newProto = shipyardShip.GetPrototype();
         
         newProto = shipyardShip.GetPrototype();

@@ -41,6 +41,7 @@ namespace StellarArmada.Teams
         [Server]
         public void CreateNewTeam(TeamInfo teamInfo) // Would be great to pass full TeamInfo, but Cmds can only take basic types
         {
+            Debug.Log("Creating new team");
             TeamTemplate template = templates[newTeamIndex++];
             Team t = Instantiate(teamPrefab, transform).GetComponent<Team>();
             NetworkServer.Spawn(t.gameObject);
@@ -52,7 +53,19 @@ namespace StellarArmada.Teams
             t.pointsToSpend = teamInfo.pointsToSpend;
             t.availableShipTypes = teamInfo.availableShipTypes;
             teams.Add(t);
+
+            // Populate prototypes
+            foreach (var group in teamInfo.fleetBattleGroups)
+            foreach (var ship in group)
+                for (int i = 0; i < ship.Value; i++)
+                    {
+                        // add one for each 
+                        ShipPrototype p = new ShipPrototype();
+                        p.shipType = ship.Key;
+                        t.prototypes.Add(p);
+                    }
         }
+
 
         [Command]
         public void CmdJoinTeam(uint playerId)

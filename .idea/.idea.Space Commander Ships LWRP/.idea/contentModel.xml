@@ -7,14 +7,11 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="DontDestroyOnLoad.cs" t="Include" />
         <e p="Fonts" t="Include">
           <e p="Jupiter" t="Include">
             <e p="License.txt" t="Include" />
           </e>
         </e>
-        <e p="GroupContainer.cs" t="Include" />
-        <e p="LocalMenuStateManager.cs" t="Include" />
         <e p="Match Up" t="Include">
           <e p="Examples" t="Include">
             <e p="Mirror" t="Include">
@@ -36,11 +33,10 @@
           </e>
           <e p="Matchmaker.cs" t="Include" />
         </e>
-        <e p="MatchMenuStartButtonController.cs" t="Include" />
+        <e p="MatchConnectionManager.cs" t="Include" />
         <e p="Materials" t="Include">
           <e p="UI-Default-No-Alpha.shader" t="Include" />
         </e>
-        <e p="MenuView.cs" t="Include" />
         <e p="Noble Connect" t="Include">
           <e p="Common" t="Include">
             <e p="NobleConnectSettings.cs" t="Include" />
@@ -96,6 +92,7 @@
             <e p="LocalPlayerRig.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
           </e>
+          <e p="DontDestroyOnLoad.cs" t="Include" />
           <e p="DragMe.cs" t="Include" />
           <e p="DragPanel.cs" t="Include" />
           <e p="DropMe.cs" t="Include" />
@@ -138,6 +135,7 @@
               <e p="ShipWarp.cs" t="Include" />
             </e>
           </e>
+          <e p="GroupContainer.cs" t="Include" />
           <e p="IK" t="Include">
             <e p="AxisTools.cs" t="Include" />
             <e p="Hierarchy.cs" t="Include" />
@@ -177,6 +175,7 @@
             <e p="WarpPoint.cs" t="Include" />
             <e p="WinCondition.cs" t="Include" />
           </e>
+          <e p="LocalMenuStateManager.cs" t="Include" />
           <e p="Match" t="Include">
             <e p="MatchClock.cs" t="Include" />
             <e p="MatchClockManager.cs" t="Include" />
@@ -191,6 +190,8 @@
               <e p="MatchMessageManager.cs" t="Include" />
             </e>
           </e>
+          <e p="MatchMenuStartButtonController.cs" t="Include" />
+          <e p="MenuView.cs" t="Include" />
           <e p="Networking" t="Include">
             <e p="Editor" t="Include">
               <e p="MatchNetworkManagerEditor.cs" t="Include" />
@@ -236,6 +237,7 @@
             <e p="ShieldEffectController.cs" t="Include" />
             <e p="ShieldHit.cs" t="Include" />
           </e>
+          <e p="Shipyard.cs" t="Include" />
           <e p="ShowSliderValue.cs" t="Include" />
           <e p="Teams" t="Include">
             <e p="Team.cs" t="Include" />
@@ -256,6 +258,8 @@
             <e p="UIShipFactory.cs" t="Include" />
             <e p="UIShipyardShip.cs" t="Include" />
           </e>
+          <e p="UIShipClickHandler.cs" t="Include" />
+          <e p="UIShipDragHandler.cs" t="Include" />
           <e p="Utility" t="Include">
             <e p="Comment.cs" t="Include" />
             <e p="DestroyImmediately.cs" t="Include" />
@@ -323,7 +327,6 @@
             <e p="DepthFadeAdditive.shader" t="Include" />
           </e>
         </e>
-        <e p="Shipyard.cs" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="settings.txt" t="Include" />
         </e>
@@ -468,6 +471,27 @@
               <e p="SyncObject.cs" t="Include" />
               <e p="SyncSet.cs" t="Include" />
               <e p="Transport" t="Include">
+                <e p="Ignorance" t="Include">
+                  <e p="Dependencies" t="Include">
+                    <e p="ENet.cs" t="Include" />
+                  </e>
+                  <e p="Editor" t="Include">
+                    <e p="AddScriptingDefine.cs" t="Include" />
+                  </e>
+                  <e p="Ignorance.cs" t="Include" />
+                  <e p="IgnoranceServerThreaded.cs" t="Include" />
+                  <e p="IgnoranceTransport.cs" t="Include" />
+                  <e p="ISegmentTransport.cs" t="Include" />
+                  <e p="Modules" t="Include">
+                    <e p="IgnoranceLANDiscoveryModule.cs" t="Include" />
+                    <e p="IgnorancePortForwarderModule.cs" t="Include" />
+                  </e>
+                  <e p="Plugins" t="Include">
+                    <e p="Readme.txt" t="Include" />
+                  </e>
+                  <e p="RenameAttribute.cs" t="Include" />
+                </e>
+                <e p="ISegmentTransport.cs" t="Include" />
                 <e p="LLAPITransport.cs" t="Include" />
                 <e p="MultiplexTransport.cs" t="Include" />
                 <e p="Telepathy" t="Include">
@@ -2752,8 +2776,6 @@
             </e>
           </e>
         </e>
-        <e p="UIShipClickHandler.cs" t="Include" />
-        <e p="UIShipDragHandler.cs" t="Include" />
       </e>
       <e p="Mirror.Components.csproj" t="IncludeRecursive" />
       <e p="Mirror.csproj" t="IncludeRecursive" />

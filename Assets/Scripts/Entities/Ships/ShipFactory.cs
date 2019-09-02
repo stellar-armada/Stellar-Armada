@@ -2,7 +2,7 @@
 using System.Linq;
 using Mirror;
 using StellarArmada.Levels;
-using StellarArmada.Match;
+using StellarArmada.Player;
 using StellarArmada.Teams;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ namespace StellarArmada.Entities.Ships
             instance = this;
         }
 
-// Ship Factory
+        // Ship Factory
         [Command]
         public void CmdCreateShipForPlayer(uint playerID, ShipType shipType, Vector3 position, Quaternion rotation)
         {
@@ -68,7 +68,6 @@ namespace StellarArmada.Entities.Ships
             TeamManager.instance.GetTeamByID(teamId).groups[groupId].Add(s);
             return s;
         }
-
         [Command]
         public void CmdCreateShipsForTeam(uint teamId)
         {
@@ -88,6 +87,9 @@ namespace StellarArmada.Entities.Ships
                     // For each ship, instantiate for current team
                         Ship s = CreateShipForTeam(teamId, groupPrototype.group, groupPrototype.shipType);
                         ships.Add(s);
+
+                        if (groupPrototype.hasCaptain)
+                            s.CmdSetCaptain(groupPrototype.captain);
                 }
 
                 // get positions back for list of ships from formation manager
@@ -96,12 +98,18 @@ namespace StellarArmada.Entities.Ships
                 // Get list of warp vectors in level
                 var warpPoints = Level.currentLevel.warpPoints;
 
-                Transform wp = warpPoints.Single(w => (w.teamIndex == teamId && w.groupNumber == g)).transform;
+                Debug.Log(warpPoints.Count);
+                WarpPoint wp = warpPoints.FirstOrDefault(w =>
+                {
+                    Debug.Log("Team index: " + w.teamIndex);
+                    Debug.Log("Group number: " + w.groupNumber);
+                    return w.teamIndex == teamId && w.groupNumber == g;
+                });
 
                 foreach (Ship s in ships)
                 {
-                    Vector3 pos = wp.localPosition;
-                    Quaternion rot = wp.rotation;
+                    Vector3 pos = wp.transform.localPosition;
+                    Quaternion rot = wp.transform.rotation;
 
                     Matrix4x4 parentMatrix = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one).inverse;
 
