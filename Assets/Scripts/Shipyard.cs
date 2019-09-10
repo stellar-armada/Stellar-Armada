@@ -267,18 +267,8 @@ public class Shipyard : MonoBehaviour
 
         int i = team.prototypes.IndexOf(shipyardShip.GetPrototype());
 
-        CmdSetShipCaptain(localPlayer.netId, i);
+        team.CmdSetShipCaptain(localPlayer.netId, i);
     }
 
-    [Command]
-    public void CmdSetShipCaptain(uint id, int prototypeIndex)
-    {
-        ShipPrototype newProto = team.prototypes[prototypeIndex];
 
-        newProto.hasCaptain = true;
-        newProto.captain = localPlayer.netId;
-
-        // get index of prototype and dirty
-        team.prototypes[prototypeIndex] = newProto;
-    }
 }

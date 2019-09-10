@@ -49,6 +49,20 @@ namespace StellarArmada.Teams
         {
             insignia = TeamManager.instance.templates[teamId].insignia;
         }
+        
+        [Command]
+        public void CmdSetShipCaptain(uint id, int prototypeIndex)
+        {
+            ShipPrototype newProto = prototypes[prototypeIndex];
+
+            newProto.hasCaptain = true;
+            newProto.captain = id;
+
+            // get index of prototype and dirty
+            prototypes[prototypeIndex] = newProto;
+            
+            prototypes.Dirty(prototypeIndex); // Do we need this?
+        }
 
         void InitializeShipProtoypes(){
         Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();

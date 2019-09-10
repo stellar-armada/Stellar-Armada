@@ -340,6 +340,7 @@
         <e p="Third Party" t="Include">
           <e p="Mirror" t="Include">
             <e p="Components" t="Include">
+              <e p="Mirror.Components.asmdef" t="Include" />
               <e p="NetworkAnimator.cs" t="Include" />
               <e p="NetworkLobbyManager.cs" t="Include" />
               <e p="NetworkLobbyPlayer.cs" t="Include" />
@@ -348,6 +349,7 @@
               <e p="NetworkTransformChild.cs" t="Include" />
             </e>
             <e p="Editor" t="Include">
+              <e p="Mirror.Editor.asmdef" t="Include" />
               <e p="NetworkAnimatorEditor.cs" t="Include" />
               <e p="NetworkBehaviourInspector.cs" t="Include" />
               <e p="NetworkIdentityEditor.cs" t="Include" />
@@ -360,6 +362,7 @@
                 <e p="CompilationFinishedHook.cs" t="Include" />
                 <e p="Extensions.cs" t="Include" />
                 <e p="Helpers.cs" t="Include" />
+                <e p="Mirror.Weaver.asmdef" t="Include" />
                 <e p="Processors" t="Include">
                   <e p="CommandProcessor.cs" t="Include" />
                   <e p="MessageClassProcessor.cs" t="Include" />
@@ -415,6 +418,7 @@
                   <e p="Spawner.cs" t="Include" />
                 </e>
               </e>
+              <e p="Mirror.Examples.asmdef" t="Include" />
               <e p="Pong" t="Include">
                 <e p="Scripts" t="Include">
                   <e p="Ball.cs" t="Include" />
@@ -452,6 +456,7 @@
               <e p="LogFilter.cs" t="Include" />
               <e p="MessagePacker.cs" t="Include" />
               <e p="Messages.cs" t="Include" />
+              <e p="Mirror.asmdef" t="Include" />
               <e p="NetworkBehaviour.cs" t="Include" />
               <e p="NetworkClient.cs" t="Include" />
               <e p="NetworkConnection.cs" t="Include" />
@@ -553,6 +558,7 @@
               <e p="FloatBytePackerTest.cs" t="Include" />
               <e p="MessageBaseTests.cs" t="Include" />
               <e p="MessagePackerTest.cs" t="Include" />
+              <e p="Mirror.Tests.asmdef" t="Include" />
               <e p="NetworkWriterTest.cs" t="Include" />
               <e p="SyncDictionaryTest.cs" t="Include" />
               <e p="SyncListTest.cs" t="Include" />
@@ -839,6 +845,7 @@
             <e p="VR" t="Include">
               <e p="Editor" t="Include">
                 <e p="AndroidManifest.OVRSubmission.xml" t="Include" />
+                <e p="Oculus.VR.Editor.asmdef" t="Include" />
                 <e p="OVRADBTool.cs" t="Include" />
                 <e p="OVRBuild.cs" t="Include" />
                 <e p="OVRConfig.cs" t="Include" />
@@ -861,6 +868,7 @@
               </e>
               <e p="License.txt" t="Include" />
               <e p="NOTICE.txt" t="Include" />
+              <e p="Oculus.VR.asmdef" t="Include" />
               <e p="Plugins" t="Include">
                 <e p="placeholder.txt" t="Include" />
               </e>
@@ -877,6 +885,7 @@
                   <e p="OVRSandwichComposition.cs" t="Include" />
                 </e>
                 <e p="Editor" t="Include">
+                  <e p="Oculus.VR.Scripts.Editor.asmdef" t="Include" />
                   <e p="OVRManagerEditor.cs" t="Include" />
                   <e p="OVROverlayEditor.cs" t="Include" />
                 </e>
@@ -1152,6 +1161,7 @@
                   <e p="Supyrb" t="Include">
                     <e p="Editor" t="Include">
                       <e p="SerializedPropertyExtensions.cs" t="Include" />
+                      <e p="Supyrb.Editor.asmdef" t="Include" />
                     </e>
                   </e>
                 </e>
@@ -1177,6 +1187,7 @@
                     <e p="PickerWindow.cs" t="Include" />
                     <e p="SerializedPropertyExtensions.cs" t="Include" />
                   </e>
+                  <e p="Zinnia.Editor.asmdef" t="Include" />
                 </e>
                 <e p="Runtime" t="Include">
                   <e p="Action" t="Include">
@@ -1500,6 +1511,7 @@
                     <e p="CameraColorOverlay.cs" t="Include" />
                     <e p="PointsRenderer.cs" t="Include" />
                   </e>
+                  <e p="Zinnia.Runtime.asmdef" t="Include" />
                 </e>
                 <e p="Tests" t="Include">
                   <e p="Editor" t="Include">
@@ -1726,6 +1738,7 @@
                       <e p="CameraColorOverlayTest.cs" t="Include" />
                       <e p="PointsRendererTest.cs" t="Include" />
                     </e>
+                    <e p="Zinnia.Tests.Editor.asmdef" t="Include" />
                   </e>
                   <e p="Utility" t="Include">
                     <e p="Helper" t="Include">
@@ -1743,6 +1756,7 @@
                       <e p="TrueRuleStub.cs" t="Include" />
                     </e>
                     <e p="TimeSettingOverride.cs" t="Include" />
+                    <e p="Zinnia.Tests.Utility.asmdef" t="Include" />
                   </e>
                 </e>
               </e>
@@ -2013,6 +2027,7 @@
                   <e p="VertexLit_Color.shader" t="Include" />
                 </e>
               </e>
+              <e p="VRTK.Prefabs.Runtime.asmdef" t="Include" />
             </e>
           </e>
         </e>
