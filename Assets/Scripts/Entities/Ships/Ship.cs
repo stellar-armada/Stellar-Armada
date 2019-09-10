@@ -23,28 +23,30 @@ namespace StellarArmada.Entities.Ships
         // For this implementation, ships can be captained by players
         // Captains are placed on the bridge, which is instantiated for all captained ships
         public PlayerController captain;
-        
+
         // An enum identifying what type of ship this is
         public ShipType type;
-        
+
         // handy reference to which group this ship is in
         public int group = -1;
 
         // Where in the formation should this ship be? Frontline, backline, etc.
         public FormationPosition formationPosition;
 
-        [Header("Ship Subsystems")]
-        public ShipBridge bridge; //Instantiated and set when the captain choose this ship
-        public ShipWarp shipWarp; // Manages the visual ship warp, as well as enabling the ship for command when warped in
+        [Header("Ship Subsystems")] public ShipBridge bridge; //Instantiated and set when the captain choose this ship
+
+        public ShipWarp
+            shipWarp; // Manages the visual ship warp, as well as enabling the ship for command when warped in
+
         public MiniMapStatusBar miniMapStatusBar; // Insignia, health/shields and captain nameplate in the minimap
         public ShipSelectionHandler shipSelectionHandler; // Handles all logic related to local player selection
-        
-        public Action OnCaptainUpdated = delegate {  }; // Delegate called when a captain is set for the ship
-        
+
+        public Action OnCaptainUpdated = delegate { }; // Delegate called when a captain is set for the ship
+
         [Command] // Server-side logic
         public void CmdSetCaptain(uint playerId)
         {
-            Debug.Log("Captain set");
+            Debug.Log("<color=red>CAPTAIN</color> Captain set to " + playerId + " on server");
             captain = PlayerManager.GetPlayerById(playerId);
             OnCaptainUpdated?.Invoke();
             RpcSetCaptain(playerId);
@@ -56,13 +58,18 @@ namespace StellarArmada.Entities.Ships
             if (!isServer)
             {
                 // Prevent double calls on host
-                Debug.Log("Rpc captain called");
+                Debug.Log("<color=red>CAPTAIN</color> Captain set to " + playerId + " on client");
                 captain = PlayerManager.GetPlayerById(playerId);
                 OnCaptainUpdated?.Invoke();
             }
 
-            ((HumanPlayerController)captain).PickCapitalShip(this);
-            bridge.ActivateBridgeForLocalPlayer();
+            // Local player logic
+            if (captain == HumanPlayerController.localPlayer)
+            {
+                Debug.Log("<color=red>CAPTAIN</color> Picking capital ship for local player " + captain.netId);
+                ((HumanPlayerController) captain).PickCapitalShip(this);
+                bridge.ActivateBridgeForLocalPlayer();
+            }
         }
 
         public PlayerController GetCaptain() => captain;
@@ -72,7 +79,7 @@ namespace StellarArmada.Entities.Ships
         {
             team.ChangeEntityGroup(this, newGroupId);
         }
-        
+
         [Command] // Server logic
         public override void CmdSetTeam(uint newTeamId)
         {
@@ -83,8 +90,8 @@ namespace StellarArmada.Entities.Ships
         [ClientRpc] // Client logic
         public void RpcSetTeam(uint newTeamId)
         {
-            if(!isServer) // Prevent double calls if we're testing in host mode
-            SetTeam(newTeamId);
+            if (!isServer) // Prevent double calls if we're testing in host mode
+                SetTeam(newTeamId);
         }
 
         void SetTeam(uint newTeamId) // Called on both server and client
@@ -106,7 +113,7 @@ namespace StellarArmada.Entities.Ships
         [ClientRpc]
         public override void RpcDie()
         {
-             Die();
+            Die();
         }
 
         void Die()
@@ -119,10 +126,10 @@ namespace StellarArmada.Entities.Ships
             weaponSystemController.HideWeaponSystems();
             shield.currentShield = 0;
             shield.gameObject.SetActive(false);
-            if(HumanPlayerController.localPlayer != null == team.players.Contains(HumanPlayerController.localPlayer))
+            if (HumanPlayerController.localPlayer != null == team.players.Contains(HumanPlayerController.localPlayer))
                 ShipSelectionManager.instance.RemoveSelectableFromSelectionSets(entityId);
         }
-        
+
         public ISelectable GetSelectionHandler() => shipSelectionHandler;
     }
 }
