@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnitySteer.Behaviors;
 using Zinnia.Extension;
 
@@ -19,6 +20,8 @@ namespace StellarArmada.Levels
 
         [SerializeField] private LayerMask uiLayerMask;
 
+        public bool interactable = false;
+        
         void Awake()
         {
             instance = this;
@@ -37,6 +40,31 @@ namespace StellarArmada.Levels
         {
             lockRotation = !lockRotation;
         }
+
+        public void ShowMiniMap()
+        {
+            StartCoroutine(ExpandMiniMap());
+        }
+        
+        IEnumerator ExpandMiniMap()
+        {
+            float timer = 0f;
+
+            float expansionTime = .5f;
+
+            do
+            {
+                timer += Time.deltaTime;
+                transform.localScale = Vector3.one * Mathf.Lerp(0, startScale, timer / expansionTime);
+                yield return null;
+            } while (timer <= expansionTime);
+
+            transform.localScale = Vector3.one * startScale;
+            
+            interactable = true;
+        }
+        
+        
 
         public void LockRotation()
         {
@@ -77,7 +105,7 @@ namespace StellarArmada.Levels
 
         void LateUpdate()
         {
-            if (!lockRotation || MiniMapController.instance == null || MiniMapController.instance.isActive) return;
+            if (!interactable || !lockRotation || MiniMapController.instance == null || MiniMapController.instance.isActive) return;
             transform.rotation =
                 Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
 

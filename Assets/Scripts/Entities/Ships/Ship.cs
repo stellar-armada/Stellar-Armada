@@ -22,7 +22,7 @@ namespace StellarArmada.Entities.Ships
     {
         // For this implementation, ships can be captained by players
         // Captains are placed on the bridge, which is instantiated for all captained ships
-        [HideInInspector] public PlayerController captain;
+        public PlayerController captain;
         
         // An enum identifying what type of ship this is
         public ShipType type;

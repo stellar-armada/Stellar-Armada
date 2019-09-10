@@ -18,7 +18,7 @@ namespace StellarArmada.Entities.Ships
             Debug.Log("Bridge activated!");
             GameObject bridgeObject = Instantiate(bridgePrefab, bridgeRoot);
             bridgeObject.transform.localRotation = Quaternion.identity;
-            bridgeObject.transform.localPosition = Vector3.one;
+            bridgeObject.transform.localPosition = Vector3.zero;
             localBridge = bridgeObject.GetComponent<ShipBridge>();
             
             LocalPlayerBridgeSceneRoot.instance.transform.SetParent(bridgeRoot);

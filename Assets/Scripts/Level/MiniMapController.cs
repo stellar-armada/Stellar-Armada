@@ -104,7 +104,7 @@ namespace StellarArmada.Levels
 
         void Update()
         {
-            if (!isInitialized) return;
+            if (!isInitialized || !MiniMap.instance.interactable) return;
             //current position of controllers
             leftPos = leftController.localPosition;
             rightPos = rightController.localPosition;

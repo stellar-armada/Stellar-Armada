@@ -33390,7 +33390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492676720519598, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4078321483024794, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33402,7 +33402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078321483024794, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 350
+      value: 259.8
       objectReference: {fileID: 0}
     - target: {fileID: 4078321483024794, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -33435,6 +33435,37 @@ PrefabInstance:
     - target: {fileID: 4078321483024794, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051218824594104, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -62.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051218824594104, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051218824594104, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051218824594104, guid: 5268c7369c653774b8c7002951597fdc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198804411463024780, guid: 5268c7369c653774b8c7002951597fdc,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 198804411463024780, guid: 5268c7369c653774b8c7002951597fdc,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 198987453466731794, guid: 5268c7369c653774b8c7002951597fdc,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5268c7369c653774b8c7002951597fdc, type: 3}

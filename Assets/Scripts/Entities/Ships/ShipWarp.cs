@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Mirror;
 using StellarArmada.Levels;
+using StellarArmada.Player;
 using UnityEngine;
 #pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
@@ -81,6 +82,11 @@ namespace StellarArmada.Entities.Ships
                 {
                     main = system.main;
                     main.loop = false;
+                }
+
+                if (ship.captain == HumanPlayerController.localPlayer)
+                {
+                    MiniMap.instance.ShowMiniMap();
                 }
             }
 
