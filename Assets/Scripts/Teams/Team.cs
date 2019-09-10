@@ -42,6 +42,7 @@ namespace StellarArmada.Teams
         {
             //InitializeShipProtoypes();
             if (insignia == null) HandleTeamSet(teamId);
+            TeamManager.instance.teams.Add(this);
         }
 
         void HandleTeamSet(uint teamId)

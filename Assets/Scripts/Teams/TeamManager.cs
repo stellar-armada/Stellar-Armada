@@ -53,8 +53,6 @@ namespace StellarArmada.Teams
             t.pointsToSpend = teamInfo.pointsToSpend;
             t.availableShipTypes = teamInfo.availableShipTypes;
 
-            teams.Add(t);
-
             // Populate prototypes
             for (int group = 0; group < teamInfo.fleetBattleGroups.Count; group++) 
                 foreach (var ship in teamInfo.fleetBattleGroups[group])

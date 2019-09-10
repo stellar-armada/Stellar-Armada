@@ -8,6 +8,7 @@ namespace StellarArmada
 
       void LateUpdate()
       {
+            if (targetToFollow == null) return;
          transform.position = targetToFollow.position;
          transform.rotation = targetToFollow.rotation;
       }
