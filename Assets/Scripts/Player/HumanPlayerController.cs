@@ -28,6 +28,8 @@ namespace StellarArmada.Player
 
         public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
 
+        bool isInitialized = false;
+
         
         void Start()
         {
@@ -36,6 +38,7 @@ namespace StellarArmada.Player
             if (isLocalPlayer)
             {
                 localPlayer = this;
+                if (!isInitialized) CmdInitialize();
             }
         }
 
@@ -54,6 +57,7 @@ namespace StellarArmada.Player
         
         void Initialize()
         {
+            isInitialized = true;
             Debug.Log("<color=blue>Initializing player...</color>");
             bodyController.Init();
 
