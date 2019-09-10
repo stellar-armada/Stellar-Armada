@@ -32,7 +32,8 @@ namespace StellarArmada.Teams
         public delegate void TeamEventSelectionHandler(uint teamId);
 
         [SyncEvent] public event TeamEventSelectionHandler EventTeamShipsUpdated;
-        
+
+        static int teamIncrementer = 0;
 
         void Awake()
         {
@@ -45,7 +46,7 @@ namespace StellarArmada.Teams
             Debug.Log("Creating new team");
             TeamTemplate template = templates[newTeamIndex++];
             Team t = Instantiate(teamPrefab, transform).GetComponent<Team>();
-            t.teamId = (uint)teams.Count;
+            t.teamId = (uint)teamIncrementer++;
             t.teamName = template.name;
             t.color = template.color;
             t.insignia = template.insignia;
