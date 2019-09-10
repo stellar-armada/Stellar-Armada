@@ -76,8 +76,10 @@ namespace StellarArmada.Teams
         {
             // Find team with most slots available (slots avail - num players)
 
-            List<Team> sortedTeams = new List<Team>(teams.OrderBy(t => (t.playerSlots - t.entities.Count)));
+            List<Team> sortedTeams = new List<Team>(teams.OrderByDescending(t => (t.playerSlots - t.players.Count)));
 
+            Debug.Log("Putting player on sortedTeams[0] which has " + sortedTeams[0].players.Count + " players on it");
+            
             // Set player teamId to team's
             sortedTeams[0].CmdAddPlayer(playerId);
         }

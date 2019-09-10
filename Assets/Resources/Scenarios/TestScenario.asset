@@ -29,10 +29,14 @@ MonoBehaviour:
       m_values: 01000000
     - m_keys: 05000000
       m_values: 01000000
-  - availableShipTypes: 
-    pointsToSpend: 0
+  - availableShipTypes: 05000000
+    pointsToSpend: 50
     numberOfPlayerSlots: 1
     fleetBattleGroups:
+    - m_keys: 05000000
+      m_values: 01000000
+    - m_keys: 05000000
+      m_values: 01000000
     - m_keys: 05000000
       m_values: 01000000
   levelPrefab: {fileID: 3198974705040035564, guid: a5d206aa6dfe01243a99e9c16bfddf3b,

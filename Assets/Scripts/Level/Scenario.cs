@@ -7,9 +7,6 @@ namespace StellarArmada.Levels
     [System.Serializable, CreateAssetMenu(fileName = nameof(Scenario), menuName = "Scenario", order = 56)]
     public class Scenario : ScriptableObject
     {
-        public float setupTime = 1f;
-        public float matchTime = 15f;
-        public float postMatchTime = 1f;
         public string scenarioName;
         public int numberOfHumanPlayers;
         public string description;
