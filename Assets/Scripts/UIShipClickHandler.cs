@@ -31,6 +31,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!pointerDown) return;
         if (shipyardShip.id < 0) return;
         pointerDown = false;
         if (timer < maxtime)

@@ -1,7 +1,7 @@
 ﻿using StellarArmada.IO;
 using StellarArmada.Player;
 using UnityEngine;
-
+#pragma warning disable 0649
 namespace StellarArmada.Levels
 {
     // Local player's minimap controller

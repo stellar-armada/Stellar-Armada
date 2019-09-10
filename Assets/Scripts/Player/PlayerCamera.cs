@@ -5,22 +5,22 @@ namespace StellarArmada.Player
     public class PlayerCamera : MonoBehaviour
     {
         public static PlayerCamera instance;
-        [SerializeField] private Camera camera;
+        [SerializeField] private Camera cam;
 
         [SerializeField] private LayerMask matchLayers;
         [SerializeField] LayerMask purgatory;
 
         public void ShowMatchView()
         {
-            camera.cullingMask = matchLayers;
+            cam.cullingMask = matchLayers;
         }
 
         public void ShowPurgatoryView()
         {
-            camera.cullingMask = purgatory;
+            cam.cullingMask = purgatory;
         }
         
-        public Camera GetCamera() => camera;
+        public Camera GetCamera() => cam;
 
         void Awake() => instance = this;
 

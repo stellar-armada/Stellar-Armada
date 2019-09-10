@@ -17,7 +17,7 @@ public enum MenuState
     InGame_Defeat,
     InGame_Victory
 }
-
+#pragma warning disable 0649
 public class LocalMenuStateManager : MonoBehaviour
 {
     [SerializeField] MenuStateDictionary menuStates = new MenuStateDictionary();

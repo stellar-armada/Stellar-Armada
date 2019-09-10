@@ -58,6 +58,8 @@
 
        public void OnEndDrag(PointerEventData eventData)
        {
+        if (!isDragging) return;
+
            if (dragTimer < dragDelay) return;
            if (GroupContainer.currentGroup)
            {

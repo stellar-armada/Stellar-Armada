@@ -18,7 +18,7 @@ public struct ShipPrototype
     public int group;
 }
 
-
+#pragma warning disable 0649
 public class Shipyard : MonoBehaviour
 {
     public static Shipyard instance;
@@ -267,7 +267,7 @@ public class Shipyard : MonoBehaviour
 
         int i = team.prototypes.IndexOf(shipyardShip.GetPrototype());
 
-        team.CmdSetShipCaptain(localPlayer.netId, i);
+        HumanPlayerController.localPlayer.CmdSetShipCaptain(localPlayer.netId, i);
     }
 
 

@@ -5,6 +5,7 @@ using StellarArmada.Match;
 using UnityEngine;
 using UnityEngine.UI;
 
+#pragma warning disable 0649
 public class MatchMenuStartButtonController : MonoBehaviour
 {
     [SerializeField] private Button startMatchButton;

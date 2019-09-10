@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 3772513941
+  m_AssetId: fb8ab71d819054e3b98147408561d499
+  m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf296f28af518d42bce2ab5df305693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 5792980018504796770}
+  cam: {fileID: 5792980018504796770}
   matchLayers:
     serializedVersion: 2
     m_Bits: 311073

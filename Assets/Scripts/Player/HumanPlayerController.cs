@@ -28,8 +28,6 @@ namespace StellarArmada.Player
 
         public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
 
-        bool isInitialized = false;
-
         
         void Start()
         {
@@ -46,6 +44,21 @@ namespace StellarArmada.Player
         {
             Initialize();
             RpcInitialize();
+        }
+
+        [Command]
+        public void CmdSetShipCaptain(uint id, int prototypeIndex)
+        {
+            Team team = TeamManager.instance.GetTeamByID(teamId);
+            ShipPrototype newProto = team.prototypes[prototypeIndex];
+
+            newProto.hasCaptain = true;
+            newProto.captain = id;
+
+            // get index of prototype and dirty
+            team.prototypes[prototypeIndex] = newProto;
+
+            team.prototypes.Dirty(prototypeIndex); // Do we need this?
         }
 
         [ClientRpc]
