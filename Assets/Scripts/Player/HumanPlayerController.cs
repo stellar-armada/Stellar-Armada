@@ -57,6 +57,11 @@ namespace StellarArmada.Player
         
         void Initialize()
         {
+            if (isInitialized)
+            {
+                Debug.LogWarning("Already inited!");
+                return;
+            }
             isInitialized = true;
             Debug.Log("<color=blue>Initializing player...</color>");
             bodyController.Init();
