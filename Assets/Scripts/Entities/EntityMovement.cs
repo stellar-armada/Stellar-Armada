@@ -85,17 +85,14 @@ namespace StellarArmada.Entities
             steerForPoint.TargetPoint = point;
             steerForPursuit.enabled = false;
         }
-
-        [Command]
-        public void CmdEnableMovement()
+        
+        public void EnableMovement()
         {
             controlEnabled = false;
         }
-
-        [Command]
-        public void CmdDisableMovement()
+        
+        public void DisableMovement()
         {
-            OnArrival?.Invoke();
             controlEnabled = false;
             
         }

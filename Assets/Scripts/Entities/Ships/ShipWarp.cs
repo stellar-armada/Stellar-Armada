@@ -25,7 +25,7 @@ namespace StellarArmada.Entities.Ships
 
             void PrepareForWarpIn()
             {
-                ship.movement.CmdDisableMovement();
+                ship.movement.DisableMovement();
                 ship.weaponSystemController.weaponSystemsEnabled = false;
                 ship.weaponSystemController.HideWeaponSystems();
                 
@@ -66,7 +66,7 @@ namespace StellarArmada.Entities.Ships
             void CompleteWarp()
             {
                 Debug.Log("<color=orange>WARP</color> CompleteWarp()");
-                ship.movement.CmdEnableMovement();
+                ship.movement.EnableMovement();
                 ship.weaponSystemController.weaponSystemsEnabled = true;
                 ship.miniMapStatusBar.ShowStatusBar();
                 ship.shield.gameObject.SetActive(true);
