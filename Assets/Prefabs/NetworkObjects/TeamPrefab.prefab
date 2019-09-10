@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
-  m_AssetId: abb80ebac51239445a6c1da97ec76f77
-  m_SceneId: 0
+  serverOnly: 0
+  localPlayerAuthority: 1
+  m_AssetId: 
+  m_SceneId: 4023383916
 --- !u!114 &1210343820282474329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +80,8 @@ MonoBehaviour:
   teamName: 
   color: {r: 0, g: 0, b: 0, a: 0}
   playerSlots: 0
+  availableShipTypes: 
+  pointsToSpend: 0
   insignia: {fileID: 0}
   players: []
   entities: []
