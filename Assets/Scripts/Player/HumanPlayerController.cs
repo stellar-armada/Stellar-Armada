@@ -47,6 +47,13 @@ namespace StellarArmada.Player
         }
 
         [Command]
+        public void CmdCreateShipsForTeam()
+        {
+            ShipFactory.instance.CmdCreateShipsForTeam(GetTeam().teamId);
+
+        }
+
+        [Command]
         public void CmdSetShipCaptain(uint id, int prototypeIndex)
         {
             Team team = TeamManager.instance.GetTeamByID(teamId);

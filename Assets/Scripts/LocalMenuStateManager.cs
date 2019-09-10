@@ -72,14 +72,12 @@ public class LocalMenuStateManager : MonoBehaviour
         HideMenu();
             
             // Format shipyard data and feed into createships for team
-            ShipFactory.instance.CmdCreateShipsForTeam(HumanPlayerController.localPlayer.GetTeam().teamId);
+           HumanPlayerController.localPlayer.CmdCreateShipsForTeam();
    
             // initialize warp and on-screen warp effects
             MiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
             
             // on dewarp, hide warp effects and scale up minimap
-
-
     }
 
     public void HideMenu()
