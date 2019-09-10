@@ -1,15 +1,3 @@
-// Ignorance 1.3.x
-// A Unity LLAPI Replacement Transport for Mirror Networking
-// https://github.com/SoftwareGuy/Ignorance
-// -----------------
-// Ignorance Transport is licensed under the MIT license, however
-// it comes with no warranty what-so-ever. However, if you do
-// encounter a problem with Ignorance you can get support by
-// dropping past the Mirror discord's #ignorance channel. Otherwise,
-// open a issue ticket on the GitHub issues page. Ensure you provide
-// lots of detail of what you were doing and the error/stack trace.
-// -----------------
-
 using ENet;
 using Event = ENet.Event;
 using EventType = ENet.EventType;
@@ -21,14 +9,6 @@ namespace Mirror
 {
     public class Ignorance : Transport, ISegmentTransport
     {
-        // hooks for ignorance modules
-        // server startup
-        public Action OnIgnoranceServerStartup;
-        public Action OnIgnoranceServerShutdown;
-        // server shutdown
-        public Action OnIgnoranceClientStartup;
-        public Action OnIgnoranceClientShutdown;
-
         // debug
         [Header("Debug Options")]
         public bool DebugEnabled = false;
@@ -59,7 +39,7 @@ namespace Mirror
         public int PingCalculationFrameTimer = 120;    // assuming 60 frames per second, 2 second interval.
 
         // version of this transport
-        private readonly string Version = "1.3.2";
+        private readonly string Version = "1.3.0";
         // enet engine related things
         private bool ENETInitialized = false, ServerStarted = false, ClientStarted = false;
         private Host ENETHost = new Host(), ENETClientHost = new Host();                    // Didn't want to have to do this but i don't want to risk crashes.
@@ -77,9 +57,6 @@ namespace Mirror
         #region Client
         public override void ClientConnect(string address)
         {
-            // test
-            Debug.LogError($"{Time.unscaledTime} | ClientConnect");
-
             if (!ENETInitialized)
             {
                 if (InitializeENET())
@@ -269,38 +246,10 @@ namespace Mirror
             }
 
             // Setup.
-            // Dirty fix that might not work.
-            // #if UNITY_EDITOR_OSX
-            //          ENETAddress.SetHost("::0");
-            //          Debug.Log("Mac OS Unity Editor workaround applied.");
-            // #else
-
-            if (!ServerBindAll)
-            {
-                if (DebugEnabled) print($"Ignorance: Not binding to all interfaces, checking if supplied info is actually an IP address");
-                if (System.Net.IPAddress.TryParse(ServerBindAddress, out _))
-                {
-                    // Looks good to us. Let's use it.
-                    if (DebugEnabled) print($"Ignorance: Valid IP Address {ServerBindAddress}");
-                    ENETAddress.SetIP(ServerBindAddress);
-                }
-                else
-                {
-                    // Might be a hostname.
-                    if (DebugEnabled) print($"Ignorance: Doesn't look like a valid IP address, assuming it's a hostname?");
-                    ENETAddress.SetHost(ServerBindAddress);
-                }
-            }
-            else
-            {
-                if (DebugEnabled) print($"Ignorance: Setting address to all interfaces, port {CommunicationPort}");
-#if UNITY_IOS
-                // Coburn: temporary fix until I figure out if this is similar to the MacOS bug again...
-                ENETAddress.SetIP("::0");
-#endif
-            }
-
-            /*
+#if UNITY_EDITOR_OSX
+            ENETAddress.SetHost("::0");
+            Debug.Log("Mac OS Unity Editor workaround applied.");
+#else
             if (Application.platform == RuntimePlatform.OSXPlayer)
             {
                 ENETAddress.SetHost("::0");
@@ -309,8 +258,7 @@ namespace Mirror
             {
                 ENETAddress.SetHost((ServerBindAll ? "0.0.0.0" : ServerBindAddress));
             }
-            */
-            // #endif
+#endif
             ENETAddress.Port = (ushort)CommunicationPort;
             if (ENETHost == null || !ENETHost.IsSet) ENETHost = new Host();
 
@@ -321,8 +269,6 @@ namespace Mirror
 
             if (DebugEnabled) Debug.Log($"Ignorance: DEBUGGING MODE - Server should be created now... If Ignorance immediately crashes after this line, please file a bug report on the GitHub.");
             ServerStarted = true;
-
-            OnIgnoranceServerStartup?.Invoke();
         }
 
         public override void ServerStop()
@@ -345,15 +291,11 @@ namespace Mirror
             }
 
             ServerStarted = false;
-            OnIgnoranceServerShutdown?.Invoke();
         }
         #endregion
 
         public override void Shutdown()
         {
-            // c6: just right at the top of shutdown "Herp I shut down nao". lol... then if thats missing obv problems
-            Debug.Log("Herp I shut down nao");
-
             if (DebugEnabled) Debug.Log("Ignorance: Cleaning the packet cache...");
 
             ServerStarted = false;
@@ -494,7 +436,6 @@ namespace Mirror
                     case EventType.Connect:
                         // Client connected.
                         // Debug.Log("Connect");
-                        Debug.LogError($"{Time.unscaledTime} | Client Connected");
                         OnClientConnected.Invoke();
                         break;
                     case EventType.Timeout:
@@ -542,8 +483,7 @@ namespace Mirror
             ReliableUnsequenced = PacketFlags.Reliable | PacketFlags.Unsequenced,
             Unreliable = PacketFlags.Unsequenced,
             UnreliableFragmented = PacketFlags.UnreliableFragmented,
-            UnreliableSequenced = PacketFlags.None,
-            UnbundledInstant = PacketFlags.Instant,
+            UnreliableSequenced = PacketFlags.None
         }
 
         // monobehaviour specific stuff
@@ -563,7 +503,7 @@ namespace Mirror
                     {
                         if (!ENETPeer.IsSet || !IsValid(ENETClientHost)) CurrentClientPing = 0;
                         else CurrentClientPing = (int)ENETPeer.RoundTripTime;
-                        PingCalculationFrames = 0;
+						PingCalculationFrames = 0;
                     }
                 }
 

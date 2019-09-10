@@ -20,8 +20,20 @@ namespace StellarArmada.Entities.Ships
             bridgeObject.transform.localRotation = Quaternion.identity;
             bridgeObject.transform.localPosition = Vector3.one;
             localBridge = bridgeObject.GetComponent<ShipBridge>();
-            SceneRoot.instance.transform.SetParent(bridgeRoot);
-            HumanPlayerController.localPlayer.transform.SetParent(SceneRoot.instance.transform);
+            
+            LocalPlayerBridgeSceneRoot.instance.transform.SetParent(bridgeRoot);
+            LocalPlayerBridgeSceneRoot.instance.transform.localPosition = Vector3.zero;
+            LocalPlayerBridgeSceneRoot.instance.transform.localRotation = Quaternion.identity;
+            
+            MiniMap.instance.transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform);
+            MiniMap.instance.transform.localPosition = new Vector3(0, MiniMap.instance.yOffset, 0);
+            MiniMap.instance.transform.localRotation = Quaternion.identity;
+
+            HumanPlayerController.localPlayer.transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform);
+            HumanPlayerController.localPlayer.transform.localPosition = Vector3.zero;
+            HumanPlayerController.localPlayer.transform.localRotation = Quaternion.identity;
+
+            localBridge = this;
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
+using StellarArmada.Entities;
 using StellarArmada.Entities.Ships;
 using UnityEngine;
 
@@ -44,7 +45,6 @@ namespace StellarArmada.Teams
             Debug.Log("Creating new team");
             TeamTemplate template = templates[newTeamIndex++];
             Team t = Instantiate(teamPrefab, transform).GetComponent<Team>();
-            NetworkServer.Spawn(t.gameObject);
             t.teamId = (uint)teams.Count;
             t.teamName = template.name;
             t.color = template.color;
@@ -52,18 +52,23 @@ namespace StellarArmada.Teams
             t.playerSlots = teamInfo.numberOfPlayerSlots;
             t.pointsToSpend = teamInfo.pointsToSpend;
             t.availableShipTypes = teamInfo.availableShipTypes;
+
             teams.Add(t);
 
             // Populate prototypes
-            foreach (var group in teamInfo.fleetBattleGroups)
-            foreach (var ship in group)
-                for (int i = 0; i < ship.Value; i++)
+            for (int group = 0; group < teamInfo.fleetBattleGroups.Count; group++) 
+                foreach (var ship in teamInfo.fleetBattleGroups[group])
+                    for (int i = 0; i < ship.Value; i++)
                     {
                         // add one for each 
                         ShipPrototype p = new ShipPrototype();
                         p.shipType = ship.Key;
+                        p.group = group;
+                        p.id = ShipPrototype.prototypeEntityIncrement++;
                         t.prototypes.Add(p);
                     }
+            
+            NetworkServer.Spawn(t.gameObject);
         }
 
 

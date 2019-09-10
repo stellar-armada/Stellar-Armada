@@ -9,6 +9,11 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
     private UIShipyardShip shipyardShip;
     [SerializeField] private float maxtime = .2f;
 
+    void Awake()
+    {
+        shipyardShip = GetComponent<UIShipyardShip>();
+    }
+    
     void Update()
     {
         timer += Time.deltaTime;
@@ -19,12 +24,14 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
     
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (shipyardShip.id < 0) return;
         timer = 0f;
         pointerDown = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (shipyardShip.id < 0) return;
         pointerDown = false;
         if (timer < maxtime)
         {

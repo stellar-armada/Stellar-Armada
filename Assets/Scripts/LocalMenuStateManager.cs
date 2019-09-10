@@ -1,4 +1,5 @@
 ﻿using StellarArmada.Entities.Ships;
+using StellarArmada.Levels;
 using StellarArmada.Match;
 using StellarArmada.Networking;
 using StellarArmada.Player;
@@ -72,12 +73,9 @@ public class LocalMenuStateManager : MonoBehaviour
             
             // Format shipyard data and feed into createships for team
             ShipFactory.instance.CmdCreateShipsForTeam(HumanPlayerController.localPlayer.GetTeam().teamId);
-
-            // parent player, minimap, etc to sceneroot?
-            
-            // rename sceneroot to bridgesceneroot?
-            
+   
             // initialize warp and on-screen warp effects
+            MiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
             
             // on dewarp, hide warp effects and scale up minimap
 

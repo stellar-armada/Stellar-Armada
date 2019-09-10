@@ -28,7 +28,7 @@ namespace StellarArmada.Levels
         {
             // miniMapSecene = Instantiate(scene);
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
-            SceneRoot.SceneRootCreated += InitializeMiniMap;
+            LocalPlayerBridgeSceneRoot.SceneRootCreated += InitializeMiniMap;
         }
 
         private bool lockRotation = true;
@@ -64,7 +64,7 @@ namespace StellarArmada.Levels
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
 
             // Parent the MapTransformRoot to the SceneRoot (bride)
-            MiniMapTransformRoot.instance.transform.SetParent(SceneRoot.instance.transform, true);
+            MiniMapTransformRoot.instance.transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true);
             MiniMapTransformRoot.instance.transform.localPosition = new Vector3(0, yOffset, 0);
             MiniMapTransformRoot.instance.transform.SetGlobalScale(startScale * Vector3.one);
 

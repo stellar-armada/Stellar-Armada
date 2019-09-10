@@ -1,7 +1,6 @@
-ENET Pre-compiled Binary Library Blobs
+ENET Redist Binary C Blobs
 ==========================
-This folder contains a set of compiled binary blobs from https://github.com/SoftwareGuy/ENet-CSharp .
-These are NOT compatible with upstream's ENET.
+This folder (Redist) contains a set of compiled binary blobs from https://github.com/SoftwareGuy/ENet-CSharp .
 
 Contained within these folders lies the following:
 
@@ -13,16 +12,17 @@ Contained within these folders lies the following:
 - x86: 32Bit x86 Android ENET Binary.
 - NOTE: Minimum of Android KitKat 4.4 OS required.
 * Windows
-- enet.dll: Windows 64-bit, compiled using Visual Studio 2019.
+- - enet.dll: Windows 64-bit, compiled using Visual Studio 2019.
 * MacOS
-- libenet.bundle: MacOS compiled ENET Binary using Apple CLang from XCode. (CMake & Make)
+- enet.bundle: MacOS compiled ENET Binary using Apple CLang from XCode. (CMake & Make)
 * Linux
 - libenet.so: Ubuntu 18.04 compiled ENET Shared Binary.
 
 COMPILE THE CODE YOURSELF
 =========================
-If you don't trust the above binaries then git clone the repository and read the readme. We use MSBuild for max awesomeness.
-iOS and Android compiles require additional work.
+If you don't trust the above binaries then git clone the repository, nativate to Source/Native and run `cmake`/`ccmake`,
+configure to your taste, add any additional herbs and spices and bake accordingly. iOS and Android compiles require
+additional work.
 
 EXCLUSION INSTRUCTIONS
 ======================

@@ -24,6 +24,10 @@ MonoBehaviour:
     numberOfPlayerSlots: 1
     fleetBattleGroups:
     - m_keys: 05000000
+      m_values: 02000000
+    - m_keys: 05000000
+      m_values: 01000000
+    - m_keys: 05000000
       m_values: 01000000
   - availableShipTypes: 
     pointsToSpend: 0

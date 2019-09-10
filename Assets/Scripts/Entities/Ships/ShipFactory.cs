@@ -99,7 +99,7 @@ namespace StellarArmada.Entities.Ships
                 var warpPoints = Level.currentLevel.warpPoints;
 
                 Debug.Log(warpPoints.Count);
-                WarpPoint wp = warpPoints.FirstOrDefault(w =>
+                WarpPoint wp = warpPoints.First(w =>
                 {
                     Debug.Log("Team index: " + w.teamIndex);
                     Debug.Log("Group number: " + w.groupNumber);

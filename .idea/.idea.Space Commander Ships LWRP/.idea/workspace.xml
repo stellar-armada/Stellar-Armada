@@ -42,6 +42,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/VR/Scripts/Util/OVRInputModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/MatchNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleServer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MatchConnectionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -49,6 +50,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/385D0F58-780E-4345-B8A9-CAFD1FA34231/db/4cab7db8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Tools/DetectableObjectCreator2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/Avatar/Scripts/OvrAvatar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/SteerForEvasion2D.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,6 +66,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/VRIK.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/Steering2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/Warning.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRFootstep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRSpine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/QuaTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/SteerForRigidbodyEvasion2D.cs" root0="FORCE_HIGHLIGHTING" />
@@ -85,6 +88,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MatchPlayerMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Radar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Tests/WeaverAssembler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UISelectionShip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerForEvasion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -144,7 +148,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/BodyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/SceneRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/LocalPlayerBridgeSceneRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/FollowLocalTransform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/SyncList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pooling/PoolManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -179,7 +183,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/SerializableDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SpaceCommanderXLifeScope/Assets/Scripts/Editor/UnityEventDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.0.17/UnityEditor.TestRunner/TestLaunchers/PlatformSetup/UwpPlatformSetup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkServer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SerializableDictionary/Editor/SerializableDictionaryPropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Player/MatchPlayer.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -253,11 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Mirror/Runtime/Transport/LiteNetLib4Mirror/LiteNetLib4MirrorClient.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/DefaultCamera.cs" />
-        <option value="$PROJECT_DIR$/Assets/DontDestroyOnLoad.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/LocalPlayerRig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/MenuStateDictionary.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/Editor/UserSerializableDictionaryPropertyDrawers.cs" />
         <option value="$PROJECT_DIR$/Assets/MenuView.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Examples/Match Up/MatchConnectionManager.cs" />
@@ -287,23 +285,28 @@
         <option value="$PROJECT_DIR$/Assets/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPriceManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
         <option value="$PROJECT_DIR$/Assets/UIShipClickHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Shipyard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pooling/Editor/PoolManagerEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/LocalMenuStateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleServer.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Examples/Match Up/MatchUpNobleNetworkManager.cs" />
         <option value="$PROJECT_DIR$/Assets/MatchConnectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/SceneRoot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipBridge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleClient.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleServer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipBridge.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" />
       </list>
     </option>
   </component>
@@ -381,6 +384,7 @@
       <workItem from="1566892618194" duration="95535000" />
       <workItem from="1567194051312" duration="8277000" />
       <workItem from="1567303453030" duration="18093000" />
+      <workItem from="1568065273660" duration="12049000" />
     </task>
     <servers />
   </component>
@@ -416,7 +420,7 @@
     <state x="2721" y="189" key="RiderGenerateDialog/1920.1080/1920.1080" />
     <state x="2810" y="324" key="SettingsEditor" />
     <state x="2810" y="324" key="SettingsEditor/1920.1080/1920.1080" />
-    <state x="627" y="193" width="666" height="847" key="find.popup" />
+    <state x="231" y="380" width="1244" height="660" key="find.popup" />
     <state x="627" y="193" width="666" height="847" key="find.popup/1920.1080" />
     <state x="231" y="380" width="1244" height="660" key="find.popup/1920.1080/1920.1080" />
     <state x="616" y="240" key="run.anything.popup" />

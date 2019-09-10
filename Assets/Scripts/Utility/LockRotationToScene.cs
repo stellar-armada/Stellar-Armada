@@ -13,7 +13,7 @@ public class LockRotationToScene : MonoBehaviour
     {
         if (rootTransform == null)
         {
-            if(SceneRoot.instance != null) rootTransform = SceneRoot.instance.transform;
+            if(LocalPlayerBridgeSceneRoot.instance != null) rootTransform = LocalPlayerBridgeSceneRoot.instance.transform;
         }
         else t.rotation = rootTransform.rotation;
     }

@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 public struct ShipPrototype
 {
-    public int id;
+    public static uint prototypeEntityIncrement = 0;
+    public uint id;
     public bool hasCaptain;
     public uint captain;
     public ShipType shipType;
@@ -41,7 +42,7 @@ public class Shipyard : MonoBehaviour
     
     void Init()
     {
-        Debug.Log("Calling init");
+        Debug.Log("<color=blue>Calling init");
         localPlayer = HumanPlayerController.localPlayer;
 
         localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
@@ -55,12 +56,14 @@ public class Shipyard : MonoBehaviour
         Init();
         PopulateUIShipyardShips();
         ShowAvailableShips();
+        Debug.Log("<color=blue>InitializeShipyard called");
     }
 
     void HandleTeamChange()
     {
-        Debug.Log("Handle team change called");
-        team.prototypes.Callback -= OnShipListUpdated;
+        Debug.Log("<color=blue>Handle team change called");
+        if(team != null)
+            team.prototypes.Callback -= OnShipListUpdated;
         team = localPlayer.GetTeam();
         team.prototypes.Callback += OnShipListUpdated;
         PopulateUIShipyardShips();
@@ -92,7 +95,7 @@ public class Shipyard : MonoBehaviour
         // instantiate new shipyard ship
         UIShipyardShip ship = UIShipFactory.instance.CreateShipyardShip(proto.shipType).GetComponent<UIShipyardShip>();
         // set prototypeId to proto's Id
-        ship.id = proto.id;
+        ship.id = (int)proto.id;
         // Parent to appropriate container
         ship.transform.SetParent(shipyardGroups[proto.group].transform);
         ship.transform.localPosition = Vector3.zero;
@@ -131,6 +134,7 @@ public class Shipyard : MonoBehaviour
         ShipPrototype p = new ShipPrototype();
         p.shipType = type;
         p.group = group;
+        p.id = ShipPrototype.prototypeEntityIncrement++;
         // Add to team's prototoype list
         team.prototypes.Add(p);
     }
@@ -165,7 +169,6 @@ public class Shipyard : MonoBehaviour
     
     public void ShowAvailableShips()
     {
-
         int currentPoints = Mathf.Max(0, HumanPlayerController.localPlayer.GetTeam().pointsToSpend - ShipPriceManager.instance.GetGroupPrice(team.prototypes.ToList()));
         availablePointsText.text = currentPoints.ToString();
         
@@ -179,7 +182,7 @@ public class Shipyard : MonoBehaviour
         foreach (UIShipyardShip s in g)
         {
             // If any is already rein our available ships pool, destroy it so we don't have two of any ships
-            if (addedShipTypes.Contains(s.GetPrototype().shipType))
+            if (!addedShipTypes.Contains(s.shipType))
             {
                 Destroy(s);
                 Debug.Log("Destroyed double ship");
@@ -187,9 +190,11 @@ public class Shipyard : MonoBehaviour
             }
 
             addedShipTypes.Add(s.GetPrototype().shipType);
+            
+            s.SetFlagshipStatus();
 
             // if ship costs less than $ available, show it
-            if (ShipPriceManager.instance.GetShipPrice(s.GetPrototype().shipType) > currentPoints) Destroy(s.gameObject);
+            if (ShipPriceManager.instance.GetShipPrice(s.shipType) > currentPoints) Destroy(s.gameObject);
         }
 
         // iterate through available ship types
@@ -247,27 +252,32 @@ public class Shipyard : MonoBehaviour
         ShowAvailableShips();
     }
 
-   
     
     public void SetFlagshipForLocalPlayer(UIShipyardShip shipyardShip)
     {
         // If player already has a flagship, unset and dirty it
         if (team.prototypes.Where(p => p.hasCaptain && p.captain == localPlayer.netId).ToArray().Length > 0)
         {
-            ShipPrototype proto = team.prototypes.Single(p => p.hasCaptain && p.captain == localPlayer.netId);
+            ShipPrototype proto = team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId);
             proto.hasCaptain = false;
+            int index = team.prototypes.IndexOf(
+                team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
+            team.prototypes[index] = proto;
         }
         
         Debug.Log("Shipyard ship: " + shipyardShip.id);
         
-        Debug.Log("Shipyard protoype: " + shipyardShip.GetPrototype());
+ 
         ShipPrototype newProto = shipyardShip.GetPrototype();
         
-        newProto = shipyardShip.GetPrototype();
         newProto.hasCaptain = true;
         newProto.captain = localPlayer.netId;
+        
+        Debug.Log("Shipyard protoype has captain: " + shipyardShip.GetPrototype().hasCaptain);
 
         // get index of prototype and dirty
-        team.prototypes.Dirty(team.prototypes.IndexOf(newProto));
+        team.prototypes[team.prototypes.IndexOf(shipyardShip.GetPrototype())] = newProto;
+        
+        Debug.Log("newProto has captain: " + team.prototypes[team.prototypes.IndexOf(shipyardShip.GetPrototype())].hasCaptain);
     }
 }

@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: b6227c6117ff02d4887d4d27e4ed3921
+  m_AssetId: 97c9ecdb36ab09e409f7da9f6151d19e
   m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
@@ -4006,11 +4006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 975098095954899418}
     m_Modifications:
-    - target: {fileID: 2324894883842395963, guid: 12001b42e5eb7f84ebdcf20c27abad08,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerCanvas
-      objectReference: {fileID: 0}
     - target: {fileID: 1713833130453449945, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4065,6 +4060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324894883842395963, guid: 12001b42e5eb7f84ebdcf20c27abad08,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8797611113099095665, guid: 12001b42e5eb7f84ebdcf20c27abad08,
         type: 3}
@@ -4288,21 +4288,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1839945733948412457}
     m_Modifications:
-    - target: {fileID: 8737627309138390813, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: m_Name
-      value: Cybergirl_Root
-      objectReference: {fileID: 0}
-    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: humanPlayerController
-      value: 
-      objectReference: {fileID: 1839945735331089094}
-    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
-        type: 3}
-      propertyPath: hiddenFromLocalPlayerMask.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
     - target: {fileID: 3919230202592950190, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4372,6 +4357,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8737627309138390813, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: m_Name
+      value: Cybergirl_Root
+      objectReference: {fileID: 0}
+    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: humanPlayerController
+      value: 
+      objectReference: {fileID: 1839945735331089094}
+    - target: {fileID: 222632463375103298, guid: 7a50213ef67bc4f4c989378df494e34e,
+        type: 3}
+      propertyPath: hiddenFromLocalPlayerMask.m_Bits
+      value: 16384
       objectReference: {fileID: 0}
     - target: {fileID: 2171049363706591617, guid: 7a50213ef67bc4f4c989378df494e34e,
         type: 3}

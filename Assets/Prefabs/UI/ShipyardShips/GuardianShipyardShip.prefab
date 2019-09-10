@@ -134,10 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47244846b008b84eb1b319f69e9382d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: -1
   shipType: 3
-  group: -1
   flag: {fileID: 0}
-  hasCaptain: 0
 --- !u!225 &-1418895893596602240
 CanvasGroup:
   m_ObjectHideFlags: 0

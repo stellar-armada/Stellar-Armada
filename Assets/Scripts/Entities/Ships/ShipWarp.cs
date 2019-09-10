@@ -8,7 +8,7 @@ namespace StellarArmada.Entities.Ships
     public class ShipWarp : NetworkBehaviour
         {
             // TO-DO: Fix warp-in and effect
-            
+            public GameObject warpFx;
             public Vector3 warpInStartPos;
             public float warpTime = 5f;
             private Ship ship;
@@ -27,8 +27,10 @@ namespace StellarArmada.Entities.Ships
                 ship.movement.CmdDisableMovement();
                 ship.weaponSystemController.weaponSystemsEnabled = false;
                 ship.weaponSystemController.HideWeaponSystems();
+                
                 ship.shield.gameObject.SetActive(false);
                 ship.visualModel.enabled = false;
+                warpFx.SetActive(false);
             }
             
             public void InitWarp(Vector3 position, Quaternion rotation)
@@ -39,14 +41,17 @@ namespace StellarArmada.Entities.Ships
                 ship.visualModel.transform.localPosition = warpInStartPos;
                 ship.weaponSystemController.ShowWeaponSystems();
                 ship.visualModel.enabled = true;
-                
+                Debug.Log("<color=orange>WARP</color> InitWarp()");
                 StartCoroutine(WarpIn());
                 
                 Invoke(nameof(CompleteWarp), warpTime);
+                
+                warpFx.SetActive(true);
             }
             
             IEnumerator WarpIn()
             {
+                Debug.Log("<color=orange>WARP</color> WarpIn()");
                 float timer = 0f;
                 do
                 {
@@ -59,12 +64,24 @@ namespace StellarArmada.Entities.Ships
 
             void CompleteWarp()
             {
+                Debug.Log("<color=orange>WARP</color> CompleteWarp()");
                 ship.movement.CmdEnableMovement();
                 ship.weaponSystemController.weaponSystemsEnabled = true;
                 ship.miniMapStatusBar.ShowStatusBar();
                 ship.shield.gameObject.SetActive(true);
                 ship.shield.shieldEffectController.SetShieldActive(true, true);
                 isWarpedIn = true;
+                
+                // Disable warpFX
+                
+                var main = warpFx.GetComponent<ParticleSystem>().main;
+                main.loop = false;
+                
+                foreach (ParticleSystem system in warpFx.GetComponentsInChildren<ParticleSystem>())
+                {
+                    main = system.main;
+                    main.loop = false;
+                }
             }
 
          

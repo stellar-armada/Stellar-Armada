@@ -15,6 +15,8 @@ namespace StellarArmada.UI
     public class UIShipyardShip : MonoBehaviour
     {
         public int id = -1;
+
+        public ShipType shipType;
         
         [SerializeField] Image flag;
 
@@ -28,7 +30,13 @@ namespace StellarArmada.UI
 
         public ShipPrototype GetPrototype()
         {
+            Debug.Log("Attempting to get prototype: " + id);
             return team.prototypes.Single(p => p.id == id);
+        }
+
+        public void SetPrototype(ShipPrototype prototype)
+        {
+            team.prototypes[team.prototypes.IndexOf(team.prototypes.First(p => p.id == prototype.id))] = prototype;
         }
 
         public void SetFlagshipStatus()

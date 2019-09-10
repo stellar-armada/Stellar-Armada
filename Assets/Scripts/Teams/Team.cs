@@ -40,7 +40,7 @@ namespace StellarArmada.Teams
 
         void Start()
         {
-            InitializeShipProtoypes();
+            //InitializeShipProtoypes();
             if (insignia == null) HandleTeamSet(teamId);
         }
 
@@ -51,6 +51,7 @@ namespace StellarArmada.Teams
 
         void InitializeShipProtoypes(){
         Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
+        
             for (int g = 0; g < currentScenario.teamInfo[teamId].fleetBattleGroups.Count; g++)
             {
                 foreach (var shipKeyVal in currentScenario.teamInfo[teamId].fleetBattleGroups[g])
@@ -61,6 +62,7 @@ namespace StellarArmada.Teams
                         ShipPrototype p = new ShipPrototype();
                         p.shipType = shipKeyVal.Key;
                         p.group = g;
+                        p.id = ShipPrototype.prototypeEntityIncrement++;
                         prototypes.Add(p);
                     }
                 }

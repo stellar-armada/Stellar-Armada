@@ -5,16 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using Mirror;
-
-#if LITENETLIB4MIRROR
-using Mirror.LiteNetLib4Mirror;
-#endif
-
-#if IGNORANCE
-#if !IGNORANCE_1_1 && !IGNORANCE_1_2
 using IgnoranceTransport = Mirror.Ignorance;
-#endif
-#endif
 
 using NobleConnect;
 using NobleConnect.Mirror;
@@ -137,18 +128,10 @@ namespace NobleConnect.Mirror
             base.Awake();
 
             bool hasUDPTransport = false;
-#if LITENETLIB4MIRROR
-            if (Transport.activeTransport.GetType() == typeof(LiteNetLib4MirrorTransport))
-            {
-                hasUDPTransport = true;
-            }
-#endif
-#if IGNORANCE
             if (Transport.activeTransport.GetType() == typeof(IgnoranceTransport))
             {
                 hasUDPTransport = true;
             }
-#endif
             if (!hasUDPTransport)
             {
                 Debug.LogError(TRANSPORT_WARNING_MESSAGE);

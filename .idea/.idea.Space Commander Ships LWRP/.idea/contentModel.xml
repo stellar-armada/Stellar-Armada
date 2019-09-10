@@ -166,12 +166,12 @@
           <e p="Level" t="Include">
             <e p="Level.cs" t="Include" />
             <e p="LevelRoot.cs" t="Include" />
+            <e p="LocalPlayerBridgeSceneRoot.cs" t="Include" />
             <e p="MiniMap.cs" t="Include" />
             <e p="MiniMapController.cs" t="Include" />
             <e p="MiniMapEntity.cs" t="Include" />
             <e p="MiniMapTransformRoot.cs" t="Include" />
             <e p="Scenario.cs" t="Include" />
-            <e p="SceneRoot.cs" t="Include" />
             <e p="WarpPoint.cs" t="Include" />
             <e p="WinCondition.cs" t="Include" />
           </e>
@@ -479,13 +479,8 @@
                     <e p="AddScriptingDefine.cs" t="Include" />
                   </e>
                   <e p="Ignorance.cs" t="Include" />
-                  <e p="IgnoranceServerThreaded.cs" t="Include" />
                   <e p="IgnoranceTransport.cs" t="Include" />
                   <e p="ISegmentTransport.cs" t="Include" />
-                  <e p="Modules" t="Include">
-                    <e p="IgnoranceLANDiscoveryModule.cs" t="Include" />
-                    <e p="IgnorancePortForwarderModule.cs" t="Include" />
-                  </e>
                   <e p="Plugins" t="Include">
                     <e p="Readme.txt" t="Include" />
                   </e>
@@ -2774,6 +2769,15 @@
                 </e>
               </e>
             </e>
+          </e>
+        </e>
+        <e p="Warp Jump" t="Include">
+          <e p="Script" t="Include">
+            <e p="NextPrefab.cs" t="Include" />
+          </e>
+          <e p="Shader" t="Include">
+            <e p="Distort.shader" t="Include" />
+            <e p="Particle.shader" t="Include" />
           </e>
         </e>
       </e>

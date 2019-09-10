@@ -8,17 +8,7 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 using Mirror;
-
-#if LITENETLIB4MIRROR
-using Mirror.LiteNetLib4Mirror;
-#endif
-
-#if IGNORANCE
-#if !IGNORANCE_1_1 && !IGNORANCE_1_2
 using IgnoranceTransport = Mirror.Ignorance;
-#endif
-#endif
-
 using System.Collections;
 using System.Net.Sockets;
 
@@ -62,8 +52,9 @@ namespace NobleConnect.Mirror
 
 		#region Internal Properties
 
-        const string TRANSPORT_WARNING_MESSAGE = "You must download and install a UDP transport in order to use Mirror with NobleConnect.\n" +
-                                                "I recommend LiteNetLib4Mirror: https://github.com/MichalPetryka/LiteNetLib4Mirror/releases";
+        private const string TRANSPORT_WARNING_MESSAGE =
+            "You must download and install a UDP transport in order to use Mirror with NobleConnect.";
+        
         /// <summary>Store force relay so that we can pass it on to the iceController</summary>
         private bool _forceRelayOnly;
         /// <summary>The end of the bridge that the Mirror client connects to</summary>
@@ -231,26 +222,12 @@ namespace NobleConnect.Mirror
         public void SetConnectPort(ushort port)
         {
             bool hasUDP = false;
-            #if LITENETLIB4MIRROR
-            if (Transport.activeTransport.GetType() == typeof(LiteNetLib4MirrorTransport))
-            {
-                hasUDP = true;
-                var liteNet = (LiteNetLib4MirrorTransport)Transport.activeTransport;
-                liteNet.port = (ushort)port;
-            }
-            #endif
-            #if IGNORANCE
             if (Transport.activeTransport.GetType() == typeof(IgnoranceTransport))
             {
                 hasUDP = true;
                 var ignorance = (IgnoranceTransport)Transport.activeTransport;
-                #if IGNORANCE_1_1 || IGNORANCE_1_2
-                ignorance.port = port;
-                #else
                 ignorance.CommunicationPort = port;
-                #endif
             }
-            #endif
             if (!hasUDP)
             {
                 throw new Exception(TRANSPORT_WARNING_MESSAGE);

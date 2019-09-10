@@ -10,14 +10,7 @@ using NobleConnect.Stun;
 using NobleConnect.Turn;
 using UnityEngine;
 using Mirror;
-#if LITENETLIB4MIRROR
-using Mirror.LiteNetLib4Mirror;
-#endif
-#if IGNORANCE
-#if !IGNORANCE_1_1 && !IGNORANCE_1_2
 using IgnoranceTransport = Mirror.Ignorance;
-#endif
-#endif
 using System.Reflection;
 
 namespace NobleConnect.Mirror
@@ -74,8 +67,8 @@ namespace NobleConnect.Mirror
 
         #region Internal Properties
 
-        const string TRANSPORT_WARNING_MESSAGE = "You must download and install a UDP transport in order to use Mirror with NobleConnect.\n" +
-                                               "I recommend LiteNetLib4Mirror: https://github.com/MichalPetryka/LiteNetLib4Mirror/releases";
+        private const string TRANSPORT_WARNING_MESSAGE =
+            "You must download and install a UDP transport in order to use Mirror with NobleConnect.";
 
         static Server baseServer;
 
@@ -222,26 +215,12 @@ namespace NobleConnect.Mirror
             baseServer.SetLocalEndPoint((ushort)port);
 
             bool hasUDP = false;
-#if LITENETLIB4MIRROR
-            if (Transport.activeTransport.GetType() == typeof(LiteNetLib4MirrorTransport))
-            {
-                hasUDP = true;
-                var liteNet = (LiteNetLib4MirrorTransport)Transport.activeTransport;
-                liteNet.port = (ushort)port;
-            }
-#endif 
-#if IGNORANCE
             if (Transport.activeTransport.GetType() == typeof(IgnoranceTransport))
             {
                 hasUDP = true;
                 var ignorance = (IgnoranceTransport)Transport.activeTransport;
-#if IGNORANCE_1_1 || IGNORANCE_1_2
-                ignorance.port = (ushort)port;
-#else
                 ignorance.CommunicationPort = (ushort)port;
-#endif
             }
-#endif
             if (!hasUDP)
             {
                 throw new Exception(TRANSPORT_WARNING_MESSAGE);
@@ -253,24 +232,11 @@ namespace NobleConnect.Mirror
         public static ushort GetTransportPort()
         {
             bool hasUDP = false;
-#if LITENETLIB4MIRROR
-            if (Transport.activeTransport.GetType() == typeof(LiteNetLib4MirrorTransport))
-            {
-                hasUDP = true;
-                return (ushort)((LiteNetLib4MirrorTransport)Transport.activeTransport).port;
-            }
-#endif
-#if IGNORANCE
             if (Transport.activeTransport.GetType() == typeof(IgnoranceTransport))
             {
                 hasUDP = true;
-#if IGNORANCE_1_1 || IGNORANCE_1_2
-                return (ushort)((IgnoranceTransport)Transport.activeTransport).port;
-#else
                 return (ushort)((IgnoranceTransport)Transport.activeTransport).CommunicationPort;
-#endif
             }
-#endif
             if (!hasUDP)
             {
                 throw new Exception(TRANSPORT_WARNING_MESSAGE);
@@ -379,22 +345,11 @@ namespace NobleConnect.Mirror
         {
             if (conn.GetType() == typeof(NetworkConnection))
             {
-#if LITENETLIB4MIRROR
-                if (Transport.activeTransport.GetType() == typeof(LiteNetLib4MirrorTransport))
-                {
-                    var liteNet = (LiteNetLib4MirrorTransport)Transport.activeTransport;
-                    endPointByConnection[conn] = LiteNetLib4MirrorServer.Peers[conn.connectionId].EndPoint;
-                }
-#endif
-#if IGNORANCE
+
                 if (Transport.activeTransport.GetType() == typeof(IgnoranceTransport))
                 {
                     var ignorance = ((IgnoranceTransport)Transport.activeTransport);
-#if IGNORANCE_1_1 || IGNORANCE_1_2
-                    var knownConnIDToPeersField = typeof(IgnoranceTransport).GetField("knownConnIDToPeers", BindingFlags.NonPublic | BindingFlags.Instance);
-#else
                     var knownConnIDToPeersField = typeof(IgnoranceTransport).GetField("ConnectionIDToPeers", BindingFlags.NonPublic | BindingFlags.Instance);
-#endif
                     var knownConnIDToPeers = (Dictionary<int, ENet.Peer>)knownConnIDToPeersField.GetValue(ignorance);
                     ENet.Peer result;
                     if (knownConnIDToPeers.TryGetValue(conn.connectionId, out result))
@@ -402,7 +357,6 @@ namespace NobleConnect.Mirror
                         endPointByConnection[conn] = new IPEndPoint(IPAddress.Parse(result.IP), result.Port);
                     }
                 }
-#endif
             }
         }
 

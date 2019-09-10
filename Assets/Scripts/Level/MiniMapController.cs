@@ -53,7 +53,7 @@ namespace StellarArmada.Levels
             miniMapTransformRoot = MiniMapTransformRoot.instance.transform;
             miniMap = MiniMap.instance;
             miniMapTransform = MiniMap.instance.transform;
-            sceneRoot = SceneRoot.instance.transform;
+            sceneRoot = LocalPlayerBridgeSceneRoot.instance.transform;
         }
 
         void HandleLeftInput(bool on)

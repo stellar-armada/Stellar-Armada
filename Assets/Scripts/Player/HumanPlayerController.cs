@@ -92,7 +92,7 @@ namespace StellarArmada.Player
             Debug.Log("Captal ship called");
             // Get entity where capital ship is this player
             Transform t = transform; // skip the gameObject.transform lookup
-            t.parent = SceneRoot.instance.transform;
+            t.parent = LocalPlayerBridgeSceneRoot.instance.transform;
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
             ship.OnEntityDead += HandleDeath;

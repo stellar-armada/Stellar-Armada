@@ -3,7 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 19
+  serializedVersion: 20
   productGUID: ed02990919015e14a86f331d76982750
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
@@ -91,7 +91,6 @@ PlayerSettings:
   xboxEnableFitness: 0
   visibleInBackground: 1
   allowFullscreenSwitch: 1
-  graphicsJobMode: 0
   fullscreenMode: 1
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
@@ -177,7 +176,7 @@ PlayerSettings:
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
-  keepLoadedShadersAlive: 1
+  keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 0
   VertexChannelCompressionMask: -1
   iPhoneSdkVersion: 988
@@ -411,6 +410,11 @@ PlayerSettings:
     m_GraphicsJobs: 1
   - m_BuildTarget: WebGLSupport
     m_GraphicsJobs: 0
+  m_BuildTargetGraphicsJobMode:
+  - m_BuildTarget: PS4Player
+    m_GraphicsJobMode: 0
+  - m_BuildTarget: XboxOnePlayer
+    m_GraphicsJobMode: 0
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: iOSSupport
     m_APIs: 10000000
@@ -695,7 +699,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;UNITY_CCU;MATCH_UP;NOBLE_CONNECT;NOBLE_CONNECT_1;NOBLE_CONNECT_1_06;MIRROR_3_0_OR_NEWER;IGNORANCE;IGNORANCE_1;IGNORANCE_1_3
     4: UNITY_POST_PROCESSING_STACK_V2
-    7: R_NEWER;UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;UNITY_CCU;CURVEDUI_TMP;MATCH_UP;NOBLE_CONNECT;NOBLE_CONNECT_1;NOBLE_CONNECT_1_06;LITENETLIB4MIRROR;IGNORANCE;IGNORANCE_1;IGNORANCE_1_2
+    7: R_NEWER;UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;UNITY_CCU;CURVEDUI_TMP;MATCH_UP;NOBLE_CONNECT;NOBLE_CONNECT_1;NOBLE_CONNECT_1_06;MIRROR_3_0_OR_NEWER;IGNORANCE;IGNORANCE_1;IGNORANCE_1_3
     13: UNITY_POST_PROCESSING_STACK_V2;MIRROR;MIRROR_1726_OR_NEWER;AMPLIFY_SHADER_EDITOR;IGNORANCE;IGNORANCE_1;IGNORANCE_1_2
     14: UNITY_POST_PROCESSING_STACK_V2;IGNORANCE;IGNORANCE_1;IGNORANCE_1_2;UNITY_CCU;MIRROR;MIRROR_1726_OR_NEWER
     17: UNITY_POST_PROCESSING_STACK_V2

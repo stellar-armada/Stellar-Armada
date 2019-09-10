@@ -23,7 +23,7 @@ namespace StellarArmada.IK {
 		
 		void Initialize()
 		{
-			root = SceneRoot.instance.transform;
+			root = LocalPlayerBridgeSceneRoot.instance.transform;
 			isInitialized = true;
 			lastPosition = root.position;
 			lastRotation = root.rotation;
