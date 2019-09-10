@@ -61,7 +61,7 @@ namespace StellarArmada.Entities.Ships
                 Debug.Log("<color=red>CAPTAIN</color> Captain set to " + playerId + " on client");
                 captain = PlayerManager.GetPlayerById(playerId);
                 OnCaptainUpdated?.Invoke();
-            }
+            
 
             // Local player logic
             if (captain == HumanPlayerController.localPlayer)
@@ -69,6 +69,7 @@ namespace StellarArmada.Entities.Ships
                 Debug.Log("<color=red>CAPTAIN</color> Picking capital ship for local player " + captain.netId);
                 ((HumanPlayerController) captain).PickCapitalShip(this);
                 bridge.ActivateBridgeForLocalPlayer();
+            }
             }
         }
 
