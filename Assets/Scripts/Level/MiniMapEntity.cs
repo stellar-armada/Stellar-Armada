@@ -25,6 +25,7 @@ namespace StellarArmada.Levels
 
         public void Start()
         {
+            e = networkEntity.transform;
             t.SetParent(MiniMap.instance.transform);
             t.localScale = Vector3.one;
             t.localPosition = Vector3.zero;
