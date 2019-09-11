@@ -13,8 +13,6 @@ namespace StellarArmada.Entities.Ships
             public Vector3 warpInStartPos;
             public float warpTime = 5f;
             private Ship ship;
-
-            public bool isWarpedIn = false;
             
             void Awake()
             {
@@ -85,7 +83,6 @@ namespace StellarArmada.Entities.Ships
                 ship.miniMapStatusBar.ShowStatusBar();
                 ship.shield.gameObject.SetActive(true);
                 ship.shield.shieldEffectController.SetShieldActive(true, true);
-                isWarpedIn = true;
                 
                 // Disable warpFX
                 
