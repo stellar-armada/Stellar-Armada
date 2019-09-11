@@ -61,9 +61,11 @@ namespace StellarArmada.Entities.Ships
             Ship s = shipGameObject.GetComponent<Ship>();
 
             s.SetEntityId(entityIncrement++);
-            s.CmdSetTeam(teamId);
+            
             
             NetworkServer.Spawn(shipGameObject);
+            
+            s.CmdSetTeam(teamId);
 
             // Get group from group ID and add
             TeamManager.instance.GetTeamByID(teamId).groups[groupId].Add(s);
