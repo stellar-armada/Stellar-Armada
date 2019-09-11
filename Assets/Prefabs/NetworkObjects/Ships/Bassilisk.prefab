@@ -25960,7 +25960,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetNetworkEntity: {fileID: 0}
   owningNetworkEntity: {fileID: 8081799463623299947}
-  damagePerHit: 8
+  damagePerHit: 80
   timerID: -1
   timer: 0.1
   tickRate: 0.2
@@ -33075,7 +33075,6 @@ MonoBehaviour:
   warpFx: {fileID: 4200871821594333781}
   warpInStartPos: {x: 0, y: 0, z: -30000}
   warpTime: 5
-  isWarpedIn: 0
 --- !u!114 &1900686764695909791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33488,16 +33487,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6787116511349424934}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-        type: 3}
-      propertyPath: m_Name
-      value: SelectionBox
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33588,6 +33577,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d17bd9fbd833fae468bd75c96393138e, type: 2}
+    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+        type: 3}
+      propertyPath: m_Name
+      value: SelectionBox
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 078c3191bfc9b8f46848f6b4cd1c7410,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 078c3191bfc9b8f46848f6b4cd1c7410, type: 3}
 --- !u!1 &3984289979099924540 stripped
