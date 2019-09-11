@@ -61,7 +61,11 @@ namespace StellarArmada.Entities
         
         public GameObject GetGameObject() => gameObject;
         
-        void Start() => EntityManager.instance.RegisterEntity(this);
+        void Start()
+        {
+            transform.SetParent(LevelRoot.instance.transform, true);
+            EntityManager.instance.RegisterEntity(this);
+        }
 
         void OnDestroy() => EntityManager.instance.UnregisterEntity(this);
 

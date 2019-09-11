@@ -117,7 +117,7 @@ namespace StellarArmada.Entities.Ships
 
                     Vector3 newPos = parentMatrix.MultiplyPoint3x4(shipPositions[s]);
 
-                    s.shipWarp.InitWarp(pos + newPos, rot);
+                    s.shipWarp.CmdInitWarp(pos + newPos, rot);
                 }
             }
         }

@@ -34,11 +34,25 @@ namespace StellarArmada.Entities.Ships
                 warpFx.SetActive(false);
             }
             
-            public void InitWarp(Vector3 position, Quaternion rotation)
+            [Command]
+            public void CmdInitWarp(Vector3 position, Quaternion rotation)
             {
-                ship.transform.SetParent(LevelRoot.instance.transform); // if not done already. check to see if it's already called by now
-                ship.transform.localPosition = position;
-                ship.transform.localRotation = rotation;
+                if (isServerOnly) InitWarp(position, rotation);
+                RpcInitWarp(position, rotation);
+            }
+
+            [ClientRpc]
+            public void RpcInitWarp(Vector3 position, Quaternion rotation)
+            {
+                InitWarp(position, rotation);
+            }
+
+            void InitWarp(Vector3 position, Quaternion rotation)
+            {
+                Transform s = ship.transform;
+                s.SetParent(LevelRoot.instance.transform); // if not done already. check to see if it's already called by now
+                s.localPosition = position;
+                s.localRotation = rotation;
                 ship.visualModel.transform.localPosition = warpInStartPos;
                 ship.weaponSystemController.ShowWeaponSystems();
                 ship.visualModel.enabled = true;
