@@ -42,7 +42,8 @@ namespace StellarArmada.Entities
         
         // Delegate called when entity dies
         public NetworkEntityEvent OnEntityDead;
-        
+        public NetworkEntityEvent OnTeamChange;
+
         void HandleDeath(bool alive)
         {
             if (!alive)

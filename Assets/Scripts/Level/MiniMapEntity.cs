@@ -18,8 +18,9 @@ namespace StellarArmada.Levels
 
         void Awake()
         {
-            e = networkEntity.transform;
             t = transform;
+
+            networkEntity.OnTeamChange += HandleTeamChange;
         }
 
         public void Start()
@@ -27,14 +28,17 @@ namespace StellarArmada.Levels
             t.SetParent(MiniMap.instance.transform);
             t.localScale = Vector3.one;
             t.localPosition = Vector3.zero;
-            // Set team color
+        }
 
+        void HandleTeamChange()
+        {
             foreach(Renderer ren in renderers)
             {
                 ren.material.SetColor(teamColorMaterialInput, networkEntity.GetTeam().color);
             }
-            
         }
+        
+        
 
         void LateUpdate()
         {

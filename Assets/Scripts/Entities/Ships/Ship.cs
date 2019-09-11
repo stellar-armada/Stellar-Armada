@@ -88,14 +88,13 @@ namespace StellarArmada.Entities.Ships
         [Command] // Server logic
         public override void CmdSetTeam(uint newTeamId)
         {
-            SetTeam(newTeamId);
+            if(isServerOnly) SetTeam(newTeamId);
             RpcSetTeam(newTeamId);
         }
 
         [ClientRpc] // Client logic
         public void RpcSetTeam(uint newTeamId)
         {
-            if (!isServer) // Prevent double calls if we're testing in host mode
                 SetTeam(newTeamId);
         }
 
@@ -105,6 +104,8 @@ namespace StellarArmada.Entities.Ships
             team = TeamManager.instance.GetTeamByID(newTeamId);
             team.AddEntity(this);
             miniMapStatusBar.SetInsignia(team.insignia);
+            
+            OnTeamChange?.Invoke();
         }
 
         // Call this to kill a ship -- should only ever be called server side, since nobody has local authority over entities
