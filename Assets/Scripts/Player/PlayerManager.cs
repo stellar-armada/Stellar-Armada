@@ -12,6 +12,11 @@ namespace StellarArmada.Player
         public static PlayerManager instance;
         
         public static List<PlayerController> players = new List<PlayerController>();
+
+        public delegate void PlayerRegistrationEvent(PlayerController pc);
+
+        public PlayerRegistrationEvent OnPlayerRegistered;
+        public PlayerRegistrationEvent OnPlayerUnregistered;
         
         void Awake()
         {
@@ -30,6 +35,8 @@ namespace StellarArmada.Player
             {
                 Debug.LogError("Player list already contains player");
             }
+
+            OnPlayerRegistered?.Invoke(playerController);
         }
 
         public void UnregisterPlayer(PlayerController playerController)
@@ -43,6 +50,7 @@ namespace StellarArmada.Player
                 Debug.LogError("Player list does not contain player");
 
             }
+            OnPlayerUnregistered?.Invoke(playerController);
         }
         
         public static List<PlayerController> GetPlayers() => players;

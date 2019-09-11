@@ -2,9 +2,9 @@
 
 namespace StellarArmada
 {
-    public class LocalPlayerRig : MonoBehaviour
+    public class PurgatoryRoot : MonoBehaviour
     {
-        public static LocalPlayerRig instance;
+        public static PurgatoryRoot instance;
         void Awake()
         {
             instance = this;

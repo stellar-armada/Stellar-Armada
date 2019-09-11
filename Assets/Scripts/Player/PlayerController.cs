@@ -12,8 +12,11 @@ namespace StellarArmada.Player
     public abstract class PlayerController: NetworkBehaviour
     {
         // Generic event handler for this class
-        public delegate void PlayerEvent();
-
+        public delegate void PlayerControllerEvent();
+        
+        // Generic event handler for this class
+        public delegate void PlayerControllerSpecificEvent(PlayerController playerController);
+        
         // Set the player name. When set by the server, call the UpdateName callback
         [SyncVar(hook = nameof(UpdateName))] public string playerName;
 
@@ -21,8 +24,57 @@ namespace StellarArmada.Player
         //UInts are used here, mostly because uints are used for net IDs and incremented entity index values
         [SyncVar(hook = nameof(HandleTeamChange))] public uint teamId = 255;
         
-        public event PlayerEvent EventOnPlayerNameChange;
-        public event PlayerEvent EventOnPlayerTeamChange;
+        public event PlayerControllerEvent EventOnPlayerNameChange;
+        public event PlayerControllerEvent EventOnPlayerTeamChange;
+        
+        public PlayerControllerSpecificEvent OnPlayerControllerDeath;
+
+        [SyncVar] public bool isAlive = true;
+
+        public void HandleWin()
+        {
+            if (isServer) TargetHandleWin(connectionToClient);
+        }
+
+        [TargetRpc]
+        public void TargetHandleWin(NetworkConnection conn)
+        {
+            Debug.Log("<color=green>WIN CONDITION</color> This player wins!");
+        }
+        
+        public void HandleLoss()
+        {
+            if (isServer) TargetHandleLoss(connectionToClient);
+        }
+        
+        [TargetRpc]
+        public void TargetHandleLoss(NetworkConnection conn)
+        {
+            Debug.Log("<color=green>WIN CONDITION</color> This player loses!");
+        }
+        
+        [Server]
+        public void Die() // Message sent to all players attached to an entity when it dies
+        {
+            if (isServerOnly)
+            {
+                isAlive = false;
+                OnPlayerControllerDeath?.Invoke(this);
+            }
+            // Our ship has died, so we are dead
+            Debug.Log("<color=red>DEATH</color> Player " + netId + " has died. (server)");
+            RpcDie();
+        }
+
+        [ClientRpc]
+        public void RpcDie()
+        {
+            isAlive = false;
+            transform.SetParent(PurgatoryRoot.instance.transform);
+            OnPlayerControllerDeath?.Invoke(this);
+            Debug.Log("<color=red>DEATH</color> Player " + netId + " has died. (client)");
+        }
+
         
         // Called when the server updates the player's name variable
         protected virtual void UpdateName(string nameToChangeTo)

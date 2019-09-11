@@ -16,9 +16,7 @@ GameObject:
   - component: {fileID: 4359907787146956217}
   - component: {fileID: 6328202424092267344}
   - component: {fileID: 7757705480948646782}
-  - component: {fileID: 7378485481420154886}
-  - component: {fileID: 3838795511025624325}
-  - component: {fileID: 1579186472911811138}
+  - component: {fileID: 6816603826080047241}
   m_Layer: 0
   m_Name: NetworkManagers
   m_TagString: Untagged
@@ -52,10 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
-  m_AssetId: 
-  m_SceneId: 2139856417
+  serverOnly: 0
+  localPlayerAuthority: 0
+  m_AssetId: 8ca1e3091c739dc4f87785858cb15b75
+  m_SceneId: 0
 --- !u!114 &7398981702766128394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,35 +260,7 @@ MonoBehaviour:
   syncInterval: 0.1
   scenarios: []
   currentScenarioName: 
---- !u!114 &7378485481420154886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615222144381845693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be03444a7dccc447a0852d41f7d0985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  matchMessageData: {fileID: 11400000, guid: 3b2d0221d5e8f234a80060646291e54a, type: 2}
-  MessageTemplate: {fileID: 0}
---- !u!114 &3838795511025624325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615222144381845693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c227e7c210df6b4c9ebc854b06471cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
---- !u!114 &1579186472911811138
+--- !u!114 &6816603826080047241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

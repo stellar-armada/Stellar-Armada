@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Collections.Generic;
+using Mirror;
 using StellarArmada.Levels;
 using StellarArmada.Player;
 using StellarArmada.Teams;
@@ -53,8 +54,21 @@ namespace StellarArmada.Match
                 foreach (TeamInfo teamInfo in currentScenario.teamInfo)
                 {
                     TeamManager.instance.CreateNewTeam(teamInfo);
-                    
                 }
+
+                List<WinCondition> newWinConditions = new List<WinCondition>();
+                
+                // Add win conditions from the scenario to the match state manager and initialize them
+                
+                foreach (Component w in currentScenario.WinConditions)
+                {
+                    var winCondition = (WinCondition)MatchStateManager.instance.gameObject.AddComponent(w.GetType());
+                    if(winCondition == null) Debug.LogError("Couldn't add win condition, is your scenario set up properly?");
+                    else newWinConditions.Add(winCondition);
+                }
+                
+                MatchStateManager.instance.InitializeWinCondition(newWinConditions);
+                
                 RpcInitializeMenu();
         }
 

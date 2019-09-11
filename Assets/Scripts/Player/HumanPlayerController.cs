@@ -117,18 +117,9 @@ namespace StellarArmada.Player
             t.parent = LocalPlayerBridgeSceneRoot.instance.transform;
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
-            ship.OnEntityDead += HandleDeath;
         }
 
-        void HandleDeath()
-        {
-            if (!isLocalPlayer) return;
-            // Our ship has died, so we are dead
-            LocalPlayerRig.instance.Enable();
-            gameObject.SetActive(false);
-            Debug.Log("You have died!");
-        }
-        
+
         
         public bool IsLocalPlayer() => isLocalPlayer;
 

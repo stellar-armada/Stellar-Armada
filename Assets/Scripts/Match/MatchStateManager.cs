@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Collections.Generic;
+using Mirror;
 
 #pragma warning disable 0649
 namespace StellarArmada.Match
@@ -17,8 +18,20 @@ namespace StellarArmada.Match
     {
         public static MatchStateManager instance; // private singleton with public GetCurrentMatch accessor
 
-        // State
+        public List<WinCondition> winConditions;
 
+        public void InitializeWinCondition(List<WinCondition> newWinConditions)
+        {
+            winConditions = newWinConditions;
+            foreach (var winCondition in winConditions)
+            {
+                winCondition.SetupWinCondition();
+            }
+        }
+        
+        
+        // ** CODE BELOW THIS POINT HAS NOT BEEN INTEGRATED
+        
         public delegate void StateChangeDelegate();
 
         [SyncEvent]
@@ -50,19 +63,6 @@ namespace StellarArmada.Match
             }
         }
 
-        [Command]
-        public void CmdStartMatch()
-        {
-            // Initiate a countdown
-            // Initiate matchclock that calls CmdStartSetupPhase
-        }
-        
-        [Command]
-        public void CmdStartBattlePhase()
-        {
-            // Init a matchclock that calls the battle start
-            CmdChangeMatchState(MatchState.Match);
-        }
 
         [Command]
         public void CmdFinishMatch()

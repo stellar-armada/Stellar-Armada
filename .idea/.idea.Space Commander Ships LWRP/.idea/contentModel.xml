@@ -89,7 +89,7 @@
           </e>
           <e p="ChangeColor.cs" t="Include" />
           <e p="Common" t="Include">
-            <e p="LocalPlayerRig.cs" t="Include" />
+            <e p="PurgatoryRoot.cs" t="Include" />
             <e p="TimeManager.cs" t="Include" />
           </e>
           <e p="DontDestroyOnLoad.cs" t="Include" />
@@ -173,7 +173,6 @@
             <e p="MiniMapTransformRoot.cs" t="Include" />
             <e p="Scenario.cs" t="Include" />
             <e p="WarpPoint.cs" t="Include" />
-            <e p="WinCondition.cs" t="Include" />
           </e>
           <e p="LocalMenuStateManager.cs" t="Include" />
           <e p="Match" t="Include">
@@ -2795,6 +2794,8 @@
             <e p="Particle.shader" t="Include" />
           </e>
         </e>
+        <e p="WinCondition.cs" t="Include" />
+        <e p="WinConditionTeamKill.cs" t="Include" />
       </e>
       <e p="Mirror.Components.csproj" t="IncludeRecursive" />
       <e p="Mirror.csproj" t="IncludeRecursive" />

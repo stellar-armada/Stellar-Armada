@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada.Levels
@@ -7,6 +8,7 @@ namespace StellarArmada.Levels
     [System.Serializable, CreateAssetMenu(fileName = nameof(Scenario), menuName = "Scenario", order = 56)]
     public class Scenario : ScriptableObject
     {
+        public List<Object> WinConditions;
         public string scenarioName;
         public int numberOfHumanPlayers;
         public string description;

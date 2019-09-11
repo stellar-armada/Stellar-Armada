@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 2371356566
+  m_AssetId: 8ca1e3091c739dc4f87785858cb15b75
+  m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,6 +1019,7 @@ MonoBehaviour:
   syncInterval: 0.1
   playerName: 
   teamId: 255
+  isAlive: 1
   localRig: {fileID: 4720211804134819468}
   bodyController: {fileID: 7389146851074543089}
 --- !u!114 &1839945735331089093

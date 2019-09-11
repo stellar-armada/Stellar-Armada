@@ -1,5 +1,6 @@
 ﻿using Mirror;
 using StellarArmada.Levels;
+using StellarArmada.Player;
 using StellarArmada.Teams;
 using UnityEngine;
 
@@ -82,7 +83,14 @@ namespace StellarArmada.Entities
         [Command]
         public virtual void CmdDie()
         {
-            isAlive = false;
+            if (isServerOnly)
+            {
+                foreach(PlayerController pc in GetComponentsInChildren<PlayerController>())
+                {
+                    pc.Die();
+                    isAlive = false;
+                }
+            }
             RpcDie();
         }
 
