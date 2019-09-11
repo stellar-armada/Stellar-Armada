@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Mirror;
+using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada.Match
@@ -18,9 +20,27 @@ namespace StellarArmada.Match
     {
         public static MatchStateManager instance; // private singleton with public GetCurrentMatch accessor
 
-        public List<WinCondition> winConditions;
+        [SerializeField] private MatchServerManager matchServerManager;
+        
+        List<WinCondition> winConditions;
 
-        public void InitializeWinCondition(List<WinCondition> newWinConditions)
+        public void Initialize() // Called by the match server manager when ready
+        {
+            List<WinCondition> newWinConditions = new List<WinCondition>();
+                
+            // Add win conditions from the scenario to the match state manager and initialize them
+                
+            foreach (var w in matchServerManager.GetCurrentScenario().WinConditions)
+            {
+                var winCondition = gameObject.AddComponent(WinConditionManager.instance.winConditionDictionary[w].GetType()) as WinCondition;
+                if(winCondition == null) Debug.LogError("Couldn't add win condition, is your scenario set up properly?");
+                else newWinConditions.Add(winCondition);
+            }
+                
+            InitializeWinConditions(newWinConditions);
+        }
+
+        public void InitializeWinConditions(List<WinCondition> newWinConditions)
         {
             winConditions = newWinConditions;
             foreach (var winCondition in winConditions)

@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   numberOfPlayerSlots: 99
+  matchStateManager: {fileID: 6816603826080047241}
 --- !u!114 &2615222144381845689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,3 +274,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  matchServerManager: {fileID: 4310008680290407409}

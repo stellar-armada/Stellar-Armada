@@ -10,11 +10,15 @@ namespace StellarArmada.Match
 {
     public class MatchServerManager : NetworkBehaviour
     {
+        
         public static MatchServerManager instance;
         public int numberOfPlayerSlots = 0;
 
+        [SerializeField] private MatchStateManager matchStateManager;
+        
         private GameObject map;
-
+        private Scenario currentScenario;
+        
         void Awake()
         {
             instance = this;
@@ -27,6 +31,11 @@ namespace StellarArmada.Match
                 Invoke(nameof(Initialize),2f);
             }
         }
+
+        public Scenario GetCurrentScenario()
+        {
+            return currentScenario;
+        }
         
         // Monolithic server initialization and management script
         // Handles the setup and selection of a random scenario, assignment of teams, creation of ships, everything players need
@@ -38,7 +47,7 @@ namespace StellarArmada.Match
             // Get a random scenario
                 MatchScenarioManager.instance.CmdChooseRandomScenario();
 
-                Scenario currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
+                currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
                 numberOfPlayerSlots = currentScenario.numberOfHumanPlayers;
                 if (LevelRoot.instance == null)
                 {
@@ -56,18 +65,7 @@ namespace StellarArmada.Match
                     TeamManager.instance.CreateNewTeam(teamInfo);
                 }
 
-                List<WinCondition> newWinConditions = new List<WinCondition>();
-                
-                // Add win conditions from the scenario to the match state manager and initialize them
-                
-                foreach (Component w in currentScenario.WinConditions)
-                {
-                    var winCondition = (WinCondition)MatchStateManager.instance.gameObject.AddComponent(w.GetType());
-                    if(winCondition == null) Debug.LogError("Couldn't add win condition, is your scenario set up properly?");
-                    else newWinConditions.Add(winCondition);
-                }
-                
-                MatchStateManager.instance.InitializeWinCondition(newWinConditions);
+                matchStateManager.Initialize();
                 
                 RpcInitializeMenu();
         }

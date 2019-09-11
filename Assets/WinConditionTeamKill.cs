@@ -1,4 +1,5 @@
-﻿using StellarArmada.Match;
+﻿using System.Linq;
+using StellarArmada.Match;
 using StellarArmada.Player;
 using StellarArmada.Teams;
 using UnityEngine;
@@ -49,32 +50,17 @@ public class WinConditionTeamKill : WinCondition
         
         foreach (Team team in TeamManager.instance.teams)
         {
-            bool teamWins = false;
+            bool teamWins = (team.players.Where(p => p.isAlive).Count() > 0);
             
-            // If anyone is alive on the team, they win!
-            foreach (PlayerController p in team.players)
-            {
-                if (p.isAlive)
-                {
-                    teamWins = true;
-                    return;
-                }
-                teamWins = false;
-            }
-
             if (teamWins)
             {
                 foreach (PlayerController p in team.players)
-                {
                     p.HandleWin();
-                }
             }
             else
             {
                 foreach (PlayerController p in team.players)
-                {
                     p.HandleLoss();
-                }
             }
 
         }

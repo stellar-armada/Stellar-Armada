@@ -23,4 +23,7 @@ namespace StellarArmada
     
     [CustomPropertyDrawer((typeof(MenuStateDictionary)))]
     public class MenuStateDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
+    
+    [CustomPropertyDrawer((typeof(WinConditionDictionary)))]
+    public class WinConditionDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 }

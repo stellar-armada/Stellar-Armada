@@ -8,7 +8,7 @@ namespace StellarArmada.Levels
     [System.Serializable, CreateAssetMenu(fileName = nameof(Scenario), menuName = "Scenario", order = 56)]
     public class Scenario : ScriptableObject
     {
-        public List<Object> WinConditions;
+        public List<WinConditionType> WinConditions;
         public string scenarioName;
         public int numberOfHumanPlayers;
         public string description;

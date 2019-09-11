@@ -286,6 +286,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matchMessageData: {fileID: 11400000, guid: 3b2d0221d5e8f234a80060646291e54a, type: 2}
   messageAudioSource: {fileID: 1011981861263665408}
+--- !u!1 &3030682659535929299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9069508082194459069}
+  - component: {fileID: 5299925294196558705}
+  - component: {fileID: 1945821424394028508}
+  m_Layer: 0
+  m_Name: WinConditionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9069508082194459069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030682659535929299}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5747669402256501384}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5299925294196558705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030682659535929299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d85704e3eeca4547acee3b1cd0332a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winConditionDictionary:
+    m_keys: 00000000
+    m_values:
+    - {fileID: 1945821424394028508}
+--- !u!114 &1945821424394028508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030682659535929299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5a684a3eb0b474c84bcea9278e5e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5747669400752923558
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +735,7 @@ Transform:
   - {fileID: 3289985712513492404}
   - {fileID: 4811830978465255958}
   - {fileID: 7431884025854452112}
+  - {fileID: 9069508082194459069}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -752,7 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   databaseName: WeaponDatabase
   selectedItem: 0
-  haveToShowArr: 00000000000000000000000000
+  haveToShowArr: 0000000000000000000000000000
 --- !u!1 &6248218696592396317
 GameObject:
   m_ObjectHideFlags: 0
