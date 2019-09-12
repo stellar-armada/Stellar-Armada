@@ -269,7 +269,7 @@ public class Shipyard : MonoBehaviour
                 return;
             }
             
-            team.CmdUpdatePrototype(ship.id, g.groupId);
+            HumanPlayerController.localPlayer.CmdUpdatePrototype(ship.id, g.groupId);
         }
 
         ShowAvailableShips();

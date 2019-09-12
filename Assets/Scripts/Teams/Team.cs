@@ -48,8 +48,8 @@ namespace StellarArmada.Teams
             
         }
 
-        [Command]
-        public void CmdUpdatePrototype(int id, int groupId)
+        [Server]
+        public void UpdatePrototype(int id, int groupId)
         {
             // Get prototype
             ShipPrototype proto = prototypes.Single(p => p.id == id);

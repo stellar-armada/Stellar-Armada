@@ -45,6 +45,12 @@ namespace StellarArmada.Player
         }
 
         [Command]
+        public void CmdUpdatePrototype(int shipId, int groupId)
+        {
+            GetTeam().UpdatePrototype(shipId, groupId);
+        }
+
+        [Command]
         public void CmdInitialize()
         {
             Initialize();
