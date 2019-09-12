@@ -36,6 +36,11 @@ namespace StellarArmada.Player
             if (isLocalPlayer)
             {
                 localPlayer = this;
+                localRig.SetActive(true);
+            }
+            else
+            {
+                localRig.SetActive(false);
             }
         }
 
