@@ -1003,7 +1003,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 1
   m_AssetId: 
-  m_SceneId: 845824449
+  m_SceneId: 1089436914
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,6 +2119,7 @@ MonoBehaviour:
   humanPlayerController: {fileID: 1839945735331089094}
   placementIndicatorPrefab: {fileID: 8994847673045569528, guid: a2c9b310cbd30864cbbea2b882d093f2,
     type: 3}
+  placementIndicators: []
 --- !u!1 &3828844560009835627
 GameObject:
   m_ObjectHideFlags: 0
