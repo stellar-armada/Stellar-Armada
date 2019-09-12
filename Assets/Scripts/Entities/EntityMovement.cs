@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnitySteer.Behaviors;
 
@@ -9,9 +10,11 @@ namespace StellarArmada.Entities
     {
         // Handles movement for all network entities, including ships
         
-        [SyncVar] public bool controlEnabled = false;  // Control enabled -- can this entity be controlled by commanders on the team?
+        [SyncVar (hook=nameof(HandleControlChanged))] public bool controlEnabled = false;  // Control enabled -- can this entity be controlled by commanders on the team?
         
         public NetworkEntity entity; // Reference to the owning entity
+
+        [SerializeField] private List<Steering> steeringBehaviors = new List<Steering>();
         
         [SerializeField] SteerForPursuit steerForPursuit;
         [SerializeField] SteerForPoint steerForPoint;
@@ -26,11 +29,21 @@ namespace StellarArmada.Entities
         // Reusable variables
         NetworkEntity tempShip;
         Transform transformToMoveTo; // for pursuit
+
+        void HandleControlChanged(bool newControlEnabledState)
+        {
+            foreach (Steering behavior in steeringBehaviors)
+            {
+                behavior.enabled = newControlEnabledState;
+            }
+            
+        }
         
         void Awake()
         {
             entity = GetComponent<NetworkEntity>();
             steerForPoint.OnArrival += HandleArrival;
+            HandleControlChanged(controlEnabled); // Disable steering behaviors by default
         }
 
         // Callback for SteerForPoint's OnArrival, so subscribers don't need to connect to steering components directly
