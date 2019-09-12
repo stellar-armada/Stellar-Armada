@@ -24,6 +24,7 @@ namespace StellarArmada.Player
 
         void Awake()
         {
+            settingsPath = Application.streamingAssetsPath + "/settings.txt";
             Init();
         }
         
@@ -46,13 +47,12 @@ namespace StellarArmada.Player
 
         static void SaveSettings()
         {
+            if (settings == null) return;
            File.WriteAllText(settingsPath,  JsonUtility.ToJson(settings));
         }
 
         public void Init()
         {
-            InitSettings();
-            settingsPath = Application.streamingAssetsPath + "/settings.txt";
             if (!File.Exists(Application.streamingAssetsPath + "/settings.txt"))
             {
                 InitSettings();
