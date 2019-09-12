@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Mirror;
 using StellarArmada.Entities;
 using StellarArmada.Entities.Ships;
@@ -45,6 +46,21 @@ namespace StellarArmada.Teams
             TeamManager.instance.teams.Add(this);
             if (insignia == null) HandleTeamSet(teamId);
             
+        }
+
+        [Command]
+        public void CmdUpdatePrototype(int id, int groupId)
+        {
+            // Get prototype
+            ShipPrototype proto = prototypes.Single(p => p.id == id);
+
+            int index = prototypes.IndexOf(proto);
+            
+            // change group value
+            proto.group = groupId;
+            
+            // get index of prototype and dirty
+            prototypes[index] = proto;
         }
 
         void HandleTeamSet(uint teamId)

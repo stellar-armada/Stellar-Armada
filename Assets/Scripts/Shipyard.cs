@@ -261,22 +261,15 @@ public class Shipyard : MonoBehaviour
         }
         else
         {
-            // Get prototype
             ShipPrototype proto = team.prototypes.Single(p => p.id == ship.id);
-
-            int index = team.prototypes.IndexOf(proto);
-
             if (proto.group == g.groupId)
             {
                 // Player moved item back to it's original, so we can do nothing
                 ship.transform.SetParent(g.transform);
                 return;
             }
-
-            // change group value
-            proto.group = g.groupId;
-            // get index of prototype and dirty
-            team.prototypes[index] = proto;
+            
+            team.CmdUpdatePrototype(ship.id, g.groupId);
         }
 
         ShowAvailableShips();
