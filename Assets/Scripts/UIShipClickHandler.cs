@@ -25,7 +25,6 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("<color=blue>CLICK</color> OnPointerDown called");
         if (shipyardShip.id < 0) return;
         timer = 0f;
         pointerDown = true;
@@ -33,22 +32,11 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("<color=orange>CLICK</color> OnPointerUp called");
-        if (!pointerDown)
-        {
-            Debug.Log("<color=red>CLICK</color> OnPointerUp called, but failed because pointerDown wasn't true");
-            return;
-        }
-        if (shipyardShip.id < 0)
-        {
-            Debug.Log("<color=red>CLICK</color> OnPointerUp called, but failed because ship ID wasn't set");
-            return;
-        }
+        if (!pointerDown) return;
+        if (shipyardShip.id < 0) return;
         pointerDown = false;
         if (timer < maxtime)
         {
-            Debug.Log("<color=blue>CLICK</color> OnPointerUp called successfully");
-
             // Get the list index of the ship we want to set the captain to
             int i = HumanPlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
             HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, HumanPlayerController.localPlayer.netId);

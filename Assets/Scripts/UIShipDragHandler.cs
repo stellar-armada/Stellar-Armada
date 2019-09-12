@@ -14,7 +14,7 @@
        private UIShipyardShip shipyardShip; // one or the other
        private UIGroupShip groupShip; // one or the other
 
-       public float dragDelay = .25f;
+       float dragDelay = .55f;
        private float dragTimer = 0f;
        void Awake()
        {
