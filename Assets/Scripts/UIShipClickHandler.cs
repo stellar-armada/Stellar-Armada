@@ -17,6 +17,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
     
     void Update()
     {
+        if (!pointerDown) return;
         timer += Time.deltaTime;
     }
 

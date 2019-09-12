@@ -71,6 +71,9 @@ namespace StellarArmada.Entities.Ships
                     yield return null;
                 }
                 while (timer <= warpTime) ;
+
+                ship.visualModel.transform.localPosition = Vector3.zero;
+
             }
 
             void CompleteWarp()
