@@ -88,7 +88,7 @@ namespace StellarArmada.Entities
         
         public void EnableMovement()
         {
-            controlEnabled = false;
+            controlEnabled = true;
         }
         
         public void DisableMovement()

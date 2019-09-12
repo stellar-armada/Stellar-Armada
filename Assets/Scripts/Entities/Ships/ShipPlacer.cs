@@ -94,11 +94,15 @@ namespace StellarArmada.Entities.Ships
             var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
             // Foreach ship in selection, get the placer object
-
+            if (ShipPlacementUIManager.instance.placementIndicators.Count < 1)
+            {
+                ShipPlacementUIManager.instance.UpdatePlacementMarkers();
+            }
+            
             foreach (Ship s in ships)
             {
                 // Get the placement indicator
-                ShipPlacementIndicator pI = ShipPlacementUIManager.placementIndicators.Single(p => p.entity == s);
+                ShipPlacementIndicator pI = ShipPlacementUIManager.instance.placementIndicators.Single(p => p.entity == s);
 
                 //Activate
                 pI.gameObject.SetActive(true);

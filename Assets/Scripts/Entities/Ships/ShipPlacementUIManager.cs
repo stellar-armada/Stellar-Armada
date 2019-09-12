@@ -14,7 +14,7 @@ namespace StellarArmada.Entities.Ships{
 
         public GameObject placementIndicatorPrefab;
 
-        public static List<ShipPlacementIndicator> placementIndicators;
+        public List<ShipPlacementIndicator> placementIndicators;
 
 // local reference variables
         private GameObject placementIndicatorObject;
@@ -29,11 +29,6 @@ namespace StellarArmada.Entities.Ships{
         {
             instance = this;
             placementIndicators = new List<ShipPlacementIndicator>();
-        }
-
-        void Start()
-        {
-            humanPlayerController.EventOnPlayerTeamChange += UpdatePlacementMarkers;
         }
 
         public void UpdatePlacementMarkers()
