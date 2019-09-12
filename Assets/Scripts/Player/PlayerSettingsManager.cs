@@ -18,12 +18,16 @@ namespace StellarArmada.Player
 
     public class PlayerSettingsManager : MonoBehaviour
     {
+        [HideInInspector] public bool desktopDisplayMode = true;
+        public static PlayerSettingsManager instance;
+        
         private static PlayerSettings settings;
         private static string settingsPath;
         #region Initialization
 
         void Awake()
         {
+            instance = this;
             settingsPath = Application.streamingAssetsPath + "/settings.txt";
             Init();
         }

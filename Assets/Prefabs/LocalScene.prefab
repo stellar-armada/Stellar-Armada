@@ -2282,6 +2282,7 @@ GameObject:
   - component: {fileID: 8911269486726611887}
   - component: {fileID: 8826874440786664438}
   - component: {fileID: 4906118372392123652}
+  - component: {fileID: 6658503070255560937}
   m_Layer: 17
   m_Name: Canvas
   m_TagString: Untagged
@@ -2379,6 +2380,21 @@ MonoBehaviour:
     - {fileID: 7098052560551975636}
     - {fileID: 7844166649110206376}
   shipyard: {fileID: 7292929663022437033}
+--- !u!114 &6658503070255560937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595773943282142228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4457315cb73ef5488a01776d1cf6d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 8911269486726611887}
+  scale3D: {x: 0.001, y: 0.001, z: 0.001}
+  position3D: {x: 0, y: 1, z: 2}
 --- !u!1 &3775657897405917482
 GameObject:
   m_ObjectHideFlags: 0

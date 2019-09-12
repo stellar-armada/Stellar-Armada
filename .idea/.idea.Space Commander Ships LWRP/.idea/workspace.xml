@@ -92,6 +92,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/Helpers/Tooltip/SharedResources/Scripts/TooltipFacade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/FollowTarget.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CanvasDisplaySwitcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/DetectableObjectCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/RandomizeStartPosition.cs" root0="FORCE_HIGHLIGHTING" />
@@ -214,7 +215,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/LaserTurret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponPrefabManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/VulcanTurret.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Match Up/Examples/Mirror/ExampleMirrorMatchmaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Action/Action.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Missile.cs" root0="FORCE_HIGHLIGHTING" />
@@ -264,6 +265,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect_mobile.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldHit.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EventSystemSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/Transport/Websocket/Ninja.WebSockets/Exceptions/EntityTooLargeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -273,9 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/UIShipClickHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Shipyard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pooling/Editor/PoolManagerEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/LocalMenuStateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/MatchConnectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/SceneRoot.cs" />
@@ -297,7 +296,6 @@
         <option value="$PROJECT_DIR$/Assets/WinConditionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapController.cs" />
@@ -310,7 +308,6 @@
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Association/GameObjectsAssociationActivatorTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkManager.cs" />
@@ -324,6 +321,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/CanvasDisplaySwitcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/EventSystemController.cs" />
+        <option value="$PROJECT_DIR$/Assets/EventSystemSwitcher.cs" />
       </list>
     </option>
   </component>
