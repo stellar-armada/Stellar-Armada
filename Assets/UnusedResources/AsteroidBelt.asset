@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad77c10867700864186fcb2a6a762597, type: 3}
   m_Name: AsteroidBelt
   m_EditorClassIdentifier: 
-  setupTime: 1
-  matchTime: 15
-  postMatchTime: 1
+  WinConditions: 
   scenarioName: AsteroidBelt
-  numberOfHumanPlayers: 2
+  numberOfHumanPlayers: 1
   description: 1v1 at the asteroids!
   teamInfo:
-  - fleetBattleGroups:
-    - m_keys: 05000000
-      m_values: 03000000
-    - m_keys: 05000000
-      m_values: 03000000
-    - m_keys: 05000000
-      m_values: 03000000
+  - availableShipTypes: 
+    pointsToSpend: 50
     numberOfPlayerSlots: 1
-  - fleetBattleGroups:
+    fleetBattleGroups:
     - m_keys: 05000000
       m_values: 03000000
     - m_keys: 05000000
       m_values: 03000000
     - m_keys: 05000000
       m_values: 03000000
-    numberOfPlayerSlots: 1
+  - availableShipTypes: 
+    pointsToSpend: 50
+    numberOfPlayerSlots: 0
+    fleetBattleGroups:
+    - m_keys: 05000000
+      m_values: 03000000
+    - m_keys: 05000000
+      m_values: 03000000
+    - m_keys: 05000000
+      m_values: 03000000
   levelPrefab: {fileID: 3198974705040035564, guid: 4141f2fda0a005d4284ed301a4db48da,
     type: 3}
