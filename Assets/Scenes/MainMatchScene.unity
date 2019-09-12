@@ -408,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 3472995441224764074, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.895
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3472995441224764074, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
@@ -470,6 +470,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8911269486726611887, guid: 41e036104fb93154288777bd50cb86b1,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 883682921603340453, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -484,11 +489,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911269486726611887, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8233275114551137543, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
@@ -829,16 +829,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1243689556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 5844423217c233642ad78db00d4109d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 131104
 --- !u!114 &1243689558
 MonoBehaviour:
   m_ObjectHideFlags: 0
