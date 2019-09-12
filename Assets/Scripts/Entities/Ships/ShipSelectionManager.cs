@@ -17,6 +17,7 @@ namespace StellarArmada.Entities.Ships
 
         [SerializeField] private HumanPlayerController playerController;
         private List<ISelectable> currentSelection = new List<ISelectable>();
+        private bool initialized = false;
 
         // 4 selection sets by default
         List<List<ISelectable>> selectionSets = new List<List<ISelectable>>()
@@ -46,12 +47,14 @@ namespace StellarArmada.Entities.Ships
 
         void Awake()
         {
-            playerController.OnLocalPlayerInitialized += InitializeSelectionSets;
             instance = this;
         }
 
-        void InitializeSelectionSets()
+        public void InitializeSelectionSets()
         {
+            if (initialized) return;
+            initialized = true;
+            
             ClearSelectionSets();
             
             // Get reference to all ships on player's team
@@ -76,7 +79,7 @@ namespace StellarArmada.Entities.Ships
                     selectionShip.gameObject.SetActive(false);
                 }
             }
-            OnSelectionChanged?.Invoke();
+            // OnSelectionChanged?.Invoke();
         }
 
         void ClearSelectionSets()

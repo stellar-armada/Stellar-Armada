@@ -115,6 +115,7 @@ namespace StellarArmada.Player
             t.parent = LocalPlayerBridgeSceneRoot.instance.transform;
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
+            ShipSelectionManager.instance.InitializeSelectionSets();
         }
 
 
