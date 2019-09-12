@@ -1828,7 +1828,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: 2
-  onlyNull: 0
 --- !u!114 &2982661397305226596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,7 +2468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: 1
-  onlyNull: 0
 --- !u!114 &4829159343130943550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2764,7 +2762,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: 0
-  onlyNull: 0
 --- !u!114 &6618942616139150729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3796,7 +3793,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: 0
-  onlyNull: 1
 --- !u!1 &7015312170896223470
 GameObject:
   m_ObjectHideFlags: 0
@@ -4693,7 +4689,6 @@ GameObject:
   - component: {fileID: 7686424536721374140}
   - component: {fileID: 8282779935160622492}
   - component: {fileID: 4338160566775558252}
-  - component: {fileID: 5354598409686151044}
   m_Layer: 17
   m_Name: Available Ships
   m_TagString: Untagged
@@ -4756,20 +4751,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5354598409686151044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9113198728397359950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3a849cc5b76df4fa174a9f54f03af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groupId: 0
-  onlyNull: 1
 --- !u!1 &9173071715949178920
 GameObject:
   m_ObjectHideFlags: 0

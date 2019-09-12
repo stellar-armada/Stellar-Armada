@@ -20,9 +20,7 @@ namespace StellarArmada.Entities.Ships
     // Ships are owned by teams, but may have a captain
     public class Ship : NetworkEntity
     {
-        // For this implementation, ships can be captained by players
-        // Captains are placed on the bridge, which is instantiated for all captained ships
-        public PlayerController captain;
+       
 
         // An enum identifying what type of ship this is
         public ShipType type;

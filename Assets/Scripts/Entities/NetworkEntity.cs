@@ -11,6 +11,10 @@ namespace StellarArmada.Entities
     // Ships, stations, fighters, missiles, etc. inherit from this class 
     public abstract class NetworkEntity : NetworkBehaviour
     {
+        // For this implementation, entities can be captained by a single player
+        // Captains are placed on the bridge, which is instantiated for all captained ships
+        public PlayerController captain;
+        
         // All network entities start alive and can be killed
         // When isAlive is changed on the network, call the HandleDeath() callback
         [SyncVar(hook = nameof(HandleDeath))] public bool isAlive = true;
@@ -83,15 +87,13 @@ namespace StellarArmada.Entities
         [Command]
         public virtual void CmdDie()
         {
+            if(captain != null) captain.Die();
             if (isServerOnly)
             {
-                foreach(PlayerController pc in GetComponentsInChildren<PlayerController>())
-                {
-                    pc.Die();
                     isAlive = false;
-                }
             }
-            RpcDie();
+                    
+                    RpcDie();
         }
 
         [ClientRpc]

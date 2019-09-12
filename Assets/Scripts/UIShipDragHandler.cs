@@ -8,7 +8,6 @@
    
    public class UIShipDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
    {
-       private bool isDragging = false;
        private Vector2 startPosition;
        private RectTransform t;
        private CanvasGroup canvasGroup;
@@ -28,6 +27,8 @@
        private PointerEventData data;
 
        private bool isReadyToDrag = false;
+
+       private float scale;
        
        public void OnBeginDrag(PointerEventData eventData)
        {
@@ -39,12 +40,11 @@
        void Init()
        {
            isReadyToDrag = false;
+           scale = t.localScale.x;
            t.SetParent(UIPointer.instance.uiPlacerCanvas.transform);
-           t.localPosition = Vector3.zero;
-           t.localScale = Vector3.one;
+           t.localScale = Vector3.one * scale;
            t.localRotation = Quaternion.identity;
            t.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
-           isDragging = true;
            // disable raycasting on this object
            canvasGroup.blocksRaycasts = false;
        }
@@ -58,21 +58,27 @@
 
        public void OnEndDrag(PointerEventData eventData)
        {
-        if (!isDragging) return;
-
            if (dragTimer < dragDelay) return;
-           if (GroupContainer.currentGroup)
+           if (eventData.pointerCurrentRaycast.gameObject.GetComponent<GroupContainer>() != null)
+           {
+               Debug.Log("*** Group container not null: " + eventData.pointerCurrentRaycast.gameObject.name);
+           }
+
+           GroupContainer g = eventData.pointerCurrentRaycast.gameObject.GetComponent<GroupContainer>();
+           
+           if (g != null)
            {
                Debug.Log("Dropped onto a group, executing group transfer logic");
                // Shipyard logic
                if (shipyardShip != null)
                {
-                   Shipyard.instance.MoveShip(shipyardShip, GroupContainer.currentGroup.transform);
+                   Debug.Log("Moving shipyard ship");
+                   Shipyard.instance.MoveShip(shipyardShip, g);
                }
                else if (groupShip != null)
                {
                    // Group ship logic
-                   GroupUIManager.instance.MoveShipToGroup(groupShip, GroupContainer.currentGroup.groupId);
+                   GroupUIManager.instance.MoveShipToGroup(groupShip, g.groupId);
                }
            }
            else
@@ -81,19 +87,21 @@
                // return to original group
                if (shipyardShip != null)
                {
-                   Shipyard.instance.MoveShip(shipyardShip, Shipyard.instance.availableShipsContainer);
+                   Debug.Log("Destroying shipyard ship shipyard ship");
+                   Shipyard.instance.DestroyShip(shipyardShip);
                   
                }
                else if (groupShip != null)
                {
                    // Group ship logic
+                   Debug.Log("Moving Group ship back");
                    GroupUIManager.instance.MoveShipToGroup(groupShip, groupShip.ship.group);
                }
            }
            // enable raycasting on object, maybe
            canvasGroup.blocksRaycasts = true;
-            transform.localRotation = Quaternion.identity;
-            transform.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
-           isDragging = false;
+           t.localRotation = Quaternion.identity;
+           t.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
+           t.localScale = Vector3.one * scale;
        }
    }

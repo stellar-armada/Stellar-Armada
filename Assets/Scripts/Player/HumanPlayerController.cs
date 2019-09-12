@@ -64,8 +64,6 @@ namespace StellarArmada.Player
 
             // get index of prototype and dirty
             team.prototypes[prototypeIndex] = newProto;
-
-            team.prototypes.Dirty(prototypeIndex); // Do we need this?
         }
 
         [ClientRpc]
