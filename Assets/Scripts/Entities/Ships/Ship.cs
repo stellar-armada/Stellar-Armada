@@ -47,7 +47,6 @@ namespace StellarArmada.Entities.Ships
             if (isServerOnly)
             {
             captain = PlayerManager.GetPlayerById(playerId);
-            OnCaptainUpdated?.Invoke();
             }
             RpcSetCaptain(playerId);
         }
@@ -61,8 +60,8 @@ namespace StellarArmada.Entities.Ships
             // Local player logic
             if (captain == HumanPlayerController.localPlayer)
             {
-                ((HumanPlayerController) captain).PickCapitalShip(this);
                 bridge.ActivateBridgeForLocalPlayer();
+                ShipSelectionManager.instance.InitializeSelectionSets();
                 PlayerCamera.instance.ShowMatchView(); // Switch camera layers to minimap and ships for local player
                 OnCaptainUpdated?.Invoke();
             }

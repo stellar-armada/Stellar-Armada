@@ -24,7 +24,7 @@ namespace StellarArmada.Entities
             foreach(var explosion in explosions)
                 explosion.SetActive(true);
             Invoke(nameof(HideShip), hideShip);
-            Invoke(nameof(DeactivateShip), deactivateShip);
+           // Invoke(nameof(DeactivateShip), deactivateShip);
         }
         
         void HideShip()

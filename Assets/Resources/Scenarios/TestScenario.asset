@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinConditions: 00000000
   scenarioName: TestationAlpha
-  numberOfHumanPlayers: 2
+  numberOfHumanPlayers: 1
   description: Battle of Testation Alpha
   teamInfo:
   - availableShipTypes: 05000000
@@ -29,7 +29,7 @@ MonoBehaviour:
       m_values: 01000000
   - availableShipTypes: 05000000
     pointsToSpend: 50
-    numberOfPlayerSlots: 1
+    numberOfPlayerSlots: 0
     fleetBattleGroups:
     - m_keys: 05000000
       m_values: 01000000
