@@ -5,6 +5,7 @@ using UnityEngine;
 using StellarArmada.Entities.Ships;
 using StellarArmada.Levels;
 using StellarArmada.Teams;
+using StellarArmada.UI;
 
 #pragma warning disable 0649
 namespace StellarArmada.Player
@@ -44,6 +45,43 @@ namespace StellarArmada.Player
             }
         }
 
+        [Command]
+        public void CmdAddShipToList(ShipType type, int group)
+        {
+            // create new prototype with type and group
+            ShipPrototype p = new ShipPrototype();
+            p.shipType = type;
+            p.group = group;
+            p.id = ShipPrototype.prototypeEntityIncrement++;
+            // Add to team's prototoype list
+            GetTeam().prototypes.Add(p);
+        }
+
+        [Command]
+        public void CmdRemoveShipFromList(int prototypeId)
+        {
+            // Remove ship from team's prorotype list
+            ShipPrototype proto = GetTeam().prototypes.Single(p => p.id == prototypeId);
+            GetTeam().prototypes.Remove(proto);
+
+        }
+        
+        [Command]
+        public void CmdSetFlagshipForLocalPlayer(int newIndex)
+        {
+            // If player already has a flagship, unset and dirty it
+            if (GetTeam().prototypes.Where(p => p.hasCaptain && p.captain == localPlayer.netId).ToArray().Length > 0)
+            {
+                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId);
+                proto.hasCaptain = false;
+                int index = GetTeam().prototypes.IndexOf(
+                    GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
+                GetTeam().prototypes[index] = proto;
+            }
+            
+            CmdSetShipCaptain(localPlayer.netId, newIndex);
+        }
+        
         [Command]
         public void CmdUpdatePrototype(int shipId, int groupId)
         {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using StellarArmada.Player;
 using StellarArmada.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -36,7 +37,9 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
         pointerDown = false;
         if (timer < maxtime)
         {
-            Shipyard.instance.SetFlagshipForLocalPlayer(shipyardShip);
+            // Get the list index of the ship we want to set the captain to
+            int i = HumanPlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
+            HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i);
         }
     }
 }

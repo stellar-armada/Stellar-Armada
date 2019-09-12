@@ -130,24 +130,6 @@ public class Shipyard : MonoBehaviour
         ship.SetFlagshipStatus();
     }
 
-    void AddShipToList(ShipType type, int group)
-    {
-        // create new prototype with type and group
-        ShipPrototype p = new ShipPrototype();
-        p.shipType = type;
-        p.group = group;
-        p.id = ShipPrototype.prototypeEntityIncrement++;
-        // Add to team's prototoype list
-        team.prototypes.Add(p);
-    }
-
-    void RemoveShipFromList(int prototypeId)
-    {
-        // Remove ship from team's prorotype list
-        ShipPrototype proto = team.prototypes.Single(p => p.id == prototypeId);
-        team.prototypes.Remove(proto);
-
-    }
 
 
     void PopulateUIShipyardShips()
@@ -246,7 +228,7 @@ public class Shipyard : MonoBehaviour
     public void DestroyShip(UIShipyardShip ship)
     {
         if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
-            RemoveShipFromList(ship.id);
+            HumanPlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
 
         Destroy(ship.gameObject);
     }
@@ -256,7 +238,7 @@ public class Shipyard : MonoBehaviour
         if (ship.id < 0
         ) // Shipyard ships are inited with an id of -1 -- so this much be a ship in our "available" container, not already in our fleet
         {
-            AddShipToList(ship.shipType, g.groupId);
+            HumanPlayerController.localPlayer.CmdAddShipToList(ship.shipType, g.groupId);
             Destroy(ship.gameObject);
         }
         else
@@ -274,22 +256,5 @@ public class Shipyard : MonoBehaviour
 
         ShowAvailableShips();
     }
-
-
-    public void SetFlagshipForLocalPlayer(UIShipyardShip shipyardShip)
-    {
-        // If player already has a flagship, unset and dirty it
-        if (team.prototypes.Where(p => p.hasCaptain && p.captain == localPlayer.netId).ToArray().Length > 0)
-        {
-            ShipPrototype proto = team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId);
-            proto.hasCaptain = false;
-            int index = team.prototypes.IndexOf(
-                team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
-            team.prototypes[index] = proto;
-        }
-
-        int i = team.prototypes.IndexOf(shipyardShip.GetPrototype());
-
-        HumanPlayerController.localPlayer.CmdSetShipCaptain(localPlayer.netId, i);
-    }
+    
 }
