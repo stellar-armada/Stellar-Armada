@@ -32,7 +32,6 @@ namespace StellarArmada.Player
         
         void Start()
         {
-            OnLocalPlayerInitialized += () => Debug.Log("<color=green>Initialized local player</color>");
             PlayerManager.instance.RegisterPlayer(this);
             if (isLocalPlayer)
             {
@@ -67,19 +66,19 @@ namespace StellarArmada.Player
         }
         
         [Command]
-        public void CmdSetFlagshipForLocalPlayer(int newIndex)
+        public void CmdSetFlagshipForLocalPlayer(int newIndex, uint localPlayerId)
         {
             // If player already has a flagship, unset and dirty it
-            if (GetTeam().prototypes.Where(p => p.hasCaptain && p.captain == localPlayer.netId).ToArray().Length > 0)
+            if (GetTeam().prototypes.Where(p => p.hasCaptain && p.captain == localPlayerId).ToArray().Length > 0)
             {
-                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId);
+                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId);
                 proto.hasCaptain = false;
                 int index = GetTeam().prototypes.IndexOf(
-                    GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
+                    GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId));
                 GetTeam().prototypes[index] = proto;
             }
             
-            CmdSetShipCaptain(localPlayer.netId, newIndex);
+            CmdSetShipCaptain(localPlayerId, newIndex);
         }
         
         [Command]
@@ -123,7 +122,6 @@ namespace StellarArmada.Player
         
         void Initialize()
         {
-            Debug.Log("<color=blue>Initializing player...</color>");
             bodyController.Init();
 
             // Server sets player's team
@@ -136,8 +134,6 @@ namespace StellarArmada.Player
                 localRig.SetActive(true);
                 
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
-                
-                Debug.Log("Populate shipyard menu here");
                 
                 LocalMenuStateManager.instance.GoToShipyard();
                 
@@ -158,7 +154,6 @@ namespace StellarArmada.Player
         // TO-DO: Refactor for when player selects the capital ship of their choice
         public void PickCapitalShip(Ship ship)
         {
-            Debug.Log("Captal ship called");
             // Get entity where capital ship is this player
             Transform t = transform; // skip the gameObject.transform lookup
             t.parent = LocalPlayerBridgeSceneRoot.instance.transform;

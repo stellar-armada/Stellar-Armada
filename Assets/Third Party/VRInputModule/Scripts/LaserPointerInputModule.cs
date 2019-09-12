@@ -147,9 +147,7 @@ namespace Wacki {
 
                 if(controller.ButtonDown())
                 {
-                    Debug.Log("Calling button down");
                     ClearSelection();
-
                     data.pointerEvent.pressPosition = data.pointerEvent.position;
                     data.pointerEvent.pointerPressRaycast = data.pointerEvent.pointerCurrentRaycast;
                     data.pointerEvent.pointerPress = null;

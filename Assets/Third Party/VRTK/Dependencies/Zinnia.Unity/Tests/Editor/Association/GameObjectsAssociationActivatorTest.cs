@@ -96,7 +96,6 @@ namespace Test.Zinnia.Association
 
             subject.Associations.Add(associationMock);
 
-            Debug.Log("This test is expecting a warning to be logged next.");
             LogAssert.Expect(LogType.Warning, new Regex("multiple association"));
             subject.ManualAwake();
             Debug.Log("Warning log recognized, the test is successful.");

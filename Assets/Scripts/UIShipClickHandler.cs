@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private UIShipyardShip shipyardShip;
-    [SerializeField] private float maxtime = .2f;
+    private float maxtime = .3f;
 
     void Awake()
     {
@@ -39,7 +39,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
         {
             // Get the list index of the ship we want to set the captain to
             int i = HumanPlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
-            HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i);
+            HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, HumanPlayerController.localPlayer.netId);
         }
     }
 }

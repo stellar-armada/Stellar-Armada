@@ -77,8 +77,6 @@ namespace StellarArmada.Entities.Ships
         {
             Team t = TeamManager.instance.GetTeamByID(teamId);
             
-            Debug.Log("<color=red>CAPTAIN</color> CmdCreateShipsForTeam() on team " + teamId);
-            
             // Iterate through hardcoded three battle groups
             for (int g = 0; g < 3; g++)
             {
@@ -103,12 +101,9 @@ namespace StellarArmada.Entities.Ships
 
                 // Get list of warp vectors in level
                 var warpPoints = Level.currentLevel.warpPoints;
-
-                Debug.Log(warpPoints.Count);
+                
                 WarpPoint wp = warpPoints.First(w =>
                 {
-                    Debug.Log("Team index: " + w.teamIndex);
-                    Debug.Log("Group number: " + w.groupNumber);
                     return w.teamIndex == teamId && w.groupNumber == g;
                 });
 

@@ -30,7 +30,6 @@ namespace StellarArmada.UI
 
         public ShipPrototype GetPrototype()
         {
-            Debug.Log("Attempting to get prototype: " + id);
             return team.prototypes.Single(p => p.id == id);
         }
 

@@ -44,7 +44,6 @@ namespace StellarArmada.Entities.Ships
         [Command] // Server-side logic
         public void CmdSetCaptain(uint playerId)
         {
-            Debug.Log("<color=red>CAPTAIN</color> Captain set to " + playerId + " on server");
             if (isServerOnly)
             {
             captain = PlayerManager.GetPlayerById(playerId);
@@ -56,23 +55,16 @@ namespace StellarArmada.Entities.Ships
         [ClientRpc] // Client-side logic
         public void RpcSetCaptain(uint playerId)
         {
-            Debug.Log("<color=red>CAPTAIN</color> Captain set to " + playerId + " on client");
-            
             // Prevent double calls on host
             captain = PlayerManager.GetPlayerById(playerId);
 
             // Local player logic
             if (captain == HumanPlayerController.localPlayer)
             {
-                Debug.Log("<color=red>CAPTAIN</color> Picking capital ship for local player " + captain.netId);
                 ((HumanPlayerController) captain).PickCapitalShip(this);
                 bridge.ActivateBridgeForLocalPlayer();
                 PlayerCamera.instance.ShowMatchView(); // Switch camera layers to minimap and ships for local player
                 OnCaptainUpdated?.Invoke();
-            }
-            else
-            {
-                Debug.Log("<color=red>CAPTAIN</color> A player picked their capital ship: " + captain.netId);
             }
         }
 

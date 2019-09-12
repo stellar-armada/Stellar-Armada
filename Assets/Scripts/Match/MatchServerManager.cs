@@ -43,7 +43,6 @@ namespace StellarArmada.Match
         // TO-DO: Comment and clean up refs
         public void Initialize()
         {
-            Debug.Log("Initializing match server manager script");
             // Get a random scenario
                 MatchScenarioManager.instance.CmdChooseRandomScenario();
 

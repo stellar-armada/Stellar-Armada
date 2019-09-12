@@ -54,7 +54,6 @@ namespace StellarArmada.Entities.Ships
                 ship.visualModel.transform.localPosition = warpInStartPos;
                 ship.weaponSystemController.ShowWeaponSystems();
                 ship.visualModel.enabled = true;
-                Debug.Log("<color=orange>WARP</color> InitWarp()");
                 StartCoroutine(WarpIn());
                 
                 Invoke(nameof(CompleteWarp), warpTime);
@@ -64,7 +63,6 @@ namespace StellarArmada.Entities.Ships
             
             IEnumerator WarpIn()
             {
-                Debug.Log("<color=orange>WARP</color> WarpIn()");
                 float timer = 0f;
                 do
                 {
@@ -77,7 +75,6 @@ namespace StellarArmada.Entities.Ships
 
             void CompleteWarp()
             {
-                Debug.Log("<color=orange>WARP</color> CompleteWarp()");
                 ship.movement.EnableMovement();
                 ship.weaponSystemController.weaponSystemsEnabled = true;
                 ship.miniMapStatusBar.ShowStatusBar();

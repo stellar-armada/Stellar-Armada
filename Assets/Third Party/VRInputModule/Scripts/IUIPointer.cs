@@ -49,7 +49,6 @@ namespace Wacki {
 
         public virtual void OnEnterControl(GameObject control)
         {
-            Debug.Log("OnEnterControl called");
             OnCanvasStateChanged?.Invoke(true);
             hitPoint.SetActive(true);
             pointer.SetActive(true);
@@ -57,7 +56,6 @@ namespace Wacki {
 
         public virtual void OnExitControl(GameObject control)
         {
-            Debug.Log("OnExitControl called");
             OnCanvasStateChanged?.Invoke(false);
             hitPoint.SetActive(false);
             pointer.SetActive(false);
