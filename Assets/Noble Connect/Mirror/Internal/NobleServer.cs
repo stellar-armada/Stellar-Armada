@@ -452,7 +452,7 @@ namespace NobleConnect.Mirror
         }
         static public bool SendToReady<T>(NetworkIdentity contextObj, T msg) where T : MessageBase, new()
         {
-            return NetworkServer.SendToReady<T>(contextObj, msg);
+            return NetworkServer.SendToReady<T>(contextObj, msg, true);
         }
         static public void DisconnectAll() { NetworkServer.DisconnectAll(); }
         static public void SendToClientOfPlayer<T>(NetworkIdentity player, T msg) where T : MessageBase, new()
