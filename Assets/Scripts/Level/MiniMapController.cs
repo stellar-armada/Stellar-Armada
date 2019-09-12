@@ -52,7 +52,7 @@ namespace StellarArmada.Levels
             // Set local references
             miniMapTransformRoot = MiniMapTransformRoot.instance.transform;
             miniMap = MiniMap.instance;
-            miniMapTransform = MiniMap.instance.transform;
+            miniMapTransform = miniMap.transform;
             sceneRoot = LocalPlayerBridgeSceneRoot.instance.transform;
         }
 
@@ -84,16 +84,22 @@ namespace StellarArmada.Levels
         // We do some reparenting jiggery to make the math easier in the loop
         void StartTransformation()
         {
+            Debug.Log("<color=orange>MINIMAP</color> StartTransformation called");
+            
+            // Unparent the minimap from the minimap transform root
+            miniMapTransform.SetParent(sceneRoot, true);
+            
+            
             // Put the transform root into the scene root if it wasn't already
             miniMapTransformRoot.SetParent(sceneRoot, true);
-            // Unparent the minimap from the minimap transform root
-           miniMapTransform.SetParent(sceneRoot, true);
 
             // Calculate midpoint
             Vector3 midpoint = (leftController.localPosition + rightController.localPosition) / 2f;
 
             // Place the minimap transform root at the midpoint
             miniMapTransformRoot.localPosition = midpoint;
+            
+            miniMapTransformRoot.localScale = Vector3.one;
             
             // Flatten out rotation so our rotations are less weird in the update loop
             miniMapTransformRoot.localRotation = Quaternion.identity;
@@ -157,8 +163,10 @@ namespace StellarArmada.Levels
 
             //apply scale to model
             miniMapTransformRoot.localScale *= scaleFactor;
-            miniMapTransformRoot.localScale = Vector3.one * 
-                                              Mathf.Clamp(miniMapTransformRoot.localScale.x, miniMap.minScale, miniMap.maxScale);
+            miniMapTransformRoot.localScale = Vector3.one * miniMapTransformRoot.localScale.x;
+            
+            miniMapTransform.localScale = Vector3.one * Mathf.Clamp(miniMapTransform.localScale.x, miniMap.minScale, miniMap.maxScale);
+            
         }
     }
 }

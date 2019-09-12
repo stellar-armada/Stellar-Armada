@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad77c10867700864186fcb2a6a762597, type: 3}
   m_Name: TestScenario
   m_EditorClassIdentifier: 
-  WinConditions:
-  - {fileID: 11500000, guid: 0d5a684a3eb0b474c84bcea9278e5e51, type: 3}
+  WinConditions: 00000000
   scenarioName: TestationAlpha
-  numberOfHumanPlayers: 2
+  numberOfHumanPlayers: 1
   description: Battle of Testation Alpha
   teamInfo:
   - availableShipTypes: 05000000
@@ -30,7 +29,7 @@ MonoBehaviour:
       m_values: 01000000
   - availableShipTypes: 05000000
     pointsToSpend: 50
-    numberOfPlayerSlots: 1
+    numberOfPlayerSlots: 0
     fleetBattleGroups:
     - m_keys: 05000000
       m_values: 01000000

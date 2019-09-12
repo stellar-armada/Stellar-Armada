@@ -142,8 +142,10 @@ namespace StellarArmada.Entities.Ships
             {
                 // Try getting a selectable from the collider
                 selectable = collider.GetComponent<ISelectable>();
+                
+                Debug.Log("<color=blue>SELECTION</color> Selectable name is: " + collider.name);
                 // Has a selectable component, so it's an entity
-                if (selectable != null)
+                if (selectable != null && selectable.GetOwningEntity().GetTeam() != null)
                 {
                     if (!selectable.IsSelectable()) return; // The selectable can't be selected right now
                     if (selectable.GetOwningEntity().GetTeam().teamId != playerController.teamId) return; // The selectable isn't on our team, could be wrapped into IsSelectable query

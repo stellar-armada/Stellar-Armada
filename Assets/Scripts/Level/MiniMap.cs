@@ -31,7 +31,6 @@ namespace StellarArmada.Levels
         {
             // miniMapSecene = Instantiate(scene);
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
-            LocalPlayerBridgeSceneRoot.SceneRootCreated += InitializeMiniMap;
         }
 
         private bool lockRotation = true;
@@ -43,11 +42,13 @@ namespace StellarArmada.Levels
 
         public void ShowMiniMap()
         {
+            InitializeMiniMap();
             StartCoroutine(ExpandMiniMap());
         }
         
         IEnumerator ExpandMiniMap()
         {
+            Debug.Log("<color=orange>MINIMAP</color> ExpandMiniMap called");
             float timer = 0f;
 
             float expansionTime = .5f;
@@ -55,12 +56,13 @@ namespace StellarArmada.Levels
             do
             {
                 timer += Time.deltaTime;
-                transform.localScale = Vector3.one * Mathf.Lerp(0, startScale, timer / expansionTime);
+                transform.SetGlobalScale(Vector3.one * Mathf.Lerp(0, startScale, timer / expansionTime));
+                Debug.Log("<color=orange>MINIMAP</color>  transform.localScale");
                 yield return null;
             } while (timer <= expansionTime);
 
-            transform.localScale = Vector3.one * startScale;
-            
+            transform.SetGlobalScale(Vector3.one * startScale);
+
             interactable = true;
         }
         
@@ -79,9 +81,9 @@ namespace StellarArmada.Levels
         void InitializeMiniMap()
         {
 
+            Debug.Log("<color=orange>MINIMAP</color> InitializeMiniMap called");
+            
             // TO-DO: Simplify references to create less garbage
-
-            // 
 
             // miniMapSecene = Instantiate(scene);
             //  miniMapSecene.transform.SetParent(MiniMap.instance.transform);
@@ -91,10 +93,12 @@ namespace StellarArmada.Levels
             // Put the minimap scene on on our UI ship layer for collision handling
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
 
+            transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true); // unparent minimap before transformation happens
+            
             // Parent the MapTransformRoot to the SceneRoot (bride)
             MiniMapTransformRoot.instance.transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true);
+            MiniMapTransformRoot.instance.transform.localScale = Vector3.one;
             MiniMapTransformRoot.instance.transform.localPosition = new Vector3(0, yOffset, 0);
-            MiniMapTransformRoot.instance.transform.SetGlobalScale(startScale * Vector3.one);
 
             // Parent the minimap to our MapTransformRoot object
             transform.SetParent(MiniMapTransformRoot.instance.transform);

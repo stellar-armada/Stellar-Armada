@@ -69,6 +69,7 @@ namespace StellarArmada.Entities.Ships
                 Debug.Log("<color=red>CAPTAIN</color> Picking capital ship for local player " + captain.netId);
                 ((HumanPlayerController) captain).PickCapitalShip(this);
                 bridge.ActivateBridgeForLocalPlayer();
+                PlayerCamera.instance.ShowMatchView(); // Switch camera layers to minimap and ships for local player
                 OnCaptainUpdated?.Invoke();
             }
             else
