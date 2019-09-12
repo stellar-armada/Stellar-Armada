@@ -132,7 +132,6 @@ namespace VRKeyboard.Utils
 
         public void GenerateInput(string s)
         {
-            Debug.Log(s);
             if (Input.Length > maxInputLength) { return; }
             Input += s;
         }

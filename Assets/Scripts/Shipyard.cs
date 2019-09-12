@@ -134,7 +134,6 @@ public class Shipyard : MonoBehaviour
 
     void PopulateUIShipyardShips()
     {
-        Debug.Log("Populating shipyard");
         // Destroy all shipyard ships and clear the list
         foreach (var ship in shipyardShips)
         {
@@ -174,7 +173,6 @@ public class Shipyard : MonoBehaviour
             if (!addedShipTypes.Contains(s.shipType))
             {
                 Destroy(s);
-                Debug.Log("Destroyed double ship");
                 continue;
             }
 

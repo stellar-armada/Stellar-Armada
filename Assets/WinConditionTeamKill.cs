@@ -9,7 +9,6 @@ public class WinConditionTeamKill : WinCondition
     
     public override void SetupWinCondition()
     {
-        Debug.Log("<color=green>WIN CONDITION</color> Setting up win condition for " + GetType());
         foreach (PlayerController pc in PlayerManager.players)
         {
             pc.OnPlayerControllerDeath += CheckWinCondition;
@@ -25,7 +24,6 @@ public class WinConditionTeamKill : WinCondition
 
     void CheckWinCondition(PlayerController playerController)
     {
-        Debug.Log("<color=green>WIN CONDITION</color> checked");
         if (winConditionMet) return;
         
         Team team = playerController.GetTeam();
@@ -48,7 +46,6 @@ public class WinConditionTeamKill : WinCondition
 
     void HandleWinConditionMet()
     {
-        Debug.Log("<color=green>WIN CONDITION</color> HandleWinConditionMet()");
         foreach (Team team in TeamManager.instance.teams)
         {
             bool teamWins = (team.players.Where(p => p.isAlive).Count() > 0);

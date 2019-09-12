@@ -78,7 +78,14 @@ namespace StellarArmada.Player
                 GetTeam().prototypes[index] = proto;
             }
             
-            CmdSetShipCaptain(localPlayerId, newIndex);
+            SetShipCaptain(localPlayerId, newIndex);
+            TargetFlagshipSetForPlayer(connectionToClient);
+        }
+
+        [TargetRpc]
+        void TargetFlagshipSetForPlayer(NetworkConnection conn)
+        {
+            Debug.Log("<color=green>CLICK</color> TargetFlagshipSetForPlayer()");
         }
         
         [Command]
@@ -101,8 +108,8 @@ namespace StellarArmada.Player
 
         }
 
-        [Command]
-        public void CmdSetShipCaptain(uint id, int prototypeIndex)
+        [Server]
+        public void SetShipCaptain(uint id, int prototypeIndex)
         {
             Team team = TeamManager.instance.GetTeamByID(teamId);
             ShipPrototype newProto = team.prototypes[prototypeIndex];

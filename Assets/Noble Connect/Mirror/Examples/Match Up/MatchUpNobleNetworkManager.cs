@@ -15,15 +15,12 @@ using Mirror;
         
         public void CreateMatchManager()
         {
-            Debug.Log("Creating match manager");
             GameObject matchManager = Instantiate(matchManagerPrefab);
             NetworkServer.Spawn(matchManager);
         }
 
         private void OnServerInitialized()
         {
-            Debug.Log("Server initialized!");
-           
         }
 
         override public void Start()
@@ -34,38 +31,29 @@ using Mirror;
 
         public override void OnStartServer()
         {
-            Debug.Log("OnStartServer called");
             base.OnStartServer();
         }
 
         public override void OnClientConnect(NetworkConnection conn)
         {
             base.OnClientConnect(conn);
-            Debug.Log("Client connected.");
         }
 
         public override void OnClientDisconnect(NetworkConnection conn)
         {
-            base.OnClientDisconnect(conn);
-            Debug.Log("Client disconnected.");
-        }
+            base.OnClientDisconnect(conn); }
 
         public override void OnServerConnect(NetworkConnection conn)
         {
-            base.OnServerConnect(conn);
-            Debug.Log("Server received a client connection.");
-        }
+            base.OnServerConnect(conn); }
 
         public override void OnServerDisconnect(NetworkConnection conn)
         {
-            base.OnServerDisconnect(conn);
-            Debug.Log("Server lost a client.");
-        }
+            base.OnServerDisconnect(conn); }
 
         public override void OnStopHost()
         {
-            base.OnStopHost();
-            Debug.Log("Destroying match.");
+            base.OnStopHost(); 
             matchUp.DestroyMatch();
         }
 
