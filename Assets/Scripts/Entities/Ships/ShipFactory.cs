@@ -61,6 +61,7 @@ namespace StellarArmada.Entities.Ships
             Ship s = shipGameObject.GetComponent<Ship>();
 
             s.SetEntityId(entityIncrement++);
+            s.group = groupId;
             
             
             NetworkServer.Spawn(shipGameObject);

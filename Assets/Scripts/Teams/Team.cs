@@ -16,6 +16,7 @@ namespace StellarArmada.Teams
     
     public class SyncListShipPrototype : SyncList<ShipPrototype> { }
 
+    public class SyncListShipType : SyncList<ShipType> { }
 
     public class Team : NetworkBehaviour
     {
@@ -27,7 +28,7 @@ namespace StellarArmada.Teams
         [SyncVar] public string teamName;
         [SyncVar] public Color color;
         [SyncVar] public int playerSlots;
-        public List<ShipType> availableShipTypes;
+        public SyncListShipType availableShipTypes = new SyncListShipType();
         [SyncVar] public int pointsToSpend;
         
         public Texture insignia;

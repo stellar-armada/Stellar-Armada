@@ -173,7 +173,7 @@ public class Shipyard : MonoBehaviour
         availablePointsText.text = currentPoints.ToString();
         
         // Get all entity types represented
-        List<ShipType> availableShipTypes = team.availableShipTypes;
+        SyncListShipType availableShipTypes = team.availableShipTypes;
 
         // Get all children of the availableship container
         var g = availableShipsContainer.GetComponentsInChildren<UIShipyardShip>();
@@ -260,8 +260,7 @@ public class Shipyard : MonoBehaviour
         {
             ShipPrototype proto = team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId);
             proto.hasCaptain = false;
-            int index = team.prototypes.IndexOf(
-                team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
+            int index = team.prototypes.IndexOf(team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
             team.prototypes[index] = proto;
         }
 

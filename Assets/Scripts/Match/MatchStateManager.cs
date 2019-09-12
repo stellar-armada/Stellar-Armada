@@ -31,17 +31,8 @@ namespace StellarArmada.Match
             // Add win conditions from the scenario to the match state manager and initialize them
                 
             foreach (var w in matchServerManager.GetCurrentScenario().WinConditions)
-            {
-                var winCondition = gameObject.AddComponent(WinConditionManager.instance.winConditionDictionary[w].GetType()) as WinCondition;
-                if(winCondition == null) Debug.LogError("Couldn't add win condition, is your scenario set up properly?");
-                else newWinConditions.Add(winCondition);
-            }
-                
-            InitializeWinConditions(newWinConditions);
-        }
+                newWinConditions.Add(gameObject.AddComponent(WinConditionManager.instance.winConditionDictionary[w].GetType()) as WinCondition);
 
-        public void InitializeWinConditions(List<WinCondition> newWinConditions)
-        {
             winConditions = newWinConditions;
             foreach (var winCondition in winConditions)
             {
@@ -50,6 +41,8 @@ namespace StellarArmada.Match
         }
         
         
+        
+
         // ** CODE BELOW THIS POINT HAS NOT BEEN INTEGRATED
         
         public delegate void StateChangeDelegate();
