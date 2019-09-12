@@ -23,6 +23,10 @@ public class Shipyard : MonoBehaviour
 {
     public static Shipyard instance;
 
+    public GameObject WarpButton;
+
+    public GameObject FlagshipWarning;
+
     private List<UIShipyardShip> shipyardShips = new List<UIShipyardShip>();
 
     public List<GroupContainer> shipyardGroups = new List<GroupContainer>();
@@ -38,9 +42,12 @@ public class Shipyard : MonoBehaviour
     void Awake()
     {
         instance = this;
+        WarpButton.SetActive(false);
+        FlagshipWarning.SetActive(true);
     }
 
-    void Init()
+
+    public void InitializeShipyard()
     {
         Debug.Log("<color=blue>Calling init");
         localPlayer = HumanPlayerController.localPlayer;
@@ -49,13 +56,8 @@ public class Shipyard : MonoBehaviour
 
         team = TeamManager.instance.GetTeamByID(localPlayer.teamId);
         team.prototypes.Callback += OnShipListUpdated;
-    }
-
-    public void InitializeShipyard()
-    {
-        Init();
+        
         PopulateUIShipyardShips();
-        ShowAvailableShips();
         Debug.Log("<color=blue>InitializeShipyard called");
     }
 
@@ -88,6 +90,7 @@ public class Shipyard : MonoBehaviour
         }
 
         ShowAvailableShips();
+        ValidateCaptain();
     }
 
     void CreateUIShip(ShipPrototype proto)
@@ -143,6 +146,7 @@ public class Shipyard : MonoBehaviour
         // Remove ship from team's prorotype list
         ShipPrototype proto = team.prototypes.Single(p => p.id == prototypeId);
         team.prototypes.Remove(proto);
+
     }
 
 
@@ -162,6 +166,9 @@ public class Shipyard : MonoBehaviour
             // Create a new shipyard ship and assign it the prototype's ID
             CreateUIShip(proto);
         }
+        
+        ShowAvailableShips();
+       
     }
 
 
@@ -210,6 +217,29 @@ public class Shipyard : MonoBehaviour
                 ship.localScale = Vector3.one;
             }
         }
+
+        
+    }
+
+
+    public void ValidateCaptain()
+    {
+        int localPlayerCaptainCount = team.prototypes
+            .Where(s => s.hasCaptain && s.captain == HumanPlayerController.localPlayer.netId).Count();
+
+        if (localPlayerCaptainCount == 1)
+        {
+            WarpButton.SetActive(true);
+            FlagshipWarning.SetActive(false);
+            return; // If there's a captain for current player, we're good
+        }
+
+        // If there's no captain, pick one of the available un-captained ships (the one with the highest price)
+        var sortedPrototypes =
+            team.prototypes.Where(p => p.hasCaptain == false).OrderByDescending(p => ShipPriceManager.instance.shipPriceDictionary[p.shipType]).ToList();
+
+        WarpButton.SetActive(false);
+        FlagshipWarning.SetActive(true);
     }
 
 
