@@ -1,6 +1,7 @@
 ﻿using Mirror;
 using StellarArmada.Teams;
 using UnityEngine;
+
 #pragma warning disable 0649
 namespace StellarArmada.Player
 {
@@ -8,51 +9,70 @@ namespace StellarArmada.Player
     // This is confusing and could be rethought a little bit, since we think of players as humans
     // (but that would be the HumanPlayerController inheriting class)
     // AI players can also inherit from this class
-    
-    public abstract class PlayerController: NetworkBehaviour
+
+    public abstract class PlayerController : NetworkBehaviour
     {
         // Generic event handler for this class
         public delegate void PlayerControllerEvent();
-        
+
         // Generic event handler for this class
         public delegate void PlayerControllerSpecificEvent(PlayerController playerController);
-        
+
         // Set the player name. When set by the server, call the UpdateName callback
         [SyncVar(hook = nameof(UpdateName))] public string playerName;
 
         // Set the player's team
         //UInts are used here, mostly because uints are used for net IDs and incremented entity index values
-        [SyncVar(hook = nameof(HandleTeamChange))] public uint teamId = 255;
-        
+        [SyncVar(hook = nameof(HandleTeamChange))]
+        public uint teamId = 255;
+
         public event PlayerControllerEvent EventOnPlayerNameChange;
         public event PlayerControllerEvent EventOnPlayerTeamChange;
-        
+
         public PlayerControllerSpecificEvent OnPlayerControllerDeath;
 
         [SyncVar] public bool isAlive = true;
 
+        [ServerCallback]
         public void HandleWin()
         {
             if (isServer) TargetHandleWin(connectionToClient);
         }
-
-        [TargetRpc]
-        public void TargetHandleWin(NetworkConnection conn)
-        {
-            Debug.Log("<color=green>WIN CONDITION</color> This player wins!");
-        }
         
+        [ServerCallback]
         public void HandleLoss()
         {
             if (isServer) TargetHandleLoss(connectionToClient);
         }
         
         [TargetRpc]
-        public void TargetHandleLoss(NetworkConnection conn)
+        public void TargetHandleWin(NetworkConnection conn)
         {
-            Debug.Log("<color=green>WIN CONDITION</color> This player loses!");
+            ReturnToPurgatory();
+            LocalMenuStateManager.instance.ShowVictoryMenu();
+            Debug.Log("<color=green>WIN CONDITION</color> This player wins!");
         }
         
+        [TargetRpc]
+        public void TargetHandleLoss(NetworkConnection conn)
+        {
+            ReturnToPurgatory();
+            LocalMenuStateManager.instance.ShowDefeatMenu();
+            Debug.Log("<color=green>WIN CONDITION</color> This player loses!");
+        }
+
+        void ReturnToPurgatory()
+        {
+            transform.SetParent(PurgatoryRoot.instance.transform);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            PlayerCamera.instance.ShowPurgatoryView();
+            
+            
+        }
+
+    
+
         [Server]
         public void Die() // Message sent to all players attached to an entity when it dies
         {
@@ -61,6 +81,7 @@ namespace StellarArmada.Player
                 isAlive = false;
                 OnPlayerControllerDeath?.Invoke(this);
             }
+
             // Our ship has died, so we are dead
             Debug.Log("<color=red>DEATH</color> Player " + netId + " has died. (server)");
             RpcDie();
@@ -70,12 +91,12 @@ namespace StellarArmada.Player
         public void RpcDie()
         {
             isAlive = false;
-            transform.SetParent(PurgatoryRoot.instance.transform);
+            ReturnToPurgatory();
             OnPlayerControllerDeath?.Invoke(this);
             Debug.Log("<color=red>DEATH</color> Player " + netId + " has died. (client)");
         }
 
-        
+
         // Called when the server updates the player's name variable
         protected virtual void UpdateName(string nameToChangeTo)
         {
@@ -91,8 +112,9 @@ namespace StellarArmada.Player
             teamId = pTeam;
             EventOnPlayerTeamChange?.Invoke();
         }
+
         public abstract PlayerType GetPlayerType(); // Human, AI?
-        
+
         public PlayerController GetPlayer() => this;
         public GameObject GetGameObject() => gameObject;
 
@@ -108,7 +130,7 @@ namespace StellarArmada.Player
 
         [Command]
         public virtual void CmdSetTeam(uint _team) => teamId = _team;
-        
+
         [Command]
         public virtual void CmdSetUserName(string newUserName)
         {

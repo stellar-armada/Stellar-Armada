@@ -1,4 +1,5 @@
-﻿using StellarArmada.Entities.Ships;
+﻿using Mirror;
+using StellarArmada.Entities.Ships;
 using StellarArmada.Levels;
 using StellarArmada.Match;
 using StellarArmada.Networking;
@@ -78,6 +79,12 @@ public class LocalMenuStateManager : MonoBehaviour
             MiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
             
             // on dewarp, hide warp effects and scale up minimap
+    }
+
+    public void QuitMatch()
+    {
+        Debug.Log("Quitting match!");
+        NetworkClient.Disconnect();
     }
 
     public void HideMenu()
