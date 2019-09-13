@@ -85,8 +85,8 @@ public class LocalMenuStateManager : MonoBehaviour
     public void QuitMatch()
     {
         Debug.Log("Quitting match!");
-        NetworkClient.Disconnect();
-        SceneManager.LoadScene(0);
+        if(HumanPlayerController.localPlayer.isServer) NetworkServer.DisconnectAll();
+        if(HumanPlayerController.localPlayer.isClient) NetworkClient.Disconnect();
     }
 
     public void HideMenu()
