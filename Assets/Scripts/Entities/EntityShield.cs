@@ -18,7 +18,7 @@ namespace StellarArmada.Entities
         [SerializeField] private float shieldRechargeDelayTime;
         [SerializeField] private float shieldRechargeRate;
         public ShieldEffectController shieldEffectController;
-
+        
         private float lastHit;
 
         public float currentShield;
@@ -53,7 +53,7 @@ namespace StellarArmada.Entities
 
         public void TakeDamage(float damage, Vector3 point, Damager damager)
         {
-            if (shieldEffectController && !shieldEffectController.GetIsDuringActivationAnim())
+            if (shieldEffectController && !shieldEffectController.IsDuringActivationAnim())
             {
                 shieldEffectController.OnHit(point, damager.GetImpactSize());
             }

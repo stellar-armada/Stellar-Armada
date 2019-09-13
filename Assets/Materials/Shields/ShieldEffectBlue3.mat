@@ -107,21 +107,21 @@ Material:
     - _RippleDistortion: 1
     - _RippleScale: 1
     - _SrcBlend: 1
-    - _TexturePower: 1
+    - _TexturePower: 0.82
     - _TextureRimMax: 1.02
-    - _TextureRimMin: 0.25
-    - _TextureScale: 12
+    - _TextureRimMin: -0.624
+    - _TextureScale: 21.3
     - _TextureScrollX: 1
     - _TextureScrollY: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.6689658, b: 1, a: 0.9372549}
+    - _Color: {r: 0, g: 0.6689658, b: 1, a: 0.12941177}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HitPos: {r: 1, g: 0, b: 0, a: 0}
     - _HitTan1: {r: 0, g: 1, b: 0, a: 1}
     - _HitTan2: {r: 1, g: 0, b: 0, a: 1}
-    - _PatternColor: {r: 0.36937702, g: 0.72323436, b: 0.8970588, a: 0}
+    - _PatternColor: {r: 0.369377, g: 0.72323436, b: 0.8970588, a: 0.13333334}
     - _ShieldDirection: {r: 1, g: 0, b: 0, a: 0}
-    - _TextureColor: {r: 0.07379963, g: 0.3441564, b: 0.4779411, a: 0.48235294}
+    - _TextureColor: {r: 0.0737996, g: 0.34415635, b: 0.4779411, a: 0.078431375}
     - _WorldScale: {r: 1, g: 1, b: 1, a: 1}

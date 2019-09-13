@@ -16,9 +16,6 @@ namespace StellarArmada.Levels
 
         [SerializeField] List<Renderer> renderers;
 
-        public delegate void MiniMapEntityEvent();
-
-
         void Awake()
         {
             t = transform;

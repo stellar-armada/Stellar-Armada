@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad77c10867700864186fcb2a6a762597, type: 3}
   m_Name: AsteroidBelt
   m_EditorClassIdentifier: 
-  WinConditions: 
+  WinConditions: 00000000
   scenarioName: AsteroidBelt
   numberOfHumanPlayers: 1
   description: 1v1 at the asteroids!
   teamInfo:
-  - availableShipTypes: 
+  - availableShipTypes: 05000000
     pointsToSpend: 50
     numberOfPlayerSlots: 1
     fleetBattleGroups:

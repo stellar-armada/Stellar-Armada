@@ -15914,6 +15914,9 @@ MonoBehaviour:
     type: 3}
   hitEffectDuration: 0.5
   hitColor: {r: 0, g: 0.59772396, b: 1, a: 0.5647059}
+  renderers:
+  - {fileID: 1960456489736019244}
+  - {fileID: 563795884218372396}
 --- !u!1 &4007513039453171211
 GameObject:
   m_ObjectHideFlags: 0
@@ -33133,7 +33136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drawGizmos: 1
   _center: {x: 0, y: 0, z: 0}
-  _radius: 300
+  _radius: 275
   _minSpeedForTurning: 4.5
   _movementPriority: 0
   _turnTime: 4
@@ -33259,7 +33262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 1
+  _weight: 5
   _estimationTime: 2
 --- !u!114 &741652607477629037
 MonoBehaviour:
@@ -33273,9 +33276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c589e228a3db54ba7830738331a921c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 1
-  _minRadius: 0
-  _maxRadius: 450
+  _weight: 3
+  _minRadius: 50
+  _maxRadius: 600
   _drawNeighbors: 0
   _angleCos: -0.1736482
 --- !u!114 &2175313936342113083
@@ -33290,12 +33293,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb541a7bf4d841a8a655dc685b730bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 1
-  _minDistance: 0
-  _maxDistance: 450
+  _weight: 3
+  _minDistance: 300
+  _maxDistance: 500
   _comfortDistance: 400
   _multiplierInsideComfortDistance: 1
-  _vehicleRadiusImpact: 0
+  _vehicleRadiusImpact: 1
 --- !u!1 &8887671907898053240
 GameObject:
   m_ObjectHideFlags: 0
