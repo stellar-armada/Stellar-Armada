@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using StellarArmada.Levels;
 using StellarArmada.Player;
 using TMPro;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace StellarArmada.Entities.Ships
         {
             captainNameText.renderer.enabled = false;
             ship.OnCaptainUpdated += HandleUpdateToCaptain;
-
+            ship.OnEntityDead += HandleEntityDead;
             SetVisibility(0);
             
              entityHull = ship.hull;
@@ -33,6 +34,12 @@ namespace StellarArmada.Entities.Ships
              entityHull.HullChanged += SetHullSlider;
             
             LookAtMainCamera();
+        }
+
+        void HandleEntityDead()
+        {
+            captainNameText.renderer.enabled = false;
+            StartCoroutine(FadeVisibility(0));
         }
 
         void Start()

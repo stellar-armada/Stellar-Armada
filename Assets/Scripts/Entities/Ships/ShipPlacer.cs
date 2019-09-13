@@ -93,7 +93,7 @@ namespace StellarArmada.Entities.Ships
             // Get formation positions for selection
             var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
-            // Foreach ship in selection, get the placer object
+            // Foreach ship in selection, get the placer objectz
             if (ShipPlacementUIManager.instance.placementIndicators.Count < 1)
             {
                 ShipPlacementUIManager.instance.UpdatePlacementMarkers();
@@ -111,8 +111,8 @@ namespace StellarArmada.Entities.Ships
                 pI.transform.localScale = Vector3.one;
                 pI.transform.localRotation = Quaternion.identity;
                 pI.Show(positions[s]);
-                Invoke(nameof(ShowPlacements), .2f);
             }
+            Invoke(nameof(ShowPlacements), .2f);
         }
 
         public void HidePlacements()

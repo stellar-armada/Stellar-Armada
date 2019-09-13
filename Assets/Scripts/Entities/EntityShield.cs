@@ -10,6 +10,8 @@ namespace StellarArmada.Entities
         public float maxShield;
 
         public delegate void ShieldChangeEvent(float shieldVal);
+
+        public bool enabled = true;
         
         public ShieldChangeEvent ShieldChanged;
 
@@ -33,6 +35,8 @@ namespace StellarArmada.Entities
 
         void Update()
         {
+            if (!enabled) return;
+            
             //Automatic shield regen
             if (currentShield < maxShield && Time.time > lastHit + shieldRechargeDelayTime)
             {

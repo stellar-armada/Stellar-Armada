@@ -129,6 +129,7 @@ namespace StellarArmada.Player
         
         void Initialize()
         {
+            Debug.Log("Initialize called");
             bodyController.Init();
 
             // Server sets player's team
@@ -151,7 +152,7 @@ namespace StellarArmada.Player
             }
             else
             {
-                Destroy(localRig);
+                localRig.SetActive(false);
                 OnNonLocalPlayerInitialized?.Invoke();
             }
         }

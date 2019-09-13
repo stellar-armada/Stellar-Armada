@@ -33,7 +33,7 @@ namespace StellarArmada.Levels
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
         }
 
-        private bool lockRotation = true;
+        private bool lockRotation = false;
 
         public void ToggleRotationLock()
         {
@@ -110,9 +110,10 @@ namespace StellarArmada.Levels
         void LateUpdate()
         {
             if (!interactable || !lockRotation || MiniMapController.instance == null || MiniMapController.instance.isActive) return;
-            transform.rotation =
-                Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
 
+            if (Quaternion.Angle(transform.rotation, Quaternion.identity) < .3f) return;
+            
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
         }
 
         void SetLayerRecursively(GameObject obj, int newLayer)

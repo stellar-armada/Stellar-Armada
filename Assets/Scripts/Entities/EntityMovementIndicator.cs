@@ -18,7 +18,7 @@ namespace StellarArmada.Entities
         void Awake()
         {
             t = transform;
-            visualModel.SetActive(false);
+            HideMovementIndicator();
         }
 
         void Start()

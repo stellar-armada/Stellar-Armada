@@ -12,9 +12,17 @@ namespace StellarArmada.Entities.Ships
         public delegate void SelectionChangedHandler(bool selected);
 
         public SelectionChangedHandler OnSelectionChanged;
+        private bool canSelect = true;
         
         void Awake()
         {
+            selectionCube.enabled = false;
+            entity.OnEntityDead += HandleDeath;
+        }
+
+        void HandleDeath()
+        {
+            Deselect();
             selectionCube.enabled = false;
         }
 

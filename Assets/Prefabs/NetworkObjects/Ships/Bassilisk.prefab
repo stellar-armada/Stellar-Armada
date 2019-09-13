@@ -15891,6 +15891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 8081799463623299947}
   maxShield: 300
+  enabled: 1
   shieldRechargeDelayTime: 2
   shieldRechargeRate: 3
   shieldEffectController: {fileID: 2199714103910787439}
@@ -32952,7 +32953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 9985b346ccf870e4e821f2a06fa4594d
+  m_AssetId: 97c9ecdb36ab09e409f7da9f6151d19e
   m_SceneId: 0
 --- !u!114 &3996648154937188522
 MonoBehaviour:
@@ -33061,7 +33062,7 @@ MonoBehaviour:
   syncInterval: 0.1
   entity: {fileID: 8081799463623299947}
   maxHull: 500
-  currentHull: 0
+  currentHull: 500
 --- !u!114 &8019088010132304523
 MonoBehaviour:
   m_ObjectHideFlags: 0

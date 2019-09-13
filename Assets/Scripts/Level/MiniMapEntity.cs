@@ -16,11 +16,23 @@ namespace StellarArmada.Levels
 
         [SerializeField] List<Renderer> renderers;
 
+        public delegate void MiniMapEntityEvent();
+
+
         void Awake()
         {
             t = transform;
 
             networkEntity.OnTeamChange += HandleTeamChange;
+            networkEntity.OnEntityDead += Deactivate;
+        }
+
+        public void Deactivate()
+        {
+            foreach (Renderer ren in renderers)
+            {
+                ren.enabled = false;
+            }
         }
 
         public void Start()

@@ -24,7 +24,7 @@ namespace StellarArmada.Entities
             foreach(var explosion in explosions)
                 explosion.SetActive(true);
             Invoke(nameof(HideShip), hideShip);
-           // Invoke(nameof(DeactivateShip), deactivateShip);
+            Invoke(nameof(DeactivateShip), deactivateShip);
         }
         
         void HideShip()
@@ -42,7 +42,10 @@ namespace StellarArmada.Entities
 
         void DeactivateShip()
         {
-            gameObject.SetActive(false);
+            entity.shield.enabled = false;
+            entity.shield.currentShield = 0;
+
+            entity.miniMapEntity.Deactivate();
         }
     }
 }

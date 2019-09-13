@@ -58,6 +58,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.0.1/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchMenuStartButtonController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Tools/DetectableObjectCreator2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/Avatar/Scripts/OvrAvatar.cs" root0="FORCE_HIGHLIGHTING" />
@@ -96,6 +97,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/DetectableObjectCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/RandomizeStartPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@7.0.1/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SettingsMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MatchPlayerMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/Radar.cs" root0="FORCE_HIGHLIGHTING" />
@@ -275,15 +277,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/LocalMenuStateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/MatchConnectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level/SceneRoot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleClient.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleServer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipBridge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/PurgatoryRoot.cs" />
         <option value="$PROJECT_DIR$/Assets/AllPlayersOnTeamAreDead.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" />
@@ -295,12 +290,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GroupContainer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" />
@@ -313,19 +306,28 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Utility/Keyboard/KeyboardManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Examples/Match Up/MatchUpNobleNetworkManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/WinConditionTeamKill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Assets/CanvasDisplaySwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemSwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MatchMenuStartButtonController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityShield.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/MiniMapStatusBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapEntity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
       </list>
     </option>
   </component>
@@ -444,7 +446,7 @@
     <state x="465" y="284" width="1244" height="660" key="find.popup" />
     <state x="627" y="193" width="666" height="847" key="find.popup/1920.1080" />
     <state x="465" y="284" width="1244" height="660" key="find.popup/1920.1080/1920.1080" />
-    <state x="616" y="240" key="run.anything.popup" />
+    <state x="2532" y="344" key="run.anything.popup" />
     <state x="616" y="240" key="run.anything.popup/1920.1080" />
     <state x="2532" y="344" key="run.anything.popup/1920.1080/1920.1080" />
     <state x="2539" y="361" width="672" height="678" key="search.everywhere.popup" />

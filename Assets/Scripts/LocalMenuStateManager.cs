@@ -56,13 +56,7 @@ public class LocalMenuStateManager : MonoBehaviour
     {
         ChangeMenuState(MenuState.InGame_WaitingForPlayers);
     }
-
-    public void StartMatch()
-    {
-        // Call server to put all players on teams (i.e. initialize player)
-        MatchServerManager.instance.InitializePlayers();
-    }
-
+    
     public void GoToShipyard()
     {
         ChangeMenuState(MenuState.InGame_Shipyard);

@@ -10,6 +10,7 @@ using IgnoranceTransport = Mirror.Ignorance;
 using NobleConnect;
 using NobleConnect.Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace NobleConnect.Mirror
 {
@@ -398,9 +399,17 @@ namespace NobleConnect.Mirror
             {
                 client.Shutdown();
             }
+            
             base.OnStopClient();
+            
+            if (!string.IsNullOrEmpty(offlineScene))
+            {
+                // Move the NetworkManager from the virtual DontDestroyOnLoad scene to the current scene.
+                // This let's it be destroyed when client changes to the Offline scene.
+                SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+            }
         }
-
+        
         /// <summary>Called when the server receives a client connection.</summary>
         /// <remarks>
         /// If you override this method you must call the base method or everything will explode.
