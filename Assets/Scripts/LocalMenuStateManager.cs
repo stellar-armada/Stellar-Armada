@@ -5,6 +5,7 @@ using StellarArmada.Match;
 using StellarArmada.Networking;
 using StellarArmada.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum MenuState
 {
@@ -85,6 +86,7 @@ public class LocalMenuStateManager : MonoBehaviour
     {
         Debug.Log("Quitting match!");
         NetworkClient.Disconnect();
+        SceneManager.LoadScene(0);
     }
 
     public void HideMenu()
