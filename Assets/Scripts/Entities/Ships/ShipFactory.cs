@@ -2,6 +2,7 @@
 using System.Linq;
 using Mirror;
 using StellarArmada.Levels;
+using StellarArmada.Match;
 using StellarArmada.Player;
 using StellarArmada.Teams;
 using UnityEngine;
@@ -116,8 +117,14 @@ namespace StellarArmada.Entities.Ships
 
                     Vector3 newPos = parentMatrix.MultiplyPoint3x4(shipPositions[s]);
 
-                    s.shipWarp.CmdInitWarp(pos + newPos, rot);
+                    s.shipWarp.ServerInitWarp(pos + newPos, rot);
                 }
+            }
+
+            // Tick up the number of ready players
+            for (int i = 0; i < t.players.Count; i++)
+            {
+                MatchStateManager.instance.ReadyPlayer();
             }
         }
     }

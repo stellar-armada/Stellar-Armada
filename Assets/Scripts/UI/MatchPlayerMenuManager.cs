@@ -43,7 +43,7 @@ namespace StellarArmada.UI
 
         public void SetMenuState(bool state)
         {
-            if (!MatchStateManager.instance.IsStarted()) return;
+            if (!MatchStateManager.instance.InMatch()) return;
 
             
             // Trigger rollover

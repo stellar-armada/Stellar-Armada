@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using StellarArmada.Match;
 using StellarArmada.Player;
 using StellarArmada.Teams;
 using UnityEngine;
@@ -48,6 +49,8 @@ public class WinConditionTeamKill : WinCondition
 
     void HandleWinConditionMet()
     {
+        MatchStateManager.instance.CmdChangeMatchState(MatchState.Ended);
+        
         Debug.Log("<color=green>WIN CONDITION</color> HandleWinConditionMet()");
         foreach (Team team in TeamManager.instance.teams)
         {

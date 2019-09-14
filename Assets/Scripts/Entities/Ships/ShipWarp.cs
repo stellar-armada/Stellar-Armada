@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Mirror;
 using StellarArmada.Levels;
+using StellarArmada.Match;
 using StellarArmada.Player;
 using UnityEngine;
 #pragma warning disable 0649
@@ -32,9 +33,10 @@ namespace StellarArmada.Entities.Ships
                 warpFx.SetActive(false);
             }
             
-            [Command]
-            public void CmdInitWarp(Vector3 position, Quaternion rotation)
+            [Server]
+            public void ServerInitWarp(Vector3 position, Quaternion rotation)
             {
+                
                 if (isServerOnly) InitWarp(position, rotation);
                 RpcInitWarp(position, rotation);
             }
@@ -54,14 +56,21 @@ namespace StellarArmada.Entities.Ships
                 ship.visualModel.transform.localPosition = warpInStartPos;
                 ship.weaponSystemController.ShowWeaponSystems();
                 ship.visualModel.enabled = true;
-                StartCoroutine(WarpIn());
-                
-                Invoke(nameof(CompleteWarp), warpTime);
                 
                 warpFx.SetActive(true);
+
+                MatchStateManager.instance.EventOnMatchStart += WarpIn;
+            }
+
+            void WarpIn()
+            {
+                
+                StartCoroutine(IWarpIn());
+                
+                Invoke(nameof(CompleteWarp), warpTime);
             }
             
-            IEnumerator WarpIn()
+            IEnumerator IWarpIn()
             {
                 float timer = 0f;
                 do
@@ -75,6 +84,8 @@ namespace StellarArmada.Entities.Ships
                 ship.visualModel.transform.localPosition = Vector3.zero;
 
             }
+            
+
 
             void CompleteWarp()
             {

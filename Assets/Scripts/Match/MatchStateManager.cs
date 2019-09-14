@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mirror;
+using StellarArmada.Player;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -25,6 +26,8 @@ namespace StellarArmada.Match
         
         List<WinCondition> winConditions;
 
+        public int playersReady = 0;
+
         public void Initialize() // Called by the match server manager when ready
         {
             List<WinCondition> newWinConditions = new List<WinCondition>();
@@ -42,6 +45,17 @@ namespace StellarArmada.Match
         }
         
         public delegate void StateChangeDelegate();
+
+        [Server]
+        public void ReadyPlayer()
+        {
+            playersReady++;
+            if (playersReady == PlayerManager.players.Count)
+            {
+                CmdChangeMatchState(MatchState.Match);
+            }
+        }
+
 
         [SyncEvent]
         public event StateChangeDelegate EventOnMatchLobby, EventOnMatchStart, EventOnMatchEnded;
@@ -86,7 +100,7 @@ namespace StellarArmada.Match
             return matchState;
         }
         
-        public bool IsStarted()
+        public bool InMatch()
         {
             if (instance.matchState == MatchState.Match)
                 return true;
@@ -99,7 +113,7 @@ namespace StellarArmada.Match
             return false;
         }
 
-        public bool IsFinished()
+        public bool InPostMatch()
         {
             if (instance != null && instance.matchState == MatchState.Ended) return true;
             return false;
