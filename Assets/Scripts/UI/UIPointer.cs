@@ -48,14 +48,44 @@ namespace StellarArmada.UI {
         {
             inputManager.OnRightTrigger += HandleButtonRight;
             inputManager.OnLeftTrigger += HandleButtonLeft;
+
+            inputManager.OnRightGrip += HandleSecondaryRight;
+            inputManager.OnRightGrip += HandleSecondaryLeft;
+            
             inputManager.OnLeftThumbstickButton += HandleLeftMenuButtonActivated;
             inputManager.OnRightThumbstickButton += HandleRightMenuButtonActivated;
+        }
+
+        void HandleSecondaryRight(bool down)
+        {
+            if (!HandSwitcher.instance.CurrentHandIsRight()) return; // Only show menu on right hand if it's active
+            if (leftMenuButtonActive) return; // If the button is being used on the other hand, ignore
+            if (!down && !rightMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+
+            if (down) HandleSecondary();
+        }
+        
+        void HandleSecondaryLeft(bool down)
+        {
+            if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // Only show menu on right hand if it's active
+            if (rightMenuButtonActive) return; // If the button is being used on the other hand, ignore
+            if (!down && !leftMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            
+            if (down) HandleSecondary();
+        }
+        
+
+        void HandleSecondary()
+        {
+            if (Rollover.currentRollover == null) return;
+            Rollover.currentRollover.HandleSecondaryButtonPressed();
         }
 
         // If the menu button is activated, enable the pointer (works until we need the pointer elsewhere!)
         void HandleLeftMenuButtonActivated(bool down)
         {
-            if (rightMenuButtonActive) return;
+            if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // Only show menu on right hand if it's active
+            if (rightMenuButtonActive) return; // If the button is being used on the other hand, ignore
             if (!down && !leftMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftMenuButtonActive = down; // filter ups from this side if race conditioned to other side
             pointer.SetActive(down);
@@ -63,7 +93,8 @@ namespace StellarArmada.UI {
 
         void HandleRightMenuButtonActivated(bool down)
         {
-            if (leftMenuButtonActive) return;
+            if (!HandSwitcher.instance.CurrentHandIsRight()) return; // Only show menu on right hand if it's active
+            if (leftMenuButtonActive) return; // If the button is being used on the other hand, ignore
             if (!down && !rightMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightMenuButtonActive = down;
             pointer.SetActive(down);

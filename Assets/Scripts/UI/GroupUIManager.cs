@@ -62,18 +62,9 @@ namespace StellarArmada.UI
             }
         }
 
-        public void SetSelectionToGroup(int groupNum)
-        {
-            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
-            var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
-            List<ISelectable> selectables = new List<ISelectable>();
-            foreach (var entity in group)
-            {
-                selectables.Add(((Ship)entity).GetSelectionHandler());
-            }
-
-            ShipSelectionManager.instance.SetSelectionFromGroup(selectables);
-        }
+        
+        
+        
 
         public void MoveShipToGroup(UIGroupShip s, int newGroup)
         {

@@ -1,4 +1,5 @@
 ﻿using StellarArmada.IO;
+using StellarArmada.UI;
 using UnityEngine;
 
 // Script for local player to switch dominant hand
@@ -10,6 +11,14 @@ public class HandSwitcher : MonoBehaviour
     // Attachment points
     [SerializeField] Transform leftHandTarget = null;
     [SerializeField] Transform rightHandTarget = null;
+
+    public enum CurrentHand
+    {
+        Right,
+        Left
+    }
+
+    private CurrentHand currentHand = CurrentHand.Right;
 
     // Current attachment point
     Transform currentTarget;
@@ -28,17 +37,30 @@ public class HandSwitcher : MonoBehaviour
         // Anonymous subsriptions to filter button-up event
         InputManager.instance.OnLeftTrigger += (on) =>
         {
-            if(on) SetHand(leftHandTarget);
+            if(on) SetHand(CurrentHand.Left);
         };
         
         InputManager.instance.OnRightTrigger += (on) =>
         {
-            if (on) SetHand(rightHandTarget);
+            if (on) SetHand(CurrentHand.Right);
         };
     }
     
-    public void SetHand(Transform handTarget)
+    public void SetHand(CurrentHand hand)
     {
+        Transform handTarget = null;
+        switch (hand)
+        {
+            case CurrentHand.Left:
+                handTarget = leftHandTarget;
+                MatchPlayerMenuManager.instance.AttachToLeftPoint();
+                break;
+            case CurrentHand.Right:
+                handTarget = rightHandTarget;
+                MatchPlayerMenuManager.instance.AttachToRightPoint();
+                break;
+        }
+        
         t.SetParent(handTarget);
         currentTarget = handTarget;
         t.localPosition = Vector3.zero;
@@ -46,8 +68,8 @@ public class HandSwitcher : MonoBehaviour
     }
 
     // Helper functions for querying state
-    public bool CurrentHandIsLeft() => currentTarget == leftHandTarget;
-    public bool CurrentHandIsRight() => currentTarget == rightHandTarget;
+    public bool CurrentHandIsLeft() => currentHand == CurrentHand.Left;
+    public bool CurrentHandIsRight() => currentHand == CurrentHand.Right;
 
 
 }

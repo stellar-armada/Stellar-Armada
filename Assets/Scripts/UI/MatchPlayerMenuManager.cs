@@ -19,16 +19,6 @@ namespace StellarArmada.UI
         }
         void Start()
         {
-            InputManager.instance.OnLeftThumbstickButton += (on) =>
-            {
-                if (on) AttachToLeftPoint();
-                SetMenuState(on);
-            };
-            InputManager.instance.OnRightThumbstickButton += (on) =>
-            {
-                if (on) AttachToRightPoint();
-                SetMenuState(on);
-            };
             SetMenuState(false);
         }
 
@@ -51,6 +41,12 @@ namespace StellarArmada.UI
 
         public void SetMenuState(bool state)
         {
+            // Trigger rollover
+            if (state == false && Rollover.currentRollover != null)
+            {
+                Rollover.currentRollover.HandleRolloverReleasedOn();
+            }
+            
             gameObject.SetActive(state);
         }
     }

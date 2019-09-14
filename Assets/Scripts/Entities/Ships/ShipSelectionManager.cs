@@ -139,9 +139,9 @@ namespace StellarArmada.Entities.Ships
             return selectionSets[selectionSetId];
         }
 
-        public void SelectAll(int teamId)
+        public void SelectAll()
         {
-            var ships = EntityManager.GetEntities().Where(s => s.GetTeam().teamId == (uint) teamId && s.GetType() == typeof(Ship));
+            var ships = EntityManager.GetEntities().Where(s => s.GetTeam().teamId == HumanPlayerController.localPlayer.teamId && s.GetType() == typeof(Ship));
             foreach (var ship in ships)
             {
                 AddToSelection(((Ship)ship).shipSelectionHandler);
@@ -189,14 +189,85 @@ namespace StellarArmada.Entities.Ships
                 currentSelection = selectionSets[selectionSetId];
                 OnSelectionChanged?.Invoke();
         }
-
-        public void SetSelectionFromGroup(List<ISelectable> selectables)
+        
+        
+        public void ClearSelectionSet(int selectionSetId)
         {
+            selectionSets[selectionSetId] = null;
+            UpdateSelectionSet(selectionSetId);
+        }
+
+        public void AddSelectablesToSelection(List<ISelectable> selectables)
+        {
+            
+        }
+
+        public void AddGroupToSelection(int groupNum)
+        {
+            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
+            var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
+            
+            List<ISelectable> selectables = new List<ISelectable>();
+            
+            foreach (var entity in group)
+            {
+                selectables.Add(((Ship)entity).GetSelectionHandler());
+            }
+            
+            foreach (var selectable in selectables)
+            {
+                if (!currentSelection.Contains(selectable))
+                {
+                    currentSelection.Add(selectable);
+                    selectable.Select();
+                }
+            }
+            
+            OnSelectionChanged?.Invoke();
+        }
+        
+        public void RemoveGroupFromSelection(int groupNum)
+        {
+            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
+            var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
+            
+            List<ISelectable> selectables = new List<ISelectable>();
+            
+            foreach (var entity in group)
+            {
+                selectables.Add(((Ship)entity).GetSelectionHandler());
+            }
+            
+            foreach (var selectable in selectables)
+            {
+                if (currentSelection.Contains(selectable))
+                {
+                    currentSelection.Remove(selectable);
+                    selectable.Deselect();
+                }
+            }
+            
+            OnSelectionChanged?.Invoke();
+        }
+        
+        
+        public void SetSelectionToGroup(int groupNum)
+        {
+            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
+            var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
+            List<ISelectable> selectables = new List<ISelectable>();
+            foreach (var entity in group)
+            {
+                selectables.Add(((Ship)entity).GetSelectionHandler());
+            }
+
+            // Deselect any from currect selection
             foreach (var selectable in currentSelection)
             {
                 if (!selectables.Contains(selectable)) selectable.Deselect();
             }
-
+            
+            // Select any not in current selection
             foreach (ISelectable selectable in selectables)
             {
                 if (!currentSelection.Contains(selectable)) selectable.Select();
