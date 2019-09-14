@@ -44,6 +44,10 @@ namespace StellarArmada.Entities.Ships
         private Collider[] hitColliders;
         private ISelectable selectable;
         
+        private float doubleTapThreshold = .5f;
+        
+        private float lastTime;
+        
         void Start()
         {
             // Subscribe to delegates in start to avoid race condition with singleton
@@ -103,12 +107,18 @@ namespace StellarArmada.Entities.Ships
         {
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
             if (leftTriggerIsDown) return; // if the other button is down, ignore this input
-
             if (isDeselecting) return; // we're already deselection, so we don't want to start a selection
             if (!down && !rightTriggerIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightTriggerIsDown = down;
             if(down)StartSelection();
             else EndSelection();
+        }
+
+
+
+        void HandleDoubleTap()
+        {
+            ShipSelectionManager.instance.ClearSelection();
         }
         
         void HandleLeftGrip(bool down)
@@ -118,8 +128,7 @@ namespace StellarArmada.Entities.Ships
             if (rightGripIsDown) return; // if the other button is down, ignore this input
             if (!down && !leftGripIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftGripIsDown = down;
-            if(down) StartDeselection();
-            else EndDeselection();
+            HandleGrip(down);
         }
 
         void HandleRightGrip(bool down)
@@ -128,7 +137,20 @@ namespace StellarArmada.Entities.Ships
             if (isSelecting) return; // we're already selecting, so we don't want to start a deselection
             if (leftGripIsDown) return; // if the other button is down, ignore this input
             if (!down && !rightGripIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            rightGripIsDown = down;
+            HandleGrip(down);
+        }
+
+        void HandleGrip(bool down)
+        {
+            if (down)
+            {
+                if (Time.time - lastTime < doubleTapThreshold)
+                {
+                    HandleDoubleTap();
+                }
+
+                lastTime = Time.time;
+            }
             if(down) StartDeselection();
             else EndDeselection();
         }

@@ -33118,7 +33118,6 @@ MonoBehaviour:
   - {fileID: 1977461455125822363}
   - {fileID: 810771506513414909}
   - {fileID: 741652607477629037}
-  - {fileID: 2175313936342113083}
   steerForPursuit: {fileID: 1977461455125822363}
   steerForPoint: {fileID: 6430903243183470549}
   autonomousVehicle: {fileID: 3145361286118619456}
@@ -33277,10 +33276,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 3
-  _minRadius: 50
+  _minRadius: 1
   _maxRadius: 600
-  _drawNeighbors: 0
-  _angleCos: -0.1736482
+  _drawNeighbors: 1
+  _angleCos: -1
 --- !u!114 &2175313936342113083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33295,10 +33294,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 3
   _minDistance: 300
-  _maxDistance: 500
+  _maxDistance: 600
   _comfortDistance: 400
-  _multiplierInsideComfortDistance: 1
-  _vehicleRadiusImpact: 1
+  _multiplierInsideComfortDistance: 3
+  _vehicleRadiusImpact: 1.2
 --- !u!1 &8887671907898053240
 GameObject:
   m_ObjectHideFlags: 0
