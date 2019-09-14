@@ -4,6 +4,7 @@ using StellarArmada.Entities;
 using UnityEngine;
 using StellarArmada.Entities.Ships;
 using StellarArmada.Levels;
+using StellarArmada.Match;
 using StellarArmada.Teams;
 using StellarArmada.UI;
 
@@ -97,6 +98,7 @@ namespace StellarArmada.Player
         [Command]
         public void CmdInitialize()
         {
+            MatchStateManager.instance.CmdChangeMatchState(MatchState.Lobby);
             Initialize();
             RpcInitialize();
         }
@@ -143,11 +145,10 @@ namespace StellarArmada.Player
                 
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
                 
+                Shipyard.instance.InitializeShipyard();
+                
                 LocalMenuStateManager.instance.GoToShipyard();
                 
-                //localPlayer = this;
-
-                // LocalPlayerRig.instance.Disable();
                 OnLocalPlayerInitialized?.Invoke();
             }
             else

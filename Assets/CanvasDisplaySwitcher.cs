@@ -14,7 +14,7 @@ public class CanvasDisplaySwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerSettingsManager.instance.desktopDisplayMode)
+        if (PlayerSettingsManager.GetDisplayMode())
         {
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.transform.localScale = Vector3.one;

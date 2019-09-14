@@ -11,6 +11,7 @@ namespace StellarArmada.Player
 
     public class PlayerSettings
     {
+        public bool desktopDisplayMode;
         public float musicVolume;
         public float sfxVolume;
         public string playerName;
@@ -18,7 +19,6 @@ namespace StellarArmada.Player
 
     public class PlayerSettingsManager : MonoBehaviour
     {
-        [HideInInspector] public bool desktopDisplayMode = true;
         public static PlayerSettingsManager instance;
         
         private static PlayerSettings settings;
@@ -36,6 +36,7 @@ namespace StellarArmada.Player
         {
             settings = new PlayerSettings
             {
+                desktopDisplayMode = false,
                 musicVolume = .8f,
                 sfxVolume = .8f,
                 playerName = "PLAYERONE"
@@ -77,6 +78,11 @@ namespace StellarArmada.Player
         #endregion
 
         #region Public Static Methods
+
+        public static bool GetDisplayMode()
+        {
+            return settings.desktopDisplayMode;
+        }
 
         public static float GetMusicVolume()
         {

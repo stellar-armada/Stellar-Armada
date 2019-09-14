@@ -78,8 +78,9 @@ namespace StellarArmada.Match
             }
         }
         
-        public void InitializePlayers()
+        public void StartMatch()
         {
+            
             foreach (var player in PlayerManager.players)
             {
                 ((HumanPlayerController)player).CmdInitialize();
@@ -87,8 +88,5 @@ namespace StellarArmada.Match
         }
 
 
-
-
-        // Start prematch timer
     }
 }

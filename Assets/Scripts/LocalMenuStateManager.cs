@@ -60,7 +60,6 @@ public class LocalMenuStateManager : MonoBehaviour
     public void GoToShipyard()
     {
         ChangeMenuState(MenuState.InGame_Shipyard);
-        shipyard.InitializeShipyard();
     }
 
     public void WarpIn()

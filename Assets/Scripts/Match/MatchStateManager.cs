@@ -11,6 +11,7 @@ namespace StellarArmada.Match
     
     public enum MatchState
     {
+        Started,
         Lobby,
         Match,
         Ended
@@ -40,17 +41,12 @@ namespace StellarArmada.Match
             }
         }
         
-        
-        
-
-        // ** CODE BELOW THIS POINT HAS NOT BEEN INTEGRATED
-        
         public delegate void StateChangeDelegate();
 
         [SyncEvent]
         public event StateChangeDelegate EventOnMatchLobby, EventOnMatchStart, EventOnMatchEnded;
 
-        [SyncVar] MatchState matchState = MatchState.Lobby;
+        [SyncVar] MatchState matchState = MatchState.Started;
 
         [Command]
         public void CmdChangeMatchState(MatchState newState)
@@ -66,6 +62,7 @@ namespace StellarArmada.Match
             {
                 case MatchState.Lobby:
                     EventOnMatchLobby?.Invoke();
+                    
                     break;
                 case MatchState.Match:
                     EventOnMatchStart?.Invoke();

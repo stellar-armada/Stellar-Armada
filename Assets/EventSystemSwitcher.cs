@@ -11,7 +11,7 @@ public class EventSystemSwitcher : MonoBehaviour
     
     void Start()
     {
-        if (PlayerSettingsManager.instance.desktopDisplayMode)
+        if (PlayerSettingsManager.GetDisplayMode())
         {
             pointerInputModule.enabled = false;
             standaloneInputModule.enabled = true;

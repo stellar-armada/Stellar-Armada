@@ -1,4 +1,6 @@
-﻿using StellarArmada.IO;
+﻿using StellarArmada.Entities.Ships;
+using StellarArmada.IO;
+using StellarArmada.Match;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -41,6 +43,9 @@ namespace StellarArmada.UI
 
         public void SetMenuState(bool state)
         {
+            if (!MatchStateManager.instance.IsStarted()) return;
+
+            
             // Trigger rollover
             if (state == false && Rollover.currentRollover != null)
             {

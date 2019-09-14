@@ -18,6 +18,8 @@ namespace StellarArmada.Entities.Ships
         [SerializeField] private HumanPlayerController playerController;
         private List<ISelectable> currentSelection = new List<ISelectable>();
         private bool initialized = false;
+        
+        public bool IsInitialized() => initialized;
 
         // 4 selection sets by default
         List<List<ISelectable>> selectionSets = new List<List<ISelectable>>()
