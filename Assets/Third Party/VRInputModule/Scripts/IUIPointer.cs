@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StellarArmada.Match;
+using UnityEngine;
 
 
 #pragma warning disable 0649
@@ -17,6 +18,8 @@ namespace Wacki {
         public delegate void UiPointerEvent(bool isPointingAtCanvas);
 
         public UiPointerEvent OnCanvasStateChanged;
+
+        [SerializeField] private float defaultDistance = .05f;
 
         // Use this for initialization
         void Start()
@@ -88,10 +91,15 @@ namespace Wacki {
 
                 hitPoint.transform.localPosition = new Vector3(0.0f, 0.0f, distance);
             }
-            else {
-                hitPoint.SetActive(false);
-
-            }
+            else if (MatchStateManager.instance.InMatch())
+                {
+                hitPoint.transform.localPosition = new Vector3(0.0f, 0.0f, defaultDistance);
+                hitPoint.SetActive(true);
+                }
+                else
+                {
+                    hitPoint.SetActive(false);
+                }
 
             // reset the previous distance limit
             _distanceLimit = -1.0f;

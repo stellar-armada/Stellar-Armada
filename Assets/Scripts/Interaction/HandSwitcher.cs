@@ -21,7 +21,7 @@ public class HandSwitcher : MonoBehaviour
     private CurrentHand currentHand = CurrentHand.Right;
 
     // Current attachment point
-    Transform currentTarget;
+    public static Transform currentTarget;
     
     // Local var ref
     private Transform t;

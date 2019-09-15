@@ -13,13 +13,15 @@
        private CanvasGroup canvasGroup;
        private UIShipyardShip shipyardShip; // one or the other
        private UIGroupShip groupShip; // one or the other
-
+       
        float dragDelay = .55f;
        private float dragTimer = 0f;
        void Awake()
        {
+           canvasGroup = GetComponent<CanvasGroup>();
            groupShip = GetComponent<UIGroupShip>();
            shipyardShip = GetComponent<UIShipyardShip>();
+           if(shipyardShip != null && canvasGroup != null) canvasGroup.blocksRaycasts = true;
            t = GetComponent<RectTransform>();
        }
        
@@ -44,7 +46,7 @@
            t.localRotation = Quaternion.identity;
            t.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
            // disable raycasting on this object
-           canvasGroup.blocksRaycasts = false;
+           if(canvasGroup != null) canvasGroup.blocksRaycasts = false;
        }
 
        public void OnDrag(PointerEventData eventData)
@@ -97,7 +99,7 @@
                }
            }
            // enable raycasting on object, maybe
-           canvasGroup.blocksRaycasts = true;
+           if(canvasGroup != null) canvasGroup.blocksRaycasts = true;
            t.localRotation = Quaternion.identity;
            t.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
            t.localScale = Vector3.one * scale;

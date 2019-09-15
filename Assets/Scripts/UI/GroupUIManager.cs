@@ -58,6 +58,7 @@ namespace StellarArmada.UI
                     newUiGroupShip.transform.SetParent(uiShipContainers[g]);
                     newUiGroupShip.transform.localScale = Vector3.one;
                     newUiGroupShip.transform.localPosition = Vector3.zero;
+                    newUiGroupShip.transform.localRotation = Quaternion.identity;
                     ships.Add(newUiGroupShip.gameObject);
                 }
             }

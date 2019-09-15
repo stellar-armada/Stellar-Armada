@@ -5,42 +5,19 @@ using StellarArmada.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UIShipClickHandler : MonoBehaviour, IPointerClickHandler
 {
     private UIShipyardShip shipyardShip;
-    private float maxtime = .3f;
 
     void Awake()
     {
         shipyardShip = GetComponent<UIShipyardShip>();
     }
-    
-    void Update()
-    {
-        if (!pointerDown) return;
-        timer += Time.deltaTime;
-    }
 
-    private float timer = 0;
-    private bool pointerDown;
-    
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (shipyardShip.id < 0) return;
-        timer = 0f;
-        pointerDown = true;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (!pointerDown) return;
-        if (shipyardShip.id < 0) return;
-        pointerDown = false;
-        if (timer < maxtime)
-        {
-            // Get the list index of the ship we want to set the captain to
-            int i = HumanPlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
-            HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, HumanPlayerController.localPlayer.netId);
-        }
+        int i = HumanPlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
+        HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, HumanPlayerController.localPlayer.netId);
     }
 }

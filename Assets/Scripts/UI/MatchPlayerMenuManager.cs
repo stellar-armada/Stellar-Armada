@@ -15,9 +15,6 @@ namespace StellarArmada.UI
         public static MatchPlayerMenuManager instance;
         
         private Transform t;
-
-        [SerializeField] private Transform lookAtOnPlace;
-        [SerializeField] private float lookAtRotiationSpeed = 5f;
         
         void Awake()
         {
@@ -86,7 +83,7 @@ namespace StellarArmada.UI
 
     void LookAt()
     {
-        t.localRotation = Quaternion.Euler(Vector3.up * AngleXZ(LookatXZ(lookAtOnPlace)));
+        t.localRotation = Quaternion.Euler(Vector3.up * AngleXZ(LookatXZ(HandSwitcher.currentTarget)));
     }
     
     void LateUpdate()
