@@ -30,6 +30,7 @@ namespace StellarArmada.Entities
         NetworkEntity tempShip;
         Transform transformToMoveTo; // for pursuit
 
+        
         void HandleControlChanged(bool newControlEnabledState)
         {
             foreach (Steering behavior in steeringBehaviors)
@@ -53,13 +54,22 @@ namespace StellarArmada.Entities
         }
 
         [Command]
+        public void CmdPursue(Transform target, bool isFriendly)
+        {
+            Debug.Log("<color=green>PURSUIT</green> Pursing entity!");
+            NetworkEntity e = target.GetComponent<NetworkEntity>();
+            PursueEntity(e.GetEntityId());
+        }
+
+        [Command]
         public void CmdMoveToPoint(Vector3 pos, Quaternion rot)
         {
             if (!controlEnabled)
             {
-                
                 Debug.LogError("Can't move, control not enabled");
             }
+
+            entity.weaponSystemController.ClearTargets();
             GoToPoint(pos);
             OnMoveToPoint?.Invoke(pos, rot);
         }

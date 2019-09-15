@@ -6,13 +6,37 @@ namespace StellarArmada.Entities
 {
     public class EntityWeaponSystemController : MonoBehaviour, IWeaponSystemController
     {
-
+        public Transform currentTarget;
+        public bool targetIsFriendly;
+        
         [SerializeField] private NetworkEntity entity;
         
         List<WeaponSystem> weaponSystems = new List<WeaponSystem>();
 
         public bool weaponSystemsEnabled = false;
 
+        public void SetTarget(Transform target, bool isFriendly)
+        {
+            currentTarget = target;
+            targetIsFriendly = isFriendly;
+            
+            foreach (WeaponSystem ws in weaponSystems)
+            {
+                if (ws.target == target) continue;
+                if (ws.targetsFriendlies && isFriendly) ws.target = target;
+                if (!ws.targetsFriendlies && !isFriendly) ws.target = target;
+            }
+        }
+
+        public void ClearTargets()
+        {
+            currentTarget = null;
+            foreach (WeaponSystem ws in weaponSystems)
+            {
+                ws.ClearTarget();
+            }
+        }
+        
         public NetworkEntity GetEntity()
         {
             return entity;

@@ -37,6 +37,15 @@ namespace StellarArmada.Entities.Ships
 
             InputManager.instance.OnButtonOne += HandleRightPlaceButton;
             InputManager.instance.OnButtonThree += HandleLeftPlaceButton;
+
+            ShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
+        }
+
+        void HandleShipHighlighted(bool on)
+        {
+            if (uiPointerIsActive) return;
+            if(on) HidePlacements();
+            else ShowPlacements();
         }
 
         void HandleRightPlaceButton(bool down)
@@ -126,14 +135,27 @@ namespace StellarArmada.Entities.Ships
         public void Place()
         {
             if (uiPointerIsActive) return;
-
+            
             foreach (ShipPlacementIndicator pi in activePlacements)
             {
-                // For each placer, set the minimap parent so we can grab local pos and rot easier
-                // Otherwise we could optimise with some matrix/quaternion math!
-                pi.transform.SetParent(MiniMap.instance.transform, true);
-                pi.entity.movement.CmdMoveToPoint(pi.transform.localPosition, pi.transform.localRotation);
-                pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
+                // If we're not highlighting a ship
+                if (ShipSelector.instance.currentSelectable == null)
+                {
+                    // For each placer, set the minimap parent so we can grab local pos and rot easier
+                    // Otherwise we could optimise with some matrix/quaternion math!
+                    pi.transform.SetParent(MiniMap.instance.transform, true);
+                    pi.entity.movement.CmdMoveToPoint(pi.transform.localPosition, pi.transform.localRotation);
+                    pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
+                    
+                }
+                // We are highlighting a ship, so pursue it
+                else
+                {
+                    Transform target = ShipSelector.instance.currentSelectable.GetOwningEntity().transform;
+                    bool friendly = ShipSelector.instance.targetIsFriendly;
+                    pi.entity.movement.CmdPursue(target, friendly);
+                    pi.entity.weaponSystemController.SetTarget(target, friendly);
+                }
             }
         }
     }

@@ -5,7 +5,7 @@ using StellarArmada.Player;
 #pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
-    // Handles local player entity selection
+    // Handles local player entity selectionuiPointerIsActive
     // TO-DO: Abstract button-specifics to input manager
     // TO-DO: MenuIsActive / UIPointerIsActive might need to be checks to the singleton class
     // TO-DO: Scale selection cursor size with map scale
@@ -15,17 +15,30 @@ namespace StellarArmada.Entities.Ships
 
     public class ShipSelector : MonoBehaviour
     {
+
+        public static ShipSelector instance;
+        
         // Reference to our local player. Serialized so we don't need anti-race logic
         [SerializeField] private PlayerController playerController;
 
         // Visual indicator of where selection goes
         [SerializeField] Transform selectionCursor;
 
+        [SerializeField] private Renderer selectionCursorRenderer;
+
         // Radius of the selection query
         public float selectorRadius;
 
         // Only select entities on these layers
         [SerializeField] LayerMask layerMask;
+
+        public ISelectable currentSelectable;
+
+        public delegate void SelectorEvent(bool on);
+
+        public SelectorEvent OnHighlightTargetSet;
+        
+        public bool targetIsFriendly;        
 
         // State
         private bool isSelecting;
@@ -39,12 +52,13 @@ namespace StellarArmada.Entities.Ships
         private bool rightGripIsDown;
 
         // Private reference vars
-        private ShipSelectionManager _shipSelectionManager;
         private Collider[] hitColliders;
         private ISelectable selectable;
         private float doubleTapThreshold = .5f;
         private float lastTime;
 
+        void Awake() => instance = this;
+        
         void Start()
         {
             // Subscribe to delegates in start to avoid race condition with singleton
@@ -54,12 +68,15 @@ namespace StellarArmada.Entities.Ships
             InputManager.instance.OnRightTrigger += HandleRightTrigger;
             InputManager.instance.OnLeftGrip += HandleLeftGrip;
             InputManager.instance.OnRightGrip += HandleRightGrip;
-            _shipSelectionManager = ShipSelectionManager.instance;
+            selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.defaultColor;
         }
 
         void Update()
         {
-            if (uiPointerIsActive) return; // If UI is active, selection is disabled
+            Highlight();
+
+            if (uiPointerIsActive) return; // If UI is active, selection is disable
+
             if (isSelecting)
             {
                 Select(SelectionType.Selection);
@@ -156,6 +173,63 @@ namespace StellarArmada.Entities.Ships
             else EndDeselection();
         }
 
+        
+        void Highlight()
+        {
+            hitColliders = Physics.OverlapSphere(selectionCursor.position, selectorRadius, layerMask);
+            
+            if (currentSelectable != null)
+            {
+                currentSelectable.Unhighlight();
+                OnHighlightTargetSet?.Invoke(false);
+            }
+            
+            foreach (Collider collider in hitColliders)
+            {
+                // Try getting a selectable from the collider
+                selectable = collider.GetComponent<ISelectable>();
+
+                // We're selecting the same thing as last frame
+                if (selectable != null && currentSelectable == selectable) return; 
+
+                if (selectable != null)
+                {
+                    // Friendly
+
+                    if (selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
+                    {
+                        targetIsFriendly = true;
+                        selectable.Highlight(ColorManager.instance.friendlyColor);
+                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.friendlyColor;
+                        currentSelectable = selectable;
+                    }
+                    // Enemy
+                    else if (selectable != null && selectable.GetOwningEntity().GetTeam() != playerController.GetTeam())
+                    {
+                        targetIsFriendly = false;
+                        selectable.Highlight(ColorManager.instance.enemyColor);
+                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.enemyColor;
+                        currentSelectable = selectable;
+                    }
+
+                    OnHighlightTargetSet?.Invoke(true);
+                    continue;
+                }
+                
+                // Environment
+                    if (collider.gameObject.layer == LayerMask.NameToLayer("Environment"))
+                    {
+                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.neutralColor;
+                    }
+
+                    // None
+                    else
+                    {
+                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.defaultColor;
+                    }
+            }
+        }
+
         // Handles selection and deselection of entities from the loop
         public void Select(SelectionType selectionType)
         {
@@ -165,12 +239,8 @@ namespace StellarArmada.Entities.Ships
             {
                 // Try getting a selectable from the collider
                 selectable = collider.GetComponent<ISelectable>();
-                Debug.Log("<color=blue>SELECTION</color> Selectable name is: " + collider.name);
-                // Has a selectable component, so it's an entity
-                Debug.Log(selectable != null);
-                Debug.Log(selectable.GetOwningEntity());
-                Debug.Log(selectable.GetOwningEntity().GetTeam());
-                if (selectable != null && selectable.IsSelectable() && selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
+                if (selectable != null && selectable.IsSelectable() &&
+                    selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                 {
                     Debug.Log(
                         "selectable != null && selectable.IsSelectable() && selectable.GetOwningEntity().GetTeam() == playerController.GetTeam()");
@@ -183,6 +253,10 @@ namespace StellarArmada.Entities.Ships
                             ShipSelectionManager.instance.RemoveFromSelection(selectable);
                             break;
                     }
+                }
+                else
+                {
+                    Debug.LogError("Failed to select");
                 }
             }
         }

@@ -19,6 +19,8 @@ namespace StellarArmada
         // Timer reference                
         [HideInInspector] public int timerID = -1;
 
+        public bool targetsFriendlies = false;
+        
         public float timer = 0f;
         public float tickRate = .2f;
         public float maxRange = .25f;

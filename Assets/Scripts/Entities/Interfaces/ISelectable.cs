@@ -1,4 +1,6 @@
-﻿#pragma warning disable 0649
+﻿using UnityEngine;
+
+#pragma warning disable 0649
 namespace StellarArmada.Entities
 {
     // Interface for selecting objects that reference an entity
@@ -8,5 +10,7 @@ namespace StellarArmada.Entities
         void Deselect();
         NetworkEntity GetOwningEntity();
         bool IsSelectable();
+        void Highlight(Color highlightColor);
+        void Unhighlight();
     }
 }

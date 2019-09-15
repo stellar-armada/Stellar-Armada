@@ -2494,6 +2494,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 131105
+  defaultDistance: 0.05
   inputManager: {fileID: 9071246754439678743}
   buttonState: 0
   uiPlacerCanvas: {fileID: 782961217944074376}
@@ -2511,6 +2512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1839945735331089094}
   selectionCursor: {fileID: 7486238172814386563}
+  selectionCursorRenderer: {fileID: 7856286278643049505}
   selectorRadius: 0.005
   layerMask:
     serializedVersion: 2

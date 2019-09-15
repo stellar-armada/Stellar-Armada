@@ -26,15 +26,19 @@ namespace StellarArmada.Entities.Ships
             selectionCube.enabled = false;
         }
 
+        private bool isSelected = false;
+        
         public void Select()
         {
             selectionCube.enabled = true;
+            isSelected = true;
             OnSelectionChanged?.Invoke(true);
         }
 
         public void Deselect()
         {
             selectionCube.enabled = false;
+            isSelected = false;
             OnSelectionChanged?.Invoke(false);
         }
 
@@ -48,6 +52,18 @@ namespace StellarArmada.Entities.Ships
             //If is alive and has warped inentity.shipWarp.isWarpedIn
             if (entity.IsAlive()) return true;
             return false;
+        }
+
+        public void Highlight(Color highlightColor)
+        {
+            selectionCube.enabled = true;
+            selectionCube.material.color = highlightColor;
+        }
+
+        public void Unhighlight()
+        {
+            selectionCube.material.color = ColorManager.instance.selectedColor;
+            if(!isSelected) selectionCube.enabled = false;
         }
     }
 }

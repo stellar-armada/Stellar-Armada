@@ -33133,7 +33133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e181e4ddce753471fa87c55bd31bb364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _drawGizmos: 1
+  _drawGizmos: 0
   _center: {x: 0, y: 0, z: 0}
   _radius: 275
   _minSpeedForTurning: 4.5
@@ -33210,7 +33210,7 @@ MonoBehaviour:
   _maxQueueProcessedPerUpdate: 100
   _tickLength: 0.25
   _detectionRadius: 600
-  _detectDisabledVehicles: 1
+  _detectDisabledVehicles: 0
   _layersChecked:
     serializedVersion: 2
     m_Bits: 1536
@@ -33278,7 +33278,7 @@ MonoBehaviour:
   _weight: 3
   _minRadius: 1
   _maxRadius: 600
-  _drawNeighbors: 1
+  _drawNeighbors: 0
   _angleCos: -1
 --- !u!114 &2175313936342113083
 MonoBehaviour:

@@ -8,20 +8,24 @@ namespace StellarArmada.Levels
     public class MiniMap : MonoBehaviour
     {
         public static MiniMap instance;
-        
-        // private GameObject miniMapSecene;
+
         public float yOffset = 1.2f;
 
         public float startScale = .04f;
         public float minScale;
         public float maxScale;
 
-        public float rotationDamping = 10;
+        public float rotationDamping = 10f;
+
+        public float positionDamping = 10f;
 
         [SerializeField] private LayerMask uiLayerMask;
 
         public bool interactable = false;
-        
+
+        private Transform t;
+        private Transform miniMapTransformRoot;
+
         void Awake()
         {
             instance = this;
@@ -29,6 +33,8 @@ namespace StellarArmada.Levels
 
         void Start()
         {
+            t = transform;
+            miniMapTransformRoot = MiniMapTransformRoot.instance.transform;
             // miniMapSecene = Instantiate(scene);
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
         }
@@ -45,7 +51,7 @@ namespace StellarArmada.Levels
             InitializeMiniMap();
             StartCoroutine(ExpandMiniMap());
         }
-        
+
         IEnumerator ExpandMiniMap()
         {
             Debug.Log("<color=orange>MINIMAP</color> ExpandMiniMap called");
@@ -65,8 +71,6 @@ namespace StellarArmada.Levels
 
             interactable = true;
         }
-        
-        
 
         public void LockRotation()
         {
@@ -80,40 +84,47 @@ namespace StellarArmada.Levels
 
         void InitializeMiniMap()
         {
-
             Debug.Log("<color=orange>MINIMAP</color> InitializeMiniMap called");
-            
-            // TO-DO: Simplify references to create less garbage
 
-            // miniMapSecene = Instantiate(scene);
-            //  miniMapSecene.transform.SetParent(MiniMap.instance.transform);
-            //  miniMapSecene.transform.localScale = Vector3.one;
-            //  miniMapSecene.transform.localRotation = Quaternion.identity;
+            // unparent minimap before transformation happens
+            t.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true);
 
-            // Put the minimap scene on on our UI ship layer for collision handling
-            //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
-
-            transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true); // unparent minimap before transformation happens
-            
             // Parent the MapTransformRoot to the SceneRoot (bride)
-            MiniMapTransformRoot.instance.transform.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true);
-            MiniMapTransformRoot.instance.transform.localScale = Vector3.one;
-            MiniMapTransformRoot.instance.transform.localPosition = new Vector3(0, yOffset, 0);
+            miniMapTransformRoot.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true);
+            miniMapTransformRoot.localScale = Vector3.one;
+            miniMapTransformRoot.localPosition = new Vector3(0, yOffset, 0);
 
             // Parent the minimap to our MapTransformRoot object
-            transform.SetParent(MiniMapTransformRoot.instance.transform);
-            transform.localScale = Vector3.one;
-            transform.localPosition = Vector3.zero;
+            t.SetParent(miniMapTransformRoot);
+            t.localScale = Vector3.one;
+            t.localPosition = Vector3.zero;
         }
 
 
-        void LateUpdate()
+        void Update()
+        {
+            UpdateLockedOrientation();
+        }
+
+        void UpdateLockedOrientation()
         {
             if (!interactable || !lockRotation || MiniMapController.instance == null || MiniMapController.instance.isActive) return;
 
-            if (Quaternion.Angle(transform.rotation, Quaternion.identity) < .3f) return;
-            
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
+            // Make sure our transform root is properly set up
+            if (t.parent != miniMapTransformRoot)
+            {
+                miniMapTransformRoot.position = t.position;
+                miniMapTransformRoot.rotation = t.rotation;
+                t.SetParent(miniMapTransformRoot);
+            }
+
+            // Lerp the minimap transform root toward the default 0
+            miniMapTransformRoot.localPosition = Vector3.Lerp(miniMapTransformRoot.localPosition, Vector3.up * yOffset, Time.deltaTime * positionDamping);
+            miniMapTransformRoot.localRotation =  Quaternion.Slerp(miniMapTransformRoot.localRotation, Quaternion.identity, Time.deltaTime * rotationDamping);
+
+            // Offset the minimap by the local transform of itself -- thus centering the minimap positionally in space
+            t.localPosition = Vector3.Lerp(Vector3.zero, -t.TransformPoint(t.position), Time.deltaTime * positionDamping);
+            t.localRotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
         }
 
         void SetLayerRecursively(GameObject obj, int newLayer)

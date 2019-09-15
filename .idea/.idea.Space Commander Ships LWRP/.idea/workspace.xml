@@ -95,6 +95,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/Helpers/Tooltip/SharedResources/Scripts/TooltipFacade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/FollowTarget.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CanvasDisplaySwitcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ColorManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/DetectableObjectCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIShipFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Tools/RandomizeStartPosition.cs" root0="FORCE_HIGHLIGHTING" />
@@ -282,16 +283,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/WinConditionDictionary.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/Editor/UserSerializableDictionaryPropertyDrawers.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level/Scenario.cs" />
-        <option value="$PROJECT_DIR$/Assets/WinConditionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GroupContainer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
@@ -307,15 +303,12 @@
         <option value="$PROJECT_DIR$/Assets/EventSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemSwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MatchMenuStartButtonController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/MiniMapStatusBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityShield.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" />
@@ -325,7 +318,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
@@ -333,6 +325,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interaction/HandSwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MatchPlayerMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Interfaces/ISelectable.cs" />
+        <option value="$PROJECT_DIR$/Assets/ColorManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityWeaponSystemController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
       </list>
     </option>
   </component>
@@ -347,7 +348,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -413,7 +414,7 @@
       <workItem from="1568065273660" duration="17300000" />
       <workItem from="1568150697523" duration="23676000" />
       <workItem from="1568261638210" duration="15624000" />
-      <workItem from="1568496469523" duration="18424000" />
+      <workItem from="1568496469523" duration="32167000" />
     </task>
     <servers />
   </component>
@@ -445,19 +446,19 @@
     <state x="709" y="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/1920.1080" />
     <state x="2654" y="129" key="FileChooserDialogImpl" />
     <state x="2654" y="129" key="FileChooserDialogImpl/1920.1080/1920.1080" />
-    <state x="2721" y="189" key="RiderGenerateDialog" />
-    <state x="2721" y="189" key="RiderGenerateDialog/1920.1080/1920.1080" />
-    <state x="2810" y="324" key="SettingsEditor" />
-    <state x="2810" y="324" key="SettingsEditor/1920.1080/1920.1080" />
+    <state x="794" y="224" key="RiderGenerateDialog" />
+    <state x="794" y="224" key="RiderGenerateDialog/1920.1080/1920.1080" />
+    <state x="445" y="165" key="SettingsEditor" />
+    <state x="445" y="165" key="SettingsEditor/1920.1080/1920.1080" />
     <state x="465" y="284" width="1244" height="660" key="find.popup" />
     <state x="627" y="193" width="666" height="847" key="find.popup/1920.1080" />
     <state x="465" y="284" width="1244" height="660" key="find.popup/1920.1080/1920.1080" />
     <state x="2532" y="344" key="run.anything.popup" />
     <state x="616" y="240" key="run.anything.popup/1920.1080" />
     <state x="2532" y="344" key="run.anything.popup/1920.1080/1920.1080" />
-    <state x="2539" y="361" width="672" height="678" key="search.everywhere.popup" />
+    <state x="615" y="179" width="672" height="678" key="search.everywhere.popup" />
     <state x="616" y="145" width="672" height="676" key="search.everywhere.popup/1920.1080" />
-    <state x="2539" y="361" width="672" height="678" key="search.everywhere.popup/1920.1080/1920.1080" />
+    <state x="615" y="179" width="672" height="678" key="search.everywhere.popup/1920.1080/1920.1080" />
     <state x="683" y="515" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" />
     <state x="683" y="515" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/1920.1080/1920.1080" />
   </component>
