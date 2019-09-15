@@ -1,4 +1,5 @@
 ﻿using StellarArmada.IO;
+using StellarArmada.Match;
 using UnityEngine;
 using Wacki;
 
@@ -89,6 +90,7 @@ namespace StellarArmada.UI {
             if (!down && !leftMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftMenuButtonActive = down; // filter ups from this side if race conditioned to other side
             pointer.SetActive(down);
+            MatchPlayerMenuManager.instance.SetMenuState(down); // If we're in the match, this will show the player's hotbar menu
         }
 
         void HandleRightMenuButtonActivated(bool down)
@@ -98,6 +100,7 @@ namespace StellarArmada.UI {
             if (!down && !rightMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightMenuButtonActive = down;
             pointer.SetActive(down);
+            MatchPlayerMenuManager.instance.SetMenuState(down); // If we're in the match, this will show the player's hotbar menu
         }
 
         void HandleButtonRight(bool on)

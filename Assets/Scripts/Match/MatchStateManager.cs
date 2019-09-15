@@ -28,6 +28,10 @@ namespace StellarArmada.Match
 
         public int playersReady = 0;
 
+        void Awake()
+        {
+            instance = this;
+        }
         public void Initialize() // Called by the match server manager when ready
         {
             List<WinCondition> newWinConditions = new List<WinCondition>();

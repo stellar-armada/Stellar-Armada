@@ -12,7 +12,7 @@ namespace StellarArmada.Entities.Ships
     // TO-DO: Clean up overly-complex logic that manages handedness, if inputmanager handles handedness then we can cut this code down a lot
     // TO-DO: Handle select single and clear selection
     // TO-DO: Raycast vs brush selection
-    
+
     public class ShipSelector : MonoBehaviour
     {
         // Reference to our local player. Serialized so we don't need anti-race logic
@@ -20,13 +20,13 @@ namespace StellarArmada.Entities.Ships
 
         // Visual indicator of where selection goes
         [SerializeField] Transform selectionCursor;
-        
+
         // Radius of the selection query
         public float selectorRadius;
-        
+
         // Only select entities on these layers
-        [SerializeField] LayerMask layerMask; 
-        
+        [SerializeField] LayerMask layerMask;
+
         // State
         private bool isSelecting;
         private bool isDeselecting;
@@ -40,14 +40,11 @@ namespace StellarArmada.Entities.Ships
 
         // Private reference vars
         private ShipSelectionManager _shipSelectionManager;
-
         private Collider[] hitColliders;
         private ISelectable selectable;
-        
         private float doubleTapThreshold = .5f;
-        
         private float lastTime;
-        
+
         void Start()
         {
             // Subscribe to delegates in start to avoid race condition with singleton
@@ -57,26 +54,27 @@ namespace StellarArmada.Entities.Ships
             InputManager.instance.OnRightTrigger += HandleRightTrigger;
             InputManager.instance.OnLeftGrip += HandleLeftGrip;
             InputManager.instance.OnRightGrip += HandleRightGrip;
-
             _shipSelectionManager = ShipSelectionManager.instance;
         }
-        
+
         void Update()
         {
             if (uiPointerIsActive) return; // If UI is active, selection is disabled
             if (isSelecting)
             {
                 Select(SelectionType.Selection);
-            } else if (isDeselecting)
+            }
+            else if (isDeselecting)
             {
                 Select(SelectionType.Deselection);
             }
         }
-        
+
         void HandleLeftThumbstick(bool down)
         {
             if (rightThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftThumbstickIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !leftThumbstickIsDown)
+                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftThumbstickIsDown = down;
             selectionCursor.gameObject.SetActive(!down);
             uiPointerIsActive = down;
@@ -85,21 +83,22 @@ namespace StellarArmada.Entities.Ships
         void HandleRightThumbstick(bool down)
         {
             if (leftThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightThumbstickIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !rightThumbstickIsDown)
+                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightThumbstickIsDown = down;
             selectionCursor.gameObject.SetActive(!down);
             uiPointerIsActive = down;
         }
-        
+
         void HandleLeftTrigger(bool down)
         {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
             if (rightTriggerIsDown) return; // if the other button is down, ignore this input
-
             if (isDeselecting) return; // we're already deselection, so we don't want to start a selection
-            if (!down && !leftTriggerIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !leftTriggerIsDown)
+                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftTriggerIsDown = down;
-            if(down) StartSelection();
+            if (down) StartSelection();
             else EndSelection();
         }
 
@@ -108,25 +107,25 @@ namespace StellarArmada.Entities.Ships
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
             if (leftTriggerIsDown) return; // if the other button is down, ignore this input
             if (isDeselecting) return; // we're already deselection, so we don't want to start a selection
-            if (!down && !rightTriggerIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !rightTriggerIsDown)
+                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightTriggerIsDown = down;
-            if(down)StartSelection();
+            if (down) StartSelection();
             else EndSelection();
         }
-
-
 
         void HandleDoubleTap()
         {
             ShipSelectionManager.instance.ClearSelection();
         }
-        
+
         void HandleLeftGrip(bool down)
         {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
             if (isSelecting) return; // we're already selecting, so we don't want to start a deselection
             if (rightGripIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftGripIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !leftGripIsDown)
+                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftGripIsDown = down;
             HandleGrip(down);
         }
@@ -136,7 +135,8 @@ namespace StellarArmada.Entities.Ships
             if (!HandSwitcher.instance.CurrentHandIsRight()) return; // If this isn't the current hand, ignore input
             if (isSelecting) return; // we're already selecting, so we don't want to start a deselection
             if (leftGripIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightGripIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !rightGripIsDown)
+                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             HandleGrip(down);
         }
 
@@ -151,27 +151,29 @@ namespace StellarArmada.Entities.Ships
 
                 lastTime = Time.time;
             }
-            if(down) StartDeselection();
+
+            if (down) StartDeselection();
             else EndDeselection();
         }
-        
+
         // Handles selection and deselection of entities from the loop
         public void Select(SelectionType selectionType)
-        {            
+        {
             // Query nearby colliders
             hitColliders = Physics.OverlapSphere(selectionCursor.position, selectorRadius, layerMask);
-            foreach(Collider collider in hitColliders)
+            foreach (Collider collider in hitColliders)
             {
                 // Try getting a selectable from the collider
                 selectable = collider.GetComponent<ISelectable>();
-                
                 Debug.Log("<color=blue>SELECTION</color> Selectable name is: " + collider.name);
                 // Has a selectable component, so it's an entity
-                if (selectable != null && selectable.GetOwningEntity().GetTeam() != null)
+                Debug.Log(selectable != null);
+                Debug.Log(selectable.GetOwningEntity());
+                Debug.Log(selectable.GetOwningEntity().GetTeam());
+                if (selectable != null && selectable.IsSelectable() && selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                 {
-                    if (!selectable.IsSelectable()) return; // The selectable can't be selected right now
-                    if (selectable.GetOwningEntity().GetTeam().teamId != playerController.teamId) return; // The selectable isn't on our team, could be wrapped into IsSelectable query
-                    
+                    Debug.Log(
+                        "selectable != null && selectable.IsSelectable() && selectable.GetOwningEntity().GetTeam() == playerController.GetTeam()");
                     switch (selectionType)
                     {
                         case SelectionType.Selection:
@@ -182,7 +184,7 @@ namespace StellarArmada.Entities.Ships
                             break;
                     }
                 }
-            } 
+            }
         }
 
         public void StartSelection()

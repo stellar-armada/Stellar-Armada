@@ -18,12 +18,11 @@
        private float dragTimer = 0f;
        void Awake()
        {
-           canvasGroup = GetComponent<CanvasGroup>();
-           canvasGroup.blocksRaycasts = true;
            groupShip = GetComponent<UIGroupShip>();
            shipyardShip = GetComponent<UIShipyardShip>();
            t = GetComponent<RectTransform>();
        }
+       
        private PointerEventData data;
 
        private bool isReadyToDrag = false;
@@ -34,7 +33,6 @@
        {
            dragTimer = 0f;
            isReadyToDrag = true;
-
        }
 
        void Init()

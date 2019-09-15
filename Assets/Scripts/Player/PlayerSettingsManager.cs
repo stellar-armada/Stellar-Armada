@@ -34,6 +34,7 @@ namespace StellarArmada.Player
         
         void InitSettings()
         {
+            Debug.Log("initing settings");
             settings = new PlayerSettings
             {
                 desktopDisplayMode = false,

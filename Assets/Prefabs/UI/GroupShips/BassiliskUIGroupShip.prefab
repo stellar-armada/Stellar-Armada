@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 5541639491934253883}
   - component: {fileID: 8342086342574585703}
   - component: {fileID: 1326093113803597501}
+  - component: {fileID: -1880439393787643912}
   m_Layer: 5
   m_Name: BassiliskUIGroupShip
   m_TagString: Untagged
@@ -152,6 +153,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4c3040e07670a4ebdb9b4b737e5057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &-1880439393787643912
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988516292966015030}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7172986443465762245
 GameObject:
   m_ObjectHideFlags: 0

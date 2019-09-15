@@ -26,7 +26,7 @@ namespace StellarArmada.Entities.Ships
         {
             new List<ISelectable>(),
             new List<ISelectable>(),
-            new List<ISelectable>(),
+            new List<ISelectable>(),    
             new List<ISelectable>(),
         };
 
@@ -77,6 +77,8 @@ namespace StellarArmada.Entities.Ships
                     //Add to list
                     uiShips[c].Add(selectionShip);
                     selectionShip.transform.SetParent(selectionSetContainers[c]);
+                    selectionShip.transform.localPosition = Vector3.zero;
+                    selectionShip.transform.localScale = Vector3.one;
                     // Disable
                     selectionShip.gameObject.SetActive(false);
                 }
@@ -199,11 +201,6 @@ namespace StellarArmada.Entities.Ships
             UpdateSelectionSet(selectionSetId);
         }
 
-        public void AddSelectablesToSelection(List<ISelectable> selectables)
-        {
-            
-        }
-
         public void AddGroupToSelection(int groupNum)
         {
             uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
@@ -312,12 +309,14 @@ namespace StellarArmada.Entities.Ships
 
         public void AddToSelection(ISelectable selectable)
         {
+            Debug.LogError("AddToSelection attempt");
             if (!currentSelection.Contains(selectable))
             {
+                Debug.Log("<color=green>SELECTION </color> success!");
                 currentSelection.Add(selectable);
                 selectable.Select();
+                OnSelectionChanged?.Invoke();
             }
-            OnSelectionChanged?.Invoke();
         }
 
         public void ClearSelection()
@@ -337,8 +336,9 @@ namespace StellarArmada.Entities.Ships
             {
                 currentSelection.Remove(selectable);
                 selectable.Deselect();
+                OnSelectionChanged?.Invoke();
             }
-            OnSelectionChanged?.Invoke();
+            
         }
     }
 }

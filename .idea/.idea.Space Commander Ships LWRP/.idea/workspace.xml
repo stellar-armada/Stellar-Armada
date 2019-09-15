@@ -81,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/IKSolverVRSpine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/QuaTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/2D/Behaviors/SteerForRigidbodyEvasion2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/V3Tools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/Avatar/Scripts/OvrAvatarSDKManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/PurgatoryRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WinConditionTeamKill.cs" root0="FORCE_HIGHLIGHTING" />
@@ -129,7 +130,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchClockManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Editor/Weaver/CompilationFinishedHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchCountdown.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/EntityHull.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/SteerToFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Nodes/LogicalOperators/TFHCIf.cs" root0="FORCE_HIGHLIGHTING" />
@@ -187,6 +188,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IK/VRIKToSceneRoot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis2DAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/Math3d.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/LockRotationToScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Prefabs/CameraRig/UnityXRCameraRig/SharedResources/Scripts/Input/UnityAxis1DAction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -224,6 +226,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Missile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/MissileLauncher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction/HandSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A1CE4CA8-4A94-4D8A-A5E2-3AA6FA322F2E/73/591dc06c/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Shotgun.cs" root0="FORCE_HIGHLIGHTING" />
@@ -233,6 +236,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/WarpPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/MiniMapEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Match Up/Matchmaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" root0="FORCE_HIGHLIGHTING" />
@@ -278,16 +282,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipBridge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/PurgatoryRoot.cs" />
-        <option value="$PROJECT_DIR$/Assets/AllPlayersOnTeamAreDead.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/WinCondition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/WinConditionDictionary.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/Editor/UserSerializableDictionaryPropertyDrawers.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/Scenario.cs" />
         <option value="$PROJECT_DIR$/Assets/WinConditionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
@@ -295,7 +293,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
-        <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
@@ -306,20 +303,16 @@
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Examples/Match Up/MatchUpNobleNetworkManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" />
         <option value="$PROJECT_DIR$/Assets/WinConditionTeamKill.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" />
         <option value="$PROJECT_DIR$/Assets/CanvasDisplaySwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemSwitcher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MatchMenuStartButtonController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" />
@@ -327,8 +320,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityShield.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interaction/HandSwitcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MatchPlayerMenuManager.cs" />
       </list>
     </option>
   </component>
@@ -409,6 +413,7 @@
       <workItem from="1568065273660" duration="17300000" />
       <workItem from="1568150697523" duration="23676000" />
       <workItem from="1568261638210" duration="15624000" />
+      <workItem from="1568496469523" duration="15852000" />
     </task>
     <servers />
   </component>

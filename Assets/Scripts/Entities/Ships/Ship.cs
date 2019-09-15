@@ -3,6 +3,7 @@ using UnityEngine;
 using Mirror;
 using StellarArmada.Player;
 using StellarArmada.Teams;
+using StellarArmada.UI;
 
 // In the current iteration, ships are organized into three formation roles
 // Ships will be stacked in a grid adjacent to other ships in their line
@@ -62,6 +63,7 @@ namespace StellarArmada.Entities.Ships
             {
                 bridge.ActivateBridgeForLocalPlayer();
                 ShipSelectionManager.instance.InitializeSelectionSets();
+                GroupUIManager.instance.UpdateGroupManager();
                 PlayerCamera.instance.ShowMatchView(); // Switch camera layers to minimap and ships for local player
                 OnCaptainUpdated?.Invoke();
             }

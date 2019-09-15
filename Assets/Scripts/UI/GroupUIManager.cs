@@ -30,7 +30,6 @@ namespace StellarArmada.UI
         
         void Awake()
         {
-            humanPlayerController.EventOnPlayerTeamChange += UpdateGroupManager;
             instance = this;
         }
 
@@ -57,6 +56,8 @@ namespace StellarArmada.UI
                     UIGroupShip newUiGroupShip = UIShipFactory.instance.CreateGroupShip(type).GetComponent<UIGroupShip>();
                     newUiGroupShip.ship = ship;
                     newUiGroupShip.transform.SetParent(uiShipContainers[g]);
+                    newUiGroupShip.transform.localScale = Vector3.one;
+                    newUiGroupShip.transform.localPosition = Vector3.zero;
                     ships.Add(newUiGroupShip.gameObject);
                 }
             }

@@ -157,22 +157,7 @@ namespace StellarArmada.Player
                 OnNonLocalPlayerInitialized?.Invoke();
             }
         }
-        
-        
 
-        // TO-DO: Refactor for when player selects the capital ship of their choice
-        public void PickCapitalShip(Ship ship)
-        {
-            // Get entity where capital ship is this player
-            Transform t = transform; // skip the gameObject.transform lookup
-            t.parent = LocalPlayerBridgeSceneRoot.instance.transform;
-            t.localPosition = Vector3.zero;
-            t.localRotation = Quaternion.identity;
-            ShipSelectionManager.instance.InitializeSelectionSets();
-        }
-
-
-        
         public bool IsLocalPlayer() => isLocalPlayer;
 
         public bool IsServer() => isServer;

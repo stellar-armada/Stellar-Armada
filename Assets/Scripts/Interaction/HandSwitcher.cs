@@ -49,15 +49,18 @@ public class HandSwitcher : MonoBehaviour
     public void SetHand(CurrentHand hand)
     {
         Transform handTarget = null;
+        currentHand = hand;
         switch (hand)
         {
             case CurrentHand.Left:
                 handTarget = leftHandTarget;
-                MatchPlayerMenuManager.instance.AttachToLeftPoint();
+                if(MatchPlayerMenuManager.instance != null)
+                    MatchPlayerMenuManager.instance.AttachToLeftPoint();
                 break;
             case CurrentHand.Right:
                 handTarget = rightHandTarget;
-                MatchPlayerMenuManager.instance.AttachToRightPoint();
+                if(MatchPlayerMenuManager.instance != null)
+                    MatchPlayerMenuManager.instance.AttachToRightPoint();
                 break;
         }
         
