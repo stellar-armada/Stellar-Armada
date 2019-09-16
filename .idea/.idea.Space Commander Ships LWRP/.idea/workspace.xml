@@ -266,8 +266,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect_mobile.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldHit.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/WinConditionTeamKill.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/Transport/Websocket/Ninja.WebSockets/Exceptions/EntityTooLargeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FleetLockHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkLobbyManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Components/NetworkTransformBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -275,7 +277,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
@@ -326,6 +327,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/FleetLockHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FleetLockHelper.cs" />
       </list>
     </option>
   </component>
@@ -406,7 +408,7 @@
       <workItem from="1568065273660" duration="17300000" />
       <workItem from="1568150697523" duration="23676000" />
       <workItem from="1568261638210" duration="15624000" />
-      <workItem from="1568496469523" duration="43261000" />
+      <workItem from="1568496469523" duration="43711000" />
     </task>
     <servers />
   </component>
