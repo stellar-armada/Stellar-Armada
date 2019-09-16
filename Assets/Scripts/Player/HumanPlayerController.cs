@@ -46,6 +46,29 @@ namespace StellarArmada.Player
         }
 
         [Command]
+        public void CmdOrderEntityToStop(uint entityId)
+        {
+            NetworkEntity entity = EntityManager.GetEntityById(entityId);
+            entity.movement.ServerStopMovement();
+        }
+
+        [Command]
+        public void CmdOrderEntityToPursue(uint pursuerId, uint quarryId, bool friendly)
+        {
+            NetworkEntity pursuerEntity = EntityManager.GetEntityById(pursuerId);
+            NetworkEntity quarryEntity = EntityManager.GetEntityById(quarryId);
+            pursuerEntity.movement.ServerPursue(quarryEntity.GetEntityId());
+            pursuerEntity.weaponSystemController.ServerSetTarget(quarryEntity.GetEntityId(), friendly);
+        }
+        
+        [Command]
+        public void CmdOrderEntityToMoveToPoint(uint entityId, Vector3 pos, Quaternion rot)
+        {
+            NetworkEntity entity = EntityManager.GetEntityById(entityId);
+            entity.movement.ServerMoveToPoint(pos, rot);
+        }
+
+        [Command]
         public void CmdAddShipToList(ShipType type, int group)
         {
             // create new prototype with type and group

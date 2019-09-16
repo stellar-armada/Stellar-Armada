@@ -40,6 +40,10 @@ namespace StellarArmada.Entities
                 });
                 lineRenderer.widthMultiplier = lineRendererWidth;
             }
+            else
+            {
+                
+            }
         }
 
         void ShowMovementIndicator(Vector3 pos, Quaternion rot)

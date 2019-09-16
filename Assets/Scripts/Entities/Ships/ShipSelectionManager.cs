@@ -296,6 +296,7 @@ namespace StellarArmada.Entities.Ships
                 }
 
                 currentSelection.Clear();
+                OnSelectionChanged?.Invoke();
             }
 
             // Add the selectable back to the selection

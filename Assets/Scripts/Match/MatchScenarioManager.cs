@@ -15,6 +15,9 @@ namespace StellarArmada.Match
         [HideInInspector] public List<Scenario> scenarios = new List<Scenario>();
         public delegate void ScenarioChangeDelegate(string scenarioName);
 
+        public bool useDebugScenario = false;
+        public Scenario debugScenario;
+        
         // Sync event is called on server but fires on all clients
         [SyncEvent] public event ScenarioChangeDelegate EventScenarioChanged;
         
@@ -26,13 +29,20 @@ namespace StellarArmada.Match
         void Awake()
         {
             instance = this;
-            
-            Object[] scenarioObjects = Resources.LoadAll("Scenarios", typeof(Scenario));
-            foreach (Object scenario in scenarioObjects)
+
+            if (useDebugScenario)
             {
-                scenarios.Add((Scenario) scenario);
+                scenarios.Add(debugScenario);
             }
-            
+            else
+            {
+                Object[] scenarioObjects = Resources.LoadAll("Scenarios", typeof(Scenario));
+                foreach (Object scenario in scenarioObjects)
+                {
+                    scenarios.Add((Scenario) scenario);
+                }
+            }
+
             if (isClientOnly)
             {
                 LoadScenario();

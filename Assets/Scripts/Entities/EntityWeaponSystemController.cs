@@ -1,30 +1,44 @@
 ﻿using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada.Entities
 {
-    public class EntityWeaponSystemController : MonoBehaviour, IWeaponSystemController
+    public class EntityWeaponSystemController : NetworkBehaviour, IWeaponSystemController
     {
         public Transform currentTarget;
         public bool targetIsFriendly;
-        
+                
         [SerializeField] private NetworkEntity entity;
         
         List<WeaponSystem> weaponSystems = new List<WeaponSystem>();
 
         public bool weaponSystemsEnabled = false;
 
-        public void SetTarget(Transform target, bool isFriendly)
+        [Server]
+        public void ServerSetTarget(uint entityId, bool isFriendly)
         {
-            currentTarget = target;
+            if(isServerOnly) SetTarget(entityId, isFriendly);
+            RpcSetTarget(entityId, isFriendly);
+        }
+
+        [ClientRpc]
+        void RpcSetTarget(uint entityId, bool isFriendly)
+        {
+            SetTarget(entityId, isFriendly);
+        }
+
+        void SetTarget(uint entityId, bool isFriendly)
+        {
+            currentTarget = EntityManager.GetEntityById(entityId).transform;
             targetIsFriendly = isFriendly;
             
             foreach (WeaponSystem ws in weaponSystems)
             {
-                if (ws.target == target) continue;
-                if (ws.targetsFriendlies && isFriendly) ws.target = target;
-                if (!ws.targetsFriendlies && !isFriendly) ws.target = target;
+                if (ws.target == currentTarget) continue;
+                if (ws.targetsFriendlies && isFriendly) ws.target = currentTarget;
+                if (!ws.targetsFriendlies && !isFriendly) ws.target = currentTarget;
             }
         }
 

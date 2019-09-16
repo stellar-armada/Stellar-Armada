@@ -12,15 +12,12 @@ namespace StellarArmada.IO
     {
         public static InputManager instance;
         
-        private Vector2 leftThumbstickValue;
-
-        private Vector2 rightThumbstickValue;
-
         public Transform leftHand;
         public Transform rightHand;
 
         public delegate void InputButtonHandler(bool buttonState);
-        
+
+        public delegate void InputDirectionalHandler(Vector2 direction);
         // Inputs
         
         public InputButtonHandler OnLeftGrip;
@@ -36,6 +33,10 @@ namespace StellarArmada.IO
         public InputButtonHandler OnButtonTwo;
         public InputButtonHandler OnButtonThree;
         public InputButtonHandler OnButtonFour;
+
+        public InputDirectionalHandler OnLeftThumbstickAnalog;
+
+        public InputDirectionalHandler OnRightThumbstickAnalog;
 
         public InputButtonHandler OnButtonStart;
         void Awake()

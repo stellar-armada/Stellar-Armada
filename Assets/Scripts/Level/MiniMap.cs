@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using StellarArmada.IO;
 using UnityEngine;
 using UnitySteer.Behaviors;
 using Zinnia.Extension;
@@ -35,6 +36,17 @@ namespace StellarArmada.Levels
         {
             t = transform;
             miniMapTransformRoot = MiniMapTransformRoot.instance.transform;
+
+            InputManager.instance.OnLeftThumbstickButton += (down) =>
+            {
+                if (HandSwitcher.instance.CurrentHandIsLeft() && down) ToggleRotationLock();
+            };
+            
+            InputManager.instance.OnRightThumbstickButton += (down) =>
+            {
+                if (HandSwitcher.instance.CurrentHandIsRight() && down) ToggleRotationLock();
+            };
+
             // miniMapSecene = Instantiate(scene);
             //  SetLayerRecursively(miniMapSecene, LayerUtil.LayerMaskToLayer(uiLayerMask));
         }

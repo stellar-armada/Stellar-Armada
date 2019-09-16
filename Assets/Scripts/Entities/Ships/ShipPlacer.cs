@@ -2,6 +2,7 @@
 using System.Linq;
 using StellarArmada.IO;
 using StellarArmada.Levels;
+using StellarArmada.Player;
 using UnityEngine;
 
 namespace StellarArmada.Entities.Ships
@@ -44,9 +45,10 @@ namespace StellarArmada.Entities.Ships
         void HandleShipHighlighted(bool on)
         {
             if (uiPointerIsActive) return;
-            if(on) HidePlacements();
+            if (on) HidePlacements();
             else ShowPlacements();
         }
+
 
         void HandleRightPlaceButton(bool down)
         {
@@ -107,7 +109,7 @@ namespace StellarArmada.Entities.Ships
             {
                 ShipPlacementUIManager.instance.UpdatePlacementMarkers();
             }
-            
+
             foreach (Ship s in ships)
             {
                 // Get the placement indicator
@@ -121,6 +123,7 @@ namespace StellarArmada.Entities.Ships
                 pI.transform.localRotation = Quaternion.identity;
                 pI.Show(positions[s]);
             }
+
             Invoke(nameof(ShowPlacements), .2f);
         }
 
@@ -132,31 +135,52 @@ namespace StellarArmada.Entities.Ships
             activePlacements = new List<ShipPlacementIndicator>();
         }
 
+
+        private float doubleTapThreshold = .5f;
+
+        private float lastTap = 0;
+
+        void StopAllShips()
+        {
+            foreach (ShipPlacementIndicator pi in activePlacements)
+            {
+                HumanPlayerController.localPlayer.CmdOrderEntityToStop(pi.entity.GetEntityId());
+            }
+        }
+        
+        
+
         public void Place()
         {
             if (uiPointerIsActive) return;
             
-            foreach (ShipPlacementIndicator pi in activePlacements)
-            {
-                // If we're not highlighting a ship
-                if (ShipSelector.instance.currentSelectable == null)
+                foreach (ShipPlacementIndicator pi in activePlacements)
                 {
-                    // For each placer, set the minimap parent so we can grab local pos and rot easier
-                    // Otherwise we could optimise with some matrix/quaternion math!
-                    pi.transform.SetParent(MiniMap.instance.transform, true);
-                    pi.entity.movement.CmdMoveToPoint(pi.transform.localPosition, pi.transform.localRotation);
-                    pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
-                    
+                    // If we're not highlighting a ship
+                    if (ShipSelector.instance.currentSelectable == null)
+                    {
+                        // Is it a double tap?
+                        if (Time.time - lastTap < doubleTapThreshold)
+                        {
+                            StopAllShips();
+                        }
+                        else
+                        {
+                            // For each placer, set the minimap parent so we can grab local pos and rot easier
+                        // Otherwise we could optimise with some matrix/quaternion math!
+                        pi.transform.SetParent(MiniMap.instance.transform, true);
+                        HumanPlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.entity.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
+                        pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
+                        }
+                        lastTap = Time.time;
+                    }
+                    // We are highlighting a ship, so pursue it
+                    else
+                    {
+                        HumanPlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(), 
+                            ShipSelector.instance.currentSelectable.GetOwningEntity().GetEntityId(), ShipSelector.instance.targetIsFriendly);
+                    }
                 }
-                // We are highlighting a ship, so pursue it
-                else
-                {
-                    Transform target = ShipSelector.instance.currentSelectable.GetOwningEntity().transform;
-                    bool friendly = ShipSelector.instance.targetIsFriendly;
-                    pi.entity.movement.CmdPursue(target, friendly);
-                    pi.entity.weaponSystemController.SetTarget(target, friendly);
-                }
-            }
         }
     }
 }

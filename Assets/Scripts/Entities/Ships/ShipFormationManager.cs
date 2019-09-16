@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using StellarArmada.IO;
 using UnityEngine;
 
 #pragma warning disable 0649
@@ -10,9 +11,17 @@ namespace StellarArmada.Entities.Ships
     {
         public static ShipFormationManager instance; // singleton accessor
 
-        public float scaleXY = 350f; // distance between ships next to, above and below
-        public float scaleZ = 250f; // distance between ships behind/in front
-        
+        public float scaleXY = 600f; // distance between ships next to, above and below
+        public float maxScaleXY = 2400f;
+        public float minScaleXY = 300f;
+
+        // distance between ships behind/in front
+        public float scaleZ = 450f;
+        public float minScaleZ = 250f;
+        public float maxScaleZ = 2400f;
+
+        public float scaleSpeed = 10f;
+
         // local reference variables
         private Dictionary<Ship, Vector3> shipPositions;
         private Vector3 centerOfMass;
@@ -24,6 +33,43 @@ namespace StellarArmada.Entities.Ships
         int currentBacklinePosition;
         private Vector3 avgPosition;
         private Vector4 averageRotation;
+
+        private float deadZone = .01f;
+
+        void Start()
+        {
+            InputManager.instance.OnLeftThumbstickAnalog += (direction) =>
+            {
+                if (HandSwitcher.instance.CurrentHandIsLeft()) dPad = direction;
+            };
+            InputManager.instance.OnRightThumbstickAnalog += (direction) =>
+            {
+                if (HandSwitcher.instance.CurrentHandIsRight()) dPad = direction;
+            };
+        }
+
+        private Vector2 dPad = Vector2.zero;
+
+        void HandleThumbstick()
+        {
+            
+            if (Mathf.Abs(dPad.x) > deadZone) // dPad X value is above deadzone
+            {
+                float newXY = scaleXY + dPad.x * scaleSpeed * Time.deltaTime;
+                scaleXY = Mathf.Clamp(newXY, minScaleXY, maxScaleXY);
+            }
+            
+            if (Mathf.Abs(dPad.y) > deadZone) // dPad Y value is above deadzone
+            {
+                float newZ = scaleXY + dPad.y * scaleSpeed * Time.deltaTime;
+                scaleZ = Mathf.Clamp(newZ, minScaleXY, maxScaleXY);
+            }
+        }
+
+        void Update()
+        {
+            HandleThumbstick();
+        }
         
         void Awake()
         {
@@ -55,6 +101,24 @@ namespace StellarArmada.Entities.Ships
                 ships.Where(s => s.formationPosition == FormationPosition.Backline).ToArray()
             };
 
+            // Some hardcoded recursive logic to organize the ships toward the back and minimize gaps
+            
+            // if row 2 is empty, move row 1 to 2
+            if (shipsByLine[1].Length == 0)
+            {
+                shipsByLine[1] = shipsByLine[0];
+                shipsByLine[0] = null;
+            }
+            
+            // if row 3 is empty, move both up
+            if (shipsByLine[2].Length == 0)
+            {
+                shipsByLine[2] = shipsByLine[1];
+                shipsByLine[1] = shipsByLine[0];
+                shipsByLine[0] = null;
+            }
+
+            // Create positions for ships!
             for (int shipLine = 0; shipLine < shipsByLine.Length; shipLine++)
             {
                 int currentPosition = 0;

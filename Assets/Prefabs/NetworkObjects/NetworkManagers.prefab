@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1884c97e5008f404485d17d472cb3351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
   syncInterval: 0.1
   numberOfPlayerSlots: 99
   matchStateManager: {fileID: 6816603826080047241}
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d302fe441342e4c944e955df119f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
   syncInterval: 0.1
   ships:
     m_keys: 000000000100000002000000030000000400000005000000
@@ -153,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569c5ae8c2caac74081a3bc41a789c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
   syncInterval: 0.1
 --- !u!114 &6328202424092267344
 MonoBehaviour:
@@ -166,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b360759dbc4eae42bb10d343f9500d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
   syncInterval: 0.1
   templates:
   - color: {r: 1, g: 0, b: 0, a: 1}
@@ -258,8 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bc32a465e2bfd4cb048067537436ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
   syncInterval: 0.1
   scenarios: []
+  useDebugScenario: 1
+  debugScenario: {fileID: 11400000, guid: 77c07fb1068c59047bea1e756c2c0ebe, type: 2}
   currentScenarioName: 
 --- !u!114 &6816603826080047241
 MonoBehaviour:
@@ -273,5 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b7d5601029d6146a11d2740df35e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
   syncInterval: 0.1
   matchServerManager: {fileID: 4310008680290407409}
+  playersReady: 0

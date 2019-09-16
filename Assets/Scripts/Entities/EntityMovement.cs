@@ -30,14 +30,12 @@ namespace StellarArmada.Entities
         NetworkEntity tempShip;
         Transform transformToMoveTo; // for pursuit
 
-        
         void HandleControlChanged(bool newControlEnabledState)
         {
             foreach (Steering behavior in steeringBehaviors)
             {
                 behavior.enabled = newControlEnabledState;
             }
-            
         }
         
         void Awake()
@@ -53,60 +51,71 @@ namespace StellarArmada.Entities
             OnArrival?.Invoke();
         }
 
-        [Command]
-        public void CmdPursue(Transform target, bool isFriendly)
+        [Server]
+        public void ServerPursue(uint entityId)
         {
-            Debug.Log("<color=green>PURSUIT</green> Pursing entity!");
-            NetworkEntity e = target.GetComponent<NetworkEntity>();
-            PursueEntity(e.GetEntityId());
+            if (!controlEnabled) return;
+            if(isServerOnly) Pursue(EntityManager.GetEntityById(entityId));
+            RpcPursue(entityId);
         }
 
-        [Command]
-        public void CmdMoveToPoint(Vector3 pos, Quaternion rot)
+        [ClientRpc]
+        void RpcPursue(uint entityId)
+        {
+            Pursue(EntityManager.GetEntityById(entityId));
+        }
+
+        void Pursue(NetworkEntity entity)
+        {
+            entity.weaponSystemController.ClearTargets();
+            steerForPoint.enabled = false;
+            steerForPursuit.Quarry = entity.GetComponent<EntityMovement>().autonomousVehicle;
+            steerForPursuit.enabled = true;
+        }
+
+        [Server]
+        public void ServerMoveToPoint(Vector3 pos, Quaternion rot)
         {
             if (!controlEnabled)
             {
-                Debug.LogError("Can't move, control not enabled");
+                Debug.Log("Can't move, control not enabled");
+                return;
             }
 
-            entity.weaponSystemController.ClearTargets();
-            GoToPoint(pos);
-            OnMoveToPoint?.Invoke(pos, rot);
+            if (isServerOnly) MoveToPoint(pos, rot);
+            
+            RpcMoveToPoint(pos, rot);
         }
 
-        public void MoveToEntity(uint shipID)
+        [ClientRpc]
+        void RpcMoveToPoint(Vector3 pos, Quaternion rot) => MoveToPoint(pos, rot);
+
+        void MoveToPoint(Vector3 pos, Quaternion rot)
         {
-            if (!controlEnabled || !entity.isServer) return;
-            tempShip = EntityManager.GetEntityById(shipID);
-            Transform shipToMoveTo = tempShip.GetComponent<Transform>();
-            GoToPoint(shipToMoveTo.position);
+            steerForPoint.enabled = true;
+            steerForPoint.TargetPoint = pos;
+            steerForPursuit.enabled = false;
+            OnMoveToPoint?.Invoke(pos, rot); 
         }
-        
-        public void PursueEntity(uint entityId)
+
+        [Server]
+        public void ServerStopMovement()
         {
-            if (!controlEnabled || !entity.isServer) return;
-            tempShip = EntityManager.GetEntityById(entityId);
-            Transform shipToPursue = tempShip.GetComponent<Transform>();
-            steerForPoint.enabled = false;
-            steerForPursuit.Quarry = tempShip.GetComponent<EntityMovement>().autonomousVehicle;
-            steerForPursuit.enabled = true;
+            if(isServerOnly) StopMovement();
+            RpcStopMovement();
         }
-        
-        public void StopMovement()
+
+        [ClientRpc]
+        void RpcStopMovement() => StopMovement();
+
+        void StopMovement()
         {
-            if (!entity.isServer) return;
+            entity.weaponSystemController.ClearTargets();
             steerForPoint.TargetPoint = transform.position;
             steerForPoint.enabled = true;
             steerForPursuit.Quarry = null;
             steerForPursuit.enabled = false;
             OnArrival?.Invoke();
-        }
-        
-        void GoToPoint(Vector3 point)
-        {
-            steerForPoint.enabled = true;
-            steerForPoint.TargetPoint = point;
-            steerForPursuit.enabled = false;
         }
         
         public void EnableMovement()
@@ -117,7 +126,6 @@ namespace StellarArmada.Entities
         public void DisableMovement()
         {
             controlEnabled = false;
-            
         }
     }
 }
