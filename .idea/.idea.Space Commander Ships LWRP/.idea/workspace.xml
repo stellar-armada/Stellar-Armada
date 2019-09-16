@@ -150,6 +150,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipEngines.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/FormationMatrices.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FleetLockHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFormationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/MiniMapStatusBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Teams/TeamInfo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -286,8 +287,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/GroupContainer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIShipyardShip.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
@@ -316,7 +315,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interaction/HandSwitcher.cs" />
@@ -335,8 +333,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityWeaponSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchScenarioManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFormationManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchScenarioManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/FleetLockHelper.cs" />
       </list>
     </option>
   </component>
@@ -417,7 +418,7 @@
       <workItem from="1568065273660" duration="17300000" />
       <workItem from="1568150697523" duration="23676000" />
       <workItem from="1568261638210" duration="15624000" />
-      <workItem from="1568496469523" duration="41311000" />
+      <workItem from="1568496469523" duration="42537000" />
     </task>
     <servers />
   </component>

@@ -16,6 +16,12 @@ namespace StellarArmada.UI
         [SerializeField] GameObject selectionIndicator;
 
         [SerializeField] private Color shieldColor;
+        private CanvasGroup group;
+
+        void Awake()
+        {
+            group = GetComponent<CanvasGroup>();
+        }
         
         public void Start()
         {
@@ -26,6 +32,19 @@ namespace StellarArmada.UI
             ship.hull.HullChanged += HandleHullChange;
             ship.shipSelectionHandler.OnSelectionChanged += HandleSelectionChange;
             selectionIndicator.SetActive(false);
+            DisableControl();
+        }
+
+        public void EnableControl()
+        {
+            group.blocksRaycasts = true;
+            group.interactable = true;
+        }
+
+        public void DisableControl()
+        {
+            group.blocksRaycasts = false;
+            group.interactable = false;
         }
 
         void HandleSelectionChange(bool on)

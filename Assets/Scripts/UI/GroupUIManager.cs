@@ -18,14 +18,39 @@ namespace StellarArmada.UI
         
         [SerializeField] private HumanPlayerController humanPlayerController;
 
-        private List<GameObject> ships = new List<GameObject>();
+        private List<UIGroupShip> ships = new List<UIGroupShip>();
         [SerializeField] List<Transform> uiShipContainers = new List<Transform>();
 
-        public bool IsAGroupContainer(Transform inTransform)
+        private bool groupShipsLocked = true;
+        
+        // Private ref vars for reuse
+        private UIGroupShip newUiGroupShip;
+        private Transform t;
+        private Ship ship;
+        private ShipType type;
+        
+        public void LockGroupShips()
         {
-            return uiShipContainers.Contains(inTransform);
+            groupShipsLocked = true;
+            foreach (UIGroupShip s in ships)
+            {
+                s.DisableControl();
+            }
         }
         
+        public void UnlockGroupShips()
+        {
+            groupShipsLocked = false;
+            foreach (UIGroupShip s in ships)
+            {
+                s.EnableControl();
+            }
+        }
+
+        public bool GroupShipsLocked() => groupShipsLocked;
+        
+        public bool IsAGroupContainer(Transform inTransform) =>  uiShipContainers.Contains(inTransform);
+
         private bool isInited; // catch race condition, can test
         
         void Awake()
@@ -39,27 +64,28 @@ namespace StellarArmada.UI
             
             if (ships.Count > 0) // Delete any if there are any. Would only be if we had more ships added or something
             {
-                foreach (GameObject go in ships)
+                foreach (UIGroupShip gs in ships)
                 {
-                    Destroy(go);
+                    Destroy(gs.gameObject);
                 }
-                ships = new List<GameObject>();
+                ships = new List<UIGroupShip>();
             }
 
             for (int g = 0; g < groups.Count; g++)
             {
                 for (int s = 0; s < groups[g].Count; s++)
                 {
-                    Ship ship = groups[g][s] as Ship;
+                    ship = groups[g][s] as Ship;
                     ship.group = g;
-                    ShipType type = ship.type; // Should do entity check but it's easier to do this
-                    UIGroupShip newUiGroupShip = UIShipFactory.instance.CreateGroupShip(type).GetComponent<UIGroupShip>();
+                    type = ship.type; // Should do entity check but it's easier to do this
+                    newUiGroupShip = UIShipFactory.instance.CreateGroupShip(type).GetComponent<UIGroupShip>();
                     newUiGroupShip.ship = ship;
-                    newUiGroupShip.transform.SetParent(uiShipContainers[g]);
-                    newUiGroupShip.transform.localScale = Vector3.one;
-                    newUiGroupShip.transform.localPosition = Vector3.zero;
-                    newUiGroupShip.transform.localRotation = Quaternion.identity;
-                    ships.Add(newUiGroupShip.gameObject);
+                    t = newUiGroupShip.transform;
+                    t.SetParent(uiShipContainers[g]);
+                    t.localScale = Vector3.one;
+                    t.localPosition = Vector3.zero;
+                    t.localRotation = Quaternion.identity;
+                    ships.Add(newUiGroupShip);
                 }
             }
         }

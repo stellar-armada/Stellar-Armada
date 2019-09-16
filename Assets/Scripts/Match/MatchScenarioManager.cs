@@ -30,19 +30,23 @@ namespace StellarArmada.Match
         {
             instance = this;
 
+            // Debug scenario control, let's make sure it's editor only to avoid accidentally shipping with this bool checked
+#if UNITY_EDITOR
             if (useDebugScenario)
             {
                 scenarios.Add(debugScenario);
             }
             else
             {
+#endif
                 Object[] scenarioObjects = Resources.LoadAll("Scenarios", typeof(Scenario));
                 foreach (Object scenario in scenarioObjects)
                 {
                     scenarios.Add((Scenario) scenario);
                 }
+#if UNITY_EDITOR               
             }
-
+#endif
             if (isClientOnly)
             {
                 LoadScenario();
