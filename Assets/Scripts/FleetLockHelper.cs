@@ -8,11 +8,26 @@ public class FleetLockHelper : MonoBehaviour
     [SerializeField] Color unlockedColor;
     [SerializeField] TextMeshProUGUI text;
 
-    void Update()
+    public void ToggleLock()
+    {
+        if (GroupUIManager.instance.GroupShipsLocked())
+        {
+            GroupUIManager.instance.UnlockGroupShips();
+            text.color = unlockedColor;
+        }
+        else
+        {
+            GroupUIManager.instance.LockGroupShips();
+            text.color = lockedColor;
+        }
+    }
+
+    void Start()
     {
         if (GroupUIManager.instance.GroupShipsLocked())
             text.color = lockedColor;
         else
             text.color = unlockedColor;
     }
+
 }
