@@ -91,7 +91,7 @@ namespace Wacki {
 
                 hitPoint.transform.localPosition = new Vector3(0.0f, 0.0f, distance);
             }
-            else if (MatchStateManager.instance.InMatch())
+            else if (MatchStateManager.instance != null && MatchStateManager.instance.InMatch())
                 {
                 hitPoint.transform.localPosition = new Vector3(0.0f, 0.0f, defaultDistance);
                 hitPoint.SetActive(true);

@@ -19,9 +19,9 @@ namespace StellarArmada.UI {
         // TO-DO: All these bools look ugly, could use some refactor
         private bool leftMenuButtonActive;
         private bool rightMenuButtonActive;
-        public bool buttonState = false; // Store current button state
-        bool prevButtonState = false; // Store last frame state for triggering EventSystem.Process
-        bool buttonChanged = false; // Called in the event system process loop if true, then falsed next frame
+        public bool buttonState; // Store current button state
+        bool prevButtonState; // Store last frame state for triggering EventSystem.Process
+        bool buttonChanged; // Called in the event system process loop if true, then falsed next frame
 
         public Canvas uiPlacerCanvas;
         
@@ -106,12 +106,14 @@ namespace StellarArmada.UI {
         void HandleButtonRight(bool on)
         {
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
+            Debug.Log("HandleButtonRight");
             buttonState = on;
         }
         
         void HandleButtonLeft(bool on)
         {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return;
+            Debug.Log("HandleButtonLeft");
             buttonState = on;
         }
 

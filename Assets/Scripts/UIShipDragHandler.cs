@@ -6,7 +6,7 @@
    using UnityEngine;
    using UnityEngine.EventSystems;
    
-   public class UIShipDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+   public class UIShipDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerClickHandler
    {
        private Vector2 startPosition;
        private RectTransform t;
@@ -14,8 +14,9 @@
        private UIShipyardShip shipyardShip; // one or the other
        private UIGroupShip groupShip; // one or the other
        
-       float dragDelay = .55f;
-       private float dragTimer = 0f;
+       float dragDelay = .4f;
+       private float dragTimer;
+       
        void Awake()
        {
            canvasGroup = GetComponent<CanvasGroup>();
@@ -103,5 +104,10 @@
            t.localRotation = Quaternion.identity;
            t.localPosition = new Vector3(t.localPosition.x, t.localPosition.y, 0);
            t.localScale = Vector3.one * scale;
+       }
+
+       public void OnPointerClick(PointerEventData eventData)
+       {
+           
        }
    }
