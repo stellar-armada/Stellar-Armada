@@ -18,7 +18,7 @@ namespace StellarArmada.Levels
 
         public float rotationDamping = 10f;
 
-        public float positionDamping = 10f;
+        //public float positionDamping = 10f;
 
         [SerializeField] private LayerMask uiLayerMask;
 
@@ -131,12 +131,12 @@ namespace StellarArmada.Levels
             }
 
             // Lerp the minimap transform root toward the default 0
-            miniMapTransformRoot.localPosition = Vector3.Lerp(miniMapTransformRoot.localPosition, Vector3.up * yOffset, Time.deltaTime * positionDamping);
+            //miniMapTransformRoot.localPosition = Vector3.Lerp(miniMapTransformRoot.localPosition, Vector3.up * yOffset, Time.deltaTime * positionDamping);
             miniMapTransformRoot.localRotation =  Quaternion.Slerp(miniMapTransformRoot.localRotation, Quaternion.identity, Time.deltaTime * rotationDamping);
 
             // Offset the minimap by the local transform of itself -- thus centering the minimap positionally in space
-            t.localPosition = Vector3.Lerp(Vector3.zero, -t.TransformPoint(t.position), Time.deltaTime * positionDamping);
-            t.localRotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationDamping);
+            //t.localPosition = Vector3.Lerp(Vector3.zero, -t.TransformPoint(t.position), Time.deltaTime * positionDamping);
+            //t.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.identity, Time.deltaTime * rotationDamping);
         }
 
         void SetLayerRecursively(GameObject obj, int newLayer)

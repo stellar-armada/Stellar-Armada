@@ -79,6 +79,7 @@ namespace StellarArmada.Entities.Ships
                     selectionShip.transform.SetParent(selectionSetContainers[c]);
                     selectionShip.transform.localPosition = Vector3.zero;
                     selectionShip.transform.localScale = Vector3.one;
+                    selectionShip.transform.localRotation = Quaternion.identity;
                     // Disable
                     selectionShip.gameObject.SetActive(false);
                 }

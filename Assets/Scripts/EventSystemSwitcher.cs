@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using Wacki;
 
 // Switch event systems based on whether we are in desktop or VR mode
+#pragma warning disable 0649
 public class EventSystemSwitcher : MonoBehaviour
 {
     [SerializeField] LaserPointerInputModule pointerInputModule;
