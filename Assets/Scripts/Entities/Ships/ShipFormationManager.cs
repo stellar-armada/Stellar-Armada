@@ -107,7 +107,7 @@ namespace StellarArmada.Entities.Ships
             if (shipsByLine[1].Length == 0)
             {
                 shipsByLine[1] = shipsByLine[0];
-                shipsByLine[0] = null;
+                shipsByLine[0] = new Ship[0];
             }
             
             // if row 3 is empty, move both up
@@ -115,7 +115,7 @@ namespace StellarArmada.Entities.Ships
             {
                 shipsByLine[2] = shipsByLine[1];
                 shipsByLine[1] = shipsByLine[0];
-                shipsByLine[0] = null;
+                shipsByLine[0] = new Ship[0];
             }
 
             // Create positions for ships!

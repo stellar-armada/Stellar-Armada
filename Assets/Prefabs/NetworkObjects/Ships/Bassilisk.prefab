@@ -15891,7 +15891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 8081799463623299947}
   maxShield: 300
-  enabled: 1
+  isEnaled: 1
   shieldRechargeDelayTime: 2
   shieldRechargeRate: 3
   shieldEffectController: {fileID: 2199714103910787439}
@@ -15944,7 +15944,7 @@ Transform:
   m_GameObject: {fileID: 4007513039453171211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 7962282210728120934}
   m_Father: {fileID: 6787116511349424934}
@@ -25966,6 +25966,7 @@ MonoBehaviour:
   owningNetworkEntity: {fileID: 8081799463623299947}
   damagePerHit: 80
   timerID: -1
+  targetsFriendlies: 0
   timer: 0.1
   tickRate: 0.2
   maxRange: 3000
@@ -26038,6 +26039,7 @@ MonoBehaviour:
   owningNetworkEntity: {fileID: 8081799463623299947}
   damagePerHit: 5
   timerID: -1
+  targetsFriendlies: 0
   timer: 0.1
   tickRate: 0.2
   maxRange: 2000
@@ -33095,6 +33097,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cd9e21d25160742a1f15b32bfd2e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  currentTarget: {fileID: 0}
+  targetIsFriendly: 0
   entity: {fileID: 8081799463623299947}
   weaponSystemsEnabled: 0
 --- !u!114 &6613500308364987285
@@ -33121,6 +33127,9 @@ MonoBehaviour:
   steerForPursuit: {fileID: 1977461455125822363}
   steerForPoint: {fileID: 6430903243183470549}
   autonomousVehicle: {fileID: 3145361286118619456}
+  engines: []
+  fadeTime: 0.5
+  engineColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!114 &3145361286118619456
 MonoBehaviour:
   m_ObjectHideFlags: 0

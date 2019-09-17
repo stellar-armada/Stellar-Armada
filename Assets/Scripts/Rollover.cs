@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+#pragma warning disable 0649
 public class Rollover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public static Rollover currentRollover;

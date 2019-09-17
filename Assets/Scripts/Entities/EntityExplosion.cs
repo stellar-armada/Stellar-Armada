@@ -42,7 +42,7 @@ namespace StellarArmada.Entities
 
         void DeactivateShip()
         {
-            entity.shield.enabled = false;
+            entity.shield.isEnaled = false;
             entity.shield.currentShield = 0;
 
             entity.miniMapEntity.Deactivate();

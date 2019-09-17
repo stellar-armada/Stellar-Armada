@@ -47,14 +47,14 @@ namespace StellarArmada.UI {
         // Initialization is called from the base class Start
         protected override void Initialize()
         {
-            inputManager.OnRightTrigger += HandleButtonRight;
             inputManager.OnLeftTrigger += HandleButtonLeft;
+            inputManager.OnRightTrigger += HandleButtonRight;
 
-            inputManager.OnRightGrip += HandleSecondaryRight;
-            inputManager.OnRightGrip += HandleSecondaryLeft;
+            inputManager.OnLeftGrip += HandleLeftMenuButtonActivated;
+            inputManager.OnRightGrip += HandleRightMenuButtonActivated;
             
-            inputManager.OnLeftThumbstickButton += HandleLeftMenuButtonActivated;
-            inputManager.OnRightThumbstickButton += HandleRightMenuButtonActivated;
+            inputManager.OnLeftThumbstickButton += HandleSecondaryLeft;
+            inputManager.OnRightThumbstickButton += HandleSecondaryRight;
         }
 
         void HandleSecondaryRight(bool down)
@@ -108,6 +108,7 @@ namespace StellarArmada.UI {
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
             Debug.Log("HandleButtonRight");
             buttonState = on;
+            Debug.Log("ButtonRight called");
         }
         
         void HandleButtonLeft(bool on)
@@ -115,6 +116,7 @@ namespace StellarArmada.UI {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return;
             Debug.Log("HandleButtonLeft");
             buttonState = on;
+            Debug.Log("ButtonLeft called");
         }
 
         public override bool ButtonDown()

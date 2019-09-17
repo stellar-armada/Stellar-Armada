@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 
+#pragma warning disable 0649
 public class FleetLockHelper : MonoBehaviour
 {
     [SerializeField] Color lockedColor;

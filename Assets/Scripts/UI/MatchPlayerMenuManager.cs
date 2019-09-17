@@ -16,6 +16,8 @@ namespace StellarArmada.UI
         
         private Transform t;
         
+        public bool menuIsActive;
+        
         void Awake()
         {
             instance = this;
@@ -31,13 +33,16 @@ namespace StellarArmada.UI
 
         public void AttachToLeftPoint()
         {
+            Debug.Log("Attaching to left point");
             t.SetParent(leftCanvasAttachPoint);
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
         }
 
+
         public void AttachToRightPoint()
         {
+            Debug.Log("Attaching to right point");
             t.SetParent(rightCanvasAttachPoint);
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
@@ -46,7 +51,7 @@ namespace StellarArmada.UI
         public void SetMenuState(bool state)
         {
             if (!MatchStateManager.instance.InMatch()) return;
-
+            menuIsActive = state;
             // Trigger rollover
             if (state == false && Rollover.currentRollover != null)
             {
@@ -67,28 +72,26 @@ namespace StellarArmada.UI
             
             gameObject.SetActive(state);
         }
-   
-    
-    Vector3 LookatXZ(Transform lookat)
-    {
-    Vector3 distance = lookat.position - t.position;
-    Vector3 direction = Vector3.ProjectOnPlane(distance, t.up).normalized;
-        return t.InverseTransformVector(direction);
-    }
-    
-    private static float AngleXZ(Vector3 direction)
-    {
-        return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-    }
 
-    void LookAt()
+        void LookAt()
     {
-        t.localRotation = Quaternion.Euler(Vector3.up * AngleXZ(LookatXZ(HandSwitcher.currentTarget)));
-    }
-    
-    void LateUpdate()
-    {
-        LookAt();
+        if (HandSwitcher.currentTarget == null) return;
+
+        Transform b = LocalPlayerBridgeSceneRoot.instance.transform;
+        
+        // Get position of current target and transform into scene root's local space
+        Vector3 currentTargetVector = b.InverseTransformPoint(HandSwitcher.currentTarget.position);
+        
+        // Get position of menu and do the same
+        Vector3 menuVector = b.InverseTransformPoint(t.position);
+
+        menuVector.y = currentTargetVector.y;
+
+        Vector3 outVector =  menuVector - currentTargetVector;
+
+        transform.localRotation = Quaternion.LookRotation(outVector, Vector3.up);
+        
+       
     }
     }
 }

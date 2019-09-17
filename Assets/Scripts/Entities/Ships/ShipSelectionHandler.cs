@@ -50,7 +50,7 @@ namespace StellarArmada.Entities.Ships
         public bool IsSelectable()
         {
             //If is alive and has warped inentity.shipWarp.isWarpedIn
-            if (entity.IsAlive()) return true;
+            if (canSelect && entity.IsAlive()) return true;
             return false;
         }
 
