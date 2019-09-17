@@ -1524,9 +1524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ba3ab862bd4ef48802ebd937bb191e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuIsActive: 0
   leftCanvasAttachPoint: {fileID: 0}
   rightCanvasAttachPoint: {fileID: 0}
-  menuIsActive: 0
 --- !u!1 &2357744654644699054
 GameObject:
   m_ObjectHideFlags: 0

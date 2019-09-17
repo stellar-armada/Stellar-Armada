@@ -6,15 +6,13 @@
    using UnityEngine;
    using UnityEngine.EventSystems;
    
-   public class UIShipDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerClickHandler
+   public class UIShipDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerClickHandler, IPointerDownHandler
    {
        private Vector2 startPosition;
        private RectTransform t;
        private CanvasGroup canvasGroup;
        private UIShipyardShip shipyardShip; // one or the other
        private UIGroupShip groupShip; // one or the other
-
-       private bool hasDelay;
        
        float dragDelay = .4f;
        private float dragTimer;
@@ -24,7 +22,7 @@
            canvasGroup = GetComponent<CanvasGroup>();
            groupShip = GetComponent<UIGroupShip>();
            shipyardShip = GetComponent<UIShipyardShip>();
-           // if (shipyardShip != null) hasDelay = true;
+           if(shipyardShip != null && canvasGroup != null) canvasGroup.blocksRaycasts = true;
            t = GetComponent<RectTransform>();
        }
        
@@ -36,22 +34,12 @@
        
        public void OnBeginDrag(PointerEventData eventData)
        {
-           Debug.Log("Begin drag called");
-           if (hasDelay)
-           {
-               
            dragTimer = 0f;
            isReadyToDrag = true;
-           }
-           else
-           {
-               InitDrag();
-           }
        }
 
-       void InitDrag()
+       void Init()
        {
-           Debug.Log("Init drag called");
            isReadyToDrag = false;
            scale = t.localScale.x;
            t.SetParent(UIPointer.instance.uiPlacerCanvas.transform);
@@ -64,16 +52,14 @@
 
        public void OnDrag(PointerEventData eventData)
        {
-           Debug.Log("On drag called");
            dragTimer += Time.deltaTime;
            if (dragTimer < dragDelay) return;
-           InitDrag();
+           if (isReadyToDrag) Init();
        }
 
        public void OnEndDrag(PointerEventData eventData)
        {
-           Debug.Log("On drag called");
-           if (hasDelay && dragTimer < dragDelay) return;
+           if (dragTimer < dragDelay) return;
            if (eventData.pointerCurrentRaycast.gameObject.GetComponent<GroupContainer>() != null)
            {
                Debug.Log("*** Group container not null: " + eventData.pointerCurrentRaycast.gameObject.name);
@@ -122,6 +108,11 @@
 
        public void OnPointerClick(PointerEventData eventData)
        {
-           
+          Debug.Log("On pointer click called on ship drag handler");
+       }
+
+       public void OnPointerDown(PointerEventData eventData)
+       {
+           Debug.Log("On pointer click called on ship down handler");
        }
    }

@@ -1,4 +1,6 @@
-﻿using StellarArmada.IO;
+﻿using System.Collections.Generic;
+using System.Linq;
+using StellarArmada.IO;
 using UnityEngine;
 using StellarArmada.Player;
 
@@ -15,9 +17,8 @@ namespace StellarArmada.Entities.Ships
 
     public class ShipSelector : MonoBehaviour
     {
-
         public static ShipSelector instance;
-        
+
         // Reference to our local player. Serialized so we don't need anti-race logic
         [SerializeField] private PlayerController playerController;
 
@@ -32,13 +33,13 @@ namespace StellarArmada.Entities.Ships
         // Only select entities on these layers
         [SerializeField] LayerMask layerMask;
 
-        public ISelectable currentSelectable;
+        public List<ISelectable> currentSelectables = new List<ISelectable>();
 
         public delegate void SelectorEvent(bool on);
 
         public SelectorEvent OnHighlightTargetSet;
-        
-        public bool targetIsFriendly;        
+
+        public bool targetIsFriendly;
 
         // State
         private bool isSelecting;
@@ -58,7 +59,7 @@ namespace StellarArmada.Entities.Ships
         private float lastTime;
 
         void Awake() => instance = this;
-        
+
         void Start()
         {
             // Subscribe to delegates in start to avoid race condition with singleton
@@ -173,35 +174,49 @@ namespace StellarArmada.Entities.Ships
             else EndDeselection();
         }
 
-        
+
         void Highlight()
         {
             hitColliders = Physics.OverlapSphere(selectionCursor.position, selectorRadius, layerMask);
-            
-            if (currentSelectable != null)
+
+            List<ISelectable> highlightedSelectables = new List<ISelectable>();
+            // Get list of hits
+            foreach (var collider in hitColliders)
             {
-                currentSelectable.Unhighlight();
-                OnHighlightTargetSet?.Invoke(false);
+                selectable = collider.GetComponent<ISelectable>();
+                if (selectable != null)highlightedSelectables.Add(selectable);
             }
             
-            foreach (Collider collider in hitColliders)
+            // Unhilight any from last selectoin that are no longer selected
+            List<ISelectable> unhighlightSelectables = currentSelectables.Where(c => !highlightedSelectables.Contains(c)).ToList();
+
+            foreach (var selectable in unhighlightSelectables)
+                selectable.Unhighlight();
+            
+            // If currentselectables contains ships that aren't on the list, deselect
+            currentSelectables = currentSelectables.Where(c => highlightedSelectables.Contains(c)).ToList();
+            
+            // if currentselectables doesnt contain any ships on the list, select
+            foreach (var selectable in highlightedSelectables)
             {
-                // Try getting a selectable from the collider
-                selectable = collider.GetComponent<ISelectable>();
+                if(!currentSelectables.Contains(selectable)) currentSelectables.Add(selectable );
+            }
 
-                // We're selecting the same thing as last frame
-                if (selectable != null && currentSelectable == selectable) return; 
-
-                if (selectable != null)
-                {
-                    // Friendly
+            if (currentSelectables.Count == 0)
+            {
+                selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.defaultColor;
+                return;
+            }
+            
+            foreach (var selectable in currentSelectables)
+            {
+                // Friendly
 
                     if (selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                     {
                         targetIsFriendly = true;
                         selectable.Highlight(ColorManager.instance.friendlyColor);
                         selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.friendlyColor;
-                        currentSelectable = selectable;
                     }
                     // Enemy
                     else if (selectable != null && selectable.GetOwningEntity().GetTeam() != playerController.GetTeam())
@@ -209,24 +224,10 @@ namespace StellarArmada.Entities.Ships
                         targetIsFriendly = false;
                         selectable.Highlight(ColorManager.instance.enemyColor);
                         selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.enemyColor;
-                        currentSelectable = selectable;
                     }
 
                     OnHighlightTargetSet?.Invoke(true);
-                    continue;
-                }
-                
-                // Environment
-                    if (collider.gameObject.layer == LayerMask.NameToLayer("Environment"))
-                    {
-                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.neutralColor;
-                    }
 
-                    // None
-                    else
-                    {
-                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.defaultColor;
-                    }
             }
         }
 

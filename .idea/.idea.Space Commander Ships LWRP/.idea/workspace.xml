@@ -39,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/HoloToon.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Association/GameObjectsAssociationActivatorTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/SpaceKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIMatchMenuController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Example/DemoScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Tracking/Modification/TransformPropertyApplier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Constants.cs" root0="FORCE_HIGHLIGHTING" />
@@ -277,7 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchServerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Association/GameObjectsAssociationActivatorTest.cs" />
@@ -310,10 +310,8 @@
         <option value="$PROJECT_DIR$/Assets/ColorManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interaction/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
@@ -325,9 +323,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/FleetLockHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FleetLockHelper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIMatchMenuController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
       </list>
     </option>
   </component>
@@ -409,7 +410,7 @@
       <workItem from="1568150697523" duration="23676000" />
       <workItem from="1568261638210" duration="15624000" />
       <workItem from="1568496469523" duration="43711000" />
-      <workItem from="1568707118555" duration="1409000" />
+      <workItem from="1568707118555" duration="5717000" />
     </task>
     <servers />
   </component>

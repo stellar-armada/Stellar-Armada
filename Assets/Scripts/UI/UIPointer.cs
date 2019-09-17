@@ -50,11 +50,8 @@ namespace StellarArmada.UI {
             inputManager.OnLeftTrigger += HandleButtonLeft;
             inputManager.OnRightTrigger += HandleButtonRight;
 
-            inputManager.OnLeftGrip += HandleLeftMenuButtonActivated;
-            inputManager.OnRightGrip += HandleRightMenuButtonActivated;
-            
-            inputManager.OnLeftThumbstickButton += HandleSecondaryLeft;
-            inputManager.OnRightThumbstickButton += HandleSecondaryRight;
+            inputManager.OnLeftGrip += HandleSecondaryLeft;
+            inputManager.OnRightGrip += HandleSecondaryRight;
         }
 
         void HandleSecondaryRight(bool down)
@@ -85,6 +82,7 @@ namespace StellarArmada.UI {
         // If the menu button is activated, enable the pointer (works until we need the pointer elsewhere!)
         void HandleLeftMenuButtonActivated(bool down)
         {
+            if (MatchStateManager.instance == null || !MatchStateManager.instance.InMatch()) return; // Only use this functionality in the match state
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // Only show menu on right hand if it's active
             if (rightMenuButtonActive) return; // If the button is being used on the other hand, ignore
             if (!down && !leftMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
@@ -95,6 +93,7 @@ namespace StellarArmada.UI {
 
         void HandleRightMenuButtonActivated(bool down)
         {
+            if (MatchStateManager.instance == null || !MatchStateManager.instance.InMatch()) return; // Only use this functionality in the match state
             if (!HandSwitcher.instance.CurrentHandIsRight()) return; // Only show menu on right hand if it's active
             if (leftMenuButtonActive) return; // If the button is being used on the other hand, ignore
             if (!down && !rightMenuButtonActive) return; // if button going up but down state was blocked by other side button, ignore action beyond this point

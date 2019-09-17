@@ -42,9 +42,11 @@ namespace StellarArmada.Entities.Ships
             ShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
         }
 
+        private bool lastVal;
         void HandleShipHighlighted(bool on)
         {
-            if (uiPointerIsActive) return;
+            if (uiPointerIsActive || on == lastVal) return;
+            lastVal = on;
             if (on) HidePlacements();
             else ShowPlacements();
         }
@@ -157,7 +159,7 @@ namespace StellarArmada.Entities.Ships
                 foreach (ShipPlacementIndicator pi in activePlacements)
                 {
                     // If we're not highlighting a ship
-                    if (ShipSelector.instance.currentSelectable == null)
+                    if (ShipSelector.instance.currentSelectables.Count == 0)
                     {
                         // Is it a double tap?
                         if (Time.time - lastTap < doubleTapThreshold)
@@ -178,7 +180,7 @@ namespace StellarArmada.Entities.Ships
                     else
                     {
                         HumanPlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(), 
-                            ShipSelector.instance.currentSelectable.GetOwningEntity().GetEntityId(), ShipSelector.instance.targetIsFriendly);
+                            ShipSelector.instance.currentSelectables[0].GetOwningEntity().GetEntityId(), ShipSelector.instance.targetIsFriendly);
                     }
                 }
         }
