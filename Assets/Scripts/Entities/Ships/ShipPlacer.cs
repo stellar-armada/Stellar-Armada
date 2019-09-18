@@ -43,6 +43,7 @@ namespace StellarArmada.Entities.Ships
         }
 
         private bool lastVal;
+
         void HandleShipHighlighted(bool on)
         {
             if (uiPointerIsActive || on == lastVal) return;
@@ -144,45 +145,47 @@ namespace StellarArmada.Entities.Ships
 
         void StopAllShips()
         {
+            Debug.Log("Calling stop all ships");
             foreach (ShipPlacementIndicator pi in activePlacements)
             {
                 HumanPlayerController.localPlayer.CmdOrderEntityToStop(pi.entity.GetEntityId());
             }
         }
-        
-        
+
 
         public void Place()
         {
             if (uiPointerIsActive) return;
-            
-                foreach (ShipPlacementIndicator pi in activePlacements)
+            // If we're not highlighting a ship
+            if (ShipSelector.instance.currentSelectables.Count == 0)
+            {
+                // Is it a double tap?
+                if (Time.time - lastTap < doubleTapThreshold)
                 {
-                    // If we're not highlighting a ship
-                    if (ShipSelector.instance.currentSelectables.Count == 0)
+                    StopAllShips();
+                }
+                else
+                {
+                    foreach (ShipPlacementIndicator pi in activePlacements)
                     {
-                        // Is it a double tap?
-                        if (Time.time - lastTap < doubleTapThreshold)
-                        {
-                            StopAllShips();
-                        }
-                        else
-                        {
-                            // For each placer, set the minimap parent so we can grab local pos and rot easier
+                        // For each placer, set the minimap parent so we can grab local pos and rot easier
                         // Otherwise we could optimise with some matrix/quaternion math!
                         pi.transform.SetParent(MiniMap.instance.transform, true);
                         HumanPlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.entity.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
                         pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
-                        }
-                        lastTap = Time.time;
-                    }
-                    // We are highlighting a ship, so pursue it
-                    else
-                    {
-                        HumanPlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(), 
-                            ShipSelector.instance.currentSelectables[0].GetOwningEntity().GetEntityId(), ShipSelector.instance.targetIsFriendly);
                     }
                 }
+                lastTap = Time.time;
+            }
+            // We are highlighting a ship, so pursue it
+            else
+            {
+                foreach (ShipPlacementIndicator pi in activePlacements)
+                {
+                    HumanPlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(),
+                        ShipSelector.instance.currentSelectables[0].GetOwningEntity().GetEntityId(), ShipSelector.instance.targetIsFriendly);
+                }
+            }
         }
     }
 }

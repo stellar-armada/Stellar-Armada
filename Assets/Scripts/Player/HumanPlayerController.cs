@@ -109,7 +109,6 @@ namespace StellarArmada.Player
         [TargetRpc]
         void TargetFlagshipSetForPlayer(NetworkConnection conn)
         {
-            Debug.Log("<color=green>CLICK</color> TargetFlagshipSetForPlayer()");
         }
         
         [Command]
@@ -154,7 +153,6 @@ namespace StellarArmada.Player
         
         void Initialize()
         {
-            Debug.Log("Initialize called");
             bodyController.Init();
 
             // Server sets player's team

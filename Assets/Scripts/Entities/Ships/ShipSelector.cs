@@ -3,6 +3,7 @@ using System.Linq;
 using StellarArmada.IO;
 using UnityEngine;
 using StellarArmada.Player;
+using StellarArmada.UI;
 
 #pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
@@ -44,7 +45,6 @@ namespace StellarArmada.Entities.Ships
         // State
         private bool isSelecting;
         private bool isDeselecting;
-        private bool uiPointerIsActive;
         private bool leftThumbstickIsDown;
         private bool rightThumbstickIsDown;
         private bool leftTriggerIsDown;
@@ -62,84 +62,73 @@ namespace StellarArmada.Entities.Ships
 
         void Start()
         {
-            // Subscribe to delegates in start to avoid race condition with singleton
-            InputManager.instance.OnLeftThumbstickButton += HandleLeftThumbstick;
-            InputManager.instance.OnRightThumbstickButton += HandleRightThumbstick;
             InputManager.instance.OnLeftTrigger += HandleLeftTrigger;
             InputManager.instance.OnRightTrigger += HandleRightTrigger;
             InputManager.instance.OnLeftGrip += HandleLeftGrip;
             InputManager.instance.OnRightGrip += HandleRightGrip;
-            selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.defaultColor;
+            selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.defaultColor);
         }
 
         void Update()
         {
-            Highlight();
-
-            if (uiPointerIsActive) return; // If UI is active, selection is disable
-
-            if (isSelecting)
+            if (!MatchPlayerMenuManager.instance.menuIsActive && isSelecting)
             {
+                Debug.Log("Is Selection: " + isSelecting);
+
                 Select(SelectionType.Selection);
             }
-            else if (isDeselecting)
+            else if (!MatchPlayerMenuManager.instance.menuIsActive && isDeselecting)
             {
+                Debug.Log("Is Deslecting: " + isDeselecting);
                 Select(SelectionType.Deselection);
             }
-        }
-
-        void HandleLeftThumbstick(bool down)
-        {
-            if (rightThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftThumbstickIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            leftThumbstickIsDown = down;
-            selectionCursor.gameObject.SetActive(!down);
-            uiPointerIsActive = down;
-        }
-
-        void HandleRightThumbstick(bool down)
-        {
-            if (leftThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightThumbstickIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            rightThumbstickIsDown = down;
-            selectionCursor.gameObject.SetActive(!down);
-            uiPointerIsActive = down;
+            else
+            {
+                Highlight();
+            }
         }
 
         void HandleLeftTrigger(bool down)
         {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
+            if (MatchPlayerMenuManager.instance.menuIsActive) return;
             if (rightTriggerIsDown) return; // if the other button is down, ignore this input
             if (isDeselecting) return; // we're already deselection, so we don't want to start a selection
             if (!down && !leftTriggerIsDown)
                 return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftTriggerIsDown = down;
-            if (down) StartSelection();
-            else EndSelection();
+            HandleTrigger(down);
+   
         }
 
         void HandleRightTrigger(bool down)
         {
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
+            if (MatchPlayerMenuManager.instance.menuIsActive) return;
             if (leftTriggerIsDown) return; // if the other button is down, ignore this input
             if (isDeselecting) return; // we're already deselection, so we don't want to start a selection
             if (!down && !rightTriggerIsDown)
                 return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightTriggerIsDown = down;
+            HandleTrigger(down);
+        }
+
+        void HandleTrigger(bool down)
+        {
             if (down) StartSelection();
             else EndSelection();
         }
 
         void HandleDoubleTap()
         {
+            Debug.Log("Double tap!");
             ShipSelectionManager.instance.ClearSelection();
         }
 
         void HandleLeftGrip(bool down)
         {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
+            if (MatchPlayerMenuManager.instance.menuIsActive) return;
             if (isSelecting) return; // we're already selecting, so we don't want to start a deselection
             if (rightGripIsDown) return; // if the other button is down, ignore this input
             if (!down && !leftGripIsDown)
@@ -152,6 +141,7 @@ namespace StellarArmada.Entities.Ships
         {
             if (!HandSwitcher.instance.CurrentHandIsRight()) return; // If this isn't the current hand, ignore input
             if (isSelecting) return; // we're already selecting, so we don't want to start a deselection
+            if (MatchPlayerMenuManager.instance.menuIsActive) return;
             if (leftGripIsDown) return; // if the other button is down, ignore this input
             if (!down && !rightGripIsDown)
                 return; // if button going up but down state was blocked by other side button, ignore action beyond this point
@@ -164,6 +154,7 @@ namespace StellarArmada.Entities.Ships
             {
                 if (Time.time - lastTime < doubleTapThreshold)
                 {
+                    Debug.Log("Handling double tap");
                     HandleDoubleTap();
                 }
 
@@ -177,6 +168,7 @@ namespace StellarArmada.Entities.Ships
 
         void Highlight()
         {
+            Debug.Log("Highlight called");
             hitColliders = Physics.OverlapSphere(selectionCursor.position, selectorRadius, layerMask);
 
             List<ISelectable> highlightedSelectables = new List<ISelectable>();
@@ -184,7 +176,7 @@ namespace StellarArmada.Entities.Ships
             foreach (var collider in hitColliders)
             {
                 selectable = collider.GetComponent<ISelectable>();
-                if (selectable != null)highlightedSelectables.Add(selectable);
+                if (selectable != null) highlightedSelectables.Add(selectable);
             }
             
             // Unhilight any from last selectoin that are no longer selected
@@ -204,31 +196,33 @@ namespace StellarArmada.Entities.Ships
 
             if (currentSelectables.Count == 0)
             {
-                selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.defaultColor;
+                selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.defaultColor);
                 return;
             }
             
             foreach (var selectable in currentSelectables)
             {
                 // Friendly
-
+Debug.Log(" foreach (var selectable in currentSelectables)");
                     if (selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                     {
+                        Debug.Log("Selecting friendly");
                         targetIsFriendly = true;
                         selectable.Highlight(ColorManager.instance.friendlyColor);
-                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.friendlyColor;
+                        selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.friendlyColor);
                     }
                     // Enemy
                     else if (selectable != null && selectable.GetOwningEntity().GetTeam() != playerController.GetTeam())
                     {
                         targetIsFriendly = false;
                         selectable.Highlight(ColorManager.instance.enemyColor);
-                        selectionCursorRenderer.sharedMaterial.color = ColorManager.instance.enemyColor;
+                        selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.enemyColor);
                     }
 
-                    OnHighlightTargetSet?.Invoke(true);
 
             }
+            OnHighlightTargetSet?.Invoke(true);
+
         }
 
         // Handles selection and deselection of entities from the loop
@@ -243,15 +237,20 @@ namespace StellarArmada.Entities.Ships
                 if (selectable != null && selectable.IsSelectable() &&
                     selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                 {
-                    Debug.Log(
-                        "selectable != null && selectable.IsSelectable() && selectable.GetOwningEntity().GetTeam() == playerController.GetTeam()");
+                    Debug.Log(collider.gameObject.name + " [] " + selectionType);
                     switch (selectionType)
                     {
                         case SelectionType.Selection:
+                            Debug.Log("SelectionType.Selection");
                             ShipSelectionManager.instance.AddToSelection(selectable);
+                            Debug.Log("SelectionType.Deselection");
+
                             break;
                         case SelectionType.Deselection:
                             ShipSelectionManager.instance.RemoveFromSelection(selectable);
+                            break;
+                        default:
+                            Debug.Log("howwwwww");
                             break;
                     }
                 }
@@ -265,7 +264,6 @@ namespace StellarArmada.Entities.Ships
         public void StartSelection()
         {
             isSelecting = true;
-            Select(SelectionType.Selection);
         }
 
         public void EndSelection() => isSelecting = false;
@@ -273,7 +271,6 @@ namespace StellarArmada.Entities.Ships
         public void StartDeselection()
         {
             isDeselecting = true;
-            Select(SelectionType.Deselection);
         }
 
         public void EndDeselection() => isDeselecting = false;

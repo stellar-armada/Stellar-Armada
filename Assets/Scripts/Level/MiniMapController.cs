@@ -159,14 +159,13 @@ namespace StellarArmada.Levels
             float prevDist = Vector3.Distance(leftPosPrev, rightPosPrev);
 
             //scale factor based on difference in hand distance
-            float scaleFactor = dist / prevDist;
+            float scaleFactor = Mathf.Clamp(dist / prevDist, .0001f, 10000f);
 
             //apply scale to model
             miniMapTransformRoot.localScale *= scaleFactor;
             miniMapTransformRoot.localScale = Vector3.one * miniMapTransformRoot.localScale.x;
             
             miniMapTransform.localScale = Vector3.one * Mathf.Clamp(miniMapTransform.localScale.x, miniMap.minScale, miniMap.maxScale);
-            
         }
     }
 }

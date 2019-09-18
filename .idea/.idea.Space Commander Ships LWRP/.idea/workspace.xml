@@ -41,6 +41,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/SpaceKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIMatchMenuController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Example/DemoScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.0.1/Shaders/Unlit.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Runtime/Tracking/Modification/TransformPropertyApplier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Constants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/VR/Scripts/Util/OVRInputModule.cs" root0="FORCE_HIGHLIGHTING" />
@@ -257,6 +258,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/Editor/MatchNetworkManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B6D68F36-8D66-45AF-BF0E-07217963C67F/61/f2f096ac/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Tracking/Follow/ObjectFollowerTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/VR/Editor/OVRBuild.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/ShipIdDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/ShipPrefabDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Tracking/Follow/Modifier/Property/Scale/TransformScaleTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -278,7 +280,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Association/GameObjectsAssociationActivatorTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkManager.cs" />
@@ -308,13 +309,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MatchPlayerMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Interfaces/ISelectable.cs" />
         <option value="$PROJECT_DIR$/Assets/ColorManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interaction/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityWeaponSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFormationManager.cs" />
@@ -325,10 +324,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/FleetLockHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIMatchMenuController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
       </list>
     </option>
   </component>

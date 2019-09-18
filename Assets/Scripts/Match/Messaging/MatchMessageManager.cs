@@ -76,7 +76,6 @@ namespace StellarArmada.Match.Messaging
 
         public void HideCurrentMessage()
         {
-            //Debug.Log("Hiding message");
             if(currentMessage != null) currentMessage.HideMessage();
         }
 

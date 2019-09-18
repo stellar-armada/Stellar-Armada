@@ -27,17 +27,20 @@ namespace StellarArmada.Entities.Ships
         }
 
         private bool isSelected = false;
+
+        private bool isHighlighted;
         
         public void Select()
         {
             selectionCube.enabled = true;
+            selectionCube.material.SetColor("_BaseColor", ColorManager.instance.selectedColor);
             isSelected = true;
             OnSelectionChanged?.Invoke(true);
         }
 
         public void Deselect()
         {
-            selectionCube.enabled = false;
+            if(!isHighlighted) selectionCube.enabled = false;
             isSelected = false;
             OnSelectionChanged?.Invoke(false);
         }
@@ -50,20 +53,23 @@ namespace StellarArmada.Entities.Ships
         public bool IsSelectable()
         {
             //If is alive and has warped inentity.shipWarp.isWarpedIn
-            if (canSelect && entity.IsAlive()) return true;
+            if (entity.IsAlive()) return true;
+            Debug.Log("Entity is not selectable because entity is not alive");
             return false;
         }
 
         public void Highlight(Color highlightColor)
         {
             selectionCube.enabled = true;
-            selectionCube.material.color = highlightColor;
+            selectionCube.material.SetColor("_BaseColor", highlightColor);
+            isHighlighted = true;
         }
 
         public void Unhighlight()
         {
-            selectionCube.material.color = ColorManager.instance.selectedColor;
-            if(!isSelected) selectionCube.enabled = false;
+            isHighlighted = false;
+            if (isSelected) selectionCube.enabled = true;
+            else selectionCube.enabled = false;
         }
     }
 }

@@ -26,7 +26,6 @@ namespace StellarArmada.Player
 
         public void RegisterPlayer(PlayerController playerController)
         {
-            //Debug.Log("Registering player");
             if (!players.Contains(playerController))
             {
                 players.Add(playerController);

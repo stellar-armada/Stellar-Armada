@@ -33,7 +33,6 @@ namespace StellarArmada.UI
 
         public void AttachToLeftPoint()
         {
-            Debug.Log("Attaching to left point");
             t.SetParent(leftCanvasAttachPoint);
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
@@ -42,7 +41,6 @@ namespace StellarArmada.UI
 
         public void AttachToRightPoint()
         {
-            Debug.Log("Attaching to right point");
             t.SetParent(rightCanvasAttachPoint);
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;

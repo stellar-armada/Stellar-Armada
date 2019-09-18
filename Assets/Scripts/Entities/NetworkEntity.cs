@@ -63,7 +63,11 @@ namespace StellarArmada.Entities
 
         public void SetEntityId(uint id) => entityId = id;
 
-        public bool IsAlive() => isAlive;
+        public bool IsAlive()
+        {
+            if(!isAlive) Debug.LogError("Entity is alive: " + isAlive);
+            return isAlive;
+        }
         
         public GameObject GetGameObject() => gameObject;
         
