@@ -84,6 +84,7 @@ namespace StellarArmada.Levels
         // We do some reparenting jiggery to make the math easier in the loop
         void StartTransformation()
         {
+            if (!isInitialized) return;
             Debug.Log("<color=orange>MINIMAP</color> StartTransformation called");
             
             // Unparent the minimap from the minimap transform root

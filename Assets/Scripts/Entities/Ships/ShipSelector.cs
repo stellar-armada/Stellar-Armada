@@ -67,22 +67,24 @@ namespace StellarArmada.Entities.Ships
             InputManager.instance.OnLeftGrip += HandleLeftGrip;
             InputManager.instance.OnRightGrip += HandleRightGrip;
             selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.defaultColor);
+            
         }
 
         void Update()
         {
-            if (!MatchPlayerMenuManager.instance.menuIsActive && isSelecting)
+            if (MatchPlayerMenuManager.instance.menuIsActive) return;
+            
+            if (isSelecting)
             {
-                Debug.Log("Is Selection: " + isSelecting);
-
                 Select(SelectionType.Selection);
             }
-            else if (!MatchPlayerMenuManager.instance.menuIsActive && isDeselecting)
+            
+            if (isDeselecting && !isSelecting)
             {
-                Debug.Log("Is Deslecting: " + isDeselecting);
                 Select(SelectionType.Deselection);
             }
-            else
+            
+            if (!isSelecting)
             {
                 Highlight();
             }
@@ -197,6 +199,7 @@ namespace StellarArmada.Entities.Ships
             if (currentSelectables.Count == 0)
             {
                 selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.defaultColor);
+                UIPointer.instance.SetColor(ColorManager.instance.defaultColor);
                 return;
             }
             
@@ -210,6 +213,7 @@ Debug.Log(" foreach (var selectable in currentSelectables)");
                         targetIsFriendly = true;
                         selectable.Highlight(ColorManager.instance.friendlyColor);
                         selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.friendlyColor);
+                        UIPointer.instance.SetColor(ColorManager.instance.friendlyColor);
                     }
                     // Enemy
                     else if (selectable != null && selectable.GetOwningEntity().GetTeam() != playerController.GetTeam())
@@ -217,12 +221,10 @@ Debug.Log(" foreach (var selectable in currentSelectables)");
                         targetIsFriendly = false;
                         selectable.Highlight(ColorManager.instance.enemyColor);
                         selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.enemyColor);
+                        UIPointer.instance.SetColor(ColorManager.instance.enemyColor);
                     }
-
-
             }
             OnHighlightTargetSet?.Invoke(true);
-
         }
 
         // Handles selection and deselection of entities from the loop

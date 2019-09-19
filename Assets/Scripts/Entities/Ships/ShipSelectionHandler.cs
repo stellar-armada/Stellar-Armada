@@ -26,7 +26,7 @@ namespace StellarArmada.Entities.Ships
             selectionCube.enabled = false;
         }
 
-        private bool isSelected = false;
+        public bool isSelected = false;
 
         private bool isHighlighted;
         

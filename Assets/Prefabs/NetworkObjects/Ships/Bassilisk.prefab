@@ -26436,6 +26436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 8081799463623299947}
   selectionCube: {fileID: 3420445077128117472}
+  isSelected: 0
 --- !u!65 &7640196921884593222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33307,6 +33308,11 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 8081799463623299947}
+    - target: {fileID: 8994847673045569529, guid: a2c9b310cbd30864cbbea2b882d093f2,
+        type: 3}
+      propertyPath: selectionHandler
+      value: 
+      objectReference: {fileID: 3822156703819026469}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2c9b310cbd30864cbbea2b882d093f2, type: 3}
 --- !u!4 &4905264809463488813 stripped

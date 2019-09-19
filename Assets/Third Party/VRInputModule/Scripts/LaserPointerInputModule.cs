@@ -10,6 +10,8 @@ namespace Wacki {
         public static LaserPointerInputModule instance { get { return _instance; } }
         private static LaserPointerInputModule _instance = null;
 
+        public GameObject lastGameObjectClickedOn;
+
         public LayerMask layerMask;
 
         // storage class for controller specific data
@@ -95,6 +97,7 @@ namespace Wacki {
             }
         }
 
+        
         public override void Process()
         {
             raycaster.eventMask = layerMask;
@@ -179,6 +182,7 @@ namespace Wacki {
                         if (newPressed != null) {
                             data.pointerEvent.pointerPress = newPressed;
                             data.currentPressed = newPressed;
+                            lastGameObjectClickedOn = newPressed;
                             Select(data.currentPressed);
                         }
 

@@ -28,8 +28,7 @@ namespace StellarArmada.UI {
         protected override void Update()
         {
             base.Update(); // Most of the magic happens in the base class
-
-            // 
+            
             if(buttonState == prevButtonState) {
                 buttonChanged = false;
             } else {
@@ -40,18 +39,29 @@ namespace StellarArmada.UI {
 
         void Awake()
         {
+            base.Awake();
             instance = this;
             pointer.SetActive(false); // Hide on start
         }
-
+        
         // Initialization is called from the base class Start
         protected override void Initialize()
         {
-            inputManager.OnLeftTrigger += HandleButtonLeft;
-            inputManager.OnRightTrigger += HandleButtonRight;
+            inputManager.OnLeftTrigger += HandleTriggerLeft;
+            inputManager.OnRightTrigger += HandleTriggerRight;
 
             inputManager.OnLeftGrip += HandleSecondaryLeft;
             inputManager.OnRightGrip += HandleSecondaryRight;
+
+            inputManager.OnButtonTwo += HandleMenuButtonDown;
+            inputManager.OnButtonFour += HandleMenuButtonDown;
+        }
+
+        private bool canRollover; // Block the rollover - release handler if the user uses the trigger during menu operation
+        
+        void HandleMenuButtonDown(bool on)
+        {
+            if (on) canRollover = true;
         }
 
         void HandleSecondaryRight(bool down)
@@ -75,22 +85,26 @@ namespace StellarArmada.UI {
 
         void HandleSecondary()
         {
-            if (Rollover.currentRollover == null) return;
+            if (Rollover.currentRollover == null || !canRollover) return;
             Rollover.currentRollover.HandleSecondaryButtonPressed();
         }
 
-        void HandleButtonRight(bool on)
+        void HandleTriggerRight(bool on)
         {
             if (!HandSwitcher.instance.CurrentHandIsRight()) return;
-            buttonState = on;
+            HandleTrigger(on);
         }
         
-        void HandleButtonLeft(bool on)
+        void HandleTriggerLeft(bool on)
         {
             if (!HandSwitcher.instance.CurrentHandIsLeft()) return;
-            Debug.Log("HandleButtonLeft");
+            HandleTrigger(on);
+        }
+
+        void HandleTrigger(bool on)
+        {
+            if(on) canRollover = false;
             buttonState = on;
-            Debug.Log("ButtonLeft called");
         }
 
         public override bool ButtonDown()
@@ -101,18 +115,6 @@ namespace StellarArmada.UI {
         public override bool ButtonUp()
         {
             return buttonChanged && !buttonState;
-        }
-
-        // Hooks to do stuff if we've entered or exited a canvas
-        
-        public override void OnEnterControl(GameObject control)
-        {
-            base.OnEnterControl(control);
-        }
-
-        public override void OnExitControl(GameObject control)
-        {
-            base.OnExitControl(control);
         }
     }
 

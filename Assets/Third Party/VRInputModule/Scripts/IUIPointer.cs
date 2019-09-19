@@ -8,6 +8,21 @@ namespace Wacki {
 
         public GameObject hitPoint;
         public GameObject pointer;
+
+        private Renderer hitPointRenderer;
+        private Renderer pointerRenderer;
+
+        protected virtual void Awake()
+        {
+            hitPointRenderer = hitPoint.GetComponent<Renderer>();
+            pointerRenderer = pointer.GetComponent<Renderer>();
+        }
+        
+        public void SetColor(Color color)
+        {
+            hitPointRenderer.sharedMaterial.SetColor("_Color", color);
+            pointerRenderer.sharedMaterial.SetColor("_Color", color);
+        }
         
         [SerializeField] float laserThickness = .02f;
 
@@ -24,7 +39,6 @@ namespace Wacki {
         // Use this for initialization
         void Start()
         {
-
             // initialize concrete class
             Initialize();
             
@@ -32,8 +46,6 @@ namespace Wacki {
             if(LaserPointerInputModule.instance == null) {
                 new GameObject().AddComponent<LaserPointerInputModule>();
             }
-            
-
             LaserPointerInputModule.instance.AddController(this);
         }
 

@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 76dba9cfdb893c844b1f7a54fbfa0535
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 1096085932
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,13 +1035,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee7f054ccb729b478bbf45c17cdfdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleXY: 350
+  scaleXY: 700
   maxScaleXY: 2400
-  minScaleXY: 300
-  scaleZ: 250
+  minScaleXY: 250
+  scaleZ: 600
   minScaleZ: 250
   maxScaleZ: 2400
-  scaleSpeed: 10
+  scaleSpeed: 500
 --- !u!114 &1839945735331089092
 MonoBehaviour:
   m_ObjectHideFlags: 0

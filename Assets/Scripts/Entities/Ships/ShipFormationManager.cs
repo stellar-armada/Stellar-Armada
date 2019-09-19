@@ -34,7 +34,7 @@ namespace StellarArmada.Entities.Ships
         private Vector3 avgPosition;
         private Vector4 averageRotation;
 
-        private float deadZone = .01f;
+        private float deadZone = .0001f;
 
         void Start()
         {
@@ -61,8 +61,8 @@ namespace StellarArmada.Entities.Ships
             
             if (Mathf.Abs(dPad.y) > deadZone) // dPad Y value is above deadzone
             {
-                float newZ = scaleXY + dPad.y * scaleSpeed * Time.deltaTime;
-                scaleZ = Mathf.Clamp(newZ, minScaleXY, maxScaleXY);
+                float newZ = scaleZ + dPad.y * scaleSpeed * Time.deltaTime;
+                scaleZ = Mathf.Clamp(newZ, minScaleZ, maxScaleZ);
             }
         }
 

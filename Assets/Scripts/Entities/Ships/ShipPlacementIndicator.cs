@@ -7,12 +7,11 @@ namespace StellarArmada.Entities.Ships
     public class ShipPlacementIndicator : MonoBehaviour
     {
         public NetworkEntity entity;
+        public ShipSelectionHandler selectionHandler;
         public GameObject visualModel;
         [SerializeField] private LineRenderer lineRenderer;
         public float lineRendererWidth = .1f;
-
-        private bool isActive;
-
+        
         private Transform t;
         private Transform miniMapEntityTransform;
         
@@ -36,18 +35,16 @@ namespace StellarArmada.Entities.Ships
             // position the placement indicator in local space
             t.localPosition = pos;
             visualModel.SetActive(true);
-            isActive = true;
         }
 
         public void Hide()
         {
-            isActive = false;
             visualModel.SetActive(false);
         }
 
         void LateUpdate()
         {
-            if (isActive)
+            if (selectionHandler.isSelected)
             {
                 lineRenderer.SetPositions(new[]
                 {
@@ -55,6 +52,13 @@ namespace StellarArmada.Entities.Ships
                     miniMapEntityTransform.position
                 });
                 lineRenderer.widthMultiplier = lineRendererWidth;
+            }
+            else // Fixes a bug where sometimes the indicator would not disable (possibly on stop all?)
+            {
+                if (visualModel.activeSelf)
+                {
+                    visualModel.SetActive(false);
+                }
             }
         }
     }
