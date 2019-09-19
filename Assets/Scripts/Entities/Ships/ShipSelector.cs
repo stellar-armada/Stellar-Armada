@@ -143,8 +143,8 @@ namespace StellarArmada.Entities.Ships
             if (isSelecting) return; // we're already selecting, so we don't want to start a deselection
             if (MatchPlayerMenuManager.instance.menuIsActive) return;
             if (leftGripIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightGripIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            if (!down && !rightGripIsDown) return; // if button going up but down state was blocked by other side button, ignore action beyond this point
+            rightGripIsDown = down;
             HandleGrip(down);
         }
 
