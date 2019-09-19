@@ -40,7 +40,10 @@ namespace StellarArmada.Entities.Ships
 
         public void Deselect()
         {
-            if(!isHighlighted) selectionCube.enabled = false;
+            if (!isHighlighted)
+            {
+                selectionCube.enabled = false;
+            }
             isSelected = false;
             OnSelectionChanged?.Invoke(false);
         }
@@ -68,7 +71,11 @@ namespace StellarArmada.Entities.Ships
         public void Unhighlight()
         {
             isHighlighted = false;
-            if (isSelected) selectionCube.enabled = true;
+            if (isSelected)
+            {
+                selectionCube.enabled = true;
+                selectionCube.material.SetColor("_BaseColor", ColorManager.instance.selectedColor);
+            }
             else selectionCube.enabled = false;
         }
     }

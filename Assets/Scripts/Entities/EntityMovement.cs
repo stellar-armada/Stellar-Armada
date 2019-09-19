@@ -90,7 +90,7 @@ namespace StellarArmada.Entities
                 temporaryEngineValue = Mathf.Lerp(on ? currentEngineValue : 1, on ? currentEngineValue : 0, Mathf.Clamp(0, 1, timer / fadeTime)); // Fade the val 0-1 or 1-0, note that timer / fadeTime lerps 0-1 always
                 foreach (Renderer ren in engines) // For each renderer in engines
                 {
-                    ren.material.color = engineColor * temporaryEngineValue; // Lerps from black to cyan, since multiplying by 0 results in Color(0,0,0,0);
+                    ren.material.SetColor("_BaseColor",  engineColor * temporaryEngineValue); // Lerps from black to cyan, since multiplying by 0 results in Color(0,0,0,0);
                 }
                 yield return null; // IMPORTANT - returns the thread so Unity can process the next frame -- i.e. pauses the coroutine here until next frame
             }

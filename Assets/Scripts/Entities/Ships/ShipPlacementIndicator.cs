@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
     public class ShipPlacementIndicator : MonoBehaviour
     {
-        public uint entityId;
         public NetworkEntity entity;
         public GameObject visualModel;
         [SerializeField] private LineRenderer lineRenderer;
@@ -15,12 +15,13 @@ namespace StellarArmada.Entities.Ships
 
         private Transform t;
         private Transform miniMapEntityTransform;
+        
         void Awake()
         {
             t = transform;
-           
+            ShipPlacementUIManager.instance.placementIndicators.Add(this);
         }
-        
+
         void Start()
         {
             miniMapEntityTransform = entity.miniMapEntity.transform;

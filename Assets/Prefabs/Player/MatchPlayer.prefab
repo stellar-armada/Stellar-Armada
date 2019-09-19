@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 4107571866
+  m_AssetId: 76dba9cfdb893c844b1f7a54fbfa0535
+  m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,9 +2072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2f0a8f65c91fa46a53c63b93845e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanPlayerController: {fileID: 1839945735331089094}
-  placementIndicatorPrefab: {fileID: 8994847673045569528, guid: a2c9b310cbd30864cbbea2b882d093f2,
-    type: 3}
   placementIndicators: []
 --- !u!1 &3828844560009835627
 GameObject:

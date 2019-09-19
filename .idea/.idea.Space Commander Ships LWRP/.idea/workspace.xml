@@ -34,6 +34,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PanelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Extension/TransformExtensionsTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Key.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Oculus/VR/Scripts/Util/OVRAudioSourceTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SerializedDictionaries/WinConditionDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRKeys/Scripts/Keyboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/HoloToon.shader" root0="FORCE_HIGHLIGHTING" />
@@ -280,8 +281,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Teams/TeamManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Association/GameObjectsAssociationActivatorTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utility/Keyboard/KeyboardManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Examples/Match Up/MatchUpNobleNetworkManager.cs" />
@@ -315,7 +314,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityWeaponSystemController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFormationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchScenarioManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIGroupShip.cs" />
@@ -325,12 +323,15 @@
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIMatchMenuController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementIndicator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
       </list>
     </option>
   </component>

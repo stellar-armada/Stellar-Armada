@@ -107,12 +107,6 @@ namespace StellarArmada.Entities.Ships
             // Get formation positions for selection
             var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
-            // Foreach ship in selection, get the placer objectz
-            if (ShipPlacementUIManager.instance.placementIndicators.Count < 1)
-            {
-                ShipPlacementUIManager.instance.UpdatePlacementMarkers();
-            }
-
             foreach (Ship s in ships)
             {
                 // Get the placement indicator
