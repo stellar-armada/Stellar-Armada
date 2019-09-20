@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: f3e6587192de9de4fa3f1bddeddd2fcb,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2673,6 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5844423217c233642ad78db00d4109d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastGameObjectClickedOn: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 131104
@@ -3505,8 +3506,8 @@ GameObject:
   - component: {fileID: 2092436210}
   - component: {fileID: 2092436208}
   - component: {fileID: 2092436211}
-  - component: {fileID: 2092436205}
   - component: {fileID: 2092436206}
+  - component: {fileID: 2092436205}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -3523,7 +3524,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2092436204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71e9bc32a33e875449302faaac757daa, type: 3}
+  m_Script: {fileID: 11500000, guid: 5671dcb80f9d69240b71f5612676a3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClientConnected:
@@ -3550,19 +3551,31 @@ MonoBehaviour:
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  DebugEnabled: 0
-  ServerBindAll: 1
-  ServerBindAddress: 127.0.0.1
-  CommunicationPort: 7777
-  MaxPacketSizeInKb: 64
-  Channels: 0100000002000000
-  CustomMaxPeerLimit: 0
-  CustomMaxPeers: 1000
-  CustomTimeoutLimit: 0
-  CustomTimeoutBaseTicks: 5000
-  CustomTimeoutMultiplier: 3
-  PingCalculationEnabled: 1
-  PingCalculationFrameTimer: 120
+  clientAddress: 127.0.0.1
+  serverIPv4BindAddress: 0.0.0.0
+  serverIPv6BindAddress: '::'
+  port: 7777
+  useUpnP: 1
+  maxConnections: 20
+  ipv6Enabled: 1
+  channels: 0204010300
+  authCode: 
+  updateTime: 15
+  pingInterval: 1000
+  disconnectTimeout: 5000
+  reconnectDelay: 500
+  maxConnectAttempts: 10
+  simulatePacketLoss: 0
+  simulationPacketLossChance: 10
+  simulateLatency: 0
+  simulationMinLatency: 30
+  simulationMaxLatency: 100
+  onClientSocketError:
+    m_PersistentCalls:
+      m_Calls: []
+  onServerSocketError:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2092436206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3627,7 +3640,7 @@ MonoBehaviour:
   onlineScene: MainMatchScene
   transport: {fileID: 2092436205}
   networkAddress: localhost
-  maxConnections: 4
+  maxConnections: 32
   playerPrefab: {fileID: 1839945735331089096, guid: fb8ab71d819054e3b98147408561d499,
     type: 3}
   autoCreatePlayer: 1
@@ -3646,7 +3659,7 @@ MonoBehaviour:
   networkPort: 0
   region: 0
   forceRelayConnection: 0
-  logLevel: 4
+  logLevel: 2
   isDisconnecting: 0
   matchManagerPrefab: {fileID: 2615222144381845693, guid: 8ca1e3091c739dc4f87785858cb15b75,
     type: 3}

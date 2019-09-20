@@ -28,7 +28,7 @@ namespace StellarArmada.Player
         void Awake()
         {
             instance = this;
-            settingsPath = Application.streamingAssetsPath + "/settings.txt";
+            settingsPath = Application.persistentDataPath + "/settings.txt";
             Init();
         }
         
@@ -57,7 +57,7 @@ namespace StellarArmada.Player
 
         public void Init()
         {
-            if (!File.Exists(Application.streamingAssetsPath + "/settings.txt"))
+            if (!File.Exists(settingsPath))
             {
                 InitSettings();
             } else
