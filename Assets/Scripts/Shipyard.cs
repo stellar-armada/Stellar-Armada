@@ -49,7 +49,6 @@ public class Shipyard : MonoBehaviour
 
     public void InitializeShipyard()
     {
-        Debug.Log("<color=blue>Calling init");
         localPlayer = HumanPlayerController.localPlayer;
 
         localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
@@ -58,12 +57,10 @@ public class Shipyard : MonoBehaviour
         team.prototypes.Callback += OnShipListUpdated;
         
         PopulateUIShipyardShips();
-        Debug.Log("<color=blue>InitializeShipyard called");
     }
 
     void HandleTeamChange()
     {
-        Debug.Log("<color=blue>Handle team change called");
         if (team != null)
             team.prototypes.Callback -= OnShipListUpdated;
         team = localPlayer.GetTeam();

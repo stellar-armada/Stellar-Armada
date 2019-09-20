@@ -139,7 +139,6 @@ namespace StellarArmada.Entities.Ships
 
         void StopAllShips()
         {
-            Debug.Log("Calling stop all ships");
             foreach (ShipPlacementIndicator pi in activePlacements)
             {
                 HumanPlayerController.localPlayer.CmdOrderEntityToStop(pi.entity.GetEntityId());

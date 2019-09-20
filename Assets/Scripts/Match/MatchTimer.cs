@@ -49,7 +49,6 @@ public class MatchTimer
         if (Mathf.FloorToInt(currentTime) != lastInt)
         {
             lastInt = Mathf.FloorToInt(currentTime);
-           // Debug.Log(currentTime);
         }
 
         var tList = Triggers.Keys.ToList();

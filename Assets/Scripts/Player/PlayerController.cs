@@ -50,7 +50,6 @@ namespace StellarArmada.Player
         {
             ReturnToPurgatory();
             LocalMenuStateManager.instance.ShowVictoryMenu();
-            Debug.Log("<color=green>WIN CONDITION</color> This player wins!");
         }
         
         [TargetRpc]
@@ -58,7 +57,6 @@ namespace StellarArmada.Player
         {
             ReturnToPurgatory();
             LocalMenuStateManager.instance.ShowDefeatMenu();
-            Debug.Log("<color=green>WIN CONDITION</color> This player loses!");
         }
 
         void ReturnToPurgatory()
@@ -93,7 +91,6 @@ namespace StellarArmada.Player
             isAlive = false;
             ReturnToPurgatory();
             OnPlayerControllerDeath?.Invoke(this);
-            Debug.Log("<color=red>DEATH</color> Player " + netId + " has died. (client)");
         }
 
 

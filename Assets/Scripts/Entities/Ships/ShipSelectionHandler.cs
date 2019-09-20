@@ -57,7 +57,6 @@ namespace StellarArmada.Entities.Ships
         {
             //If is alive and has warped inentity.shipWarp.isWarpedIn
             if (entity.IsAlive()) return true;
-            Debug.Log("Entity is not selectable because entity is not alive");
             return false;
         }
 

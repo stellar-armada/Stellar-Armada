@@ -136,6 +136,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessageManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party Paid/AmplifyShaderEditor/Plugins/Editor/Nodes/Misc/RegisterLocalVarNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/EntityShield.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Match/Messaging/MatchMessage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/UnitySteer/3D/Behaviors/DetectableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/NetworkTransform.cs" root0="FORCE_HIGHLIGHTING" />
@@ -180,6 +181,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRTK/Dependencies/Zinnia.Unity/Tests/Editor/Data/Operation/Mutation/TransformEulerRotationMutatorTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/GoToPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/NetworkTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/SelectionType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/Rotate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementIndicator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -274,6 +276,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldEffect_mobile.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Shields/ShieldHit.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WinConditionTeamKill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchConnectionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/Mirror/Runtime/Transport/Websocket/Ninja.WebSockets/Exceptions/EntityTooLargeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FleetLockHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -284,24 +287,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Utility/Keyboard/KeyboardManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Examples/Match Up/MatchUpNobleNetworkManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" />
-        <option value="$PROJECT_DIR$/Assets/WinConditionTeamKill.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipWarp.cs" />
-        <option value="$PROJECT_DIR$/Assets/CanvasDisplaySwitcher.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/EventSystemSwitcher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Noble Connect/Mirror/Internal/NobleNetworkManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MatchMenuStartButtonController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityExplosion.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/MiniMapStatusBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityShield.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchStateManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shields/ShieldEffectController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIShipClickHandler.cs" />
@@ -311,8 +304,6 @@
         <option value="$PROJECT_DIR$/Assets/ColorManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interaction/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityWeaponSystemController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchScenarioManager.cs" />
@@ -320,21 +311,33 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GroupUIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/FleetLockHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FleetLockHelper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIMatchMenuController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/HumanPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/NetworkEntity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementUIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/LaserPointerInputModule.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipFormationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIPointer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/Third Party/VRInputModule/Scripts/IUIPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Match/MatchTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipBridge.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipPlacementCursor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMapController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/WinConditionTeamKill.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level/MiniMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MatchConnectionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSettingsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/Ships/ShipSelectionHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entities/EntityMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIShipDragHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shipyard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LocalMenuStateManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MatchMenuStartButtonController.cs" />
       </list>
     </option>
   </component>
@@ -417,6 +420,7 @@
       <workItem from="1568261638210" duration="15624000" />
       <workItem from="1568496469523" duration="43711000" />
       <workItem from="1568707118555" duration="5717000" />
+      <workItem from="1568947245355" duration="596000" />
     </task>
     <servers />
   </component>

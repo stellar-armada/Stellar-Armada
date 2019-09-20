@@ -66,7 +66,6 @@ namespace StellarArmada.Levels
 
         IEnumerator ExpandMiniMap()
         {
-            Debug.Log("<color=orange>MINIMAP</color> ExpandMiniMap called");
             float timer = 0f;
 
             float expansionTime = .5f;
@@ -75,7 +74,6 @@ namespace StellarArmada.Levels
             {
                 timer += Time.deltaTime;
                 transform.SetGlobalScale(Vector3.one * Mathf.Lerp(0, startScale, timer / expansionTime));
-                Debug.Log("<color=orange>MINIMAP</color>  transform.localScale");
                 yield return null;
             } while (timer <= expansionTime);
 
@@ -96,8 +94,6 @@ namespace StellarArmada.Levels
 
         void InitializeMiniMap()
         {
-            Debug.Log("<color=orange>MINIMAP</color> InitializeMiniMap called");
-
             // unparent minimap before transformation happens
             t.SetParent(LocalPlayerBridgeSceneRoot.instance.transform, true);
 

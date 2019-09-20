@@ -44,7 +44,6 @@ namespace StellarArmada.Networking
 
                 if (matches.Length != 0)
                 {
-                    Debug.Log("Found matches, connecting as client");
                     var matchData = matches[0].matchData;
                     isClient = true;
                     networkManager.networkAddress = matchData["HostAddress"];
@@ -53,7 +52,6 @@ namespace StellarArmada.Networking
                 }
                 else
                 {
-                    Debug.Log("No matches found, starting as host");
                     isHost = true;
                     isClient = false;
                     networkManager.StartHost();

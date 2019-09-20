@@ -29,7 +29,6 @@ public class MatchMenuStartButtonController : MonoBehaviour
             if (!isInitialized)
             {
                 isInitialized = true;
-                Debug.Log("Initializing players");
                 Invoke(nameof(LateInitializePlayers),1f);
             }
         }

@@ -60,20 +60,14 @@
        public void OnEndDrag(PointerEventData eventData)
        {
            if (dragTimer < dragDelay) return;
-           if (eventData.pointerCurrentRaycast.gameObject.GetComponent<GroupContainer>() != null)
-           {
-               Debug.Log("*** Group container not null: " + eventData.pointerCurrentRaycast.gameObject.name);
-           }
 
            GroupContainer g = eventData.pointerCurrentRaycast.gameObject.GetComponent<GroupContainer>();
            
            if (g != null)
            {
-               Debug.Log("Dropped onto a group, executing group transfer logic");
                // Shipyard logic
                if (shipyardShip != null)
                {
-                   Debug.Log("Moving shipyard ship");
                    Shipyard.instance.MoveShip(shipyardShip, g);
                }
                else if (groupShip != null)
@@ -84,18 +78,15 @@
            }
            else
            {
-               Debug.Log("Dropped onto *not* a group, executing group return logic");
                // return to original group
                if (shipyardShip != null)
                {
-                   Debug.Log("Destroying shipyard ship shipyard ship");
                    Shipyard.instance.DestroyShip(shipyardShip);
                   
                }
                else if (groupShip != null)
                {
                    // Group ship logic
-                   Debug.Log("Moving Group ship back");
                    GroupUIManager.instance.MoveShipToGroup(groupShip, groupShip.ship.group);
                }
            }
@@ -108,11 +99,11 @@
 
        public void OnPointerClick(PointerEventData eventData)
        {
-          Debug.Log("On pointer click called on ship drag handler");
+         
        }
 
        public void OnPointerDown(PointerEventData eventData)
        {
-           Debug.Log("On pointer click called on ship down handler");
+          
        }
    }

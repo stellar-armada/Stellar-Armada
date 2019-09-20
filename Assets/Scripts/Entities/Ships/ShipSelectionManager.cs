@@ -311,10 +311,8 @@ namespace StellarArmada.Entities.Ships
 
         public void AddToSelection(ISelectable selectable)
         {
-            Debug.Log("Attempting to add to selection. Current selection length: " + currentSelection.Count);
             if (!currentSelection.Contains(selectable))
             {
-                Debug.Log("<color=green>SELECTION </color> success!");
                 currentSelection.Add(selectable);
                 selectable.Select();
                 OnSelectionChanged?.Invoke();

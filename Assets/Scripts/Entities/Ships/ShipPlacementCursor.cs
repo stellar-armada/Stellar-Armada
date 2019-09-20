@@ -27,7 +27,6 @@ namespace StellarArmada.Entities.Ships
 
         void Initialize()
         {
-            Debug.Log("<color=green>Initialized placement cursor</color>");
             isInitialized = true;
             t.SetParent(MiniMap.instance.transform);
             t.localPosition = Vector3.zero;

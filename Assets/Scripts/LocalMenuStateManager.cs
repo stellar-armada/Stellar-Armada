@@ -37,7 +37,6 @@ public class LocalMenuStateManager : MonoBehaviour
 
     public void StartMatchmaking()
     {
-        Debug.Log("Reinstate match connection manager");
         MatchConnectionManager.instance.StartMatchmaking();
         ChangeMenuState(MenuState.Connecting);
     }
@@ -77,7 +76,6 @@ public class LocalMenuStateManager : MonoBehaviour
 
     public void QuitMatch()
     {
-        Debug.Log("Quitting match!");
         if(HumanPlayerController.localPlayer.isServer) NetworkServer.DisconnectAll();
         if(HumanPlayerController.localPlayer.isClient) NetworkClient.Disconnect();
     }

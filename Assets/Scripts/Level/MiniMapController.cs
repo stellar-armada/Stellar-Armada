@@ -85,7 +85,6 @@ namespace StellarArmada.Levels
         void StartTransformation()
         {
             if (!isInitialized) return;
-            Debug.Log("<color=orange>MINIMAP</color> StartTransformation called");
             
             // Unparent the minimap from the minimap transform root
             miniMapTransform.SetParent(sceneRoot, true);

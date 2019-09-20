@@ -135,7 +135,6 @@ namespace StellarArmada.Entities
         {
             if (!controlEnabled)
             {
-                Debug.Log("Can't move, control not enabled");
                 return;
             }
 

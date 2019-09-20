@@ -123,7 +123,6 @@ namespace StellarArmada.Entities.Ships
 
         void HandleDoubleTap()
         {
-            Debug.Log("Double tap!");
             ShipSelectionManager.instance.ClearSelection();
         }
 
@@ -156,7 +155,6 @@ namespace StellarArmada.Entities.Ships
             {
                 if (Time.time - lastTime < doubleTapThreshold)
                 {
-                    Debug.Log("Handling double tap");
                     HandleDoubleTap();
                 }
 
@@ -170,7 +168,6 @@ namespace StellarArmada.Entities.Ships
 
         void Highlight()
         {
-            Debug.Log("Highlight called");
             hitColliders = Physics.OverlapSphere(selectionCursor.position, selectorRadius, layerMask);
 
             List<ISelectable> highlightedSelectables = new List<ISelectable>();
@@ -206,10 +203,8 @@ namespace StellarArmada.Entities.Ships
             foreach (var selectable in currentSelectables)
             {
                 // Friendly
-Debug.Log(" foreach (var selectable in currentSelectables)");
                     if (selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                     {
-                        Debug.Log("Selecting friendly");
                         targetIsFriendly = true;
                         selectable.Highlight(ColorManager.instance.friendlyColor);
                         selectionCursorRenderer.sharedMaterial.SetColor("_BaseColor", ColorManager.instance.friendlyColor);
@@ -239,20 +234,13 @@ Debug.Log(" foreach (var selectable in currentSelectables)");
                 if (selectable != null && selectable.IsSelectable() &&
                     selectable.GetOwningEntity().GetTeam() == playerController.GetTeam())
                 {
-                    Debug.Log(collider.gameObject.name + " [] " + selectionType);
                     switch (selectionType)
                     {
                         case SelectionType.Selection:
-                            Debug.Log("SelectionType.Selection");
                             ShipSelectionManager.instance.AddToSelection(selectable);
-                            Debug.Log("SelectionType.Deselection");
-
                             break;
                         case SelectionType.Deselection:
                             ShipSelectionManager.instance.RemoveFromSelection(selectable);
-                            break;
-                        default:
-                            Debug.Log("howwwwww");
                             break;
                     }
                 }
