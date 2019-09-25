@@ -1,6 +1,3 @@
-#if UNITY_5 || UNITY_6 || UNITY_2017 || UNITY_2018
-#define UNET
-#endif
 using System;
 using System.Collections;
 using System.Collections.Generic;
