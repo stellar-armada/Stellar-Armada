@@ -3635,7 +3635,7 @@ MonoBehaviour:
   runInBackground: 1
   startOnHeadless: 1
   serverTickRate: 30
-  showDebugMessages: 0
+  showDebugMessages: 1
   offlineScene: StartScene
   onlineScene: MainMatchScene
   transport: {fileID: 2092436205}
@@ -3659,7 +3659,7 @@ MonoBehaviour:
   networkPort: 0
   region: 0
   forceRelayConnection: 0
-  logLevel: 2
+  logLevel: 0
   isDisconnecting: 0
   matchManagerPrefab: {fileID: 2615222144381845693, guid: 8ca1e3091c739dc4f87785858cb15b75,
     type: 3}
