@@ -4,24 +4,14 @@ using NobleConnect.Mirror;
 using UnityEngine;
 using Mirror;
 
-// Example implementation of NobleNetworkManager utilizing Match Up for matchmaking
+namespace NobleConnect.Examples.Mirror
+{
+    // Example implementation of NobleNetworkManager utilizing Match Up for matchmaking
     // Look at ExampleMatchUpHUD for more information on how to use it. 
-    public class MatchUpNobleNetworkManager : NobleNetworkManager
+    public class ExampleMatchUpNobleNetworkManager : NobleNetworkManager
     {
-        Matchmaker matchUp;
-        
-        // Networked prefab to instantiate for all players, containing all the networked managers (as opposed to Static managers)
-        public GameObject matchManagerPrefab;
-        
-        public void CreateMatchManager()
-        {
-            GameObject matchManager = Instantiate(matchManagerPrefab);
-            NetworkServer.Spawn(matchManager);
-        }
 
-        private void OnServerInitialized()
-        {
-        }
+        Matchmaker matchUp;
 
         override public void Start()
         {
@@ -29,31 +19,34 @@ using Mirror;
             matchUp = GetComponent<Matchmaker>();
         }
 
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-        }
-
         public override void OnClientConnect(NetworkConnection conn)
         {
             base.OnClientConnect(conn);
+            Debug.Log("Client connected.");
         }
 
         public override void OnClientDisconnect(NetworkConnection conn)
         {
-            base.OnClientDisconnect(conn); }
+            base.OnClientDisconnect(conn);
+            Debug.Log("Client disconnected.");
+        }
 
         public override void OnServerConnect(NetworkConnection conn)
         {
-            base.OnServerConnect(conn); }
+            base.OnServerConnect(conn);
+            Debug.Log("Server received a client connection.");
+        }
 
         public override void OnServerDisconnect(NetworkConnection conn)
         {
-            base.OnServerDisconnect(conn); }
+            base.OnServerDisconnect(conn);
+            Debug.Log("Server lost a client.");
+        }
 
         public override void OnStopHost()
         {
-            base.OnStopHost(); 
+            base.OnStopHost();
+            Debug.Log("Destroying match.");
             matchUp.DestroyMatch();
         }
 
@@ -73,8 +66,8 @@ using Mirror;
 
             // Create the Match with the associated MatchData
             matchUp.CreateMatch(maxConnections + 1, matchData);
-            Debug.Log("Creating match: " + hostAddress + ":" + hostPort);
-            CreateMatchManager();
 
+            Debug.Log("Creating match: " + hostAddress + ":" + hostPort);
         }
     }
+}

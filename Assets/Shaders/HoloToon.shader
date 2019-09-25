@@ -21,7 +21,7 @@ Shader "SpaceCommander/HoloToon"
     {
 		
 
-        Tags { "RenderPipeline"="LightweightPipeline" "RenderType"="Transparent" "Queue"="Transparent" }
+        Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Transparent" "Queue"="Transparent" }
         Cull Back
 		HLSLINCLUDE
 		#pragma target 3.0
@@ -30,7 +30,7 @@ Shader "SpaceCommander/HoloToon"
 		
         Pass
         {
-            Tags { "LightMode"="LightweightForward" }
+            Tags { "LightMode"="UniversalForward" }
             Name "Base"
 
             Blend One One
@@ -74,11 +74,11 @@ Shader "SpaceCommander/HoloToon"
 
 
             // Lighting include is needed because of GI
-            #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/Lighting.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-            #include "Packages/com.unity.render-pipelines.lightweight/ShaderLibrary/ShaderGraphFunctions.hlsl"
-            #include "Packages/com.unity.render-pipelines.lightweight/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
 
 			uniform sampler2D _TopTexture0;
 			CBUFFER_START( UnityPerMaterial )
