@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 
-  m_SceneId: 3157360728
+  m_AssetId: fb8ab71d819054e3b98147408561d499
+  m_SceneId: 0
 --- !u!114 &1839945735331089094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2439,7 @@ GameObject:
   - component: {fileID: 4476374727524582979}
   - component: {fileID: 6495260259024785693}
   - component: {fileID: 4652558798829865101}
+  - component: {fileID: 4096747405929435180}
   m_Layer: 0
   m_Name: ControllerManager
   m_TagString: Untagged
@@ -2562,6 +2563,25 @@ MonoBehaviour:
   isActive: 0
   leftGripPressed: 0
   rightGripPressed: 0
+--- !u!114 &4096747405929435180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706933311531421549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7f054ccb729b478bbf45c17cdfdff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleXY: 600
+  maxScaleXY: 2400
+  minScaleXY: 300
+  scaleZ: 450
+  minScaleZ: 250
+  maxScaleZ: 2400
+  scaleSpeed: 10
 --- !u!1 &4720211804134819468
 GameObject:
   m_ObjectHideFlags: 0

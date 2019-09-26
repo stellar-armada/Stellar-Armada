@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MatchUp;
 using System;
+using Mirror;
 
 // Utilize the MatchUp Matchmaker to perform matchmaking
 [RequireComponent(typeof(Matchmaker))]
@@ -101,7 +102,7 @@ public class ExampleBasicMatchmaker : MonoBehaviour
     {
         // Start hosting here using whatever networking system you use
         // For example if you were using UNet you would call something like NetworkManager.StartHost() here
-
+        NetworkManager.singleton.StartServer();
         // Once you have the host's connection info add it as match data and create the match
         hostAddress = Matchmaker.externalIP;
         hostPort = 12345;
@@ -161,9 +162,9 @@ public class ExampleBasicMatchmaker : MonoBehaviour
 
         // This is where you would join the host using your preferred networking system
         // For example for UNet it would look something like:
-        // NetworkManager.singleton.networkAddress = hostAddress;
+        NetworkManager.singleton.networkAddress = hostAddress;
         // NetworkManager.singleton.networkPort = hostPort;
-        // NetworkManager.singleton.StartClient();
+        NetworkManager.singleton.StartClient();
     }
     
     // Disconnect and leave the Match

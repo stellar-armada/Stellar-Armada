@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Mirror;
 using StellarArmada.IO;
 using UnityEngine;
 
@@ -38,6 +39,7 @@ namespace StellarArmada.Entities.Ships
 
         void Start()
         {
+            
             InputManager.instance.OnLeftThumbstickAnalog += (direction) =>
             {
                 if (HandSwitcher.instance.CurrentHandIsLeft()) dPad = direction;

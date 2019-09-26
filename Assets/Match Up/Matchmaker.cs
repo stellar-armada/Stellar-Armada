@@ -511,7 +511,7 @@ namespace MatchUp
                 if (filters.Find(x => x.key == "applicationID") == null)
                 {
                     // If you're using my matchmaking server then we need to include some sort of ID to keep your game's matches separate from everyone else's
-                    filters.Add(new MatchFilter("applicationID", Application.productName));
+                    filters.Add(new MatchFilter("applicationID", "STELLARARMADA"));
                 }
             }
             string filterString = "";

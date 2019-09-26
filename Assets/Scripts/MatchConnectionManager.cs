@@ -45,6 +45,10 @@ namespace StellarArmada.Networking
             Debug.Log("OnMatchList");
             if (success && matches != null)
             {
+                foreach (var match in matches)
+                {
+                    Debug.Log(match.id + " | " + match.matchData);
+                }
                 Debug.Log("success && matches != null");
                 if (matches.Length != 0)
                 {

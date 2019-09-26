@@ -14,22 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinConditions: 00000000
   scenarioName: AsteroidBelt
-  numberOfHumanPlayers: 2
+  numberOfHumanPlayers: 1
   description: 1v1 at the asteroids!
   teamInfo:
   - availableShipTypes: 05000000
     pointsToSpend: 50
-    numberOfPlayerSlots: 1
-    fleetBattleGroups:
-    - m_keys: 05000000
-      m_values: 03000000
-    - m_keys: 05000000
-      m_values: 03000000
-    - m_keys: 05000000
-      m_values: 03000000
-  - availableShipTypes: 
-    pointsToSpend: 50
-    numberOfPlayerSlots: 1
+    numberOfPlayerSlots: 0
     fleetBattleGroups:
     - m_keys: 05000000
       m_values: 03000000
