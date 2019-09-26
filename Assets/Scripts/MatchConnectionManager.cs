@@ -70,6 +70,7 @@ namespace StellarArmada.Networking
                 {
                     Debug.Log(
                         "<color=yellow>WARNING</color> ** Reloading scene. This is temporary and should be replaced with a reconnect button.");
+                    Destroy(networkManager.gameObject);
                     SceneManager.LoadScene(0); // reload the scene for now
                 }
                 LocalMenuStateManager.instance.InitializeMatchMenu();

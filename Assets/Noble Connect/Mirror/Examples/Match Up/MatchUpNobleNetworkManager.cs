@@ -38,6 +38,12 @@ using Mirror;
             base.OnStartServer();
         }
 
+        public override void OnStopServer()
+        {
+            Debug.Log("OnStopServer called");
+            matchUp.DestroyMatch();
+        }
+
         public override void OnClientConnect(NetworkConnection conn)
         {
             base.OnClientConnect(conn);

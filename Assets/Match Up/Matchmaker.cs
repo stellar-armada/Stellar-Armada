@@ -277,7 +277,7 @@ namespace MatchUp
             if (matchmakerURL == "grabblesgame.com" || matchmakerURL == "noblewhale.com")
             {
                 // If you're using my matchmaking server then we need to include some sort of ID to keep your game's matches separate from everyone else's
-                if (!matchData.ContainsKey("applicationID")) matchData["applicationID"] = Application.productName;
+                if (!matchData.ContainsKey("applicationID")) matchData["applicationID"] = "STELLARARMADA";
             }
             currentMatch = new Match(-1, matchData);
             SendCommand(
