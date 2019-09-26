@@ -1,38 +1,101 @@
 fileFormatVersion: 2
 guid: f59d7e6af33dfcd45b76c0d41e9f9a4e
-timeCreated: 1505498692
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: StationBottom
-    100004: StationMiddle
-    100006: StationRing
-    100008: StationTop
-    400000: //RootNode
-    400002: StationBottom
-    400004: StationMiddle
-    400006: StationRing
-    400008: StationTop
-    2300000: StationBottom
-    2300002: StationMiddle
-    2300004: StationRing
-    2300006: StationTop
-    3300000: StationBottom
-    3300002: StationMiddle
-    3300004: StationRing
-    3300006: StationTop
-    4300000: StationMiddle
-    4300002: StationRing
-    4300004: StationTop
-    4300006: StationBottom
-    7400000: Take 001
-    9500000: //RootNode
+  serializedVersion: 28
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: StationBottom
+  - first:
+      1: 100004
+    second: StationMiddle
+  - first:
+      1: 100006
+    second: StationRing
+  - first:
+      1: 100008
+    second: StationTop
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: StationBottom
+  - first:
+      4: 400004
+    second: StationMiddle
+  - first:
+      4: 400006
+    second: StationRing
+  - first:
+      4: 400008
+    second: StationTop
+  - first:
+      23: 2300000
+    second: StationBottom
+  - first:
+      23: 2300002
+    second: StationMiddle
+  - first:
+      23: 2300004
+    second: StationRing
+  - first:
+      23: 2300006
+    second: StationTop
+  - first:
+      33: 3300000
+    second: StationBottom
+  - first:
+      33: 3300002
+    second: StationMiddle
+  - first:
+      33: 3300004
+    second: StationRing
+  - first:
+      33: 3300006
+    second: StationTop
+  - first:
+      43: 4300000
+    second: StationMiddle
+  - first:
+      43: 4300002
+    second: StationRing
+  - first:
+      43: 4300004
+    second: StationTop
+  - first:
+      43: 4300006
+    second: StationBottom
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: set1
+    second: {fileID: 2100000, guid: de96ca9e7ef02a74aaa76bfe1c32aaae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: set2
+    second: {fileID: 2100000, guid: 0a9bc3e64d49f1442a8f9368bf33414f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: set3
+    second: {fileID: 2100000, guid: 2b5739d74cf981f4895160203d7e6025, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -45,12 +108,15 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -58,13 +124,23 @@ ModelImporter:
     globalScale: 0.02
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: 1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -74,10 +150,14 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -87,14 +167,15 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.02
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

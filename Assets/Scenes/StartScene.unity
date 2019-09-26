@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: f3e6587192de9de4fa3f1bddeddd2fcb,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3555,7 +3555,7 @@ MonoBehaviour:
   serverIPv4BindAddress: 0.0.0.0
   serverIPv6BindAddress: '::'
   port: 7777
-  useUpnP: 1
+  useUpnP: 0
   maxConnections: 20
   ipv6Enabled: 1
   channels: 0204010300
@@ -3635,7 +3635,7 @@ MonoBehaviour:
   runInBackground: 1
   startOnHeadless: 1
   serverTickRate: 30
-  showDebugMessages: 1
+  showDebugMessages: 0
   offlineScene: StartScene
   onlineScene: MainMatchScene
   transport: {fileID: 2092436205}
@@ -3659,7 +3659,7 @@ MonoBehaviour:
   networkPort: 0
   region: 0
   forceRelayConnection: 0
-  logLevel: 0
+  logLevel: 5
   isDisconnecting: 0
   matchManagerPrefab: {fileID: 2615222144381845693, guid: 8ca1e3091c739dc4f87785858cb15b75,
     type: 3}

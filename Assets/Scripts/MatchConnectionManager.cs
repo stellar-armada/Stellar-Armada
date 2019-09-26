@@ -3,6 +3,8 @@ using MatchUp;
 using NobleConnect.Mirror;
 using UnityEngine;
 using Mirror;
+using StellarArmada.Player;
+using UnityEngine.SceneManagement;
 
 namespace StellarArmada.Networking
 {
@@ -27,8 +29,9 @@ namespace StellarArmada.Networking
             networkManager = GetComponent<NobleNetworkManager>();
             matchUp = GetComponent<Matchmaker>();
         }
-        
+
         public void StartMatchmaking(){
+            Debug.Log("Starting matchmaking");
             // Get a list of matches. OnMatchList is called with the results when they are received.
             matchUp.GetMatchList(OnMatchList, 0, 10, null, true);
         }
@@ -39,12 +42,25 @@ namespace StellarArmada.Networking
         // Connecting to the host works just like Mirror: Set the networkAddress and networkPort and call StartClient()
         private void OnMatchList(bool success, MatchUp.Match[] matches)
         {
+            Debug.Log("OnMatchList");
             if (success && matches != null)
             {
-
+                Debug.Log("success && matches != null");
                 if (matches.Length != 0)
                 {
+                    Debug.Log("matches.Length != 0");
+
                     var matchData = matches[0].matchData;
+                    
+                    Debug.Log("Matches: " + matches.Length);
+                    
+                    Debug.Log( matches[0].matchData.Keys);
+
+                    foreach (var key in matches[0].matchData.Keys)
+                    {
+                        Debug.Log(key);
+                        Debug.Log(matches[0].matchData[key]);
+                    }
                     isClient = true;
                     networkManager.networkAddress = matchData["HostAddress"];
                     networkManager.networkPort = matchData["HostPort"];
@@ -52,9 +68,9 @@ namespace StellarArmada.Networking
                 }
                 else
                 {
-                    isHost = true;
-                    isClient = false;
-                    networkManager.StartHost();
+                    Debug.Log(
+                        "<color=yellow>WARNING</color> ** Reloading scene. This is temporary and should be replaced with a reconnect button.");
+                    SceneManager.LoadScene(0); // reload the scene for now
                 }
                 LocalMenuStateManager.instance.InitializeMatchMenu();
             }

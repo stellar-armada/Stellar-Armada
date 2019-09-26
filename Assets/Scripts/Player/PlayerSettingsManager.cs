@@ -28,7 +28,12 @@ namespace StellarArmada.Player
         void Awake()
         {
             instance = this;
+#if !UNITY_ANDROID || UNITY_EDITOR
+            settingsPath = Application.streamingAssetsPath + "/settings.txt";
+#else
             settingsPath = Application.persistentDataPath + "/settings.txt";
+#endif
+            
             Init();
         }
         
