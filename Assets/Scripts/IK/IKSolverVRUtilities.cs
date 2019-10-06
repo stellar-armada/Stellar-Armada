@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System;
+using RootMotion;
 
-#pragma warning disable 0649
-namespace StellarArmada.IK {
+namespace RootMotion.FinalIK {
 	
 	/// <summary>
 	/// Hybrid %IK solver designed for mapping a character to a VR headset and 2 hand controllers 
@@ -178,7 +179,8 @@ namespace StellarArmada.IK {
 				if (minNormalizedTargetDistance > 0f) {
 					Vector3 targetDirection = targetPosition - startPosition;
 					float targetLength = targetDirection.magnitude;
-					targetPosition = startPosition + (targetDirection / targetLength) * Mathf.Max(length * minNormalizedTargetDistance, targetLength);
+					Vector3 tP = startPosition + (targetDirection / targetLength) * Mathf.Max(length * minNormalizedTargetDistance, targetLength);
+                    targetPosition = Vector3.Lerp(targetPosition, tP, weight);
 				}
 				
 				// Iterating the solver

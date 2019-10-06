@@ -1,7 +1,7 @@
 using UnityEngine;
+using System.Collections;
 
-#pragma warning disable 0649
-namespace StellarArmada.IK {
+namespace RootMotion {
 
 	/// <summary>
 	/// Interpolation mode.

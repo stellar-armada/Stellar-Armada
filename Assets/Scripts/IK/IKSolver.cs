@@ -1,7 +1,7 @@
 using UnityEngine;
+using System.Collections;
 
-#pragma warning disable 0649
-namespace StellarArmada.IK {
+namespace RootMotion.FinalIK {
 
 	/// <summary>
 	/// The base abstract class for all %IK solvers

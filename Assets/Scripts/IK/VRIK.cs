@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-#pragma warning disable 0649
-namespace StellarArmada.IK {
+namespace RootMotion.FinalIK {
 	
 	/// <summary>
 	/// A full-body IK solver designed specifically for a VR HMD and hand controllers.
 	/// </summary>
-	//[HelpURL("http://www.root-motion.com/finalikdox/html/page7.html")]
-	[AddComponentMenu("Scripts/SpaceCommander.IK/IK/VR IK")]
+	//[HelpURL("http://www.root-motion.com/finalikdox/html/page16.html")]
+	[AddComponentMenu("Scripts/RootMotion.FinalIK/IK/VR IK")]
 	public class VRIK : IK {
 
-		/// <summary>`
+		/// <summary>
 		/// VRIK-specific definition of a humanoid biped.
 		/// </summary>
 		[System.Serializable]
@@ -191,15 +192,13 @@ namespace StellarArmada.IK {
 		// Open the User Manual URL
 		[ContextMenu("User Manual")]
 		protected override void OpenUserManual() {
-			Debug.Log ("Sorry, VRIK User Manual is not finished yet.");
-			// TODO Application.OpenURL("http://www.root-motion.com/finalikdox/html/page6.html");
+			Application.OpenURL("http://www.root-motion.com/finalikdox/html/page16.html");
 		}
 		
 		// Open the Script Reference URL
 		[ContextMenu("Scrpt Reference")]
 		protected override void OpenScriptReference() {
-			Debug.Log ("Sorry, VRIK Script reference is not finished yet.");
-			// TODO Application.OpenURL("http://www.root-motion.com/finalikdox/html/class_root_motion_1_1_final_i_k_1_1_full_body_biped_i_k.html");
+			Application.OpenURL("http://www.root-motion.com/finalikdox/html/class_root_motion_1_1_final_i_k_1_1_v_r_i_k.html");
 		}
 
 		// Open a video tutorial about setting up the component

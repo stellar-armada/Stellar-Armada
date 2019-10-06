@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.Events;
 
-#pragma warning disable 0649
-namespace StellarArmada.IK {
+namespace RootMotion.FinalIK {
 
 	public partial class IKSolverVR: IKSolver {
 
@@ -44,8 +44,9 @@ namespace StellarArmada.IK {
 				stepProgress = 1f;
 			}
 
-			public void StepTo(Vector3 p, Quaternion rootRotation) {
-				stepFrom = position;
+			public void StepTo(Vector3 p, Quaternion rootRotation, float stepThreshold) {
+                if (Vector3.Magnitude(p - stepTo) < stepThreshold && Quaternion.Angle(rootRotation, stepToRootRot) < 25f) return;
+                stepFrom = position;
 				stepTo = p;
 				stepFromRot = rotation;
 				stepToRootRot = rootRotation;
@@ -78,7 +79,7 @@ namespace StellarArmada.IK {
 
 				if (stepProgress >= 1f) onStep.Invoke ();
 
-				float stepProgressSmooth = Interp.Float(stepProgress, interpolation);
+				float stepProgressSmooth = RootMotion.Interp.Float(stepProgress, interpolation);
 
 				position = Vector3.Lerp(stepFrom, stepTo, stepProgressSmooth);
 				rotation = Quaternion.Lerp(stepFromRot, stepToRot, stepProgressSmooth);

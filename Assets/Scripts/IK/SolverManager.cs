@@ -1,7 +1,7 @@
 using UnityEngine;
+using System.Collections;
 
-#pragma warning disable 0649
-namespace StellarArmada.IK {
+namespace RootMotion {
 
 	/// <summary>
 	/// Manages solver initiation and updating
@@ -15,7 +15,16 @@ namespace StellarArmada.IK {
 		/// </summary>
 		[Tooltip("If true, will fix all the Transforms used by the solver to their initial state in each Update. This prevents potential problems with unanimated bones and animator culling with a small cost of performance. Not recommended for CCD and FABRIK solvers.")]
 		public bool fixTransforms = true;
-		
+
+		/// <summary>
+		/// [DEPRECATED] Use "enabled = false" instead.
+		/// </summary>
+		public void Disable() {
+			Debug.Log("IK.Disable() is deprecated. Use enabled = false instead", transform);
+
+			enabled = false;
+		}
+
 		#endregion Main
 
 		protected virtual void InitiateSolver() {}
