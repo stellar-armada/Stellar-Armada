@@ -1,4 +1,5 @@
-﻿using StellarArmada.IO;
+﻿using System.Collections.Generic;
+using StellarArmada.IO;
 using UnityEngine;
 using StellarArmada.Player;
 
@@ -15,6 +16,10 @@ namespace StellarArmada.Entities.Ships
     
     public class ShipSelector : MonoBehaviour
     {
+        public static ShipSelector instance;
+        
+        void Awake() => instance = this;
+
         // Reference to our local player. Serialized so we don't need anti-race logic
         [SerializeField] protected PlayerController playerController;
         
@@ -34,27 +39,5 @@ namespace StellarArmada.Entities.Ships
         protected Collider[] hitColliders;
         public List<ISelectable> currentSelectables = new List<ISelectable>();
 
-
-        // State
-        protected bool isSelecting;
-        protected bool isDeselecting;
-        
-        void Awake() => instance = this;
-
-        protected void StartSelection()
-        {
-            isSelecting = true;
-            Select(SelectionType.Selection);
-        }
-
-        protected void EndSelection() => isSelecting = false;
-
-        protected void StartDeselection()
-        {
-            isDeselecting = true;
-            Select(SelectionType.Deselection);
-        }
-
-        protected void EndDeselection() => isDeselecting = false;
     }
 }

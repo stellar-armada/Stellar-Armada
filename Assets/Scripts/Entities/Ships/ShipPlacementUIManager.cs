@@ -10,7 +10,7 @@ namespace StellarArmada.Entities.Ships{
         // TO-DO: Add pooling for placement indicators!
         public static ShipPlacementUIManager instance;
 
-        [SerializeField] private HumanPlayerController humanPlayerController;
+        [SerializeField] private PlayerController humanPlayerController;
 
         public GameObject placementIndicatorPrefab;
 

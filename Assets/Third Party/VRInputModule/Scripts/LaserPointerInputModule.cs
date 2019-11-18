@@ -20,8 +20,6 @@ namespace Wacki {
             public GameObject currentDragging;
         };
 
-
-
         private Camera UICamera;
         private PhysicsRaycaster raycaster;
         private HashSet<IUIPointer> _controllers;
@@ -84,7 +82,7 @@ namespace Wacki {
                 base.eventSystem.SetSelectedGameObject(null);
             }
         }
-
+        
         // select a game object
         private void Select(GameObject go)
         {
@@ -214,17 +212,12 @@ namespace Wacki {
                     }
                 }
 
-
-                
-
                 // drag handling
                 if(data.currentDragging != null) {
                     data.pointerEvent.current = data.currentPressed;
                     ExecuteEvents.Execute(data.currentDragging, data.pointerEvent, ExecuteEvents.dragHandler);
                     ExecuteEvents.Execute(controller.gameObject, data.pointerEvent, ExecuteEvents.dragHandler);
                 }
-
-
 
                 // update selected element for keyboard focus
                 if (base.eventSystem.currentSelectedGameObject != null) {

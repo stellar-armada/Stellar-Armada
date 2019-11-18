@@ -33,7 +33,9 @@ namespace StellarArmada.Entities.Ships
         private bool rightTriggerIsDown;
         private bool leftGripIsDown;
         private bool rightGripIsDown;
-
+        protected bool isSelecting;
+        protected bool isDeselecting;
+        
         void Start()
         {
             InputManager.instance.OnLeftTrigger += HandleLeftTrigger;
@@ -225,5 +227,23 @@ namespace StellarArmada.Entities.Ships
             if (down) StartDeselection();
             else EndDeselection();
         }
+        
+
+        protected void StartSelection()
+        {
+            isSelecting = true;
+            Select(SelectionType.Selection);
+        }
+
+        protected void EndSelection() => isSelecting = false;
+
+        protected void StartDeselection()
+        {
+            isDeselecting = true;
+            Select(SelectionType.Deselection);
+        }
+
+        protected void EndDeselection() => isDeselecting = false;
+        
     }
 }

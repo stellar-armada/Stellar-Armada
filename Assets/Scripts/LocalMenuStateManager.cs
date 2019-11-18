@@ -23,9 +23,9 @@ public class LocalMenuStateManager : MonoBehaviour
     [SerializeField] MenuStateDictionary menuStates = new MenuStateDictionary();
 
     [SerializeField] private Shipyard shipyard;
-    
+
     private static MenuState menuState = MenuState.None; // passes across scenes to maintain state
-    
+
     public static LocalMenuStateManager instance;
 
     public void GoToMainMenu()
@@ -70,70 +70,71 @@ public class LocalMenuStateManager : MonoBehaviour
     public void WarpIn()
     {
         HideMenu();
-            
-            // Format shipyard data and feed into createships for team
-            PlayerController.localPlayer.CmdCreateShipsForTeam();
-   
-            // initialize warp and on-screen warp effects
-            if (PlatformManager.instance.Platform == PlatformManager.PlatformType.VR)
-            {
-                Debug.Log("Setting VR minimap here, but this should moved to non-dependency");
-                VRMiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
-            }
-            
-            // on dewarp, hide warp effects and scale up minimap
-            public void QuitMatch()
-    {
-        if(PlayerController.localPlayer.isServer) NetworkServer.DisconnectAll();
-        if(PlayerController.localPlayer.isClient) NetworkClient.Disconnect();
-    }
 
-    public void HideMenu()
-    {
-        ChangeMenuState(MenuState.None);
-    }
+        // Format shipyard data and feed into createships for team
+        PlayerController.localPlayer.CmdCreateShipsForTeam();
 
-    public void ShowDefeatMenu()
-    {
-        ChangeMenuState(MenuState.InGame_Defeat);
-    }
-
-    public void ShowVictoryMenu()
-    {
-        ChangeMenuState(MenuState.InGame_Victory);
-    }
-
-    void Awake()
-    {
-        instance = this;
-    }
-
-    public void Start()
-    {
-        if (menuState == MenuState.None)
+        // initialize warp and on-screen warp effects
+        if (PlatformManager.instance.Platform == PlatformManager.PlatformType.VR)
         {
-            ChangeMenuState(MenuState.MainMenu);
-        }
-
-        // Hide all menus, just in case one got left on in dev
-        foreach (var view in menuStates)
-        {
-            if (view.Key != menuState)
-            {
-                view.Value.HideMenu();
-            }
+            Debug.Log("Setting VR minimap here, but this should moved to non-dependency");
+            VRMiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
         }
     }
 
-    void ChangeMenuState(MenuState newMenuState)
-    {
-        // Hide our current menu
-        if (menuState != MenuState.None)
-            menuStates[menuState]?.HideMenu();
+    // on dewarp, hide warp effects and scale up minimap
+        public void QuitMatch()
+        {
+            if (PlayerController.localPlayer.isServer) NetworkServer.DisconnectAll();
+            if (PlayerController.localPlayer.isClient) NetworkClient.Disconnect();
+        }
 
-        // Show the new one
-        menuState = newMenuState;
-        if (menuState != MenuState.None)
-            menuStates[menuState]?.ShowMenu();
+        public void HideMenu()
+        {
+            ChangeMenuState(MenuState.None);
+        }
+
+        public void ShowDefeatMenu()
+        {
+            ChangeMenuState(MenuState.InGame_Defeat);
+        }
+
+        public void ShowVictoryMenu()
+        {
+            ChangeMenuState(MenuState.InGame_Victory);
+        }
+
+        void Awake()
+        {
+            instance = this;
+        }
+
+        public void Start()
+        {
+            if (menuState == MenuState.None)
+            {
+                ChangeMenuState(MenuState.MainMenu);
+            }
+
+            // Hide all menus, just in case one got left on in dev
+            foreach (var view in menuStates)
+            {
+                if (view.Key != menuState)
+                {
+                    view.Value.HideMenu();
+                }
+            }
+        }
+
+        void ChangeMenuState(MenuState newMenuState)
+        {
+            // Hide our current menu
+            if (menuState != MenuState.None)
+                menuStates[menuState]?.HideMenu();
+
+            // Show the new one
+            menuState = newMenuState;
+            if (menuState != MenuState.None)
+                menuStates[menuState]?.ShowMenu();
+        }
     }
-}
