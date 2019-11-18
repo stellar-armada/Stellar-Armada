@@ -62,10 +62,10 @@ namespace StellarArmada.Weapons
                 Animate();
                 
             miniMapRepresentation.gameObject.SetActive(true);
-            miniMapRepresentation.SetParent(MiniMap.instance.transform);
+            miniMapRepresentation.SetParent(VRMiniMap.instance.transform);
             miniMapRepresentation.localScale = t.lossyScale;
             miniMapRepresentation.localPosition = t.position;
-            miniMapLineRenderer.widthMultiplier = lineRendererThickness * MiniMap.instance.transform.lossyScale.x;
+            miniMapLineRenderer.widthMultiplier = lineRendererThickness * VRMiniMap.instance.transform.lossyScale.x;
         }
 
         // OnDespawned called by pool manager 

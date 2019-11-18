@@ -13,15 +13,6 @@ namespace StellarArmada.Entities.Ships
 
         private List<ShipPlacementIndicator> activePlacements = new List<ShipPlacementIndicator>();
 
-        private bool uiPointerIsActive;
-
-        private bool leftThumbstickIsDown;
-        private bool rightThumbstickIsDown;
-
-        private bool rightPlaceButtonIsDown;
-        private bool leftPlaceButtonIsDown;
-
-
         void Awake()
         {
             instance = this;
@@ -30,55 +21,18 @@ namespace StellarArmada.Entities.Ships
         void Start()
         {
             ShipSelectionManager.instance.OnSelectionChanged += ShowPlacements;
-
-            // Thumbsticks show hide our placementPositionRoot
-            InputManager.instance.OnLeftThumbstickButton += HandleLeftThumbstick;
-            InputManager.instance.OnRightThumbstickButton += HandleRightThumbstick;
-
-            InputManager.instance.OnButtonOne += HandleRightPlaceButton;
-            InputManager.instance.OnButtonThree += HandleLeftPlaceButton;
+            VRShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
         }
 
-        void HandleRightPlaceButton(bool down)
+        private bool lastVal;
+
+        void HandleShipHighlighted(bool on)
         {
-            if (!HandSwitcher.instance.CurrentHandIsRight()) return;
-            if (leftPlaceButtonIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightPlaceButtonIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            rightPlaceButtonIsDown = down;
-            if (down) Place();
+            if (on == lastVal) return;
+            lastVal = on;
+            if (on) HidePlacements();
+            else ShowPlacements();
         }
-
-        void HandleLeftPlaceButton(bool down)
-        {
-            if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
-            if (rightPlaceButtonIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftPlaceButtonIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            leftPlaceButtonIsDown = down;
-            if (down) Place();
-        }
-
-        void HandleLeftThumbstick(bool down)
-        {
-            if (rightThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftThumbstickIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            leftThumbstickIsDown = down;
-            ShipPlacementCursor.instance.gameObject.SetActive(!down);
-            uiPointerIsActive = down;
-        }
-
-        void HandleRightThumbstick(bool down)
-        {
-            if (leftThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightThumbstickIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            rightThumbstickIsDown = down;
-            ShipPlacementCursor.instance.gameObject.SetActive(!down);
-            uiPointerIsActive = down;
-        }
-
 
         public void ShowPlacements()
         {
@@ -91,7 +45,7 @@ namespace StellarArmada.Entities.Ships
                 .Select(selectable => selectable.GetOwningEntity() as Ship).ToList();
 
             // Get formation positions for selection
-            var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
+            var positions = VrShipShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
             // Foreach ship in selection, get the placer object
 
@@ -119,17 +73,50 @@ namespace StellarArmada.Entities.Ships
             activePlacements = new List<ShipPlacementIndicator>();
         }
 
-        public void Place()
-        {
-            if (uiPointerIsActive) return;
+        private float doubleTapThreshold = .5f;
 
+        private float lastTap = 0;
+
+        void StopAllShips()
+        {
             foreach (ShipPlacementIndicator pi in activePlacements)
             {
-                // For each placer, set the minimap parent so we can grab local pos and rot easier
-                // Otherwise we could optimise with some matrix/quaternion math!
-                pi.transform.SetParent(MiniMap.instance.transform, true);
-                pi.entity.movement.CmdMoveToPoint(pi.transform.localPosition, pi.transform.localRotation);
-                pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
+                PlayerController.localPlayer.CmdOrderEntityToStop(pi.entity.GetEntityId());
+            }
+        }
+
+
+        public void Place()
+        {
+            // If we're not highlighting a ship
+            if (VRShipSelector.instance.currentSelectables.Count == 0)
+            {
+                // Is it a double tap?
+                if (Time.time - lastTap < doubleTapThreshold)
+                {
+                    StopAllShips();
+                }
+                else
+                {
+                    foreach (ShipPlacementIndicator pi in activePlacements)
+                    {
+                        // For each placer, set the minimap parent so we can grab local pos and rot easier
+                        // Otherwise we could optimise with some matrix/quaternion math!
+                        pi.transform.SetParent(VRMiniMap.instance.transform, true);
+                        PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.entity.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
+                        pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
+                    }
+                }
+                lastTap = Time.time;
+            }
+            // We are highlighting a ship, so pursue it
+            else
+            {
+                foreach (ShipPlacementIndicator pi in activePlacements)
+                {
+                    PlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(),
+                        VRShipSelector.instance.currentSelectables[0].GetOwningEntity().GetEntityId(), VRShipSelector.instance.targetIsFriendly);
+                }
             }
         }
     }

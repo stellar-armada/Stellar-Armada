@@ -32,10 +32,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
     public void OnPointerUp(PointerEventData eventData)
     {
         if (shipyardShip.id < 0) return;
-        pointerDown = false;
-        if (timer < maxtime)
-        {
-            Shipyard.instance.SetFlagshipForLocalPlayer(shipyardShip);
-        }
+        int i = PlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
+        PlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, PlayerController.localPlayer.netId);
     }
 }

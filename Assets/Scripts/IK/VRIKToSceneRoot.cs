@@ -8,7 +8,7 @@ namespace StellarArmada.IK {
 
 	public class VRIKToSceneRoot : MonoBehaviour
 	{
-		[SerializeField] HumanPlayerController playerController;
+		[SerializeField] PlayerController playerController;
 		public VRIK ik;
 
 		Vector3 lastPosition;

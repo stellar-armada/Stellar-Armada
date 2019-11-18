@@ -12,7 +12,8 @@ namespace StellarArmada.Player
 
         public void ShowMatchView()
         {
-            camera.cullingMask = matchLayers;
+            if(cam != null)
+            cam.cullingMask = matchLayers;
         }
 
         public void ShowPurgatoryView()

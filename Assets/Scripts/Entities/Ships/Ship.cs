@@ -53,7 +53,15 @@ namespace StellarArmada.Entities.Ships
         [ClientRpc] // Client-side logic
         public void RpcSetCaptain(uint playerId)
         {
+<<<<<<< Updated upstream
             if (!isServer)
+=======
+            // Prevent double calls on host
+            captain = PlayerManager.GetPlayerById(playerId);
+
+            // Local player logic
+            if (captain == PlayerController.localPlayer)
+>>>>>>> Stashed changes
             {
                 // Prevent double calls on host
                 Debug.Log("Rpc captain called");
@@ -119,7 +127,11 @@ namespace StellarArmada.Entities.Ships
             weaponSystemController.HideWeaponSystems();
             shield.currentShield = 0;
             shield.gameObject.SetActive(false);
+<<<<<<< Updated upstream
             if(HumanPlayerController.localPlayer != null == team.players.Contains(HumanPlayerController.localPlayer))
+=======
+            if (PlayerController.localPlayer != null == team.players.Contains(PlayerController.localPlayer))
+>>>>>>> Stashed changes
                 ShipSelectionManager.instance.RemoveSelectableFromSelectionSets(entityId);
         }
         

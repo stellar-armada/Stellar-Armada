@@ -5,6 +5,7 @@ using StellarArmada.Player;
 using StellarArmada.Entities.Ships;
 using StellarArmada.Teams;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #pragma warning disable 0649
 namespace StellarArmada.UI
@@ -16,7 +17,7 @@ namespace StellarArmada.UI
 
         public static GroupUIManager instance;
         
-        [SerializeField] private HumanPlayerController humanPlayerController;
+        [FormerlySerializedAs("humanPlayerController")] [SerializeField] private PlayerController playerController;
 
         private List<GameObject> ships = new List<GameObject>();
         [SerializeField] List<Transform> uiShipContainers = new List<Transform>();
@@ -36,7 +37,7 @@ namespace StellarArmada.UI
 
         public void UpdateGroupManager()
         {
-            var groups = TeamManager.instance.GetTeamByID(humanPlayerController.GetTeamId()).groups;
+            var groups = TeamManager.instance.GetTeamByID(playerController.GetTeamId()).groups;
             
             if (ships.Count > 0) // Delete any if there are any. Would only be if we had more ships added or something
             {

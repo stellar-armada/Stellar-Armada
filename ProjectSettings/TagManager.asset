@@ -7,6 +7,7 @@ TagManager:
   - VRGazeInteractable
   - Ship
   - Obstacle
+  - RaycastPlane
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Purgatory
   - PurgatoryUI
   - LocalPlayer
-  - 
+  - RaycastPlane
   - 
   - 
   - 

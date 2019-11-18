@@ -17,7 +17,7 @@ namespace StellarArmada.Entities.Ships
 
         private bool isInitialized = false;
 
-        [SerializeField] private HumanPlayerController playerController;
+        [SerializeField] private PlayerController playerController;
         void Awake()
         {
             instance = this;
@@ -29,7 +29,7 @@ namespace StellarArmada.Entities.Ships
         {
             Debug.Log("<color=green>Initialized placement cursor</color>");
             isInitialized = true;
-            t.SetParent(MiniMap.instance.transform);
+            t.SetParent(VRMiniMap.instance.transform);
             t.localPosition = Vector3.zero;
             t.localScale = Vector3.one;
         }
@@ -37,7 +37,7 @@ namespace StellarArmada.Entities.Ships
         void LateUpdate()
         {
             if (!isInitialized) return;
-            Vector3 yOff = transformToFollow.forward * (yOffset * (MiniMap.instance.transform.lossyScale.x / MiniMap.instance.startScale));
+            Vector3 yOff = transformToFollow.forward * (yOffset * (VRMiniMap.instance.transform.lossyScale.x / VRMiniMap.instance.startScale));
 
             t.position = transformToFollow.position + yOff;
             t.rotation = transformToFollow.rotation;

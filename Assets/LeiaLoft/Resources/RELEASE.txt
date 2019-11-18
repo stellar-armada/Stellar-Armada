@@ -1,0 +1,43 @@
+RELEASE NOTES
+=============
+
+Product: Leia Unity Plugin
+Version: 0.5.0
+   Date: 11 January 2019
+
+OVERVIEW
+========
+
+This package provides a LeiaCamera component that should be added
+to existing Unity camera. LeiaDisplay component also appears when
+LeiaCamera is added and contain settings that define render mode
+in general, while LeiaCamera controls specific view parameters.
+
+WHAT'S NEW
+==========
+Added Leia Remote Module
+Added execution order to LeiaDisplay
+Updated deprecated Unity API usage
+Updated to Leia display SDK 6.2.1
+Fixed duplicate LeiaDisplay gameObject creation when using Quad Video.
+
+
+KNOWN ISSUES and GENERAL WARNINGS
+=================================
+
+* Effects on the LeiaCamera are copied to the children views
+  (see TrackEffects/UpdateEffects descriptions in LeiaCamera's inspector),
+  you can also put effects on LeiaDisplay, but such effects
+  should not blur the picture or do any reordering of pixels.
+
+UNITY VERSION SUPPORT
+=====================
+
+5.6.2+
+
+QUICK START GUIDE
+=================
+
+1)    Import Leia Loft Unity package
+2)    Add LeiaCamera script to Unity Camera
+

@@ -24,7 +24,8 @@ namespace StellarArmada.Levels
 
         public void Start()
         {
-            t.SetParent(MiniMap.instance.transform);
+            e = networkEntity.transform;
+            t.SetParent(VRMiniMap.instance.transform);
             t.localScale = Vector3.one;
             t.localPosition = Vector3.zero;
             // Set team color

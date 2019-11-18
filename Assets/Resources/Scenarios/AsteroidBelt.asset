@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad77c10867700864186fcb2a6a762597, type: 3}
+  m_Name: AsteroidBelt
+  m_EditorClassIdentifier: 
+  WinConditions: 00000000
+  scenarioName: AsteroidBelt
+  numberOfHumanPlayers: 1
+  description: 1v1 at the asteroids!
+  teamInfo:
+  - availableShipTypes: 05000000
+    pointsToSpend: 50
+    numberOfPlayerSlots: 0
+    fleetBattleGroups:
+    - m_keys: 05000000
+      m_values: 03000000
+    - m_keys: 05000000
+      m_values: 03000000
+    - m_keys: 05000000
+      m_values: 03000000
+  levelPrefab: {fileID: 3198974705040035564, guid: db271a33a40596b49becf3baea0cf394,
+    type: 3}

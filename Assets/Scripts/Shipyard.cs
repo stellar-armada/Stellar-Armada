@@ -30,9 +30,9 @@ public class Shipyard : MonoBehaviour
     public Transform availableShipsContainer;
 
     [SerializeField] Text availablePointsText;
-    
-    private HumanPlayerController localPlayer;
-    
+
+    private PlayerController localPlayer;
+
     private Team team;
 
     void Awake()
@@ -42,8 +42,7 @@ public class Shipyard : MonoBehaviour
     
     void Init()
     {
-        Debug.Log("<color=blue>Calling init");
-        localPlayer = HumanPlayerController.localPlayer;
+        localPlayer = PlayerController.localPlayer;
 
         localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
         
@@ -169,7 +168,9 @@ public class Shipyard : MonoBehaviour
     
     public void ShowAvailableShips()
     {
-        int currentPoints = Mathf.Max(0, HumanPlayerController.localPlayer.GetTeam().pointsToSpend - ShipPriceManager.instance.GetGroupPrice(team.prototypes.ToList()));
+        int currentPoints = Mathf.Max(0,
+            PlayerController.localPlayer.GetTeam().pointsToSpend -
+            ShipPriceManager.instance.GetGroupPrice(team.prototypes.ToList()));
         availablePointsText.text = currentPoints.ToString();
         
         // Get all entity types represented
@@ -216,9 +217,10 @@ public class Shipyard : MonoBehaviour
 
     public void MoveShip(UIShipyardShip ship, Transform to)
     {
-        // If moving to a group...
-        GroupContainer g = to.GetComponent<GroupContainer>();
-        if (g != null)
+        int localPlayerCaptainCount = team.prototypes
+            .Where(s => s.hasCaptain && s.captain == PlayerController.localPlayer.netId).Count();
+
+        if (localPlayerCaptainCount == 1)
         {
             
          // Get prototype
@@ -249,7 +251,21 @@ public class Shipyard : MonoBehaviour
            }
         }
 
-        ShowAvailableShips();
+        // If there's no captain, pick one of the available un-captained ships (the one with the highest price)
+        var sortedPrototypes =
+            team.prototypes.Where(p => p.hasCaptain == false).OrderByDescending(p => ShipPriceManager.instance.shipPriceDictionary[p.shipType]).ToList();
+
+        WarpButton.SetActive(false);
+        FlagshipWarning.SetActive(true);
+    }
+
+
+    public void DestroyShip(UIShipyardShip ship)
+    {
+        if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
+            PlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
+
+        Destroy(ship.gameObject);
     }
 
     
@@ -258,11 +274,20 @@ public class Shipyard : MonoBehaviour
         // If player already has a flagship, unset and dirty it
         if (team.prototypes.Where(p => p.hasCaptain && p.captain == localPlayer.netId).ToArray().Length > 0)
         {
-            ShipPrototype proto = team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId);
-            proto.hasCaptain = false;
-            int index = team.prototypes.IndexOf(
-                team.prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayer.netId));
-            team.prototypes[index] = proto;
+            PlayerController.localPlayer.CmdAddShipToList(ship.shipType, g.groupId);
+            Destroy(ship.gameObject);
+        }
+        else
+        {
+            ShipPrototype proto = team.prototypes.Single(p => p.id == ship.id);
+            if (proto.group == g.groupId)
+            {
+                // Player moved item back to it's original, so we can do nothing
+                ship.transform.SetParent(g.transform);
+                return;
+            }
+            
+            PlayerController.localPlayer.CmdUpdatePrototype(ship.id, g.groupId);
         }
         
         Debug.Log("Shipyard ship: " + shipyardShip.id);

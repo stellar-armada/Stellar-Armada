@@ -44,7 +44,7 @@ namespace StellarArmada.Weapons
             timer = 0f;
             hitPoint = new RaycastHit();
             miniMapRepresentation.gameObject.SetActive(true);
-            miniMapRepresentation.SetParent(MiniMap.instance.transform);
+            miniMapRepresentation.SetParent(VRMiniMap.instance.transform);
             miniMapRepresentation.localScale = transform.lossyScale;
         }
 

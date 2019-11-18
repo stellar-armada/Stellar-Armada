@@ -72,14 +72,20 @@ public class LocalMenuStateManager : MonoBehaviour
         HideMenu();
             
             // Format shipyard data and feed into createships for team
-            ShipFactory.instance.CmdCreateShipsForTeam(HumanPlayerController.localPlayer.GetTeam().teamId);
+            PlayerController.localPlayer.CmdCreateShipsForTeam();
    
             // initialize warp and on-screen warp effects
-            MiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
+            if (PlatformManager.instance.Platform == PlatformManager.PlatformType.VR)
+            {
+                Debug.Log("Setting VR minimap here, but this should moved to non-dependency");
+                VRMiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
+            }
             
             // on dewarp, hide warp effects and scale up minimap
-
-
+            public void QuitMatch()
+    {
+        if(PlayerController.localPlayer.isServer) NetworkServer.DisconnectAll();
+        if(PlayerController.localPlayer.isClient) NetworkClient.Disconnect();
     }
 
     public void HideMenu()

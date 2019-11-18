@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bassilisk
-  m_Shader: {fileID: 4800000, guid: 8b2f353da1dd05244a7bee1562a2306a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 28d758764daba0245b57e56afe5196e4, type: 3}
   m_ShaderKeywords: _KEYWORD0_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -60,6 +60,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: 6cb06f951724ee4469cc88698f36af28, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -69,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6cb06f951724ee4469cc88698f36af28, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -104,13 +108,18 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0d23b146a9bca3646affe14beda1cb84, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ToonRamp:
+        m_Texture: {fileID: 2800000, guid: ef18611ebff4aa54f8ebed066b8fa1d7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _ASEOutlineWidth: 1
     - _AlphaClip: 0
-    - _BaseCellOffset: -0.43
+    - _BaseCellOffset: 0
     - _BaseCellSharpness: 0.01
     - _Blend: 0
     - _BumpScale: 1
@@ -123,21 +132,21 @@ Material:
     - _Glossiness: 0.5
     - _GlossinessSource: 0
     - _GlossyReflections: 1
-    - _HighlightCellOffset: -0.814
-    - _HighlightCellSharpness: 0.264
+    - _HighlightCellOffset: -0.923
+    - _HighlightCellSharpness: 0.382
     - _IndirectDiffuseContribution: 1
     - _IndirectSpecularContribution: 0
     - _Metallic: 0
     - _Mode: 0
     - _NormalScale: 0.682
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.0001
+    - _OutlineWidth: 0.519
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RimOffset: 0
-    - _RimPower: 0.01
-    - _ShadowContribution: 0.813
+    - _RimPower: 0
+    - _ShadowContribution: 1
     - _Shininess: 0
     - _Smoothness: 0
     - _SmoothnessSource: 1
@@ -150,13 +159,14 @@ Material:
     - _Surface: 0
     - _TessMax: 25
     - _TessMin: 10
-    - _TessPhongStrength: 0.5
-    - _TessValue: 4
+    - _TessPhongStrength: 0.467
+    - _TessValue: 1
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _BaseTint: {r: 0.95283014, g: 0.95283014, b: 0.95283014, a: 1}
     - _BlinkLights: {r: 1, g: 1, b: 1, a: 1}
@@ -164,8 +174,8 @@ Material:
     - _EmissionColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
     - _Exhaust: {r: 0.31617647, g: 0.18072724, b: 0.09299307, a: 1}
     - _HighlightTint: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineTint: {r: 1, g: 1, b: 1, a: 0}
-    - _RimColor: {r: 0.22941168, g: 0.3505882, b: 0.4, a: 1}
+    - _OutlineTint: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _TeamColor: {r: 0.22794119, g: 0.37616637, b: 0.5, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}

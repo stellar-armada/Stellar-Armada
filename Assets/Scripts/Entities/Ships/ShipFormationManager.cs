@@ -2,34 +2,43 @@
 using System.Linq;
 using UnityEngine;
 
-#pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
-// Local player singleton that manages how ships group together when warping in or being placed by selection
     public class ShipFormationManager : MonoBehaviour
     {
-        public static ShipFormationManager instance; // singleton accessor
-
-        public float scaleXY = 350f; // distance between ships next to, above and below
-        public float scaleZ = 250f; // distance between ships behind/in front
-        
-        // local reference variables
-        private Dictionary<Ship, Vector3> shipPositions;
-        private Vector3 centerOfMass;
-        private int count;
-        private Ship[][] shipsByLine;
-        private Ship ship;
-        int currentFrontlinePosition;
-        int currentMidlinePosition;
-        int currentBacklinePosition;
-        private Vector3 avgPosition;
-        private Vector4 averageRotation;
+        public static ShipFormationManager instance;
         
         void Awake()
         {
             instance = this;
         }
 
+        
+        public float scaleXY = 600f; // distance between ships next to, above and below
+        public float maxScaleXY = 2400f;
+        public float minScaleXY = 300f;
+        
+        // distance between ships behind/in front
+        public float scaleZ = 450f;
+        public float minScaleZ = 250f;
+        public float maxScaleZ = 2400f;
+
+        public float scaleSpeed = 10f;
+
+        // local reference variables
+        protected Dictionary<Ship, Vector3> shipPositions;
+        protected Vector3 centerOfMass;
+        protected int count;
+        protected Ship[][] shipsByLine;
+        protected Ship ship;
+        int currentFrontlinePosition;
+        int currentMidlinePosition;
+        int currentBacklinePosition;
+        protected Vector3 avgPosition;
+        protected Vector4 averageRotation;
+
+        protected float deadZone = .0001f;
+        
         public Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
         {
             shipPositions = new Dictionary<Ship, Vector3>();

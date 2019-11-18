@@ -84,9 +84,11 @@ namespace StellarArmada.Entities.Ships
                     main.loop = false;
                 }
 
-                if (ship.captain == HumanPlayerController.localPlayer)
+                if (ship.captain == PlayerController.localPlayer)
                 {
-                    MiniMap.instance.ShowMiniMap();
+                    Debug.Log("Move this to a delegate");
+                    if(PlatformManager.instance.Platform == PlatformManager.PlatformType.VR)
+                    VRMiniMap.instance.ShowMiniMap();
                 }
             }
 
