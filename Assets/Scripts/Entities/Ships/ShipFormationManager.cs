@@ -4,18 +4,21 @@ using Mirror;
 using StellarArmada.IO;
 using UnityEngine;
 
-#pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
 {
-// Local player singleton that manages how ships group together when warping in or being placed by selection
     public class ShipFormationManager : MonoBehaviour
     {
-        public static ShipFormationManager instance; // singleton accessor
+        public static ShipFormationManager instance;
+        
+        void Awake()
+        {
+            instance = this;
+        }
 
+        
         public float scaleXY = 600f; // distance between ships next to, above and below
         public float maxScaleXY = 2400f;
         public float minScaleXY = 300f;
-
         // distance between ships behind/in front
         public float scaleZ = 450f;
         public float minScaleZ = 250f;
@@ -24,60 +27,18 @@ namespace StellarArmada.Entities.Ships
         public float scaleSpeed = 10f;
 
         // local reference variables
-        private Dictionary<Ship, Vector3> shipPositions;
-        private Vector3 centerOfMass;
-        private int count;
-        private Ship[][] shipsByLine;
-        private Ship ship;
+        protected Dictionary<Ship, Vector3> shipPositions;
+        protected Vector3 centerOfMass;
+        protected int count;
+        protected Ship[][] shipsByLine;
+        protected Ship ship;
         int currentFrontlinePosition;
         int currentMidlinePosition;
         int currentBacklinePosition;
-        private Vector3 avgPosition;
-        private Vector4 averageRotation;
-
-        private float deadZone = .0001f;
-
-        void Start()
-        {
-            
-            InputManager.instance.OnLeftThumbstickAnalog += (direction) =>
-            {
-                if (HandSwitcher.instance.CurrentHandIsLeft()) dPad = direction;
-            };
-            InputManager.instance.OnRightThumbstickAnalog += (direction) =>
-            {
-                if (HandSwitcher.instance.CurrentHandIsRight()) dPad = direction;
-            };
-        }
-
-        private Vector2 dPad = Vector2.zero;
-
-        void HandleThumbstick()
-        {
-            
-            if (Mathf.Abs(dPad.x) > deadZone) // dPad X value is above deadzone
-            {
-                float newXY = scaleXY + dPad.x * scaleSpeed * Time.deltaTime;
-                scaleXY = Mathf.Clamp(newXY, minScaleXY, maxScaleXY);
-            }
-            
-            if (Mathf.Abs(dPad.y) > deadZone) // dPad Y value is above deadzone
-            {
-                float newZ = scaleZ + dPad.y * scaleSpeed * Time.deltaTime;
-                scaleZ = Mathf.Clamp(newZ, minScaleZ, maxScaleZ);
-            }
-        }
-
-        void Update()
-        {
-            HandleThumbstick();
-        }
+        protected Vector3 avgPosition;
+        protected Vector4 averageRotation;
+        protected float deadZone = .0001f;
         
-        void Awake()
-        {
-            instance = this;
-        }
-
         public Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
         {
             shipPositions = new Dictionary<Ship, Vector3>();

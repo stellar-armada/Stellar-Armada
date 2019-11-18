@@ -34,6 +34,8 @@ namespace StellarArmada.Entities.Ships
              entityHull.HullChanged += SetHullSlider;
             
             LookAtMainCamera();
+            
+            
         }
 
         void HandleEntityDead()

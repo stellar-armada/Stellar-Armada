@@ -14,15 +14,6 @@ namespace StellarArmada.Entities.Ships
 
         private List<ShipPlacementIndicator> activePlacements = new List<ShipPlacementIndicator>();
 
-        private bool uiPointerIsActive;
-
-        private bool leftThumbstickIsDown;
-        private bool rightThumbstickIsDown;
-
-        private bool rightPlaceButtonIsDown;
-        private bool leftPlaceButtonIsDown;
-
-
         void Awake()
         {
             instance = this;
@@ -31,68 +22,18 @@ namespace StellarArmada.Entities.Ships
         void Start()
         {
             ShipSelectionManager.instance.OnSelectionChanged += ShowPlacements;
-
-            // Thumbsticks show hide our placementPositionRoot
-            InputManager.instance.OnLeftThumbstickButton += HandleLeftThumbstick;
-            InputManager.instance.OnRightThumbstickButton += HandleRightThumbstick;
-
-            InputManager.instance.OnButtonOne += HandleRightPlaceButton;
-            InputManager.instance.OnButtonThree += HandleLeftPlaceButton;
-
-            ShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
+            VRShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
         }
 
         private bool lastVal;
 
         void HandleShipHighlighted(bool on)
         {
-            if (uiPointerIsActive || on == lastVal) return;
+            if (on == lastVal) return;
             lastVal = on;
             if (on) HidePlacements();
             else ShowPlacements();
         }
-
-
-        void HandleRightPlaceButton(bool down)
-        {
-            if (!HandSwitcher.instance.CurrentHandIsRight()) return;
-            if (leftPlaceButtonIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightPlaceButtonIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            rightPlaceButtonIsDown = down;
-            if (down) Place();
-        }
-
-        void HandleLeftPlaceButton(bool down)
-        {
-            if (!HandSwitcher.instance.CurrentHandIsLeft()) return; // If this isn't the current hand, ignore input
-            if (rightPlaceButtonIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftPlaceButtonIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            leftPlaceButtonIsDown = down;
-            if (down) Place();
-        }
-
-        void HandleLeftThumbstick(bool down)
-        {
-            if (rightThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !leftThumbstickIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            leftThumbstickIsDown = down;
-            ShipPlacementCursor.instance.gameObject.SetActive(!down);
-            uiPointerIsActive = down;
-        }
-
-        void HandleRightThumbstick(bool down)
-        {
-            if (leftThumbstickIsDown) return; // if the other button is down, ignore this input
-            if (!down && !rightThumbstickIsDown)
-                return; // if button going up but down state was blocked by other side button, ignore action beyond this point
-            rightThumbstickIsDown = down;
-            ShipPlacementCursor.instance.gameObject.SetActive(!down);
-            uiPointerIsActive = down;
-        }
-
 
         public void ShowPlacements()
         {
@@ -105,7 +46,7 @@ namespace StellarArmada.Entities.Ships
                 .Select(selectable => selectable.GetOwningEntity() as Ship).ToList();
 
             // Get formation positions for selection
-            var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
+            var positions = VrShipShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
             foreach (Ship s in ships)
             {
@@ -131,8 +72,6 @@ namespace StellarArmada.Entities.Ships
                 pI.Hide();
             activePlacements = new List<ShipPlacementIndicator>();
         }
-
-
         private float doubleTapThreshold = .5f;
 
         private float lastTap = 0;
@@ -141,16 +80,15 @@ namespace StellarArmada.Entities.Ships
         {
             foreach (ShipPlacementIndicator pi in activePlacements)
             {
-                HumanPlayerController.localPlayer.CmdOrderEntityToStop(pi.entity.GetEntityId());
+                PlayerController.localPlayer.CmdOrderEntityToStop(pi.entity.GetEntityId());
             }
         }
 
 
         public void Place()
         {
-            if (uiPointerIsActive) return;
             // If we're not highlighting a ship
-            if (ShipSelector.instance.currentSelectables.Count == 0)
+            if (VRShipSelector.instance.currentSelectables.Count == 0)
             {
                 // Is it a double tap?
                 if (Time.time - lastTap < doubleTapThreshold)
@@ -163,8 +101,8 @@ namespace StellarArmada.Entities.Ships
                     {
                         // For each placer, set the minimap parent so we can grab local pos and rot easier
                         // Otherwise we could optimise with some matrix/quaternion math!
-                        pi.transform.SetParent(MiniMap.instance.transform, true);
-                        HumanPlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.entity.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
+                        pi.transform.SetParent(VRMiniMap.instance.transform, true);
+                        PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.entity.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
                         pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
                     }
                 }
@@ -175,8 +113,8 @@ namespace StellarArmada.Entities.Ships
             {
                 foreach (ShipPlacementIndicator pi in activePlacements)
                 {
-                    HumanPlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(),
-                        ShipSelector.instance.currentSelectables[0].GetOwningEntity().GetEntityId(), ShipSelector.instance.targetIsFriendly);
+                    PlayerController.localPlayer.CmdOrderEntityToPursue(pi.entity.GetEntityId(),
+                        VRShipSelector.instance.currentSelectables[0].GetOwningEntity().GetEntityId(), VRShipSelector.instance.targetIsFriendly);
                 }
             }
         }

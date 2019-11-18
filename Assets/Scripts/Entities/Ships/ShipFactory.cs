@@ -98,7 +98,7 @@ namespace StellarArmada.Entities.Ships
                 }
 
                 // get positions back for list of ships from formation manager
-                Dictionary<Ship, Vector3> shipPositions = ShipFormationManager.instance.GetFormationPositionWarp(ships);
+                Dictionary<Ship, Vector3> shipPositions = VrShipShipFormationManager.instance.GetFormationPositionWarp(ships);
 
                 // Get list of warp vectors in level
                 var warpPoints = Level.currentLevel.warpPoints;

@@ -72,10 +72,8 @@ namespace StellarArmada.Networking
                 }
                 else
                 {
-                    Debug.Log(
-                        "<color=yellow>WARNING</color> ** Reloading scene. This is temporary and should be replaced with a reconnect button.");
-                    Destroy(networkManager.gameObject);
-                    SceneManager.LoadScene(0); // reload the scene for now
+                    matchUp.CreateMatch(32);
+                    networkManager.StartHost();
                 }
                 LocalMenuStateManager.instance.InitializeMatchMenu();
             }

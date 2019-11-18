@@ -17,7 +17,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (shipyardShip.id < 0) return;
-        int i = HumanPlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
-        HumanPlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, HumanPlayerController.localPlayer.netId);
+        int i = PlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
+        PlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, PlayerController.localPlayer.netId);
     }
 }

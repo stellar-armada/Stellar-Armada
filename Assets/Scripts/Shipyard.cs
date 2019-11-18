@@ -35,7 +35,7 @@ public class Shipyard : MonoBehaviour
 
     [SerializeField] Text availablePointsText;
 
-    private HumanPlayerController localPlayer;
+    private PlayerController localPlayer;
 
     private Team team;
 
@@ -49,7 +49,7 @@ public class Shipyard : MonoBehaviour
 
     public void InitializeShipyard()
     {
-        localPlayer = HumanPlayerController.localPlayer;
+        localPlayer = PlayerController.localPlayer;
 
         localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
 
@@ -153,7 +153,7 @@ public class Shipyard : MonoBehaviour
     public void ShowAvailableShips()
     {
         int currentPoints = Mathf.Max(0,
-            HumanPlayerController.localPlayer.GetTeam().pointsToSpend -
+            PlayerController.localPlayer.GetTeam().pointsToSpend -
             ShipPriceManager.instance.GetGroupPrice(team.prototypes.ToList()));
         availablePointsText.text = currentPoints.ToString();
 
@@ -202,7 +202,7 @@ public class Shipyard : MonoBehaviour
     public void ValidateCaptain()
     {
         int localPlayerCaptainCount = team.prototypes
-            .Where(s => s.hasCaptain && s.captain == HumanPlayerController.localPlayer.netId).Count();
+            .Where(s => s.hasCaptain && s.captain == PlayerController.localPlayer.netId).Count();
 
         if (localPlayerCaptainCount == 1)
         {
@@ -223,6 +223,15 @@ public class Shipyard : MonoBehaviour
     public void DestroyShip(UIShipyardShip ship)
     {
         if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
+            PlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
+
+        Destroy(ship.gameObject);
+    }
+
+
+    public void DestroyShip(UIShipyardShip ship)
+    {
+        if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
             HumanPlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
 
         Destroy(ship.gameObject);
@@ -233,7 +242,7 @@ public class Shipyard : MonoBehaviour
         if (ship.id < 0
         ) // Shipyard ships are inited with an id of -1 -- so this much be a ship in our "available" container, not already in our fleet
         {
-            HumanPlayerController.localPlayer.CmdAddShipToList(ship.shipType, g.groupId);
+            PlayerController.localPlayer.CmdAddShipToList(ship.shipType, g.groupId);
             Destroy(ship.gameObject);
         }
         else
@@ -245,8 +254,7 @@ public class Shipyard : MonoBehaviour
                 ship.transform.SetParent(g.transform);
                 return;
             }
-            
-            HumanPlayerController.localPlayer.CmdUpdatePrototype(ship.id, g.groupId);
+            PlayerController.localPlayer.CmdUpdatePrototype(ship.id, g.groupId);
         }
 
         ShowAvailableShips();

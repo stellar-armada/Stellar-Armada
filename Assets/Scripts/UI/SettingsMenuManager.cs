@@ -64,9 +64,9 @@ namespace StellarArmada.UI
 
             PlayerSettingsManager.SavePlayerName(playerNameKeyboardInputText.text);
             
-            if (HumanPlayerController.localPlayer != null)
+            if (PlayerController.localPlayer != null)
             {
-                HumanPlayerController.localPlayer.CmdSetUserName(playerNameKeyboardInputText.text);
+                PlayerController.localPlayer.CmdSetUserName(playerNameKeyboardInputText.text);
             }
             
             PopulateUserName();

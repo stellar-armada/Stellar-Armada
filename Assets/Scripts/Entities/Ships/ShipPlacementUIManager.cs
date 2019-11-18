@@ -9,7 +9,20 @@ namespace StellarArmada.Entities.Ships{
         // Handles the placement of little indicator points for where ships will go when the commander is placing
         public static ShipPlacementUIManager instance;
 
-        public List<ShipPlacementIndicator> placementIndicators = new List<ShipPlacementIndicator>();
+        [SerializeField] private PlayerController humanPlayerController;
+
+        public GameObject placementIndicatorPrefab;
+
+        public static List<ShipPlacementIndicator> placementIndicators;
+
+// local reference variables
+        private GameObject placementIndicatorObject;
+        private ShipPlacementIndicator p;
+        
+        public GameObject CreatePlacementIndicator()
+        {
+            return Instantiate(placementIndicatorPrefab);
+        }
 
         void Awake()
         {

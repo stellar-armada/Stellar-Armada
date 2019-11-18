@@ -1,17 +1,188 @@
-﻿using Mirror;
-using StellarArmada.Teams;
+﻿using System.Linq;
+using Mirror;
+using StellarArmada.Entities;
 using UnityEngine;
+
+
+using StellarArmada.Entities.Ships;
+using StellarArmada.Match;
+using StellarArmada.Teams;
 
 #pragma warning disable 0649
 namespace StellarArmada.Player
 {
-    // The player controller is the base class for any "player"
-    // This is confusing and could be rethought a little bit, since we think of players as humans
-    // (but that would be the HumanPlayerController inheriting class)
-    // AI players can also inherit from this class
-
-    public abstract class PlayerController : NetworkBehaviour
+    // Human player controller inheriting from the player controller base class
+    // Manages setting up the local stuff
+    // TO-DO: PickCapitalShip is not automatic
+    
+    public class PlayerController : NetworkBehaviour
     {
+        // Handy reference to the local player controller, set when the player inits
+        public static PlayerController localPlayer;
+        
+        public GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
+        
+        public delegate void PlayerControllerInitializationEvent();
+
+        public PlayerControllerInitializationEvent OnLocalPlayerInitialized;
+
+        public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
+
+        
+        void Start()
+        {
+            PlayerManager.instance.RegisterPlayer(this);
+            if (isLocalPlayer)
+            {
+                localPlayer = this;
+                localRig.SetActive(true);
+            }
+            else
+            {
+                localRig.SetActive(false);
+            }
+        }
+
+        [Command]
+        public void CmdOrderEntityToStop(uint entityId)
+        {
+            NetworkEntity entity = EntityManager.GetEntityById(entityId);
+            entity.movement.ServerStopMovement();
+        }
+
+        [Command]
+        public void CmdOrderEntityToPursue(uint pursuerId, uint quarryId, bool friendly)
+        {
+            NetworkEntity pursuerEntity = EntityManager.GetEntityById(pursuerId);
+            NetworkEntity quarryEntity = EntityManager.GetEntityById(quarryId);
+            pursuerEntity.movement.ServerPursue(quarryEntity.GetEntityId());
+            pursuerEntity.weaponSystemController.ServerSetTarget(quarryEntity.GetEntityId(), friendly);
+        }
+        
+        [Command]
+        public void CmdOrderEntityToMoveToPoint(uint entityId, Vector3 pos, Quaternion rot)
+        {
+            NetworkEntity entity = EntityManager.GetEntityById(entityId);
+            entity.movement.ServerMoveToPoint(pos, rot);
+        }
+
+        [Command]
+        public void CmdAddShipToList(ShipType type, int group)
+        {
+            // create new prototype with type and group
+            ShipPrototype p = new ShipPrototype();
+            p.shipType = type;
+            p.group = group;
+            p.id = ShipPrototype.prototypeEntityIncrement++;
+            // Add to team's prototoype list
+            GetTeam().prototypes.Add(p);
+        }
+
+        [Command]
+        public void CmdRemoveShipFromList(int prototypeId)
+        {
+            // Remove ship from team's prorotype list
+            ShipPrototype proto = GetTeam().prototypes.Single(p => p.id == prototypeId);
+            GetTeam().prototypes.Remove(proto);
+
+        }
+        
+        [Command]
+        public void CmdSetFlagshipForLocalPlayer(int newIndex, uint localPlayerId)
+        {
+            // If player already has a flagship, unset and dirty it
+            if (GetTeam().prototypes.Where(p => p.hasCaptain && p.captain == localPlayerId).ToArray().Length > 0)
+            {
+                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId);
+                proto.hasCaptain = false;
+                int index = GetTeam().prototypes.IndexOf(
+                    GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId));
+                GetTeam().prototypes[index] = proto;
+            }
+            
+            SetShipCaptain(localPlayerId, newIndex);
+            TargetFlagshipSetForPlayer(connectionToClient);
+        }
+
+        [TargetRpc]
+        void TargetFlagshipSetForPlayer(NetworkConnection conn)
+        {
+        }
+        
+        [Command]
+        public void CmdUpdatePrototype(int shipId, int groupId)
+        {
+            GetTeam().UpdatePrototype(shipId, groupId);
+        }
+
+        [Command]
+        public void CmdInitialize()
+        {
+            MatchStateManager.instance.CmdChangeMatchState(MatchState.Lobby);
+            Initialize();
+            RpcInitialize();
+        }
+
+        [Command]
+        public void CmdCreateShipsForTeam()
+        {
+            ShipFactory.instance.CmdCreateShipsForTeam(GetTeam().teamId);
+
+        }
+
+        [Server]
+        public void SetShipCaptain(uint id, int prototypeIndex)
+        {
+            Team team = TeamManager.instance.GetTeamByID(teamId);
+            ShipPrototype newProto = team.prototypes[prototypeIndex];
+
+            newProto.hasCaptain = true;
+            newProto.captain = id;
+
+            // get index of prototype and dirty
+            team.prototypes[prototypeIndex] = newProto;
+        }
+
+        [ClientRpc]
+        public void RpcInitialize()
+        {
+            if (!isServer) Initialize();
+        }
+        
+        void Initialize()
+        {
+            // Server sets player's team
+            if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
+            
+            // If this is the local player's object, set up local player logic
+            if (isLocalPlayer)
+            {
+                // The localrig in the MatchPlayer prefab contains all the local managers for selection, map control, etc.
+                localRig.SetActive(true);
+                
+                CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
+                
+                Shipyard.instance.InitializeShipyard();
+                
+                LocalMenuStateManager.instance.GoToShipyard();
+                
+                OnLocalPlayerInitialized?.Invoke();
+            }
+            else
+            {
+                localRig.SetActive(false);
+                OnNonLocalPlayerInitialized?.Invoke();
+            }
+        }
+
+        public bool IsLocalPlayer() => isLocalPlayer;
+
+        public bool IsServer() => isServer;
+
+        public bool IsClient() => isClient;
+        
+        public PlayerType GetPlayerType() => PlayerType.Player;
+        
         // Generic event handler for this class
         public delegate void PlayerControllerEvent();
 
@@ -44,7 +215,7 @@ namespace StellarArmada.Player
         {
             if (isServer) TargetHandleLoss(connectionToClient);
         }
-        
+
         [TargetRpc]
         public void TargetHandleWin(NetworkConnection conn)
         {
@@ -65,11 +236,8 @@ namespace StellarArmada.Player
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             PlayerCamera.instance.ShowPurgatoryView();
-            
-            
+         
         }
-
-    
 
         [Server]
         public void Die() // Message sent to all players attached to an entity when it dies
@@ -95,7 +263,7 @@ namespace StellarArmada.Player
 
 
         // Called when the server updates the player's name variable
-        protected virtual void UpdateName(string nameToChangeTo)
+        protected void UpdateName(string nameToChangeTo)
         {
             transform.name = nameToChangeTo;
             playerName = nameToChangeTo;
@@ -109,27 +277,24 @@ namespace StellarArmada.Player
             teamId = pTeam;
             EventOnPlayerTeamChange?.Invoke();
         }
-
-        public abstract PlayerType GetPlayerType(); // Human, AI?
-
         public PlayerController GetPlayer() => this;
         public GameObject GetGameObject() => gameObject;
 
-        public virtual uint GetId() => netId;
+        public uint GetId() => netId;
 
-        public virtual string GetName() => name;
+        public string GetName() => name;
 
-        public virtual bool IsEnemy(PlayerController playerController) => playerController.GetTeamId() != teamId;
+        public bool IsEnemy(PlayerController playerController) => playerController.GetTeamId() != teamId;
 
-        public virtual Team GetTeam() => TeamManager.instance.GetTeamByID(teamId);
-        public virtual uint GetTeamId() => teamId;
-        public virtual void SetTeamId(uint newTeamId) => teamId = newTeamId;
-
-        [Command]
-        public virtual void CmdSetTeam(uint _team) => teamId = _team;
+        public Team GetTeam() => TeamManager.instance.GetTeamByID(teamId);
+        public uint GetTeamId() => teamId;
+        public void SetTeamId(uint newTeamId) => teamId = newTeamId;
 
         [Command]
-        public virtual void CmdSetUserName(string newUserName)
+        public void CmdSetTeam(uint _team) => teamId = _team;
+
+        [Command]
+        public void CmdSetUserName(string newUserName)
         {
             playerName = newUserName;
         }

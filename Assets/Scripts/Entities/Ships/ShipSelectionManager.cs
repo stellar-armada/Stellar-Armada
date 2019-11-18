@@ -15,7 +15,7 @@ namespace StellarArmada.Entities.Ships
     {
         public static ShipSelectionManager instance;
 
-        [SerializeField] private HumanPlayerController playerController;
+        [SerializeField] private PlayerController playerController;
         private List<ISelectable> currentSelection = new List<ISelectable>();
         private bool initialized = false;
         
@@ -146,7 +146,7 @@ namespace StellarArmada.Entities.Ships
 
         public void SelectAll()
         {
-            var ships = EntityManager.GetEntities().Where(s => s.GetTeam().teamId == HumanPlayerController.localPlayer.teamId && s.GetType() == typeof(Ship));
+            var ships = EntityManager.GetEntities().Where(s => s.GetTeam().teamId == PlayerController.localPlayer.teamId && s.GetType() == typeof(Ship));
             foreach (var ship in ships)
             {
                 AddToSelection(((Ship)ship).shipSelectionHandler);
@@ -194,17 +194,9 @@ namespace StellarArmada.Entities.Ships
                 currentSelection = selectionSets[selectionSetId];
                 OnSelectionChanged?.Invoke();
         }
-        
-        
-        public void ClearSelectionSet(int selectionSetId)
-        {
-            selectionSets[selectionSetId] = null;
-            UpdateSelectionSet(selectionSetId);
-        }
-
         public void AddGroupToSelection(int groupNum)
         {
-            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
+            uint playerTeamId = PlayerController.localPlayer.GetTeamId();
             var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
             
             List<ISelectable> selectables = new List<ISelectable>();
@@ -228,7 +220,7 @@ namespace StellarArmada.Entities.Ships
         
         public void RemoveGroupFromSelection(int groupNum)
         {
-            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
+            uint playerTeamId = PlayerController.localPlayer.GetTeamId();
             var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
             
             List<ISelectable> selectables = new List<ISelectable>();
@@ -253,7 +245,7 @@ namespace StellarArmada.Entities.Ships
         
         public void SetSelectionToGroup(int groupNum)
         {
-            uint playerTeamId = HumanPlayerController.localPlayer.GetTeamId();
+            uint playerTeamId = PlayerController.localPlayer.GetTeamId();
             var group = TeamManager.instance.GetTeamByID(playerTeamId).groups[groupNum].Where(s => s.GetType() == typeof(Ship));
             List<ISelectable> selectables = new List<ISelectable>();
             foreach (var entity in group)

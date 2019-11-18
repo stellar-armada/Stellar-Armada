@@ -49,7 +49,7 @@ namespace StellarArmada.Entities
         void ShowMovementIndicator(Vector3 pos, Quaternion rot)
         {
             isActive = true;
-            t.SetParent(MiniMap.instance.transform);
+            t.SetParent(VRMiniMap.instance.transform);
             t.localPosition = pos;
             t.localRotation = rot;
             t.localScale = Vector3.one;

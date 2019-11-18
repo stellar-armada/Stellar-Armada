@@ -11,7 +11,7 @@ namespace StellarArmada.Levels
     {
         public static MiniMapController instance;
 
-        [SerializeField] private HumanPlayerController playerController;
+        [SerializeField] private PlayerController playerController;
         public bool isActive = false;
 
         Transform leftController;
@@ -28,7 +28,7 @@ namespace StellarArmada.Levels
         private Transform miniMapTransformRoot;
         private Transform sceneRoot;
         private Transform miniMapTransform;
-        private MiniMap miniMap;
+        private VRMiniMap _vrMiniMap;
 
         private bool isInitialized = false;
         void Awake()
@@ -51,8 +51,8 @@ namespace StellarArmada.Levels
             isInitialized = true;
             // Set local references
             miniMapTransformRoot = MiniMapTransformRoot.instance.transform;
-            miniMap = MiniMap.instance;
-            miniMapTransform = miniMap.transform;
+            _vrMiniMap = VRMiniMap.instance;
+            miniMapTransform = _vrMiniMap.transform;
             sceneRoot = LocalPlayerBridgeSceneRoot.instance.transform;
         }
 
@@ -110,7 +110,7 @@ namespace StellarArmada.Levels
 
         void Update()
         {
-            if (!isInitialized || !MiniMap.instance.interactable) return;
+            if (!isInitialized || !VRMiniMap.instance.interactable) return;
             //current position of controllers
             leftPos = leftController.localPosition;
             rightPos = rightController.localPosition;
@@ -164,8 +164,7 @@ namespace StellarArmada.Levels
             //apply scale to model
             miniMapTransformRoot.localScale *= scaleFactor;
             miniMapTransformRoot.localScale = Vector3.one * miniMapTransformRoot.localScale.x;
-            
-            miniMapTransform.localScale = Vector3.one * Mathf.Clamp(miniMapTransform.localScale.x, miniMap.minScale, miniMap.maxScale);
+            miniMapTransform.localScale = Vector3.one * Mathf.Clamp(miniMapTransform.localScale.x, _vrMiniMap.minScale, _vrMiniMap.maxScale);
         }
     }
 }

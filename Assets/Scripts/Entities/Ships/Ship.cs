@@ -59,7 +59,7 @@ namespace StellarArmada.Entities.Ships
             captain = PlayerManager.GetPlayerById(playerId);
 
             // Local player logic
-            if (captain == HumanPlayerController.localPlayer)
+            if (captain == PlayerController.localPlayer)
             {
                 bridge.ActivateBridgeForLocalPlayer();
                 ShipSelectionManager.instance.InitializeSelectionSets();
@@ -67,6 +67,9 @@ namespace StellarArmada.Entities.Ships
                 PlayerCamera.instance.ShowMatchView(); // Switch camera layers to minimap and ships for local player
                 OnCaptainUpdated?.Invoke();
             }
+
+            captain.PickCapitalShip(this);
+            bridge.ActivateBridgeForLocalPlayer();
         }
 
         public PlayerController GetCaptain() => captain;
@@ -124,7 +127,7 @@ namespace StellarArmada.Entities.Ships
             weaponSystemController.HideWeaponSystems();
             shield.currentShield = 0;
             shield.gameObject.SetActive(false);
-            if (HumanPlayerController.localPlayer != null == team.players.Contains(HumanPlayerController.localPlayer))
+            if (PlayerController.localPlayer != null == team.players.Contains(PlayerController.localPlayer))
                 ShipSelectionManager.instance.RemoveSelectableFromSelectionSets(entityId);
         }
 

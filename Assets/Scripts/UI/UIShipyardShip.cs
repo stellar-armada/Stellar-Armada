@@ -24,7 +24,7 @@ namespace StellarArmada.UI
 
         void Start()
         {
-            team = HumanPlayerController.localPlayer.GetTeam();
+            team = PlayerController.localPlayer.GetTeam();
 
         }
 
@@ -44,7 +44,7 @@ namespace StellarArmada.UI
             if (p.hasCaptain)
             {
             uint captain = GetPrototype().captain;
-            if (captain == HumanPlayerController.localPlayer.netId)
+            if (captain == PlayerController.localPlayer.netId)
                 SetFlagToActiveForLocalUser();
             else
                 SetFlagToActiveForTeamMate();

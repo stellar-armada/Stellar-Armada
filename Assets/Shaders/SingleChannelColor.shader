@@ -2,227 +2,82 @@
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "SpaceCommander/SingleChannelColor"
 {
-    Properties
-    {
+	Properties
+	{
+		_ASEOutlineColor( "Outline Color", Color ) = (0,0,0,0)
+		_ASEOutlineWidth( "Outline Width", Float ) = 0.2
 		_MainTex("_MainTex", 2D) = "white" {}
 		_Color("Color", Color) = (1,1,1,0)
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
-    }
+		[HideInInspector] __dirty( "", Int ) = 1
+	}
 
-    SubShader
-    {
-		
-
-        Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry" }
-        Cull Back
-		HLSLINCLUDE
+	SubShader
+	{
+		Tags{ }
+		Cull Front
+		CGPROGRAM
 		#pragma target 3.0
-		ENDHLSL
-
+		#pragma surface outlineSurf Outline nofog  keepalpha noshadow noambient novertexlights nolightmap nodynlightmap nodirlightmap nometa noforwardadd vertex:outlineVertexDataFunc 
+		struct Input {
+			half filler;
+		};
+		uniform half4 _ASEOutlineColor;
+		uniform half _ASEOutlineWidth;
+		void outlineVertexDataFunc( inout appdata_full v, out Input o )
+		{
+			UNITY_INITIALIZE_OUTPUT( Input, o );
+			v.vertex.xyz += ( v.normal * _ASEOutlineWidth );
+		}
+		inline half4 LightingOutline( SurfaceOutput s, half3 lightDir, half atten ) { return half4 ( 0,0,0, s.Alpha); }
+		void outlineSurf( Input i, inout SurfaceOutput o )
+		{
+			o.Emission = _ASEOutlineColor.rgb;
+			o.Alpha = 1;
+		}
+		ENDCG
 		
-        Pass
-        {
-            Tags { "LightMode"="UniversalForward" }
-            Name "Base"
 
-            Blend Off
-			ZWrite On
-			ZTest LEqual
-			Offset 0 , 0
-			ColorMask RGBA
-			
+		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
+		Cull Back
+		CGPROGRAM
+		#pragma target 3.0
+		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows exclude_path:deferred 
+		struct Input
+		{
+			float2 uv_texcoord;
+		};
 
-            HLSLPROGRAM
-            // Required to compile gles 2.0 with standard srp library
-            #pragma prefer_hlslcc gles
-            #pragma exclude_renderers d3d11_9x
+		uniform half4 _Color;
+		uniform sampler2D _MainTex;
+		uniform half4 _MainTex_ST;
 
-            // -------------------------------------
-            // Lightweight Pipeline keywords
-            #pragma shader_feature _SAMPLE_GI
+		inline half4 LightingUnlit( SurfaceOutput s, half3 lightDir, half atten )
+		{
+			return half4 ( 0, 0, 0, s.Alpha );
+		}
 
-            // -------------------------------------
-            // Unity defined keywords
-            #pragma multi_compile_fog
+		void surf( Input i , inout SurfaceOutput o )
+		{
+			float2 uv_MainTex = i.uv_texcoord * _MainTex_ST.xy + _MainTex_ST.zw;
+			o.Emission = ( _Color * tex2D( _MainTex, uv_MainTex ).r ).rgb;
+			o.Alpha = 1;
+		}
 
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
-            
-            #pragma vertex vert
-            #pragma fragment frag
-
-            #define ASE_SRP_VERSION 51601
-            #define _RECEIVE_SHADOWS_OFF 1
-
-
-            // Lighting include is needed because of GI
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-
-			half4 _Color;
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-
-            struct GraphVertexInput
-            {
-                float4 vertex : POSITION;
-				float4 ase_normal : NORMAL;
-				float4 ase_texcoord : TEXCOORD0;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-            };
-
-            struct GraphVertexOutput
-            {
-                float4 position : POSITION;
-				float4 ase_texcoord : TEXCOORD0;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-                UNITY_VERTEX_OUTPUT_STEREO
-            };
-
-			
-            GraphVertexOutput vert (GraphVertexInput v)
-            {
-                GraphVertexOutput o = (GraphVertexOutput)0;
-                UNITY_SETUP_INSTANCE_ID(v);
-                UNITY_TRANSFER_INSTANCE_ID(v, o);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-				o.ase_texcoord.xy = v.ase_texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord.zw = 0;
-				float3 vertexValue =  float3( 0, 0, 0 ) ;
-				#ifdef ASE_ABSOLUTE_VERTEX_POS
-				v.vertex.xyz = vertexValue; 
-				#else
-				v.vertex.xyz += vertexValue;
-				#endif
-
-				v.ase_normal =  v.ase_normal ;
-                o.position = TransformObjectToHClip(v.vertex.xyz);
-                return o;
-            }
-
-            half4 frag (GraphVertexOutput IN ) : SV_Target
-            {
-                UNITY_SETUP_INSTANCE_ID(IN);
-				float2 uv_MainTex = IN.ase_texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
-				
-		        float3 Color = ( _Color * tex2D( _MainTex, uv_MainTex ).r ).rgb;
-		        float Alpha = 1;
-		        float AlphaClipThreshold = 0;
-         #if _AlphaClip
-                clip(Alpha - AlphaClipThreshold);
-        #endif
-                return half4(Color, Alpha);
-            }
-            ENDHLSL
-        }
-
-		
-        Pass
-        {
-			
-            Name "DepthOnly"
-            Tags { "LightMode"="DepthOnly" }
-
-            ZWrite On
-			ZTest LEqual
-			ColorMask 0
-
-            HLSLPROGRAM
-            // Required to compile gles 2.0 with standard srp library
-            #pragma prefer_hlslcc gles
-            #pragma exclude_renderers d3d11_9x
-            #pragma target 2.0
-
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
-
-            #pragma vertex vert
-            #pragma fragment frag
-
-            #define ASE_SRP_VERSION 51601
-            #define _RECEIVE_SHADOWS_OFF 1
-
-
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
-            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-
-			
-			struct GraphVertexInput
-			{
-				float4 vertex : POSITION;
-				float4 ase_normal : NORMAL;
-				
-				UNITY_VERTEX_INPUT_INSTANCE_ID
-			};
-
-            struct VertexOutput
-            {
-                float4 clipPos : SV_POSITION;
-				
-                UNITY_VERTEX_INPUT_INSTANCE_ID
-                UNITY_VERTEX_OUTPUT_STEREO
-            };
-
-			
-			VertexOutput vert( GraphVertexInput v  )
-			{
-					VertexOutput o = (VertexOutput)0;
-					UNITY_SETUP_INSTANCE_ID(v);
-					UNITY_TRANSFER_INSTANCE_ID(v, o);
-					UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-					
-					float3 vertexValue =  float3(0,0,0) ;	
-					#ifdef ASE_ABSOLUTE_VERTEX_POS
-					v.vertex.xyz = vertexValue;
-					#else
-					v.vertex.xyz += vertexValue;
-					#endif
-					v.ase_normal =  v.ase_normal ;
-					o.clipPos = TransformObjectToHClip(v.vertex.xyz);
-					return o;
-			}
-
-            half4 frag( VertexOutput IN  ) : SV_TARGET
-            {
-                UNITY_SETUP_INSTANCE_ID(IN);
-				
-
-				float Alpha = 1;
-				float AlphaClipThreshold = AlphaClipThreshold;
-
-         #if _AlphaClip
-        		clip(Alpha - AlphaClipThreshold);
-        #endif
-                return 0;
-            }
-            ENDHLSL
-        }
-		
-    }
-    Fallback "Hidden/InternalErrorShader"
+		ENDCG
+	}
+	Fallback "Diffuse"
 	CustomEditor "ASEMaterialInspector"
-	
 }
 /*ASEBEGIN
-Version=16800
-2186;190;1484;754;997.7347;538.0558;1.292441;True;True
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;5;-22.44089,-275.6904;Float;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SamplerNode;3;-349.4284,-62.43761;Float;True;Property;_MainTex;_MainTex;0;0;Create;True;0;0;True;0;None;a8c818944d534424ea750aec8fa84bb0;True;0;False;white;LockedToTexture2D;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;4;-345.5512,-419.1513;Half;False;Property;_Color;Color;1;0;Create;True;0;0;False;0;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;False;2;Float;ASEMaterialInspector;0;1;Hidden/Templates/LightWeightSRPUnlit;e2514bdcf5e5399499a9eb24d175b9db;True;ShadowCaster;0;1;ShadowCaster;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=ShadowCaster;False;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;2;Float;ASEMaterialInspector;0;1;Hidden/Templates/LightWeightSRPUnlit;e2514bdcf5e5399499a9eb24d175b9db;True;DepthOnly;0;2;DepthOnly;0;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthOnly;True;0;0;Hidden/InternalErrorShader;0;0;Standard;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;170.6022,-173.187;Half;False;True;2;Half;ASEMaterialInspector;0;3;SpaceCommander/SingleChannelColor;e2514bdcf5e5399499a9eb24d175b9db;True;Base;0;0;Base;5;False;False;False;True;0;False;-1;False;False;False;False;False;True;3;RenderPipeline=LightweightPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;2;0;True;0;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=LightweightForward;False;0;Hidden/InternalErrorShader;0;0;Standard;2;Vertex Position,InvertActionOnDeselection;1;Receive Shadows;0;0;3;True;False;True;False;5;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;0
+Version=17200
+0;417;1697;602;1135.38;439.8303;1.292441;True;True
+Node;AmplifyShaderEditor.SamplerNode;3;-349.4284,-62.43761;Inherit;True;Property;_MainTex;_MainTex;0;0;Create;True;0;0;True;0;-1;None;9f3cb51c5ef75954cb9b7134f47e1c06;True;0;False;white;LockedToTexture2D;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;4;-345.5512,-419.1513;Half;False;Property;_Color;Color;1;0;Create;True;0;0;False;0;1,1,1,0;0,1,0.1782589,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;5;-22.44089,-275.6904;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;6;170.6022,-173.187;Float;False;True;2;ASEMaterialInspector;0;0;Unlit;SpaceCommander/SingleChannelColor;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;ForwardOnly;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;0;0;False;-1;0;False;-1;0;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;True;0.2;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.1;False;-1;0;False;-1;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 WireConnection;5;0;4;0
 WireConnection;5;1;3;1
-WireConnection;0;0;5;0
+WireConnection;6;2;5;0
 ASEEND*/
-//CHKSM=C10E7E0724911134072B1C8B2A2E296C34D252FB
+//CHKSM=BB809E564FC281CEA6E635B05DBBE2D7132F87A7

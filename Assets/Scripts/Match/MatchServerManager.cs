@@ -83,7 +83,7 @@ namespace StellarArmada.Match
             
             foreach (var player in PlayerManager.players)
             {
-                ((HumanPlayerController)player).CmdInitialize();
+                ((PlayerController)player).CmdInitialize();
             }
         }
 
