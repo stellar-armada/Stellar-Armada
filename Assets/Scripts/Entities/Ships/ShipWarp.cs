@@ -59,7 +59,14 @@ namespace StellarArmada.Entities.Ships
                 
                 warpFx.SetActive(true);
 
+                // TO-DO: This is kind of a hack?
                 MatchStateManager.instance.EventOnMatchStart += WarpIn;
+                
+                // TO-DO: This is a hack
+                if (PlatformManager.instance.Platform != PlatformManager.PlatformType.VR)
+                {
+                    RTSCameraController.instance.FadeInHud();
+                }
             }
 
             void WarpIn()
@@ -76,7 +83,11 @@ namespace StellarArmada.Entities.Ships
                 do
                 {
                     timer += Time.deltaTime;
-                    ship.visualModel.transform.localPosition = Vector3.Lerp(warpInStartPos, Vector3.zero, timer / warpTime);
+                    
+                    float t = timer / warpTime;
+                    t = Mathf.Sin(t * Mathf.PI * 0.5f);
+                    
+                    ship.visualModel.transform.localPosition = Vector3.Lerp(warpInStartPos, Vector3.zero, t);
                     yield return null;
                 }
                 while (timer <= warpTime) ;

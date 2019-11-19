@@ -59,6 +59,14 @@ public class Shipyard : MonoBehaviour
         team.prototypes.Callback += OnShipListUpdated;
         
         PopulateUIShipyardShips();
+        
+        Invoke(nameof(InitializeFlagship), .5f);
+    }
+
+    void InitializeFlagship()
+    {
+        // TO-DO Do something with this. For now we're storing here
+        PlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(0, PlayerController.localPlayer.netId);
     }
 
     void HandleTeamChange()
@@ -146,9 +154,9 @@ public class Shipyard : MonoBehaviour
             // Create a new shipyard ship and assign it the prototype's ID
             CreateUIShip(proto);
         }
-        
+ 
         ShowAvailableShips();
-       
+
     }
 
 

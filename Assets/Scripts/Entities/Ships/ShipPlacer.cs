@@ -46,8 +46,11 @@ namespace StellarArmada.Entities.Ships
                 .Select(selectable => selectable.GetOwningEntity() as Ship).ToList();
 
             // Get formation positions for selection
-            var positions = VrShipShipFormationManager.instance.GetFormationPositionsForShips(ships);
+            var positions = ShipFormationManager.instance.GetFormationPositionsForShips(ships);
 
+            // TODO -- Remove this check and handle ship formations in 2D
+            if (PlatformManager.instance.Platform != PlatformManager.PlatformType.VR) return;
+            
             foreach (Ship s in ships)
             {
                 // Get the placement indicator

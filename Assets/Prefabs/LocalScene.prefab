@@ -2656,6 +2656,7 @@ GameObject:
   - component: {fileID: 4906118372392123652}
   - component: {fileID: 6658503070255560937}
   - component: {fileID: 534133584829842194}
+  - component: {fileID: 332709396}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2753,6 +2754,7 @@ MonoBehaviour:
     - {fileID: 7098052560551975636}
     - {fileID: 7844166649110206376}
   shipyard: {fileID: 7292929663022437033}
+  group: {fileID: 332709396}
 --- !u!114 &6658503070255560937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,6 +2792,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!225 &332709396
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595773943282142228}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3775657897405917482
 GameObject:
   m_ObjectHideFlags: 0

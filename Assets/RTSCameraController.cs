@@ -14,6 +14,8 @@ public class RTSCameraController : MonoBehaviour
 
     public bool cameraLocked = false;
 
+    [SerializeField] private CanvasGroup group;
+
     void LateUpdate()
     {
         transform.rotation = Quaternion.identity;
@@ -22,8 +24,27 @@ public class RTSCameraController : MonoBehaviour
     void Awake()
     {
         instance = this;
+        group.gameObject.SetActive(false);
+
     }
 
+    public void FadeInHud()
+    {
+        StartCoroutine((IFadeIn()));
+    }
+
+    IEnumerator IFadeIn()
+        {
+            float timer = 0f;
+            group.gameObject.SetActive(true);
+            do
+            {
+                timer += Time.deltaTime;
+                group.alpha = Mathf.Lerp(0, 1, timer);
+                yield return null;
+            }
+            while (timer <= 1) ;
+        }
     
     void Update()
     {
@@ -32,17 +53,17 @@ public class RTSCameraController : MonoBehaviour
 
         // Keyboard controls for debug, replace this with event driven DPad later
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = SimpleInput.GetAxis("Horizontal");
+        float vertical = SimpleInput.GetAxis("Vertical");
         
         if (Mathf.Abs(horizontal) > .001f)
         {
-            cameraParent.localPosition += horizontal * moveSpeed * Vector3.left;
+            cameraParent.localPosition += horizontal * moveSpeed * Vector3.back;
             cameraIsPanning = true;
         }
         if (Mathf.Abs(vertical) > .001f)
         {
-            cameraParent.localPosition += vertical * moveSpeed * Vector3.forward;
+            cameraParent.localPosition += vertical * moveSpeed * Vector3.right;
             cameraIsPanning = true;
         }
 
