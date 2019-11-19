@@ -275,6 +275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483215613, guid: 41e036104fb93154288777bd50cb86b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 810374196594232853, guid: 41e036104fb93154288777bd50cb86b1,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -885,8 +889,8 @@ MonoBehaviour:
     AdaptFOV: {x: 0, y: 0}
   _leiaStateId: HPO
   _desiredLeiaStateId: HPO
-  _antiAliasing: 1
-  _SwitchModeOnSceneChange: 1
+  _antiAliasing: 4
+  _SwitchModeOnSceneChange: 0
 --- !u!4 &1085537829
 Transform:
   m_ObjectHideFlags: 1

@@ -28,7 +28,7 @@ namespace StellarArmada.Entities.Ships
 
         public SelectorEvent OnHighlightTargetSet;
 
-        public bool targetIsFriendly;
+        [HideInInspector] public bool targetIsFriendly;
 
         // Private reference vars
         protected float doubleTapThreshold = .5f;

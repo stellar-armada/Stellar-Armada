@@ -2,6 +2,7 @@
 using System.Linq;
 using Mirror;
 using StellarArmada.IO;
+using StellarArmada.Player;
 using UnityEngine;
 
 namespace StellarArmada.Entities.Ships
@@ -15,6 +16,14 @@ namespace StellarArmada.Entities.Ships
             instance = this;
         }
 
+        void Start()
+        {
+            localPlayerControllerTransform = PlayerController.localPlayer.transform;
+        }
+
+        private Transform localPlayerControllerTransform;
+
+        private Vector3 lastHitPosition;
         
         public float scaleXY = 600f; // distance between ships next to, above and below
         public float maxScaleXY = 2400f;
@@ -38,7 +47,8 @@ namespace StellarArmada.Entities.Ships
         protected Vector3 avgPosition;
         protected Vector4 averageRotation;
         protected float deadZone = .0001f;
-        
+        Vector3 centerOfMassForward = Vector3.zero;
+
         public Dictionary<Ship, Vector3> GetFormationPositionsForShips(List<Ship> ships)
         {
             shipPositions = new Dictionary<Ship, Vector3>();
@@ -93,12 +103,22 @@ namespace StellarArmada.Entities.Ships
                     pos.y *= scaleXY;
                     pos.z *= scaleZ;
 
+                    if (PlatformManager.instance.Platform == PlatformManager.PlatformType.VR)
+                        centerOfMassForward = Quaternion.Euler(ShipPlacementCursor.instance.transform.forward) * pos;
+                    // 2D - calculate distance by mouse hit
+                    else
+                        // Handle mobile
+                        if (RTSCameraController.instance != null)
+                        {
+                            Vector3 forward = localPlayerControllerTransform.forward;
+                            centerOfMassForward = Quaternion.Euler(forward.x, 0, forward.z) * pos;
+                        }
+
                     // Calculate the position in real space and order ships by distance
 
                     var lineShips = shipsByLine[shipLine].OrderBy(s =>
                             Vector3.Distance(
-                                centerOfMass +
-                                Quaternion.Euler(ShipPlacementCursor.instance.transform.forward) * pos,
+                                centerOfMass + centerOfMassForward,
                                 s.transform.position))
                         .ToList();
 

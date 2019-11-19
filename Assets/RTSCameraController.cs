@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class RTSCameraController : MonoBehaviour
 {
-    [SerializeField] Transform cameraParent;
+    public static RTSCameraController instance;
+    
+    public Transform cameraParent;
 
     [SerializeField] private float moveSpeed = 10;
 
     private bool cameraIsPanning;
 
+    public bool cameraLocked = false;
+
     void LateUpdate()
     {
         transform.rotation = Quaternion.identity;
     }
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     
     void Update()
     {
@@ -21,41 +31,29 @@ public class RTSCameraController : MonoBehaviour
         cameraIsPanning = false;
 
         // Keyboard controls for debug, replace this with event driven DPad later
-        if (Input.GetKey(KeyCode.S))
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        
+        if (Mathf.Abs(horizontal) > .001f)
         {
-            cameraParent.localPosition += Vector3.left * moveSpeed;
+            cameraParent.localPosition += horizontal * moveSpeed * Vector3.left;
             cameraIsPanning = true;
         }
-
-        if (Input.GetKey(KeyCode.W))
+        if (Mathf.Abs(vertical) > .001f)
         {
-            cameraParent.localPosition += Vector3.right * moveSpeed;
+            cameraParent.localPosition += vertical * moveSpeed * Vector3.forward;
             cameraIsPanning = true;
         }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            cameraParent.localPosition += Vector3.forward * moveSpeed;
-            cameraIsPanning = true;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            cameraParent.localPosition += Vector3.back * moveSpeed;
-            cameraIsPanning = true;
-        }
-
 
         // Calculate distance from the camera to our flagship (local space 0)
         float cameraDistance = Vector3.Distance(Vector3.zero, cameraParent.localPosition);
-        
-        Debug.Log("Camera distance: " + cameraDistance);
-
         // If the camera isn't being moved and it's not zero'd, move it back to 0 at fixed move speed
-        if (!cameraIsPanning && cameraDistance > .01f)
+        if (!cameraIsPanning && !cameraLocked && cameraDistance > .01f)
         {
+            Vector3 localPos = cameraParent.localPosition;
             // Get the direction to move by multiplying the normalized position by the inverted movement speed
-            Vector3 directiontoMove = (cameraParent.localPosition.normalized * -moveSpeed);
+            Vector3 directiontoMove = (localPos.normalized * -moveSpeed);
 
             // If it's gonna overshoot the intended distance, clamp it to the zero vector in 2D space
             if (directiontoMove.magnitude > cameraDistance)
@@ -64,9 +62,9 @@ public class RTSCameraController : MonoBehaviour
             // Otherwise, move it toward
             else
                 cameraParent.localPosition =
-                    new Vector3(cameraParent.localPosition.x + directiontoMove.x,
+                    new Vector3(localPos.x + directiontoMove.x,
                         0,
-                        cameraParent.localPosition.z + directiontoMove.z);
+                        localPos.z + directiontoMove.z);
         }
     }
 }

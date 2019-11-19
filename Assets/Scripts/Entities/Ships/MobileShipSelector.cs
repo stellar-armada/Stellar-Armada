@@ -4,6 +4,7 @@ using StellarArmada.IO;
 using UnityEngine;
 using StellarArmada.Player;
 using StellarArmada.UI;
+using UnityEngine.UI;
 
 #pragma warning disable 0649
 namespace StellarArmada.Entities.Ships
@@ -14,6 +15,10 @@ namespace StellarArmada.Entities.Ships
         // Keep track of the current selected object
         ISelectable selectable;
         ISelectable highlightable;
+
+        public string altButton = "Alt";
+
+        private bool altButtonIsDown;
 
         private Camera cam;
 
