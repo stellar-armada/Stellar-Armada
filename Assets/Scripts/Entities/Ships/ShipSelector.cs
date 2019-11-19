@@ -19,7 +19,7 @@ namespace StellarArmada.Entities.Ships
     {
         public static ShipSelector instance;
         
-        void Awake() => instance = this;
+        protected virtual void Awake() => instance = this;
 
         // Reference to our local player. Serialized so we don't need anti-race logic
         [SerializeField] protected PlayerController playerController;

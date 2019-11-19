@@ -25,6 +25,7 @@ public class Shipyard : MonoBehaviour
 
     public GameObject WarpButton;
 
+    // TO-DO: Delete this or reroute the logic to a better warning on screen (maybe part of portrait swapper)
     public GameObject FlagshipWarning;
 
     private List<UIShipyardShip> shipyardShips = new List<UIShipyardShip>();
@@ -43,7 +44,8 @@ public class Shipyard : MonoBehaviour
     {
         instance = this;
         WarpButton.SetActive(false);
-        FlagshipWarning.SetActive(true);
+        if(FlagshipWarning != null)
+            FlagshipWarning.SetActive(true);
     }
 
 
@@ -207,7 +209,8 @@ public class Shipyard : MonoBehaviour
         if (localPlayerCaptainCount == 1)
         {
             WarpButton.SetActive(true);
-            FlagshipWarning.SetActive(false);
+            if(FlagshipWarning != null)
+                FlagshipWarning.SetActive(false);
             return; // If there's a captain for current player, we're good
         }
 
@@ -216,7 +219,8 @@ public class Shipyard : MonoBehaviour
             team.prototypes.Where(p => p.hasCaptain == false).OrderByDescending(p => ShipPriceManager.instance.shipPriceDictionary[p.shipType]).ToList();
 
         WarpButton.SetActive(false);
-        FlagshipWarning.SetActive(true);
+        if(FlagshipWarning != null)
+            FlagshipWarning.SetActive(true);
     }
 
 
@@ -224,15 +228,6 @@ public class Shipyard : MonoBehaviour
     {
         if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
             PlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
-
-        Destroy(ship.gameObject);
-    }
-
-
-    public void DestroyShip(UIShipyardShip ship)
-    {
-        if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
-            HumanPlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
 
         Destroy(ship.gameObject);
     }

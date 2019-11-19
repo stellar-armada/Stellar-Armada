@@ -17,7 +17,11 @@ namespace StellarArmada.Entities.Ships
 
         private Camera cam;
 
-        void Awake() => cam = Camera.main;
+        protected override void Awake()
+        {
+            base.Awake();
+            cam = Camera.main;
+        } 
 
         // Set whenever a raycast hits a ship
         RaycastHit hit;

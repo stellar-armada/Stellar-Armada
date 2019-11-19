@@ -65,19 +65,6 @@ public class LocalMenuStateManager : MonoBehaviour
     {
         HideMenu();
         // Format shipyard data and feed into createships for team
-           HumanPlayerController.localPlayer.CmdCreateShipsForTeam();
-   
-            // initialize warp and on-screen warp effects
-            MiniMap.instance.transform.localScale = Vector3.zero; // Zero out the minimap on start
-            
-            // on dewarp, hide warp effects and scale up minimap
-    }
-
-    public void QuitMatch()
-    {
-        if(HumanPlayerController.localPlayer.isServer) NetworkServer.DisconnectAll();
-        if(HumanPlayerController.localPlayer.isClient) NetworkClient.Disconnect();
-        // Format shipyard data and feed into createships for team
         PlayerController.localPlayer.CmdCreateShipsForTeam();
 
         // initialize warp and on-screen warp effects

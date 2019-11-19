@@ -91,7 +91,7 @@ namespace StellarArmada.Entities.Ships
             {
                 ship.movement.EnableMovement();
                 ship.weaponSystemController.weaponSystemsEnabled = true;
-                ship.miniMapStatusBar.ShowStatusBar();
+                ship.shipStatusBar.ShowStatusBar();
                 ship.shield.gameObject.SetActive(true);
                 ship.shield.shieldEffectController.SetShieldActive(true, true);
                 

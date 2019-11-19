@@ -22,7 +22,7 @@ namespace StellarArmada.Entities.Ships
         void Start()
         {
             ShipSelectionManager.instance.OnSelectionChanged += ShowPlacements;
-            VRShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
+            ShipSelector.instance.OnHighlightTargetSet += HandleShipHighlighted;
         }
 
         private bool lastVal;
@@ -51,7 +51,7 @@ namespace StellarArmada.Entities.Ships
             foreach (Ship s in ships)
             {
                 // Get the placement indicator
-                ShipPlacementIndicator pI = ShipPlacementUIManager.instance.placementIndicators.Single(p => p.entity == s);
+                ShipPlacementIndicator pI = ShipPlacementUIManager.placementIndicators.Single(p => p.entity == s);
 
                 //Activate
                 pI.gameObject.SetActive(true);

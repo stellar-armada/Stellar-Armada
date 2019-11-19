@@ -4,6 +4,7 @@ using Mirror;
 using StellarArmada.Player;
 using StellarArmada.Teams;
 using StellarArmada.UI;
+using UnityEngine.Serialization;
 
 // In the current iteration, ships are organized into three formation roles
 // Ships will be stacked in a grid adjacent to other ships in their line
@@ -37,7 +38,7 @@ namespace StellarArmada.Entities.Ships
         public ShipWarp
             shipWarp; // Manages the visual ship warp, as well as enabling the ship for command when warped in
 
-        public MiniMapStatusBar miniMapStatusBar; // Insignia, health/shields and captain nameplate in the minimap
+        [FormerlySerializedAs("miniMapStatusBar")] public ShipStatusBar shipStatusBar; // Insignia, health/shields and captain nameplate in the minimap
         public ShipSelectionHandler shipSelectionHandler; // Handles all logic related to local player selection
 
         public Action OnCaptainUpdated = delegate { }; // Delegate called when a captain is set for the ship
@@ -68,7 +69,6 @@ namespace StellarArmada.Entities.Ships
                 OnCaptainUpdated?.Invoke();
             }
 
-            captain.PickCapitalShip(this);
             bridge.ActivateBridgeForLocalPlayer();
         }
 
@@ -98,7 +98,7 @@ namespace StellarArmada.Entities.Ships
             if (team != null && team.entities.Contains(this) && team.teamId != newTeamId) team.RemoveEntity(this);
             team = TeamManager.instance.GetTeamByID(newTeamId);
             team.AddEntity(this);
-            miniMapStatusBar.SetInsignia(team.insignia);
+            shipStatusBar.SetInsignia(team.insignia);
             
             OnTeamChange?.Invoke();
         }
@@ -121,7 +121,7 @@ namespace StellarArmada.Entities.Ships
         {
             // TO DO -- move these all to delegate subscriptions instead of direct calls
             isAlive = false;
-            miniMapStatusBar.FadeOutStatusBar();
+            shipStatusBar.FadeOutStatusBar();
             entityExplosion.Explode();
             weaponSystemController.weaponSystemsEnabled = false;
             weaponSystemController.HideWeaponSystems();

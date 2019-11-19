@@ -18,7 +18,7 @@ namespace StellarArmada.Entities.Ships
         void Awake()
         {
             t = transform;
-            ShipPlacementUIManager.instance.placementIndicators.Add(this);
+            ShipPlacementUIManager.placementIndicators.Add(this);
         }
 
         void Start()
