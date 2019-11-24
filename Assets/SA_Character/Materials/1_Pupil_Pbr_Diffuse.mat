@@ -69,13 +69,13 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighlightCellOffset: -0.95
+    - _HighlightCellOffset: -0.5
     - _HighlightCellSharpness: 0.01
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShadowContribution: 0.5
+    - _ShadowContribution: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -93,3 +93,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _HighlightTint: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+  m_BuildTextureStacks: []

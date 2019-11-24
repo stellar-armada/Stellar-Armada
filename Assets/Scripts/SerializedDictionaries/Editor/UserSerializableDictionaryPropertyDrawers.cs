@@ -26,4 +26,7 @@ namespace StellarArmada
     
     [CustomPropertyDrawer((typeof(WinConditionDictionary)))]
     public class WinConditionDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
+    
+    [CustomPropertyDrawer((typeof(PlatformGameObjectDictionary)))]
+    public class PlatformGameObjectDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 }

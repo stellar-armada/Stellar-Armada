@@ -8,6 +8,7 @@ public class PlatformManager : MonoBehaviour
     public enum PlatformType
     {
         MOBILE,
+        MOBILE_LEIA,
         DESKTOP,
         VR
 }

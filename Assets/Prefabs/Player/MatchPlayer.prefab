@@ -4103,6 +4103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7280398554388253754}
   - component: {fileID: 6576877350021539792}
+  - component: {fileID: 1658741073495474668}
   m_Layer: 0
   m_Name: RTS Camera
   m_TagString: Untagged
@@ -4142,6 +4143,23 @@ MonoBehaviour:
   moveSpeed: 250
   cameraLocked: 0
   group: {fileID: 1790682362612041272}
+--- !u!114 &1658741073495474668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000981278878386728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607943f40e95856498cf68e10e926a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformGameObjectDictionary:
+    m_keys: 0000000001000000
+    m_values:
+    - {fileID: 8947288122139026988}
+    - {fileID: 1126610405373570659}
 --- !u!1 &7298466178807937279
 GameObject:
   m_ObjectHideFlags: 0
