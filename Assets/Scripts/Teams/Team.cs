@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
-using StellarArmada.Entities;
-using StellarArmada.Entities.Ships;
+using StellarArmada.Ships;
 using StellarArmada.Levels;
 using StellarArmada.Match;
 using StellarArmada.Player;
@@ -34,7 +33,7 @@ namespace StellarArmada.Teams
         
         public Texture insignia;
         public List<PlayerController> players = new List<PlayerController>();
-        public List<NetworkEntity> entities = new List<NetworkEntity>();
+        public List<Ship> entities = new List<Ship>();
         
         public delegate void TeamEvent();
 
@@ -90,48 +89,48 @@ namespace StellarArmada.Teams
         }
 
         // Hardcoded 3 groups into each team
-        public List<List<NetworkEntity>> groups = new List<List<NetworkEntity>>
+        public List<List<Ship>> groups = new List<List<Ship>>
         {
-            new List<NetworkEntity>(),
-            new List<NetworkEntity>(),
-            new List<NetworkEntity>(),
+            new List<Ship>(),
+            new List<Ship>(),
+            new List<Ship>(),
         };
 
-        public void ChangeEntityGroup(NetworkEntity networkEntity, int group)
+        public void ChangeEntityGroup(Ship ship, int group)
         {
             // Check if it's already in a group
             for (int i = 0; i < groups.Count; i++)
             {
                 // If it is, check if the group is the same as the one we're trying to change to
-                if (groups[i].Contains(networkEntity))
+                if (groups[i].Contains(ship))
                 {
                     // If it isn't, remove from the old group and add to the new group
                     // Otherwise do nothing
                     if (i != group)
                     {
-                        RemoveEntityFromGroup(networkEntity, i);
+                        RemoveEntityFromGroup(ship, i);
                     }
                 }
             }
         }
 
-        public void AddEntityToGroup(NetworkEntity networkEntity, int group)
+        public void AddEntityToGroup(Ship ship, int group)
         {
-            groups[group].Add(networkEntity);
+            groups[group].Add(ship);
 
             for (int i = 0; i < groups.Count; i++)
             {
                 if (i == group) continue;
-                if (groups[i].Contains(networkEntity))
+                if (groups[i].Contains(ship))
                 {
-                    RemoveEntityFromGroup(networkEntity, i);
+                    RemoveEntityFromGroup(ship, i);
                 }
             }
         }
 
-        public void RemoveEntityFromGroup(NetworkEntity networkEntity, int group)
+        public void RemoveEntityFromGroup(Ship ship, int group)
         {
-            groups[group].Remove(networkEntity);
+            groups[group].Remove(ship);
         }
 
         [Command]
@@ -163,16 +162,16 @@ namespace StellarArmada.Teams
             players.Remove(playerController);
         }
 
-        public void AddEntity(NetworkEntity networkEntity)
+        public void AddEntity(Ship ship)
         {
-            entities.Add(networkEntity);
+            entities.Add(ship);
             OnEntitiesUpdated?.Invoke();
         }
 
 
-        public void RemoveEntity(NetworkEntity networkEntity)
+        public void RemoveEntity(Ship ship)
         {
-            entities.Remove(networkEntity);
+            entities.Remove(ship);
         }
 
         public GameObject GetGameObject()

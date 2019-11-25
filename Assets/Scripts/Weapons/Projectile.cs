@@ -1,4 +1,4 @@
-﻿using StellarArmada.Entities;
+﻿using StellarArmada.Ships;
 using StellarArmada.Levels;
 using UnityEngine;
 using StellarArmada.Pooling;

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using StellarArmada.Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CanvasDisplaySwitcher : MonoBehaviour
 {

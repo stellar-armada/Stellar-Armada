@@ -1,4 +1,4 @@
-﻿using StellarArmada.Entities.Ships;
+﻿using StellarArmada.Ships;
 using UnityEngine;
 
 [System.Serializable]

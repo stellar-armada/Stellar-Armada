@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
-using StellarArmada.Entities.Ships;
+using StellarArmada.Ships;
 using StellarArmada.Player;
 using StellarArmada.Teams;
 using StellarArmada.UI;

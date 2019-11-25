@@ -1,5 +1,4 @@
-﻿using Mirror;
-using StellarArmada.Levels;
+﻿using StellarArmada.Levels;
 using StellarArmada.Player;
 using UnityEngine;
 

@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using StellarArmada.Entities;
+using StellarArmada.Ships;
 using StellarArmada.Player;
-using StellarArmada.Entities.Ships;
 using StellarArmada.Teams;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 #pragma warning disable 0649
 namespace StellarArmada.UI
@@ -17,7 +14,7 @@ namespace StellarArmada.UI
 
         public static GroupUIManager instance;
         
-        [FormerlySerializedAs("humanPlayerController")] [SerializeField] private PlayerController playerController;
+        [SerializeField] private PlayerController playerController;
 
         private List<UIGroupShip> ships = new List<UIGroupShip>();
         [SerializeField] List<Transform> uiShipContainers = new List<Transform>();

@@ -5,16 +5,31 @@ public class LockRotationToScene : MonoBehaviour
 {
     private Transform t;
     private Transform rootTransform;
+
+    public enum LockType
+    {
+        ToShip,
+        ToRtsCamera
+    }
+
+    [SerializeField] private LockType lockType;
+    
     void Start()
     {
         t = transform;
     }
     void LateUpdate()
     {
-        if (rootTransform == null)
+        switch (lockType)
         {
-            if(LocalPlayerBridgeSceneRoot.instance != null) rootTransform = LocalPlayerBridgeSceneRoot.instance.transform;
+            case LockType.ToShip:
+                if (rootTransform == null && LocalPlayerBridgeSceneRoot.instance != null)
+                    rootTransform = LocalPlayerBridgeSceneRoot.instance.transform;
+                else t.rotation = rootTransform.rotation;
+                break;
+            case LockType.ToRtsCamera:
+                t.rotation = Quaternion.identity;
+                break;
         }
-        else t.rotation = rootTransform.rotation;
     }
 }

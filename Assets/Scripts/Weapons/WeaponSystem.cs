@@ -1,5 +1,6 @@
-﻿using StellarArmada.Entities;
+﻿using StellarArmada.Ships;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #pragma warning disable 0649
 namespace StellarArmada
@@ -10,9 +11,9 @@ namespace StellarArmada
         public IWeaponSystemController owningWeaponSystemController;
 
         public Transform target;
-        public NetworkEntity targetNetworkEntity;
+        [FormerlySerializedAs("targetShip")] [FormerlySerializedAs("targetNetworkEntity")] public Ship targetShip;
 
-        public NetworkEntity owningNetworkEntity;
+        [FormerlySerializedAs("owningShip")] [FormerlySerializedAs("owningNetworkEntity")] public Ship owningShip;
 
         [SerializeField] private float damagePerHit;
 
@@ -54,13 +55,13 @@ namespace StellarArmada
         public void SetTarget(Transform t)
         {
             target = t;
-            targetNetworkEntity = t.GetComponent<IDamageable>().GetOwningEntity();
+            targetShip = t.GetComponent<IDamageable>().GetOwningEntity();
         }
 
         public void ClearTarget()
         {
             target = null;
-            targetNetworkEntity = null;
+            targetShip = null;
         }
 
         public GameObject GetGameObject()

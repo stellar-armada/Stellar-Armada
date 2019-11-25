@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
-using StellarArmada.Entities;
+using StellarArmada.Ships;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #pragma warning disable 0649
 namespace StellarArmada.Levels
 {
     public class MiniMapEntity : MonoBehaviour
     {
-        public NetworkEntity networkEntity;
+        [FormerlySerializedAs("Ship")] [FormerlySerializedAs("networkEntity")] public Ship ship;
         
         private Transform e; // entity ref
         private Transform t; // this transform ref
@@ -20,8 +21,8 @@ namespace StellarArmada.Levels
         {
             t = transform;
 
-            networkEntity.OnTeamChange += HandleTeamChange;
-            networkEntity.OnEntityDead += Deactivate;
+            ship.OnTeamChange += HandleTeamChange;
+            ship.OnEntityDead += Deactivate;
         }
 
         public void Deactivate()
@@ -34,7 +35,7 @@ namespace StellarArmada.Levels
 
         public void Start()
         {
-            e = networkEntity.transform;
+            e = ship.transform;
             t.SetParent(VRMiniMap.instance.transform);
             t.localScale = Vector3.one;
             t.localPosition = Vector3.zero;
@@ -44,7 +45,7 @@ namespace StellarArmada.Levels
         {
             foreach(Renderer ren in renderers)
             {
-                ren.material.SetColor(teamColorMaterialInput, networkEntity.GetTeam().color);
+                ren.material.SetColor(teamColorMaterialInput, ship.GetTeam().color);
             }
         }
         

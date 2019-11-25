@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using StellarArmada.Player;
+﻿using StellarArmada.Player;
 using StellarArmada.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;

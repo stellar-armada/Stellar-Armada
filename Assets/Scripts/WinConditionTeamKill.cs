@@ -2,7 +2,6 @@
 using StellarArmada.Match;
 using StellarArmada.Player;
 using StellarArmada.Teams;
-using UnityEngine;
 
 public class WinConditionTeamKill : WinCondition
 {

@@ -1,11 +1,8 @@
 ﻿using Mirror;
-using StellarArmada.Entities.Ships;
 using StellarArmada.Levels;
-using StellarArmada.Match;
 using StellarArmada.Networking;
 using StellarArmada.Player;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum MenuState
 {

@@ -3,8 +3,6 @@ using MatchUp;
 using NobleConnect.Mirror;
 using UnityEngine;
 using Mirror;
-using StellarArmada.Player;
-using UnityEngine.SceneManagement;
 
 namespace StellarArmada.Networking
 {

@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Mirror;
-using StellarArmada.Entities;
-using StellarArmada.Entities.Ships;
 using UnityEngine;
 
 #pragma warning disable 0649

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
-using System.Collections.Generic;
 using StellarArmada.Pooling;
 
 #pragma warning disable 0649

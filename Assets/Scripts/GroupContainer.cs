@@ -1,5 +1,4 @@
-﻿using StellarArmada.UI;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 #pragma warning disable 0649

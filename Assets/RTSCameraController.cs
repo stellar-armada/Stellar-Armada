@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RTSCameraController : MonoBehaviour
@@ -16,6 +15,8 @@ public class RTSCameraController : MonoBehaviour
 
     [SerializeField] private CanvasGroup group;
 
+    private Vector3 lastPosition;
+    
     void LateUpdate()
     {
         transform.rotation = Quaternion.identity;
@@ -26,6 +27,11 @@ public class RTSCameraController : MonoBehaviour
         instance = this;
         group.gameObject.SetActive(false);
 
+    }
+
+    public void LockCamera(bool locked)
+    {
+        cameraLocked = locked;
     }
 
     public void FadeInHud()
@@ -69,6 +75,13 @@ public class RTSCameraController : MonoBehaviour
 
         // Calculate distance from the camera to our flagship (local space 0)
         float cameraDistance = Vector3.Distance(Vector3.zero, cameraParent.localPosition);
+
+
+        if (cameraLocked)
+            cameraParent.position = lastPosition;
+        else
+            lastPosition = cameraParent.position;
+        
         // If the camera isn't being moved and it's not zero'd, move it back to 0 at fixed move speed
         if (!cameraIsPanning && !cameraLocked && cameraDistance > .01f)
         {

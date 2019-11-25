@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using StellarArmada.Entities;
+using StellarArmada.Ships;
 using StellarArmada.Pooling;
 
 #pragma warning disable 0649
@@ -41,8 +41,8 @@ namespace StellarArmada.Weapons
         private Collider[] hitColliders;
         private List<IDamageable> damageables;
         private IDamageable d;
-        NetworkEntity damageableEntity;
-        NetworkEntity damager;
+        Ship _damageableShip;
+        Ship damager;
         Vector3 targetX;
         Quaternion targetRotationX;
         Vector3 targetY;
@@ -187,7 +187,7 @@ namespace StellarArmada.Weapons
 
         protected void Fire(WeaponType type)
         {
-            if (targetNetworkEntity == null || !targetNetworkEntity.IsAlive() || !CanHitPosition(targetNetworkEntity.transform.position))
+            if (targetShip == null || !targetShip.IsAlive() || !CanHitPosition(targetShip.transform.position))
             {
                 // IF we're not facing the target, let's see if we can get one
                 ClearTarget();

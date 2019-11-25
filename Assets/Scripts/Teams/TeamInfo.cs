@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using StellarArmada.Entities.Ships;
+using StellarArmada.Ships;
 
 #pragma warning disable 0649
 namespace StellarArmada

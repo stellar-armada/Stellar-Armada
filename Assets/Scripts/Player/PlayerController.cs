@@ -1,12 +1,10 @@
 ﻿using System.Linq;
 using Mirror;
-using StellarArmada.Entities;
+using StellarArmada.Ships;
 using UnityEngine;
-
-
-using StellarArmada.Entities.Ships;
 using StellarArmada.Match;
 using StellarArmada.Teams;
+using ShipFactory = StellarArmada.Ships.ShipFactory;
 
 #pragma warning disable 0649
 namespace StellarArmada.Player
@@ -46,24 +44,24 @@ namespace StellarArmada.Player
         [Command]
         public void CmdOrderEntityToStop(uint entityId)
         {
-            NetworkEntity entity = EntityManager.GetEntityById(entityId);
-            entity.movement.ServerStopMovement();
+            Ship ship = ShipManager.GetEntityById(entityId);
+            ship.movement.ServerStopMovement();
         }
 
         [Command]
         public void CmdOrderEntityToPursue(uint pursuerId, uint quarryId, bool friendly)
         {
-            NetworkEntity pursuerEntity = EntityManager.GetEntityById(pursuerId);
-            NetworkEntity quarryEntity = EntityManager.GetEntityById(quarryId);
-            pursuerEntity.movement.ServerPursue(quarryEntity.GetEntityId());
-            pursuerEntity.weaponSystemController.ServerSetTarget(quarryEntity.GetEntityId(), friendly);
+            Ship pursuerShip = ShipManager.GetEntityById(pursuerId);
+            Ship quarryShip = ShipManager.GetEntityById(quarryId);
+            pursuerShip.movement.ServerPursue(quarryShip.GetEntityId());
+            pursuerShip.weaponSystemController.ServerSetTarget(quarryShip.GetEntityId(), friendly);
         }
         
         [Command]
         public void CmdOrderEntityToMoveToPoint(uint entityId, Vector3 pos, Quaternion rot)
         {
-            NetworkEntity entity = EntityManager.GetEntityById(entityId);
-            entity.movement.ServerMoveToPoint(pos, rot);
+            Ship ship = ShipManager.GetEntityById(entityId);
+            ship.movement.ServerMoveToPoint(pos, rot);
         }
 
         [Command]

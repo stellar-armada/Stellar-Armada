@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using StellarArmada.Entities.Ships;
-using StellarArmada.Levels;
-using StellarArmada.Match;
+﻿using StellarArmada.Ships;
 using UnityEngine;
 
 namespace StellarArmada.UI

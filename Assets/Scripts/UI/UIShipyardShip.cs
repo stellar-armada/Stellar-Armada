@@ -1,6 +1,5 @@
-﻿using System;
-using System.Linq;
-using StellarArmada.Entities.Ships;
+﻿using System.Linq;
+using StellarArmada.Ships;
 using StellarArmada.Player;
 using StellarArmada.Teams;
 using UnityEngine;
