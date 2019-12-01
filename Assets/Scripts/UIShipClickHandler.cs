@@ -14,9 +14,7 @@ public class UIShipClickHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-           Debug.Log("UIShipClickHandler: OnPointerClick attempted");
         if (shipyardShip.id < 0) return;
-        Debug.Log("UIShipClickHandler: OnPointerClick");
 
         int i = PlayerController.localPlayer.GetTeam().prototypes.IndexOf(shipyardShip.GetPrototype());
         PlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(i, PlayerController.localPlayer.netId);

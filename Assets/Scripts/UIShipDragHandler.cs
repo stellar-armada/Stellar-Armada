@@ -54,6 +54,8 @@ using StellarArmada.UI;
            else
            {
                t.SetParent(PlayerCanvasDraggableLayer.instance.transform);
+               if (shipyardShip != null)
+                   shipyardShip.HideShipyardDescriptionPanel();
            }
 
            // disable raycasting on this object
@@ -111,6 +113,7 @@ using StellarArmada.UI;
                    Debug.Log("DragHandler: MoveShip: " + g.groupId);
 
                    Shipyard.instance.MoveShip(shipyardShip, g);
+                   shipyardShip.ResetShipyardDescriptionPanel();
                }
                else if (groupShip != null)
                {

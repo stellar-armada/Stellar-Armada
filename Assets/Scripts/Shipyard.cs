@@ -39,6 +39,9 @@ public class Shipyard : MonoBehaviour
 
     [SerializeField] private GameObject tutorialPane;
 
+    private bool hasCaptain;
+
+    
     void Awake()
     {
         instance = this;
@@ -49,28 +52,24 @@ public class Shipyard : MonoBehaviour
     public void HideTutorialPane()
     {
         tutorialPane.SetActive(false);
-
     }
 
 
     public void InitializeShipyard()
     {
         localPlayer = PlayerController.localPlayer;
-
         localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
-
         team = TeamManager.instance.GetTeamByID(localPlayer.teamId);
         team.prototypes.Callback += OnShipListUpdated;
         
         PopulateUIShipyardShips();
-        
-       // Invoke(nameof(InitializeFlagship), .5f);
+        Invoke(nameof(InitializeFlagship), 1f);
     }
 
     void InitializeFlagship()
     {
-        // TO-DO Do something with this. For now we're storing here
-        // PlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(0, PlayerController.localPlayer.netId);
+        // Set to the first ship that isn't already captained
+        PlayerController.localPlayer.CmdSetRandomFlagshipForLocalPlayer(PlayerController.localPlayer.netId);
     }
 
     void HandleTeamChange()
@@ -123,10 +122,12 @@ public class Shipyard : MonoBehaviour
     {
         // find ship in list
         UIShipyardShip ship = shipyardShips.Single(s => s.id == proto.id);
+        
         // remove from list
-        shipyardShips.Remove(ship);
-        // destroy object
-        Destroy(ship);
+            shipyardShips.Remove(ship);
+            // destroy object
+            Destroy(ship);
+        
         // Recalculate ship costs, etc
         ShowAvailableShips();
     }
@@ -160,7 +161,6 @@ public class Shipyard : MonoBehaviour
         }
  
         ShowAvailableShips();
-
     }
 
 
@@ -170,6 +170,8 @@ public class Shipyard : MonoBehaviour
             PlayerController.localPlayer.GetTeam().pointsToSpend -
             ShipPriceManager.instance.GetGroupPrice(team.prototypes.ToList()));
         availablePointsText.text = currentPoints.ToString();
+        
+        Debug.Log("Current points: " + currentPoints);
 
         // Get all entity types represented
         SyncListShipType availableShipTypes = team.availableShipTypes;
@@ -180,19 +182,23 @@ public class Shipyard : MonoBehaviour
 
         foreach (UIShipyardShip s in g)
         {
-            // If any is already rein our available ships pool, destroy it so we don't have two of any ships
-            if (!addedShipTypes.Contains(s.shipType))
+            Debug.Log("For UIShipyardShip " + s.shipType + " in available ships container");
+            
+            // If any is already in our available ships pool, destroy it so we don't have two of any ships
+            if (addedShipTypes.Contains(s.shipType))
             {
+                Debug.Log("For UIShipyardShip " + s.shipType + " is not contained in our ships container");
+
                 Destroy(s.gameObject);
                 continue;
             }
 
-            addedShipTypes.Add(s.GetPrototype().shipType);
-
-            s.SetFlagshipStatus();
-
-            // if ship costs less than $ available, show it
-            if (ShipPriceManager.instance.GetShipPrice(s.shipType) > currentPoints) Destroy(s.gameObject);
+            addedShipTypes.Add(s.shipType);
+            
+            Debug.Log("Current points: " + currentPoints + " | Ship price: " + ShipPriceManager.instance.GetShipPrice(s.shipType));
+            
+            s.SetInteractable(ShipPriceManager.instance.GetShipPrice(s.shipType) < currentPoints);
+            
         }
 
         // iterate through available ship types
@@ -201,7 +207,10 @@ public class Shipyard : MonoBehaviour
             // if any are not represented in the availableship container, create one
             if (!addedShipTypes.Contains(type))
             {
-                Transform ship = UIShipFactory.instance.CreateShipyardShip(type).GetComponent<Transform>();
+                var s = UIShipFactory.instance.CreateShipyardShip(type).GetComponent<UIShipyardShip>();
+                Transform ship = s.GetComponent<Transform>();
+                s.SetInteractable(ShipPriceManager.instance.GetShipPrice(s.shipType) < currentPoints);
+
                 ship.SetParent(availableShipsContainer);
                 ship.localPosition = Vector3.zero;
                 ship.localRotation = Quaternion.identity;
@@ -210,7 +219,6 @@ public class Shipyard : MonoBehaviour
         }
     }
 
-    private bool hasCaptain;
     
     public void ValidateCaptain()
     {
@@ -239,36 +247,53 @@ public class Shipyard : MonoBehaviour
             hasCaptain = true; // Prevent this logic from happening again
 
             WarpButton.SetActive(false);
-
-
     }
 
 
     public void DestroyShip(UIShipyardShip ship)
     {
-        if (ship.id >= 0) // If the id is below zero then it's a new ship, not a fleet ship
-            PlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
+        // If the id is below zero then it's a new ship, not a fleet ship
+        if (ship.id >= 0)
+        {
+            var prototype = team.prototypes.Single(p => p.id == ship.id);
+            if (prototype.hasCaptain)
+            {
+                // TO-DO: If local player destroys their own, select the next available (or none if none are available)
 
+                ship.transform.SetParent(shipyardGroups[prototype.group].transform);
+            }
+            else
+            {
+                PlayerController.localPlayer.CmdRemoveShipFromList(ship.id);
+                Destroy(ship.gameObject);
+            }
+
+            return;
+        }
         Destroy(ship.gameObject);
     }
 
     public void MoveShip(UIShipyardShip ship, GroupContainer g)
     {
-        if (ship.id < 0
-        ) // Shipyard ships are inited with an id of -1 -- so this much be a ship in our "available" container, not already in our fleet
+        if (ship.id < 0 ) // Shipyard ships are inited with an id of -1 -- so this must be a ship in our "available" container, not already in our fleet
         {
             PlayerController.localPlayer.CmdAddShipToList(ship.shipType, g.groupId);
             Destroy(ship.gameObject);
         }
         else
         {
-            ShipPrototype proto = team.prototypes.Single(p => p.id == ship.id);
+            Debug.Log("Ship ID: " + ship.id);
+
+            ShipPrototype proto = team.prototypes.Single(p => p.id == (uint)ship.id);
+            
+            ship.transform.SetParent(g.transform);
+
             if (proto.group == g.groupId)
             {
                 // Player moved item back to it's original, so we can do nothing
-                ship.transform.SetParent(g.transform);
                 return;
             }
+            
             PlayerController.localPlayer.CmdUpdatePrototype(ship.id, g.groupId);
         }
 

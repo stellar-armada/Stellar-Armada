@@ -460,37 +460,8 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1900663630}
-    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 2982661397305226596, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829159343130943550, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 6618942616139150729, guid: 41e036104fb93154288777bd50cb86b1,
-        type: 3}
-      propertyPath: m_CellSize.y
-      value: 120
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5531676180967741140, guid: 41e036104fb93154288777bd50cb86b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 41e036104fb93154288777bd50cb86b1, type: 3}
 --- !u!1 &400373071
 GameObject:
@@ -1170,7 +1141,6 @@ GameObject:
   - component: {fileID: 1535970560}
   - component: {fileID: 1535970559}
   - component: {fileID: 1535970558}
-  - component: {fileID: 1535970557}
   m_Layer: 0
   m_Name: StandardCamera
   m_TagString: MainCamera
@@ -1178,14 +1148,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &1535970557
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535970554}
-  m_Enabled: 1
 --- !u!124 &1535970558
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1306,7 +1268,6 @@ GameObject:
   - component: {fileID: 1900663631}
   - component: {fileID: 1900663630}
   - component: {fileID: 1900663629}
-  - component: {fileID: 1900663627}
   - component: {fileID: 1900663626}
   - component: {fileID: 1900663628}
   m_Layer: 0
@@ -1334,15 +1295,6 @@ MonoBehaviour:
   _drawCameraBounds: 1
   _cameraShift: {x: 0, y: 0}
   _renderObject: {fileID: 0}
---- !u!81 &1900663627
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8143306, guid: dd1d3613c14d241e88da69df761c5807,
-    type: 2}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900663625}
-  m_Enabled: 1
 --- !u!114 &1900663628
 MonoBehaviour:
   m_ObjectHideFlags: 0

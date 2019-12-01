@@ -108,6 +108,33 @@ namespace StellarArmada.Player
         }
         
         [Command]
+        public void CmdSetRandomFlagshipForLocalPlayer(uint localPlayerId)
+        {
+            // TO-DO -- this whole check routine could be abstracted to another function
+            
+            // If player already has a flagship, unset and dirty it
+            if (GetTeam().prototypes.Where(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId).ToArray().Length > 0)
+            {
+                Debug.Log("Player already has");
+                
+                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId);
+                proto.hasCaptain = false;
+                int index = GetTeam().prototypes.IndexOf(
+                    GetTeam().prototypes.FirstOrDefault(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId));
+                Debug.Log("Index is: " + index);
+                GetTeam().prototypes[index] = proto;
+
+            }
+            Debug.Log("SetShipCaptain");
+
+            // Get the first ship that doesn't have a captain on this team
+            var p = GetTeam().prototypes.Where(shipPrototype => !shipPrototype.hasCaptain).ToArray()[0];
+
+                SetShipCaptain(localPlayerId, GetTeam().prototypes.IndexOf(p));
+            
+        }
+        
+        [Command]
         public void CmdUpdatePrototype(int shipId, int groupId)
         {
             GetTeam().UpdatePrototype(shipId, groupId);
