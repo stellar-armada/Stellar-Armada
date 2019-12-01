@@ -44,7 +44,10 @@ namespace StellarArmada.UI
             {
             uint captain = GetPrototype().captain;
             if (captain == PlayerController.localPlayer.netId)
+            {
                 SetFlagToActiveForLocalUser();
+                FlagshipPortraitController.instance.SetFlagship(shipType);
+            }
             else
                 SetFlagToActiveForTeamMate();
             }

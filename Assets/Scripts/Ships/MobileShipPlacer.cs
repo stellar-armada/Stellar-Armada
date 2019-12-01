@@ -18,9 +18,6 @@ namespace StellarArmada.Ships
         // To-do -- this could be more performant
         [SerializeField] private string hitPlaneLayerName = "RaycastPlane";
 
-        // How far the raycasts are from each other
-        [SerializeField] private float dragToControlDirectionThreshold = 100f;
-
         private Vector2 screenSpaceStartPos = Vector2.zero;
         private Vector2 screenSpaceCurrentPos = Vector2.one;
         
@@ -30,11 +27,14 @@ namespace StellarArmada.Ships
 
         private Transform shipPlacementCursorTransform;
         
+        [SerializeField] private float scaleDistanceMin = 50f;
+        [SerializeField] private float scaleDistanceMax = 500f;
+
         void Start()
         {
             shipPlacementCursorTransform = ShipPlacementCursor.instance.transform;
-            ShipFormationManager.instance.scaleXY = Mathf.Lerp(ShipFormationManager.instance.minScaleXY, ShipFormationManager.instance.maxScaleXY, .5f);
-            ShipFormationManager.instance.scaleZ = Mathf.Lerp(ShipFormationManager.instance.minScaleZ, ShipFormationManager.instance.maxScaleZ, .5f);
+            ShipFormationManager.instance.scaleXY = ShipFormationManager.instance.minScaleXY;
+            ShipFormationManager.instance.scaleZ = ShipFormationManager.instance.minScaleZ;
         }
 
         public override void ShowPlacements()
@@ -111,14 +111,16 @@ namespace StellarArmada.Ships
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 RTSCameraController.instance.LockCamera(true);
+                ShipFormationManager.instance.scaleXY = ShipFormationManager.instance.minScaleXY;
+                ShipFormationManager.instance.scaleZ = ShipFormationManager.instance.minScaleZ;
                 // Start raycast
                 // Are we hitting the plane?
-                startPos = currentPos;
+                startPos = new Vector3(currentPos.x, 0, currentPos.y);
                 screenSpaceStartPos = Input.mousePosition;
                 thresholdIsSet = false;
 
                 Vector3 shipCoG = CalculateCenterOfGravity();
-
+                shipCoG = new Vector3(shipCoG.x, 0, shipCoG.z);
                     shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(startPos - shipCoG), Vector3.up);
                 
                 // If hitting ground plane, set is placing to true
@@ -148,33 +150,33 @@ namespace StellarArmada.Ships
             if (Input.GetMouseButton(0))
             {
                 if (!isPlacing) return;
-                
-                Vector3 shipCoG = CalculateCenterOfGravity();
 
-                if (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) > dragToControlDirectionThreshold || thresholdIsSet)
+                if (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) > scaleDistanceMin || thresholdIsSet)
                 {
                     if (!thresholdIsSet)
                         thresholdIsSet = true;
-                
-                    shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(currentPos - startPos), Vector3.up);
-                    ShipFormationManager.instance.scaleXY = Mathf.Lerp(ShipFormationManager.instance.minScaleXY, ShipFormationManager.instance.maxScaleXY,
-                        // Current distance divided by threshold
-                        (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) / dragToControlDirectionThreshold) / 2f);
                     
-                    ShipFormationManager.instance.scaleZ = Mathf.Lerp(ShipFormationManager.instance.minScaleZ, ShipFormationManager.instance.maxScaleZ,
-                        // Current distance divided by threshold
-                        (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) / dragToControlDirectionThreshold) / 2f);
-                }
+                    currentPos = new Vector3(currentPos.x, 0, currentPos.z);
 
+                    shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(currentPos - startPos), Vector3.up);
+                    
+                    float dist = (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) - scaleDistanceMin) / (scaleDistanceMax - scaleDistanceMin);
+
+                    ShipFormationManager.instance.scaleXY = Mathf.Lerp(ShipFormationManager.instance.minScaleXY, ShipFormationManager.instance.maxScaleXY, dist);
+                    ShipFormationManager.instance.scaleZ = Mathf.Lerp(ShipFormationManager.instance.minScaleZ, ShipFormationManager.instance.maxScaleZ, dist);
+                }
                 else
+                {
+                    Vector3 shipCoG = CalculateCenterOfGravity();
+                    shipCoG = new Vector3(shipCoG.x, 0, shipCoG.z);
                     shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(startPos - shipCoG), Vector3.up);
+                }
                 ShowPlacements();
                 return;
             }
             
             // If the mouse is not down, move the cursor to mouse position
-            shipPlacementCursorTransform.transform.position = currentPos;
-
+            shipPlacementCursorTransform.position = currentPos;
         }
 
         Vector3 CalculateCenterOfGravity()

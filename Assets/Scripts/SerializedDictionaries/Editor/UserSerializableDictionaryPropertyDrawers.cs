@@ -29,4 +29,7 @@ namespace StellarArmada
     
     [CustomPropertyDrawer((typeof(PlatformGameObjectDictionary)))]
     public class PlatformGameObjectDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
+    
+    [CustomPropertyDrawer((typeof(ShipTypePortraitDictionary)))]
+    public class ShipTypePortraitDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 }

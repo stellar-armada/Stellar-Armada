@@ -91,20 +91,20 @@ namespace StellarArmada.Player
             // If player already has a flagship, unset and dirty it
             if (GetTeam().prototypes.Where(p => p.hasCaptain && p.captain == localPlayerId).ToArray().Length > 0)
             {
+                Debug.Log("Player already has");
+                
                 ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId);
                 proto.hasCaptain = false;
                 int index = GetTeam().prototypes.IndexOf(
                     GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId));
+                Debug.Log("Index is: " + index);
                 GetTeam().prototypes[index] = proto;
-            }
-            
-            SetShipCaptain(localPlayerId, newIndex);
-            TargetFlagshipSetForPlayer(connectionToClient);
-        }
 
-        [TargetRpc]
-        void TargetFlagshipSetForPlayer(NetworkConnection conn)
-        {
+            }
+            Debug.Log("SetShipCaptain");
+
+            SetShipCaptain(localPlayerId, newIndex);
+            
         }
         
         [Command]
@@ -131,7 +131,10 @@ namespace StellarArmada.Player
         [Server]
         public void SetShipCaptain(uint id, int prototypeIndex)
         {
+            Debug.Log("Setting shpi captain");
             Team team = TeamManager.instance.GetTeamByID(teamId);
+            
+
             ShipPrototype newProto = team.prototypes[prototypeIndex];
 
             newProto.hasCaptain = true;

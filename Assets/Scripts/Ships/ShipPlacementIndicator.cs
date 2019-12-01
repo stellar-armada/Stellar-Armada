@@ -9,9 +9,7 @@ namespace StellarArmada.Ships
         [FormerlySerializedAs("entity")] public Ship ship;
         public ShipSelectionHandler selectionHandler;
         public GameObject visualModel;
-        [SerializeField] private LineRenderer lineRenderer;
-        public float lineRendererWidth = .1f;
-        
+
         private Transform t;
         [SerializeField] Transform transformToOriginateFrom;
 
@@ -30,13 +28,11 @@ namespace StellarArmada.Ships
             // position the placement indicator in local space
             t.localPosition = pos;
             visualModel.SetActive(true);
-            lineRenderer.enabled = true;
         }
 
         public void Hide()
         {
             visualModel.SetActive(false);
-            lineRenderer.enabled = false;
         }
 
         void LateUpdate()
@@ -45,14 +41,8 @@ namespace StellarArmada.Ships
             
             if (selectionHandler.isSelected)
             {
-                lineRenderer.SetPositions(new[]
-                {
-                    t.position,
-                    transformToOriginateFrom.position
-                });
-                var distance = Vector3.Distance(lineRenderer.GetPosition(0), lineRenderer.GetPosition(lineRenderer.positionCount - 1));
-                lineRenderer.materials[0].mainTextureScale = new Vector3(distance, 1, 1);
-                lineRenderer.widthMultiplier = lineRendererWidth;
+
+                
             }
             else // Fixes a bug where sometimes the indicator would not disable (possibly on stop all?)
             {
