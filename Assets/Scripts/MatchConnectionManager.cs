@@ -40,21 +40,15 @@ namespace StellarArmada.Networking
         // Connecting to the host works just like Mirror: Set the networkAddress and networkPort and call StartClient()
         private void OnMatchList(bool success, MatchUp.Match[] matches)
         {
-            Debug.Log("OnMatchList");
             if (success && matches != null)
             {
                 foreach (var match in matches)
                 {
                     Debug.Log(match.id + " | " + match.matchData);
                 }
-                Debug.Log("success && matches != null");
                 if (matches.Length != 0)
                 {
-                    Debug.Log("matches.Length != 0");
-
                     var matchData = matches[0].matchData;
-                    
-                    Debug.Log("Matches: " + matches.Length);
                     
                     Debug.Log( matches[0].matchData.Keys);
 

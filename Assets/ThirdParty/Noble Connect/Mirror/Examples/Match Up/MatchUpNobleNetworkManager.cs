@@ -15,7 +15,6 @@ using Mirror;
         
         public void CreateMatchManager()
         {
-            Debug.Log("Creating match manager");
             GameObject matchManager = Instantiate(matchManagerPrefab);
             NetworkServer.Spawn(matchManager);
         }
@@ -23,7 +22,6 @@ using Mirror;
         private void OnServerInitialized()
         {
             Debug.Log("Server initialized!");
-           
         }
 
         override public void Start()
@@ -34,7 +32,6 @@ using Mirror;
 
         public override void OnStartServer()
         {
-            Debug.Log("OnStartServer called");
             base.OnStartServer();
         }
 

@@ -12,21 +12,21 @@ namespace StellarArmada.Player
     // Human player controller inheriting from the player controller base class
     // Manages setting up the local stuff
     // TO-DO: PickCapitalShip is not automatic
-    
+
     public class PlayerController : NetworkBehaviour
     {
         // Handy reference to the local player controller, set when the player inits
         public static PlayerController localPlayer;
-        
+
         public GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
-        
+
         public delegate void PlayerControllerInitializationEvent();
 
         public PlayerControllerInitializationEvent OnLocalPlayerInitialized;
 
         public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
 
-        
+
         void Start()
         {
             PlayerManager.instance.RegisterPlayer(this);
@@ -56,7 +56,7 @@ namespace StellarArmada.Player
             pursuerShip.movement.ServerPursue(quarryShip.GetEntityId());
             pursuerShip.weaponSystemController.ServerSetTarget(quarryShip.GetEntityId(), friendly);
         }
-        
+
         [Command]
         public void CmdOrderEntityToMoveToPoint(uint entityId, Vector3 pos, Quaternion rot)
         {
@@ -82,58 +82,51 @@ namespace StellarArmada.Player
             // Remove ship from team's prorotype list
             ShipPrototype proto = GetTeam().prototypes.Single(p => p.id == prototypeId);
             GetTeam().prototypes.Remove(proto);
-
         }
-        
+
         [Command]
         public void CmdSetFlagshipForLocalPlayer(int newIndex, uint localPlayerId)
         {
+            Debug.Log("CmdSetFlagshipForLocalPlayer | New Index: " + newIndex + " | localPlayerId: " + localPlayerId);
             // If player already has a flagship, unset and dirty it
             if (GetTeam().prototypes.Where(p => p.hasCaptain && p.captain == localPlayerId).ToArray().Length > 0)
             {
-                Debug.Log("Player already has");
-                
-                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId);
+                ShipPrototype proto =
+                    GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId);
                 proto.hasCaptain = false;
                 int index = GetTeam().prototypes.IndexOf(
                     GetTeam().prototypes.FirstOrDefault(p => p.hasCaptain && p.captain == localPlayerId));
-                Debug.Log("Index is: " + index);
                 GetTeam().prototypes[index] = proto;
-
             }
-            Debug.Log("SetShipCaptain");
 
             SetShipCaptain(localPlayerId, newIndex);
-            
         }
-        
+
         [Command]
         public void CmdSetRandomFlagshipForLocalPlayer(uint localPlayerId)
         {
             // TO-DO -- this whole check routine could be abstracted to another function
-            
+
             // If player already has a flagship, unset and dirty it
-            if (GetTeam().prototypes.Where(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId).ToArray().Length > 0)
+            if (GetTeam().prototypes
+                    .Where(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId)
+                    .ToArray().Length > 0)
             {
-                Debug.Log("Player already has");
-                
-                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId);
+                ShipPrototype proto = GetTeam().prototypes.FirstOrDefault(shipPrototype =>
+                    shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId);
                 proto.hasCaptain = false;
                 int index = GetTeam().prototypes.IndexOf(
-                    GetTeam().prototypes.FirstOrDefault(shipPrototype => shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId));
-                Debug.Log("Index is: " + index);
+                    GetTeam().prototypes.FirstOrDefault(shipPrototype =>
+                        shipPrototype.hasCaptain && shipPrototype.captain == localPlayerId));
                 GetTeam().prototypes[index] = proto;
-
             }
-            Debug.Log("SetShipCaptain");
 
             // Get the first ship that doesn't have a captain on this team
             var p = GetTeam().prototypes.Where(shipPrototype => !shipPrototype.hasCaptain).ToArray()[0];
 
-                SetShipCaptain(localPlayerId, GetTeam().prototypes.IndexOf(p));
-            
+            SetShipCaptain(localPlayerId, GetTeam().prototypes.IndexOf(p));
         }
-        
+
         [Command]
         public void CmdUpdatePrototype(int shipId, int groupId)
         {
@@ -152,15 +145,12 @@ namespace StellarArmada.Player
         public void CmdCreateShipsForTeam()
         {
             ShipFactory.instance.CmdCreateShipsForTeam(GetTeam().teamId);
-
         }
 
         [Server]
         public void SetShipCaptain(uint id, int prototypeIndex)
         {
-            Debug.Log("Setting shpi captain");
             Team team = TeamManager.instance.GetTeamByID(teamId);
-            
 
             ShipPrototype newProto = team.prototypes[prototypeIndex];
 
@@ -176,24 +166,24 @@ namespace StellarArmada.Player
         {
             if (!isServer) Initialize();
         }
-        
+
         void Initialize()
         {
             // Server sets player's team
             if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
-            
+
             // If this is the local player's object, set up local player logic
             if (isLocalPlayer)
             {
                 // The localrig in the MatchPlayer prefab contains all the local managers for selection, map control, etc.
                 localRig.SetActive(true);
-                
+
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
-                
+
                 Shipyard.instance.InitializeShipyard();
-                
+
                 LocalMenuStateManager.instance.GoToShipyard();
-                
+
                 OnLocalPlayerInitialized?.Invoke();
             }
             else
@@ -208,9 +198,9 @@ namespace StellarArmada.Player
         public bool IsServer() => isServer;
 
         public bool IsClient() => isClient;
-        
+
         public PlayerType GetPlayerType() => PlayerType.Player;
-        
+
         // Generic event handler for this class
         public delegate void PlayerControllerEvent();
 
@@ -237,7 +227,7 @@ namespace StellarArmada.Player
         {
             if (isServer) TargetHandleWin(connectionToClient);
         }
-        
+
         [ServerCallback]
         public void HandleLoss()
         {
@@ -250,7 +240,7 @@ namespace StellarArmada.Player
             ReturnToPurgatory();
             LocalMenuStateManager.instance.ShowVictoryMenu();
         }
-        
+
         [TargetRpc]
         public void TargetHandleLoss(NetworkConnection conn)
         {
@@ -264,7 +254,6 @@ namespace StellarArmada.Player
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             PlayerCamera.instance.ShowPurgatoryView();
-         
         }
 
         [Server]
@@ -305,6 +294,7 @@ namespace StellarArmada.Player
             teamId = pTeam;
             EventOnPlayerTeamChange?.Invoke();
         }
+
         public PlayerController GetPlayer() => this;
         public GameObject GetGameObject() => gameObject;
 

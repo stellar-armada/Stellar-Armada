@@ -171,8 +171,6 @@ public class Shipyard : MonoBehaviour
             ShipPriceManager.instance.GetGroupPrice(team.prototypes.ToList()));
         availablePointsText.text = currentPoints.ToString();
         
-        Debug.Log("Current points: " + currentPoints);
-
         // Get all entity types represented
         SyncListShipType availableShipTypes = team.availableShipTypes;
 
@@ -182,20 +180,14 @@ public class Shipyard : MonoBehaviour
 
         foreach (UIShipyardShip s in g)
         {
-            Debug.Log("For UIShipyardShip " + s.shipType + " in available ships container");
-            
             // If any is already in our available ships pool, destroy it so we don't have two of any ships
             if (addedShipTypes.Contains(s.shipType))
             {
-                Debug.Log("For UIShipyardShip " + s.shipType + " is not contained in our ships container");
-
                 Destroy(s.gameObject);
                 continue;
             }
 
             addedShipTypes.Add(s.shipType);
-            
-            Debug.Log("Current points: " + currentPoints + " | Ship price: " + ShipPriceManager.instance.GetShipPrice(s.shipType));
             
             s.SetInteractable(ShipPriceManager.instance.GetShipPrice(s.shipType) < currentPoints);
             
@@ -228,7 +220,6 @@ public class Shipyard : MonoBehaviour
         localPlayerCaptainCount = team.prototypes
             .Where(s => s.hasCaptain && s.captain == PlayerController.localPlayer.netId).Count();
 
-        Debug.Log("localPlayerCaptainCount: " + localPlayerCaptainCount);
         if (localPlayerCaptainCount > 0)
         {
             WarpButton.SetActive(true);
@@ -239,7 +230,6 @@ public class Shipyard : MonoBehaviour
             // If there's no captain, pick one of the available un-captained ships (the one with the highest price)
             var sortedPrototypes =  team.prototypes.Where(p => p.hasCaptain == false).OrderByDescending(p => ShipPriceManager.instance.shipPriceDictionary[p.shipType]).ToList();
 
-            Debug.Log("Index of prototype: " + team.prototypes.IndexOf(sortedPrototypes[0]));
             // Set flagship
         
             PlayerController.localPlayer.CmdSetFlagshipForLocalPlayer(team.prototypes.IndexOf(sortedPrototypes[0]), PlayerController.localPlayer.netId);
@@ -282,8 +272,6 @@ public class Shipyard : MonoBehaviour
         }
         else
         {
-            Debug.Log("Ship ID: " + ship.id);
-
             ShipPrototype proto = team.prototypes.Single(p => p.id == (uint)ship.id);
             
             ship.transform.SetParent(g.transform);

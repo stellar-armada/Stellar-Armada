@@ -57,20 +57,22 @@ namespace StellarArmada.Ships
         [ClientRpc] // Client-side logic
         public void RpcSetCaptain(uint playerId)
         {
+            Debug.Log("Rpc Set Captain called");
             // Prevent double calls on host
             captain = PlayerManager.GetPlayerById(playerId);
+            Debug.Log("captain: " + captain);
 
             // Local player logic
             if (captain == PlayerController.localPlayer)
             {
+                Debug.Log("captain == PlayerController.localPlayer");
+
                 bridge.ActivateBridgeForLocalPlayer();
                 ShipSelectionManager.instance.InitializeSelectionSets();
                 GroupUIManager.instance.UpdateGroupManager();
                 PlayerCamera.instance.ShowMatchView(); // Switch camera layers to minimap and ships for local player
                 OnCaptainUpdated?.Invoke();
             }
-
-            bridge.ActivateBridgeForLocalPlayer();
         }
 
         public PlayerController GetCaptain() => captain;
