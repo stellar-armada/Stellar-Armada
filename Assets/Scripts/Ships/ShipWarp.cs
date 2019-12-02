@@ -14,12 +14,14 @@ namespace StellarArmada.Ships
             public Vector3 warpInStartPos;
             public float warpTime = 5f;
             private Ship ship;
+
+            public bool isWarping;
             
             void Awake()
             {
                 ship = GetComponent<Ship>();
                 PrepareForWarpIn();
-
+                isWarping = false;
             }
 
             void PrepareForWarpIn()
@@ -58,7 +60,7 @@ namespace StellarArmada.Ships
                 ship.visualModel.enabled = true;
                 
                 warpFx.SetActive(true);
-
+                isWarping = true;
                 // TO-DO: This is kind of a hack?
                 MatchStateManager.instance.EventOnMatchStart += WarpIn;
                 
@@ -105,7 +107,8 @@ namespace StellarArmada.Ships
                 ship.shipStatusBar.ShowStatusBar();
                 ship.shield.gameObject.SetActive(true);
                 ship.shield.shieldEffectController.SetShieldActive(true, true);
-                
+
+                isWarping = false;
                 // Disable warpFX
                 
                 var main = warpFx.GetComponent<ParticleSystem>().main;

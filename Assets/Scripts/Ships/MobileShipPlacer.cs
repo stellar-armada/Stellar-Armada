@@ -13,13 +13,16 @@ namespace StellarArmada.Ships
         
         RaycastHit hit;
 
-        [SerializeField] private LayerMask layerMask;
+        [SerializeField] private Transform debugCenterOfGravityTransform;
 
-        // To-do -- this could be more performant
-        [SerializeField] private string hitPlaneLayerName = "RaycastPlane";
+
+        [SerializeField] private LayerMask hitPlaneLayerMask;
+        [SerializeField] private LayerMask shipLayerMask;
 
         private Vector2 screenSpaceStartPos = Vector2.zero;
         private Vector2 screenSpaceCurrentPos = Vector2.one;
+
+        [SerializeField] private Transform debugPlacementSphere;
         
         // If the mouse click is very short, set the direction from the CoG of current
 
@@ -27,7 +30,7 @@ namespace StellarArmada.Ships
 
         private Transform shipPlacementCursorTransform;
         
-        [SerializeField] private float scaleDistanceMin = 50f;
+        [SerializeField] private float scaleDistanceMin = 25f;
         [SerializeField] private float scaleDistanceMax = 500f;
 
         void Start()
@@ -63,27 +66,20 @@ namespace StellarArmada.Ships
             }
         }
 
-        public override void Place()
+        public override void Place(bool sendToFormation)
         {
             Debug.Log("Placing");
-            // If we're not highlighting a ship
-            if (ShipSelector.instance.currentSelectables.Count == 0)
-            {
-                // Is it a double tap?
+            // Is it a double tap?
                 if (Time.time - lastTap < doubleTapThreshold)
                     StopAllShips();
                 else
+                if(sendToFormation)
                     foreach (ShipPlacementIndicator pi in activePlacements)
-                        PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.ship.GetEntityId(), pi.transform.position, pi.transform.rotation);
+                            PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.ship.GetEntityId(), pi.transform.position, pi.transform.rotation);
+                else
+                    foreach(var selected in ShipSelectionManager.instance.GetCurrentSelection())
+                        PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(selected.GetShip().GetEntityId(), shipPlacementCursorTransform.position, shipPlacementCursorTransform.rotation);
                 lastTap = Time.time;
-            }
-            // We are highlighting a ship, so pursue it
-            else
-            {
-                foreach (ShipPlacementIndicator pi in activePlacements)
-                    PlayerController.localPlayer.CmdOrderEntityToPursue(pi.ship.GetEntityId(),
-                        ShipSelector.instance.currentSelectables[0].GetShip().GetEntityId(), ShipSelector.instance.targetIsFriendly);
-            }
         }
 
         protected override void HidePlacements()
@@ -100,16 +96,26 @@ namespace StellarArmada.Ships
         private bool thresholdIsSet = false;
         void Update()
         {
-            if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),
-                    out hit, Mathf.Infinity, layerMask) || hit.transform.gameObject.layer != LayerMask.NameToLayer(hitPlaneLayerName) )
+            // If no ships are selected, skip placement
+            if (ShipSelectionManager.instance.GetCurrentSelection().Count < 1)
                 return;
             
+            // If we don't hit the hitplane, return (otherwise, populate hit)
+            if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),
+                    out hit, Mathf.Infinity, hitPlaneLayerMask))
+                return;
+
             screenSpaceCurrentPos = Input.mousePosition;
             currentPos = hit.point;
             
             // Start placement
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
+                
+                // If we hit a ship, return
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, shipLayerMask))
+                    return;
+                
                 RTSCameraController.instance.LockCamera(true);
                 ShipFormationManager.instance.scaleXY = ShipFormationManager.instance.minScaleXY;
                 ShipFormationManager.instance.scaleZ = ShipFormationManager.instance.minScaleZ;
@@ -119,15 +125,13 @@ namespace StellarArmada.Ships
                 screenSpaceStartPos = Input.mousePosition;
                 thresholdIsSet = false;
 
-                Vector3 shipCoG = CalculateCenterOfGravity();
-                shipCoG = new Vector3(shipCoG.x, 0, shipCoG.z);
-                    shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(startPos - shipCoG), Vector3.up);
-                
+                HidePlacements();
+                ShipPlacementCursor.instance.Show();
                 // If hitting ground plane, set is placing to true
                     // And get and show placements
                     isPlacing = true;
-                    ShowPlacements();
-                    ShipPlacementCursor.instance.Show();
+                    // If the mouse is not down, move the cursor to mouse position
+                    shipPlacementCursorTransform.position = currentPos;
                     return;
             }
             
@@ -140,52 +144,52 @@ namespace StellarArmada.Ships
 
                 // Get and show placements
                 isPlacing = false;
-                Place();
+                Place(thresholdIsSet);
                 HidePlacements();
                 return;
 
-            } 
+            }
             
             // During placement
             if (Input.GetMouseButton(0))
             {
                 if (!isPlacing) return;
 
+                // If we're dragging further than the threshold
                 if (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) > scaleDistanceMin || thresholdIsSet)
                 {
+                    
+                    ShowPlacements();
+                    
                     if (!thresholdIsSet)
                         thresholdIsSet = true;
                     
                     currentPos = new Vector3(currentPos.x, 0, currentPos.z);
 
                     shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(currentPos - startPos), Vector3.up);
-                    
+                    debugCenterOfGravityTransform.position = CalculateCenterOfGravity();
                     float dist = (Vector2.Distance(screenSpaceCurrentPos, screenSpaceStartPos) - scaleDistanceMin) / (scaleDistanceMax - scaleDistanceMin);
 
                     ShipFormationManager.instance.scaleXY = Mathf.Lerp(ShipFormationManager.instance.minScaleXY, ShipFormationManager.instance.maxScaleXY, dist);
                     ShipFormationManager.instance.scaleZ = Mathf.Lerp(ShipFormationManager.instance.minScaleZ, ShipFormationManager.instance.maxScaleZ, dist);
                 }
-                else
-                {
-                    Vector3 shipCoG = CalculateCenterOfGravity();
-                    shipCoG = new Vector3(shipCoG.x, 0, shipCoG.z);
-                    shipPlacementCursorTransform.rotation = Quaternion.LookRotation(Vector3.Normalize(startPos - shipCoG), Vector3.up);
-                }
-                ShowPlacements();
+
+                debugPlacementSphere.position = currentPos;
                 return;
             }
             
-            // If the mouse is not down, move the cursor to mouse position
-            shipPlacementCursorTransform.position = currentPos;
+            shipPlacementCursorTransform.localPosition = Vector3.zero;
+            debugCenterOfGravityTransform.position = CalculateCenterOfGravity();
+
+
         }
 
         Vector3 CalculateCenterOfGravity()
         {
             List<Ship> ships = new List<Ship>();
-            foreach (var placement in activePlacements)
-            {
-                ships.Add(placement.ship);
-            }
+    
+            foreach (var selectable in ShipSelectionManager.instance.GetCurrentSelection())
+                ships.Add(selectable.GetShip());
 
             return ShipFormationManager.CalculateCenterOfMass(ships);
         }

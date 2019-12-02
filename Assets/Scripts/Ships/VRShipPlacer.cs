@@ -66,39 +66,34 @@ namespace StellarArmada.Ships
             activePlacements = new List<ShipPlacementIndicator>();
         }
         
-        public override void Place()
+        public override void Place(bool sendToFormation)
         {
-            // If we're not highlighting a ship
-            if (ShipSelector.instance.currentSelectables.Count == 0)
-            {
-                // Is it a double tap?
+            
+            
+            
+            // Is it a double tap?
                 if (Time.time - lastTap < doubleTapThreshold)
                 {
                     StopAllShips();
                 }
                 else
                 {
-                    foreach (ShipPlacementIndicator pi in activePlacements)
-                    {
-                        // For each placer, set the minimap parent so we can grab local pos and rot easier
-                        // Otherwise we could optimise with some matrix/quaternion math!
-                        pi.transform.SetParent(VRMiniMap.instance.transform, true);
-                        PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.ship.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
-                        pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
-                    }
+                    if(sendToFormation)
+                        foreach (ShipPlacementIndicator pi in activePlacements)
+                        {
+                            // For each placer, set the minimap parent so we can grab local pos and rot easier
+                            // Otherwise we could optimise with some matrix/quaternion math!
+                            pi.transform.SetParent(VRMiniMap.instance.transform, true);
+                            PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(pi.ship.GetEntityId(), pi.transform.localPosition, pi.transform.localRotation);
+                            pi.transform.SetParent(ShipPlacementCursor.instance.transform, true);
+                        }
+                    else
+                        foreach(var selected in ShipSelectionManager.instance.GetCurrentSelection())
+                            PlayerController.localPlayer.CmdOrderEntityToMoveToPoint(selected.GetShip().GetEntityId(), ShipPlacementCursor.instance.transform.position, ShipPlacementCursor.instance.transform.rotation);
+
                 }
                 lastTap = Time.time;
             }
-            // We are highlighting a ship, so pursue it
-            else
-            {
-                foreach (ShipPlacementIndicator pi in activePlacements)
-                {
-                    PlayerController.localPlayer.CmdOrderEntityToPursue(pi.ship.GetEntityId(),
-                        VRShipSelector.instance.currentSelectables[0].GetShip().GetEntityId(), VRShipSelector.instance.targetIsFriendly);
-                }
-            }
-        }
 
         void HandleRightPlaceButton(bool down)
         {
@@ -107,7 +102,7 @@ namespace StellarArmada.Ships
             if (!down && !rightPlaceButtonIsDown)
                 return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             rightPlaceButtonIsDown = down;
-            if (!uiPointerIsActive && down) Place();
+            if (!uiPointerIsActive && down) Place(true);
         }
 
         void HandleLeftPlaceButton(bool down)
@@ -117,7 +112,7 @@ namespace StellarArmada.Ships
             if (!down && !leftPlaceButtonIsDown)
                 return; // if button going up but down state was blocked by other side button, ignore action beyond this point
             leftPlaceButtonIsDown = down;
-            if (!uiPointerIsActive && down) Place();
+            if (!uiPointerIsActive && down) Place(true);
         }
 
         void HandleLeftThumbstick(bool down)

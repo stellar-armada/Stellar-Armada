@@ -26,7 +26,7 @@ namespace StellarArmada.Ships
 
         public abstract void ShowPlacements();
 
-        public abstract void Place();
+        public abstract void Place(bool sendToFormation);
 
         protected abstract void HidePlacements();
 

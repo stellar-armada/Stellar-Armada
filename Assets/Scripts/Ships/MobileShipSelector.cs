@@ -40,6 +40,12 @@ namespace StellarArmada.Ships
                 Select(SelectionType.Deselection);
             }
         }
+
+        private float doubleClickTime = .3f;
+
+        private float lastClicktime = 0;
+
+        private ISelectable lastSelected;
         
         // Handles selection and deselection of entities from the loop
         void Select(SelectionType selectionType)
@@ -55,6 +61,23 @@ namespace StellarArmada.Ships
             // If the selectable is not null, is selectable, and is from this player's team
             if (selectable != null && selectable.IsSelectable())
             {
+
+                if (selectable.GetShip().shipWarp.isWarping) return;
+                
+                // Timestamp click
+                float currentClicktime = Time.time;
+                
+                // If this click - lastclick < doubleClickTime
+                if (currentClicktime - lastClicktime < doubleClickTime && lastSelected == selectable)
+                {
+                    // Deselect all ships and select this one and return
+                    ShipSelectionManager.instance.SetSelection(selectable);
+                }
+                else
+                    lastClicktime = currentClicktime;
+
+                lastSelected = selectable;
+                
                 // Check if friendly
                 if (selectable.GetShip().GetTeam() == playerController.GetTeam())
                 {

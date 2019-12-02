@@ -100,7 +100,10 @@ namespace StellarArmada.Ships
                 int currentPosition = 0;
                 while (shipsByLine[shipLine].Length > 0)
                 {
-                    Vector3 pos = FormationMatrices.shipPositionVectors[shipLine][currentPosition++];
+                    Vector3 pos = PlatformManager.instance.Platform == PlatformManager.PlatformType.VR ? 
+                        FormationMatrices.shipPositionVectors3D[shipLine][currentPosition++] : 
+                        FormationMatrices.shipPositionVectors2D[shipLine][currentPosition++];
+                    
                     // scale vector up to formation size
                     pos.x *= scaleXY;
                     pos.y *= scaleXY;
@@ -153,13 +156,19 @@ namespace StellarArmada.Ships
                 switch (s.formationPosition)
                 {
                     case FormationPosition.Frontline:
-                        pos = FormationMatrices.shipPositionVectors[0][currentFrontlinePosition++];
+                        pos = PlatformManager.instance.Platform == PlatformManager.PlatformType.VR ? 
+                            FormationMatrices.shipPositionVectors3D[0][currentFrontlinePosition++] : 
+                            FormationMatrices.shipPositionVectors2D[0][currentFrontlinePosition++];
                         break;
                     case FormationPosition.Midline:
-                        pos = FormationMatrices.shipPositionVectors[1][currentMidlinePosition++];
+                        pos = PlatformManager.instance.Platform == PlatformManager.PlatformType.VR ? 
+                            FormationMatrices.shipPositionVectors3D[1][currentMidlinePosition++] : 
+                            FormationMatrices.shipPositionVectors2D[1][currentMidlinePosition++];
                         break;
                     case FormationPosition.Backline:
-                        pos = FormationMatrices.shipPositionVectors[2][currentBacklinePosition++];
+                        pos = PlatformManager.instance.Platform == PlatformManager.PlatformType.VR ? 
+                            FormationMatrices.shipPositionVectors3D[2][currentBacklinePosition++] : 
+                            FormationMatrices.shipPositionVectors2D[2][currentBacklinePosition++];
                         break;
                 }
 
