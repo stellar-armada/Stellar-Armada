@@ -18,6 +18,7 @@ using Mirror;
             Debug.Log("Creating match manager");
             GameObject matchManager = Instantiate(matchManagerPrefab);
             NetworkServer.Spawn(matchManager);
+            matchManager.GetComponent<NetworkIdentity>().AssignClientAuthority(NetworkServer.localConnection);
         }
 
         private void OnServerInitialized()
