@@ -57,6 +57,8 @@ namespace StellarArmada.Match
         [Command]
         public void CmdChooseRandomScenario()
         {
+            Debug.Log("CmdChooseRandomScenario");
+
             currentScenario = scenarios[Random.Range(0, scenarios.Count - 1)];
             currentScenarioName = currentScenario.name;
             EventScenarioChanged?.Invoke(currentScenarioName);
@@ -64,6 +66,8 @@ namespace StellarArmada.Match
         
         public void LoadScenario()
         {
+            Debug.Log("LoadScenario");
+
             LoadEventScenario(currentScenarioName);
         }
 

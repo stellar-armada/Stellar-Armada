@@ -42,10 +42,17 @@ namespace StellarArmada.Match
         // TO-DO: Comment and clean up refs
         public void Initialize()
         {
-            // Get a random scenario
-                MatchScenarioManager.instance.CmdChooseRandomScenario();
+            Debug.Log("Initing");
 
-                currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
+            MatchScenarioManager.instance.EventScenarioChanged += HandleScenarioChange;
+            
+            // Get a random scenario
+            MatchScenarioManager.instance.CmdChooseRandomScenario();
+        }
+
+        void HandleScenarioChange(string scenarioname){
+Debug.Log("Scenario changed to " + scenarioname);
+        currentScenario = MatchScenarioManager.instance.GetCurrentScenario();
                 numberOfPlayerSlots = currentScenario.numberOfHumanPlayers;
                 if (LevelRoot.instance == null)
                 {

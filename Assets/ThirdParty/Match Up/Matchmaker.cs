@@ -277,7 +277,7 @@ namespace MatchUp
             if (matchmakerURL == "grabblesgame.com" || matchmakerURL == "noblewhale.com")
             {
                 // If you're using my matchmaking server then we need to include some sort of ID to keep your game's matches separate from everyone else's
-                if (!matchData.ContainsKey("applicationID")) matchData["applicationID"] = "STELLARARMADA";
+                if (!matchData.ContainsKey("applicationID")) matchData["applicationID"] = Application.productName;
             }
             currentMatch = new Match(-1, matchData);
             SendCommand(
@@ -511,7 +511,7 @@ namespace MatchUp
                 if (filters.Find(x => x.key == "applicationID") == null)
                 {
                     // If you're using my matchmaking server then we need to include some sort of ID to keep your game's matches separate from everyone else's
-                    filters.Add(new MatchFilter("applicationID", "STELLARARMADA"));
+                    filters.Add(new MatchFilter("applicationID", Application.productName));
                 }
             }
             string filterString = "";
