@@ -72,7 +72,7 @@ namespace UnitySteer.Behaviors
         /// is specific to the vehicle's implementation.
         /// </summary>
         /// <param name="deltaTime">Time delta to use in position calculations</param>
-        protected Vector3 CalculatePositionDelta(float deltaTime)
+        public Vector3 CalculatePositionDelta(float deltaTime)
         {
             /*
 		 * Notice that we clamp the target speed and not the speed itself, 
@@ -251,6 +251,63 @@ namespace UnitySteer.Behaviors
             }
         }
 
+        
+         protected void CalculateFutureForces(float tickAmount)
+        {
+            var force = Vector3.zero;
+
+            for (var i = 0; i < Steerings.Length; i++)
+            {
+                var s = Steerings[i];
+                if (s.enabled)
+                {
+                    force += s.WeighedForce;
+                }
+            }
+            LastRawForce = force;
+
+            // Enforce speed limit.  Steering behaviors are expected to return a
+            // final desired velocity, not a acceleration, so we apply them directly.
+            var newVelocity = Vector3.ClampMagnitude(force / Mass, MaxForce);
+
+            if (newVelocity.sqrMagnitude == 0)
+            {
+                ZeroVelocity();
+                DesiredVelocity = Vector3.zero;
+            }
+            else
+            {
+                DesiredVelocity = newVelocity;
+            }
+
+            // Adjusts the velocity by applying the post-processing behaviors.
+            //
+            // This currently is not also considering the maximum force, nor 
+            // blending the new velocity into an accumulator. We *could* do that,
+            // but things are working just fine for now, and it seems like
+            // overkill. 
+            var adjustedVelocity = Vector3.zero;
+            for (var i = 0; i < SteeringPostprocessors.Length; i++)
+            {
+                var s = SteeringPostprocessors[i];
+                if (s.enabled)
+                {
+                    adjustedVelocity += s.WeighedForce;
+                }
+            }
+
+
+            if (adjustedVelocity != Vector3.zero)
+            {
+                adjustedVelocity = Vector3.ClampMagnitude(adjustedVelocity, MaxSpeed);
+                TraceDisplacement(adjustedVelocity, Color.cyan);
+                TraceDisplacement(newVelocity, Color.white);
+                newVelocity = adjustedVelocity;
+            }
+
+            // Update vehicle velocity
+            SetCalculatedVelocity(newVelocity);
+        }
 
         protected void CalculateForces()
         {
@@ -336,6 +393,10 @@ namespace UnitySteer.Behaviors
             var acceleration = CalculatePositionDelta(elapsedTime);
             if(float.IsNaN(acceleration.x)) return;
             Transform.position += acceleration;
+            
+            
+            
+            
         }
 
 

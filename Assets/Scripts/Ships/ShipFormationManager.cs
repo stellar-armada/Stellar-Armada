@@ -35,9 +35,11 @@ namespace StellarArmada.Ships
 
         // local reference variables
         protected Dictionary<Ship, Vector3> shipPositions;
+        protected Dictionary<Ship, Vector3> offsetShipPositions;
+
         protected Vector3 centerOfMass;
         protected int count;
-        protected Ship[][] shipsByLine;
+        protected List<Ship[]> shipsByLine;
         protected Ship ship;
         int currentFrontlinePosition;
         int currentMidlinePosition;
@@ -68,34 +70,23 @@ namespace StellarArmada.Ships
             centerOfMass /= count;
 
             // Get rotation of placer
-
-
-            shipsByLine = new Ship[3][]
+            
+            shipsByLine = new List<Ship[]>
             {
                 ships.Where(s => s.formationPosition == FormationPosition.Frontline).ToArray(),
                 ships.Where(s => s.formationPosition == FormationPosition.Midline).ToArray(),
                 ships.Where(s => s.formationPosition == FormationPosition.Backline).ToArray()
             };
 
-            // Some hardcoded recursive logic to organize the ships toward the back and minimize gaps
-            
-            // if row 2 is empty, move row 1 to 2
-            if (shipsByLine[1].Length == 0)
-            {
-                shipsByLine[1] = shipsByLine[0];
-                shipsByLine[0] = new Ship[0];
-            }
-            
-            // if row 3 is empty, move both up
-            if (shipsByLine[2].Length == 0)
-            {
-                shipsByLine[2] = shipsByLine[1];
-                shipsByLine[1] = shipsByLine[0];
-                shipsByLine[0] = new Ship[0];
-            }
+            for (int i = shipsByLine.Count; i > 0; i--)
+                if (shipsByLine[i - 1].Length == 0)
+                {
+                    shipsByLine[i - 1] = shipsByLine[i];
+                    shipsByLine[i] = new Ship[0];
+                }
 
             // Create positions for ships!
-            for (int shipLine = 0; shipLine < shipsByLine.Length; shipLine++)
+            for (int shipLine = 0; shipLine < shipsByLine.Count; shipLine++)
             {
                 int currentPosition = 0;
                 while (shipsByLine[shipLine].Length > 0)
@@ -137,8 +128,27 @@ namespace StellarArmada.Ships
                     shipsByLine[shipLine] = shipsByLine[shipLine].Where(s => s != ship).ToArray();
                 }
             }
+            
+            
+            // Calculate center of gravity of ships in formation and subtract from shippositions
 
-            return shipPositions;
+            Vector3 offset = Vector3.zero;
+
+            foreach (var val in shipPositions.Values)
+                offset += val;
+
+            // Compute center and offset ships by all
+            offset /= shipPositions.Count;
+
+            offsetShipPositions = new Dictionary<Ship, Vector3>();
+
+            
+            foreach (var key in shipPositions.Keys)
+                offsetShipPositions.Add(key, shipPositions[key] - offset);
+
+
+            
+            return offsetShipPositions;
         }
 
         public Dictionary<Ship, Vector3> GetFormationPositionWarp(List<Ship> ships)

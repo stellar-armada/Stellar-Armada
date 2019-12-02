@@ -287,7 +287,7 @@ namespace UnitySteer.Behaviors
         /// </returns>
         public override Vector3 PredictFuturePosition(float predictionTime)
         {
-            return Transform.position + (Velocity * predictionTime);
+            return Position + (Velocity * predictionTime);
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace UnitySteer.Behaviors
         /// </returns>
         public Vector3 PredictFutureDesiredPosition(float predictionTime)
         {
-            return Transform.position + (DesiredVelocity * predictionTime);
+            return Position + (DesiredVelocity * predictionTime);
         }
 
 
