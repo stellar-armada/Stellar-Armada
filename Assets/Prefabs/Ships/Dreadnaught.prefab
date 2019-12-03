@@ -413,10 +413,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 8093310048763293639}
   damagePerHit: 4
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -6045,10 +6042,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 8093310048763293639}
   damagePerHit: 4
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -6280,10 +6274,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 8093310048763293639}
   damagePerHit: 4
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -11414,10 +11405,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 8093310048763293639}
   damagePerHit: 4
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -28424,12 +28412,9 @@ MonoBehaviour:
   owningWeaponSystemTransform: {fileID: 8133682917729996645}
   target: {fileID: 0}
   targetShip: {fileID: 0}
-  owningShip: {fileID: 0}
+  owningShip: {fileID: 8093310048763293639}
   damagePerHit: 6
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2500
   damageableLayerMask:
     serializedVersion: 2
@@ -28499,10 +28484,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 8093310048763293639}
   damagePerHit: 4
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -36443,10 +36425,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 8093310048763293639}
   damagePerHit: 4
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -36730,7 +36709,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   ship: {fileID: 8093310048763293639}
-  maxHull: 500
+  maxHull: 1700
   currentHull: 0
 --- !u!114 &8012151539056545319
 MonoBehaviour:
@@ -36805,18 +36784,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drawGizmos: 1
   _center: {x: 0, y: 0, z: 0}
-  _radius: 300
-  _minSpeedForTurning: 4.5
+  _radius: 400
+  _minSpeedForTurning: 4
   _movementPriority: 0
-  _turnTime: 4
-  _mass: 1
+  _turnTime: 5
+  _mass: 2.5
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 10
-  _maxSpeed: 300
-  _maxForce: 100
+  _maxSpeed: 250
+  _maxForce: 2500
   _canMove: 1
-  _accelerationRate: 10000
-  _decelerationRate: 10000
+  _accelerationRate: 5
+  _decelerationRate: 5
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 50
@@ -36892,7 +36871,7 @@ MonoBehaviour:
   _queueName: Radar
   _maxQueueProcessedPerUpdate: 100
   _tickLength: 0.25
-  _detectionRadius: 600
+  _detectionRadius: 1200
   _detectDisabledVehicles: 1
   _layersChecked:
     serializedVersion: 2
@@ -36939,7 +36918,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8817862191019004458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
   m_Name: 
@@ -36960,7 +36939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 1
   _minRadius: 0
-  _maxRadius: 600
+  _maxRadius: 800
   _drawNeighbors: 0
   _angleCos: -0.1736482
 --- !u!114 &2182314179144705943
@@ -36978,9 +36957,9 @@ MonoBehaviour:
   _weight: 1
   _minDistance: 0
   _maxDistance: 600
-  _comfortDistance: 500
-  _multiplierInsideComfortDistance: 5
-  _vehicleRadiusImpact: 300
+  _comfortDistance: 400
+  _multiplierInsideComfortDistance: 3
+  _vehicleRadiusImpact: 0
 --- !u!1 &8829440196298532255
 GameObject:
   m_ObjectHideFlags: 0

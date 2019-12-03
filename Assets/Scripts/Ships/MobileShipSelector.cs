@@ -14,13 +14,10 @@ namespace StellarArmada.Ships
         public string altButton = "Alt";
 
         private bool altButtonIsDown;
-
-        private Camera cam;
-
+        
         protected override void Awake()
         {
             base.Awake();
-            cam = Camera.main;
         } 
 
         // Set whenever a raycast hits a ship
@@ -51,8 +48,9 @@ namespace StellarArmada.Ships
         // Handles selection and deselection of entities from the loop
         void Select(SelectionType selectionType)
         {
+            if (Camera.main == null || Input.GetMouseButton(0) == false) return;
             // Is there a ship under our mouse?
-            if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition),
+            if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),
                 out hit, Mathf.Infinity, layerMask))
                 return;
 

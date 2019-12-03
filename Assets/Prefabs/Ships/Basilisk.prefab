@@ -26115,12 +26115,9 @@ MonoBehaviour:
   owningWeaponSystemTransform: {fileID: 8113730419681309641}
   target: {fileID: 0}
   targetShip: {fileID: 0}
-  owningShip: {fileID: 0}
+  owningShip: {fileID: 8081799463623299947}
   damagePerHit: 8
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 3000
   damageableLayerMask:
     serializedVersion: 2
@@ -26188,12 +26185,9 @@ MonoBehaviour:
   owningWeaponSystemTransform: {fileID: 8113730419681309641}
   target: {fileID: 0}
   targetShip: {fileID: 0}
-  owningShip: {fileID: 0}
+  owningShip: {fileID: 8081799463623299947}
   damagePerHit: 5
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -33315,7 +33309,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  localPlayerAuthority: 1
   m_AssetId: 
   m_SceneId: 0
 --- !u!114 &3996648154937188522
@@ -33507,10 +33500,10 @@ MonoBehaviour:
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 10
   _maxSpeed: 300
-  _maxForce: 100
+  _maxForce: 2500
   _canMove: 1
-  _accelerationRate: 10000
-  _decelerationRate: 10000
+  _accelerationRate: 6
+  _decelerationRate: 6
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 50
@@ -33620,7 +33613,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801777087567244934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
   m_Name: 
@@ -33641,9 +33634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 1
   _minRadius: 0
-  _maxRadius: 600
-  _drawNeighbors: 0
-  _angleCos: -0.1736482
+  _maxRadius: 1200
+  _drawNeighbors: 1
+  _angleCos: 0.087155804
 --- !u!114 &2175313936342113083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33657,11 +33650,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _minDistance: 0
-  _maxDistance: 600
-  _comfortDistance: 500
-  _multiplierInsideComfortDistance: 5
-  _vehicleRadiusImpact: 300
+  _minDistance: 50
+  _maxDistance: 500
+  _comfortDistance: 350
+  _multiplierInsideComfortDistance: 3
+  _vehicleRadiusImpact: 0
 --- !u!1 &8887671907898053240
 GameObject:
   m_ObjectHideFlags: 0
@@ -33762,6 +33755,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6787116511349424934}
     m_Modifications:
+    - target: {fileID: 775085456751305154, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6bc65d75512d86b4298d387348f42b0d, type: 2}
+    - target: {fileID: 2677561230454877284, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
+        type: 3}
+      propertyPath: m_Name
+      value: MovementIndicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803049093576201491, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
+        type: 3}
+      propertyPath: movement
+      value: 
+      objectReference: {fileID: 6613500308364987285}
+    - target: {fileID: 4803049093576201491, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
+        type: 3}
+      propertyPath: entityTransform
+      value: 
+      objectReference: {fileID: 6787116511349424934}
     - target: {fileID: 7427609738903509572, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33817,31 +33830,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2677561230454877284, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
-        type: 3}
-      propertyPath: m_Name
-      value: MovementIndicator
-      objectReference: {fileID: 0}
     - target: {fileID: 8992181423961559049, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 775085456751305154, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6bc65d75512d86b4298d387348f42b0d, type: 2}
-    - target: {fileID: 4803049093576201491, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
-        type: 3}
-      propertyPath: movement
-      value: 
-      objectReference: {fileID: 6613500308364987285}
-    - target: {fileID: 4803049093576201491, guid: 76dba9cfdb893c844b1f7a54fbfa0535,
-        type: 3}
-      propertyPath: entityTransform
-      value: 
-      objectReference: {fileID: 6787116511349424934}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76dba9cfdb893c844b1f7a54fbfa0535, type: 3}
 --- !u!4 &8476121482833401899 stripped
@@ -33857,6 +33850,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6787116511349424934}
     m_Modifications:
+    - target: {fileID: 8994847673045569528, guid: a2c9b310cbd30864cbbea2b882d093f2,
+        type: 3}
+      propertyPath: m_Name
+      value: PlacementIndicator
+      objectReference: {fileID: 0}
     - target: {fileID: 8994847673045569534, guid: a2c9b310cbd30864cbbea2b882d093f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33911,11 +33909,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994847673045569528, guid: a2c9b310cbd30864cbbea2b882d093f2,
-        type: 3}
-      propertyPath: m_Name
-      value: PlacementIndicator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2c9b310cbd30864cbbea2b882d093f2, type: 3}

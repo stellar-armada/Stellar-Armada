@@ -78,8 +78,8 @@ namespace StellarArmada.Ships
                 ships.Where(s => s.formationPosition == FormationPosition.Backline).ToArray()
             };
 
-            for (int i = shipsByLine.Count; i > 0; i--)
-                if (shipsByLine[i - 1].Length == 0)
+            for (int i = shipsByLine.Count - 1; i > 0; i--)
+                if (shipsByLine[i - 1].Length == 0 && shipsByLine[i].Length != 0)
                 {
                     shipsByLine[i - 1] = shipsByLine[i];
                     shipsByLine[i] = new Ship[0];
@@ -106,7 +106,7 @@ namespace StellarArmada.Ships
                     else
                         // Handle mobile
                         if (RTSCameraController.instance != null)
-                        {
+                        {    
                             Vector3 forward = localPlayerControllerTransform.forward;
                             centerOfMassForward = Quaternion.Euler(forward.x, 0, forward.z) * pos;
                         }

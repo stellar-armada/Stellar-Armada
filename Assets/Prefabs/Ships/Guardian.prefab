@@ -5205,12 +5205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 6102177800631973831}
-  maxShield: 300
+  maxShield: 600
   isEnaled: 1
   shieldRechargeDelayTime: 2
   shieldRechargeRate: 3
   shieldEffectController: {fileID: 4179885783357853123}
-  currentShield: 300
+  currentShield: 600
 --- !u!114 &4179885783357853123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5292,10 +5292,7 @@ MonoBehaviour:
   targetShip: {fileID: 0}
   owningShip: {fileID: 6102177800631973831}
   damagePerHit: 5
-  timerID: -1
   targetsFriendlies: 0
-  timer: 0.1
-  tickRate: 0.2
   maxRange: 2000
   damageableLayerMask:
     serializedVersion: 2
@@ -26901,15 +26898,15 @@ MonoBehaviour:
   _radius: 300
   _minSpeedForTurning: 4.5
   _movementPriority: 0
-  _turnTime: 4
+  _turnTime: 4.5
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 10
-  _maxSpeed: 300
-  _maxForce: 100
+  _maxSpeed: 275
+  _maxForce: 2500
   _canMove: 1
-  _accelerationRate: 10000
-  _decelerationRate: 10000
+  _accelerationRate: 5.5
+  _decelerationRate: 5.5
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 50
@@ -26958,7 +26955,7 @@ MonoBehaviour:
   _queueName: Radar
   _maxQueueProcessedPerUpdate: 100
   _tickLength: 0.25
-  _detectionRadius: 600
+  _detectionRadius: 1200
   _detectDisabledVehicles: 1
   _layersChecked:
     serializedVersion: 2
@@ -27005,7 +27002,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6818777539249097258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d909adc49654547af9ca6eae2e069b98, type: 3}
   m_Name: 
@@ -27026,9 +27023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weight: 1
   _minRadius: 0
-  _maxRadius: 600
-  _drawNeighbors: 0
-  _angleCos: -0.1736482
+  _maxRadius: 1200
+  _drawNeighbors: 1
+  _angleCos: 0.087155804
 --- !u!114 &4230955739333803927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27042,11 +27039,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _minDistance: 0
-  _maxDistance: 600
-  _comfortDistance: 500
-  _multiplierInsideComfortDistance: 5
-  _vehicleRadiusImpact: 300
+  _minDistance: 100
+  _maxDistance: 500
+  _comfortDistance: 400
+  _multiplierInsideComfortDistance: 3
+  _vehicleRadiusImpact: 0
 --- !u!1 &6904089873573983956
 GameObject:
   m_ObjectHideFlags: 0

@@ -99,6 +99,8 @@ namespace StellarArmada.Ships
             // If no ships are selected, skip placement
             if (ShipSelectionManager.instance.GetCurrentSelection().Count < 1)
                 return;
+
+            if (Camera.main == null) return;
             
             // If we don't hit the hitplane, return (otherwise, populate hit)
             if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),

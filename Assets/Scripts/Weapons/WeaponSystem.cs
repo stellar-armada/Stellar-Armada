@@ -11,19 +11,19 @@ namespace StellarArmada
         public IWeaponSystemController owningWeaponSystemController;
 
         public Transform target;
-        [FormerlySerializedAs("targetShip")] [FormerlySerializedAs("targetNetworkEntity")] public Ship targetShip;
+        public Ship targetShip;
 
-        [FormerlySerializedAs("owningShip")] [FormerlySerializedAs("owningNetworkEntity")] public Ship owningShip;
+        public Ship owningShip;
 
-        [SerializeField] private float damagePerHit;
+        [SerializeField] protected float damagePerHit;
 
         // Timer reference                
-        [HideInInspector] public int timerID = -1;
+        protected int timerID = -1;
 
         public bool targetsFriendlies = false;
         
-        public float timer = 0f;
-        public float tickRate = .2f;
+        protected float timer = 0f;
+        protected float tickRate = .2f;
         public float maxRange = .25f;
         public LayerMask damageableLayerMask;
         public LayerMask allRaycastableLayersMask;

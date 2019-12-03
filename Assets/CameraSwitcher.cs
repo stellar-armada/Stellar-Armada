@@ -9,6 +9,7 @@ public class CameraSwitcher : MonoBehaviour
     void Start()
     {
         foreach (var key in platformGameObjectDictionary.Keys)
-            platformGameObjectDictionary[key].SetActive(key == PlatformManager.instance.Platform);
+            if (key == PlatformManager.instance.Platform)
+                Instantiate(platformGameObjectDictionary[key], transform);
     }
 }
