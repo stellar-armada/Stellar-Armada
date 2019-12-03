@@ -43,9 +43,12 @@ namespace StellarArmada.Weapons
             isFXSpawned = false;
             timer = 0f;
             hitPoint = new RaycastHit();
-            miniMapRepresentation.gameObject.SetActive(true);
-            miniMapRepresentation.SetParent(VRMiniMap.instance.transform);
-            miniMapRepresentation.localScale = transform.lossyScale;
+            if (PlatformManager.instance.Platform == PlatformManager.PlatformType.VR)
+            {
+                miniMapRepresentation.gameObject.SetActive(true);
+                miniMapRepresentation.SetParent(VRMiniMap.instance.transform);
+                miniMapRepresentation.localScale = transform.lossyScale;
+            }
         }
 
         // OnDespawned called by pool manager 
@@ -88,27 +91,27 @@ namespace StellarArmada.Weapons
         void HandleHit()
         {
             // Refactor to be a damageable thing
-                ICollidable collidable = hitPoint.transform.GetComponent<ICollidable>();
-                if (collidable == null)
-                {
-                    Debug.LogError("Couldn't find damagable on " + hitPoint.transform.name);
-                    return;
-                }
+            ICollidable collidable = hitPoint.transform.GetComponent<ICollidable>();
+            if (collidable == null)
+            {
+                Debug.LogError("Couldn't find damagable on " + hitPoint.transform.name);
+                return;
+            }
 
-                collidable.GetDamageable().TakeDamage(owningWeaponSystem.GetDamage(), hitPoint.point, this);
+            collidable.GetDamageable().TakeDamage(owningWeaponSystem.GetDamage(), hitPoint.point, this);
 
-                //TO-DO: Make this function call way less disgusting
+            //TO-DO: Make this function call way less disgusting
 
-                // Execute once
-                if (!isFXSpawned)
-                {
-                    owningWeaponSystem.Impact(hitPoint.point);
-                    isFXSpawned = true;
-                }
+            // Execute once
+            if (!isFXSpawned)
+            {
+                owningWeaponSystem.Impact(hitPoint.point);
+                isFXSpawned = true;
+            }
 
-                // Despawn current projectile 
-                if (!DelayDespawn || (DelayDespawn && (timer >= despawnDelay)))
-                    OnProjectileDestroy();
+            // Despawn current projectile 
+            if (!DelayDespawn || (DelayDespawn && (timer >= despawnDelay)))
+                OnProjectileDestroy();
         }
 
         void StepForward()
@@ -144,7 +147,7 @@ namespace StellarArmada.Weapons
             miniMapRepresentation.localPosition = transform.position;
             miniMapRepresentation.localRotation = transform.rotation;
         }
-        
+
         void Update()
         {
             if (isHit)
@@ -154,8 +157,8 @@ namespace StellarArmada.Weapons
             else
                 StepForward();
 
-                // Updates projectile timer
-                timer += Time.deltaTime;
+            // Updates projectile timer
+            timer += Time.deltaTime;
         }
     }
 }
