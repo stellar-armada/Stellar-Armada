@@ -12,7 +12,7 @@ public class MatchMenuStartButtonController : MonoBehaviour
 
     void LateInitializePlayers()
     {
-        MatchServerManager.instance.StartMatch();
+        MatchServerManager.instance.CmdStartMatch();
     }
 
     // Check number of players in game... on player connect and disconnect...

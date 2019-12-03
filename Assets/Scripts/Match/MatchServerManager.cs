@@ -84,13 +84,11 @@ Debug.Log("Scenario changed to " + scenarioname);
             }
         }
         
-        public void StartMatch()
+        [Command]
+        public void CmdStartMatch()
         {
-            
             foreach (var player in PlayerManager.players)
-            {
-                ((PlayerController)player).CmdInitialize();
-            }
+                player.ServerInitialize();
         }
 
 

@@ -130,10 +130,11 @@ namespace StellarArmada.Player
             GetTeam().UpdatePrototype(shipId, groupId);
         }
 
-        [Command]
-        public void CmdInitialize()
+        [Server]
+        public void ServerInitialize()
         {
             MatchStateManager.instance.CmdChangeMatchState(MatchState.Lobby);
+            if(isServerOnly)
             Initialize();
             RpcInitialize();
         }
@@ -161,7 +162,7 @@ namespace StellarArmada.Player
         [ClientRpc]
         public void RpcInitialize()
         {
-            if (!isServer) Initialize();
+            Initialize();
         }
 
         void Initialize()
