@@ -44,13 +44,10 @@ namespace StellarArmada.Ships
 
         public Action OnCaptainUpdated = delegate { }; // Delegate called when a captain is set for the ship
 
-        [Command] // Server-side logic
-        public void CmdSetCaptain(uint playerId)
+        [Server] // Server-side logic
+        public void ServerSetCaptain(uint playerId)
         {
-            if (isServerOnly)
-            {
             captain = PlayerManager.GetPlayerById(playerId);
-            }
             RpcSetCaptain(playerId);
         }
 
@@ -83,10 +80,10 @@ namespace StellarArmada.Ships
             team.ChangeEntityGroup(this, newGroupId);
         }
 
-        [Command] // Server logic
-        public void CmdSetTeam(uint newTeamId)
+        [Server] // Server logic
+        public void ServerSetTeam(uint newTeamId)
         {
-            if(isServerOnly) SetTeam(newTeamId);
+            if(isServer) SetTeam(newTeamId);
             RpcSetTeam(newTeamId);
         }
 

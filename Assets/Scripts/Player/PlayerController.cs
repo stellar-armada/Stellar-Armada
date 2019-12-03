@@ -256,7 +256,7 @@ namespace StellarArmada.Player
         [Server]
         public void Die() // Message sent to all players attached to an entity when it dies
         {
-            if (isServerOnly)
+            if (isServer)
             {
                 isAlive = false;
                 OnPlayerControllerDeath?.Invoke(this);

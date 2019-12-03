@@ -89,7 +89,7 @@ Debug.Log("Scenario changed to " + scenarioname);
             
             foreach (var player in PlayerManager.players)
             {
-                ((PlayerController)player).CmdInitialize();
+                player.CmdInitialize();
             }
         }
 

@@ -20,7 +20,7 @@ namespace StellarArmada.Ships
         [Server]
         public void ServerSetTarget(uint entityId, bool isFriendly)
         {
-            if(isServerOnly) SetTarget(entityId, isFriendly);
+            if(isServer) SetTarget(entityId, isFriendly);
             RpcSetTarget(entityId, isFriendly);
         }
 

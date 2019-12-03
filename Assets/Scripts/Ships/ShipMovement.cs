@@ -113,7 +113,7 @@ namespace StellarArmada.Ships
         public void ServerPursue(uint entityId)
         {
             if (!controlEnabled) return;
-            if(isServerOnly) Pursue(ShipManager.GetEntityById(entityId));
+            if(isServer) Pursue(ShipManager.GetEntityById(entityId));
             RpcPursue(entityId);
         }
 
@@ -139,7 +139,7 @@ namespace StellarArmada.Ships
                 return;
             }
 
-            if (isServerOnly) MoveToPoint(pos, rot);
+            if (isServer) MoveToPoint(pos, rot);
             
             RpcMoveToPoint(pos, rot);
         }
@@ -158,7 +158,7 @@ namespace StellarArmada.Ships
         [Server]
         public void ServerStopMovement()
         {
-            if(isServerOnly) StopMovement();
+            if(isServer) StopMovement();
             RpcStopMovement();
         }
 
