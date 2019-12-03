@@ -105,10 +105,11 @@ namespace StellarArmada.Ships
         }
 
         // Call this to kill a ship -- should only ever be called server side, since nobody has local authority over entities
-        [Command]
-        public void CmdDie()
+        [Server]
+        public void ServerDie()
         {
-            Die();
+            if(isServerOnly)
+                Die();
             RpcDie();
         }
 

@@ -49,7 +49,8 @@ namespace StellarArmada.Ships
             currentHull -= damage;
             if (currentHull <= 0 && ship.IsAlive())
             {
-                    ship.CmdDie();
+                if(isServer)
+                    ship.ServerDie();
             }
 
             HullChanged.Invoke(currentHull);
