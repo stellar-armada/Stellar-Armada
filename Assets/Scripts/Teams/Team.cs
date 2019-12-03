@@ -136,6 +136,8 @@ namespace StellarArmada.Teams
         [Server]
         public void ServerAddPlayer(uint playerId)
         {
+            Debug.Log("ServerAddPlayer: " + playerId +  " is joining team " + teamId);
+
             if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
                 AddPlayer(playerId);
             RpcAddPlayer(playerId);
@@ -145,7 +147,6 @@ namespace StellarArmada.Teams
         public void RpcAddPlayer(uint playerId)
         {
             AddPlayer(playerId);
-            PlayerManager.GetPlayerById(playerId).SetTeamId(teamId);
         }
 
         void AddPlayer(uint playerId)
