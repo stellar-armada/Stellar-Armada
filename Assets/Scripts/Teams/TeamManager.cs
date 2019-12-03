@@ -80,7 +80,7 @@ namespace StellarArmada.Teams
             List<Team> sortedTeams = new List<Team>(teams.OrderByDescending(t => (t.playerSlots - t.players.Count)));
             
             // Set player teamId to team's
-            sortedTeams[0].CmdAddPlayer(playerId);
+            sortedTeams[0].ServerAddPlayer(playerId);
         }
         
         public Team GetTeamByID(uint teamID)

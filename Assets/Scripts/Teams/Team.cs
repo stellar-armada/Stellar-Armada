@@ -133,8 +133,8 @@ namespace StellarArmada.Teams
             groups[group].Remove(ship);
         }
 
-        [Command]
-        public void CmdAddPlayer(uint playerId)
+        [Server]
+        public void ServerAddPlayer(uint playerId)
         {
             if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
                 AddPlayer(playerId);

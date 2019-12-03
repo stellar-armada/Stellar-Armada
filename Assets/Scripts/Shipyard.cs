@@ -58,9 +58,15 @@ public class Shipyard : MonoBehaviour
     public void InitializeShipyard()
     {
         localPlayer = PlayerController.localPlayer;
-        localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
-        team = TeamManager.instance.GetTeamByID(localPlayer.teamId);
-        team.prototypes.Callback += OnShipListUpdated;
+        
+        if(localPlayer.teamId < 255)
+            localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
+        else
+            HandleTeamChange();
+        
+        
+        // team = TeamManager.instance.GetTeamByID(localPlayer.teamId);
+        // team.prototypes.Callback += OnShipListUpdated;
         
         PopulateUIShipyardShips();
         Invoke(nameof(InitializeFlagship), 1f);
@@ -74,8 +80,7 @@ public class Shipyard : MonoBehaviour
 
     void HandleTeamChange()
     {
-        if (team != null)
-            team.prototypes.Callback -= OnShipListUpdated;
+        Debug.Log("HandleTeamChange called");
         team = localPlayer.GetTeam();
         team.prototypes.Callback += OnShipListUpdated;
         PopulateUIShipyardShips();
