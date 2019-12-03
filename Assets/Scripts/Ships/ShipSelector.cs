@@ -19,9 +19,6 @@ namespace StellarArmada.Ships
         
         protected virtual void Awake() => instance = this;
 
-        // Reference to our local player. Serialized so we don't need anti-race logic
-        [SerializeField] protected PlayerController playerController;
-        
         public delegate void SelectorEvent(bool on);
 
         public SelectorEvent OnHighlightTargetSet;

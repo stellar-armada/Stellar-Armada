@@ -14,8 +14,6 @@ namespace StellarArmada.UI
 
         public static GroupUIManager instance;
         
-        [SerializeField] private PlayerController playerController;
-
         private List<UIGroupShip> ships = new List<UIGroupShip>();
         [SerializeField] List<Transform> uiShipContainers = new List<Transform>();
 
@@ -58,7 +56,7 @@ namespace StellarArmada.UI
 
         public void UpdateGroupManager()
         {
-            var groups = TeamManager.instance.GetTeamByID(playerController.GetTeamId()).groups;
+            var groups = TeamManager.instance.GetTeamByID(PlayerController.localPlayer.GetTeamId()).groups;
             
             if (ships.Count > 0) // Delete any if there are any. Would only be if we had more ships added or something
             {

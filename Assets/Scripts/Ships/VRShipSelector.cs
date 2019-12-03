@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using StellarArmada.IO;
+using StellarArmada.Player;
 using UnityEngine;
 using StellarArmada.UI;
 
@@ -83,7 +84,7 @@ namespace StellarArmada.Ships
             foreach (var selectable in currentSelectables)
             {
                 // Friendly
-                    if (selectable.GetShip().GetTeam() == playerController.GetTeam())
+                    if (selectable.GetShip().GetTeam() == PlayerController.localPlayer.GetTeam())
                     {
                         targetIsFriendly = true;
                         selectable.Highlight(ColorManager.instance.friendlyColor);
@@ -91,7 +92,7 @@ namespace StellarArmada.Ships
                         UIPointer.instance.SetColor(ColorManager.instance.friendlyColor);
                     }
                     // Enemy
-                    else if (selectable != null && selectable.GetShip().GetTeam() != playerController.GetTeam())
+                    else if (selectable != null && selectable.GetShip().GetTeam() != PlayerController.localPlayer.GetTeam())
                     {
                         targetIsFriendly = false;
                         selectable.Highlight(ColorManager.instance.enemyColor);
@@ -112,7 +113,7 @@ namespace StellarArmada.Ships
                 // Try getting a selectable from the collider
                 var selectable = collider.GetComponent<ISelectable>();
                 if (selectable != null && selectable.IsSelectable() &&
-                    selectable.GetShip().GetTeam() == playerController.GetTeam())
+                    selectable.GetShip().GetTeam() == PlayerController.localPlayer.GetTeam())
                 {
                     switch (selectionType)
                     {

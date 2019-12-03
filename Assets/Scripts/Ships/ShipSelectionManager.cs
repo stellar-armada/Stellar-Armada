@@ -15,7 +15,6 @@ namespace StellarArmada.Ships
     {
         public static ShipSelectionManager instance;
 
-        [SerializeField] private PlayerController playerController;
         private List<ISelectable> currentSelection = new List<ISelectable>();
         private bool initialized = false;
         
@@ -60,7 +59,7 @@ namespace StellarArmada.Ships
             ClearSelectionSets();
             
             // Get reference to all ships on player's team
-            Team team = TeamManager.instance.GetTeamByID(playerController.teamId);
+            Team team = TeamManager.instance.GetTeamByID(PlayerController.localPlayer.teamId);
             
             //Foreach ship on team
             foreach (Ship entity in team.entities)

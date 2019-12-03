@@ -13,14 +13,12 @@ namespace StellarArmada.Ships
         protected bool isInitialized = false;
 
         [SerializeField] private Renderer ren;
-
-        [SerializeField] private PlayerController playerController;
         void Awake()
         {
             instance = this;
             t = GetComponent<Transform>();
-            playerController.OnLocalPlayerInitialized += Initialize;
-            Hide();
+            PlayerController.localPlayer.OnLocalPlayerInitialized += Initialize;
+            Hide(); 
         }
 
         public void Show()

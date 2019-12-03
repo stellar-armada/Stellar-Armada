@@ -34,7 +34,7 @@ namespace StellarArmada.Player
             if (isLocalPlayer)
             {
                 localPlayer = this;
-                localRig = Instantiate(localRigPrefab, transform.parent);
+                localRig = Instantiate(localRigPrefab, transform);
             }
         }
 

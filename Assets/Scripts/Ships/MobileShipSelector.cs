@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StellarArmada.Player;
+using UnityEngine;
 
 #pragma warning disable 0649
 namespace StellarArmada.Ships
@@ -79,7 +80,7 @@ namespace StellarArmada.Ships
                 lastSelected = selectable;
                 
                 // Check if friendly
-                if (selectable.GetShip().GetTeam() == playerController.GetTeam())
+                if (selectable.GetShip().GetTeam() == PlayerController.localPlayer.GetTeam())
                 {
                     switch (selectionType)
                     {

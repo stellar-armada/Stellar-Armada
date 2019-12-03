@@ -313,9 +313,9 @@ MonoBehaviour:
   scaleXY: 800
   maxScaleXY: 1000
   minScaleXY: 400
-  scaleZ: 400
-  minScaleZ: 350
-  maxScaleZ: 700
+  scaleZ: 800
+  minScaleZ: 400
+  maxScaleZ: 1000
   scaleSpeed: 10
 --- !u!1 &483148221527021194
 GameObject:
@@ -3672,7 +3672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c924389877b144a1210e5b3282b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   selectionSetContainers:
   - {fileID: 223850625568327469}
   - {fileID: 6829391823381485329}
@@ -3690,7 +3689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc6f6732fef4be419531591aedc97dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   uiShipContainers:
   - {fileID: 3542828861853426410}
   - {fileID: 4047842502553589536}
@@ -3707,7 +3705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e317c491324ca8f40b6ddf9f21a8dec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   targetIsFriendly: 0
   layerMask:
     serializedVersion: 2
