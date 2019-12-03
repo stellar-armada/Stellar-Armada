@@ -39,7 +39,7 @@ namespace StellarArmada.Ships
             public void ServerInitWarp(Vector3 position, Quaternion rotation)
             {
                 
-                if (isServerOnly) InitWarp(position, rotation);
+                if (isServer) InitWarp(position, rotation);
                 RpcInitWarp(position, rotation);
             }
 

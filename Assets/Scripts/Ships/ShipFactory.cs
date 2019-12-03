@@ -40,10 +40,13 @@ namespace StellarArmada.Ships
             GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, LevelRoot.instance.transform);
             shipGameObject.transform.localScale = Vector3.one;
             NetworkServer.Spawn(shipGameObject);
+            
+            // TO-DO -- Don't give all players client authority over all teams, but w/e
+                shipGameObject.GetComponent<NetworkIdentity>().AssignClientAuthority(NetworkServer.connections[(int)playerID]);
 
-            Ship s = shipGameObject.GetComponent<Ship>();
+                Ship s = shipGameObject.GetComponent<Ship>();
 
-            s.CmdSetCaptain(playerID);
+            s.ServerSetCaptain(playerID);
         }
 
         public Ship CreateShipForTeam(uint teamId, int groupId, ShipType shipType)
@@ -69,13 +72,14 @@ namespace StellarArmada.Ships
             
             
             NetworkServer.Spawn(shipGameObject);
-            
-            s.CmdSetTeam(teamId);
+
+            s.ServerSetTeam(teamId);
 
             // Get group from group ID and add
             TeamManager.instance.GetTeamByID(teamId).groups[groupId].Add(s);
             return s;
         }
+        
         [Command]
         public void CmdCreateShipsForTeam(uint teamId)
         {
@@ -97,7 +101,7 @@ namespace StellarArmada.Ships
                         ships.Add(s);
 
                         if (groupPrototype.hasCaptain)
-                            s.CmdSetCaptain(groupPrototype.captain);
+                            s.ServerSetCaptain(groupPrototype.captain);
                 }
 
                 // get positions back for list of ships from formation manager
