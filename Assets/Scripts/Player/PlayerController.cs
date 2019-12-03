@@ -18,7 +18,8 @@ namespace StellarArmada.Player
         // Handy reference to the local player controller, set when the player inits
         public static PlayerController localPlayer;
 
-        public GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
+        GameObject localRig; // Stuff that's only for the local player -- cameras, menus, etc.
+        public GameObject localRigPrefab; // Stuff that's only for the local player -- cameras, menus, etc.
 
         public delegate void PlayerControllerInitializationEvent();
 
@@ -33,11 +34,7 @@ namespace StellarArmada.Player
             if (isLocalPlayer)
             {
                 localPlayer = this;
-                localRig.SetActive(true);
-            }
-            else
-            {
-                localRig.SetActive(false);
+                localRig = Instantiate(localRigPrefab, transform.parent);
             }
         }
 
