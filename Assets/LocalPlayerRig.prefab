@@ -314,8 +314,8 @@ MonoBehaviour:
   maxScaleXY: 1000
   minScaleXY: 400
   scaleZ: 800
-  minScaleZ: 400
-  maxScaleZ: 1000
+  minScaleZ: 650
+  maxScaleZ: 650
   scaleSpeed: 10
 --- !u!1 &483148221527021194
 GameObject:
@@ -4465,7 +4465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ren: {fileID: 8370205728050853603}
-  playerController: {fileID: 0}
 --- !u!33 &8441136383480989770
 MeshFilter:
   m_ObjectHideFlags: 0

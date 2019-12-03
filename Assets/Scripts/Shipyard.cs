@@ -58,7 +58,10 @@ public class Shipyard : MonoBehaviour
     public void InitializeShipyard()
     {
         localPlayer = PlayerController.localPlayer;
-        
+        team = localPlayer.GetTeam();
+        team.prototypes.Callback += OnShipListUpdated;
+        PopulateUIShipyardShips();
+        ShowAvailableShips();
         Invoke(nameof(DelayedInit), 1f);
     }
 
@@ -66,16 +69,6 @@ public class Shipyard : MonoBehaviour
     {
         // Set to the first ship that isn't already captained
         PlayerController.localPlayer.CmdSetRandomFlagshipForLocalPlayer(PlayerController.localPlayer.netId);
-        HandleTeamChange();
-    }
-
-    void HandleTeamChange()
-    {
-        Debug.Log("HandleTeamChange called");
-        team = localPlayer.GetTeam();
-        team.prototypes.Callback += OnShipListUpdated;
-        PopulateUIShipyardShips();
-        ShowAvailableShips();
     }
 
     public void OnShipListUpdated(SyncList<ShipPrototype>.Operation op, int itemindex, ShipPrototype proto)

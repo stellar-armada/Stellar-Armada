@@ -80,7 +80,6 @@ namespace StellarArmada.Ships
             team.ChangeEntityGroup(this, newGroupId);
         }
 
-        [Server] // Server logic
         public void ServerSetTeam(uint newTeamId)
         {
             if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
@@ -96,8 +95,9 @@ namespace StellarArmada.Ships
 
         void SetTeam(uint newTeamId) // Called on both server and client
         {
-            if (team != null && team.entities.Contains(this) && team.teamId != newTeamId) team.RemoveEntity(this);
+            Debug.Log("New team ID: " + newTeamId);
             team = TeamManager.instance.GetTeamByID(newTeamId);
+            Debug.Log("Team: " + team.teamName);
             team.AddEntity(this);
             shipStatusBar.SetInsignia(team.insignia);
             

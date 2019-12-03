@@ -27,10 +27,13 @@ namespace StellarArmada.Player
 
         public PlayerControllerInitializationEvent OnNonLocalPlayerInitialized;
 
+        void Awake()
+        {
+            PlayerManager.instance.RegisterPlayer(this);
+        }
 
         void Start()
         {
-            PlayerManager.instance.RegisterPlayer(this);
             if (isLocalPlayer)
             {
                 localPlayer = this;
@@ -133,6 +136,7 @@ namespace StellarArmada.Player
         [Server]
         public void ServerInitialize()
         {
+            Debug.Log("Server initialize called");
             MatchStateManager.instance.CmdChangeMatchState(MatchState.Lobby);
             TeamManager.instance.ServerJoinTeam(netId); // must happen after register player
             RpcInitialize();

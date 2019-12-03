@@ -13,7 +13,6 @@ namespace StellarArmada.Ships
     {
         public static ShipFactory instance;
 
-        
         // Share a unique incrementer amongst all entities for dictionary lookups
         public static uint entityIncrement = 0;
         
@@ -24,8 +23,7 @@ namespace StellarArmada.Ships
             instance = this;
         }
 
-        [Server]
-        public Ship ServerCreateShipForTeam(uint teamId, int groupId, ShipType shipType)
+        Ship ServerCreateShipForTeam(uint teamId, int groupId, ShipType shipType)
         {
 
             GameObject shipPrefab;
@@ -44,7 +42,6 @@ namespace StellarArmada.Ships
 
             s.SetEntityId(entityIncrement++);
             s.group = groupId;
-            
             
             NetworkServer.Spawn(shipGameObject);
 

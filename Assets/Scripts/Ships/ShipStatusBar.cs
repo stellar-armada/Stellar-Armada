@@ -43,16 +43,9 @@ namespace StellarArmada.Ships
             StartCoroutine(FadeVisibility(0));
         }
 
-        void Start()
-        {
-            if (ship.captain != null)
-            {
-                HandleUpdateToCaptain();
-            }
-        }
-
         void HandleUpdateToCaptain()
         {
+            Debug.Log("<color=red>Captain updated</color>");
             captainNameText.text = ship.captain.playerName;
             captainNameText.color = ship.GetTeam().color;
             ship.captain.EventOnPlayerNameChange += HandleNameChange;

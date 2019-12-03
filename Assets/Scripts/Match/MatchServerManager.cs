@@ -87,6 +87,7 @@ Debug.Log("Scenario changed to " + scenarioname);
         [Command]
         public void CmdStartMatch()
         {
+            Debug.Log("CmdStartMatch called");
             foreach (var player in PlayerManager.players)
                 player.ServerInitialize();
         }
