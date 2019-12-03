@@ -2974,7 +2974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3624173926391794172
 Transform:
   m_ObjectHideFlags: 0
@@ -3014,7 +3014,7 @@ Camera:
     height: 1
   near clip plane: 8000
   far clip plane: 60000
-  field of view: 14
+  field of view: 18
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -3769,7 +3769,7 @@ Camera:
     height: 1
   near clip plane: 8000
   far clip plane: 60000
-  field of view: 14
+  field of view: 18
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
