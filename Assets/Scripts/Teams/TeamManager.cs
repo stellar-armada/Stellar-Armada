@@ -71,16 +71,20 @@ namespace StellarArmada.Teams
             NetworkServer.Spawn(t.gameObject);
         }
 
+        private int lastTeam = 0;
+        
+
 
         [Server]
         public void ServerJoinTeam(uint playerId)
         {
-            // Find team with most slots available (slots avail - num players)
-            List<Team> sortedTeams = new List<Team>(teams.OrderBy(t => t.players.Count));
-            Debug.Log(playerId +  " is joining team " + sortedTeams[0].teamId);
+            
 
             // Set player teamId to team's
-            sortedTeams[0].ServerAddPlayer(playerId);
+            teams[(lastTeam++)%teams.Count]
+                .ServerAddPlayer(playerId);
+            Debug.Log(playerId +  " is joining team " + teams[lastTeam%teams.Count].teamId);
+
         }
         
         public Team GetTeamByID(uint teamID)
