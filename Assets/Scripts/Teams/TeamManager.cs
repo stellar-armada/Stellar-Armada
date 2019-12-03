@@ -69,6 +69,10 @@ namespace StellarArmada.Teams
                     }
             
             NetworkServer.Spawn(t.gameObject);
+            
+            // TO-DO -- Don't give all players client authority over all teams, but w/e
+            foreach (var conn in NetworkServer.connections.Values)
+                t.GetComponent<NetworkIdentity>().AssignClientAuthority(conn);
         }
 
 
