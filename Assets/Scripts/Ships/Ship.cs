@@ -83,7 +83,8 @@ namespace StellarArmada.Ships
         [Server] // Server logic
         public void ServerSetTeam(uint newTeamId)
         {
-            if(isServer) SetTeam(newTeamId);
+            if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                SetTeam(newTeamId);
             RpcSetTeam(newTeamId);
         }
 

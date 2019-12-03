@@ -24,34 +24,9 @@ namespace StellarArmada.Ships
             instance = this;
         }
 
-        // Ship Factory
-        [Command]
-        public void CmdCreateShipForPlayer(uint playerID, ShipType shipType, Vector3 position, Quaternion rotation)
+        [Server]
+        public Ship ServerCreateShipForTeam(uint teamId, int groupId, ShipType shipType)
         {
-            GameObject shipPrefab;
-
-            bool success = ships.TryGetValue(shipType, out shipPrefab);
-            if (!success)
-            {
-                Debug.LogError("Failed to create ship - was not found in dictionary");
-                return;
-            }
-
-            GameObject shipGameObject = Instantiate(shipPrefab, position, rotation, LevelRoot.instance.transform);
-            shipGameObject.transform.localScale = Vector3.one;
-            NetworkServer.Spawn(shipGameObject);
-            
-            // TO-DO -- Don't give all players client authority over all teams, but w/e
-                shipGameObject.GetComponent<NetworkIdentity>().AssignClientAuthority(NetworkServer.connections[(int)playerID]);
-
-                Ship s = shipGameObject.GetComponent<Ship>();
-
-            s.ServerSetCaptain(playerID);
-        }
-
-        public Ship CreateShipForTeam(uint teamId, int groupId, ShipType shipType)
-        {
-            if (!isServer) return null;
 
             GameObject shipPrefab;
 
@@ -80,8 +55,8 @@ namespace StellarArmada.Ships
             return s;
         }
         
-        [Command]
-        public void CmdCreateShipsForTeam(uint teamId)
+        [Server]
+        public void ServerCreateShipsForTeam(uint teamId)
         {
             Team t = TeamManager.instance.GetTeamByID(teamId);
             
@@ -97,7 +72,7 @@ namespace StellarArmada.Ships
                 foreach (var groupPrototype in groupPrototypes)
                 {
                     // For each ship, instantiate for current team
-                        Ship s = CreateShipForTeam(teamId, groupPrototype.group, groupPrototype.shipType);
+                        Ship s = ServerCreateShipForTeam(teamId, groupPrototype.group, groupPrototype.shipType);
                         ships.Add(s);
 
                         if (groupPrototype.hasCaptain)

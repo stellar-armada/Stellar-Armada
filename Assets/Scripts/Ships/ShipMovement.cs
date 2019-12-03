@@ -113,7 +113,8 @@ namespace StellarArmada.Ships
         public void ServerPursue(uint entityId)
         {
             if (!controlEnabled) return;
-            if(isServer) Pursue(ShipManager.GetEntityById(entityId));
+            if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                Pursue(ShipManager.GetEntityById(entityId));
             RpcPursue(entityId);
         }
 
@@ -139,7 +140,8 @@ namespace StellarArmada.Ships
                 return;
             }
 
-            if (isServer) MoveToPoint(pos, rot);
+            if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                MoveToPoint(pos, rot);
             
             RpcMoveToPoint(pos, rot);
         }
@@ -158,7 +160,8 @@ namespace StellarArmada.Ships
         [Server]
         public void ServerStopMovement()
         {
-            if(isServer) StopMovement();
+            if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                StopMovement();
             RpcStopMovement();
         }
 

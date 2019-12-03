@@ -20,7 +20,8 @@ namespace StellarArmada.Ships
         [Server]
         public void ServerSetTarget(uint entityId, bool isFriendly)
         {
-            if(isServer) SetTarget(entityId, isFriendly);
+            if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                SetTarget(entityId, isFriendly);
             RpcSetTarget(entityId, isFriendly);
         }
 

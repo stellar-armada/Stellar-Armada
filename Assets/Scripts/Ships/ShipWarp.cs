@@ -39,7 +39,8 @@ namespace StellarArmada.Ships
             public void ServerInitWarp(Vector3 position, Quaternion rotation)
             {
                 
-                if (isServer) InitWarp(position, rotation);
+                if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                    InitWarp(position, rotation);
                 RpcInitWarp(position, rotation);
             }
 

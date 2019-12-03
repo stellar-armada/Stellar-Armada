@@ -69,15 +69,11 @@ namespace StellarArmada.Teams
                     }
             
             NetworkServer.Spawn(t.gameObject);
-            
-            // TO-DO -- Don't give all players client authority over all teams, but w/e
-            foreach (var conn in NetworkServer.connections.Values)
-                t.GetComponent<NetworkIdentity>().AssignClientAuthority(conn);
         }
 
 
-        [Command]
-        public void CmdJoinTeam(uint playerId)
+        [Server]
+        public void ServerJoinTeam(uint playerId)
         {
             // Find team with most slots available (slots avail - num players)
 

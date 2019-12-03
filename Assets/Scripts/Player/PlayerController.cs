@@ -134,15 +134,14 @@ namespace StellarArmada.Player
         public void ServerInitialize()
         {
             MatchStateManager.instance.CmdChangeMatchState(MatchState.Lobby);
-            if(isServerOnly)
-            Initialize();
+            TeamManager.instance.ServerJoinTeam(netId); // must happen after register player
             RpcInitialize();
         }
 
         [Command]
         public void CmdCreateShipsForTeam()
         {
-            ShipFactory.instance.CmdCreateShipsForTeam(GetTeam().teamId);
+            ShipFactory.instance.ServerCreateShipsForTeam(GetTeam().teamId);
         }
 
         [Server]
@@ -167,9 +166,6 @@ namespace StellarArmada.Player
 
         void Initialize()
         {
-            // Server sets player's team
-            if (!isServerOnly) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
-
             // If this is the local player's object, set up local player logic
             if (isLocalPlayer)
             {

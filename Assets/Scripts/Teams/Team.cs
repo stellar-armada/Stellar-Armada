@@ -136,18 +136,16 @@ namespace StellarArmada.Teams
         [Command]
         public void CmdAddPlayer(uint playerId)
         {
-            AddPlayer(playerId);
+            if(isServerOnly) // Player needs to be added to server, who won't receive RPC callback
+                AddPlayer(playerId);
             RpcAddPlayer(playerId);
         }
 
         [ClientRpc]
         public void RpcAddPlayer(uint playerId)
         {
-            if (!isServer)
-            {
             AddPlayer(playerId);
             PlayerManager.GetPlayerById(playerId).SetTeamId(teamId);
-            }
         }
 
         void AddPlayer(uint playerId)
