@@ -173,9 +173,6 @@ namespace StellarArmada.Player
             // If this is the local player's object, set up local player logic
             if (isLocalPlayer)
             {
-                // The localrig in the MatchPlayer prefab contains all the local managers for selection, map control, etc.
-                localRig.SetActive(true);
-
                 CmdSetUserName(PlayerSettingsManager.GetSavedPlayerName());
 
                 Shipyard.instance.InitializeShipyard();
@@ -183,11 +180,6 @@ namespace StellarArmada.Player
                 LocalMenuStateManager.instance.GoToShipyard();
 
                 OnLocalPlayerInitialized?.Invoke();
-            }
-            else
-            {
-                localRig.SetActive(false);
-                OnNonLocalPlayerInitialized?.Invoke();
             }
         }
 
