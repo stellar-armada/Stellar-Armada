@@ -168,7 +168,7 @@ namespace StellarArmada.Player
         void Initialize()
         {
             // Server sets player's team
-            if (isServer) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
+            if (!isServerOnly) TeamManager.instance.CmdJoinTeam(netId); // must happen after register player
 
             // If this is the local player's object, set up local player logic
             if (isLocalPlayer)
