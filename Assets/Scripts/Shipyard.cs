@@ -59,23 +59,14 @@ public class Shipyard : MonoBehaviour
     {
         localPlayer = PlayerController.localPlayer;
         
-        if(localPlayer.teamId < 255)
-            localPlayer.EventOnPlayerTeamChange += HandleTeamChange;
-        else
-            HandleTeamChange();
-        
-        
-        // team = TeamManager.instance.GetTeamByID(localPlayer.teamId);
-        // team.prototypes.Callback += OnShipListUpdated;
-        
-        PopulateUIShipyardShips();
-        Invoke(nameof(InitializeFlagship), 1f);
+        Invoke(nameof(DelayedInit), 1f);
     }
 
-    void InitializeFlagship()
+    void DelayedInit()
     {
         // Set to the first ship that isn't already captained
         PlayerController.localPlayer.CmdSetRandomFlagshipForLocalPlayer(PlayerController.localPlayer.netId);
+        HandleTeamChange();
     }
 
     void HandleTeamChange()
